@@ -40,6 +40,14 @@ export function useDuckDb() {
                         await dbInstance.registerFileURL('dashboard_current.parquet', '/data/dashboard_current.parquet', duckdb.DuckDBDataProtocol.HTTP, false);
                         await dbInstance.registerFileURL('dashboard_trend.parquet', '/data/dashboard_trend.parquet', duckdb.DuckDBDataProtocol.HTTP, false);
                         await dbInstance.registerFileURL('dashboard_segments.parquet', '/data/dashboard_segments.parquet', duckdb.DuckDBDataProtocol.HTTP, false);
+                        await dbInstance.registerFileURL('dashboard_pickup.parquet', '/data/dashboard_pickup.parquet', duckdb.DuckDBDataProtocol.HTTP, false);
+
+                        // GA4 Parquet files
+                        await dbInstance.registerFileURL('ga4_TrafficAcquisition_281286275.parquet', '/data/ga4_TrafficAcquisition_281286275.parquet', duckdb.DuckDBDataProtocol.HTTP, false);
+                        await dbInstance.registerFileURL('ga4_UserAcquisition_281286275.parquet', '/data/ga4_UserAcquisition_281286275.parquet', duckdb.DuckDBDataProtocol.HTTP, false);
+                        await dbInstance.registerFileURL('ga4_TechDetails_281286275.parquet', '/data/ga4_TechDetails_281286275.parquet', duckdb.DuckDBDataProtocol.HTTP, false);
+                        await dbInstance.registerFileURL('ga4_Events_281286275.parquet', '/data/ga4_Events_281286275.parquet', duckdb.DuckDBDataProtocol.HTTP, false);
+                        await dbInstance.registerFileURL('ga4_PagesAndScreens_281286275.parquet', '/data/ga4_PagesAndScreens_281286275.parquet', duckdb.DuckDBDataProtocol.HTTP, false);
 
                         return dbInstance;
                     })();
@@ -50,10 +58,10 @@ export function useDuckDb() {
                     setDb(initializedDb);
                     setIsInitializing(false);
                 }
-            } catch (err: any) {
+            } catch (err: unknown) {
                 if (!isCancelled) {
                     console.error("Failed to initialize DuckDB:", err);
-                    setError(err);
+                    setError(err instanceof Error ? err : new Error(String(err)));
                     setIsInitializing(false);
                 }
             }
@@ -75,7 +83,7 @@ export function useDuckDb() {
         try {
             connection = await db.connect();
             const results = await connection.query(query);
-            return results.toArray().map((row: any) => row.toJSON());
+            return results.toArray().map((row: { toJSON(): unknown }) => row.toJSON());
         } finally {
             if (connection) {
                 await connection.close();

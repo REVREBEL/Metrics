@@ -34,14 +34,14 @@ const OTBMixTooltip = ({ active, payload, label, month, year }: any) => {
           <span className="font-display text-xs uppercase text-muted-foreground">{isWeekend ? 'Weekend' : 'Weekday'}</span>
           <div className="flex items-center justify-between w-full mb-2">
             <div className="flex items-center gap-4">
-              <div className={`w-2 h-8 ${isWeekend ? 'bg-[var(--chart-5)]' : 'bg-[var(--chart-4)]'}`} /> {/* Transient */}
+              <div className="w-2 h-8" style={{ backgroundColor: isWeekend ? "var(--chart-5)" : "var(--chart-4)" }} /> {/* Transient */}
               <div className="font-sans text-lg font-bold">{String(transient).padStart(2, '0')} | {String(transientPct).padStart(2, '0')}%</div>
             </div>
             <span className="text-sm font-normal text-muted-foreground mr-12">Transient</span>
           </div>
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-4">
-              <div className={`w-2 h-8 ${isWeekend ? 'bg-[var(--chart-6)]' : 'bg-[var(--chart-3)]'}`} /> {/* Group */}
+              <div className="w-2 h-8" style={{ backgroundColor: isWeekend ? "var(--chart-6)" : "var(--chart-3)" }} /> {/* Group */}
               <div className="font-sans text-lg font-bold">{String(group).padStart(2, '0')} | {String(groupPct).padStart(2, '0')}%</div>
             </div>
             <span className="text-sm font-normal text-muted-foreground mr-12">Group</span>
@@ -101,11 +101,6 @@ export default function OTBChart({ year, month }: { year?: string, month?: strin
       <div className="h-[400px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart data={chartData}>
-            {/* Weekend Shading */}
-            {chartData?.map((d, i) => d.isWeekend && (
-              <ReferenceArea key={i} x1={d.day} x2={d.day} fill="hsl(var(--muted))" fillOpacity={0.4} />
-            ))}
-
             <XAxis
               dataKey="day"
               axisLine={false}

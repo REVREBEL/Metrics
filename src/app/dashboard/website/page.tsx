@@ -18,7 +18,7 @@ import { Analytics } from './components/analytics'
 import { Overview } from './components/overview'
 import { RecentSales } from './components/recent-sales'
 
-export function Dashboard() {
+export default function Dashboard() {
   return (
     <>
       {/* ===== Top Heading ===== */}
@@ -194,27 +194,31 @@ export function Dashboard() {
 
 const topNav = [
   {
-    title: 'Overview',
-    href: 'dashboard/overview',
+    title: 'Website',
+    href: '/dashboard/overview',
     isActive: true,
     disabled: false,
+    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
   },
   {
-    title: 'Customers',
-    href: 'dashboard/customers',
+    title: 'Pickup',
+    href: '/dashboard/customers',
     isActive: false,
     disabled: true,
+    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
   },
   {
-    title: 'Products',
-    href: 'dashboard/products',
+    title: 'Pace',
+    href: '/dashboard/products',
     isActive: false,
     disabled: true,
+    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
   },
   {
-    title: 'Settings',
-    href: 'dashboard/settings',
+    title: 'Performance',
+    href: '/dashboard/settings',
     isActive: false,
-    disabled: true,
+    disabled: false,
+    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
   },
 ]

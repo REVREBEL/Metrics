@@ -24,13 +24,26 @@ const preloadTags = LOCAL_PRELOADS.map(
 
 export function generateIframeHTML(initialTheme: "light" | "dark"): string {
   const darkClass = initialTheme === "dark" ? ' class="dark"' : "";
-  const importMapJSON = JSON.stringify(importMap, null, 2);
+  const baseHref =
+    typeof window === "undefined"
+      ? "http://localhost:3000/"
+      : `${window.location.origin}/`;
+  const absoluteImportMap = {
+    imports: Object.fromEntries(
+      Object.entries(importMap.imports).map(([specifier, target]) => [
+        specifier,
+        target.startsWith("/") ? new URL(target, baseHref).toString() : target,
+      ]),
+    ),
+  };
+  const importMapJSON = JSON.stringify(absoluteImportMap, null, 2);
 
   return `<!DOCTYPE html>
 <html lang="en"${darkClass}>
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<base href="${baseHref}" />
 <script type="importmap">
 ${importMapJSON}
 </script>
