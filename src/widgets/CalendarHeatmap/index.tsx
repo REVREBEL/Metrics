@@ -66,17 +66,22 @@ export default function CalendarHeatmap({
         const two: Date[] = [];
         const three: Date[] = [];
         const four: Date[] = [];
+        const maxCount = Math.max(...dataToModify.map((d) => d.count), 1);
+
         for (const item of dataToModify) {
             if (item.count === 0) {
                 zero.push(item.date);
-            } else if (item.count === 1) {
-                one.push(item.date);
-            } else if (item.count === 2) {
-                two.push(item.date);
-            } else if (item.count === 3) {
-                three.push(item.date);
-            } else if (item.count === 4) {
-                four.push(item.date);
+            } else {
+                const ratio = item.count / maxCount;
+                if (ratio <= 0.25) {
+                    one.push(item.date);
+                } else if (ratio <= 0.50) {
+                    two.push(item.date);
+                } else if (ratio <= 0.75) {
+                    three.push(item.date);
+                } else {
+                    four.push(item.date);
+                }
             }
         }
         return {
