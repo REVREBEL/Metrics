@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 
-import { Bar, ComposedChart, Line, ResponsiveContainer, XAxis, ReferenceArea, Tooltip } from "recharts";
+import { Bar, ComposedChart, Line, ResponsiveContainer, XAxis, ReferenceArea, Tooltip, Cell } from "recharts";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { useDuckDb } from "@/hooks/useDuckDb";
@@ -32,17 +32,19 @@ const OTBMixTooltip = ({ active, payload, label, month, year }: any) => {
       <div className="flex gap-8 mb-6">
         <div className="flex flex-col gap-2 w-full">
           <span className="font-display text-xs uppercase text-muted-foreground">{isWeekend ? 'Weekend' : 'Weekday'}</span>
-          <div className="flex items-center justify-between w-full">
+          <div className="flex items-center justify-between w-full mb-2">
             <div className="flex items-center gap-4">
-              <div className="w-2 h-8 bg-[var(--chart-3)]" /> {/* Transient */}
-              <div className="font-sans text-lg font-bold">{transient} / {transientPct}% <span className="text-sm font-normal text-muted-foreground">Transient</span></div>
+              <div className={`w-2 h-8 ${isWeekend ? 'bg-[var(--chart-5)]' : 'bg-[var(--chart-4)]'}`} /> {/* Transient */}
+              <div className="font-sans text-lg font-bold">{String(transient).padStart(2, '0')} | {String(transientPct).padStart(2, '0')}%</div>
             </div>
+            <span className="text-sm font-normal text-muted-foreground mr-12">Transient</span>
           </div>
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-4">
-              <div className="w-2 h-4 bg-[var(--chart-6)]" /> {/* Group */}
-              <div className="font-sans text-lg font-bold">{group} / {groupPct}% <span className="text-sm font-normal text-muted-foreground">Group</span></div>
+              <div className={`w-2 h-8 ${isWeekend ? 'bg-[var(--chart-6)]' : 'bg-[var(--chart-3)]'}`} /> {/* Group */}
+              <div className="font-sans text-lg font-bold">{String(group).padStart(2, '0')} | {String(groupPct).padStart(2, '0')}%</div>
             </div>
+            <span className="text-sm font-normal text-muted-foreground mr-12">Group</span>
           </div>
         </div>
       </div>
@@ -114,9 +116,17 @@ export default function OTBChart({ year, month }: { year?: string, month?: strin
             {/* The Integrated Tooltip */}
             <Tooltip content={<OTBMixTooltip month={month} year={year} />} cursor={{ fill: 'transparent' }} />
 
-            <Bar dataKey="transient" stackId="a" fill="var(--chart-3)" />
-            <Bar dataKey="group" stackId="a" fill="var(--chart-6)" />
-            <Line type="stepAfter" dataKey="capacity" stroke="var(--primary)" strokeWidth={2} dot={false} isAnimationActive={false} />
+            <Bar dataKey="transient" stackId="a">
+              {chartData?.map((entry, index) => (
+                <Cell key={`cell-transient-${index}`} fill={entry.isWeekend ? 'var(--chart-5)' : 'var(--chart-4)'} />
+              ))}
+            </Bar>
+            <Bar dataKey="group" stackId="a">
+              {chartData?.map((entry, index) => (
+                <Cell key={`cell-group-${index}`} fill={entry.isWeekend ? 'var(--chart-6)' : 'var(--chart-3)'} />
+              ))}
+            </Bar>
+            <Line type="stepAfter" dataKey="capacity" stroke="var(--primary)" strokeWidth={1} strokeDasharray="3 3" dot={false} isAnimationActive={false} />
           </ComposedChart>
         </ResponsiveContainer>
       </div>
