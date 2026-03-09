@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 // src/app/layout.tsx
-import { Khand, Funnel_Sans, Public_Sans } from "next/font/google"; //
 import "./globals.css";
+import { ClerkProvider } from '@clerk/nextjs'
+import { AppProviders } from '@/components/providers'
 import { cn } from "@/lib/utils";
+import { Khand, Funnel_Sans } from "next/font/google";
 
-const publicSans = Public_Sans({subsets:['latin'],variable:'--font-sans'});
+const funnelSans = Funnel_Sans({ subsets: ['latin'], variable: '--font-sans' });
 
 const khand = Khand({
   subsets: ["latin"],
@@ -12,16 +13,25 @@ const khand = Khand({
   variable: "--font-khand",
 });
 
-const funnelSans = Funnel_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-funnel", //
-});
-
+// src/app/layout.tsx
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={cn(khand.variable, funnelSans.variable, "font-sans", publicSans.variable)}>
-      <body className="antialiased font-funnel">{children}</body>
+    <html suppressHydrationWarning lang="en" className={cn(
+      khand.variable,
+      "antialiased",
+      funnelSans.variable,
+      "antialiased",
+    )}>
+      {/* Apply funnelSans as the base font. 
+          Khand (display) will be used via the 'font-display' class.
+      */}
+      <body className="font-funnel bg-background text-foreground">
+        <ClerkProvider>
+          <AppProviders>
+            {children}
+          </AppProviders>
+        </ClerkProvider>
+      </body>
     </html>
   );
 }
