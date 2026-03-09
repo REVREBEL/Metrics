@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardContent,
@@ -6,8 +7,74 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { AnalyticsChart } from './analytics-chart'
+import { useEffect, useState } from "react";
+import { useDuckDb } from "@/hooks/useDuckDb";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export function Analytics() {
+  const { execute, isInitializing } = useDuckDb();
+  const [metrics, setMetrics] = useState<any>(null);
+
+  useEffect(() => {
+    if (isInitializing) return;
+    async function fetchMetrics() {
+      try {
+        const res = await execute(`
+          SELECT
+            SUM(CASE WHEN _DATA_DATE > (SELECT MAX(_DATA_DATE) - INTERVAL 7 DAY FROM 'ga4_TrafficAcquisition_281286275.parquet') THEN sessions ELSE 0 END) as cur_sessions,
+            SUM(CASE WHEN _DATA_DATE <= (SELECT MAX(_DATA_DATE) - INTERVAL 7 DAY FROM 'ga4_TrafficAcquisition_281286275.parquet') AND _DATA_DATE > (SELECT MAX(_DATA_DATE) - INTERVAL 14 DAY FROM 'ga4_TrafficAcquisition_281286275.parquet') THEN sessions ELSE 0 END) as prev_sessions,
+            
+            SUM(CASE WHEN _DATA_DATE > (SELECT MAX(_DATA_DATE) - INTERVAL 7 DAY FROM 'ga4_TrafficAcquisition_281286275.parquet') THEN engagedSessions ELSE 0 END) as cur_engaged,
+            SUM(CASE WHEN _DATA_DATE <= (SELECT MAX(_DATA_DATE) - INTERVAL 7 DAY FROM 'ga4_TrafficAcquisition_281286275.parquet') AND _DATA_DATE > (SELECT MAX(_DATA_DATE) - INTERVAL 14 DAY FROM 'ga4_TrafficAcquisition_281286275.parquet') THEN engagedSessions ELSE 0 END) as prev_engaged,
+
+            AVG(CASE WHEN _DATA_DATE > (SELECT MAX(_DATA_DATE) - INTERVAL 7 DAY FROM 'ga4_TrafficAcquisition_281286275.parquet') THEN userEngagementDurationPerSession ELSE null END) as cur_duration,
+            AVG(CASE WHEN _DATA_DATE <= (SELECT MAX(_DATA_DATE) - INTERVAL 7 DAY FROM 'ga4_TrafficAcquisition_281286275.parquet') AND _DATA_DATE > (SELECT MAX(_DATA_DATE) - INTERVAL 14 DAY FROM 'ga4_TrafficAcquisition_281286275.parquet') THEN userEngagementDurationPerSession ELSE null END) as prev_duration
+          FROM 'ga4_TrafficAcquisition_281286275.parquet'
+        `);
+
+        const refs = await execute(`
+          SELECT sessionDefaultChannelGroup as name, CAST(SUM(sessions) AS INTEGER) as value 
+          FROM 'ga4_TrafficAcquisition_281286275.parquet' 
+          WHERE _DATA_DATE > (SELECT MAX(_DATA_DATE) - INTERVAL 7 DAY FROM 'ga4_TrafficAcquisition_281286275.parquet')
+          GROUP BY 1 ORDER BY 2 DESC LIMIT 4
+        `);
+
+        const devices = await execute(`
+          SELECT deviceCategory as name, CAST(SUM(activeUsers) AS INTEGER) as value 
+          FROM 'ga4_TechDetails_281286275.parquet' 
+          WHERE _DATA_DATE > (SELECT MAX(_DATA_DATE) - INTERVAL 7 DAY FROM 'ga4_TechDetails_281286275.parquet')
+          GROUP BY 1 ORDER BY 2 DESC LIMIT 4
+        `);
+
+        if (res && res.length > 0) {
+          setMetrics({ overview: res[0], referrers: refs, devices: devices });
+        }
+      } catch (err) { console.error("Failed to load GA4 metrics", err); }
+    }
+    fetchMetrics();
+  }, [execute, isInitializing]);
+
+  if (isInitializing || !metrics) {
+    return <div className="space-y-4"><Skeleton className="h-[400px] w-full" /><Skeleton className="h-[200px] w-full" /></div>;
+  }
+
+  const { overview, referrers, devices } = metrics;
+  const curSessions = Number(overview.cur_sessions) || 0;
+  const prevSessions = Number(overview.prev_sessions) || 1;
+  const curEngaged = Number(overview.cur_engaged) || 0;
+  const prevEngaged = Number(overview.prev_engaged) || 1;
+  const curDuration = Number(overview.cur_duration) || 0;
+  const prevDuration = Number(overview.prev_duration) || 0;
+
+  const sessionsPct = ((curSessions - prevSessions) / prevSessions) * 100;
+  const engagedPct = ((curEngaged - prevEngaged) / prevEngaged) * 100;
+
+  const curBounce = 1 - (curEngaged / (curSessions || 1));
+  const prevBounce = 1 - (prevEngaged / (prevSessions || 1));
+  const bouncePct = (curBounce - prevBounce) * 100; // in percentage points
+
+  const durationDiff = curDuration - prevDuration;
+
   return (
     <div className='space-y-4'>
       <Card>
@@ -38,8 +105,8 @@ export function Analytics() {
             </svg>
           </CardHeader>
           <CardContent>
-            <div className='text-2xl font-bold'>1,248</div>
-            <p className='text-xs text-muted-foreground'>+12.4% vs last week</p>
+            <div className='text-2xl font-bold'>{curSessions.toLocaleString()}</div>
+            <p className='text-xs text-muted-foreground'>{sessionsPct > 0 ? '+' : ''}{sessionsPct.toFixed(1)}% vs last week</p>
           </CardContent>
         </Card>
         <Card>
@@ -62,8 +129,8 @@ export function Analytics() {
             </svg>
           </CardHeader>
           <CardContent>
-            <div className='text-2xl font-bold'>832</div>
-            <p className='text-xs text-muted-foreground'>+5.8% vs last week</p>
+            <div className='text-2xl font-bold'>{curEngaged.toLocaleString()}</div>
+            <p className='text-xs text-muted-foreground'>{engagedPct > 0 ? '+' : ''}{engagedPct.toFixed(1)}% vs last week</p>
           </CardContent>
         </Card>
         <Card>
@@ -83,8 +150,8 @@ export function Analytics() {
             </svg>
           </CardHeader>
           <CardContent>
-            <div className='text-2xl font-bold'>42%</div>
-            <p className='text-xs text-muted-foreground'>-3.2% vs last week</p>
+            <div className='text-2xl font-bold'>{(curBounce * 100).toFixed(1)}%</div>
+            <p className='text-xs text-muted-foreground'>{bouncePct > 0 ? '+' : ''}{bouncePct.toFixed(1)}% vs last week</p>
           </CardContent>
         </Card>
         <Card>
@@ -105,8 +172,8 @@ export function Analytics() {
             </svg>
           </CardHeader>
           <CardContent>
-            <div className='text-2xl font-bold'>3m 24s</div>
-            <p className='text-xs text-muted-foreground'>+18s vs last week</p>
+            <div className='text-2xl font-bold'>{Math.floor(curDuration / 60)}m {Math.floor(curDuration % 60)}s</div>
+            <p className='text-xs text-muted-foreground'>{durationDiff > 0 ? '+' : ''}{Math.floor(durationDiff)}s vs last week</p>
           </CardContent>
         </Card>
       </div>
@@ -118,12 +185,7 @@ export function Analytics() {
           </CardHeader>
           <CardContent>
             <SimpleBarList
-              items={[
-                { name: 'Direct', value: 512 },
-                { name: 'Product Hunt', value: 238 },
-                { name: 'Twitter', value: 174 },
-                { name: 'Blog', value: 104 },
-              ]}
+              items={referrers as any}
               barClass='bg-primary'
               valueFormatter={(n) => `${n}`}
             />
@@ -136,15 +198,12 @@ export function Analytics() {
           </CardHeader>
           <CardContent>
             <SimpleBarList
-              items={[
-                { name: 'Desktop', value: 74 },
-                { name: 'Mobile', value: 22 },
-                { name: 'Tablet', value: 4 },
-              ]}
+              items={devices as any}
               barClass='bg-muted-foreground'
-              valueFormatter={(n) => `${n}%`}
+              valueFormatter={(n) => `${n}`}
             />
           </CardContent>
+
         </Card>
       </div>
     </div>

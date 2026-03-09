@@ -24,9 +24,9 @@ type RegistryPickerProps = {
 };
 
 function getImportPath(item: RegistryItem): string {
-  if (item.type === "widget") return `/playground/modules/widgets/${item.name}.js`;
+  if (item.type === "widget") return `@/widgets/${item.name}/index`;
   if (item.type === "ui-primitive") return "@/components/ui";
-  return `/playground/modules/components/${item.name}.js`;
+  return `@/components/${item.name}`;
 }
 
 function buildRegistrySnippet(item: RegistryItem): string {
@@ -56,14 +56,6 @@ const isComponentLike = (value: unknown) =>
     value !== null &&
     "$$typeof" in (value as Record<string, unknown>));
 
-const resolveImportPath = (specifier: string) => {
-  if (specifier.startsWith("@/")) return specifier;
-  if (specifier.startsWith("/")) {
-    return new URL(specifier, window.location.origin).href;
-  }
-  return specifier;
-};
-
 const defaultProps = ${propsJSON};
 
 export default function CenteredPreview() {
@@ -75,7 +67,7 @@ export default function CenteredPreview() {
 
     async function load() {
       try {
-        const mod = (await import(resolveImportPath("${importPath}"))) as Record<string, unknown>;
+        const mod = (await import("${importPath}")) as Record<string, unknown>;
         const previewComponent =
           mod["${pascalName}"] ?? mod.default ?? Object.values(mod).find(isComponentLike);
 

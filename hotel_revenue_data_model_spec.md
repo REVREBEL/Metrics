@@ -366,6 +366,16 @@ roomtype_code
 
 ---
 
+The database currently provides both detailed and high-level filtering capabilities. 
+
+Segmentation (segment, segment_code) allows for granular market reporting (e.g., Retail, Promo, Consortia), while the 
+Segment Group (segment_group, segment_group_code) aggregates reporting into broader categories, such as Transient versus Group.
+
+| segment_code | STRING | Primary filter for segmentation |
+| segment_group | STRING | Segment grouping label |
+| segment_group_code | STRING | Filter for segment groups |
+
+
 # Recommended Dashboard Queries
 
 Typical dashboards should support:

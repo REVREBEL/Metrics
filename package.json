@@ -7,7 +7,14 @@
     "build": "tsx scripts/generate-registry.mjs && next build",
     "create:registry": "tsx scripts/generate-registry.mjs",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sync:data": "tsx scripts/sync-data.ts all",
+    "sync:ga4": "tsx scripts/sync-data.ts ga4",
+    "sync:pace": "tsx scripts/sync-data.ts pace",
+    "sync:pace:property": "tsx scripts/sync-data.ts pace-property",
+    "sync:pace:segment": "tsx scripts/sync-data.ts pace-segment",
+    "sync:pace:roomtype": "tsx scripts/sync-data.ts pace-roomtype",
+    "sync:pace:derived": "tsx scripts/sync-data.ts pace-derived"
   },
   "dependencies": {
     "@base-ui/react": "^1.2.0",

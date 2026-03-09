@@ -1,45 +1,28 @@
 "use client";
 import { Area, AreaChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
-
-const data = [
-  {
-    name: 'Mon',
-    clicks: Math.floor(Math.random() * 900) + 100,
-    uniques: Math.floor(Math.random() * 700) + 80,
-  },
-  {
-    name: 'Tue',
-    clicks: Math.floor(Math.random() * 900) + 100,
-    uniques: Math.floor(Math.random() * 700) + 80,
-  },
-  {
-    name: 'Wed',
-    clicks: Math.floor(Math.random() * 900) + 100,
-    uniques: Math.floor(Math.random() * 700) + 80,
-  },
-  {
-    name: 'Thu',
-    clicks: Math.floor(Math.random() * 900) + 100,
-    uniques: Math.floor(Math.random() * 700) + 80,
-  },
-  {
-    name: 'Fri',
-    clicks: Math.floor(Math.random() * 900) + 100,
-    uniques: Math.floor(Math.random() * 700) + 80,
-  },
-  {
-    name: 'Sat',
-    clicks: Math.floor(Math.random() * 900) + 100,
-    uniques: Math.floor(Math.random() * 700) + 80,
-  },
-  {
-    name: 'Sun',
-    clicks: Math.floor(Math.random() * 900) + 100,
-    uniques: Math.floor(Math.random() * 700) + 80,
-  },
-]
+import { useEffect, useState } from "react";
+import { useDuckDb } from "@/hooks/useDuckDb";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export function AnalyticsChart() {
+  const [data, setData] = useState<{ name: string, clicks: number, uniques: number }[]>([]);
+  const { execute, isInitializing } = useDuckDb();
+
+  useEffect(() => {
+    if (isInitializing) return;
+    async function fetchChart() {
+      try {
+        const res = await execute(`SELECT strftime(_DATA_DATE, '%a') as name, CAST(SUM(sessions) AS INTEGER) as clicks, CAST(SUM(engagedSessions) AS INTEGER) as uniques FROM 'ga4_TrafficAcquisition_281286275.parquet' WHERE _DATA_DATE > (SELECT MAX(_DATA_DATE) - INTERVAL 7 DAY FROM 'ga4_TrafficAcquisition_281286275.parquet') GROUP BY _DATA_DATE ORDER BY _DATA_DATE ASC`);
+        setData(res as any);
+      } catch (e) { console.error("Failed to load analytics chart", e); }
+    }
+    fetchChart();
+  }, [execute, isInitializing]);
+
+  if (isInitializing || !data.length) {
+    return <Skeleton className="w-full h-[300px] rounded-md" />;
+  }
+
   return (
     <ResponsiveContainer width='100%' height={300}>
       <AreaChart data={data}>

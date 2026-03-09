@@ -76,6 +76,7 @@ export const columns: ColumnDef<RoomstransientData>[] = [
     ),
     cell: ({ row }) => {
       const value = parseFloat(row.getValue("occupancy"))
+      if (isNaN(value)) return <div className="text-right">-</div>
       return (
         <div className="text-right">
           {new Intl.NumberFormat('en-US', {
@@ -177,6 +178,7 @@ export const columns: ColumnDef<RoomstransientData>[] = [
     ),
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue("aDR"))
+      if (isNaN(amount)) return <div className="text-right font-medium">-</div>
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
@@ -199,6 +201,7 @@ export const columns: ColumnDef<RoomstransientData>[] = [
     ),
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue("revenue"))
+      if (isNaN(amount)) return <div className="text-right font-medium">-</div>
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
@@ -324,9 +327,9 @@ export default function RoomstransientTable({ year, month }: { year: string, mon
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                     </TableHead>
                   )
                 })}

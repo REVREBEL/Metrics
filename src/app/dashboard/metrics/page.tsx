@@ -63,8 +63,8 @@ export default function Page() {
         </div>
       </Header>
       <Main>
-        <div className='mb-2 flex items-center justify-between space-y-2'>
-          <h1 className='font-display text-3xl font-bold tracking-widest uppercase'>Market Segments</h1>
+        <div className='mt-8 mb-2 flex items-center justify-between'>
+          <h1 className='text-center font-display text-3xl font-bold tracking-widest uppercase'>Market Segments</h1>
           <div className='flex items-center'>
             <Button>Download</Button>
           </div>

@@ -1,159 +1,283 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { useDuckDb } from "@/hooks/useDuckDb"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Skeleton } from "@/components/ui/skeleton"
 
+const ALL_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] as const
+const MAX_VISIBLE_YEARS = 3
+
+interface DateAvailabilityManifest {
+  generatedAt: string
+  years: Array<{
+    year: string
+    months: number[]
+    minDate?: string
+    maxDate?: string
+  }>
+}
+
+interface DuckDbAvailabilityRow {
+  year: number | string
+  month: number | string
+}
+
+function toMonthLabel(monthNumber: number) {
+  return ALL_MONTHS[monthNumber - 1]
+}
+
+function normalizeAvailability(
+  entries: Array<{ year: string; months: number[] }>,
+) {
+  const years = entries
+    .map((entry) => entry.year)
+    .sort((a, b) => Number(a) - Number(b))
+    .slice(-MAX_VISIBLE_YEARS)
+
+  const visibleYearSet = new Set(years)
+  const monthsByYear = entries.reduce<Record<string, string[]>>((acc, entry) => {
+    if (!visibleYearSet.has(entry.year)) {
+      return acc
+    }
+
+    acc[entry.year] = entry.months
+      .slice()
+      .sort((a, b) => a - b)
+      .map(toMonthLabel)
+
+    return acc
+  }, {})
+
+  return { years, monthsByYear }
+}
+
+function getDefaultSelection(monthsByYear: Record<string, string[]>, years: string[]) {
+  const testDateEnv = process.env.NEXT_PUBLIC_TEST_DATE
+  const today = testDateEnv ? new Date(testDateEnv) : new Date()
+  const currentYear = today.getFullYear().toString()
+  const currentMonth = today.toLocaleString("default", { month: "short" })
+
+  if (years.includes(currentYear)) {
+    const currentYearMonths = monthsByYear[currentYear] ?? []
+    if (currentYearMonths.includes(currentMonth)) {
+      return { year: currentYear, month: currentMonth }
+    }
+    if (currentYearMonths.length > 0) {
+      return { year: currentYear, month: currentYearMonths[currentYearMonths.length - 1] }
+    }
+  }
+
+  const latestYear = years[years.length - 1]
+  const latestYearMonths = latestYear ? monthsByYear[latestYear] ?? [] : []
+
+  return {
+    year: latestYear ?? "",
+    month: latestYearMonths[latestYearMonths.length - 1] ?? "",
+  }
+}
+
 export function YearMonthSelector({
-    onSelectionChange
+  onSelectionChange,
 }: {
-    onSelectionChange?: (year: string, month: string) => void
+  onSelectionChange?: (year: string, month: string) => void
 }) {
-    const { execute, isInitializing, error } = useDuckDb()
-    const [availableYears, setAvailableYears] = useState<string[]>([])
-    const [monthsByYear, setMonthsByYear] = useState<Record<string, string[]>>({})
-    const [selectedYear, setSelectedYear] = useState<string>("")
-    const [selectedMonth, setSelectedMonth] = useState<string>("")
-    const [isLoading, setIsLoading] = useState<boolean>(true)
+  const { execute, isInitializing, error } = useDuckDb()
+  const [availableYears, setAvailableYears] = useState<string[]>([])
+  const [monthsByYear, setMonthsByYear] = useState<Record<string, string[]>>({})
+  const [selectedYear, setSelectedYear] = useState<string>("")
+  const [selectedMonth, setSelectedMonth] = useState<string>("")
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [loadError, setLoadError] = useState<string>("")
 
-    useEffect(() => {
-        async function loadDates() {
-            if (isInitializing) return
-            if (error) {
-                setIsLoading(false)
-                return
-            }
+  useEffect(() => {
+    async function applyAvailability(entries: Array<{ year: string; months: number[] }>) {
+      const { years, monthsByYear: nextMonthsByYear } = normalizeAvailability(entries)
+      setAvailableYears(years)
+      setMonthsByYear(nextMonthsByYear)
 
-            try {
-                const parquetUrl = `${window.location.origin}/data/dashboard_trend.parquet`
-                const results = await execute(`
-          SELECT DISTINCT
-            CAST(YEAR(stay_date) AS INTEGER) as year,
-            CAST(MONTH(stay_date) AS INTEGER) as month
-          FROM '${parquetUrl}'
-          ORDER BY year DESC, month ASC
-        `)
-
-                const yearsSet = new Set<string>()
-                const monthsMap: Record<string, string[]> = {}
-
-                results.forEach((row: any) => {
-                    if (!row.year || !row.month) return
-                    const y = row.year.toString()
-                    // Create date using local month (0-indexed)
-                    const md = new Date(2000, row.month - 1, 1)
-                    const mStr = md.toLocaleString('default', { month: 'short' })
-
-                    yearsSet.add(y)
-                    if (!monthsMap[y]) monthsMap[y] = []
-                    monthsMap[y].push(mStr)
-                })
-
-                const years = Array.from(yearsSet)
-                setAvailableYears(years)
-                setMonthsByYear(monthsMap)
-
-                const testDateEnv = process.env.NEXT_PUBLIC_TEST_DATE;
-                const today = testDateEnv ? new Date(testDateEnv) : new Date();
-                const currentYear = today.getFullYear().toString();
-                const currentMonthStr = today.toLocaleString('default', { month: 'short' });
-
-                if (years.includes(currentYear)) {
-                    setSelectedYear(currentYear);
-                    if (monthsMap[currentYear] && monthsMap[currentYear].includes(currentMonthStr)) {
-                        setSelectedMonth(currentMonthStr);
-                    } else if (monthsMap[currentYear] && monthsMap[currentYear].length > 0) {
-                        setSelectedMonth(monthsMap[currentYear][0]);
-                    }
-                } else if (years.length > 0) {
-                    setSelectedYear(years[0]);
-                    if (monthsMap[years[0]] && monthsMap[years[0]].length > 0) {
-                        setSelectedMonth(monthsMap[years[0]][0]);
-                    }
-                }
-            } catch (e) {
-                console.error("Error loading dates from DuckDB", e)
-            } finally {
-                setIsLoading(false)
-            }
+      const fallbackSelection = getDefaultSelection(nextMonthsByYear, years)
+      setSelectedYear((currentYear) => {
+        if (currentYear && years.includes(currentYear)) {
+          return currentYear
         }
-
-        loadDates()
-    }, [execute, isInitializing, error])
-
-    useEffect(() => {
-        if (selectedYear && selectedMonth && onSelectionChange) {
-            onSelectionChange(selectedYear, selectedMonth)
+        return fallbackSelection.year
+      })
+      setSelectedMonth((currentMonth) => {
+        if (
+          currentMonth &&
+          fallbackSelection.year &&
+          (nextMonthsByYear[fallbackSelection.year] ?? []).includes(currentMonth)
+        ) {
+          return currentMonth
         }
-    }, [selectedYear, selectedMonth, onSelectionChange])
-
-    // handle year switch logic
-    const handleYearChange = (value: string) => {
-        if (value) {
-            setSelectedYear(value)
-            // Automatically select a valid month for the new year
-            if (monthsByYear[value] && monthsByYear[value].length > 0) {
-                if (!monthsByYear[value].includes(selectedMonth)) {
-                    setSelectedMonth(monthsByYear[value][0])
-                }
-            } else {
-                setSelectedMonth("")
-            }
-        }
+        return fallbackSelection.month
+      })
     }
 
-    const handleMonthChange = (value: string) => {
-        if (value) {
-            setSelectedMonth(value)
+    async function loadFromManifest() {
+      const response = await fetch("/data/dashboard_date_availability.json", {
+        cache: "force-cache",
+      })
+
+      if (!response.ok) {
+        throw new Error(`Manifest request failed with ${response.status}`)
+      }
+
+      const manifest = (await response.json()) as DateAvailabilityManifest
+      if (!manifest.years?.length) {
+        throw new Error("Manifest contained no years")
+      }
+
+      await applyAvailability(manifest.years)
+    }
+
+    async function loadFromDuckDb() {
+      const results = await execute(`
+        SELECT
+          CAST(YEAR(stay_date) AS INTEGER) AS year,
+          CAST(MONTH(stay_date) AS INTEGER) AS month
+        FROM 'dashboard_current.parquet'
+        GROUP BY 1, 2
+        ORDER BY year ASC, month ASC
+      `)
+
+      const availabilityMap = new Map<string, Set<number>>()
+
+      results.forEach((row) => {
+        const availabilityRow = row as DuckDbAvailabilityRow
+        if (!availabilityRow.year || !availabilityRow.month) return
+
+        const year = availabilityRow.year.toString()
+        const month = Number(availabilityRow.month)
+        if (!availabilityMap.has(year)) {
+          availabilityMap.set(year, new Set<number>())
         }
+        availabilityMap.get(year)?.add(month)
+      })
+
+      const entries = Array.from(availabilityMap.entries()).map(([year, months]) => ({
+        year,
+        months: Array.from(months),
+      }))
+
+      if (entries.length === 0) {
+        throw new Error("No available dates found in DuckDB")
+      }
+
+      await applyAvailability(entries)
     }
 
-    if (isInitializing || isLoading) {
-        return <Skeleton className="h-10 w-full max-w-[600px] rounded-md" />
+    async function loadDates() {
+      setLoadError("")
+
+      try {
+        await loadFromManifest()
+        setIsLoading(false)
+        return
+      } catch (manifestError) {
+        if (isInitializing) {
+          return
+        }
+
+        if (error) {
+          setLoadError("Failed to load date selector.")
+          setIsLoading(false)
+          return
+        }
+
+        try {
+          await loadFromDuckDb()
+          setIsLoading(false)
+          return
+        } catch (duckDbError) {
+          console.error("Failed to load date availability", {
+            manifestError,
+            duckDbError,
+          })
+          setLoadError("Failed to load date selector.")
+          setIsLoading(false)
+        }
+      }
     }
 
-    if (error) {
-        return <div className="text-destructive text-sm font-medium">Failed to load date selector.</div>
-    }
+    loadDates()
+  }, [execute, isInitializing, error])
 
-    return (
-        <div className="flex flex-row items-center gap-2 w-fit border p-2 rounded-md bg-card shadow-none">
-            {/* Years Toggle Group */}
-            <ToggleGroup
-                type="single"
-                value={selectedYear}
-                onValueChange={handleYearChange}
-                className="bg-muted p-1 rounded-sm flex items-center gap-1"
+  useEffect(() => {
+    if (selectedYear && selectedMonth && onSelectionChange) {
+      onSelectionChange(selectedYear, selectedMonth)
+    }
+  }, [selectedYear, selectedMonth, onSelectionChange])
+
+  const availableMonthsForSelectedYear = useMemo(
+    () => monthsByYear[selectedYear] ?? [],
+    [monthsByYear, selectedYear],
+  )
+
+  const handleYearChange = (value: string) => {
+    if (!value) return
+
+    setSelectedYear(value)
+    const nextAvailableMonths = monthsByYear[value] ?? []
+    if (!nextAvailableMonths.includes(selectedMonth)) {
+      setSelectedMonth(nextAvailableMonths[nextAvailableMonths.length - 1] ?? "")
+    }
+  }
+
+  const handleMonthChange = (value: string) => {
+    if (!value || !availableMonthsForSelectedYear.includes(value)) return
+    setSelectedMonth(value)
+  }
+
+  if ((isInitializing && isLoading) || isLoading) {
+    return <Skeleton className="h-10 w-full max-w-[720px] rounded-md" />
+  }
+
+  if (loadError) {
+    return <div className="text-destructive text-sm font-medium">{loadError}</div>
+  }
+
+  return (
+    <div className="flex w-fit flex-row items-center gap-2 rounded-md border bg-card p-2 shadow-none">
+      <ToggleGroup
+        type="single"
+        value={selectedYear}
+        onValueChange={handleYearChange}
+        className="flex items-center gap-1 rounded-sm bg-muted p-1"
+      >
+        {availableYears.map((year) => (
+          <ToggleGroupItem
+            key={year}
+            value={year}
+            className="h-8 w-24 justify-center text-md font-display font-bold text-muted-foreground shadow-none transition-all data-[state=on]:bg-[var(--color-4)] data-[state=on]:text-[var(--color-4-inverse)] hover:bg-secondary hover:text-secondary-foreground"
+          >
+            {year}
+          </ToggleGroupItem>
+        ))}
+      </ToggleGroup>
+
+      <ToggleGroup
+        type="single"
+        value={selectedMonth}
+        onValueChange={handleMonthChange}
+        className="flex items-center gap-1 rounded-sm bg-muted p-1"
+      >
+        {ALL_MONTHS.map((month) => {
+          const isAvailable = availableMonthsForSelectedYear.includes(month)
+
+          return (
+            <ToggleGroupItem
+              key={`${selectedYear}-${month}`}
+              value={month}
+              disabled={!isAvailable}
+              className="h-8 w-16 justify-center text-md font-display font-bold uppercase text-muted-foreground shadow-none transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground"
             >
-                {availableYears.map(year => (
-                    <ToggleGroupItem
-                        key={year}
-                        value={year}
-                        className="text-md font-display font-bold h-8 w-24 justify-center rounded-sm data-[state=on]:bg-[var(--color-4)] data-[state=on]:text-[var(--color-4-inverse)] text-muted-foreground transition-all hover:bg-secondary hover:text-secondary-foreground shadow-none"
-                    >
-                        {year}
-                    </ToggleGroupItem>
-                ))}
-            </ToggleGroup>
-
-            {/* Months Toggle Group */}
-            <ToggleGroup
-                type="single"
-                value={selectedMonth}
-                onValueChange={handleMonthChange}
-                className="bg-muted p-1 rounded-sm flex items-center gap-1"
-            >
-                {monthsByYear[selectedYear]?.map(month => (
-                    <ToggleGroupItem
-                        key={month}
-                        value={month}
-                        className="text-md font-display font-bold h-8 w-18 justify-center rounded-sm data-[state=on]:bg-primary data-[state=on]:text-primary-foreground text-muted-foreground transition-all uppercase hover:bg-secondary hover:text-secondary-foreground shadow-none"
-                    >
-                        {month}
-                    </ToggleGroupItem>
-                ))}
-            </ToggleGroup>
-        </div>
-    )
+              {month}
+            </ToggleGroupItem>
+          )
+        })}
+      </ToggleGroup>
+    </div>
+  )
 }
