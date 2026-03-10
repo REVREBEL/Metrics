@@ -12,36 +12,8 @@ import { ThemeSwitch } from '@/components/theme-switch'
 import PerformanceCardOther from "@/widgets/PerformanceCardOther"
 import { YearMonthSelector } from "@/widgets/YearMonthSelector/dynamic";
 
-const topNav = [
-  {
-    title: 'Segment',
-    href: '/dashboard/overview',
-    isActive: true,
-    disabled: false,
-    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
-  },
-  {
-    title: 'Pickup',
-    href: '/dashboard/customers',
-    isActive: false,
-    disabled: true,
-    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
-  },
-  {
-    title: 'Pace',
-    href: '/dashboard/products',
-    isActive: false,
-    disabled: true,
-    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
-  },
-  {
-    title: 'Performance',
-    href: '/dashboard/settings',
-    isActive: false,
-    disabled: false,
-    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
-  },
-]
+
+
 
 export default function Page() {
   const [selectedYear, setSelectedYear] = useState<string>('');
@@ -65,7 +37,7 @@ export default function Page() {
       </Header>
       <Main>
         <div className='mb-2 flex items-center justify-between space-y-2'>
-          <h1 className='font-display text-3xl font-bold tracking-widest uppercase'>Market Segments</h1>
+          <h1 className='font-display text-3xl font-bold tracking-widest uppercase'>Dashboard Metrics</h1>
           <div className='flex items-center'>
             <Button>Download</Button>
           </div>

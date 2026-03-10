@@ -1,5 +1,6 @@
 "use client"
 
+import * as React from 'react'
 import { useLayout } from '@/context/layout-provider'
 import {
   Sidebar,
@@ -14,10 +15,10 @@ import { NavGroup } from './nav-group'
 import { NavUser } from './nav-user'
 import { TeamSwitcher } from './team-switcher'
 
-export function AppSidebar() {
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { collapsible, variant } = useLayout()
   return (
-    <Sidebar collapsible={collapsible} variant={variant}>
+    <Sidebar collapsible={collapsible} variant={variant} {...props}>
       <SidebarHeader>
         <TeamSwitcher teams={sidebarData.teams} />
 

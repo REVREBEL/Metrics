@@ -6,6 +6,7 @@ import { metadata as widget_CalendarHeatmap_metadata } from '@/widgets/CalendarH
 import { metadata as widget_MarketSegmentGroupRoomsTable_metadata } from '@/widgets/MarketSegmentGroupRoomsTable/metadata';
 import { metadata as widget_MarketSegmentTransientRoomsTable_metadata } from '@/widgets/MarketSegmentTransientRoomsTable/metadata';
 import { metadata as widget_OTBStackedBarChart_metadata } from '@/widgets/OTBStackedBarChart/metadata';
+import { metadata as widget_PerformanceCardOther_metadata } from '@/widgets/PerformanceCardOther/metadata';
 import { metadata as widget_StatCard1_metadata } from '@/widgets/StatCard1/metadata';
 import { metadata as widget_YearMonthSelector_metadata } from '@/widgets/YearMonthSelector/metadata';
 
@@ -34,6 +35,18 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
     type: "widget",
     component: dynamic(() => import('@/widgets/OTBStackedBarChart/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: widget_OTBStackedBarChart_metadata
+  },
+  widget_PerformanceCard: { 
+    name: "PerformanceCard", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/PerformanceCard/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_PerformanceCardOther: { 
+    name: "PerformanceCardOther", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/PerformanceCardOther/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: widget_PerformanceCardOther_metadata
   },
   widget_StatCard1: { 
     name: "StatCard1", 
@@ -2171,6 +2184,16 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
     name: "status-button", 
     type: "custom-component",
     component: dynamic(() => import('@/components/status-button').then(mod => {
+      const m = mod as Record<string, any>;
+      const componentLike = Object.keys(m).find((key) => /^[A-Z]/.test(key) && typeof m[key] === 'function');
+      return m.default || (componentLike ? m[componentLike] : m[Object.keys(m)[0]]);
+    })),
+    metadata: null
+  },
+  custom_sub_nav: { 
+    name: "sub-nav", 
+    type: "custom-component",
+    component: dynamic(() => import('@/components/sub-nav').then(mod => {
       const m = mod as Record<string, any>;
       const componentLike = Object.keys(m).find((key) => /^[A-Z]/.test(key) && typeof m[key] === 'function');
       return m.default || (componentLike ? m[componentLike] : m[Object.keys(m)[0]]);

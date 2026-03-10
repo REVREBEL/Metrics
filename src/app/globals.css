@@ -92,15 +92,17 @@
   --sidebar-accent-foreground: oklch(84% 0.14 85deg);
   --sidebar-border: oklch(96% 0 0deg);
   --sidebar-ring: oklch(78% 0.11 195.12deg);
+
   /* Shadows */
-  --shadow-2xs: 4px 4px 0px 0px oklch(34% 0.09 258.52deg / 100%);
-  --shadow-xs: 4px 4px 0px 0px oklch(34% 0.09 258.52deg / 100%);
-  --shadow-sm: 4px 4px 0px 0px oklch(34% 0.09 258.52deg / 100%);
-  --shadow: 4px 4px 0px 0px oklch(34% 0.09 258.52deg / 100%);
-  --shadow-md: 4px 4px 0px 0px oklch(34% 0.09 258.52deg / 100%);
-  --shadow-lg: 4px 4px 0px 0px oklch(34% 0.09 258.52deg / 100%);
-  --shadow-xl: 4px 4px 0px 0px oklch(34% 0.09 258.52deg / 100%);
-  --shadow-2xl: 4px 4px 0px 0px oklch(34% 0.09 258.52deg / 100%);
+  --shadow-2xs: 0px 1px 2px 0px oklch(0 0 0 / 0.01);
+  --shadow-xs: 0px 1px 2px 0px oklch(0 0 0 / 0.01);
+  --shadow-sm: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 1px 2px -1px oklch(0 0 0 / 0.01);
+  --shadow: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 1px 2px -1px oklch(0 0 0 / 0.01);
+  --shadow-md: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 2px 4px -1px oklch(0 0 0 / 0.01);
+  --shadow-lg: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 4px 6px -1px oklch(0 0 0 / 0.01);
+  --shadow-xl: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 8px 10px -1px oklch(0 0 0 / 0.01);
+  --shadow-2xl: 0px 1px 2px 0px oklch(0 0 0 / 0.01);
+
   /* Radius */
   --radius: .25rem;
   --radius-sm: calc(var(--radius) * 0.6);
@@ -203,14 +205,14 @@
   --sidebar-border: oklch(100% 0 0deg);
   --sidebar-ring: oklch(78% 0.11 195.12deg);
   /* Shadows */
-  --shadow-2xs: 0 1px 3px 0px oklch(0% 0 0deg / 100);
-  --shadow-xs: 0 1px 3px 0px oklch(0% 0 0deg / 100%);
-  --shadow-sm: 0 1px 3px 0px oklch(0% 0 0deg / 100%);
-  --shadow: 0 1px 3px 0px oklch(0% 0 0deg / 100%);
-  --shadow-md: 0 1px 3px 0px oklch(0% 0 0deg / 100%);
-  --shadow-lg: 0 1px 3px 0px oklch(0% 0 0deg / 100%);
-  --shadow-xl: 0 1px 3px 0px oklch(0% 0 0deg / 100%);
-  --shadow-2xl: 0 1px 3px 0px oklch(0% 0 0deg / 100%);
+  --shadow-2xs: 0px 1px 2px 0px oklch(0 0 0 / 0.01);
+  --shadow-xs: 0px 1px 2px 0px oklch(0 0 0 / 0.01);
+  --shadow-sm: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 1px 2px -1px oklch(0 0 0 / 0.01);
+  --shadow: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 1px 2px -1px oklch(0 0 0 / 0.01);
+  --shadow-md: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 2px 4px -1px oklch(0 0 0 / 0.01);
+  --shadow-lg: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 4px 6px -1px oklch(0 0 0 / 0.01);
+  --shadow-xl: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 8px 10px -1px oklch(0 0 0 / 0.01);
+  --shadow-2xl: 0px 1px 2px 0px oklch(0 0 0 / 0.01);
   /* Radius */
   --radius: .25rem;
   --radius-sm: calc(var(--radius) * 0.6);
@@ -299,49 +301,8 @@
   --color-success-foreground: var(--success-foreground);
   --color-success: var(--success);
   --color-destructive-foreground: var(--destructive-foreground);
-
-  @keyframes rainbow {
-    0% {
-      background-position: 0%;
-    }
-
-    100% {
-      background-position: 200%;
-    }
-  }
-
-  @keyframes heartbeat {
-    0% {
-      box-shadow: 0 0 0 0 var(--heartbeat-color, var(--destructive));
-      transform: scale(1);
-    }
-
-    50% {
-      box-shadow: 0 0 0 7px transparent;
-      transform: scale(1.05);
-    }
-
-    100% {
-      box-shadow: 0 0 0 0 transparent;
-      transform: scale(1);
-    }
-  }
 }
 
-body {
-  letter-spacing: var(--letter-spacing);
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
-  }
-}
 
 @layer components {
   .card.shadow-primary {
