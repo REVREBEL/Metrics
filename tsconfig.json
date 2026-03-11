@@ -14,12 +14,14 @@
     "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": ["./src/*"]
+          {
+            "name": "next"
+          }
+        ],
+        "baseUrl": ".",
+        "paths": {
+          "@/*": ["./*"],
+          "react": ["./node_modules/@types/react"]
     }
   },
   "include": [
@@ -27,8 +29,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "scripts/build-registry.mts",
+    "next.config.mjs",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

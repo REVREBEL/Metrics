@@ -5318,7 +5318,7 @@ function FloatingFocusManager(props) {
         const tabbableReturnElement = getFirstTabbableElement(returnElement);
         const hasExplicitReturnFocus = typeof returnFocusRef.current !== "boolean";
         if (
-          // eslint-disable-next-line react-hooks/exhaustive-deps
+           
           returnFocusRef.current && !preventReturnFocusRef.current && isHTMLElement(tabbableReturnElement) && // If the focus moved somewhere else after mount, avoid returning focus
           // since it likely entered a different element which should be
           // respected: https://github.com/floating-ui/floating-ui/issues/2607
@@ -9677,22 +9677,22 @@ function useInteractions(propsList = []) {
   const triggerDeps = propsList.map((key) => key?.trigger);
   const getReferenceProps = React49.useCallback(
     (userProps) => mergeProps2(userProps, propsList, "reference"),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
     referenceDeps
   );
   const getFloatingProps = React49.useCallback(
     (userProps) => mergeProps2(userProps, propsList, "floating"),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
     floatingDeps
   );
   const getItemProps = React49.useCallback(
     (userProps) => mergeProps2(userProps, propsList, "item"),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
     itemDeps
   );
   const getTriggerProps = React49.useCallback(
     (userProps) => mergeProps2(userProps, propsList, "trigger"),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
     triggerDeps
   );
   return React49.useMemo(() => ({
@@ -9884,7 +9884,7 @@ function useListNavigation(context, props) {
         runFocus(waitedItem);
       }
       const shouldScrollIntoView = (
-        // eslint-disable-next-line @typescript-eslint/no-use-before-define
+         
         item && (forceScrollIntoView || !isPointerModalityRef.current)
       );
       if (shouldScrollIntoView) {
@@ -10106,7 +10106,7 @@ function useListNavigation(context, props) {
           // use a corner matching the edge closest to the direction
           // we're moving in so we don't end up in the same item. Prefer
           // top/left over bottom/right.
-          // eslint-disable-next-line no-nested-ternary
+           
           event.key === ARROW_DOWN ? "bl" : event.key === (rtl ? ARROW_LEFT : ARROW_RIGHT) ? "tr" : "tl"
         ),
         stopEvent: true
@@ -23275,7 +23275,7 @@ function useCompositeRoot(params) {
             // use a corner matching the edge closest to the direction we're
             // moving in so we don't end up in the same item. Prefer
             // top/left over bottom/right.
-            // eslint-disable-next-line no-nested-ternary
+             
             event.key === ARROW_DOWN2 ? "bl" : event.key === ARROW_RIGHT2 ? "tr" : "tl"
           ),
           rtl: isRtl

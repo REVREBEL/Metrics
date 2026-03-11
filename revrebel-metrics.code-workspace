@@ -1,0 +1,22 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "mcp.servers": {
+      "agent-memory": {
+        "command": "npm",
+        "args": [
+          "run",
+          "start-server",
+          "--",
+          "revrebel-metrics",
+          "${workspaceFolder}/.agent/skills/agent-memory"
+        ],
+        "cwd": "${workspaceFolder}"
+      }
+    }
+  }
+}

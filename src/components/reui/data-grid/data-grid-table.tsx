@@ -1,14 +1,14 @@
 "use client"
 
-import { CSSProperties, Fragment, ReactNode } from "react"
+import { type CSSProperties, Fragment, type ReactNode } from "react"
 import { useDataGrid } from "@/components/reui/data-grid/data-grid"
 import {
-  Cell,
-  Column,
+  type Cell,
+  type Column,
   flexRender,
-  Header,
-  HeaderGroup,
-  Row,
+  type Header,
+  type HeaderGroup,
+  type Row,
 } from "@tanstack/react-table"
 import { cva } from "class-variance-authority"
 
