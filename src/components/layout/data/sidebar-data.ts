@@ -27,25 +27,15 @@ import { type SidebarData } from '../types'
 
 export const sidebarData: SidebarData = {
   user: {
-    name: 'satnaing',
-    email: 'satnaingdev@gmail.com',
-    avatar: '/avatars/shadcn.jpg',
+    name: 'Gary Stringham',
+    email: 'gary@revrebel.io',
+    avatar: '/assets/revrebel.png',
   },
   teams: [
     {
-      name: 'Shadcn Admin',
+      name: 'REVREBEL',
       logo: Command,
-      plan: 'Vite + ShadcnUI',
-    },
-    {
-      name: 'Acme Inc',
-      logo: GalleryVerticalEnd,
-      plan: 'Enterprise',
-    },
-    {
-      name: 'Acme Corp.',
-      logo: AudioWaveform,
-      plan: 'Startup',
+      plan: 'Commercial Support',
     },
   ],
   navGroups: [

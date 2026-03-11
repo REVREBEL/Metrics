@@ -3,7 +3,9 @@ import * as duckdb from 'duckdb';
 import * as fs from 'fs';
 import * as path from 'path';
 import { execSync } from 'child_process';
+```typescript
 import { loadEnvConfig } from '@next/env';
+```
 
 const projectDir = process.cwd();
 loadEnvConfig(projectDir);
@@ -141,6 +143,7 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
   query: string,
 ): Promise<T[]> {
   return new Promise((resolve, reject) => {
+    ```typescript
     context.db.all(query, (err: Error | null, rows: T[]) => {
       if (err) {
         reject(err);
@@ -150,25 +153,26 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
     });
   });
 }
+```
 
-function requireParquetFiles(context: SyncContext, filenames: string[]) {
-  const missing = filenames.filter((filename) => !fs.existsSync(resolveOutputPath(context.publicDataDir, filename)));
-  if (missing.length > 0) {
-    throw new Error(`Missing prerequisite parquet files: ${missing.join(', ')}`);
-  }
-}
+    function requireParquetFiles(context: SyncContext, filenames: string[]) {
+      const missing = filenames.filter((filename) => !fs.existsSync(resolveOutputPath(context.publicDataDir, filename)));
+      if (missing.length > 0) {
+        throw new Error(`Missing prerequisite parquet files: ${missing.join(', ')}`);
+      }
+    }
 
-async function writeDateAvailabilityManifest(context: SyncContext) {
-  requireParquetFiles(context, ['dashboard_current.parquet']);
+    async function writeDateAvailabilityManifest(context: SyncContext) {
+      requireParquetFiles(context, ['dashboard_current.parquet']);
 
-  const rows = await runDuckDbQuery<{
-    year: number;
-    months: string;
-    min_date: string;
-    max_date: string;
-  }>(
-    context,
-    `
+      const rows = await runDuckDbQuery<{
+        year: number;
+        months: string;
+        min_date: string;
+        max_date: string;
+      }>(
+        context,
+        `
       WITH dates AS (
         SELECT DISTINCT CAST(stay_date AS DATE) AS stay_date
         FROM '${resolveOutputPath(context.publicDataDir, 'dashboard_current.parquet')}'
@@ -185,32 +189,32 @@ async function writeDateAvailabilityManifest(context: SyncContext) {
       GROUP BY 1
       ORDER BY 1
     `,
-  );
+      );
 
-  const manifest = {
-    generatedAt: new Date().toISOString(),
-    years: rows.map((row) => ({
-      year: String(row.year),
-      months: row.months.split(',').map((month) => Number.parseInt(month, 10)),
-      minDate: row.min_date,
-      maxDate: row.max_date,
-    })),
-  };
+      const manifest = {
+        generatedAt: new Date().toISOString(),
+        years: rows.map((row) => ({
+          year: String(row.year),
+          months: row.months.split(',').map((month) => Number.parseInt(month, 10)),
+          minDate: row.min_date,
+          maxDate: row.max_date,
+        })),
+      };
 
-  const outputPath = resolveOutputPath(context.publicDataDir, DATE_MANIFEST_FILE);
-  fs.writeFileSync(outputPath, `${JSON.stringify(manifest, null, 2)}\n`);
-  console.log(`✅ Wrote date availability manifest to:\n${outputPath}`);
-}
+      const outputPath = resolveOutputPath(context.publicDataDir, DATE_MANIFEST_FILE);
+      fs.writeFileSync(outputPath, `${JSON.stringify(manifest, null, 2)}\n`);
+      console.log(`✅ Wrote date availability manifest to:\n${outputPath}`);
+    }
 
-async function writePickupParquet(context: SyncContext) {
-  requireParquetFiles(context, ['dashboard_current.parquet', 'dashboard_trend.parquet']);
+    async function writePickupParquet(context: SyncContext) {
+      requireParquetFiles(context, ['dashboard_current.parquet', 'dashboard_trend.parquet']);
 
-  const currentPath = resolveOutputPath(context.publicDataDir, 'dashboard_current.parquet');
-  const trendPath = resolveOutputPath(context.publicDataDir, 'dashboard_trend.parquet');
+      const currentPath = resolveOutputPath(context.publicDataDir, 'dashboard_current.parquet');
+      const trendPath = resolveOutputPath(context.publicDataDir, 'dashboard_trend.parquet');
 
-  await runLocalQueryToParquet(
-    context,
-    `
+      await runLocalQueryToParquet(
+        context,
+        `
       WITH current_totals AS (
         SELECT
           CAST(stay_date AS DATE) AS stay_date,
@@ -289,12 +293,12 @@ async function writePickupParquet(context: SyncContext) {
         AND lookbacks.lookback_days = comparison_snapshots.lookback_days
       ORDER BY current_totals.stay_date, lookbacks.lookback_days
     `,
-    'dashboard_pickup.parquet',
-  );
-}
+        'dashboard_pickup.parquet',
+      );
+    }
 
-function getCurrentPaceQuery(dataset: string) {
-  return `
+    function getCurrentPaceQuery(dataset: string) {
+      return `
     WITH date_window AS (
       SELECT
         DATE_TRUNC(MIN(stay_date), YEAR) AS min_stay_date,
@@ -362,10 +366,10 @@ function getCurrentPaceQuery(dataset: string) {
       ON seg_totals.property_name = cap_totals.property_name
       AND seg_totals.stay_date = cap_totals.stay_date;
   `;
-}
+    }
 
-function getTrendPaceQuery(dataset: string) {
-  return `
+    function getTrendPaceQuery(dataset: string) {
+      return `
     WITH date_window AS (
       SELECT
         DATE_TRUNC(MIN(stay_date), YEAR) AS min_stay_date,
@@ -427,10 +431,10 @@ function getTrendPaceQuery(dataset: string) {
       AND seg_totals.stay_date = cap_totals.stay_date
       AND seg_totals.snapshot_date = cap_totals.snapshot_date;
   `;
-}
+    }
 
-function getSegmentPaceQuery(dataset: string) {
-  return `
+    function getSegmentPaceQuery(dataset: string) {
+      return `
     WITH date_window AS (
       SELECT
         DATE_TRUNC(MIN(stay_date), YEAR) AS min_stay_date,
@@ -484,10 +488,10 @@ function getSegmentPaceQuery(dataset: string) {
       ON seg_totals.property_name = cap_totals.property_name
       AND seg_totals.stay_date = cap_totals.stay_date;
   `;
-}
+    }
 
-function getRoomtypeCurrentQuery(dataset: string) {
-  return `
+    function getRoomtypeCurrentQuery(dataset: string) {
+      return `
     WITH date_window AS (
       SELECT
         DATE_TRUNC(MIN(stay_date), YEAR) AS min_stay_date,
@@ -499,10 +503,10 @@ function getRoomtypeCurrentQuery(dataset: string) {
     WHERE stay_date >= (SELECT min_stay_date FROM date_window)
       AND stay_date < (SELECT max_stay_date_exclusive FROM date_window);
   `;
-}
+    }
 
-function getRoomtypeTrendQuery(dataset: string) {
-  return `
+    function getRoomtypeTrendQuery(dataset: string) {
+      return `
     WITH date_window AS (
       SELECT
         DATE_TRUNC(MIN(stay_date), YEAR) AS min_stay_date,
@@ -515,92 +519,92 @@ function getRoomtypeTrendQuery(dataset: string) {
       AND stay_date < (SELECT max_stay_date_exclusive FROM date_window)
       AND snapshot_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 24 MONTH);
   `;
-}
-
-async function syncPropertyPace(context: SyncContext) {
-  await runQueryToParquet(context, getCurrentPaceQuery(HOTEL_DATASET), 'dashboard_current.parquet');
-  await runQueryToParquet(context, getTrendPaceQuery(HOTEL_DATASET), 'dashboard_trend.parquet');
-}
-
-async function syncSegmentPace(context: SyncContext) {
-  await runQueryToParquet(context, getSegmentPaceQuery(HOTEL_DATASET), 'dashboard_segments.parquet');
-}
-
-async function syncRoomtypePace(context: SyncContext) {
-  await runQueryToParquet(context, getRoomtypeCurrentQuery(HOTEL_DATASET), 'dashboard_roomtypes.parquet');
-  await runQueryToParquet(context, getRoomtypeTrendQuery(HOTEL_DATASET), 'dashboard_roomtype_trend.parquet');
-}
-
-async function syncDerivedPaceData(context: SyncContext) {
-  await writePickupParquet(context);
-  await writeDateAvailabilityManifest(context);
-}
-
-async function syncGa4Data(context: SyncContext) {
-  const ga4Views = [
-    'ga4_TrafficAcquisition_281286275',
-    'ga4_UserAcquisition_281286275',
-    'ga4_TechDetails_281286275',
-    'ga4_Events_281286275',
-    'ga4_PagesAndScreens_281286275',
-  ];
-
-  for (const view of ga4Views) {
-    const parquetFilename = `${view}.parquet`;
-    const localParquetPath = resolveOutputPath(context.publicDataDir, parquetFilename);
-    const hasLocalParquet = fs.existsSync(localParquetPath);
-
-    let queryStart = '';
-    if (hasLocalParquet) {
-      try {
-        const rows = await runDuckDbQuery<{ max_date: string }>(
-          context,
-          `SELECT CAST(MAX(_DATA_DATE) AS VARCHAR) as max_date FROM '${localParquetPath}'`
-        );
-        if (rows.length > 0 && rows[0].max_date) {
-          const d = new Date(rows[0].max_date);
-          d.setDate(d.getDate() - 14);
-          queryStart = d.toISOString().split('T')[0];
-        }
-      } catch (err) { console.warn(`Could not get max date for ${view}`); }
     }
 
-    let bqQuery = `SELECT * FROM \`${GA4_DATASET}.${view}\``;
-    if (queryStart) {
-      bqQuery += ` WHERE _DATA_DATE >= CAST('${queryStart}' AS DATE)`;
-      console.log(`\nIncremental fetch for ${view} starting ${queryStart}`);
-    } else {
-      console.log(`\nFull fetch for ${view}`);
+    async function syncPropertyPace(context: SyncContext) {
+      await runQueryToParquet(context, getCurrentPaceQuery(HOTEL_DATASET), 'dashboard_current.parquet');
+      await runQueryToParquet(context, getTrendPaceQuery(HOTEL_DATASET), 'dashboard_trend.parquet');
     }
 
-    const [job] = await context.bq.createQueryJob({ query: bqQuery, location: 'us-central1' });
-    const [rows] = await job.getQueryResults();
+    async function syncSegmentPace(context: SyncContext) {
+      await runQueryToParquet(context, getSegmentPaceQuery(HOTEL_DATASET), 'dashboard_segments.parquet');
+    }
 
-    console.log(`Fetched ${rows.length} rows for ${parquetFilename}.`);
-    if (rows.length === 0) continue;
+    async function syncRoomtypePace(context: SyncContext) {
+      await runQueryToParquet(context, getRoomtypeCurrentQuery(HOTEL_DATASET), 'dashboard_roomtypes.parquet');
+      await runQueryToParquet(context, getRoomtypeTrendQuery(HOTEL_DATASET), 'dashboard_roomtype_trend.parquet');
+    }
 
-    ensurePublicDataDir(context.publicDataDir);
-    const tempJsonPath = path.join(process.cwd(), `temp_${parquetFilename}_bq_data.json`);
+    async function syncDerivedPaceData(context: SyncContext) {
+      await writePickupParquet(context);
+      await writeDateAvailabilityManifest(context);
+    }
 
-    const jsonND = rows.map((record) => {
-      const row = { ...record } as Record<string, unknown>;
-      for (const key in row) {
-        if (row[key] && typeof row[key] === 'object' && 'value' in row[key]) {
-          row[key] = (row[key] as { value: unknown }).value;
+    async function syncGa4Data(context: SyncContext) {
+      const ga4Views = [
+        'ga4_TrafficAcquisition_281286275',
+        'ga4_UserAcquisition_281286275',
+        'ga4_TechDetails_281286275',
+        'ga4_Events_281286275',
+        'ga4_PagesAndScreens_281286275',
+      ];
+
+      for (const view of ga4Views) {
+        const parquetFilename = `${view}.parquet`;
+        const localParquetPath = resolveOutputPath(context.publicDataDir, parquetFilename);
+        const hasLocalParquet = fs.existsSync(localParquetPath);
+
+        let queryStart = '';
+        if (hasLocalParquet) {
+          try {
+            const rows = await runDuckDbQuery<{ max_date: string }>(
+              context,
+              `SELECT CAST(MAX(_DATA_DATE) AS VARCHAR) as max_date FROM '${localParquetPath}'`
+            );
+            if (rows.length > 0 && rows[0].max_date) {
+              const d = new Date(rows[0].max_date);
+              d.setDate(d.getDate() - 14);
+              queryStart = d.toISOString().split('T')[0];
+            }
+          } catch (err) { console.warn(`Could not get max date for ${view}`); }
         }
-      }
-      return JSON.stringify(row);
-    }).join('\n');
-    fs.writeFileSync(tempJsonPath, jsonND);
 
-    console.log(`Converting & merging data to ${parquetFilename} via DuckDB...`);
+        let bqQuery = `SELECT * FROM \`${GA4_DATASET}.${view}\``;
+        if (queryStart) {
+          bqQuery += ` WHERE _DATA_DATE >= CAST('${queryStart}' AS DATE)`;
+          console.log(`\nIncremental fetch for ${view} starting ${queryStart}`);
+        } else {
+          console.log(`\nFull fetch for ${view}`);
+        }
 
-    await new Promise<void>((resolve, reject) => {
-      let duckdbQuery = `COPY (SELECT * FROM read_json_auto('${tempJsonPath}')) TO '${localParquetPath}' (FORMAT PARQUET);`;
+        const [job] = await context.bq.createQueryJob({ query: bqQuery, location: 'us-central1' });
+        const [rows] = await job.getQueryResults();
 
-      if (queryStart && hasLocalParquet) {
-        const tempParquetPath = path.join(context.publicDataDir, `temp_${parquetFilename}`);
-        duckdbQuery = `
+        console.log(`Fetched ${rows.length} rows for ${parquetFilename}.`);
+        if (rows.length === 0) continue;
+
+        ensurePublicDataDir(context.publicDataDir);
+        const tempJsonPath = path.join(process.cwd(), `temp_${parquetFilename}_bq_data.json`);
+
+        const jsonND = rows.map((record) => {
+          const row = { ...record } as Record<string, unknown>;
+          for (const key in row) {
+            if (row[key] && typeof row[key] === 'object' && 'value' in row[key]) {
+              row[key] = (row[key] as { value: unknown }).value;
+            }
+          }
+          return JSON.stringify(row);
+        }).join('\n');
+        fs.writeFileSync(tempJsonPath, jsonND);
+
+        console.log(`Converting & merging data to ${parquetFilename} via DuckDB...`);
+
+        await new Promise<void>((resolve, reject) => {
+          let duckdbQuery = `COPY (SELECT * FROM read_json_auto('${tempJsonPath}')) TO '${localParquetPath}' (FORMAT PARQUET);`;
+
+          if (queryStart && hasLocalParquet) {
+            const tempParquetPath = path.join(context.publicDataDir, `temp_${parquetFilename}`);
+            duckdbQuery = `
            COPY (
              SELECT * FROM '${localParquetPath}' WHERE _DATA_DATE < CAST('${queryStart}' AS DATE)
              UNION ALL
@@ -608,96 +612,96 @@ async function syncGa4Data(context: SyncContext) {
            ) TO '${tempParquetPath}' (FORMAT PARQUET);
          `;
 
-        context.db.run(duckdbQuery, (err: Error | null) => {
-          if (fs.existsSync(tempJsonPath)) fs.unlinkSync(tempJsonPath);
-          if (err) {
-            reject(err);
+            context.db.run(duckdbQuery, (err: Error | null) => {
+              if (fs.existsSync(tempJsonPath)) fs.unlinkSync(tempJsonPath);
+              if (err) {
+                reject(err);
+              } else {
+                fs.renameSync(tempParquetPath, localParquetPath);
+                console.log(`✅ Successfully merged Parquet data to:\n${localParquetPath}`);
+                resolve();
+              }
+            });
           } else {
-            fs.renameSync(tempParquetPath, localParquetPath);
-            console.log(`✅ Successfully merged Parquet data to:\n${localParquetPath}`);
-            resolve();
-          }
-        });
-      } else {
-        context.db.run(duckdbQuery, (err: Error | null) => {
-          if (fs.existsSync(tempJsonPath)) fs.unlinkSync(tempJsonPath);
-          if (err) { reject(err); } else {
-            console.log(`✅ Successfully saved Parquet data to:\n${localParquetPath}`);
-            resolve();
+            context.db.run(duckdbQuery, (err: Error | null) => {
+              if (fs.existsSync(tempJsonPath)) fs.unlinkSync(tempJsonPath);
+              if (err) { reject(err); } else {
+                console.log(`✅ Successfully saved Parquet data to:\n${localParquetPath}`);
+                resolve();
+              }
+            });
           }
         });
       }
+    }
+
+    function normalizeTargets(argv: string[]): Set<SyncTarget> {
+      const rawTargets = argv.slice(2);
+      if (rawTargets.length === 0 || rawTargets.includes('all')) {
+        return new Set<SyncTarget>(['all']);
+      }
+
+      const validTargets: SyncTarget[] = [
+        'ga4',
+        'pace',
+        'pace-property',
+        'pace-segment',
+        'pace-roomtype',
+        'pace-derived',
+      ];
+
+      const targets = new Set<SyncTarget>();
+      for (const rawTarget of rawTargets) {
+        if (!validTargets.includes(rawTarget as SyncTarget)) {
+          throw new Error(`Unknown sync target "${rawTarget}"`);
+        }
+        targets.add(rawTarget as SyncTarget);
+      }
+
+      return targets;
+    }
+
+    async function syncData() {
+      const context: SyncContext = {
+        db,
+        bq,
+        publicDataDir: PUBLIC_DATA_DIR,
+      };
+
+      const targets = normalizeTargets(process.argv);
+
+      if (targets.has('all') || targets.has('pace')) {
+        await syncPropertyPace(context);
+        await syncSegmentPace(context);
+        await syncRoomtypePace(context);
+        await syncDerivedPaceData(context);
+      } else {
+        const shouldRunProperty = targets.has('pace-property');
+        const shouldRunSegment = targets.has('pace-segment');
+        const shouldRunRoomtype = targets.has('pace-roomtype');
+        const shouldRunDerived = targets.has('pace-derived');
+
+        if (shouldRunProperty) {
+          await syncPropertyPace(context);
+          await syncDerivedPaceData(context);
+        }
+        if (shouldRunSegment) {
+          await syncSegmentPace(context);
+        }
+        if (shouldRunRoomtype) {
+          await syncRoomtypePace(context);
+        }
+        if (shouldRunDerived && !shouldRunProperty) {
+          await syncDerivedPaceData(context);
+        }
+      }
+
+      if (targets.has('all') || targets.has('ga4')) {
+        await syncGa4Data(context);
+      }
+    }
+
+    syncData().catch((syncError) => {
+      console.error(syncError);
+      process.exitCode = 1;
     });
-  }
-}
-
-function normalizeTargets(argv: string[]): Set<SyncTarget> {
-  const rawTargets = argv.slice(2);
-  if (rawTargets.length === 0 || rawTargets.includes('all')) {
-    return new Set<SyncTarget>(['all']);
-  }
-
-  const validTargets: SyncTarget[] = [
-    'ga4',
-    'pace',
-    'pace-property',
-    'pace-segment',
-    'pace-roomtype',
-    'pace-derived',
-  ];
-
-  const targets = new Set<SyncTarget>();
-  for (const rawTarget of rawTargets) {
-    if (!validTargets.includes(rawTarget as SyncTarget)) {
-      throw new Error(`Unknown sync target "${rawTarget}"`);
-    }
-    targets.add(rawTarget as SyncTarget);
-  }
-
-  return targets;
-}
-
-async function syncData() {
-  const context: SyncContext = {
-    db,
-    bq,
-    publicDataDir: PUBLIC_DATA_DIR,
-  };
-
-  const targets = normalizeTargets(process.argv);
-
-  if (targets.has('all') || targets.has('pace')) {
-    await syncPropertyPace(context);
-    await syncSegmentPace(context);
-    await syncRoomtypePace(context);
-    await syncDerivedPaceData(context);
-  } else {
-    const shouldRunProperty = targets.has('pace-property');
-    const shouldRunSegment = targets.has('pace-segment');
-    const shouldRunRoomtype = targets.has('pace-roomtype');
-    const shouldRunDerived = targets.has('pace-derived');
-
-    if (shouldRunProperty) {
-      await syncPropertyPace(context);
-      await syncDerivedPaceData(context);
-    }
-    if (shouldRunSegment) {
-      await syncSegmentPace(context);
-    }
-    if (shouldRunRoomtype) {
-      await syncRoomtypePace(context);
-    }
-    if (shouldRunDerived && !shouldRunProperty) {
-      await syncDerivedPaceData(context);
-    }
-  }
-
-  if (targets.has('all') || targets.has('ga4')) {
-    await syncGa4Data(context);
-  }
-}
-
-syncData().catch((syncError) => {
-  console.error(syncError);
-  process.exitCode = 1;
-});

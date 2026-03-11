@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Calendar, CalendarDayButton } from "@/components/ui/calendar";
+import { Calendar, CalendarDayButton } from "@/widgets/CalendarHeatmap/components/calendar";
 import { useDuckDb } from "@/hooks/useDuckDb";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
