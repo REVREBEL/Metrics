@@ -32,7 +32,7 @@ export interface RoomstransientData {
 function RowActions({
   row: _row
 }: {
-  row: any
+  row: unknown
 }) {
   return (<DropdownMenu>
     <DropdownMenuTrigger asChild>

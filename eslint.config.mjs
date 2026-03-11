@@ -25,7 +25,11 @@ const eslintConfig = tseslint.config(
       "**/__index__.tsx",
       "public/*",
       "public/duckdb/*",
-      "public/playground/*"
+      "public/playground/*",
+      ".agent/**",
+      ".agents/**",
+      "temp/**",
+      "test_loop.js"
     ],
   },
   {

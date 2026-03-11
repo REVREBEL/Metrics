@@ -10,7 +10,7 @@ export type WidgetMetadata = {
 };
 
 // Map widget IDs to their dynamic imports
-export const WIDGET_COMPONENTS: Record<string, any> = {
+export const WIDGET_COMPONENTS: Record<string, unknown> = {
   REVENUE_METRIC: dynamic(() => import('./RevenueMetric')),
   OCCUPANCY_GAUGE: dynamic(() => import('./OccupancyGauge')),
 };

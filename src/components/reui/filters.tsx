@@ -694,6 +694,7 @@ function SelectOptionsPopover<T = unknown>({
   const baseId = useId()
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHighlightedIndex(-1)
   }, [searchInput, open])
 
@@ -1171,6 +1172,7 @@ function FilterSubmenuContent<T = unknown>({
   const baseId = useId()
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHighlightedIndex(-1)
   }, [searchInput])
 
@@ -1196,6 +1198,7 @@ function FilterSubmenuContent<T = unknown>({
 
   useEffect(() => {
     if (isActive && filteredOptions.length > 0) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setHighlightedIndex(0)
     }
   }, [isActive, filteredOptions.length])
@@ -1405,6 +1408,7 @@ export function Filters<T = unknown>({
   }, [enableShortcut, shortcutKey, addFilterOpen])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHighlightedIndex(-1)
   }, [menuSearchInput])
 
@@ -1419,6 +1423,7 @@ export function Filters<T = unknown>({
 
   useEffect(() => {
     if (!addFilterOpen) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setOpenSubMenu(null)
     }
   }, [addFilterOpen])
@@ -1517,6 +1522,7 @@ export function Filters<T = unknown>({
 
   useEffect(() => {
     if (addFilterOpen && filteredFields.length > 0) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setHighlightedIndex(0)
     }
   }, [addFilterOpen, filteredFields.length])

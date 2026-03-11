@@ -121,6 +121,7 @@ function Button({
 
   useEffect(() => {
     if (isActive && isLoaded) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShowShine(true);
       const timer = setTimeout(() => setShowShine(false), 800);
       return () => clearTimeout(timer);
@@ -142,7 +143,8 @@ function Button({
         },
       }}
       onClick={() => {
-        setActiveButton(title), setIsLoaded(true);
+        setActiveButton(title);
+        setIsLoaded(true);
       }}
       className="w-fit h-fit flex"
       style={{ willChange: "transform" }}

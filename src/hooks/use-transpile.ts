@@ -19,6 +19,7 @@ export function useTranspile(code: string): TranspileResult | null {
         clearTimeout(errorTimerRef.current)
         errorTimerRef.current = null
       }
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setResult(null)
       return
     }
@@ -30,6 +31,7 @@ export function useTranspile(code: string): TranspileResult | null {
         if (errorTimerRef.current) clearTimeout(errorTimerRef.current)
         errorTimerRef.current = setTimeout(() => {
           if (codeRef.current === code) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setResult(transpiled)
           }
         }, ERROR_GRACE_MS)
@@ -38,6 +40,7 @@ export function useTranspile(code: string): TranspileResult | null {
           clearTimeout(errorTimerRef.current)
           errorTimerRef.current = null
         }
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setResult(transpiled)
       }
     }, DEBOUNCE_MS)

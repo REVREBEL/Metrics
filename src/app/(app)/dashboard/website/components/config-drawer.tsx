@@ -7,7 +7,7 @@ const isComponentLike = (value: unknown) => typeof value === "function" || (type
 const defaultProps = {};
 
 export default function CenteredPreview() {
-  const [Component, setComponent] = React.useState<React.ComponentType<any> | null>(null);
+  const [Component, setComponent] = React.useState<React.ComponentType<unknown> | null>(null);
   const [error, setError] = React.useState("");
 
   React.useEffect(() => {
@@ -15,7 +15,7 @@ export default function CenteredPreview() {
 
     async function load() {
       try {
-        const mod = (await import("@/components/p-date-picker-9")) as any;
+        const mod = (await import("@/components/p-date-picker-9")) as Record<string, unknown>;
         const previewComponent = mod["PDatePicker9"] ?? mod.default ?? Object.values(mod).find(isComponentLike);
 
         if (!isComponentLike(previewComponent)) {
@@ -23,7 +23,7 @@ export default function CenteredPreview() {
         }
 
         if (active) {
-          setComponent(() => previewComponent as React.ComponentType<any>);
+          setComponent(() => previewComponent as React.ComponentType<unknown>);
           setError("");
         }
       } catch (err) {
@@ -43,16 +43,16 @@ export default function CenteredPreview() {
   }, []);
 
   if (error) {
-    return <div className="flex min-h-svh items-center justify-center p-6 text-sm text-destructive">Failed to load "p-date-picker-9": {error}</div>;
+    return <div className="flex min-h-svh items-center justify-center p-6 text-sm text-destructive">Failed to load &quot;p-date-picker-9&quot;: {error}</div>;
   }
 
   if (!Component) {
-    return <div className="flex min-h-svh items-center justify-center p-6 text-sm text-muted-foreground">Loading "p-date-picker-9"...</div>;
+    return <div className="flex min-h-svh items-center justify-center p-6 text-sm text-muted-foreground">Loading &quot;p-date-picker-9&quot;...</div>;
   }
 
   const props = {
-    ...(defaultProps as Record<string, any>),
-    ...(defaultProps && typeof defaultProps === "object" && "children" in (defaultProps as Record<string, any>) ? {} : { children: "p-date-picker-9" }),
+    ...(defaultProps as Record<string, unknown>),
+    ...(defaultProps && typeof defaultProps === "object" && "children" in (defaultProps as Record<string, unknown>) ? {} : { children: "p-date-picker-9" }),
   };
 
   return (

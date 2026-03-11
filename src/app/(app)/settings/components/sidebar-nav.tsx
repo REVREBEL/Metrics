@@ -1,7 +1,8 @@
 "use client"
 
 import { useState, type JSX } from 'react'
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
@@ -22,7 +23,7 @@ type SidebarNavProps = React.HTMLAttributes<HTMLElement> & {
 }
 
 export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
-  const { pathname } = useLocation()
+  const pathname = usePathname()
   const navigate = useRouter()
   const [val, setVal] = useState(pathname ?? '/settings')
 
