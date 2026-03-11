@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
+    "lint:report": "node scripts/eslint-report.mjs",
     "format:write": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,md,mdx}\" --cache",
     "sync:data": "tsx scripts/sync-data.ts all",

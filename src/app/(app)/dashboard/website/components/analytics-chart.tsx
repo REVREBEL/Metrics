@@ -13,7 +13,7 @@ export function AnalyticsChart() {
     async function fetchChart() {
       try {
         const res = await execute(`SELECT strftime(_DATA_DATE, '%a') as name, CAST(SUM(sessions) AS INTEGER) as clicks, CAST(SUM(engagedSessions) AS INTEGER) as uniques FROM 'ga4_TrafficAcquisition_281286275.parquet' WHERE _DATA_DATE > (SELECT MAX(_DATA_DATE) - INTERVAL 7 DAY FROM 'ga4_TrafficAcquisition_281286275.parquet') GROUP BY _DATA_DATE ORDER BY _DATA_DATE ASC`);
-        setData(res as any);
+        setData(res as { name: string, clicks: number, uniques: number }[]);
       } catch (e) { console.error("Failed to load analytics chart", e); }
     }
     fetchChart();

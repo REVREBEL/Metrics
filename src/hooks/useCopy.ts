@@ -15,18 +15,20 @@ export const useCopy = (duration = 1500, toastMessage?: string) => {
       await navigator.clipboard.writeText(text)
       setCopied(true)
       setTimeout(() => setCopied(false), duration)
-      toastMessage &&
+      if (toastMessage) {
         toast('success', `${toastMessage} copied to clipboard`, {
           position: 'top-right'
         })
+      }
 
       return true
     } catch (err) {
       console.error(`${toastMessage} failed to copy to clipboard`, err)
-      toastMessage &&
+      if (toastMessage) {
         toast('error', `${toastMessage} failed to copy to clipboard`, {
           position: 'top-right'
         })
+      }
 
       return false
     }

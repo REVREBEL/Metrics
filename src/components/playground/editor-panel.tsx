@@ -20,6 +20,7 @@ import {
 import { toast } from "sonner";
 import type { TranspileError } from "@/lib/playground/transpile";
 import type { editor } from "monaco-editor";
+import type * as monaco from "monaco-editor";
 import {
   MonacoJsxSyntaxHighlight,
   getWorker,
@@ -606,7 +607,7 @@ export function EditorPanel({
   const [isFormatting, setIsFormatting] = useState(false);
   const [activeTab, setActiveTab] = useState<EditorTab>("component.tsx");
   const editorInstanceRef = useRef<editor.IStandaloneCodeEditor | null>(null);
-  const monacoRef = useRef<typeof import("monaco-editor") | null>(null);
+  const monacoRef = useRef<typeof monaco | null>(null);
   const jsxHighlightDisposeRef = useRef<(() => void) | null>(null);
   const handleFormatRef = useRef<() => void>(() => {});
   const pendingCursorRestoreRef = useRef<{

@@ -4,7 +4,7 @@ import type { ToastT } from 'sonner'
 import { X } from 'lucide-react'
 
 export const toast = (type: ToastT['type'], message: string, options?: Partial<ToastT>) => {
-  // @ts-ignore
+  // @ts-expect-error Types missing
   sonnerToast[type](message, {
     cancel: {
       label: <X className='size-4' />,

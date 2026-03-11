@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { useDuckDb } from "@/hooks/useDuckDb";
 
 // Custom Tooltip Component to match your mockups
-const OTBMixTooltip = ({ active, payload, label, month, year }: any) => {
+const OTBMixTooltip = ({ active, payload, label, month, year }: { active?: boolean, payload?: { dataKey: string, value: number, payload: { isWeekend: boolean } }[], label?: string, month: string, year: string }) => {
   if (!active || !payload || !payload.length) return null;
 
   const dateStr = `${month} ${label}, ${year || new Date().getFullYear()}`;
@@ -15,8 +15,8 @@ const OTBMixTooltip = ({ active, payload, label, month, year }: any) => {
   const weekday = dateObj.toLocaleDateString('en-US', { weekday: 'long' }).toUpperCase();
   const monthName = dateObj.toLocaleDateString('en-US', { month: 'long' }).toUpperCase();
 
-  const transient = payload.find((p: any) => p.dataKey === 'transient')?.value || 0;
-  const group = payload.find((p: any) => p.dataKey === 'group')?.value || 0;
+  const transient = payload.find((p: { dataKey: string, value: number }) => p.dataKey === 'transient')?.value || 0;
+  const group = payload.find((p: { dataKey: string, value: number }) => p.dataKey === 'group')?.value || 0;
   const total = transient + group;
   const transientPct = total > 0 ? Math.round((transient / total) * 100) : 0;
   const groupPct = total > 0 ? Math.round((group / total) * 100) : 0;
@@ -58,7 +58,7 @@ const OTBMixTooltip = ({ active, payload, label, month, year }: any) => {
 
 export default function OTBChart({ year, month }: { year?: string, month?: string }) {
   const { execute, isInitializing, error } = useDuckDb();
-  const [chartData, setChartData] = React.useState<any[]>([]);
+  const [chartData, setChartData] = React.useState<{ day: number, isWeekend: boolean, transient: number, group: number, capacity: number }[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -79,7 +79,7 @@ export default function OTBChart({ year, month }: { year?: string, month?: strin
         `;
         const result = await execute(query);
         // Map any DuckDB specific types like BIGINT if needed, but CAST as INTEGER should be fine
-        setChartData(result.map((row: any) => ({
+        setChartData((result as unknown[]).map((row: Record<string, unknown>) => ({
           day: row.day,
           isWeekend: row.isWeekend,
           transient: Number(row.transient),

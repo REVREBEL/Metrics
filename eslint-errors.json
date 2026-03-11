@@ -1,0 +1,644 @@
+[
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/scripts/sync-data.ts",
+    "errors": [
+      {
+        "line": 708,
+        "column": 0,
+        "rule": null,
+        "message": "Parsing error: '}' expected."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/app/(app)/dashboard/channels/page.tsx",
+    "errors": [
+      {
+        "line": 69,
+        "column": 10,
+        "rule": null,
+        "message": "Parsing error: Expression expected."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/app/(app)/dashboard/demand/page.tsx",
+    "errors": [
+      {
+        "line": 107,
+        "column": 10,
+        "rule": null,
+        "message": "Parsing error: Expression expected."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/app/(app)/dashboard/room-types/page.tsx",
+    "errors": [
+      {
+        "line": 106,
+        "column": 8,
+        "rule": null,
+        "message": "Parsing error: Expression expected."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/app/(app)/dashboard/website/components/analytics-chart.tsx",
+    "errors": [
+      {
+        "line": 16,
+        "column": 24,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/app/(app)/dashboard/website/components/analytics.tsx",
+    "errors": [
+      {
+        "line": 16,
+        "column": 42,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      },
+      {
+        "line": 188,
+        "column": 35,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      },
+      {
+        "line": 201,
+        "column": 33,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/app/(app)/dashboard/website/components/config-drawer.tsx",
+    "errors": [
+      {
+        "line": 10,
+        "column": 72,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      },
+      {
+        "line": 18,
+        "column": 71,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      },
+      {
+        "line": 26,
+        "column": 70,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      },
+      {
+        "line": 46,
+        "column": 116,
+        "rule": "react/no-unescaped-entities",
+        "message": "`\"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`."
+      },
+      {
+        "line": 46,
+        "column": 132,
+        "rule": "react/no-unescaped-entities",
+        "message": "`\"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`."
+      },
+      {
+        "line": 50,
+        "column": 114,
+        "rule": "react/no-unescaped-entities",
+        "message": "`\"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`."
+      },
+      {
+        "line": 50,
+        "column": 130,
+        "rule": "react/no-unescaped-entities",
+        "message": "`\"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`."
+      },
+      {
+        "line": 54,
+        "column": 40,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      },
+      {
+        "line": 55,
+        "column": 107,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/app/(app)/settings/components/sidebar-nav.tsx",
+    "errors": [
+      {
+        "line": 67,
+        "column": 14,
+        "rule": "react/jsx-no-undef",
+        "message": "'Link' is not defined."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/app/(app)/tasks/components/tasks-multi-delete-dialog.tsx",
+    "errors": [
+      {
+        "line": 75,
+        "column": 50,
+        "rule": "react/no-unescaped-entities",
+        "message": "`\"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`."
+      },
+      {
+        "line": 75,
+        "column": 65,
+        "rule": "react/no-unescaped-entities",
+        "message": "`\"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/app/(app)/tasks/components/tasks-provider.tsx",
+    "errors": [
+      {
+        "line": 29,
+        "column": 1,
+        "rule": "react-refresh/only-export-components",
+        "message": "Definition for rule 'react-refresh/only-export-components' was not found."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/app/(app)/users/components/users-multi-delete-dialog.tsx",
+    "errors": [
+      {
+        "line": 75,
+        "column": 50,
+        "rule": "react/no-unescaped-entities",
+        "message": "`\"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`."
+      },
+      {
+        "line": 75,
+        "column": 65,
+        "rule": "react/no-unescaped-entities",
+        "message": "`\"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/app/(app)/users/components/users-provider.tsx",
+    "errors": [
+      {
+        "line": 29,
+        "column": 1,
+        "rule": "react-refresh/only-export-components",
+        "message": "Definition for rule 'react-refresh/only-export-components' was not found."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/app/errors/forbidden.tsx",
+    "errors": [
+      {
+        "line": 15,
+        "column": 18,
+        "rule": "react/no-unescaped-entities",
+        "message": "`'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/app/errors/maintenance-error.tsx",
+    "errors": [
+      {
+        "line": 11,
+        "column": 13,
+        "rule": "react/no-unescaped-entities",
+        "message": "`'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/app/errors/not-found-error.tsx",
+    "errors": [
+      {
+        "line": 15,
+        "column": 37,
+        "rule": "react/no-unescaped-entities",
+        "message": "`'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/components/discrete-tabs.tsx",
+    "errors": [
+      {
+        "line": 124,
+        "column": 7,
+        "rule": "react-hooks/set-state-in-effect",
+        "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/components/discrete-tabs.tsx:124:7\n  122 |   useEffect(() => {\n  123 |     if (isActive && isLoaded) {\n> 124 |       setShowShine(true);\n      |       ^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  125 |       const timer = setTimeout(() => setShowShine(false), 800);\n  126 |       return () => clearTimeout(timer);\n  127 |     }"
+      },
+      {
+        "line": 145,
+        "column": 9,
+        "rule": "@typescript-eslint/no-unused-expressions",
+        "message": "Expected an assignment or function call and instead saw an expression."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/components/p-date-picker-9.tsx",
+    "errors": [
+      {
+        "line": 10,
+        "column": 72,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      },
+      {
+        "line": 18,
+        "column": 71,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      },
+      {
+        "line": 26,
+        "column": 70,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      },
+      {
+        "line": 46,
+        "column": 116,
+        "rule": "react/no-unescaped-entities",
+        "message": "`\"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`."
+      },
+      {
+        "line": 46,
+        "column": 132,
+        "rule": "react/no-unescaped-entities",
+        "message": "`\"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`."
+      },
+      {
+        "line": 50,
+        "column": 114,
+        "rule": "react/no-unescaped-entities",
+        "message": "`\"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`."
+      },
+      {
+        "line": 50,
+        "column": 130,
+        "rule": "react/no-unescaped-entities",
+        "message": "`\"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`."
+      },
+      {
+        "line": 54,
+        "column": 40,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      },
+      {
+        "line": 55,
+        "column": 107,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/components/playground/editor-panel.tsx",
+    "errors": [
+      {
+        "line": 609,
+        "column": 35,
+        "rule": "@typescript-eslint/consistent-type-imports",
+        "message": "`import()` type annotations are forbidden."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/components/reui/filters.tsx",
+    "errors": [
+      {
+        "line": 697,
+        "column": 5,
+        "rule": "react-hooks/set-state-in-effect",
+        "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/components/reui/filters.tsx:697:5\n  695 |\n  696 |   useEffect(() => {\n> 697 |     setHighlightedIndex(-1)\n      |     ^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  698 |   }, [searchInput, open])\n  699 |\n  700 |   useEffect(() => {"
+      },
+      {
+        "line": 1174,
+        "column": 5,
+        "rule": "react-hooks/set-state-in-effect",
+        "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/components/reui/filters.tsx:1174:5\n  1172 |\n  1173 |   useEffect(() => {\n> 1174 |     setHighlightedIndex(-1)\n       |     ^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  1175 |   }, [searchInput])\n  1176 |\n  1177 |   useEffect(() => {"
+      },
+      {
+        "line": 1199,
+        "column": 7,
+        "rule": "react-hooks/set-state-in-effect",
+        "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/components/reui/filters.tsx:1199:7\n  1197 |   useEffect(() => {\n  1198 |     if (isActive && filteredOptions.length > 0) {\n> 1199 |       setHighlightedIndex(0)\n       |       ^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  1200 |     }\n  1201 |   }, [isActive, filteredOptions.length])\n  1202 |"
+      },
+      {
+        "line": 1408,
+        "column": 5,
+        "rule": "react-hooks/set-state-in-effect",
+        "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/components/reui/filters.tsx:1408:5\n  1406 |\n  1407 |   useEffect(() => {\n> 1408 |     setHighlightedIndex(-1)\n       |     ^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  1409 |   }, [menuSearchInput])\n  1410 |\n  1411 |   useEffect(() => {"
+      },
+      {
+        "line": 1422,
+        "column": 7,
+        "rule": "react-hooks/set-state-in-effect",
+        "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/components/reui/filters.tsx:1422:7\n  1420 |   useEffect(() => {\n  1421 |     if (!addFilterOpen) {\n> 1422 |       setOpenSubMenu(null)\n       |       ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  1423 |     }\n  1424 |   }, [addFilterOpen])\n  1425 |"
+      },
+      {
+        "line": 1520,
+        "column": 7,
+        "rule": "react-hooks/set-state-in-effect",
+        "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/components/reui/filters.tsx:1520:7\n  1518 |   useEffect(() => {\n  1519 |     if (addFilterOpen && filteredFields.length > 0) {\n> 1520 |       setHighlightedIndex(0)\n       |       ^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  1521 |     }\n  1522 |   }, [addFilterOpen, filteredFields.length])\n  1523 |"
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/context/direction-provider.tsx",
+    "errors": [
+      {
+        "line": 56,
+        "column": 1,
+        "rule": "react-refresh/only-export-components",
+        "message": "Definition for rule 'react-refresh/only-export-components' was not found."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/context/font-provider.tsx",
+    "errors": [
+      {
+        "line": 56,
+        "column": 1,
+        "rule": "react-refresh/only-export-components",
+        "message": "Definition for rule 'react-refresh/only-export-components' was not found."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/context/layout-provider.tsx",
+    "errors": [
+      {
+        "line": 80,
+        "column": 1,
+        "rule": "react-refresh/only-export-components",
+        "message": "Definition for rule 'react-refresh/only-export-components' was not found."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/context/search-provider.tsx",
+    "errors": [
+      {
+        "line": 39,
+        "column": 1,
+        "rule": "react-refresh/only-export-components",
+        "message": "Definition for rule 'react-refresh/only-export-components' was not found."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/context/theme-provider.tsx",
+    "errors": [
+      {
+        "line": 105,
+        "column": 1,
+        "rule": "react-refresh/only-export-components",
+        "message": "Definition for rule 'react-refresh/only-export-components' was not found."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/hooks/use-transpile.ts",
+    "errors": [
+      {
+        "line": 22,
+        "column": 7,
+        "rule": "react-hooks/set-state-in-effect",
+        "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/hooks/use-transpile.ts:22:7\n  20 |         errorTimerRef.current = null\n  21 |       }\n> 22 |       setResult(null)\n     |       ^^^^^^^^^ Avoid calling setState() directly within an effect\n  23 |       return\n  24 |     }\n  25 |"
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/hooks/useCopy.ts",
+    "errors": [
+      {
+        "line": 18,
+        "column": 7,
+        "rule": "@typescript-eslint/no-unused-expressions",
+        "message": "Expected an assignment or function call and instead saw an expression."
+      },
+      {
+        "line": 26,
+        "column": 7,
+        "rule": "@typescript-eslint/no-unused-expressions",
+        "message": "Expected an assignment or function call and instead saw an expression."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/utils/components.ts",
+    "errors": [
+      {
+        "line": 38,
+        "column": 19,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      },
+      {
+        "line": 103,
+        "column": 41,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      },
+      {
+        "line": 139,
+        "column": 36,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/utils/toast.tsx",
+    "errors": [
+      {
+        "line": 7,
+        "column": 3,
+        "rule": "@typescript-eslint/ban-ts-comment",
+        "message": "Use \"@ts-expect-error\" instead of \"@ts-ignore\", as \"@ts-ignore\" will do nothing if the following line is error-free."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/widgets/MarketSegmentGroupRoomsTable/index.tsx",
+    "errors": [
+      {
+        "line": 35,
+        "column": 8,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/widgets/OTBStackedBarChart/index.tsx",
+    "errors": [
+      {
+        "line": 10,
+        "column": 65,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      },
+      {
+        "line": 18,
+        "column": 38,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      },
+      {
+        "line": 19,
+        "column": 34,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      },
+      {
+        "line": 61,
+        "column": 52,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      },
+      {
+        "line": 82,
+        "column": 39,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/src/widgets/registry.ts",
+    "errors": [
+      {
+        "line": 13,
+        "column": 48,
+        "rule": "@typescript-eslint/no-explicit-any",
+        "message": "Unexpected any. Specify a different type."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/temp/add-use-client.js",
+    "errors": [
+      {
+        "line": 1,
+        "column": 12,
+        "rule": "@typescript-eslint/no-require-imports",
+        "message": "A `require()` style import is forbidden."
+      },
+      {
+        "line": 2,
+        "column": 14,
+        "rule": "@typescript-eslint/no-require-imports",
+        "message": "A `require()` style import is forbidden."
+      },
+      {
+        "line": 15,
+        "column": 9,
+        "rule": "@typescript-eslint/no-unused-expressions",
+        "message": "Expected an assignment or function call and instead saw an expression."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/temp/fix-exports.js",
+    "errors": [
+      {
+        "line": 1,
+        "column": 12,
+        "rule": "@typescript-eslint/no-require-imports",
+        "message": "A `require()` style import is forbidden."
+      },
+      {
+        "line": 2,
+        "column": 14,
+        "rule": "@typescript-eslint/no-require-imports",
+        "message": "A `require()` style import is forbidden."
+      },
+      {
+        "line": 11,
+        "column": 9,
+        "rule": "@typescript-eslint/no-unused-expressions",
+        "message": "Expected an assignment or function call and instead saw an expression."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/temp/fix-imports.js",
+    "errors": [
+      {
+        "line": 1,
+        "column": 12,
+        "rule": "@typescript-eslint/no-require-imports",
+        "message": "A `require()` style import is forbidden."
+      },
+      {
+        "line": 2,
+        "column": 14,
+        "rule": "@typescript-eslint/no-require-imports",
+        "message": "A `require()` style import is forbidden."
+      },
+      {
+        "line": 11,
+        "column": 9,
+        "rule": "@typescript-eslint/no-unused-expressions",
+        "message": "Expected an assignment or function call and instead saw an expression."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/temp/fix-router.js",
+    "errors": [
+      {
+        "line": 1,
+        "column": 12,
+        "rule": "@typescript-eslint/no-require-imports",
+        "message": "A `require()` style import is forbidden."
+      },
+      {
+        "line": 2,
+        "column": 14,
+        "rule": "@typescript-eslint/no-require-imports",
+        "message": "A `require()` style import is forbidden."
+      },
+      {
+        "line": 13,
+        "column": 9,
+        "rule": "@typescript-eslint/no-unused-expressions",
+        "message": "Expected an assignment or function call and instead saw an expression."
+      }
+    ]
+  },
+  {
+    "file": "/Users/garystringham/github-revrebel/Shadcn/main_project/revrebel-metrics/test_loop.js",
+    "errors": [
+      {
+        "line": 1,
+        "column": 15,
+        "rule": "@typescript-eslint/no-require-imports",
+        "message": "A `require()` style import is forbidden."
+      }
+    ]
+  }
+]

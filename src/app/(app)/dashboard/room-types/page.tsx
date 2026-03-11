@@ -101,8 +101,7 @@ export default function Page() {
       <div className="flex flex-1 flex-col pt-0 gap-4">
         <YearMonthSelector onSelectionChange={handleDateChange} />
         {selectedYear && selectedMonth && (
-      
-        
+          <></>
         )}
       </div>
     </Main>

@@ -35,7 +35,7 @@ async function getFileContent(file: NonNullable<RegistryItem['files']>[number]) 
     const data = await response.json()
 
     return data.content
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching file content:', error)
     throw error
   }
@@ -100,7 +100,7 @@ ${Object.entries(component.cssVars.theme)
       const keyframesEntries = Object.entries(component.css).filter(([key]) => key.startsWith('@keyframes'))
 
       if (keyframesEntries.length > 0) {
-        const formatKeyframes = (value: any): string => {
+        const formatKeyframes = (value: unknown): string => {
           if (typeof value === 'object' && value !== null) {
             const entries = Object.entries(value)
 
@@ -136,7 +136,7 @@ ${Object.entries(component.cssVars.theme)
   }
 
   if (component.css) {
-    const formatCssValue = (value: any, indent = 2): string => {
+    const formatCssValue = (value: unknown, indent = 2): string => {
       if (typeof value === 'string') {
         // Direct CSS string - return as is
         return value

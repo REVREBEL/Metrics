@@ -13,7 +13,11 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export function Analytics() {
   const { execute, isInitializing } = useDuckDb();
-  const [metrics, setMetrics] = useState<any>(null);
+  const [metrics, setMetrics] = useState<{
+    overview: Record<string, string | number>;
+    referrers: { name: string; value: number }[];
+    devices: { name: string; value: number }[];
+  } | null>(null);
 
   useEffect(() => {
     if (isInitializing) return;
@@ -47,7 +51,11 @@ export function Analytics() {
         `);
 
         if (res && res.length > 0) {
-          setMetrics({ overview: res[0], referrers: refs, devices: devices });
+          setMetrics({ 
+            overview: res[0] as Record<string, string | number>,
+            referrers: refs as { name: string; value: number }[],
+            devices: devices as { name: string; value: number }[]
+          });
         }
       } catch (err) { console.error("Failed to load GA4 metrics", err); }
     }
@@ -185,7 +193,7 @@ export function Analytics() {
           </CardHeader>
           <CardContent>
             <SimpleBarList
-              items={referrers as any}
+              items={referrers}
               barClass='bg-primary'
               valueFormatter={(n) => `${n}`}
             />
@@ -198,7 +206,7 @@ export function Analytics() {
           </CardHeader>
           <CardContent>
             <SimpleBarList
-              items={devices as any}
+              items={devices}
               barClass='bg-muted-foreground'
               valueFormatter={(n) => `${n}`}
             />
