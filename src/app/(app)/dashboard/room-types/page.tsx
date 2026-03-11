@@ -41,7 +41,7 @@ const topNav = [
     href: '/dashboard/demand',
     isActive: false,
     disabled: false,
-    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
+    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
   },
   {
     title: 'Website',
@@ -85,8 +85,8 @@ export default function Page() {
       <Tabs orientation='vertical' defaultValue='overview' className='space-y-4'>
         <div className='w-full overflow-x-auto pb-2'>
           <TabsList>
-            <TabsTrigger value='overview'>Overview</TabsTrigger>
-            <TabsTrigger value='analytics'>Analytics</TabsTrigger>
+            <TabsTrigger value='overview'>Pace</TabsTrigger>
+            <TabsTrigger value='analytics'>Pickup</TabsTrigger>
             <TabsTrigger value='performance'>Performance</TabsTrigger>
             <TabsTrigger value='reports'>Reports</TabsTrigger>
             <TabsTrigger value='notifications'>Notifications</TabsTrigger>
@@ -100,9 +100,6 @@ export default function Page() {
     <Main>
       <div className="flex flex-1 flex-col pt-0 gap-4">
         <YearMonthSelector onSelectionChange={handleDateChange} />
-        {selectedYear && selectedMonth && (
-          <></>
-        )}
       </div>
     </Main>
   </>

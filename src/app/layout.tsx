@@ -3,7 +3,6 @@ import "./globals.css";
 import { ClerkProvider } from '@clerk/nextjs'
 import { AppProviders } from '@/components/providers'
 import { cn } from "@/lib/utils";
-import { AuthenticatedLayout } from '@/components/layout/authenticated-layout'
 import { Khand, Funnel_Sans } from "next/font/google";
 
 const funnelSans = Funnel_Sans({ subsets: ['latin'], variable: '--font-sans' });
@@ -29,9 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-funnel bg-background text-foreground">
         <ClerkProvider>
           <AppProviders>
-            <AuthenticatedLayout>
-              {children}
-            </AuthenticatedLayout>
+            {children}
           </AppProviders>
         </ClerkProvider>
       </body>

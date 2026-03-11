@@ -3,9 +3,7 @@ import * as duckdb from 'duckdb';
 import * as fs from 'fs';
 import * as path from 'path';
 import { execSync } from 'child_process';
-```typescript
 import { loadEnvConfig } from '@next/env';
-```
 
 const projectDir = process.cwd();
 loadEnvConfig(projectDir);
@@ -143,8 +141,7 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
   query: string,
 ): Promise<T[]> {
   return new Promise((resolve, reject) => {
-    ```typescript
-    context.db.all(query, (err: Error | null, rows: T[]) => {
+    context.db.all(query, (err: Error | null, rows: any) => {
       if (err) {
         reject(err);
         return;
@@ -153,7 +150,6 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
     });
   });
 }
-```
 
     function requireParquetFiles(context: SyncContext, filenames: string[]) {
       const missing = filenames.filter((filename) => !fs.existsSync(resolveOutputPath(context.publicDataDir, filename)));
@@ -314,7 +310,9 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
         SUM(rooms_ly_actual) AS rooms_ly_actual,
         SUM(rev_ly_actual) AS rev_ly_actual,
         SUM(rooms_budget) AS rooms_budget,
-        SUM(rev_budget) AS rev_budget
+        SUM(rev_budget) AS rev_budget,
+        SUM(rooms_forecast) AS rooms_forecast,
+        SUM(rev_forecast) AS rev_forecast
       FROM \`${dataset}.vw_pace_segment_current\`
       WHERE stay_date >= (SELECT min_stay_date FROM date_window)
         AND stay_date < (SELECT max_stay_date_exclusive FROM date_window)
@@ -359,8 +357,11 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
       (seg_totals.rev_otb - seg_totals.rev_ly_actual) AS revenue_var,
       (seg_totals.rooms_budget - seg_totals.rooms_otb) AS rooms_budget_var,
       (seg_totals.rev_budget - seg_totals.rev_otb) AS revenue_budget_var,
-      (seg_totals.rev_budget - seg_totals.rev_otb) AS rev_to_budget,
-      (seg_totals.rev_otb / nullif(seg_totals.rev_budget, 0)) AS budget_reach_pct
+      (seg_totals.rev_otb / nullif(seg_totals.rev_budget, 0)) AS budget_reach_pct,
+      seg_totals.rooms_forecast AS rooms_forecast,
+      seg_totals.rev_forecast AS rev_forecast,
+      (seg_totals.rooms_forecast - seg_totals.rooms_otb) AS rooms_forecast_var,
+      (seg_totals.rev_forecast - seg_totals.rev_otb) AS revenue_forecast_var
     FROM seg_totals
     LEFT JOIN cap_totals
       ON seg_totals.property_name = cap_totals.property_name
@@ -386,7 +387,9 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
         SUM(rooms_ly_actual) AS rooms_ly_actual,
         SUM(rev_ly_actual) AS rev_ly_actual,
         SUM(rooms_budget) AS rooms_budget,
-        SUM(rev_budget) AS rev_budget
+        SUM(rev_budget) AS rev_budget,
+        SUM(rooms_forecast) AS rooms_forecast,
+        SUM(rev_forecast) AS rev_forecast
       FROM \`${dataset}.vw_pace_segment\`
       WHERE stay_date >= (SELECT min_stay_date FROM date_window)
         AND stay_date < (SELECT max_stay_date_exclusive FROM date_window)
@@ -424,7 +427,9 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
       (seg_totals.rev_budget / nullif(seg_totals.rooms_budget, 0)) AS adr_budget,
       (seg_totals.rev_otb / nullif(cap_totals.available_rooms, 0)) AS revpar_cy,
       (seg_totals.rev_ly_actual / nullif(cap_totals.available_rooms, 0)) AS revpar_py,
-      (seg_totals.rev_budget / nullif(cap_totals.available_rooms, 0)) AS revpar_budget
+      (seg_totals.rev_budget / nullif(cap_totals.available_rooms, 0)) AS revpar_budget,
+      seg_totals.rooms_forecast AS rooms_forecast,
+      seg_totals.rev_forecast AS rev_forecast
     FROM seg_totals
     LEFT JOIN cap_totals
       ON seg_totals.property_name = cap_totals.property_name
@@ -450,10 +455,12 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
         SUM(rooms_otb) AS rooms_otb,
         SUM(rev_otb) AS rev_otb,
         SUM(rooms_stly) AS rooms_stly,
+        SUM(rev_stly) AS rev_stly,
         SUM(rooms_ly_actual) AS rooms_ly_actual,
         SUM(rooms_budget) AS rooms_budget,
         SUM(rev_budget) AS rev_budget,
-        SUM(rooms_forecast) AS rooms_forecast
+        SUM(rooms_forecast) AS rooms_forecast,
+        SUM(rev_forecast) AS rev_forecast
       FROM \`${dataset}.vw_pace_segment_current\`
       WHERE stay_date >= (SELECT min_stay_date FROM date_window)
         AND stay_date < (SELECT max_stay_date_exclusive FROM date_window)
@@ -482,6 +489,10 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
       (seg_totals.rooms_forecast - seg_totals.rooms_otb) AS varForecast,
       (seg_totals.rev_otb / nullif(seg_totals.rooms_otb, 0)) AS aDR,
       seg_totals.rev_otb AS revenue,
+      (seg_totals.rev_otb - seg_totals.rev_stly) AS revVarSTLY,
+      (seg_totals.rev_otb - seg_totals.rev_ly_actual) AS revVarPriorYear,
+      (seg_totals.rev_budget - seg_totals.rev_otb) AS revVarBudget,
+      (seg_totals.rev_forecast - seg_totals.rev_otb) AS revVarForecast,
       cap_totals.available_rooms AS available_rooms
     FROM seg_totals
     LEFT JOIN cap_totals

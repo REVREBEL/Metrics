@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { useDuckDb } from "@/hooks/useDuckDb";
 
 // Custom Tooltip Component to match your mockups
-const OTBMixTooltip = ({ active, payload, label, month, year }: { active?: boolean, payload?: { dataKey: string, value: number, payload: { isWeekend: boolean } }[], label?: string, month: string, year: string }) => {
+const OTBMixTooltip = ({ active, payload, label, month, year }: { active?: boolean, payload?: { dataKey: string, value: number, payload: { isWeekend: boolean } }[], label?: string, month?: string, year?: string }) => {
   if (!active || !payload || !payload.length) return null;
 
   const dateStr = `${month} ${label}, ${year || new Date().getFullYear()}`;
@@ -79,7 +79,8 @@ export default function OTBChart({ year, month }: { year?: string, month?: strin
         `;
         const result = await execute(query);
         // Map any DuckDB specific types like BIGINT if needed, but CAST as INTEGER should be fine
-        setChartData((result as unknown[]).map((row: Record<string, unknown>) => ({
+        type RowType = { day: number, isWeekend: boolean, transient: number | string, group: number | string, capacity: number | string };
+        setChartData((result as RowType[]).map((row) => ({
           day: row.day,
           isWeekend: row.isWeekend,
           transient: Number(row.transient),

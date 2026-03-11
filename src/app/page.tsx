@@ -13,8 +13,6 @@ import PerformanceCardOther from "@/widgets/PerformanceCardOther"
 import { YearMonthSelector } from "@/widgets/YearMonthSelector/dynamic";
 
 
-
-
 export default function Page() {
   const [selectedYear, setSelectedYear] = useState<string>('');
   const [selectedMonth, setSelectedMonth] = useState<string>('');
@@ -23,6 +21,44 @@ export default function Page() {
     setSelectedYear(year);
     setSelectedMonth(month);
   };
+
+  const topNav = [
+    {
+      title: 'Channels',
+      href: '/dashboard/channels',
+      isActive: true,
+      disabled: false,
+      className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)] ',
+    },
+    {
+      title: 'Segments',
+      href: '/dashboard/segments',
+      isActive: false,
+      disabled: true,
+      className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)] ',
+    },
+    {
+      title: 'Room Types',
+      href: '/dashboard/room-types',
+      isActive: false,
+      disabled: true,
+      className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)] ',
+    },
+    {
+      title: 'Demand',
+      href: '/dashboard/demand',
+      isActive: false,
+      disabled: false,
+      className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover:[var(--color-1)]',
+    },
+    {
+      title: 'Website',
+      href: '/dashboard/website',
+      isActive: false,
+      disabled: false,
+      className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)] ',
+    },
+  ]
 
   return (
     <>

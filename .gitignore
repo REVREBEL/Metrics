@@ -23,6 +23,12 @@
 *.log
 dist
 
+# eslint reports
+reports/
+eslint-errors.json
+eslint-report.json
+final-eslint-errors*.json
+
 # production
 /build
 

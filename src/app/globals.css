@@ -92,7 +92,6 @@
   --sidebar-accent-foreground: oklch(84% 0.14 85deg);
   --sidebar-border: oklch(96% 0 0deg);
   --sidebar-ring: oklch(78% 0.11 195.12deg);
-
   /* Shadows */
   --shadow-2xs: 0px 1px 2px 0px oklch(0 0 0 / 0.01);
   --shadow-xs: 0px 1px 2px 0px oklch(0 0 0 / 0.01);
@@ -102,7 +101,6 @@
   --shadow-lg: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 4px 6px -1px oklch(0 0 0 / 0.01);
   --shadow-xl: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 8px 10px -1px oklch(0 0 0 / 0.01);
   --shadow-2xl: 0px 1px 2px 0px oklch(0 0 0 / 0.01);
-
   /* Radius */
   --radius: .25rem;
   --radius-sm: calc(var(--radius) * 0.6);
@@ -114,6 +112,103 @@
   --radius-4xl: calc(var(--radius) * 2.6);
   --invert: var(--color-zinc-900);
   --invert-foreground: var(--color-zinc-50);
+  /* Shades */
+  /* Color Primary */
+  --primary-l400: color-mix(in srgb, var(--primary) 60%, white 40%);
+  --primary-l300: color-mix(in srgb, var(--primary) 70%, white 30%);
+  --primary-l200: color-mix(in srgb, var(--primary) 80%, white 20%);
+  --primary-l100: color-mix(in srgb, var(--primary) 90%, white 10%);
+  --primary-d100: color-mix(in srgb, var(--primary) 80%, black 20%);
+  --primary-d200: color-mix(in srgb, var(--primary) 80%, black 20%);
+  --primary-d300: color-mix(in srgb, var(--primary) 70%, black 30%);
+  --primary-d400: color-mix(in srgb, var(--primary) 60%, black 40%);
+  /* Color 1 */
+  --color-1-l400: color-mix(in srgb, var(--color-1) 60%, white 40%);
+  --color-1-l300: color-mix(in srgb, var(--color-1) 70%, white 30%);
+  --color-1-l200: color-mix(in srgb, var(--color-1) 80%, white 20%);
+  --color-1-l100: color-mix(in srgb, var(--color-1) 90%, white 10%);
+  --color-1-d100: color-mix(in srgb, var(--color-1) 80%, black 20%);
+  --color-1-d200: color-mix(in srgb, var(--color-1) 80%, black 20%);
+  --color-1-d300: color-mix(in srgb, var(--color-1) 70%, black 30%);
+  --color-1-d400: color-mix(in srgb, var(--color-1) 60%, black 40%);
+  /* Color-2 */
+  --color-2-l400: color-mix(in srgb, var(--color-2) 60%, white 40%);
+  --color-2-l300: color-mix(in srgb, var(--color-2) 70%, white 30%);
+  --color-2-l200: color-mix(in srgb, var(--color-2) 80%, white 20%);
+  --color-2-l100: color-mix(in srgb, var(--color-2) 90%, white 10%);
+  --color-2-d100: color-mix(in srgb, var(--color-2) 80%, black 20%);
+  --color-2-d200: color-mix(in srgb, var(--color-2) 80%, black 20%);
+  --color-2-d300: color-mix(in srgb, var(--color-2) 70%, black 30%);
+  --color-2-d400: color-mix(in srgb, var(--color-2) 60%, black 40%);
+  /* Color-3 */
+  --color-3-l400: color-mix(in srgb, var(--color-3) 60%, white 40%);
+  --color-3-l300: color-mix(in srgb, var(--color-3) 70%, white 30%);
+  --color-3-l200: color-mix(in srgb, var(--color-3) 80%, white 20%);
+  --color-3-l100: color-mix(in srgb, var(--color-3) 90%, white 10%);
+  --color-3-d100: color-mix(in srgb, var(--color-3) 80%, black 20%);
+  --color-3-d200: color-mix(in srgb, var(--color-3) 80%, black 20%);
+  --color-3-d300: color-mix(in srgb, var(--color-3) 70%, black 30%);
+  /* Color-4 */
+  --color-4-l400: color-mix(in srgb, var(--color-4) 60%, white 40%);
+  --color-4-l300: color-mix(in srgb, var(--color-4) 70%, white 30%);
+  --color-4-l200: color-mix(in srgb, var(--color-4) 80%, white 20%);
+  --color-4-l100: color-mix(in srgb, var(--color-4) 90%, white 10%);
+  --color-4-d100: color-mix(in srgb, var(--color-4) 80%, black 20%);
+  --color-4-d200: color-mix(in srgb, var(--color-4) 80%, black 20%);
+  --color-4-d300: color-mix(in srgb, var(--color-4) 70%, black 30%);
+  --color-4-d400: color-mix(in srgb, var(--color-4) 60%, black 40%);
+  /* Color-5 */
+  --color-5-l400: color-mix(in srgb, var(--color-5) 60%, white 40%);
+  --color-5-l300: color-mix(in srgb, var(--color-5) 70%, white 30%);
+  --color-5-l200: color-mix(in srgb, var(--color-5) 80%, white 20%);
+  --color-5-l100: color-mix(in srgb, var(--color-5) 90%, white 10%);
+  --color-5-d100: color-mix(in srgb, var(--color-5) 90%, black 10%);
+  --color-5-d200: color-mix(in srgb, var(--color-5) 80%, black 20%);
+  --color-5-d300: color-mix(in srgb, var(--color-5) 70%, black 30%);
+  --color-5-d400: color-mix(in srgb, var(--color-5) 60%, black 40%);
+  /* Color-6 */
+  --color-6-l400: color-mix(in srgb, var(--color-6) 60%, white 40%);
+  --color-6-l300: color-mix(in srgb, var(--color-6) 70%, white 30%);
+  --color-6-l200: color-mix(in srgb, var(--color-6) 80%, white 20%);
+  --color-6-l100: color-mix(in srgb, var(--color-6) 90%, white 10%);
+  --color-6-d100: color-mix(in srgb, var(--color-6) 90%, black 10%);
+  --color-6-d200: color-mix(in srgb, var(--color-6) 80%, black 20%);
+  --color-6-d300: color-mix(in srgb, var(--color-6) 70%, black 30%);
+  --color-6-d400: color-mix(in srgb, var(--color-6) 60%, black 40%);
+  /* Color-7 */
+  --color-7-d400: color-mix(in srgb, var(--color-7) 60%, black 40%);
+  --color-7-d300: color-mix(in srgb, var(--color-7) 70%, black 30%);
+  --color-7-d200: color-mix(in srgb, var(--color-7) 80%, black 20%);
+  --color-7-d100: color-mix(in srgb, var(--color-7) 90%, black 10%);
+  --color-7-l100: color-mix(in srgb, var(--color-7) 90%, white 10%);
+  --color-7-l200: color-mix(in srgb, var(--color-7) 80%, white 20%);
+  --color-7-l300: color-mix(in srgb, var(--color-7) 70%, white 30%);
+  --color-7-l400: color-mix(in srgb, var(--color-7) 60%, white 40%);
+  /* Color-8 */
+  --color-8-l400: color-mix(in srgb, var(--color-8) 60%, white 40%);
+  --color-8-l300: color-mix(in srgb, var(--color-8) 70%, white 30%);
+  --color-8-l200: color-mix(in srgb, var(--color-8) 80%, white 20%);
+  --color-8-l100: color-mix(in srgb, var(--color-8) 90%, white 10%);
+  --color-8-d100: color-mix(in srgb, var(--color-8) 90%, black 10%);
+  --color-8-d200: color-mix(in srgb, var(--color-8) 80%, black 20%);
+  --color-8-d300: color-mix(in srgb, var(--color-8) 70%, black 30%);
+  --color-8-d400: color-mix(in srgb, var(--color-8) 60%, black 40%);
+  /* Color-Grey */
+  --grey-l700: color-mix(in srgb, var(--grey-1) 90%, white 10%);
+  --grey-l600: color-mix(in srgb, var(--grey-1) 70%, white 30%);
+  --grey-l500: var(--grey-1);
+  --grey-l400: color-mix(in srgb, var(--grey-1) 90%, black 10%);
+  --grey-l300: color-mix(in srgb, var(--grey-1) 80%, black 20%);
+  --grey-l200: color-mix(in srgb, var(--grey-1) 70%, black 30%);
+  --grey-l100: #585858;
+  --grey-d100: var(--grey-2);
+  --grey-d200: #4d4d4d;
+  --grey-d300: #434343;
+  --grey-d400: #383838;
+  --grey-d500: #2c2c2c;
+  --grey-d600: #292929;
+  --grey-d700: #272727;
+  --grey-d800: #252525;
 }
 
 .dark {
@@ -157,7 +252,7 @@
   --warning: oklch(55% 0.21 31.81deg);
   --warning-foreground: oklch(84% 0.14 85deg);
   --ring: oklch(78% 0.11 195.12deg);
-  /* Sidebar */
+  /* Colors */
   --primary-inverse: oklch(83% 0.04 220deg);
   --color-1: oklch(52% 0.10 230.09deg);
   --color-1-fade: color-mix(in srgb, var(--color-1) 80%, white 20%);
@@ -195,6 +290,10 @@
   --color-9-fade: color-mix(in srgb, var(--color-9) 80%, white 20%);
   --color-9-inverse-fade: color-mix(in srgb, var(--color-9-inverse) 80%, white 20%);
   --color-9-inverse: oklch(27% 0.09 254.40deg);
+  /* Greys */
+  --rev-color-grey-1: oklch(74.123% 0.00008 271.152deg);
+  --rev-color-grey-2: oklch(45.678% 0.00005 271.152deg);
+  --rev-color-grey-3: oklch(30.118% 0.00003 271.152deg);
   /* Sidebar */
   --sidebar: oklch(100% 0 0deg);
   --sidebar-foreground: oklch(27% 0.09 254.40deg);
@@ -224,6 +323,23 @@
   --radius-4xl: calc(var(--radius) * 2.6);
   --invert: var(--color-zinc-700);
   --invert-foreground: var(--color-zinc-50);
+}
+
+.metrics {
+  --positive: oklch(78% 0.11 195.12deg);
+  --negative: oklch(66% 0.18 45deg);
+  --total: oklch(83% 0.04 220deg);
+  --total-var: oklch(27% 0.09 254.40deg);
+  --transient: oklch(65% 0.12 219.43deg);
+  --transient-var: oklch(78% 0.11 195.12deg);
+  --group: oklch(84% 0.14 85.21deg);
+  --group-var: oklch(66% 0.18 45deg);
+  --crew: var(--grey-l700);
+  --crew-var: var(--grey-l400);
+  --complimentary: var(--grey-l700);
+  --complimentary-var: var(--grey-l400);
+  --other: var(--grey-l400);
+  --other-var: var(--grey-l400);
 }
 
 @theme inline {
@@ -302,7 +418,6 @@
   --color-success: var(--success);
   --color-destructive-foreground: var(--destructive-foreground);
 }
-
 
 @layer components {
   .card.shadow-primary {
