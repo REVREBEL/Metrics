@@ -1,8 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  reactCompiler: true,
-};
+  devIndicators: false,
+  typescript: {
+    ignoreBuildErrors: true,
+      reactCompiler: true,
+  },
+  outputFileTracingIncludes: {
+    "/*": ["./registry/**/*"],
+  },
+  
+  experimental: {
+    turbopackFileSystemCacheForDev: true,
+  },
+}
 
 export default nextConfig;

@@ -16,10 +16,23 @@
 # next.js
 /.next/
 /out/
+/.agent/skills/agent-memory/out
+*.vsix
+.vscode-test
+.vscode/.ropeproject
+*.log
+dist
 
 # production
 /build
 
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.sublime-*
 
 # misc
 .DS_Store
@@ -43,4 +56,11 @@ next-env.d.ts
 
 # clerk configuration (can include secrets)
 /.clerk/
+
+# Biq Query Files
 /data
+
+# Memory storage (local development)
+data/
+mcp-data/
+

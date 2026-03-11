@@ -15616,8 +15616,8 @@ var RecordBatch2 = class _RecordBatch {
           return memo3;
         }, {
           length: 0,
-          fields: new Array(),
-          children: new Array()
+          fields: [],
+          children: []
         });
         const schema = new Schema2(fields);
         const data = makeData({ type: new Struct(fields), length, children, nullCount: 0 });
@@ -17048,7 +17048,7 @@ var AsyncRecordBatchStreamReader = class extends RecordBatchReader {
   readAll() {
     return __awaiter(this, void 0, void 0, function* () {
       var _a5, e_1, _b2, _c2;
-      const batches = new Array();
+      const batches = [];
       try {
         for (var _d2 = true, _e2 = __asyncValues(this), _f2; _f2 = yield _e2.next(), _a5 = _f2.done, !_a5; _d2 = true) {
           _c2 = _f2.value;

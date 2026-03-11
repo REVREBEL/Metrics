@@ -1,6 +1,6 @@
 "use client"
 
-import { CSSProperties, Fragment, useId, useRef } from "react"
+import { type CSSProperties, Fragment, useId, useRef } from "react"
 import { useDataGrid } from "@/components/reui/data-grid/data-grid"
 import {
   DataGridTableBase,
@@ -21,7 +21,7 @@ import {
   closestCenter,
   DndContext,
   KeyboardSensor,
-  Modifier,
+  type Modifier,
   MouseSensor,
   TouchSensor,
   useSensor,
@@ -35,11 +35,11 @@ import {
 } from "@dnd-kit/sortable"
 import { CSS } from "@dnd-kit/utilities"
 import {
-  Cell,
+  type Cell,
   flexRender,
-  Header,
-  HeaderGroup,
-  Row,
+  type Header,
+  type HeaderGroup,
+  type Row,
 } from "@tanstack/react-table"
 
 import { Button } from "@/components/ui/button"

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, ReactNode, useState, useRef } from "react";
+import { useEffect, type ReactNode, useState, useRef } from "react";
 import { createSwapy } from "swapy";
 import { EditSwitch } from "./edit-switch";
 

@@ -1,17 +1,17 @@
 "use client"
 
-import { createContext, ReactNode, useContext } from "react"
+import { createContext, type ReactNode, useContext } from "react"
 import {
-  ColumnFiltersState,
-  RowData,
-  SortingState,
-  Table,
+  type ColumnFiltersState,
+  type RowData,
+  type SortingState,
+  type Table,
 } from "@tanstack/react-table"
 
 import { cn } from "@/lib/utils"
 
 declare module "@tanstack/react-table" {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+   
   interface ColumnMeta<TData extends RowData, TValue> {
     headerTitle?: string
     headerClassName?: string
