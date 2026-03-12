@@ -1,4 +1,3 @@
-import { AuthenticatedLayout } from '@/components/layout/authenticated-layout'
 
 export default function DashboardLayout({
     children,
@@ -6,8 +5,6 @@ export default function DashboardLayout({
     children: React.ReactNode
 }) {
     return (
-        <AuthenticatedLayout>
-            {children}
-        </AuthenticatedLayout>
+        <>{children}</>
     )
 }

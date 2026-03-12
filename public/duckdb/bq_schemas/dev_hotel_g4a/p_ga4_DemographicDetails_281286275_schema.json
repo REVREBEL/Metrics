@@ -1,0 +1,98 @@
+[
+  {
+    "description": "Interests demonstrated by users who are higher in the shopping funnel. Users can be counted in multiple interest categories. For example, Shoppers, Lifestyles & Hobbies/Pet Lovers, or Travel/Travel Buffs/Beachbound Travelers.",
+    "mode": "NULLABLE",
+    "name": "brandingInterest",
+    "type": "STRING"
+  },
+  {
+    "description": "The city from which the user activity originated.",
+    "mode": "NULLABLE",
+    "name": "city",
+    "type": "STRING"
+  },
+  {
+    "description": "The country from which the user activity originated.",
+    "mode": "NULLABLE",
+    "name": "country",
+    "type": "STRING"
+  },
+  {
+    "description": "The language setting of the user's browser or device. For example, English.",
+    "mode": "NULLABLE",
+    "name": "language",
+    "type": "STRING"
+  },
+  {
+    "description": "The geographic region from which the user activity originated, derived from their IP address.",
+    "mode": "NULLABLE",
+    "name": "region",
+    "type": "STRING"
+  },
+  {
+    "description": "User age brackets.",
+    "mode": "NULLABLE",
+    "name": "userAgeBracket",
+    "type": "STRING"
+  },
+  {
+    "description": "User gender.",
+    "mode": "NULLABLE",
+    "name": "userGender",
+    "type": "STRING"
+  },
+  {
+    "description": "The number of distinct users who visited your website or application.",
+    "mode": "NULLABLE",
+    "name": "activeUsers",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of sessions that had an engaged event.",
+    "mode": "NULLABLE",
+    "name": "engagedSessions",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The percentage of sessions that had an engaged event.",
+    "mode": "NULLABLE",
+    "name": "engagementRate",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The count of events.",
+    "mode": "NULLABLE",
+    "name": "eventCount",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of key events that occurred.",
+    "mode": "NULLABLE",
+    "name": "keyEvents",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The number of users who interacted with your site or launched your app for the first time (event triggered: first_open or first_visit).",
+    "mode": "NULLABLE",
+    "name": "newUsers",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The sum of revenue from purchases, subscriptions, and advertising (Purchase revenue plus Subscription revenue plus Ad revenue) minus refunded transaction revenue.",
+    "mode": "NULLABLE",
+    "name": "totalRevenue",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The total amount of time (in seconds) your website or app was in the foreground of users` devices.",
+    "mode": "NULLABLE",
+    "name": "userEngagementDuration",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The percentage of users who triggered any key event.",
+    "mode": "NULLABLE",
+    "name": "userKeyEventRate",
+    "type": "FLOAT"
+  }
+]

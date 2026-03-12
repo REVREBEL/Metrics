@@ -1,0 +1,94 @@
+[
+  {
+    "name": "snapshot_date",
+    "type": "DATE"
+  },
+  {
+    "name": "stay_date",
+    "type": "DATE"
+  },
+  {
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "name": "property_name",
+    "type": "STRING"
+  },
+  {
+    "name": "segment",
+    "type": "STRING"
+  },
+  {
+    "name": "rooms_otb",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_stly",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_st2y",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_ly_actual",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rev_otb",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_stly",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_st2y",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_ly_actual",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rms_rooms_forecast",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rms_rev_forecast",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rooms_forecast",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rev_forecast",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rooms_budget",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rev_budget",
+    "type": "FLOAT"
+  },
+  {
+    "name": "cancelled_rooms",
+    "type": "INTEGER"
+  },
+  {
+    "name": "cancelled_rooms_ly_actual",
+    "type": "INTEGER"
+  },
+  {
+    "name": "noshow_rooms",
+    "type": "INTEGER"
+  },
+  {
+    "name": "noshow_rooms_ly_actual",
+    "type": "INTEGER"
+  }
+]

@@ -9,8 +9,10 @@ export type WidgetMetadata = {
   defaultVariant: string;
 };
 
+import type React from 'react';
+
 // Map widget IDs to their dynamic imports
-export const WIDGET_COMPONENTS: Record<string, unknown> = {
+export const WIDGET_COMPONENTS: Record<string, React.ComponentType<any>> = {
   REVENUE_METRIC: dynamic(() => import('./RevenueMetric')),
   OCCUPANCY_GAUGE: dynamic(() => import('./OccupancyGauge')),
 };

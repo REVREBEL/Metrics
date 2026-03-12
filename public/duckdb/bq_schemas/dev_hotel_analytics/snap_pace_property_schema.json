@@ -1,0 +1,74 @@
+[
+  {
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "name": "property_name",
+    "type": "STRING"
+  },
+  {
+    "name": "stay_date",
+    "type": "DATE"
+  },
+  {
+    "name": "special_events",
+    "type": "STRING"
+  },
+  {
+    "name": "special_events_ly",
+    "type": "STRING"
+  },
+  {
+    "name": "available_rooms",
+    "type": "INTEGER"
+  },
+  {
+    "name": "available_rooms_ly",
+    "type": "INTEGER"
+  },
+  {
+    "name": "total_demand_total",
+    "type": "INTEGER"
+  },
+  {
+    "name": "total_demand_total_ly_actual",
+    "type": "INTEGER"
+  },
+  {
+    "name": "total_demand_group",
+    "type": "INTEGER"
+  },
+  {
+    "name": "total_demand_group_ly_actual",
+    "type": "INTEGER"
+  },
+  {
+    "name": "total_demand_transient",
+    "type": "INTEGER"
+  },
+  {
+    "name": "total_demand_transient_ly_actual",
+    "type": "INTEGER"
+  },
+  {
+    "name": "lrv",
+    "type": "FLOAT"
+  },
+  {
+    "name": "wash_pct",
+    "type": "FLOAT"
+  },
+  {
+    "name": "wash_pct_ly_actual",
+    "type": "FLOAT"
+  },
+  {
+    "name": "bar_price",
+    "type": "FLOAT"
+  },
+  {
+    "name": "snapshot_date",
+    "type": "DATE"
+  }
+]

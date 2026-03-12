@@ -29,7 +29,7 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
 
   const handleSelect = (e: string) => {
     setVal(e)
-    navigate({ to: e })
+    navigate.push(e)
   }
 
   return (

@@ -1,0 +1,92 @@
+[
+  {
+    "description": "The unique identifier for a specific hotel property.",
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "description": "The name of the hotel property.",
+    "name": "property_name",
+    "type": "STRING"
+  },
+  {
+    "description": "The specific date for which the data is recorded.",
+    "name": "stay_date",
+    "type": "DATE"
+  },
+  {
+    "description": "Information about special events occurring on the stay date.",
+    "name": "special_events",
+    "type": "STRING"
+  },
+  {
+    "description": "Information about special events occurring on the same stay date in the previous year.",
+    "name": "special_events_ly",
+    "type": "STRING"
+  },
+  {
+    "description": "The number of rooms available for booking on the stay date.",
+    "name": "available_rooms",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of rooms available for booking on the same stay date in the previous year.",
+    "name": "available_rooms_ly",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The total projected demand for rooms on the stay date.",
+    "name": "total_demand_total",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual total demand for rooms on the same stay date in the previous year.",
+    "name": "total_demand_total_ly_actual",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The projected demand for rooms from group bookings on the stay date.",
+    "name": "total_demand_group",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual demand for rooms from group bookings on the same stay date in the previous year.",
+    "name": "total_demand_group_ly_actual",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The projected demand for rooms from transient (individual) bookings on the stay date.",
+    "name": "total_demand_transient",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual demand for rooms from transient (individual) bookings on the same stay date in the previous year.",
+    "name": "total_demand_transient_ly_actual",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The Last Room Value, representing the estimated revenue for the last room sold.",
+    "name": "lrv",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The percentage of bookings that are expected to cancel or no-show.",
+    "name": "wash_pct",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual percentage of bookings that cancelled or no-showed on the same stay date in the previous year.",
+    "name": "wash_pct_ly_actual",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The Best Available Rate for rooms on the stay date.",
+    "name": "bar_price",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The date when this data snapshot was taken.",
+    "name": "snapshot_date",
+    "type": "DATE"
+  }
+]

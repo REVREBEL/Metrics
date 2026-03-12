@@ -1,0 +1,147 @@
+[
+  {
+    "mode": "NULLABLE",
+    "name": "index",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "census_id",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cs_no",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cs_reference",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "chain_id",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "property_name",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "brand",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "city",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "state",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "country",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "available_rms",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "open_date",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cs_type",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cs_owner",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compliance_status",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "delete_on_date",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cs_status",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cs_census_id",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cs_property_name",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cs_brand",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cs_city",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cs_state",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cs_country",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cs_rms",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cs_open_date",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "creation_date",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "legacy_position",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cs_available_rms",
+    "type": "INTEGER"
+  }
+]

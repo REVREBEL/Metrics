@@ -1,0 +1,1827 @@
+[
+  {
+    "description": "The date when the data snapshot was taken.",
+    "name": "snapshot_date",
+    "type": "DATE"
+  },
+  {
+    "description": "The month for which the stay data is relevant.",
+    "name": "stay_month",
+    "type": "DATE"
+  },
+  {
+    "description": "The specific date for which the stay data is relevant.",
+    "name": "stay_date",
+    "type": "DATE"
+  },
+  {
+    "description": "A unique identifier for the hotel property.",
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "description": "The name of the hotel property.",
+    "name": "property_name",
+    "type": "STRING"
+  },
+  {
+    "description": "The number of complimentary rooms On The Books for the current period.",
+    "name": "rooms_otb__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group association rooms On The Books for the current period.",
+    "name": "rooms_otb__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group citywide rooms On The Books for the current period.",
+    "name": "rooms_otb__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group corporate rooms On The Books for the current period.",
+    "name": "rooms_otb__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group entertainment rooms On The Books for the current period.",
+    "name": "rooms_otb__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group government rooms On The Books for the current period.",
+    "name": "rooms_otb__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group SMERF rooms On The Books for the current period.",
+    "name": "rooms_otb__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group social rooms On The Books for the current period.",
+    "name": "rooms_otb__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group tour rooms On The Books for the current period.",
+    "name": "rooms_otb__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group wedding rooms On The Books for the current period.",
+    "name": "rooms_otb__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient consortia rooms On The Books for the current period.",
+    "name": "rooms_otb__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient government rooms On The Books for the current period.",
+    "name": "rooms_otb__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient negotiated rooms On The Books for the current period.",
+    "name": "rooms_otb__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient opaque rooms On The Books for the current period.",
+    "name": "rooms_otb__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient package rooms On The Books for the current period.",
+    "name": "rooms_otb__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient packages rooms On The Books for the current period.",
+    "name": "rooms_otb__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient promotion rooms On The Books for the current period.",
+    "name": "rooms_otb__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient qualified rooms On The Books for the current period.",
+    "name": "rooms_otb__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient retail rooms On The Books for the current period.",
+    "name": "rooms_otb__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient unqualified rooms On The Books for the current period.",
+    "name": "rooms_otb__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of complimentary rooms for the same time last year.",
+    "name": "rooms_stly__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group association rooms for the same time last year.",
+    "name": "rooms_stly__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group citywide rooms for the same time last year.",
+    "name": "rooms_stly__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group corporate rooms for the same time last year.",
+    "name": "rooms_stly__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group entertainment rooms for the same time last year.",
+    "name": "rooms_stly__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group government rooms for the same time last year.",
+    "name": "rooms_stly__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group SMERF rooms for the same time last year.",
+    "name": "rooms_stly__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group social rooms for the same time last year.",
+    "name": "rooms_stly__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group tour rooms for the same time last year.",
+    "name": "rooms_stly__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group wedding rooms for the same time last year.",
+    "name": "rooms_stly__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient consortia rooms for the same time last year.",
+    "name": "rooms_stly__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient government rooms for the same time last year.",
+    "name": "rooms_stly__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient negotiated rooms for the same time last year.",
+    "name": "rooms_stly__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient opaque rooms for the same time last year.",
+    "name": "rooms_stly__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient package rooms for the same time last year.",
+    "name": "rooms_stly__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient packages rooms for the same time last year.",
+    "name": "rooms_stly__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient promotion rooms for the same time last year.",
+    "name": "rooms_stly__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient qualified rooms for the same time last year.",
+    "name": "rooms_stly__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient retail rooms for the same time last year.",
+    "name": "rooms_stly__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient unqualified rooms for the same time last year.",
+    "name": "rooms_stly__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of complimentary rooms for the same time two years ago.",
+    "name": "rooms_st2y__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group association rooms for the same time two years ago.",
+    "name": "rooms_st2y__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group citywide rooms for the same time two years ago.",
+    "name": "rooms_st2y__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group corporate rooms for the same time two years ago.",
+    "name": "rooms_st2y__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group entertainment rooms for the same time two years ago.",
+    "name": "rooms_st2y__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group government rooms for the same time two years ago.",
+    "name": "rooms_st2y__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group SMERF rooms for the same time two years ago.",
+    "name": "rooms_st2y__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group social rooms for the same time two years ago.",
+    "name": "rooms_st2y__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group tour rooms for the same time two years ago.",
+    "name": "rooms_st2y__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of group wedding rooms for the same time two years ago.",
+    "name": "rooms_st2y__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient consortia rooms for the same time two years ago.",
+    "name": "rooms_st2y__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient government rooms for the same time two years ago.",
+    "name": "rooms_st2y__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient negotiated rooms for the same time two years ago.",
+    "name": "rooms_st2y__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient opaque rooms for the same time two years ago.",
+    "name": "rooms_st2y__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient package rooms for the same time two years ago.",
+    "name": "rooms_st2y__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient packages rooms for the same time two years ago.",
+    "name": "rooms_st2y__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient promotion rooms for the same time two years ago.",
+    "name": "rooms_st2y__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient qualified rooms for the same time two years ago.",
+    "name": "rooms_st2y__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient retail rooms for the same time two years ago.",
+    "name": "rooms_st2y__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of transient unqualified rooms for the same time two years ago.",
+    "name": "rooms_st2y__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of complimentary rooms from last year.",
+    "name": "rooms_ly_actual__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of group association rooms from last year.",
+    "name": "rooms_ly_actual__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of group citywide rooms from last year.",
+    "name": "rooms_ly_actual__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of group corporate rooms from last year.",
+    "name": "rooms_ly_actual__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of group entertainment rooms from last year.",
+    "name": "rooms_ly_actual__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of group government rooms from last year.",
+    "name": "rooms_ly_actual__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of group SMERF rooms from last year.",
+    "name": "rooms_ly_actual__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of group social rooms from last year.",
+    "name": "rooms_ly_actual__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of group tour rooms from last year.",
+    "name": "rooms_ly_actual__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of group wedding rooms from last year.",
+    "name": "rooms_ly_actual__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of transient consortia rooms from last year.",
+    "name": "rooms_ly_actual__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of transient government rooms from last year.",
+    "name": "rooms_ly_actual__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of transient negotiated rooms from last year.",
+    "name": "rooms_ly_actual__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of transient opaque rooms from last year.",
+    "name": "rooms_ly_actual__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of transient package rooms from last year.",
+    "name": "rooms_ly_actual__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of transient packages rooms from last year.",
+    "name": "rooms_ly_actual__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of transient promotion rooms from last year.",
+    "name": "rooms_ly_actual__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of transient qualified rooms from last year.",
+    "name": "rooms_ly_actual__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of transient retail rooms from last year.",
+    "name": "rooms_ly_actual__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of transient unqualified rooms from last year.",
+    "name": "rooms_ly_actual__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The revenue from complimentary rooms On The Books for the current period.",
+    "name": "rev_otb__complimentary",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group association rooms On The Books for the current period.",
+    "name": "rev_otb__group_association",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group citywide rooms On The Books for the current period.",
+    "name": "rev_otb__group_citywide",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group corporate rooms On The Books for the current period.",
+    "name": "rev_otb__group_corporate",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group entertainment rooms On The Books for the current period.",
+    "name": "rev_otb__group_entertainment",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group government rooms On The Books for the current period.",
+    "name": "rev_otb__group_government",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group SMERF rooms On The Books for the current period.",
+    "name": "rev_otb__group_smerf",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group social rooms On The Books for the current period.",
+    "name": "rev_otb__group_social",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group tour rooms On The Books for the current period.",
+    "name": "rev_otb__group_tour",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group wedding rooms On The Books for the current period.",
+    "name": "rev_otb__group_wedding",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient consortia rooms On The Books for the current period.",
+    "name": "rev_otb__transient_consortia",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient government rooms On The Books for the current period.",
+    "name": "rev_otb__transient_government",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient negotiated rooms On The Books for the current period.",
+    "name": "rev_otb__transient_negotiated",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient opaque rooms On The Books for the current period.",
+    "name": "rev_otb__transient_opaque",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient package rooms On The Books for the current period.",
+    "name": "rev_otb__transient_package",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient packages rooms On The Books for the current period.",
+    "name": "rev_otb__transient_packages",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient promotion rooms On The Books for the current period.",
+    "name": "rev_otb__transient_promotion",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient qualified rooms On The Books for the current period.",
+    "name": "rev_otb__transient_qualified",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient retail rooms On The Books for the current period.",
+    "name": "rev_otb__transient_retail",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient unqualified rooms On The Books for the current period.",
+    "name": "rev_otb__transient_unqualified",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from complimentary rooms for the same time last year.",
+    "name": "rev_stly__complimentary",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group association rooms for the same time last year.",
+    "name": "rev_stly__group_association",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group citywide rooms for the same time last year.",
+    "name": "rev_stly__group_citywide",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group corporate rooms for the same time last year.",
+    "name": "rev_stly__group_corporate",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group entertainment rooms for the same time last year.",
+    "name": "rev_stly__group_entertainment",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group government rooms for the same time last year.",
+    "name": "rev_stly__group_government",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group SMERF rooms for the same time last year.",
+    "name": "rev_stly__group_smerf",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group social rooms for the same time last year.",
+    "name": "rev_stly__group_social",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group tour rooms for the same time last year.",
+    "name": "rev_stly__group_tour",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group wedding rooms for the same time last year.",
+    "name": "rev_stly__group_wedding",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient consortia rooms for the same time last year.",
+    "name": "rev_stly__transient_consortia",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient government rooms for the same time last year.",
+    "name": "rev_stly__transient_government",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient negotiated rooms for the same time last year.",
+    "name": "rev_stly__transient_negotiated",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient opaque rooms for the same time last year.",
+    "name": "rev_stly__transient_opaque",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient package rooms for the same time last year.",
+    "name": "rev_stly__transient_package",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient packages rooms for the same time last year.",
+    "name": "rev_stly__transient_packages",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient promotion rooms for the same time last year.",
+    "name": "rev_stly__transient_promotion",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient qualified rooms for the same time last year.",
+    "name": "rev_stly__transient_qualified",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient retail rooms for the same time last year.",
+    "name": "rev_stly__transient_retail",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient unqualified rooms for the same time last year.",
+    "name": "rev_stly__transient_unqualified",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from complimentary rooms for the same time two years ago.",
+    "name": "rev_st2y__complimentary",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group association rooms for the same time two years ago.",
+    "name": "rev_st2y__group_association",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group citywide rooms for the same time two years ago.",
+    "name": "rev_st2y__group_citywide",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group corporate rooms for the same time two years ago.",
+    "name": "rev_st2y__group_corporate",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group entertainment rooms for the same time two years ago.",
+    "name": "rev_st2y__group_entertainment",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group government rooms for the same time two years ago.",
+    "name": "rev_st2y__group_government",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group SMERF rooms for the same time two years ago.",
+    "name": "rev_st2y__group_smerf",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group social rooms for the same time two years ago.",
+    "name": "rev_st2y__group_social",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group tour rooms for the same time two years ago.",
+    "name": "rev_st2y__group_tour",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from group wedding rooms for the same time two years ago.",
+    "name": "rev_st2y__group_wedding",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient consortia rooms for the same time two years ago.",
+    "name": "rev_st2y__transient_consortia",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient government rooms for the same time two years ago.",
+    "name": "rev_st2y__transient_government",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient negotiated rooms for the same time two years ago.",
+    "name": "rev_st2y__transient_negotiated",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient opaque rooms for the same time two years ago.",
+    "name": "rev_st2y__transient_opaque",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient package rooms for the same time two years ago.",
+    "name": "rev_st2y__transient_package",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient packages rooms for the same time two years ago.",
+    "name": "rev_st2y__transient_packages",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient promotion rooms for the same time two years ago.",
+    "name": "rev_st2y__transient_promotion",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient qualified rooms for the same time two years ago.",
+    "name": "rev_st2y__transient_qualified",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient retail rooms for the same time two years ago.",
+    "name": "rev_st2y__transient_retail",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue from transient unqualified rooms for the same time two years ago.",
+    "name": "rev_st2y__transient_unqualified",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from complimentary rooms from last year.",
+    "name": "rev_ly_actual__complimentary",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from group association rooms from last year.",
+    "name": "rev_ly_actual__group_association",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from group citywide rooms from last year.",
+    "name": "rev_ly_actual__group_citywide",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from group corporate rooms from last year.",
+    "name": "rev_ly_actual__group_corporate",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from group entertainment rooms from last year.",
+    "name": "rev_ly_actual__group_entertainment",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from group government rooms from last year.",
+    "name": "rev_ly_actual__group_government",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from group SMERF rooms from last year.",
+    "name": "rev_ly_actual__group_smerf",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from group social rooms from last year.",
+    "name": "rev_ly_actual__group_social",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from group tour rooms from last year.",
+    "name": "rev_ly_actual__group_tour",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from group wedding rooms from last year.",
+    "name": "rev_ly_actual__group_wedding",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from transient consortia rooms from last year.",
+    "name": "rev_ly_actual__transient_consortia",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from transient government rooms from last year.",
+    "name": "rev_ly_actual__transient_government",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from transient negotiated rooms from last year.",
+    "name": "rev_ly_actual__transient_negotiated",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from transient opaque rooms from last year.",
+    "name": "rev_ly_actual__transient_opaque",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from transient package rooms from last year.",
+    "name": "rev_ly_actual__transient_package",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from transient packages rooms from last year.",
+    "name": "rev_ly_actual__transient_packages",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from transient promotion rooms from last year.",
+    "name": "rev_ly_actual__transient_promotion",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from transient qualified rooms from last year.",
+    "name": "rev_ly_actual__transient_qualified",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from transient retail rooms from last year.",
+    "name": "rev_ly_actual__transient_retail",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue from transient unqualified rooms from last year.",
+    "name": "rev_ly_actual__transient_unqualified",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for complimentary rooms.",
+    "name": "rms_rooms_forecast__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for group association rooms.",
+    "name": "rms_rooms_forecast__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for group citywide rooms.",
+    "name": "rms_rooms_forecast__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for group corporate rooms.",
+    "name": "rms_rooms_forecast__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for group entertainment rooms.",
+    "name": "rms_rooms_forecast__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for group government rooms.",
+    "name": "rms_rooms_forecast__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for group SMERF rooms.",
+    "name": "rms_rooms_forecast__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for group social rooms.",
+    "name": "rms_rooms_forecast__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for group tour rooms.",
+    "name": "rms_rooms_forecast__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for group wedding rooms.",
+    "name": "rms_rooms_forecast__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for transient consortia rooms.",
+    "name": "rms_rooms_forecast__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for transient government rooms.",
+    "name": "rms_rooms_forecast__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for transient negotiated rooms.",
+    "name": "rms_rooms_forecast__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for transient opaque rooms.",
+    "name": "rms_rooms_forecast__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for transient package rooms.",
+    "name": "rms_rooms_forecast__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for transient packages rooms.",
+    "name": "rms_rooms_forecast__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for transient promotion rooms.",
+    "name": "rms_rooms_forecast__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for transient qualified rooms.",
+    "name": "rms_rooms_forecast__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for transient retail rooms.",
+    "name": "rms_rooms_forecast__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for transient unqualified rooms.",
+    "name": "rms_rooms_forecast__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The RMS forecast for revenue from complimentary rooms.",
+    "name": "rms_rev_forecast__complimentary",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from group association rooms.",
+    "name": "rms_rev_forecast__group_association",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from group citywide rooms.",
+    "name": "rms_rev_forecast__group_citywide",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from group corporate rooms.",
+    "name": "rms_rev_forecast__group_corporate",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from group entertainment rooms.",
+    "name": "rms_rev_forecast__group_entertainment",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from group government rooms.",
+    "name": "rms_rev_forecast__group_government",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from group SMERF rooms.",
+    "name": "rms_rev_forecast__group_smerf",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from group social rooms.",
+    "name": "rms_rev_forecast__group_social",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from group tour rooms.",
+    "name": "rms_rev_forecast__group_tour",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from group wedding rooms.",
+    "name": "rms_rev_forecast__group_wedding",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from transient consortia rooms.",
+    "name": "rms_rev_forecast__transient_consortia",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from transient government rooms.",
+    "name": "rms_rev_forecast__transient_government",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from transient negotiated rooms.",
+    "name": "rms_rev_forecast__transient_negotiated",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from transient opaque rooms.",
+    "name": "rms_rev_forecast__transient_opaque",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from transient package rooms.",
+    "name": "rms_rev_forecast__transient_package",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from transient packages rooms.",
+    "name": "rms_rev_forecast__transient_packages",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from transient promotion rooms.",
+    "name": "rms_rev_forecast__transient_promotion",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from transient qualified rooms.",
+    "name": "rms_rev_forecast__transient_qualified",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from transient retail rooms.",
+    "name": "rms_rev_forecast__transient_retail",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The RMS forecast for revenue from transient unqualified rooms.",
+    "name": "rms_rev_forecast__transient_unqualified",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for complimentary rooms.",
+    "name": "rooms_forecast__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for group association rooms.",
+    "name": "rooms_forecast__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for group citywide rooms.",
+    "name": "rooms_forecast__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for group corporate rooms.",
+    "name": "rooms_forecast__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for group entertainment rooms.",
+    "name": "rooms_forecast__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for group government rooms.",
+    "name": "rooms_forecast__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for group SMERF rooms.",
+    "name": "rooms_forecast__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for group social rooms.",
+    "name": "rooms_forecast__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for group tour rooms.",
+    "name": "rooms_forecast__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for group wedding rooms.",
+    "name": "rooms_forecast__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for transient consortia rooms.",
+    "name": "rooms_forecast__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for transient government rooms.",
+    "name": "rooms_forecast__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for transient negotiated rooms.",
+    "name": "rooms_forecast__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for transient opaque rooms.",
+    "name": "rooms_forecast__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for transient package rooms.",
+    "name": "rooms_forecast__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for transient packages rooms.",
+    "name": "rooms_forecast__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for transient promotion rooms.",
+    "name": "rooms_forecast__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for transient qualified rooms.",
+    "name": "rooms_forecast__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for transient retail rooms.",
+    "name": "rooms_forecast__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for transient unqualified rooms.",
+    "name": "rooms_forecast__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecast for revenue from complimentary rooms.",
+    "name": "rev_forecast__complimentary",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from group association rooms.",
+    "name": "rev_forecast__group_association",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from group citywide rooms.",
+    "name": "rev_forecast__group_citywide",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from group corporate rooms.",
+    "name": "rev_forecast__group_corporate",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from group entertainment rooms.",
+    "name": "rev_forecast__group_entertainment",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from group government rooms.",
+    "name": "rev_forecast__group_government",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from group SMERF rooms.",
+    "name": "rev_forecast__group_smerf",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from group social rooms.",
+    "name": "rev_forecast__group_social",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from group tour rooms.",
+    "name": "rev_forecast__group_tour",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from group wedding rooms.",
+    "name": "rev_forecast__group_wedding",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from transient consortia rooms.",
+    "name": "rev_forecast__transient_consortia",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from transient government rooms.",
+    "name": "rev_forecast__transient_government",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from transient negotiated rooms.",
+    "name": "rev_forecast__transient_negotiated",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from transient opaque rooms.",
+    "name": "rev_forecast__transient_opaque",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from transient package rooms.",
+    "name": "rev_forecast__transient_package",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from transient packages rooms.",
+    "name": "rev_forecast__transient_packages",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from transient promotion rooms.",
+    "name": "rev_forecast__transient_promotion",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from transient qualified rooms.",
+    "name": "rev_forecast__transient_qualified",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from transient retail rooms.",
+    "name": "rev_forecast__transient_retail",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecast for revenue from transient unqualified rooms.",
+    "name": "rev_forecast__transient_unqualified",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted number of complimentary rooms.",
+    "name": "rooms_budget__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of group association rooms.",
+    "name": "rooms_budget__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of group citywide rooms.",
+    "name": "rooms_budget__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of group corporate rooms.",
+    "name": "rooms_budget__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of group entertainment rooms.",
+    "name": "rooms_budget__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of group government rooms.",
+    "name": "rooms_budget__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of group SMERF rooms.",
+    "name": "rooms_budget__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of group social rooms.",
+    "name": "rooms_budget__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of group tour rooms.",
+    "name": "rooms_budget__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of group wedding rooms.",
+    "name": "rooms_budget__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of transient consortia rooms.",
+    "name": "rooms_budget__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of transient government rooms.",
+    "name": "rooms_budget__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of transient negotiated rooms.",
+    "name": "rooms_budget__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of transient opaque rooms.",
+    "name": "rooms_budget__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of transient package rooms.",
+    "name": "rooms_budget__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of transient packages rooms.",
+    "name": "rooms_budget__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of transient promotion rooms.",
+    "name": "rooms_budget__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of transient qualified rooms.",
+    "name": "rooms_budget__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of transient retail rooms.",
+    "name": "rooms_budget__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of transient unqualified rooms.",
+    "name": "rooms_budget__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted revenue from complimentary rooms.",
+    "name": "rev_budget__complimentary",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from group association rooms.",
+    "name": "rev_budget__group_association",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from group citywide rooms.",
+    "name": "rev_budget__group_citywide",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from group corporate rooms.",
+    "name": "rev_budget__group_corporate",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from group entertainment rooms.",
+    "name": "rev_budget__group_entertainment",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from group government rooms.",
+    "name": "rev_budget__group_government",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from group SMERF rooms.",
+    "name": "rev_budget__group_smerf",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from group social rooms.",
+    "name": "rev_budget__group_social",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from group tour rooms.",
+    "name": "rev_budget__group_tour",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from group wedding rooms.",
+    "name": "rev_budget__group_wedding",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from transient consortia rooms.",
+    "name": "rev_budget__transient_consortia",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from transient government rooms.",
+    "name": "rev_budget__transient_government",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from transient negotiated rooms.",
+    "name": "rev_budget__transient_negotiated",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from transient opaque rooms.",
+    "name": "rev_budget__transient_opaque",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from transient package rooms.",
+    "name": "rev_budget__transient_package",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from transient packages rooms.",
+    "name": "rev_budget__transient_packages",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from transient promotion rooms.",
+    "name": "rev_budget__transient_promotion",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from transient qualified rooms.",
+    "name": "rev_budget__transient_qualified",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from transient retail rooms.",
+    "name": "rev_budget__transient_retail",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted revenue from transient unqualified rooms.",
+    "name": "rev_budget__transient_unqualified",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The number of cancelled complimentary rooms.",
+    "name": "cancelled_rooms__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled group association rooms.",
+    "name": "cancelled_rooms__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled group citywide rooms.",
+    "name": "cancelled_rooms__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled group corporate rooms.",
+    "name": "cancelled_rooms__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled group entertainment rooms.",
+    "name": "cancelled_rooms__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled group government rooms.",
+    "name": "cancelled_rooms__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled group SMERF rooms.",
+    "name": "cancelled_rooms__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled group social rooms.",
+    "name": "cancelled_rooms__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled group tour rooms.",
+    "name": "cancelled_rooms__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled group wedding rooms.",
+    "name": "cancelled_rooms__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled transient consortia rooms.",
+    "name": "cancelled_rooms__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled transient government rooms.",
+    "name": "cancelled_rooms__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled transient negotiated rooms.",
+    "name": "cancelled_rooms__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled transient opaque rooms.",
+    "name": "cancelled_rooms__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled transient package rooms.",
+    "name": "cancelled_rooms__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled transient packages rooms.",
+    "name": "cancelled_rooms__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled transient promotion rooms.",
+    "name": "cancelled_rooms__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled transient qualified rooms.",
+    "name": "cancelled_rooms__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled transient retail rooms.",
+    "name": "cancelled_rooms__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of cancelled transient unqualified rooms.",
+    "name": "cancelled_rooms__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled complimentary rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled group association rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled group citywide rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled group corporate rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled group entertainment rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled group government rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled group SMERF rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled group social rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled group tour rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled group wedding rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled transient consortia rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled transient government rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled transient negotiated rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled transient opaque rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled transient package rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled transient packages rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled transient promotion rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled transient qualified rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled transient retail rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled transient unqualified rooms from last year.",
+    "name": "cancelled_rooms_ly_actual__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show complimentary rooms.",
+    "name": "noshow_rooms__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show group association rooms.",
+    "name": "noshow_rooms__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show group citywide rooms.",
+    "name": "noshow_rooms__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show group corporate rooms.",
+    "name": "noshow_rooms__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show group entertainment rooms.",
+    "name": "noshow_rooms__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show group government rooms.",
+    "name": "noshow_rooms__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show group SMERF rooms.",
+    "name": "noshow_rooms__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show group social rooms.",
+    "name": "noshow_rooms__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show group tour rooms.",
+    "name": "noshow_rooms__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show group wedding rooms.",
+    "name": "noshow_rooms__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show transient consortia rooms.",
+    "name": "noshow_rooms__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show transient government rooms.",
+    "name": "noshow_rooms__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show transient negotiated rooms.",
+    "name": "noshow_rooms__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show transient opaque rooms.",
+    "name": "noshow_rooms__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show transient package rooms.",
+    "name": "noshow_rooms__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show transient packages rooms.",
+    "name": "noshow_rooms__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show transient promotion rooms.",
+    "name": "noshow_rooms__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show transient qualified rooms.",
+    "name": "noshow_rooms__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show transient retail rooms.",
+    "name": "noshow_rooms__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show transient unqualified rooms.",
+    "name": "noshow_rooms__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show complimentary rooms from last year.",
+    "name": "noshow_rooms_ly_actual__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show group association rooms from last year.",
+    "name": "noshow_rooms_ly_actual__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show group citywide rooms from last year.",
+    "name": "noshow_rooms_ly_actual__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show group corporate rooms from last year.",
+    "name": "noshow_rooms_ly_actual__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show group entertainment rooms from last year.",
+    "name": "noshow_rooms_ly_actual__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show group government rooms from last year.",
+    "name": "noshow_rooms_ly_actual__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show group SMERF rooms from last year.",
+    "name": "noshow_rooms_ly_actual__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show group social rooms from last year.",
+    "name": "noshow_rooms_ly_actual__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show group tour rooms from last year.",
+    "name": "noshow_rooms_ly_actual__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show group wedding rooms from last year.",
+    "name": "noshow_rooms_ly_actual__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show transient consortia rooms from last year.",
+    "name": "noshow_rooms_ly_actual__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show transient government rooms from last year.",
+    "name": "noshow_rooms_ly_actual__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show transient negotiated rooms from last year.",
+    "name": "noshow_rooms_ly_actual__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show transient opaque rooms from last year.",
+    "name": "noshow_rooms_ly_actual__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show transient package rooms from last year.",
+    "name": "noshow_rooms_ly_actual__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show transient packages rooms from last year.",
+    "name": "noshow_rooms_ly_actual__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show transient promotion rooms from last year.",
+    "name": "noshow_rooms_ly_actual__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show transient qualified rooms from last year.",
+    "name": "noshow_rooms_ly_actual__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show transient retail rooms from last year.",
+    "name": "noshow_rooms_ly_actual__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show transient unqualified rooms from last year.",
+    "name": "noshow_rooms_ly_actual__transient_unqualified",
+    "type": "INTEGER"
+  }
+]

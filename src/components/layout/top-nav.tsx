@@ -33,8 +33,13 @@ export function TopNav({ className, links, ...props }: TopNavProps) {
             {links.map(({ title, href, isActive, disabled, className }) => (
               <DropdownMenuItem key={`${title}-${href}`} asChild>
                 <Link href={href}
-                  className={cn(!isActive ? 'text-muted-foreground' : '', className)}
-                  disabled={disabled}
+                  className={cn(
+                    !isActive ? 'text-muted-foreground' : '',
+                    disabled && 'pointer-events-none opacity-50',
+                    className
+                  )}
+                  aria-disabled={disabled}
+                  tabIndex={disabled ? -1 : undefined}
                   data-state={isActive ? 'on' : 'off'}
                 >
                   {title}
@@ -55,9 +60,14 @@ export function TopNav({ className, links, ...props }: TopNavProps) {
         {links.map(({ title, href, isActive, disabled, className }) => (
           <Link key={`${title}-${href}`}
             href={href}
-            disabled={disabled}
+            aria-disabled={disabled}
+            tabIndex={disabled ? -1 : undefined}
             data-state={isActive ? 'on' : 'off'}
-            className={cn(`text-sm font-medium transition-colors hover:text-primary ${isActive ? '' : 'text-muted-foreground'}`, className)}
+            className={cn(
+              `text-sm font-medium transition-colors hover:text-primary ${isActive ? '' : 'text-muted-foreground'}`,
+              disabled && 'pointer-events-none opacity-50',
+              className
+            )}
           >
             {title}
           </Link>

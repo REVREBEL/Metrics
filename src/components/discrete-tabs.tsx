@@ -121,7 +121,6 @@ function Button({
 
   useEffect(() => {
     if (isActive && isLoaded) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShowShine(true);
       const timer = setTimeout(() => setShowShine(false), 800);
       return () => clearTimeout(timer);

@@ -1,0 +1,104 @@
+[
+  {
+    "description": "The app's versionName (Android) or short bundle version (iOS).",
+    "mode": "NULLABLE",
+    "name": "appVersion",
+    "type": "STRING"
+  },
+  {
+    "description": "The browsers used to view your website.",
+    "mode": "NULLABLE",
+    "name": "browser",
+    "type": "STRING"
+  },
+  {
+    "description": "The type of device: Desktop, Tablet, or Mobile.",
+    "mode": "NULLABLE",
+    "name": "deviceCategory",
+    "type": "STRING"
+  },
+  {
+    "description": "The operating systems used by visitors to your app or website. Includes desktop and mobile operating systems such as Windows and Android.",
+    "mode": "NULLABLE",
+    "name": "operatingSystem",
+    "type": "STRING"
+  },
+  {
+    "description": "The operating system versions used by visitors to your website or app. For example, Android 10's version is 10, and iOS 13.5.1's version is 13.5.1.",
+    "mode": "NULLABLE",
+    "name": "operatingSystemVersion",
+    "type": "STRING"
+  },
+  {
+    "description": "The operating system and version. For example, Android 10 or Windows 7.",
+    "mode": "NULLABLE",
+    "name": "operatingSystemWithVersion",
+    "type": "STRING"
+  },
+  {
+    "description": "The platform on which your app or website ran; for example, web, iOS, or Android. To determine a stream's type in a report, use both platform and streamId.",
+    "mode": "NULLABLE",
+    "name": "platform",
+    "type": "STRING"
+  },
+  {
+    "description": "The platform and type of device on which your website or mobile app ran. (example: Android / mobile)",
+    "mode": "NULLABLE",
+    "name": "platformDeviceCategory",
+    "type": "STRING"
+  },
+  {
+    "description": "The screen resolution of the user's monitor. For example, 1920x1080.",
+    "mode": "NULLABLE",
+    "name": "screenResolution",
+    "type": "STRING"
+  },
+  {
+    "description": "The number of distinct users who visited your website or application.",
+    "mode": "NULLABLE",
+    "name": "activeUsers",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of sessions that lasted longer than 10 seconds, or had a key event, or had 2 or more screen views.",
+    "mode": "NULLABLE",
+    "name": "engagedSessions",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The percentage of engaged sessions (Engaged sessions divided by Sessions). This metric is returned as a fraction; for example, 0.7239 means 72.39% of sessions were engaged sessions.",
+    "mode": "NULLABLE",
+    "name": "engagementRate",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The count of events.",
+    "mode": "NULLABLE",
+    "name": "eventCount",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of key events that occurred.",
+    "mode": "NULLABLE",
+    "name": "keyEvents",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The number of users who interacted with your site or launched your app for the first time (event triggered: first_open or first_visit).",
+    "mode": "NULLABLE",
+    "name": "newUsers",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The sum of revenue from purchases, subscriptions, and advertising (Purchase revenue plus Subscription revenue plus Ad revenue) minus refunded transaction revenue.",
+    "mode": "NULLABLE",
+    "name": "totalRevenue",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The total amount of time (in seconds) your website or app was in the foreground of users` devices.",
+    "mode": "NULLABLE",
+    "name": "userEngagementDuration",
+    "type": "FLOAT"
+  }
+]

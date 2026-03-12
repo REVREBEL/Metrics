@@ -18,6 +18,12 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
     component: dynamic(() => import('@/widgets/CalendarHeatmap/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: widget_CalendarHeatmap_metadata
   },
+  widget_DailyPickupTable: { 
+    name: "DailyPickupTable", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/DailyPickupTable/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
   widget_MarketSegmentGroupRoomsTable: { 
     name: "MarketSegmentGroupRoomsTable", 
     type: "widget",
@@ -457,6 +463,16 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
       const m = mod as Record<string, any>;
       const componentLike = Object.keys(m).find((key) => /^[A-Z]/.test(key) && typeof m[key] === 'function');
       return m["ContextMenu"] || m.default || (componentLike ? m[componentLike] : m[Object.keys(m)[0]]);
+    })),
+    metadata: null
+  },
+  ui_date_picker: { 
+    name: "date-picker", 
+    type: "ui-primitive",
+    component: dynamic(() => import('@/components/ui/date-picker').then(mod => {
+      const m = mod as Record<string, any>;
+      const componentLike = Object.keys(m).find((key) => /^[A-Z]/.test(key) && typeof m[key] === 'function');
+      return m["DatePicker"] || m.default || (componentLike ? m[componentLike] : m[Object.keys(m)[0]]);
     })),
     metadata: null
   },

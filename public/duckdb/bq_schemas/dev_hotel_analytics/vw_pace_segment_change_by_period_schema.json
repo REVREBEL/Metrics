@@ -1,0 +1,672 @@
+[
+  {
+    "description": "The unique identifier for a specific hotel property.",
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "description": "The name of the hotel property.",
+    "name": "property_name",
+    "type": "STRING"
+  },
+  {
+    "description": "The date for which the booking or revenue data is recorded.",
+    "name": "stay_date",
+    "type": "DATE"
+  },
+  {
+    "description": "The general category or group to which a booking belongs.",
+    "name": "segment",
+    "type": "STRING"
+  },
+  {
+    "description": "The date when the data snapshot was taken.",
+    "name": "snapshot_date",
+    "type": "DATE"
+  },
+  {
+    "description": "The unique code for the booking segment.",
+    "name": "segment_code",
+    "type": "STRING"
+  },
+  {
+    "description": "The broader grouping for the booking segment.",
+    "name": "segment_group",
+    "type": "STRING"
+  },
+  {
+    "description": "The unique code for the segment group.",
+    "name": "segment_group_code",
+    "type": "STRING"
+  },
+  {
+    "description": "The financial classification of the booking segment.",
+    "name": "finance_segment",
+    "type": "STRING"
+  },
+  {
+    "description": "A numerical value used for sorting the segments.",
+    "name": "segment_sort",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of rooms \"on the books\" or currently booked.",
+    "name": "rooms_otb",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of rooms booked for the same time last year.",
+    "name": "rooms_stly",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of rooms booked for the same time two years ago.",
+    "name": "rooms_st2y",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of rooms booked for the same period last year.",
+    "name": "rooms_ly_actual",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The projected number of rooms expected to be booked.",
+    "name": "rooms_forecast",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The revenue \"on the books\" or currently booked.",
+    "name": "rev_otb",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue booked for the same time last year.",
+    "name": "rev_stly",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue booked for the same time two years ago.",
+    "name": "rev_st2y",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue for the same period last year.",
+    "name": "rev_ly_actual",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The projected revenue expected.",
+    "name": "rev_forecast",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The number of rooms that have been cancelled.",
+    "name": "cancelled_rooms",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled rooms for the same period last year.",
+    "name": "cancelled_rooms_ly_actual",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted number of rooms.",
+    "name": "rooms_budget",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted revenue.",
+    "name": "rev_budget",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The number of rooms for which guests did not arrive.",
+    "name": "noshow_rooms",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show rooms for the same period last year.",
+    "name": "noshow_rooms_ly_actual",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in rooms on the books over 1 day.",
+    "name": "rooms_otb_change_1_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms on the books over 3 days.",
+    "name": "rooms_otb_change_3_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms on the books over 7 days.",
+    "name": "rooms_otb_change_7_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms on the books over 14 days.",
+    "name": "rooms_otb_change_14_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms on the books over 21 days.",
+    "name": "rooms_otb_change_21_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms on the books over 30 days.",
+    "name": "rooms_otb_change_30_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms on the books over 60 days.",
+    "name": "rooms_otb_change_60_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms on the books over 90 days.",
+    "name": "rooms_otb_change_90_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms on the books over 120 days.",
+    "name": "rooms_otb_change_120_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time last year over 1 day.",
+    "name": "rooms_stly_change_1_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time last year over 3 days.",
+    "name": "rooms_stly_change_3_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time last year over 7 days.",
+    "name": "rooms_stly_change_7_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time last year over 14 days.",
+    "name": "rooms_stly_change_14_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time last year over 21 days.",
+    "name": "rooms_stly_change_21_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time last year over 30 days.",
+    "name": "rooms_stly_change_30_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time last year over 60 days.",
+    "name": "rooms_stly_change_60_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time last year over 90 days.",
+    "name": "rooms_stly_change_90_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time last year over 120 days.",
+    "name": "rooms_stly_change_120_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time two years ago over 1 day.",
+    "name": "rooms_st2y_change_1_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time two years ago over 3 days.",
+    "name": "rooms_st2y_change_3_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time two years ago over 7 days.",
+    "name": "rooms_st2y_change_7_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time two years ago over 14 days.",
+    "name": "rooms_st2y_change_14_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time two years ago over 21 days.",
+    "name": "rooms_st2y_change_21_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time two years ago over 30 days.",
+    "name": "rooms_st2y_change_30_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time two years ago over 60 days.",
+    "name": "rooms_st2y_change_60_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time two years ago over 90 days.",
+    "name": "rooms_st2y_change_90_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in rooms same time two years ago over 120 days.",
+    "name": "rooms_st2y_change_120_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual rooms last year over 1 day.",
+    "name": "rooms_ly_actual_change_1_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual rooms last year over 3 days.",
+    "name": "rooms_ly_actual_change_3_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual rooms last year over 7 days.",
+    "name": "rooms_ly_actual_change_7_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual rooms last year over 14 days.",
+    "name": "rooms_ly_actual_change_14_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual rooms last year over 21 days.",
+    "name": "rooms_ly_actual_change_21_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual rooms last year over 30 days.",
+    "name": "rooms_ly_actual_change_30_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual rooms last year over 60 days.",
+    "name": "rooms_ly_actual_change_60_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual rooms last year over 90 days.",
+    "name": "rooms_ly_actual_change_90_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual rooms last year over 120 days.",
+    "name": "rooms_ly_actual_change_120_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in forecasted rooms over 1 day.",
+    "name": "rooms_forecast_change_1_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in forecasted rooms over 3 days.",
+    "name": "rooms_forecast_change_3_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in forecasted rooms over 7 days.",
+    "name": "rooms_forecast_change_7_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in forecasted rooms over 14 days.",
+    "name": "rooms_forecast_change_14_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in forecasted rooms over 21 days.",
+    "name": "rooms_forecast_change_21_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in forecasted rooms over 30 days.",
+    "name": "rooms_forecast_change_30_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in forecasted rooms over 60 days.",
+    "name": "rooms_forecast_change_60_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in forecasted rooms over 90 days.",
+    "name": "rooms_forecast_change_90_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in forecasted rooms over 120 days.",
+    "name": "rooms_forecast_change_120_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in revenue on the books over 1 day.",
+    "name": "rev_otb_change_1_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue on the books over 3 days.",
+    "name": "rev_otb_change_3_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue on the books over 7 days.",
+    "name": "rev_otb_change_7_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue on the books over 14 days.",
+    "name": "rev_otb_change_14_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue on the books over 21 days.",
+    "name": "rev_otb_change_21_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue on the books over 30 days.",
+    "name": "rev_otb_change_30_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue on the books over 60 days.",
+    "name": "rev_otb_change_60_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue on the books over 90 days.",
+    "name": "rev_otb_change_90_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue on the books over 120 days.",
+    "name": "rev_otb_change_120_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time last year over 1 day.",
+    "name": "rev_stly_change_1_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time last year over 3 days.",
+    "name": "rev_stly_change_3_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time last year over 7 days.",
+    "name": "rev_stly_change_7_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time last year over 14 days.",
+    "name": "rev_stly_change_14_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time last year over 21 days.",
+    "name": "rev_stly_change_21_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time last year over 30 days.",
+    "name": "rev_stly_change_30_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time last year over 60 days.",
+    "name": "rev_stly_change_60_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time last year over 90 days.",
+    "name": "rev_stly_change_90_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time last year over 120 days.",
+    "name": "rev_stly_change_120_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time two years ago over 1 day.",
+    "name": "rev_st2y_change_1_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time two years ago over 3 days.",
+    "name": "rev_st2y_change_3_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time two years ago over 7 days.",
+    "name": "rev_st2y_change_7_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time two years ago over 14 days.",
+    "name": "rev_st2y_change_14_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time two years ago over 21 days.",
+    "name": "rev_st2y_change_21_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time two years ago over 30 days.",
+    "name": "rev_st2y_change_30_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time two years ago over 60 days.",
+    "name": "rev_st2y_change_60_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time two years ago over 90 days.",
+    "name": "rev_st2y_change_90_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in revenue same time two years ago over 120 days.",
+    "name": "rev_st2y_change_120_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in actual revenue last year over 1 day.",
+    "name": "rev_ly_actual_change_1_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in actual revenue last year over 3 days.",
+    "name": "rev_ly_actual_change_3_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in actual revenue last year over 7 days.",
+    "name": "rev_ly_actual_change_7_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in actual revenue last year over 14 days.",
+    "name": "rev_ly_actual_change_14_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in actual revenue last year over 21 days.",
+    "name": "rev_ly_actual_change_21_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in actual revenue last year over 30 days.",
+    "name": "rev_ly_actual_change_30_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in actual revenue last year over 60 days.",
+    "name": "rev_ly_actual_change_60_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in actual revenue last year over 90 days.",
+    "name": "rev_ly_actual_change_90_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in actual revenue last year over 120 days.",
+    "name": "rev_ly_actual_change_120_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in forecasted revenue over 1 day.",
+    "name": "rev_forecast_change_1_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in forecasted revenue over 3 days.",
+    "name": "rev_forecast_change_3_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in forecasted revenue over 7 days.",
+    "name": "rev_forecast_change_7_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in forecasted revenue over 14 days.",
+    "name": "rev_forecast_change_14_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in forecasted revenue over 21 days.",
+    "name": "rev_forecast_change_21_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in forecasted revenue over 30 days.",
+    "name": "rev_forecast_change_30_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in forecasted revenue over 60 days.",
+    "name": "rev_forecast_change_60_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in forecasted revenue over 90 days.",
+    "name": "rev_forecast_change_90_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in forecasted revenue over 120 days.",
+    "name": "rev_forecast_change_120_day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The change in cancelled rooms over 1 day.",
+    "name": "cancelled_rooms_change_1_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in cancelled rooms over 3 days.",
+    "name": "cancelled_rooms_change_3_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in cancelled rooms over 7 days.",
+    "name": "cancelled_rooms_change_7_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in cancelled rooms over 14 days.",
+    "name": "cancelled_rooms_change_14_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in cancelled rooms over 21 days.",
+    "name": "cancelled_rooms_change_21_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in cancelled rooms over 30 days.",
+    "name": "cancelled_rooms_change_30_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in cancelled rooms over 60 days.",
+    "name": "cancelled_rooms_change_60_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in cancelled rooms over 90 days.",
+    "name": "cancelled_rooms_change_90_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in cancelled rooms over 120 days.",
+    "name": "cancelled_rooms_change_120_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual cancelled rooms last year over 1 day.",
+    "name": "cancelled_rooms_ly_actual_change_1_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual cancelled rooms last year over 3 days.",
+    "name": "cancelled_rooms_ly_actual_change_3_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual cancelled rooms last year over 7 days.",
+    "name": "cancelled_rooms_ly_actual_change_7_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual cancelled rooms last year over 14 days.",
+    "name": "cancelled_rooms_ly_actual_change_14_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual cancelled rooms last year over 21 days.",
+    "name": "cancelled_rooms_ly_actual_change_21_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual cancelled rooms last year over 30 days.",
+    "name": "cancelled_rooms_ly_actual_change_30_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual cancelled rooms last year over 60 days.",
+    "name": "cancelled_rooms_ly_actual_change_60_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual cancelled rooms last year over 90 days.",
+    "name": "cancelled_rooms_ly_actual_change_90_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The change in actual cancelled rooms last year over 120 days.",
+    "name": "cancelled_rooms_ly_actual_change_120_day",
+    "type": "INTEGER"
+  }
+]

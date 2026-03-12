@@ -51,7 +51,7 @@ const topNav = [
     href: '/dashboard/demand',
     isActive: false,
     disabled: false,
-    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
+    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
   },
   {
     title: 'Website',
@@ -102,7 +102,7 @@ export default function Page() {
             <TabsTrigger value='notifications'>Notifications</TabsTrigger>
           </TabsList>
         </div>
-        <TabsContent value='overview' className='space-y-4'></TabsContent>
+        <TabsContent value='overview' className='space-y-4'>
 
         {/* ===== Main ===== */}
         <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-4'>
@@ -228,7 +228,7 @@ export default function Page() {
             </CardContent>
           </Card>
         </div>
-
+        </TabsContent>    
         <TabsContent value='analytics' className='space-y-4'>
           <Analytics />
         </TabsContent>

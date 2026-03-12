@@ -1,0 +1,5637 @@
+[
+  {
+    "name": "snapshot_date",
+    "mode": "",
+    "type": "DATE",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "stay_month",
+    "mode": "",
+    "type": "DATE",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "stay_date",
+    "mode": "",
+    "type": "DATE",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "property_code",
+    "mode": "",
+    "type": "STRING",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "property_name",
+    "mode": "",
+    "type": "STRING",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_001_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_003_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_007_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_014_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_021_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_030_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_060_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_090_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_otb_chg_120_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_001_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_003_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_007_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_014_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_021_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_030_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_060_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_090_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__complimentary",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__group_association",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__group_citywide",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__group_corporate",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__group_entertainment",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__group_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__group_smerf",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__group_social",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__group_tour",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__group_wedding",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__transient_consortia",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__transient_government",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__transient_negotiated",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__transient_opaque",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__transient_package",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__transient_packages",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__transient_promotion",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__transient_qualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__transient_retail",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rooms_stly_chg_120_day__transient_unqualified",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_001_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_003_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_007_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_014_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_021_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_030_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_060_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_090_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_otb_chg_120_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_001_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_003_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_007_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_014_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_021_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_030_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_060_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_090_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__complimentary",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__group_association",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__group_citywide",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__group_corporate",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__group_entertainment",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__group_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__group_smerf",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__group_social",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__group_tour",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__group_wedding",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__transient_consortia",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__transient_government",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__transient_negotiated",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__transient_opaque",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__transient_package",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__transient_packages",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__transient_promotion",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__transient_qualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__transient_retail",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  },
+  {
+    "name": "rev_stly_chg_120_day__transient_unqualified",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
+  }
+]

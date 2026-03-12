@@ -1,0 +1,14 @@
+[
+  {
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "name": "property_name",
+    "type": "STRING"
+  },
+  {
+    "name": "hotel_name",
+    "type": "STRING"
+  }
+]

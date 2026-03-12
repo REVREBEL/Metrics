@@ -4,12 +4,10 @@ const nextConfig: NextConfig = {
   devIndicators: false,
   typescript: {
     ignoreBuildErrors: true,
-      reactCompiler: true,
   },
   outputFileTracingIncludes: {
     "/*": ["./registry/**/*"],
   },
-  
   experimental: {
     turbopackFileSystemCacheForDev: true,
   },

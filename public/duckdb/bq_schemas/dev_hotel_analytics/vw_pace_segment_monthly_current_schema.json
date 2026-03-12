@@ -1,0 +1,1462 @@
+[
+  {
+    "name": "snapshot_date",
+    "type": "DATE"
+  },
+  {
+    "name": "stay_month",
+    "type": "DATE"
+  },
+  {
+    "name": "stay_date",
+    "type": "DATE"
+  },
+  {
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "name": "property_name",
+    "type": "STRING"
+  },
+  {
+    "name": "rooms_otb__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_otb__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rev_otb__complimentary",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__group_association",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__group_citywide",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__group_corporate",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__group_entertainment",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__group_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__group_smerf",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__group_social",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__group_tour",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__group_wedding",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__transient_consortia",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__transient_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__transient_negotiated",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__transient_opaque",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__transient_package",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__transient_packages",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__transient_promotion",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__transient_qualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__transient_retail",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_otb__transient_unqualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rooms_chg_1__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_1__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_3__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_7__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_14__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_21__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_30__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_60__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__complimentary",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__group_association",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__group_citywide",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__group_corporate",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__group_entertainment",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__group_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__group_smerf",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__group_social",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__group_tour",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__group_wedding",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__transient_consortia",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__transient_government",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__transient_negotiated",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__transient_opaque",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__transient_package",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__transient_packages",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__transient_promotion",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__transient_qualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__transient_retail",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rooms_chg_90__transient_unqualified",
+    "type": "INTEGER"
+  },
+  {
+    "name": "rev_chg_1__complimentary",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__group_association",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__group_citywide",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__group_corporate",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__group_entertainment",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__group_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__group_smerf",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__group_social",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__group_tour",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__group_wedding",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__transient_consortia",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__transient_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__transient_negotiated",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__transient_opaque",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__transient_package",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__transient_packages",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__transient_promotion",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__transient_qualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__transient_retail",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_1__transient_unqualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__complimentary",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__group_association",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__group_citywide",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__group_corporate",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__group_entertainment",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__group_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__group_smerf",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__group_social",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__group_tour",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__group_wedding",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__transient_consortia",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__transient_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__transient_negotiated",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__transient_opaque",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__transient_package",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__transient_packages",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__transient_promotion",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__transient_qualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__transient_retail",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_3__transient_unqualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__complimentary",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__group_association",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__group_citywide",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__group_corporate",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__group_entertainment",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__group_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__group_smerf",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__group_social",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__group_tour",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__group_wedding",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__transient_consortia",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__transient_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__transient_negotiated",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__transient_opaque",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__transient_package",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__transient_packages",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__transient_promotion",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__transient_qualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__transient_retail",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_7__transient_unqualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__complimentary",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__group_association",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__group_citywide",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__group_corporate",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__group_entertainment",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__group_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__group_smerf",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__group_social",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__group_tour",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__group_wedding",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__transient_consortia",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__transient_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__transient_negotiated",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__transient_opaque",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__transient_package",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__transient_packages",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__transient_promotion",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__transient_qualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__transient_retail",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_14__transient_unqualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__complimentary",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__group_association",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__group_citywide",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__group_corporate",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__group_entertainment",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__group_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__group_smerf",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__group_social",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__group_tour",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__group_wedding",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__transient_consortia",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__transient_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__transient_negotiated",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__transient_opaque",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__transient_package",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__transient_packages",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__transient_promotion",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__transient_qualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__transient_retail",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_21__transient_unqualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__complimentary",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__group_association",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__group_citywide",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__group_corporate",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__group_entertainment",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__group_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__group_smerf",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__group_social",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__group_tour",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__group_wedding",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__transient_consortia",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__transient_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__transient_negotiated",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__transient_opaque",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__transient_package",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__transient_packages",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__transient_promotion",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__transient_qualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__transient_retail",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_30__transient_unqualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__complimentary",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__group_association",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__group_citywide",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__group_corporate",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__group_entertainment",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__group_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__group_smerf",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__group_social",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__group_tour",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__group_wedding",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__transient_consortia",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__transient_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__transient_negotiated",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__transient_opaque",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__transient_package",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__transient_packages",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__transient_promotion",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__transient_qualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__transient_retail",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_60__transient_unqualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__complimentary",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__group_association",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__group_citywide",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__group_corporate",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__group_entertainment",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__group_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__group_smerf",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__group_social",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__group_tour",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__group_wedding",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__transient_consortia",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__transient_government",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__transient_negotiated",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__transient_opaque",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__transient_package",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__transient_packages",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__transient_promotion",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__transient_qualified",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__transient_retail",
+    "type": "FLOAT"
+  },
+  {
+    "name": "rev_chg_90__transient_unqualified",
+    "type": "FLOAT"
+  }
+]

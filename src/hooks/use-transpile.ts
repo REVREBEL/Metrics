@@ -11,6 +11,14 @@ export function useTranspile(code: string): TranspileResult | null {
   const errorTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const codeRef = useRef(code)
 
+  const prevCodeRef = useRef(code)
+  if (code !== prevCodeRef.current) {
+    prevCodeRef.current = code
+    if (!code.trim() && result !== null) {
+      setResult(null)
+    }
+  }
+
   useEffect(() => {
     codeRef.current = code
 
@@ -19,8 +27,6 @@ export function useTranspile(code: string): TranspileResult | null {
         clearTimeout(errorTimerRef.current)
         errorTimerRef.current = null
       }
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setResult(null)
       return
     }
 
@@ -31,7 +37,6 @@ export function useTranspile(code: string): TranspileResult | null {
         if (errorTimerRef.current) clearTimeout(errorTimerRef.current)
         errorTimerRef.current = setTimeout(() => {
           if (codeRef.current === code) {
-            // eslint-disable-next-line react-hooks/set-state-in-effect
             setResult(transpiled)
           }
         }, ERROR_GRACE_MS)
@@ -40,7 +45,6 @@ export function useTranspile(code: string): TranspileResult | null {
           clearTimeout(errorTimerRef.current)
           errorTimerRef.current = null
         }
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setResult(transpiled)
       }
     }, DEBOUNCE_MS)

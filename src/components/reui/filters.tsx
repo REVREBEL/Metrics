@@ -19,6 +19,15 @@ import {
   ButtonGroup,
   ButtonGroupText,
 } from "@/components/ui/button-group"
+
+function useSyncState(dependencies: React.DependencyList, action: () => void) {
+  const prevDepsRef = useRef<React.DependencyList>(dependencies)
+  
+  if (dependencies.some((dep, i) => dep !== prevDepsRef.current[i])) {
+    prevDepsRef.current = dependencies
+    action()
+  }
+}
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -693,10 +702,9 @@ function SelectOptionsPopover<T = unknown>({
   const context = useFilterContext()
   const baseId = useId()
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+  useSyncState([searchInput, open], () => {
     setHighlightedIndex(-1)
-  }, [searchInput, open])
+  })
 
   useEffect(() => {
     if (highlightedIndex >= 0 && open) {
@@ -1171,10 +1179,9 @@ function FilterSubmenuContent<T = unknown>({
   const inputRef = useRef<HTMLInputElement>(null)
   const baseId = useId()
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+  useSyncState([searchInput], () => {
     setHighlightedIndex(-1)
-  }, [searchInput])
+  })
 
   useEffect(() => {
     if (highlightedIndex >= 0 && isActive) {
@@ -1196,12 +1203,11 @@ function FilterSubmenuContent<T = unknown>({
     )
   }, [field.options, searchInput, currentValues])
 
-  useEffect(() => {
+  useSyncState([isActive, filteredOptions.length], () => {
     if (isActive && filteredOptions.length > 0) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setHighlightedIndex(0)
     }
-  }, [isActive, filteredOptions.length])
+  })
 
   return (
     <div className="flex flex-col" onMouseEnter={onActive}>
@@ -1407,10 +1413,9 @@ export function Filters<T = unknown>({
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [enableShortcut, shortcutKey, addFilterOpen])
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+  useSyncState([menuSearchInput], () => {
     setHighlightedIndex(-1)
-  }, [menuSearchInput])
+  })
 
   useEffect(() => {
     if (highlightedIndex >= 0 && addFilterOpen) {
@@ -1421,12 +1426,11 @@ export function Filters<T = unknown>({
     }
   }, [highlightedIndex, addFilterOpen, rootId])
 
-  useEffect(() => {
+  useSyncState([addFilterOpen], () => {
     if (!addFilterOpen) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setOpenSubMenu(null)
     }
-  }, [addFilterOpen])
+  })
 
   // Track which filter instance is being built in the current Add Filter menu session
   // Maps fieldKey -> unique filterId created during this open session
@@ -1520,12 +1524,11 @@ export function Filters<T = unknown>({
     )
   }, [selectableFields, menuSearchInput])
 
-  useEffect(() => {
+  useSyncState([addFilterOpen, filteredFields.length], () => {
     if (addFilterOpen && filteredFields.length > 0) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setHighlightedIndex(0)
     }
-  }, [addFilterOpen, filteredFields.length])
+  })
 
   return (
     <FilterContext.Provider
