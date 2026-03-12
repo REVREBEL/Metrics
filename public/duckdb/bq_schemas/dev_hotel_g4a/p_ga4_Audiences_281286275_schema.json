@@ -1,0 +1,44 @@
+[
+  {
+    "description": "The given name of an Audience. Users are reported in the audiences to which they belonged during the report's date range. Current user behavior does not affect historical audience membership in reports.",
+    "mode": "NULLABLE",
+    "name": "audienceName",
+    "type": "STRING"
+  },
+  {
+    "description": "The average duration (in seconds) of users` sessions.",
+    "mode": "NULLABLE",
+    "name": "averageSessionDuration",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The number of users who interacted with your site or launched your app for the first time (event triggered: first_open or first_visit).",
+    "mode": "NULLABLE",
+    "name": "newUsers",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of app screens or web pages your users viewed per session. Repeated views of a single page or screen are counted. (screen_view + page_view events) / sessions.",
+    "mode": "NULLABLE",
+    "name": "screenPageViewsPerSession",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The number of sessions that began on your site or app (event triggered: session_start).",
+    "mode": "NULLABLE",
+    "name": "sessions",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The sum of revenue from purchases, subscriptions, and advertising (Purchase revenue plus Subscription revenue plus Ad revenue) minus refunded transaction revenue.",
+    "mode": "NULLABLE",
+    "name": "totalRevenue",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The number of distinct users who have logged at least one event, regardless of whether the site or app was in use when that event was logged.",
+    "mode": "NULLABLE",
+    "name": "totalUsers",
+    "type": "INTEGER"
+  }
+]

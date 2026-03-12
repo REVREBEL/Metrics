@@ -1,0 +1,82 @@
+[
+  {
+    "mode": "NULLABLE",
+    "name": "snapshot_date",
+    "type": "DATETIME"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "date",
+    "type": "DATETIME"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "month",
+    "type": "DATETIME"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "segment",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "property_available_rooms",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "property_rooms_sold",
+    "type": "FLOAT"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "property_rev",
+    "type": "FLOAT"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_available_rooms",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_rooms_sold",
+    "type": "FLOAT"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_rev",
+    "type": "FLOAT"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "occ_rank",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "adr_rank",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "revpar_rank",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "adr_rank_prior_year",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "revpar_rank_prior_year",
+    "type": "INTEGER"
+  }
+]

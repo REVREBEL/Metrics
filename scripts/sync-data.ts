@@ -19,6 +19,7 @@ type SyncTarget =
   | 'pace'
   | 'pace-property'
   | 'pace-segment'
+  | 'pace-segment-pickup'
   | 'pace-roomtype'
   | 'pace-derived';
 
@@ -78,19 +79,24 @@ async function runQueryToParquet(
   const tempJsonPath = path.join(process.cwd(), `temp_${outputFilename}_bq_data.json`);
   const outputPath = resolveOutputPath(context.publicDataDir, outputFilename);
 
-  const jsonND = rows
-    .map((record) => {
+  // Stream rows one-by-one to avoid RangeError on large result sets (e.g. 90k+ pickup rows).
+  await new Promise<void>((resolve, reject) => {
+    const stream = fs.createWriteStream(tempJsonPath, { encoding: 'utf8' });
+    stream.on('error', reject);
+    stream.on('finish', resolve);
+
+    for (const record of rows) {
       const row = { ...record } as Record<string, unknown>;
       for (const key in row) {
         if (row[key] && typeof row[key] === 'object' && 'value' in row[key]) {
           row[key] = (row[key] as { value: unknown }).value;
         }
       }
-      return JSON.stringify(row);
-    })
-    .join('\n');
+      stream.write(JSON.stringify(row) + '\n');
+    }
+    stream.end();
+  });
 
-  fs.writeFileSync(tempJsonPath, jsonND);
   console.log(`Converting data to ${outputFilename} via DuckDB...`);
 
   return new Promise<void>((resolve, reject) => {
@@ -114,6 +120,8 @@ async function runQueryToParquet(
     );
   });
 }
+
+
 
 async function runLocalQueryToParquet(
   context: SyncContext,
@@ -457,6 +465,7 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
         SUM(rooms_stly) AS rooms_stly,
         SUM(rev_stly) AS rev_stly,
         SUM(rooms_ly_actual) AS rooms_ly_actual,
+        SUM(rev_ly_actual) AS rev_ly_actual,
         SUM(rooms_budget) AS rooms_budget,
         SUM(rev_budget) AS rev_budget,
         SUM(rooms_forecast) AS rooms_forecast,
@@ -537,9 +546,125 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
       await runQueryToParquet(context, getTrendPaceQuery(HOTEL_DATASET), 'dashboard_trend.parquet');
     }
 
+    // ─── Segment Pickup: Phase 1 config ────────────────────────────────────────
+    // We now sync from a single consolidated view that contains all pickup windows.
+    // The columns are named r_chg_N__segment and v_chg_N__segment for current pickup,
+    // and rooms_stly_chg_NNN_day__segment and rev_stly_chg_NNN_day__segment for STLY pickup.
+    const PICKUP_WINDOWS = [
+      { days: 1,   chg: '1',   stly_chg: '001_day' },
+      { days: 3,   chg: '3',   stly_chg: '003_day' },
+      { days: 7,   chg: '7',   stly_chg: '007_day' },
+      { days: 14,  chg: '14',  stly_chg: '014_day' },
+      { days: 21,  chg: '21',  stly_chg: '021_day' },
+      { days: 30,  chg: '30',  stly_chg: '030_day' },
+      { days: 60,  chg: '60',  stly_chg: '060_day' },
+      { days: 90,  chg: '90',  stly_chg: '090_day' },
+    ] as const;
+
+    // Segment column suffixes that exist in the consolidated pickup view
+    const PICKUP_SEGMENTS = [
+      'complimentary',
+      'group_association',
+      'group_citywide',
+      'group_corporate',
+      'group_entertainment',
+      'group_government',
+      'group_smerf',
+      'group_social',
+      'group_tour',
+      'group_wedding',
+      'transient_consortia',
+      'transient_government',
+      'transient_negotiated',
+      'transient_opaque',
+      'transient_package',
+      'transient_packages',
+      'transient_promotion',
+      'transient_qualified',
+      'transient_retail',
+      'transient_unqualified',
+    ] as const;
+
+    // ─── Phase 1: Sync the single consolidated BQ pickup view → raw parquet ────
+    async function syncSegmentPickupRaw(context: SyncContext, dataset: string) {
+      const bqQuery = `
+        SELECT *
+        FROM \`${dataset}.vw_pace_segment_change_by_period_current\`
+      `;
+      // We only have one raw parquet file now since the schema is consolidated.
+      await runQueryToParquet(context, bqQuery, 'pickup_raw.parquet');
+    }
+
+    // ─── Phase 2: DuckDB transforms single raw view → long-format parquet ─────────
+    // Reads pickup_raw.parquet, unpivots segment columns into rows,
+    // then UNION ALLs all windows into dashboard_segment_pickup.parquet.
+    async function buildSegmentPickupLongFormat(context: SyncContext) {
+      requireParquetFiles(context, ['pickup_raw.parquet']);
+
+      // Generate one SELECT block per window × segment combination.
+      const blocks: string[] = [];
+      const filePath = resolveOutputPath(context.publicDataDir, 'pickup_raw.parquet');
+      for (const w of PICKUP_WINDOWS) {
+        for (const seg of PICKUP_SEGMENTS) {
+          blocks.push(`
+            SELECT
+              property_name,
+              stay_month,
+              stay_date,
+              snapshot_date,
+              ${w.days} AS period_days,
+              '${seg}' AS segment,
+              CAST(rooms_otb__${seg} AS INTEGER)          AS rooms_otb,
+              CAST(rooms_stly__${seg} AS INTEGER)         AS rooms_stly,
+              CAST(rev_otb__${seg} AS FLOAT)              AS rev_otb,
+              CAST(rev_stly__${seg} AS FLOAT)             AS rev_stly,
+              CAST(r_chg_${w.chg}__${seg} AS INTEGER)                   AS rooms_pickup,
+              CAST(rooms_stly_chg_${w.stly_chg}__${seg} AS INTEGER)     AS rooms_stly_pickup,
+              CAST(v_chg_${w.chg}__${seg} AS FLOAT)                     AS rev_pickup,
+              CAST(rev_stly_chg_${w.stly_chg}__${seg} AS FLOAT)         AS rev_stly_pickup
+            FROM '${filePath}'`);
+        }
+      }
+
+      const combinedQuery = `
+        WITH combined AS (
+          ${blocks.join('\n          UNION ALL')}
+        )
+        SELECT
+          property_name,
+          stay_month,
+          stay_date,
+          snapshot_date,
+          period_days,
+          segment,
+          rooms_otb,
+          rooms_stly,
+          rev_otb,
+          rev_stly,
+          rooms_pickup,
+          rooms_stly_pickup,
+          rev_pickup,
+          rev_stly_pickup,
+          CASE WHEN rooms_pickup = 0 OR rooms_pickup IS NULL THEN NULL
+               ELSE rev_pickup / rooms_pickup END AS adr_pickup,
+          CASE WHEN rooms_stly_pickup = 0 OR rooms_stly_pickup IS NULL THEN NULL
+               ELSE rev_stly_pickup / rooms_stly_pickup END AS adr_stly_pickup
+        FROM combined
+        ORDER BY stay_date, period_days, segment
+      `;
+
+      await runLocalQueryToParquet(context, combinedQuery, 'dashboard_segment_pickup.parquet');
+    }
+
     async function syncSegmentPace(context: SyncContext) {
       await runQueryToParquet(context, getSegmentPaceQuery(HOTEL_DATASET), 'dashboard_segments.parquet');
+      await syncSegmentPickupRaw(context, HOTEL_DATASET);
+      await buildSegmentPickupLongFormat(context);
     }
+
+
+
+
 
     async function syncRoomtypePace(context: SyncContext) {
       await runQueryToParquet(context, getRoomtypeCurrentQuery(HOTEL_DATASET), 'dashboard_roomtypes.parquet');
@@ -657,6 +782,7 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
         'pace',
         'pace-property',
         'pace-segment',
+        'pace-segment-pickup',
         'pace-roomtype',
         'pace-derived',
       ];
@@ -689,6 +815,7 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
       } else {
         const shouldRunProperty = targets.has('pace-property');
         const shouldRunSegment = targets.has('pace-segment');
+        const shouldRunSegmentPickup = targets.has('pace-segment-pickup');
         const shouldRunRoomtype = targets.has('pace-roomtype');
         const shouldRunDerived = targets.has('pace-derived');
 
@@ -698,6 +825,10 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
         }
         if (shouldRunSegment) {
           await syncSegmentPace(context);
+        }
+        if (shouldRunSegmentPickup && !shouldRunSegment) {
+          await syncSegmentPickupRaw(context, HOTEL_DATASET);
+          await buildSegmentPickupLongFormat(context);
         }
         if (shouldRunRoomtype) {
           await syncRoomtypePace(context);

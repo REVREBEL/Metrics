@@ -1,0 +1,30 @@
+[
+  {
+    "name": "eventName",
+    "type": "STRING"
+  },
+  {
+    "name": "eventCount",
+    "type": "INTEGER"
+  },
+  {
+    "name": "eventCountPerUser",
+    "type": "FLOAT"
+  },
+  {
+    "name": "totalRevenue",
+    "type": "FLOAT"
+  },
+  {
+    "name": "totalUsers",
+    "type": "INTEGER"
+  },
+  {
+    "name": "_LATEST_DATE",
+    "type": "DATE"
+  },
+  {
+    "name": "_DATA_DATE",
+    "type": "DATE"
+  }
+]

@@ -221,7 +221,7 @@ function Variance({ value, format }: { value: number; format: ValueFormat }) {
 
 function TooltipMetricRow({ label, booked, remaining }: TooltipRow) {
   return (
-    <div className="flex items-baseline justify-between gap-6 text-sm text-[var(--primary)]">
+    <div className="flex items-baseline justify-between gap-6 text-sm text-[color:var(--primary)]">
       <span className="shrink-0 font-display font-bold uppercase">{label}</span>
       <span className="text-right font-serif">
         {booked} OTB <span className="mx-2 opacity-50">|</span> {remaining} Left to Book
@@ -242,7 +242,7 @@ function DonutTooltip({ active, payload }: TooltipContentProps<number, string>) 
 
   return (
     <div className="relative z-[60] min-w-64 rounded-lg border border-[var(--border)] bg-[var(--card)] px-4 py-3 shadow-lg">
-      <p className="mb-3 text-left font-display text-md font-bold uppercase text-[var(--primary)]">
+      <p className="mb-3 text-left font-display text-md font-bold uppercase text-[color:var(--primary)]">
         {ring.tooltipTitle}
       </p>
       <div className="flex flex-col gap-2">
@@ -266,7 +266,7 @@ function BarTooltip({ active, payload }: TooltipContentProps<number, string>) {
 
   return (
     <div className="relative z-[60] min-w-72 rounded-lg border border-[var(--border)] bg-[var(--card)] px-4 py-3 shadow-lg">
-      <p className="mb-3 text-left font-display text-md font-bold uppercase text-[var(--primary)]">
+      <p className="mb-3 text-left font-display text-md font-bold uppercase text-[color:var(--primary)]">
         {datum.dateLabel}
       </p>
       <div className="flex flex-col gap-2">
@@ -490,32 +490,32 @@ export default function HospitalityDashboard({ year, month }: { year: string; mo
         <div className="flex flex-col justify-between gap-8">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <p className="font-display text-2xl font-bold uppercase text-[var(--primary)]">{topLeft.label}</p>
-              <p className="font-serif text-4xl text-[var(--primary)]">{formatValue(topLeft.value, topLeft.format)}</p>
+              <p className="font-display text-2xl font-bold uppercase text-[color:var(--primary)]">{topLeft.label}</p>
+              <p className="font-serif text-4xl text-[color:var(--primary)]">{formatValue(topLeft.value, topLeft.format)}</p>
               <Variance value={topLeft.variance} format={topLeft.format} />
             </div>
             <div>
-              <p className="font-display text-2xl font-bold uppercase text-[var(--primary)]">{topRight.label}</p>
-              <p className="font-serif text-4xl text-[var(--primary)]">{formatValue(topRight.value, topRight.format)}</p>
+              <p className="font-display text-2xl font-bold uppercase text-[color:var(--primary)]">{topRight.label}</p>
+              <p className="font-serif text-4xl text-[color:var(--primary)]">{formatValue(topRight.value, topRight.format)}</p>
               <Variance value={topRight.variance} format={topRight.format} />
             </div>
           </div>
 
           <div>
-            <p className="font-display text-7xl font-bold tracking-tighter uppercase text-[var(--primary)]">{cardState.heroMetric.label}</p>
-            <p className="mt-2 font-serif text-6xl font-medium text-[var(--primary)]">{formatValue(cardState.heroMetric.value, "currency")}</p>
+            <p className="font-display text-7xl font-bold tracking-tighter uppercase text-[color:var(--primary)]">{cardState.heroMetric.label}</p>
+            <p className="mt-2 font-serif text-6xl font-medium text-[color:var(--primary)]">{formatValue(cardState.heroMetric.value, "currency")}</p>
             <Variance value={cardState.heroMetric.variance} format="currency" />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <p className="font-display text-2xl font-bold uppercase text-[var(--primary)]">{bottomLeft.label}</p>
-              <p className="font-serif text-4xl text-[var(--primary)]">{formatValue(bottomLeft.value, bottomLeft.format)}</p>
+              <p className="font-display text-2xl font-bold uppercase text-[color:var(--primary)]">{bottomLeft.label}</p>
+              <p className="font-serif text-4xl text-[color:var(--primary)]">{formatValue(bottomLeft.value, bottomLeft.format)}</p>
               <Variance value={bottomLeft.variance} format={bottomLeft.format} />
             </div>
             <div>
-              <p className="font-display text-2xl font-bold uppercase text-[var(--primary)]">{bottomRight.label}</p>
-              <p className="font-serif text-4xl text-[var(--primary)]">{formatValue(bottomRight.value, bottomRight.format)}</p>
+              <p className="font-display text-2xl font-bold uppercase text-[color:var(--primary)]">{bottomRight.label}</p>
+              <p className="font-serif text-4xl text-[color:var(--primary)]">{formatValue(bottomRight.value, bottomRight.format)}</p>
               <Variance value={bottomRight.variance} format={bottomRight.format} />
             </div>
           </div>
@@ -524,8 +524,8 @@ export default function HospitalityDashboard({ year, month }: { year: string; mo
         <div className="space-y-4">
           <Card className="relative flex h-[300px] items-center justify-center overflow-hidden border-none bg-[#e2edf7] p-4">
             <div className="pointer-events-none absolute inset-0 z-0 flex flex-col items-center justify-center">
-              <p className="font-serif text-2xl text-[var(--primary)]">{formatCompactCurrency(totalRemaining)}</p>
-              <p className="font-display text-sm font-bold uppercase text-[var(--primary)] opacity-70">To Book</p>
+              <p className="font-serif text-2xl text-[color:var(--primary)]">{formatCompactCurrency(totalRemaining)}</p>
+              <p className="font-display text-sm font-bold uppercase text-[color:var(--primary)] opacity-70">To Book</p>
             </div>
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>

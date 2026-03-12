@@ -1,0 +1,116 @@
+[
+  {
+    "description": "Unique Row Identifier",
+    "mode": "NULLABLE",
+    "name": "index",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Internal Property Identifier",
+    "mode": "NULLABLE",
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "description": "Metric",
+    "mode": "NULLABLE",
+    "name": "metric",
+    "type": "STRING"
+  },
+  {
+    "description": "Goal Year",
+    "mode": "NULLABLE",
+    "name": "goal_year",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Last Updated On",
+    "mode": "NULLABLE",
+    "name": "last_writeback_date",
+    "type": "DATE"
+  },
+  {
+    "description": "January",
+    "mode": "NULLABLE",
+    "name": "month_01",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "February",
+    "mode": "NULLABLE",
+    "name": "month_02",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "March",
+    "mode": "NULLABLE",
+    "name": "month_03",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "April",
+    "mode": "NULLABLE",
+    "name": "month_04",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "May",
+    "mode": "NULLABLE",
+    "name": "month_05",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "June",
+    "mode": "NULLABLE",
+    "name": "month_06",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "July",
+    "mode": "NULLABLE",
+    "name": "month_07",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "August",
+    "mode": "NULLABLE",
+    "name": "month_08",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "September",
+    "mode": "NULLABLE",
+    "name": "month_09",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "October",
+    "mode": "NULLABLE",
+    "name": "month_10",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "November",
+    "mode": "NULLABLE",
+    "name": "month_11",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "December",
+    "mode": "NULLABLE",
+    "name": "month_12",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Annual",
+    "mode": "NULLABLE",
+    "name": "annual",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Inserted Timestamp",
+    "mode": "NULLABLE",
+    "name": "insert_timestamp",
+    "type": "TIMESTAMP"
+  }
+]

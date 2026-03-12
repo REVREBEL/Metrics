@@ -1,7 +1,10 @@
 @import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "../assets/fonts/rebel-fonts.css";
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -64,17 +67,17 @@
   --color-4-inverse-fade: color-mix(in srgb, var(--primary) 80%, white 20%);
   --color-4-inverse: oklch(27% 0.09 254.40deg);
   --color-5: oklch(84% 0.14 85.21deg);
-  --color-5-fade: color-mix(in srgb, var(--primary) 80%, white 20%);
+  --color-5-fade: color-mix(in srgb, var(--color-5) 80%, white 20%);
   --color-5-inverse-fade: color-mix(in srgb, var(--color-5-inverse) 90%, white 10%);
   --color-5-inverse: oklch(27% 0.09 254.40deg);
+  --color-6: oklch(66% 0.18 45deg);
   --color-6-fade: color-mix(in srgb, var(--color-6) 80%, white 20%);
   --color-6-inverse-fade: color-mix(in srgb, var(--color-6-inverse) 80%, white 20%);
   --color-6-inverse: oklch(27% 0.09 254.40deg);
-  --color-6: oklch(66% 0.18 45deg);
+  --color-7: oklch(55% 0.21 32deg);
   --color-7-fade: color-mix(in srgb, var(--color-7) 85%, black 15%);
   --color-7-inverse-fade: color-mix(in srgb, var(--color-4-inverse) 85%, black 15%);
   --color-7-inverse: oklch(83% 0.04 220deg);
-  --color-7: oklch(55.% 0.21 32deg);
   --color-8: oklch(45% 0.14 340deg);
   --color-8-fade: color-mix(in srgb, var(--color-8) 80%, white 20%);
   --color-8-inverse-fade: color-mix(in srgb, var(--color-8-inverse) 80%, white 20%);
@@ -93,14 +96,14 @@
   --sidebar-border: oklch(96% 0 0deg);
   --sidebar-ring: oklch(78% 0.11 195.12deg);
   /* Shadows */
-  --shadow-2xs: 0px 1px 2px 0px oklch(0 0 0 / 0.01);
-  --shadow-xs: 0px 1px 2px 0px oklch(0 0 0 / 0.01);
-  --shadow-sm: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 1px 2px -1px oklch(0 0 0 / 0.01);
-  --shadow: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 1px 2px -1px oklch(0 0 0 / 0.01);
-  --shadow-md: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 2px 4px -1px oklch(0 0 0 / 0.01);
-  --shadow-lg: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 4px 6px -1px oklch(0 0 0 / 0.01);
-  --shadow-xl: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 8px 10px -1px oklch(0 0 0 / 0.01);
-  --shadow-2xl: 0px 1px 2px 0px oklch(0 0 0 / 0.01);
+  --shadow-2xs: 0px 1px 2px 0px oklch(0% 0 0deg / 1%);
+  --shadow-xs: 0px 1px 2px 0px oklch(0% 0 0deg / 1%);
+  --shadow-sm: 0px 1px 2px 0px oklch(0% 0 0deg / 1%), 0px 1px 2px -1px oklch(0% 0 0deg / 1%);
+  --shadow: 0px 1px 2px 0px oklch(0% 0 0deg / 1%), 0px 1px 2px -1px oklch(0% 0 0deg / 1%);
+  --shadow-md: 0px 1px 2px 0px oklch(0% 0 0deg / 1%), 0px 2px 4px -1px oklch(0% 0 0deg / 1%);
+  --shadow-lg: 0px 1px 2px 0px oklch(0% 0 0deg / 1%), 0px 4px 6px -1px oklch(0% 0 0deg / 1%);
+  --shadow-xl: 0px 1px 2px 0px oklch(0% 0 0deg / 1%), 0px 8px 10px -1px oklch(0% 0 0deg / 1%);
+  --shadow-2xl: 0px 1px 2px 0px oklch(0% 0 0deg / 1%);
   /* Radius */
   --radius: .25rem;
   --radius-sm: calc(var(--radius) * 0.6);
@@ -197,9 +200,9 @@
   --grey-l700: color-mix(in srgb, var(--grey-1) 90%, white 10%);
   --grey-l600: color-mix(in srgb, var(--grey-1) 70%, white 30%);
   --grey-l500: var(--grey-1);
-  --grey-l400: color-mix(in srgb, var(--grey-1) 90%, black 10%);
-  --grey-l300: color-mix(in srgb, var(--grey-1) 80%, black 20%);
-  --grey-l200: color-mix(in srgb, var(--grey-1) 70%, black 30%);
+  --grey-l400: color-mix(in srgb, var(--grey-1) 90%, white 10%);
+  --grey-l300: color-mix(in srgb, var(--grey-1) 80%, white 20%);
+  --grey-l200: color-mix(in srgb, var(--grey-1) 70%, white 30%);
   --grey-l100: #585858;
   --grey-d100: var(--grey-2);
   --grey-d200: #4d4d4d;
@@ -271,13 +274,13 @@
   --color-4-inverse-fade: color-mix(in srgb, var(--primary) 80%, white 20%);
   --color-4-inverse: oklch(27% 0.09 254.40deg);
   --color-5: oklch(84% 0.14 85.21deg);
-  --color-5-fade: color-mix(in srgb, var(--primary) 80%, white 20%);
+  --color-5-fade: color-mix(in srgb, var(--color-5) 80%, white 20%);
   --color-5-inverse-fade: color-mix(in srgb, var(--color-5-inverse) 90%, white 10%);
   --color-5-inverse: oklch(27% 0.09 254.40deg);
+  --color-6: oklch(66% 0.18 45deg);
   --color-6-fade: color-mix(in srgb, var(--color-6) 80%, white 20%);
   --color-6-inverse-fade: color-mix(in srgb, var(--color-6-inverse) 80%, white 20%);
   --color-6-inverse: oklch(27% 0.09 254.40deg);
-  --color-6: oklch(66% 0.18 45deg);
   --color-7-fade: color-mix(in srgb, var(--color-7) 85%, black 15%);
   --color-7-inverse-fade: color-mix(in srgb, var(--color-4-inverse) 85%, black 15%);
   --color-7-inverse: oklch(83% 0.04 220deg);
@@ -291,9 +294,9 @@
   --color-9-inverse-fade: color-mix(in srgb, var(--color-9-inverse) 80%, white 20%);
   --color-9-inverse: oklch(27% 0.09 254.40deg);
   /* Greys */
-  --rev-color-grey-1: oklch(74.123% 0.00008 271.152deg);
-  --rev-color-grey-2: oklch(45.678% 0.00005 271.152deg);
-  --rev-color-grey-3: oklch(30.118% 0.00003 271.152deg);
+  --rev-color-grey-1: oklch(74.123% 0.001 271.152deg);
+  --rev-color-grey-2: oklch(45.678% 0.005 271.152deg);
+  --rev-color-grey-3: oklch(30.118% 0.003 271.152deg);
   /* Sidebar */
   --sidebar: oklch(100% 0 0deg);
   --sidebar-foreground: oklch(27% 0.09 254.40deg);
@@ -304,14 +307,14 @@
   --sidebar-border: oklch(100% 0 0deg);
   --sidebar-ring: oklch(78% 0.11 195.12deg);
   /* Shadows */
-  --shadow-2xs: 0px 1px 2px 0px oklch(0 0 0 / 0.01);
-  --shadow-xs: 0px 1px 2px 0px oklch(0 0 0 / 0.01);
-  --shadow-sm: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 1px 2px -1px oklch(0 0 0 / 0.01);
-  --shadow: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 1px 2px -1px oklch(0 0 0 / 0.01);
-  --shadow-md: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 2px 4px -1px oklch(0 0 0 / 0.01);
-  --shadow-lg: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 4px 6px -1px oklch(0 0 0 / 0.01);
-  --shadow-xl: 0px 1px 2px 0px oklch(0 0 0 / 0.01), 0px 8px 10px -1px oklch(0 0 0 / 0.01);
-  --shadow-2xl: 0px 1px 2px 0px oklch(0 0 0 / 0.01);
+  --shadow-2xs: 0px 1px 2px 0px oklch(0% 0 0deg / 1%);
+  --shadow-xs: 0px 1px 2px 0px oklch(0% 0 0deg / 1%);
+  --shadow-sm: 0px 1px 2px 0px oklch(0% 0 0deg / 1%), 0px 1px 2px -1px oklch(0% 0 0deg / 1%);
+  --shadow: 0px 1px 2px 0px oklch(0% 0 0deg / 1%), 0px 1px 2px -1px oklch(0% 0 0deg / 1%);
+  --shadow-md: 0px 1px 2px 0px oklch(0% 0 0deg / 1%), 0px 2px 4px -1px oklch(0% 0 0deg / 1%);
+  --shadow-lg: 0px 1px 2px 0px oklch(0% 0 0deg / 1%), 0px 4px 6px -1px oklch(0% 0 0deg / 1%);
+  --shadow-xl: 0px 1px 2px 0px oklch(0% 0 0deg / 1%), 0px 8px 10px -1px oklch(0% 0 0deg / 1%);
+  --shadow-2xl: 0px 1px 2px 0px oklch(0% 0 0deg / 1%);
   /* Radius */
   --radius: .25rem;
   --radius-sm: calc(var(--radius) * 0.6);
@@ -417,6 +420,21 @@
   --color-success-foreground: var(--success-foreground);
   --color-success: var(--success);
   --color-destructive-foreground: var(--destructive-foreground);
+  --grey-l700: var(--grey-l700);
+  --grey-l600: var(--grey-l600);
+  --grey-l500: var(--grey-l500);
+  --grey-l400: var(--grey-l600);
+  --grey-l300: var(--grey-l600);
+  --grey-l200: var(--grey-l200);
+  --grey-l100: var(--grey-l100);
+  --grey-d100: var(--grey-d100);
+  --grey-d200: var(--grey-d200);
+  --grey-d300: var(--grey-d300);
+  --grey-d400: var(--grey-d400);
+  --grey-d500: var(--grey-d500);
+  --grey-d600: var(--grey-d600);
+  --grey-d700: var(--grey-d700);
+  --grey-d800: var(--grey-d800);
 }
 
 @layer components {

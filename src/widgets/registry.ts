@@ -9,7 +9,7 @@ export type WidgetMetadata = {
   defaultVariant: string;
 };
 
-import React from 'react';
+import type React from 'react';
 
 // Map widget IDs to their dynamic imports
 export const WIDGET_COMPONENTS: Record<string, React.ComponentType<any>> = {

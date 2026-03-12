@@ -16,7 +16,22 @@ import { YearMonthSelector } from "@/widgets/YearMonthSelector/dynamic";
 import PerformanceCard from "@/widgets/PerformanceCard"
 import PerformanceCardOther from "@/widgets/PerformanceCardOther"
 
+
 const topNav = [
+  {
+    title: 'Metrics',
+    href: '/dashboard/dashboard',
+    isActive: true,
+    disabled: false,
+    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
+  },
+  {
+    title: 'Segments',
+    href: '/dashboard/segments',
+    isActive: true,
+    disabled: false,
+    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
+  },
   {
     title: 'Channels',
     href: '/dashboard/channels',
@@ -25,30 +40,23 @@ const topNav = [
     className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
   },
   {
-    title: 'Segments',
-    href: '/dashboard/segments',
-    isActive: false,
-    disabled: true,
-    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
-  },
-  {
     title: 'Room Types',
     href: '/dashboard/room-types',
-    isActive: false,
-    disabled: true,
+    isActive: true,
+    disabled: false,
     className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
   },
   {
     title: 'Demand',
     href: '/dashboard/demand',
-    isActive: false,
+    isActive: true,
     disabled: false,
     className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
   },
   {
     title: 'Website',
     href: '/dashboard/website',
-    isActive: false,
+    isActive: true,
     disabled: false,
     className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
   },
@@ -80,7 +88,7 @@ export default function Page() {
       {/* ===== Tabs ===== */}
       <SubNav>
         <div className='mb-2 flex items-center justify-between space-y-2'>
-          <h1 className='text-3xl font-bold font-display uppercase tracking-tight'>Segments</h1>
+          <h1 className='text-3xl font-bold font-display uppercase tracking-tight'>Metrics</h1>
           <div className='flex items-center space-x-2'>
             <Button>Download</Button>
           </div>

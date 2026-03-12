@@ -1,0 +1,32 @@
+[
+  {
+    "mode": "NULLABLE",
+    "name": "segment",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "segment_code",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "segment_sort",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "segment_group",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "segment_group_code",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "finance_segment",
+    "type": "STRING"
+  }
+]

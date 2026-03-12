@@ -1,0 +1,98 @@
+[
+  {
+    "description": "Name of the marketing campaign that first acquired the user. Includes Google Ads Campaigns, Manual Campaigns, & other Campaigns.",
+    "mode": "NULLABLE",
+    "name": "firstUserCampaignName",
+    "type": "STRING"
+  },
+  {
+    "description": "The default channel group that first acquired the user. Default channel group is based primarily on source and medium. An enumeration which includes Direct, Organic Search, Paid Social, Organic Social, Email, Affiliates, Referral, Paid Search, Video, and Display.",
+    "mode": "NULLABLE",
+    "name": "firstUserDefaultChannelGroup",
+    "type": "STRING"
+  },
+  {
+    "description": "The medium that first acquired the user to your website or app.",
+    "mode": "NULLABLE",
+    "name": "firstUserMedium",
+    "type": "STRING"
+  },
+  {
+    "description": "The primary channel group that originally acquired a user. Primary channel groups are the channel groups used in standard reports in Google Analytics and serve as an active record of your property's data in alignment with channel grouping over time.",
+    "mode": "NULLABLE",
+    "name": "firstUserPrimaryChannelGroup",
+    "type": "STRING"
+  },
+  {
+    "description": "The source that first acquired the user to your website or app.",
+    "mode": "NULLABLE",
+    "name": "firstUserSource",
+    "type": "STRING"
+  },
+  {
+    "description": "The combined values of the dimensions firstUserSource and firstUserMedium.",
+    "mode": "NULLABLE",
+    "name": "firstUserSourceMedium",
+    "type": "STRING"
+  },
+  {
+    "description": "The source platform that first acquired the user. Don't depend on this field returning Manual for traffic that uses UTMs; this field will update from returning Manual to returning (not set) for an upcoming feature launch.",
+    "mode": "NULLABLE",
+    "name": "firstUserSourcePlatform",
+    "type": "STRING"
+  },
+  {
+    "description": "The number of distinct users who visited your website or application.",
+    "mode": "NULLABLE",
+    "name": "activeUsers",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of sessions that lasted longer than 10 seconds, or had a key event, or had 2 or more screen views.",
+    "mode": "NULLABLE",
+    "name": "engagedSessions",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The count of events.",
+    "mode": "NULLABLE",
+    "name": "eventCount",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of key events that occurred.",
+    "mode": "NULLABLE",
+    "name": "keyEvents",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The number of users who interacted with your site or launched your app for the first time (event triggered: first_open or first_visit).",
+    "mode": "NULLABLE",
+    "name": "newUsers",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The sum of revenue from purchases, subscriptions, and advertising (Purchase revenue plus Subscription revenue plus Ad revenue) minus refunded transaction revenue.",
+    "mode": "NULLABLE",
+    "name": "totalRevenue",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The number of distinct users who have logged at least one event, regardless of whether the site or app was in use when that event was logged.",
+    "mode": "NULLABLE",
+    "name": "totalUsers",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The total amount of time (in seconds) your website or app was in the foreground of users` devices.",
+    "mode": "NULLABLE",
+    "name": "userEngagementDuration",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The percentage of users who triggered any key event.",
+    "mode": "NULLABLE",
+    "name": "userKeyEventRate",
+    "type": "FLOAT"
+  }
+]

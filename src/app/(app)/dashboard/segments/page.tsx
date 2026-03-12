@@ -19,39 +19,46 @@ import DailyPickupTable from "@/widgets/DailyPickupTable"
 
 const topNav = [
   {
-    title: 'Channels',
-    href: '/dashboard/channels',
+    title: 'Metrics',
+    href: '/dashboard/dashboard',
     isActive: true,
     disabled: false,
-    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)] ',
+    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
   },
   {
     title: 'Segments',
     href: '/dashboard/segments',
-    isActive: false,
-    disabled: true,
-    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)] ',
+    isActive: true,
+    disabled: false,
+    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
+  },
+  {
+    title: 'Channels',
+    href: '/dashboard/channels',
+    isActive: true,
+    disabled: false,
+    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
   },
   {
     title: 'Room Types',
     href: '/dashboard/room-types',
-    isActive: false,
-    disabled: true,
-    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)] ',
+    isActive: true,
+    disabled: false,
+    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
   },
   {
     title: 'Demand',
     href: '/dashboard/demand',
-    isActive: false,
+    isActive: true,
     disabled: false,
     className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
   },
   {
     title: 'Website',
     href: '/dashboard/website',
-    isActive: false,
+    isActive: true,
     disabled: false,
-    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)] ',
+    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
   },
 ]
 
@@ -88,7 +95,7 @@ export default function Page() {
               <Button>Download</Button>
             </div>
           </div>
-          
+
           <div className='w-full overflow-x-auto pb-2'>
             <TabsList>
               <TabsTrigger
@@ -120,59 +127,59 @@ export default function Page() {
           </div>
         </SubNav>
 
-         {/* ===== Performance Tab===== */}
+        {/* ===== Performance Tab===== */}
         <TabsContent value='performance' className='space-y-4'>
-        <YearMonthSelector onSelectionChange={handleDateChange} />
+          <YearMonthSelector onSelectionChange={handleDateChange} />
 
-        <div className="flex flex-1 flex-col pt-0 gap-4">
-        {selectedYear && selectedMonth && (
-          <
-            MarketSegmentTransientRoomsTable 
-            year={selectedYear} month={selectedMonth} 
-          />
-        )}
-        </div>
+          <div className="flex flex-1 flex-col pt-0 gap-4">
+            {selectedYear && selectedMonth && (
+              <
+                MarketSegmentTransientRoomsTable
+                year={selectedYear} month={selectedMonth}
+              />
+            )}
+          </div>
 
-        <div className="flex flex-1 flex-col pt-0 gap-4">
-        {selectedYear && selectedMonth && (
-          <
-            OTBStackedBarChart 
-            year={selectedYear} month={selectedMonth} 
-          />
-        )}
-         </div>
+          <div className="flex flex-1 flex-col pt-0 gap-4">
+            {selectedYear && selectedMonth && (
+              <
+                OTBStackedBarChart
+                year={selectedYear} month={selectedMonth}
+              />
+            )}
+          </div>
         </TabsContent>
 
-         {/* ===== Pace Tab===== */}
+        {/* ===== Pace Tab===== */}
         <TabsContent value='pace' className='space-y-4'>
-        <YearMonthSelector onSelectionChange={handleDateChange} />
+          <YearMonthSelector onSelectionChange={handleDateChange} />
 
-        <div className="flex flex-1 flex-col pt-0 gap-4">
+          <div className="flex flex-1 flex-col pt-0 gap-4">
 
-        </div>
+          </div>
         </TabsContent>
 
-         {/* ===== Pickup Tab===== */}
+        {/* ===== Pickup Tab===== */}
         <TabsContent value='pickup' className='space-y-4'>
-        <YearMonthSelector onSelectionChange={handleDateChange} />
+          <YearMonthSelector onSelectionChange={handleDateChange} />
 
-        <div className="flex flex-1 flex-col pt-0 gap-4">
-        {selectedYear && selectedMonth && (
-          <
-            DailyPickupTable 
-            year={selectedYear} month={selectedMonth} 
-          />
-        )}
-        </div>
+          <div className="flex flex-1 flex-col pt-0 gap-4">
+            {selectedYear && selectedMonth && (
+              <
+                DailyPickupTable
+                year={selectedYear} month={selectedMonth}
+              />
+            )}
+          </div>
         </TabsContent>
 
-         {/* ===== Reports Tab===== */}
+        {/* ===== Reports Tab===== */}
         <TabsContent value='reports' className='space-y-4'>
-        <YearMonthSelector onSelectionChange={handleDateChange} />
+          <YearMonthSelector onSelectionChange={handleDateChange} />
 
-        <div className="flex flex-1 flex-col pt-0 gap-4">
+          <div className="flex flex-1 flex-col pt-0 gap-4">
 
-        </div>
+          </div>
         </TabsContent>
 
       </Tabs>

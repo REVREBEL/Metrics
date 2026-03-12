@@ -1,0 +1,506 @@
+[
+  {
+    "description": "Property code",
+    "mode": "NULLABLE",
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "description": "Property name",
+    "mode": "NULLABLE",
+    "name": "property_name",
+    "type": "STRING"
+  },
+  {
+    "description": "Property names abbreviated within charts and graphs when space constraints prevent the display of longer names.",
+    "mode": "NULLABLE",
+    "name": "property_shortname",
+    "type": "STRING"
+  },
+  {
+    "description": "The Census ID assigned by CoStar serves as a unique identifier for each property registered with the platform.",
+    "mode": "NULLABLE",
+    "name": "census_id",
+    "type": "STRING"
+  },
+  {
+    "description": "Filters values for consumed revenue, room nights, and other metrics based on the Competitive Set Identifier.",
+    "mode": "NULLABLE",
+    "name": "cs_set_id",
+    "type": "STRING"
+  },
+  {
+    "description": "The Competitive Set reference provides a concise description of the composition of the set being utilized. Examples might include 'DC Lifestyle-Focused Set' or, more broadly, 'Performance Set' versus 'Additional Set.",
+    "mode": "NULLABLE",
+    "name": "cs_reference",
+    "type": "STRING"
+  },
+  {
+    "description": "The brand serves as an additional informational data point, enabling users to identify the associated brand of a specific hotel.",
+    "mode": "NULLABLE",
+    "name": "brand",
+    "type": "STRING"
+  },
+  {
+    "description": "Month of the year",
+    "mode": "NULLABLE",
+    "name": "month",
+    "type": "STRING"
+  },
+  {
+    "description": "The full name of the Month",
+    "mode": "NULLABLE",
+    "name": "month_name",
+    "type": "STRING"
+  },
+  {
+    "description": "Current year",
+    "mode": "NULLABLE",
+    "name": "cy",
+    "type": "STRING"
+  },
+  {
+    "description": "Prior Year",
+    "mode": "NULLABLE",
+    "name": "py",
+    "type": "STRING"
+  },
+  {
+    "description": "Weekday",
+    "mode": "NULLABLE",
+    "name": "weekday",
+    "type": "STRING"
+  },
+  {
+    "description": "Weekday",
+    "mode": "NULLABLE",
+    "name": "weekday_py",
+    "type": "STRING"
+  },
+  {
+    "description": "The week number corresponding to a start date in a dataset when viewing aggregated data grouped by week.",
+    "mode": "NULLABLE",
+    "name": "week_no",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The week number corresponding to a start date in a dataset when viewing aggregated data grouped by week.",
+    "mode": "NULLABLE",
+    "name": "week_no_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Day of week",
+    "mode": "NULLABLE",
+    "name": "dow",
+    "type": "STRING"
+  },
+  {
+    "description": "Day",
+    "mode": "NULLABLE",
+    "name": "day",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Filters the information and consumed revenue and other metrics based on the guest's stay dates.",
+    "mode": "NULLABLE",
+    "name": "stay_date_text",
+    "type": "STRING"
+  },
+  {
+    "description": "Filters the information and consumed revenue and other metrics based on the guest's stay dates.",
+    "mode": "NULLABLE",
+    "name": "stay_date_text_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Filters the information and consumed revenue and other metrics based on the guest's stay dates.",
+    "mode": "NULLABLE",
+    "name": "stay_date",
+    "type": "DATE"
+  },
+  {
+    "description": "Filters the information and consumed revenue and other metrics based on the guest's stay dates.",
+    "mode": "NULLABLE",
+    "name": "stay_date_py",
+    "type": "DATE"
+  },
+  {
+    "description": "Number of Days",
+    "mode": "NULLABLE",
+    "name": "no_days",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Number of Days",
+    "mode": "NULLABLE",
+    "name": "no_days_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The total number of rooms available for sale represents the property's fixed maximum inventory. This count excludes any rooms that are out of order.",
+    "mode": "NULLABLE",
+    "name": "physical_capacity",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The total number of rooms available for sale represents the property's fixed maximum inventory. This count excludes any rooms that are out of order.",
+    "mode": "NULLABLE",
+    "name": "cs_physical_capacity",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Competitor number of rooms",
+    "mode": "NULLABLE",
+    "name": "rms",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Competitor number of rooms",
+    "mode": "NULLABLE",
+    "name": "rms_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Competitor number of rooms",
+    "mode": "NULLABLE",
+    "name": "cs_rms",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Competitor number of rooms",
+    "mode": "NULLABLE",
+    "name": "cs_rms_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Total room revenue",
+    "mode": "NULLABLE",
+    "name": "rev",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Total room revenue",
+    "mode": "NULLABLE",
+    "name": "rev_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Total room revenue",
+    "mode": "NULLABLE",
+    "name": "cs_rev",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Total room revenue",
+    "mode": "NULLABLE",
+    "name": "cs_rev_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Total Occupancy, showing the percentage of available rooms that have been sold during a specific timeframe.",
+    "mode": "NULLABLE",
+    "name": "occ",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Total Occupancy, showing the percentage of available rooms that have been sold during a specific timeframe.",
+    "mode": "NULLABLE",
+    "name": "occ_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Total Occupancy, showing the percentage of available rooms that have been sold during a specific timeframe.",
+    "mode": "NULLABLE",
+    "name": "cs_occ",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Total Occupancy, showing the percentage of available rooms that have been sold during a specific timeframe.",
+    "mode": "NULLABLE",
+    "name": "cs_occ_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Occupancy Percentage Change, showing the percentage change in occupancy during a specific timeframe.",
+    "mode": "NULLABLE",
+    "name": "occ_pct_chg",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Occupancy Percentage Change, showing the percentage change in occupancy during a specific timeframe.",
+    "mode": "NULLABLE",
+    "name": "occ_pct_chg_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Occupancy Percentage Change, showing the percentage change in occupancy during a specific timeframe.",
+    "mode": "NULLABLE",
+    "name": "cs_occ_pct_chg",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Occupancy Percentage Change, showing the percentage change in occupancy during a specific timeframe.",
+    "mode": "NULLABLE",
+    "name": "cs_occ_pct_chg_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Occupancy index measures a hotel's occupancy performance relative to its competitive set. It shows whether a hotel is achieving a higher or lower average rate compared to its peers.",
+    "mode": "NULLABLE",
+    "name": "occ_index",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Occupancy index measures a hotel's occupancy performance relative to its competitive set. It shows whether a hotel is achieving a higher or lower average rate compared to its peers.",
+    "mode": "NULLABLE",
+    "name": "occ_index_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Occupancy Index Percenage Change, shows the percentage change in the hotel's occupancy index which measures a occupancy performance relative to its competitive set. It shows whether a hotel is achieving a higher or lower average rate compared to its peers.",
+    "mode": "NULLABLE",
+    "name": "occ_index_pct_chg",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Occupancy Index Percenage Change, shows the percentage change in the hotel's occupancy index which measures a occupancy performance relative to its competitive set. It shows whether a hotel is achieving a higher or lower average rate compared to its peers.",
+    "mode": "NULLABLE",
+    "name": "occ_index_pct_chg_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Occupancy Rank, show the hotel's ranking position for Occupancy compared to its competitive set. A lower number (e.g., 1) indicates a higher ADR than peers.",
+    "mode": "NULLABLE",
+    "name": "occ_rank",
+    "type": "STRING"
+  },
+  {
+    "description": "Occupancy Rank, show the hotel's ranking position for Occupancy compared to its competitive set. A lower number (e.g., 1) indicates a higher ADR than peers.",
+    "mode": "NULLABLE",
+    "name": "occ_rank_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Occupancy Percentage Change for Rank, show the percentage change for the hotel's ranking position for Occupancy compared to its competitive set. A lower number (e.g., 1) indicates a higher ADR than peers.",
+    "mode": "NULLABLE",
+    "name": "occ_pct_chg_rank",
+    "type": "STRING"
+  },
+  {
+    "description": "Occupancy Percentage Change for Rank, show the percentage change for the hotel's ranking position for Occupancy compared to its competitive set. A lower number (e.g., 1) indicates a higher ADR than peers.",
+    "mode": "NULLABLE",
+    "name": "occ_pct_chg_rank_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Average Dollar Rate (ADR) represents the average income generated per room sold during a given timeframe. It is determined by dividing the total room revenue by the number of rooms sold.",
+    "mode": "NULLABLE",
+    "name": "adr",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Average Dollar Rate (ADR) represents the average income generated per room sold during a given timeframe. It is determined by dividing the total room revenue by the number of rooms sold.",
+    "mode": "NULLABLE",
+    "name": "adr_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "ADR represents the average income generated per room sold during a given timeframe. It is determined by dividing the total room revenue by the number of rooms sold.",
+    "mode": "NULLABLE",
+    "name": "cs_adr",
+    "type": "FLOAT"
+  },
+  {
+    "description": "ADR represents the average income generated per room sold during a given timeframe. It is determined by dividing the total room revenue by the number of rooms sold.",
+    "mode": "NULLABLE",
+    "name": "cs_adr_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "ADR Percentage Change, showing the percentage change in ADR during a specific timeframe.",
+    "mode": "NULLABLE",
+    "name": "adr_pct_chg",
+    "type": "FLOAT"
+  },
+  {
+    "description": "ADR Percentage Change, showing the percentage change in ADR during a specific timeframe.",
+    "mode": "NULLABLE",
+    "name": "adr_pct_chg_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "ADR Percentage Change, showing the percentage change in ADR during a specific timeframe.",
+    "mode": "NULLABLE",
+    "name": "cs_adr_pct_chg",
+    "type": "FLOAT"
+  },
+  {
+    "description": "ADR Percentage Change, showing the percentage change in ADR during a specific timeframe.",
+    "mode": "NULLABLE",
+    "name": "cs_adr_pct_chg_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "ADR Index measures a hotel's ADR performance relative to its competitive set. It shows whether a hotel is achieving a higher or lower average rate compared to its peers. This metric highlights how the hotel's pricing competitiveness has evolved compared to its competitive set.",
+    "mode": "NULLABLE",
+    "name": "adr_index",
+    "type": "FLOAT"
+  },
+  {
+    "description": "ADR Index measures a hotel's ADR performance relative to its competitive set. It shows whether a hotel is achieving a higher or lower average rate compared to its peers. This metric highlights how the hotel's pricing competitiveness has evolved compared to its competitive set.",
+    "mode": "NULLABLE",
+    "name": "adr_index_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "ADR Index Percentage Change represents the year-over-year variation in a hotel's ADR Index. This metric highlights how the hotel's pricing competitiveness has evolved compared to its competitive set.",
+    "mode": "NULLABLE",
+    "name": "adr_index_pct_chg",
+    "type": "FLOAT"
+  },
+  {
+    "description": "ADR Index Percentage Change represents the year-over-year variation in a hotel's ADR Index. This metric highlights how the hotel's pricing competitiveness has evolved compared to its competitive set.",
+    "mode": "NULLABLE",
+    "name": "adr_index_pct_chg_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "ADR Rank shows the hotel's ranking position in terms of Average Daily Rate (ADR) compared to its competitive set. It reflects whether the hotel is securing a higher or lower position relative to its competitors",
+    "mode": "NULLABLE",
+    "name": "adr_rank",
+    "type": "STRING"
+  },
+  {
+    "description": "ADR Rank shows the hotel's ranking position in terms of Average Daily Rate (ADR) compared to its competitive set. It reflects whether the hotel is securing a higher or lower position relative to its competitors",
+    "mode": "NULLABLE",
+    "name": "adr_rank_py",
+    "type": "STRING"
+  },
+  {
+    "description": "ADR Rank Percentage Change , shows the percentage change for the hotel's ranking position for ADR compared to its competitive set. A lower number (e.g., 1) indicates a higher ADR than peers.",
+    "mode": "NULLABLE",
+    "name": "adr_pct_chg_rank",
+    "type": "STRING"
+  },
+  {
+    "description": "ADR Rank Percentage Change , shows the percentage change for the hotel's ranking position for ADR compared to its competitive set. A lower number (e.g., 1) indicates a higher ADR than peers.",
+    "mode": "NULLABLE",
+    "name": "adr_pct_chg_rank_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Competitive set revenue per available room",
+    "mode": "NULLABLE",
+    "name": "revpar",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Competitive set revenue per available room",
+    "mode": "NULLABLE",
+    "name": "revpar_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Competitive set revenue per available room",
+    "mode": "NULLABLE",
+    "name": "cs_revpar",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Competitive set revenue per available room",
+    "mode": "NULLABLE",
+    "name": "cs_revpar_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "RevPAR Percentage Change, showing the percentage change in RevPar during a specific timeframe.",
+    "mode": "NULLABLE",
+    "name": "revpar_pct_chg",
+    "type": "FLOAT"
+  },
+  {
+    "description": "RevPAR Percentage Change, showing the percentage change in RevPar during a specific timeframe.",
+    "mode": "NULLABLE",
+    "name": "revpar_pct_chg_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "RevPAR Percentage Change, showing the percentage change in RevPar during a specific timeframe.",
+    "mode": "NULLABLE",
+    "name": "cs_revpar_pct_chg",
+    "type": "FLOAT"
+  },
+  {
+    "description": "RevPAR Percentage Change, showing the percentage change in RevPar during a specific timeframe.",
+    "mode": "NULLABLE",
+    "name": "cs_revpar_pct_chg_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "RevPAR Index Percenage Change, shows the percentage change in the hotel's revpar index which measures a revpar performance relative to its competitive set. It shows whether a hotel is achieving a higher or lower average rate compared to its peers.",
+    "mode": "NULLABLE",
+    "name": "revpar_index",
+    "type": "FLOAT"
+  },
+  {
+    "description": "RevPAR Index Percenage Change, shows the percentage change in the hotel's revpar index which measures a revpar performance relative to its competitive set. It shows whether a hotel is achieving a higher or lower average rate compared to its peers.",
+    "mode": "NULLABLE",
+    "name": "revpar_index_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "RevPAR Index Percenage Change, shows the percentage change in the hotel's revpar index which measures a revpar performance relative to its competitive set. It shows whether a hotel is achieving a higher or lower average rate compared to its peers.",
+    "mode": "NULLABLE",
+    "name": "revpar_index_pct_chg",
+    "type": "FLOAT"
+  },
+  {
+    "description": "RevPAR Index Percenage Change, shows the percentage change in the hotel's revpar index which measures a revpar performance relative to its competitive set. It shows whether a hotel is achieving a higher or lower average rate compared to its peers.",
+    "mode": "NULLABLE",
+    "name": "revpar_index_pct_chg_py",
+    "type": "FLOAT"
+  },
+  {
+    "description": "RevPAR Rank, show the hotel's ranking position for revpar compared to its competitive set. A lower number (e.g., 1) indicates a higher revpar than peers.",
+    "mode": "NULLABLE",
+    "name": "revpar_rank",
+    "type": "STRING"
+  },
+  {
+    "description": "RevPAR Rank, show the hotel's ranking position for revpar compared to its competitive set. A lower number (e.g., 1) indicates a higher revpar than peers.",
+    "mode": "NULLABLE",
+    "name": "revpar_rank_py",
+    "type": "STRING"
+  },
+  {
+    "description": "RevPAR Rank Percentage Change, shows the percentage change for the hotel's ranking position for revpar compared to its competitive set. A lower number (e.g., 1) indicates a higher revpar than peers.",
+    "mode": "NULLABLE",
+    "name": "revpar_pct_chg_rank",
+    "type": "STRING"
+  },
+  {
+    "description": "RevPAR Rank Percentage Change, shows the percentage change for the hotel's ranking position for revpar compared to its competitive set. A lower number (e.g., 1) indicates a higher revpar than peers.",
+    "mode": "NULLABLE",
+    "name": "revpar_pct_chg_rank_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Sent to big query",
+    "mode": "NULLABLE",
+    "name": "sent_to_big_query",
+    "type": "BOOLEAN"
+  },
+  {
+    "description": "Date when the data was sent to biq query",
+    "mode": "NULLABLE",
+    "name": "date_sent_to_big_query",
+    "type": "TIMESTAMP"
+  },
+  {
+    "description": "Datetime of data ingestion",
+    "mode": "NULLABLE",
+    "name": "ingested_timestamp",
+    "type": "TIMESTAMP"
+  }
+]

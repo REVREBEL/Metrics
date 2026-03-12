@@ -14,41 +14,49 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import CalendarHeatmap from "@/widgets/CalendarHeatmap"
 import { YearMonthSelector } from "@/widgets/YearMonthSelector/dynamic";
 
+
 const topNav = [
   {
-    title: 'Channels',
-    href: '/dashboard/channels',
+    title: 'Metrics',
+    href: '/dashboard/dashboard',
     isActive: true,
     disabled: false,
-    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
+    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
   },
   {
     title: 'Segments',
     href: '/dashboard/segments',
-    isActive: false,
-    disabled: true,
-    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
+    isActive: true,
+    disabled: false,
+    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
+  },
+    {
+    title: 'Channels',
+    href: '/dashboard/channels',
+    isActive: true,
+    disabled: false,
+    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
   },
   {
     title: 'Room Types',
     href: '/dashboard/room-types',
-    isActive: false,
-    disabled: true,
-    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
+    isActive: true,
+    disabled: false,
+    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
   },
   {
     title: 'Demand',
     href: '/dashboard/demand',
-    isActive: false,
+    isActive: true,
     disabled: false,
     className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
   },
   {
     title: 'Website',
     href: '/dashboard/website',
-    isActive: false,
+    isActive: true,
     disabled: false,
-    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
+    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
   },
 ]
 

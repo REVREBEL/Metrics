@@ -19,8 +19,7 @@ Core objectives:
 
 ## Property Pace Tables
 
-### vw_pace_property_current
-
+### `vw_pace_property_current`
 These tables provide **property‑level capacity and demand context** for each stay date.
 
 | Field | Type | Description |
@@ -48,9 +47,9 @@ These tables provide **property‑level capacity and demand context** for each s
 
 ## Segment Pace Tables
 
-### vw_pace_segment
-### vw_pace_segment_current
-### vw_pace_segment_monthly
+### `vw_pace_segment`
+### `vw_pace_segment_current`
+### `vw_pace_segment_monthly`
 
 These tables contain **segment‑level performance metrics** for rooms and revenue.
 
@@ -89,8 +88,8 @@ These tables contain **segment‑level performance metrics** for rooms and reven
 
 ## Room Type Pace Tables
 
-### vw_pace_roomtype
-### vw_pace_roomtype_current
+### `vw_pace_roomtype`
+### `vw_pace_roomtype_current`
 
 These tables provide **room‑type level inventory and revenue performance**.
 
@@ -127,6 +126,143 @@ These tables provide **room‑type level inventory and revenue performance**.
 | roomtype_sort | INTEGER | Sort order |
 
 ---
+
+# Hotel Revenue Analytics Data Model Specification
+
+## Overview
+This document defines the core analytical data model used to power hotel revenue performance dashboards and reporting. The model is built on BigQuery views and supports calculations for key hospitality metrics such as Occupancy, ADR, RevPAR, Budget Variance, and Year-over-Year performance.
+
+The design assumes downstream consumption by BI tools, data applications, and analytics interfaces.
+
+---
+
+# Core Data Sources
+
+## Property Pace Tables
+### vw_pace_property_current
+These tables provide **property-level capacity and demand context** for each stay date.
+
+| Field | Type | Description |
+|:---|:---|:---|
+| property_code | STRING | Unique property identifier. Required filter for all queries |
+| property_name | STRING | Property display name |
+| stay_date | DATE | Stay date of inventory. Required filter |
+| available_rooms | INTEGER | Total inventory available for the date |
+| total_demand_total | INTEGER | Total demand across all segments |
+| bar_price | FLOAT | Best available rate |
+| snapshot_date | DATE | Date the snapshot was captured |
+
+---
+
+## Segment Pace Tables (Long Format)
+### vw_pace_segment / vw_pace_segment_current
+These tables contain **segment-level performance metrics** for rooms and revenue in a "Long" format (one row per segment per date).
+
+| Field | Type | Description |
+|:---|:---|:---|
+| property_code | STRING | Required filter |
+| stay_date | DATE | Required filter |
+| segment | STRING | Segment description |
+| rooms_otb | INTEGER | Rooms currently on the books |
+| rev_otb | FLOAT | Revenue on the books |
+| rooms_stly | INTEGER | Same time last year rooms |
+| rev_stly | INTEGER | Revenue same time last year |
+
+---
+
+## Pickup Performance Tables (Pivoted Wide Format)
+To support high-performance dashboards and daily server-side Parquet synchronization, the model includes specialized **Pivoted Pickup Tables**. These tables transform "Long" segment data into a "Wide" format, placing all market segments side-by-side in a single row for a specific pickup duration.
+
+### Pickup Table List
+| Table Name | Pickup Window | Primary Use Case |
+|:---|:---|:---|
+| `vw_pace_segment_change_1_day` | 24 Hours | Daily velocity tracking and "Flash" reporting. |
+| `vw_pace_segment_change_3_day` | 72 Hours | Identifying mid-week booking surges or shifts. |
+| `vw_pace_segment_change_7_day` | 1 Week | Weekly sales meetings and short-term trend analysis. |
+| `vw_pace_segment_change_14_day` | 2 Weeks | Identifying booking "wash" or mid-term pace shifts. |
+| `vw_pace_segment_change_21_day` | 3 Weeks | Stabilized trend analysis for short-lead properties. |
+| `vw_pace_segment_change_30_day` | 1 Month | Monthly performance reviews and budget pacing. |
+| `vw_pace_segment_change_60_day` | 2 Months | Mid-range lead time tracking and group base shifts. |
+| `vw_pace_segment_change_90_day` | 1 Quarter | Long-range base-building and seasonal tracking. |
+| `vw_pace_segment_change_120_day` | 4 Months | Strategic long-term seasonal pacing and forecasting. |
+
+### Schema Structure & Naming Convention
+Columns are named using a **Metric__Segment** pattern (using double underscores).
+
+**1. Base Metadata Columns**: `snapshot_date`, `stay_month`, `stay_date`, `property_code`, `property_name`.
+
+**2. Dynamic Pivoted Columns**: Each segment generates its own set of columns (e.g., `rooms_otb__transient_retail`, `rev_otb_chg_7__group_corporate`).
+
+### Metric Blocks per Segment
+| Metric Group | Field Alias Pattern | Description |
+|:---|:---|:---|
+| **Current OTB** | `rooms_otb`, `rev_otb` | Current values "On the Books". |
+| **Prior Year** | `rooms_stly`, `rev_stly` | "Same Time Last Year" values. |
+| **Pickup Variance** | `rooms_otb_chg_X`, `rev_otb_chg_X` | The delta between the current snapshot and X days ago. |
+
+---
+
+## Room Type Pace Tables
+### vw_pace_roomtype / vw_pace_roomtype_current
+These tables provide **room-type level inventory and revenue performance**.
+
+| Field | Type | Description |
+|:---|:---|:---|
+| property_code | STRING | Required filter |
+| stay_date | DATE | Required filter |
+| roomtype | STRING | Room type description |
+| available_rooms | INTEGER | Inventory available |
+| rooms_otb | INTEGER | Rooms currently on books |
+
+---
+
+
+### Core Data Sources: Property Capacity and Demand
+
+## Property Current Pace Tables
+
+### `vw_pace_property_current`
+
+These tables provide **property-level capacity and demand context** for each stay date, serving as the foundation for occupancy and yield calculations.
+
+| Field | Type | Description |
+|:---|:---|:---|
+| `property_code` | STRING | Unique identifier for a specific hotel property. Required filter. |
+| `property_name` | STRING | The name of the hotel property. |
+| `stay_date` | DATE | The specific date for which the data is recorded. Required filter. |
+| `special_events` | STRING | Information about special events occurring on the stay date. |
+| `special_events_ly` | STRING | Information about special events occurring on the same date in the previous year. |
+| `available_rooms` | INTEGER | Total inventory available for booking on the stay date. |
+| `available_rooms_ly` | INTEGER | Total inventory available on the same stay date in the previous year. |
+| `total_demand_total` | INTEGER | The total projected demand for rooms on the stay date. |
+| `total_demand_total_ly_actual` | INTEGER | The actual total demand for rooms on the same stay date in the previous year. |
+| `total_demand_group` | INTEGER | Projected demand from group bookings on the stay date. |
+| `total_demand_group_ly_actual` | INTEGER | Actual demand from group bookings on the same stay date in the previous year. |
+| `total_demand_transient` | INTEGER | Projected demand from transient (individual) bookings on the stay date. |
+| `total_demand_transient_ly_actual` | INTEGER | Actual demand from transient bookings on the same stay date in the previous year. |
+| `lrv` | FLOAT | The Last Room Value, representing estimated revenue for the last room sold. |
+| `wash_pct` | FLOAT | The percentage of bookings expected to cancel or no-show. |
+| `wash_pct_ly_actual` | FLOAT | The actual percentage of bookings that cancelled or no-showed last year. |
+| `bar_price` | FLOAT | The Best Available Rate (BAR) for rooms on the stay date. |
+| `snapshot_date` | DATE | The date when this data snapshot was taken. |
+
+---
+
+### Key Relationships and Usage
+* **Capacity Foundation**: The `available_rooms` field from this table is the required denominator for calculating **Occupancy** and **RevPAR** in the segment-level pivoted tables.
+* **Yield Analysis**: Use `lrv` and `bar_price` in conjunction with segment-level `rev_otb` to determine if current pricing strategies are capturing optimal demand.
+* **Demand Comparison**: Total demand fields allow for high-level pacing analysis (e.g., `total_demand_total` vs. `total_demand_total_ly_actual`) to see if the property is trending ahead or behind in overall market interest.
+
+
+
+
+
+# Core Metric Definitions
+
+## Occupancy
+```sql
+rooms_otb / NULLIF(available_rooms, 0)
+
 
 # Required Query Filters
 
