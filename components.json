@@ -19,10 +19,15 @@
     "utils": "@/lib/utils",
     "ui": "@/components/ui",
     "lib": "@/lib",
-    "hooks": "@/hooks"
+    "hooks": "@/hooks",
+    "app": "@/app"
   },
   "registries": {
     "@coss": "https://coss.com/ui/r/{name}.json",
-    "@reui": "https://reui.io/r/{style}/{name}.json"
+    "@reui": "https://reui.io/r/{style}/{name}.json",
+    "@basecn": "https://basecn.dev/r/{name}.json",
+    "@bundui": "https://bundui.io/r/{name}.json",
+    "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json",
+    "@pacekit": "https://ui.pacekit.dev/r/{name}.json"
   }
 }

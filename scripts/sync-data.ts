@@ -330,7 +330,17 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
       SELECT
         property_name,
         stay_date,
-        SUM(available_rooms) AS available_rooms
+        SUM(available_rooms) AS available_rooms,
+        MAX(special_events) AS special_events,
+        MAX(special_events_ly) AS special_events_ly,
+        SUM(total_demand_total) AS total_demand_total,
+        SUM(total_demand_total_ly_actual) AS total_demand_total_ly_actual,
+        SUM(total_demand_group) AS total_demand_group,
+        SUM(total_demand_group_ly_actual) AS total_demand_group_ly_actual,
+        SUM(total_demand_transient) AS total_demand_transient,
+        SUM(total_demand_transient_ly_actual) AS total_demand_transient_ly_actual,
+        MAX(lrv) AS lrv,
+        MAX(bar_price) AS bar_price
       FROM \`${dataset}.vw_pace_property_current\`
       WHERE stay_date >= (SELECT min_stay_date FROM date_window)
         AND stay_date < (SELECT max_stay_date_exclusive FROM date_window)
@@ -346,6 +356,16 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
       seg_totals.rev_budget AS rev_budget,
       seg_totals.rooms_budget AS rooms_budget,
       cap_totals.available_rooms AS available_rooms,
+      cap_totals.special_events AS special_events,
+      cap_totals.special_events_ly AS special_events_ly,
+      cap_totals.total_demand_total AS total_demand_total,
+      cap_totals.total_demand_total_ly_actual AS total_demand_total_ly_actual,
+      cap_totals.total_demand_group AS total_demand_group,
+      cap_totals.total_demand_group_ly_actual AS total_demand_group_ly_actual,
+      cap_totals.total_demand_transient AS total_demand_transient,
+      cap_totals.total_demand_transient_ly_actual AS total_demand_transient_ly_actual,
+      cap_totals.lrv AS lrv,
+      cap_totals.bar_price AS bar_price,
       (seg_totals.rooms_otb / nullif(cap_totals.available_rooms, 0)) AS occ_cy,
       (seg_totals.rooms_ly_actual / nullif(cap_totals.available_rooms, 0)) AS occ_py,
       (seg_totals.rooms_budget / nullif(cap_totals.available_rooms, 0)) AS occ_budget,
@@ -435,9 +455,16 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
       (seg_totals.rev_budget / nullif(seg_totals.rooms_budget, 0)) AS adr_budget,
       (seg_totals.rev_otb / nullif(cap_totals.available_rooms, 0)) AS revpar_cy,
       (seg_totals.rev_ly_actual / nullif(cap_totals.available_rooms, 0)) AS revpar_py,
-      (seg_totals.rev_budget / nullif(cap_totals.available_rooms, 0)) AS revpar_budget,
+      (seg_totals.rev_budget / nullif(cap_totals.available_rooms, 0)) AS revpar_budget_var,
+      (seg_totals.rooms_otb - seg_totals.rooms_ly_actual) AS rooms_var,
+      (seg_totals.rev_otb - seg_totals.rev_ly_actual) AS revenue_var,
+      (seg_totals.rooms_budget - seg_totals.rooms_otb) AS rooms_budget_var,
+      (seg_totals.rev_budget - seg_totals.rev_otb) AS revenue_budget_var,
+      (seg_totals.rev_otb / nullif(seg_totals.rev_budget, 0)) AS budget_reach_pct,
       seg_totals.rooms_forecast AS rooms_forecast,
-      seg_totals.rev_forecast AS rev_forecast
+      seg_totals.rev_forecast AS rev_forecast,
+      (seg_totals.rooms_forecast - seg_totals.rooms_otb) AS rooms_forecast_var,
+      (seg_totals.rev_forecast - seg_totals.rev_otb) AS revenue_forecast_var
     FROM seg_totals
     LEFT JOIN cap_totals
       ON seg_totals.property_name = cap_totals.property_name
@@ -551,14 +578,14 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
     // The columns are named r_chg_N__segment and v_chg_N__segment for current pickup,
     // and rooms_stly_chg_NNN_day__segment and rev_stly_chg_NNN_day__segment for STLY pickup.
     const PICKUP_WINDOWS = [
-      { days: 1,   chg: '1',   stly_chg: '001_day' },
-      { days: 3,   chg: '3',   stly_chg: '003_day' },
-      { days: 7,   chg: '7',   stly_chg: '007_day' },
-      { days: 14,  chg: '14',  stly_chg: '014_day' },
-      { days: 21,  chg: '21',  stly_chg: '021_day' },
-      { days: 30,  chg: '30',  stly_chg: '030_day' },
-      { days: 60,  chg: '60',  stly_chg: '060_day' },
-      { days: 90,  chg: '90',  stly_chg: '090_day' },
+      { days: 1,   chg: '001_day' },
+      { days: 3,   chg: '003_day' },
+      { days: 7,   chg: '007_day' },
+      { days: 14,  chg: '014_day' },
+      { days: 21,  chg: '021_day' },
+      { days: 30,  chg: '030_day' },
+      { days: 60,  chg: '060_day' },
+      { days: 90,  chg: '090_day' },
     ] as const;
 
     // Segment column suffixes that exist in the consolidated pickup view
@@ -618,10 +645,10 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
               CAST(rooms_stly__${seg} AS INTEGER)         AS rooms_stly,
               CAST(rev_otb__${seg} AS FLOAT)              AS rev_otb,
               CAST(rev_stly__${seg} AS FLOAT)             AS rev_stly,
-              CAST(r_chg_${w.chg}__${seg} AS INTEGER)                   AS rooms_pickup,
-              CAST(rooms_stly_chg_${w.stly_chg}__${seg} AS INTEGER)     AS rooms_stly_pickup,
-              CAST(v_chg_${w.chg}__${seg} AS FLOAT)                     AS rev_pickup,
-              CAST(rev_stly_chg_${w.stly_chg}__${seg} AS FLOAT)         AS rev_stly_pickup
+              CAST(rooms_otb_chg_${w.chg}__${seg} AS INTEGER)            AS rooms_pickup,
+              CAST(rooms_stly_chg_${w.chg}__${seg} AS INTEGER)           AS rooms_stly_pickup,
+              CAST(rev_otb_chg_${w.chg}__${seg} AS FLOAT)                AS rev_pickup,
+              CAST(rev_stly_chg_${w.chg}__${seg} AS FLOAT)               AS rev_stly_pickup
             FROM '${filePath}'`);
         }
       }

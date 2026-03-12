@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { Plus, Trash, Copy, Scissors, ClipboardPaste, CopyPlus } from "lucide-react";
+import { Trash, Scissors, ClipboardPaste, CopyPlus } from "lucide-react";
 import { useEditorStore } from "@/lib/ui-builder/store/editor-store";
 import { useLayerStore } from "@/lib/ui-builder/store/layer-store";
 import { canComponentAcceptChildren } from "@/lib/ui-builder/store/schema-utils";
@@ -21,6 +21,7 @@ import {
   limitShift,
   type VirtualElement,
 } from "@floating-ui/react";
+import { PlusIcon, CopyIcon } from "@radix-ui/react-icons";
 
 /**
  * Global context menu portal that renders at mouse position INSIDE the iframe.
@@ -266,7 +267,7 @@ const ContextMenuPortalItems: React.FC<ContextMenuPortalItemsProps> = ({
         <>
           <AddComponentsPopover parentLayerId={layerId}>
             <MenuItem onClick={(e) => e.stopPropagation()}>
-              <Plus className="mr-2 h-4 w-4" />
+              <PlusIcon className="mr-2 h-4 w-4" />
               Add Child
             </MenuItem>
           </AddComponentsPopover>
@@ -275,7 +276,7 @@ const ContextMenuPortalItems: React.FC<ContextMenuPortalItemsProps> = ({
       )}
 
       <MenuItem onClick={handleCopyClick}>
-        <Copy className="mr-2 h-4 w-4" />
+        <CopyIcon className="mr-2 h-4 w-4" />
         Copy
         <MenuShortcut>{SHORTCUTS.copy.shortcutDisplay}</MenuShortcut>
       </MenuItem>

@@ -9,14 +9,12 @@ import {
   SunIcon,
   MoonIcon,
   CheckIcon,
-  X,
   PlusIcon,
   Monitor,
   Tablet,
   Smartphone,
   Maximize,
   MoreVertical,
-  PanelLeft,
   PanelRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -77,6 +75,7 @@ import {
 } from "@/hooks/use-keyboard-shortcuts";
 import { useStore } from "zustand";
 import { SHORTCUTS, toKeyboardShortcut } from "@/lib/ui-builder/shortcuts/shortcut-registry";
+import { Cross2Icon, ViewVerticalIcon } from "@radix-ui/react-icons";
 
 const Z_INDEX = 1000;
 
@@ -206,7 +205,7 @@ export function NavBar({ leftChildren, rightChildren, showExport = true }: NavBa
               className="flex flex-col justify-center"
             >
               <span className="sr-only">Toggle Left Panel</span>
-              <PanelLeft className="w-4 h-4" />
+              <ViewVerticalIcon className="w-4 h-4" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>
@@ -797,7 +796,7 @@ const DialogContentWithZIndex = forwardRef<
       >
         {children}
         <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-          <X className="h-4 w-4 rounded-full p-1" />
+          <Cross2Icon className="h-4 w-4 rounded-full p-1" />
           <span className="sr-only">Close</span>
         </DialogClose>
       </DialogContent>

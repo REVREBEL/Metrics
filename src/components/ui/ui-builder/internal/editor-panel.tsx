@@ -6,7 +6,7 @@ import React, {
   useRef,
   useEffect,
 } from "react";
-import { Plus, Crosshair, ZoomIn, ZoomOut, MousePointer } from "lucide-react";
+import { Crosshair, ZoomIn, ZoomOut, MousePointer } from "lucide-react";
 import { countLayers, useLayerStore } from "@/lib/ui-builder/store/layer-store";
 import type { ComponentLayer } from "@/components/ui/ui-builder/types";
 import {
@@ -25,6 +25,7 @@ import { ResizableWrapper } from "@/components/ui/ui-builder/internal/canvas/res
 import AutoFrame from "@/components/ui/ui-builder/internal/canvas/auto-frame";
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
 import { LayerContextMenuPortal } from "@/components/ui/ui-builder/internal/components/layer-context-menu-portal";
+import { PlusIcon } from "@radix-ui/react-icons";
 
 // Static style objects to prevent recreation on every render
 const WRAPPER_STYLE = {
@@ -370,7 +371,7 @@ const EditorPanelContent: React.FC<EditorPanelContentProps> = ({
           size="icon"
           className="absolute bottom-4 left-4 size-14 md:size-10 flex items-center rounded-full bg-secondary shadow-lg z-[1000] [&_svg]:size-7 [&_svg]:md:size-4"
         >
-          <Plus className="text-secondary-foreground" />
+          <PlusIcon className="text-secondary-foreground" />
         </Button>
       </AddComponentsPopover>
     </div>

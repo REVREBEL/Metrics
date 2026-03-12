@@ -14,7 +14,6 @@ import {
   findAllParentLayersRecursive,
   hasLayerChildren,
 } from "@/lib/ui-builder/store/layer-utils";
-import { Plus } from "lucide-react";
 import { useHeTree, type Id } from "he-tree-react";
 import {
   TreeRowNode,
@@ -24,6 +23,7 @@ import { DevProfiler } from "@/components/ui/ui-builder/internal/components/dev-
 import { AddComponentsPopover } from "@/components/ui/ui-builder/internal/components/add-component-popover";
 import { buttonVariants } from "@/components/ui/button";
 import { DividerControl } from "@/components/ui/ui-builder/internal/components/divider-control";
+import { PlusIcon } from "@radix-ui/react-icons";
 
 interface LayersPanelProps {
   className?: string;
@@ -317,7 +317,7 @@ export const LayersTree: React.FC<LayersTreeProps> = React.memo(
                 className={buttonClass}
               >
                 <span className="sr-only">Add Component</span>
-                <Plus className="h-5 w-5" />
+                <PlusIcon className="h-5 w-5" />
                 <span>Add Component</span>
               </div>
             </AddComponentsPopover>

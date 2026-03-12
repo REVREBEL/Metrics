@@ -14,7 +14,7 @@ import type {
 } from "@/components/ui/ui-builder/types";
 import IconNameField from "@/components/ui/ui-builder/internal/form-fields/iconname-field";
 import { Textarea } from "@/components/ui/textarea";
-import { MinimalTiptapEditor } from "@/components/ui/minimal-tiptap/minimal-tiptap";
+import { MinimalTiptapEditor } from "@/components/ui/minimal-tiptap";
 import {
   Tooltip,
   TooltipContent,
@@ -45,7 +45,7 @@ import {
 } from "@/components/ui/select";
 
 export const classNameFieldOverrides: FieldConfigFunction = (
-   
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   layer,
 ) => {
   return {
