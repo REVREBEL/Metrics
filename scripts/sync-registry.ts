@@ -6,54 +6,97 @@ import path from "path";
 
 async function sync() {
   const project = new Project();
-  
-  // 1. Freshly scan the directory
-  const componentFiles = await glob("components/ui/**/*.tsx");
-  
+
+  // 1. Freshly scan all component directories
+  const scanPatterns = [
+    "src/components/ui/**/*.tsx",
+    "src/widgets/**/*.tsx",
+    "src/app/(app)/chats/components/**/*.tsx",
+    "src/app/(app)/dashboard/channels/components/**/*.tsx",
+    "src/app/(app)/dashboard/demand/components/**/*.tsx",
+    "src/app/(app)/dashboard/room-types/components/**/*.tsx",
+    "src/app/(app)/dashboard/segments/components/**/*.tsx",
+  ];
+
+  const componentFiles = [
+    ...new Set(
+      (
+        await Promise.all(
+          scanPatterns.map((pattern) =>
+            glob(pattern, {
+              nodir: true,
+              ignore: [
+                "**/*.d.ts",
+                "**/*.test.tsx",
+                "**/*.spec.tsx",
+                "**/*.stories.tsx",
+                "**/node_modules/**",
+              ],
+              windowsPathsNoEscape: true,
+            })
+          )
+        )
+      ).flat()
+    ),
+  ];
+
   const definitions: string[] = [];
   const imports: string[] = [];
   const processedNames = new Set<string>();
 
-  if (!existsSync('lib/ui-builder/registry')) {
-    await mkdir('lib/ui-builder/registry', { recursive: true });
+  if (!existsSync("lib/ui-builder/registry")) {
+    await mkdir("lib/ui-builder/registry", { recursive: true });
   }
 
+  console.log(`Found ${componentFiles.length} component files`);
+
   for (const file of componentFiles) {
-    // 2. HARD CHECK: Does the file actually exist on the disk right now?
     if (!existsSync(file)) {
-        console.log(`Skipping non-existent file: ${file}`);
-        continue;
+      console.log(`Skipping non-existent file: ${file}`);
+      continue;
     }
 
     const fileName = path.basename(file, ".tsx");
+
+    if (["index", "utils", "types", "schema"].includes(fileName)) {
+      continue;
+    }
+
     const pascalName = fileName
       .split(/[-_]/)
-      .map(p => p.charAt(0).toUpperCase() + p.slice(1))
+      .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
       .join("");
-
-    // Skip utility files
-    if (['index', 'utils', 'types', 'schema'].includes(fileName)) continue;
 
     const sourceFile = project.addSourceFileAtPath(file);
     const exportedDeclarations = sourceFile.getExportedDeclarations();
-    
-    // 3. EXPORT CHECK: Only import if the file actually HAS the component
+
     const isNamedExport = exportedDeclarations.has(pascalName);
     const hasDefaultExport = exportedDeclarations.has("default");
 
-    if (!isNamedExport && !hasDefaultExport) continue;
+    if (!isNamedExport && !hasDefaultExport) {
+      continue;
+    }
 
-    if (processedNames.has(pascalName)) continue;
+    if (processedNames.has(pascalName)) {
+      console.warn(`Skipping duplicate component name: ${pascalName} from ${file}`);
+      continue;
+    }
+
     processedNames.add(pascalName);
 
-    // 4. Generate the correct import style
-    const importPath = `@/components/ui/${fileName}`;
-    const importLine = isNamedExport 
+    const importPath =
+      "@/" +
+      file
+        .replace(/^src[\\/]/, "")
+        .replace(/\.tsx$/, "")
+        .replace(/\\/g, "/");
+
+    const importLine = isNamedExport
       ? `import { ${pascalName} } from "${importPath}";`
       : `import ${pascalName} from "${importPath}";`;
 
     imports.push(importLine);
-    
+
     definitions.push(`
   ${pascalName}: {
     component: ${pascalName},
@@ -65,7 +108,6 @@ async function sync() {
   }
 
   const content = `/* eslint-disable @typescript-eslint/no-explicit-any */
-// AUTOMATICALLY GENERATED - DO NOT EDIT
 import { z } from "zod";
 ${imports.join("\n")}
 
@@ -77,4 +119,7 @@ ${definitions.join(",\n")}
   console.log(`✅ Success! Synced ${processedNames.size} components. Any missing files were ignored.`);
 }
 
-sync().catch(console.error);
+sync().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

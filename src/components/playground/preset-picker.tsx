@@ -100,9 +100,9 @@ export function PresetPicker({ globalCSS, onApplyPreset }: PresetPickerProps) {
               <button
                 key={preset.name}
                 onClick={() => handleNamedPreset(preset)}
-                className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground"
+                className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm font-serif hover:bg-accent hover:text-accent-foreground"
               >
-                <span className="shrink-0 font-medium">{preset.title}</span>
+                <span className="shrink-0 font-display uppercase font-bold">{preset.title}</span>
                 <span className="ml-auto truncate text-right text-xs text-muted-foreground">
                   {preset.description}
                 </span>

@@ -1,16 +1,16 @@
 import "@/app/globals.css";
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+
+import { Main } from '@/components/layout/main'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <SidebarProvider>
+
           {/* Your AppSidebar component from the previous step */}
-          <SidebarInset>
+         <Main fluid>
             {children}
-          </SidebarInset>
-        </SidebarProvider>
+        </Main>
       </body>
     </html>
   );

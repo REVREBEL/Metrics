@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// AUTOMATICALLY GENERATED - DO NOT EDIT
 import { z } from "zod";
 import { TypographyTable } from "@/components/ui/typography-table";
 import { TypographySmall } from "@/components/ui/typography-small";
@@ -67,66 +66,64 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Alert } from "@/components/ui/alert";
 import { AlertDialog } from "@/components/ui/alert-dialog";
 import { Accordion } from "@/components/ui/accordion";
-import { ServerLayerRenderer } from "@components/ui/ui-builder/server-layer-renderer";
+import { ServerLayerRenderer } from "@/components/ui/ui-builder/server-layer-renderer";
 import LayerRenderer from "@/components/ui/ui-builder/layer-renderer";
-import MinimalTiptap from "@/components/ui/ui-builder/components/minimal-tiptap";
-import { VariablesPanel } from "@/components/ui/ui-builder/components/ui-builder/internal/variables-panel";
-import { TailwindThemePanel } from "@/components/ui/ui-builder/components/tailwind-theme-panel";
-import PropsPanel from "@/components/ui/ui-builder/components/props-panel";
-import LayersPanel from "@/components/ui/ui-builder/components/layers-panel";
-import EditorPanel from "@/components/ui/ui-builder/components/editor-panel";
-import { ConfigPanel } from "@/components/ui/ui-builder/components/config-panel";
+import MinimalTiptap from "@/components/ui/minimal-tiptap/minimal-tiptap";
+import { VariablesPanel } from "@/components/ui/ui-builder/internal/variables-panel";
+import { TailwindThemePanel } from "@/components/ui/ui-builder/internal/tailwind-theme-panel";
+import PropsPanel from "@/components/ui/ui-builder/internal/props-panel";
+import LayersPanel from "@/components/ui/ui-builder/internal/layers-panel";
+import EditorPanel from "@/components/ui/ui-builder/internal/editor-panel";
+import { ConfigPanel } from "@/components/ui/ui-builder/internal/config-panel";
 import { Markdown } from "@/components/ui/ui-builder/components/markdown";
 import { Icon } from "@/components/ui/ui-builder/components/icon";
 import { Grid } from "@/components/ui/ui-builder/components/grid";
-import { Flexbox } from "@/components/ui/ui-builder/components/ui-builder/components/flexbox";
-import { CodePanel } from "@/components/ui/ui-builder/components/ui-builder/components/code-panel";
-import { ToolbarSection } from "@/components/ui/ui-builder/components/toolbar-section";
-import { ToolbarButton } from "@/components/ui/ui-builder/components/toolbar-button";
-import { ShortcutKey } from "@/components/ui/ui-builder/components/shortcut-key";
-import { MeasuredContainer } from "@/components/ui/ui-builder/components/measured-container";
-import Object from "@/components/ui/ui-builder/components/object";
-import Number from "@/components/ui/ui-builder/components/number";
-import Enum from "@/components/ui/ui-builder/components/enum";
-import Date from "@/components/ui/ui-builder/components/date";
-import Array from "@/components/ui/ui-builder/components/array";
-import { DropZone } from "@/components/ui/ui-builder/components/drop-zone";
-import { DraggableNewComponent } from "@/components/ui/ui-builder/components/draggable-new-component";
-import { DragHandle } from "@/components/ui/ui-builder/components/drag-handle";
-import IconnameField from "@/components/ui/ui-builder/components/iconname-field";
-import { ChildrenSearchableSelect } from "@/components/ui/ui-builder/components/children-searchable-select";
-import { ResizableWrapper } from "@/components/ui/ui-builder/components/resizable-wrapper";
-import AutoFrame from "@/components/ui/ui-builder/components/auto-frame";
-import { TreeRowNode } from "@/components/ui/ui-builder/components/tree-row-node";
-import { NameEdit } from "@/components/ui/ui-builder/components/name-edit";
-import MultiSelect from "@/components/ui/ui-builder/components/multi-select";
-import { LayerMenu } from "@/components/ui/ui-builder/components/layer-menu";
-import { LayerContextMenu } from "@/components/ui/ui-builder/components/layer-context-menu";
-import { LayerContextMenuPortal } from "@/components/ui/ui-builder/components/layer-context-menu-portal";
-import { ErrorFallback } from "@/components/ui/ui-builder/components/error-fallback";
-import { ElementSelector } from "@/components/ui/ui-builder/components/element-selector";
-import { DividerControl } from "@/components/ui/ui-builder/components/divider-control";
-import { DevProfiler } from "@/components/ui/ui-builder/components/dev-profiler";
-import Two from "@/components/ui/ui-builder/components/two";
-import Three from "@/components/ui/ui-builder/components/three";
-import One from "@/components/ui/ui-builder/components/one";
-import Four from "@/components/ui/ui-builder/components/four";
-import Five from "@/components/ui/ui-builder/components/five";
-import { LinkPopoverBlock } from "@/components/ui/ui-builder/components/link-popover-block";
-import { LinkEditPopover } from "@/components/ui/ui-builder/components/link-edit-popover";
-import { LinkEditBlock } from "@/components/ui/ui-builder/components/link-edit-block";
-import { ImageEditDialog } from "@/components/ui/ui-builder/components/image-edit-dialog";
-import { ImageEditBlock } from "@/components/ui/ui-builder/components/image-edit-block";
-import { LinkBubbleMenu } from "@/components/ui/ui-builder/components/link-bubble-menu";
-import { ThemeAwareDropdownOption } from "@/components/ui/ui-builder/components/theme-aware-dropdown-option";
-import ClassnameMultiselect from "@/components/ui/ui-builder/components/classname-multiselect";
-import Page from "@/components/ui/ui-builder/components/page";
-import Layout from "@/components/ui/ui-builder/components/layout";
-import { ThemeProvider } from "@/components/ui/ui-builder/components/theme-provider";
-import { ResizeHandle } from "@/components/ui/ui-builder/components/resize-handle";
-import { ImageViewBlock } from "@/components/ui/ui-builder/components/image-view-block";
-import { ImageOverlay } from "@/components/ui/ui-builder/components/image-overlay";
-import { ImageActions } from "@/components/ui/ui-builder/components/image-actions";
+import { Flexbox } from "@/components/ui/ui-builder/components/flexbox";
+import { CodePanel } from "@/components/ui/ui-builder/components/code-panel";
+import { ToolbarSection } from "@/components/ui/minimal-tiptap/components/toolbar-section";
+import { ToolbarButton } from "@/components/ui/minimal-tiptap/components/toolbar-button";
+import { ShortcutKey } from "@/components/ui/minimal-tiptap/components/shortcut-key";
+import { MeasuredContainer } from "@/components/ui/minimal-tiptap/components/measured-container";
+import Object from "@/components/ui/auto-form/fields/object";
+import Number from "@/components/ui/auto-form/fields/number";
+import Enum from "@/components/ui/auto-form/fields/enum";
+import Date from "@/components/ui/auto-form/fields/date";
+import Array from "@/components/ui/auto-form/fields/array";
+import { DropZone } from "@/components/ui/ui-builder/internal/dnd/drop-zone";
+import { DraggableNewComponent } from "@/components/ui/ui-builder/internal/dnd/draggable-new-component";
+import { DragHandle } from "@/components/ui/ui-builder/internal/dnd/drag-handle";
+import IconnameField from "@/components/ui/ui-builder/internal/form-fields/iconname-field";
+import { ChildrenSearchableSelect } from "@/components/ui/ui-builder/internal/form-fields/children-searchable-select";
+import { ResizableWrapper } from "@/components/ui/ui-builder/internal/canvas/resizable-wrapper";
+import AutoFrame from "@/components/ui/ui-builder/internal/canvas/auto-frame";
+import { NameEdit } from "@/components/ui/ui-builder/internal/components/name-edit";
+import MultiSelect from "@/components/ui/ui-builder/internal/components/multi-select";
+import { LayerMenu } from "@/components/ui/ui-builder/internal/components/layer-menu";
+import { LayerContextMenu } from "@/components/ui/ui-builder/internal/components/layer-context-menu";
+import { LayerContextMenuPortal } from "@/components/ui/ui-builder/internal/components/layer-context-menu-portal";
+import { ErrorFallback } from "@//components/ui/ui-builder/internal/components/error-fallback";
+import { ElementSelector } from "@/components/ui/ui-builder/internal/components/element-selector";
+import { DividerControl } from "@/components/ui/ui-builder/internal/components/divider-control";
+import { DevProfiler } from "@/components/ui/ui-builder/internal/components/dev-profiler";
+import { ThemeAwareDropdownOption } from "@/components/ui/ui-builder/internal/form-fields/classname-control/theme-aware-dropdown-option";
+import { ResizeHandle } from "@/components/ui/minimal-tiptap/extensions/image/components/resize-handle";
+import { ImageViewBlock } from "@/components/ui/minimal-tiptap/extensions/image/components/image-view-block";
+import { ImageOverlay } from "@/components/ui/minimal-tiptap/extensions/image/components/image-overlay";
+import { ImageActions } from "@/components/ui/minimal-tiptap/extensions/image/components/image-actions";
+import { TreeRowNode } from "@/components/ui/ui-builder/internal/components/tree-row-node";
+import { SectionOne } from "@/components/ui/minimal-tiptap/components/section/one";
+import { SectionTwo } from "@/components/ui/minimal-tiptap/components/section/two";
+import { SectionThree } from "@/components/ui/minimal-tiptap/components/section/three";
+import { SectionFour } from "@/components/ui/minimal-tiptap/components/section/four";
+import { SectionFive } from "@/components/ui/minimal-tiptap/components/section/five";
+import { LinkPopoverBlock } from "@/components/ui/minimal-tiptap/components/link/link-popover-block"
+import { LinkEditPopover } from "@/components/ui/minimal-tiptap/components/link/link-edit-popover"
+import { ImageEditDialog } from "@/components/ui/minimal-tiptap/components/image/image-edit-dialog";
+import { LinkEditBlock } from "@/components/ui/minimal-tiptap/components/link/link-edit-block";
+import { ImageEditBlock } from "@/components/ui/minimal-tiptap/components/image/image-edit-block";
+import { LinkBubbleMenu } from "@/components/ui/minimal-tiptap/components/bubble-menu/link-bubble-menu";
+import ClassnameMultiselect from "@/components/ui/ui-builder/internal/form-fields/classname-control/classname-multiselect";
+
 
 export const autoGeneratedDefinitions: Record<string, any> = {
 
@@ -978,40 +975,41 @@ export const autoGeneratedDefinitions: Record<string, any> = {
     from: "@/components/ui/dev-profiler",
   },
 
-  Two: {
-    component: Two,
-    schema: z.object({
-      className: z.string().optional(),
-    }),
-    from: "@/components/ui/two",
-  },
-
-  Three: {
-    component: Three,
-    schema: z.object({
-      className: z.string().optional(),
-    }),
-    from: "@/components/ui/three",
-  },
-
-  One: {
-    component: One,
+  SectionOne: {
+    component: SectionOne,
     schema: z.object({
       className: z.string().optional(),
     }),
     from: "@/components/ui/one",
   },
 
-  Four: {
-    component: Four,
+  SectionTwo: {
+    component: SectionTwo,
+    schema: z.object({
+      className: z.string().optional(),
+    }),
+    from: "@/components/ui/two",
+  },
+
+  SectionThree: {
+    component: SectionThree,
+    schema: z.object({
+      className: z.string().optional(),
+    }),
+    from: "@/components/ui/three",
+  },
+
+
+  SectionFour: {
+    component: SectionFour,
     schema: z.object({
       className: z.string().optional(),
     }),
     from: "@/components/ui/four",
   },
 
-  Five: {
-    component: Five,
+  SectionFive: {
+    component: SectionFive,
     schema: z.object({
       className: z.string().optional(),
     }),
@@ -1080,30 +1078,6 @@ export const autoGeneratedDefinitions: Record<string, any> = {
       className: z.string().optional(),
     }),
     from: "@/components/ui/classname-multiselect",
-  },
-
-  Page: {
-    component: Page,
-    schema: z.object({
-      className: z.string().optional(),
-    }),
-    from: "@/components/ui/page",
-  },
-
-  Layout: {
-    component: Layout,
-    schema: z.object({
-      className: z.string().optional(),
-    }),
-    from: "@/components/ui/layout",
-  },
-
-  ThemeProvider: {
-    component: ThemeProvider,
-    schema: z.object({
-      className: z.string().optional(),
-    }),
-    from: "@/components/ui/theme-provider",
   },
 
   ResizeHandle: {

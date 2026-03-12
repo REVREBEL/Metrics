@@ -406,6 +406,16 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
     })),
     metadata: null
   },
+  ui_chart_demos: { 
+    name: "chart-demos", 
+    type: "ui-primitive",
+    component: dynamic(() => import('@/components/ui/chart-demos').then(mod => {
+      const m = mod as Record<string, any>;
+      const componentLike = Object.keys(m).find((key) => /^[A-Z]/.test(key) && typeof m[key] === 'function');
+      return m["ChartDemos"] || m.default || (componentLike ? m[componentLike] : m[Object.keys(m)[0]]);
+    })),
+    metadata: null
+  },
   ui_chart: { 
     name: "chart", 
     type: "ui-primitive",
