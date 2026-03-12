@@ -1,6 +1,4 @@
 import React, { useCallback } from "react";
-
-import { X as XIcon, ChevronsUpDown } from "lucide-react";
 import {
   useLayerStore,
 } from "@/lib/ui-builder/store/layer-store";
@@ -9,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AddComponentsPopover } from "@/components/ui/ui-builder/internal/components/add-component-popover";
 import { hasLayerChildren } from "@/lib/ui-builder/store/layer-utils";
+import { Cross2Icon, CaretSortIcon } from "@radix-ui/react-icons";
 
 interface ChildrenSearchableSelectProps { 
   layer: ComponentLayer;
@@ -31,7 +30,7 @@ export function ChildrenSearchableSelect({ layer, onChange }: ChildrenSearchable
               className="w-full justify-between"
             >
               Add Component
-              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+              <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </Button>
           </AddComponentsPopover>
   

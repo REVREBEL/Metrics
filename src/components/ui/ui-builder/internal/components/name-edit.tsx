@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react"
 import { Button } from "@/components/ui/button"
-import { Check, X as XIcon } from "lucide-react"
 import { Input } from "@/components/ui/input"
+import { CheckIcon, Cross2Icon } from "@radix-ui/react-icons";
 
 interface NameEditProps {
   initialName: string
@@ -59,7 +59,7 @@ export const NameEdit: React.FC<NameEditProps> = ({ initialName, onSave, onCance
         className="ml-1"
         aria-label="Save rename"
       >
-        <Check className="h-4 w-4" />
+        <CheckIcon className="h-4 w-4" />
       </Button>
       <Button
         variant="ghost"

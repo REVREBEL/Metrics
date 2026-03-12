@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Plus, Trash, Copy } from "lucide-react";
+import { Trash } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { useLayerStore } from "@/lib/ui-builder/store/layer-store";
 import { useEditorStore } from "@/lib/ui-builder/store/editor-store";
@@ -7,6 +7,7 @@ import { AddComponentsPopover } from "@/components/ui/ui-builder/internal/compon
 import { cn } from "@/lib/utils";
 import { canComponentAcceptChildren } from "@/lib/ui-builder/store/schema-utils";
 import { useGlobalLayerActions } from "@/lib/ui-builder/hooks/use-layer-actions";
+import { PlusIcon, CopyIcon } from "@radix-ui/react-icons";
 
 interface MenuProps {
   layerId: string;
@@ -52,7 +53,7 @@ export const LayerMenu: React.FC<MenuProps> = ({ layerId }) => {
           >
             <div className={cn(buttonVariantsValues, buttonClass, popoverOpen ? "bg-white text-black" : "")}>
               <span className="sr-only">Add Component</span>
-              <Plus className="size-3" />
+              <PlusIcon className="size-3" />
             </div>
           </AddComponentsPopover>
         )}
@@ -65,7 +66,7 @@ export const LayerMenu: React.FC<MenuProps> = ({ layerId }) => {
             <span className="sr-only">
               Duplicate {isLayerAPage ? "Page" : "Component"}
             </span>
-            <Copy className="size-3" data-testid="duplicate-icon" />
+            <CopyIcon className="size-3" data-testid="duplicate-icon" />
           </div>
         )}
         {canDelete && (

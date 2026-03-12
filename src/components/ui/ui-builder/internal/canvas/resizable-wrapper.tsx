@@ -7,9 +7,9 @@ import React, {
     useRef,
   } from "react";
 import { cn } from "@/lib/utils";
-import { GripVertical } from "lucide-react";
 import { useDrag } from "@use-gesture/react";
 import type { DragConfig } from "@use-gesture/react";
+import { DragHandleDots2Icon } from "@radix-ui/react-icons";
 
 const RESPONSIVE_DEFAULT_SIZE = 800;
 
@@ -160,14 +160,14 @@ export  const ResizableWrapper: React.FC<ResizableWrapperProps> = ({
                 {...bindHorizontalResizerValues}
                 className="absolute top-1/2 right-[-20px] -translate-y-1/2"
               >
-                <GripVertical className="w-4 h-4" />
+                <DragHandleDots2Icon className="w-4 h-4" />
               </Resizer>
               {/* Vertical resizer at the bottom center */}
               <Resizer
                 {...bindVerticalResizerValues}
                 className="absolute bottom-[-20px] left-1/2 -translate-x-1/2 cursor-ns-resize"
               >
-                <GripVertical className="w-4 h-4 rotate-90" />
+                <DragHandleDots2Icon className="w-4 h-4 rotate-90" />
               </Resizer>
             </>
           )}

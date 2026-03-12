@@ -3,11 +3,7 @@ import type { NodeAttrs } from "he-tree-react";
 import isDeepEqual from "fast-deep-equal";
 import { Button } from "@/components/ui/button";
 import {
-  ChevronDown,
-  ChevronRight,
-  GripVertical,
-  MoreVertical,
-  Plus,
+  MoreVertical
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { hasLayerChildren } from "@/lib/ui-builder/store/layer-utils";
@@ -24,6 +20,7 @@ import { useEditorStore } from "@/lib/ui-builder/store/editor-store";
 import { canComponentAcceptChildren } from "@/lib/ui-builder/store/schema-utils";
 import { useGlobalLayerActions } from "@/lib/ui-builder/hooks/use-layer-actions";
 import { useLayerStore } from "@/lib/ui-builder/store/layer-store";
+import { ChevronDownIcon, ChevronRightIcon, DragHandleDots2Icon, PlusIcon } from "@radix-ui/react-icons";
 
 interface TreeRowNodeProps {
   node: ComponentLayer;
@@ -108,9 +105,9 @@ export const TreeRowNode: React.FC<TreeRowNodeProps> = memo(({
           onClick={handleOpen}
         >
           {open ? (
-            <ChevronDown className="size-4 bg-secondary rounded-full" />
+            <ChevronDownIcon className="size-4 bg-secondary rounded-full" />
           ) : (
-            <ChevronRight className="size-4 bg-secondary rounded-full" />
+            <ChevronRightIcon className="size-4 bg-secondary rounded-full" />
           )}
         </Button>
       ) : (
@@ -141,7 +138,7 @@ export const TreeRowNode: React.FC<TreeRowNodeProps> = memo(({
             )}
             draggable={draggable}
           >
-            <GripVertical className="size-4" />
+            <DragHandleDots2Icon className="size-4" />
           </div>
           {node.name}
         </Button>
@@ -159,7 +156,7 @@ export const TreeRowNode: React.FC<TreeRowNodeProps> = memo(({
               popoverOrMenuOpen ? "opacity-100" : "opacity-0"
             )}
           >
-            <Plus className="h-4 w-4" />
+            <PlusIcon className="h-4 w-4" />
             <span className="sr-only">Add component</span>
           </Button>
         </AddComponentsPopover>

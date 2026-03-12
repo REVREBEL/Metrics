@@ -5,11 +5,12 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Plus, Trash } from "lucide-react";
+import { Trash } from "lucide-react";
 import { useFieldArray, type useForm } from "react-hook-form";
 import type * as z from "zod";
 import { beautifyObjectName } from "../helpers";
 import AutoFormObject from "./object";
+import { PlusIcon } from "@radix-ui/react-icons";
 
 /**
  * Get the def type from a Zod schema (Zod v4 compatible).
@@ -103,7 +104,7 @@ export default function AutoFormArray({
           onClick={() => append({})}
           className="mt-4 flex items-center"
         >
-          <Plus className="mr-2" size={16} />
+          <PlusIcon className="mr-2" size={16} />
           Add
         </Button>
       </AccordionContent>

@@ -12,11 +12,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Trash2, Plus, Edit2, Check, X } from "lucide-react";
+import { Trash2, Edit2 } from "lucide-react";
 import { useLayerStore } from "@/lib/ui-builder/store/layer-store";
 import type { Variable, FunctionRegistry } from "@/components/ui/ui-builder/types";
 import { cn } from "@/lib/utils";
 import { useEditorStore } from "@/lib/ui-builder/store/editor-store";
+import { PlusIcon, CheckIcon, Cross2Icon } from "@radix-ui/react-icons";
 
 const EMPTY_OBJECT = {};
 
@@ -77,7 +78,7 @@ export const VariablesPanel: React.FC<VariablesPanelProps> = ({
         <h3 className="text-lg font-semibold">Variables</h3>
         {allowVariableEditing && (
           <Button size="sm" onClick={handleSetIsAdding} disabled={isAdding}>
-            <Plus className="h-4 w-4 mr-2" />
+            <PlusIcon className="h-4 w-4 mr-2" />
             Add Variable
           </Button>
         )}
@@ -308,11 +309,11 @@ const AddVariableForm: React.FC<AddVariableFormProps> = ({
 
         <div className="flex gap-2">
           <Button size="sm" onClick={handleSave}>
-            <Check className="h-4 w-4 mr-2" />
+            <CheckIcon className="h-4 w-4 mr-2" />
             Save
           </Button>
           <Button size="sm" variant="outline" onClick={onCancel}>
-            <X className="h-4 w-4 mr-2" />
+            <Cross2Icon className="h-4 w-4 mr-2" />
             Cancel
           </Button>
         </div>
@@ -534,11 +535,11 @@ const VariableCard: React.FC<VariableCardProps> = ({
 
           <div className="flex gap-2">
             <Button size="sm" onClick={handleSave}>
-              <Check className="h-4 w-4 mr-2" />
+              <CheckIcon className="h-4 w-4 mr-2" />
               Save
             </Button>
             <Button size="sm" variant="outline" onClick={onCancel}>
-              <X className="h-4 w-4 mr-2" />
+              <Cross2Icon className="h-4 w-4 mr-2" />
               Cancel
             </Button>
           </div>

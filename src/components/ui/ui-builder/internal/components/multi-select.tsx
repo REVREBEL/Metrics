@@ -1,7 +1,6 @@
 "use client";
 
 import { Command as CommandPrimitive, useCommandState } from "cmdk";
-import { X } from "lucide-react";
 import * as React from "react";
 import { forwardRef, useEffect, useMemo, useCallback } from "react";
 
@@ -14,6 +13,7 @@ import {
 } from "@/components/ui/command";
 import { cn } from "@/lib/utils";
 import { useDebounce } from "@/hooks/use-debounce";
+import { Cross2Icon } from "@radix-ui/react-icons";
 
 const EMPTY_ARRAY: any[] = [];
 
@@ -603,7 +603,7 @@ const MultipleSelector = React.forwardRef<
                   "hidden"
               )}
             >
-              <X />
+              <Cross2Icon />
             </button>
           </div>
         </div>
@@ -710,7 +710,7 @@ const OptionBadge = ({
         onMouseDown={handleMouseDown}
         onClick={handleUnselect}
       >
-        <X className="h-3 w-3 text-muted-foreground hover:text-foreground" />
+        <Cross2Icon className="h-3 w-3 text-muted-foreground hover:text-foreground" />
       </button>
     </Badge>
   );
