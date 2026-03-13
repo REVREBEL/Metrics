@@ -15,7 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ConfirmReplaceDialog } from "@/components/playground/confirm-replace-dialog";
-import type { RegistryGroup, RegistryItem } from "@/lib/workshop/registry-adapter";
+import type { RegistryGroup, RegistryItem } from "@/lib/playground/registry-adapter";
 
 type RegistryPickerProps = {
   groups: RegistryGroup[];
@@ -120,7 +120,7 @@ export default function CenteredPreview() {
 
   return (
     <div className="flex min-h-svh w-full flex-col items-center justify-center gap-4 p-6">
-      <p className="text-xs text-muted-foreground">Previewing: ${title}</p>
+      <p className="text-xs font-serif text-light text-muted-foreground">Previewing: ${title}</p>
       <Component {...props} />
     </div>
   );
@@ -161,7 +161,7 @@ export function RegistryPicker({ groups, code, onReplaceCode }: RegistryPickerPr
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="sm">
-            <span className="truncate max-w-[260px]">{selectedLabel}</span>
+            <span className="truncate font-display uppercase text-dark-blue-200 max-w-[260px]">{selectedLabel}</span>
             <IconChevronDown className="size-3.5" />
           </Button>
         </DropdownMenuTrigger>

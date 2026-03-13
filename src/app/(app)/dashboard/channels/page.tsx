@@ -15,7 +15,7 @@ import { YearMonthSelector } from "@/widgets/YearMonthSelector/dynamic";
 
 const topNav = [
   {
-    title: 'Metrics Dashboard',
+    title: 'Metrics',
     href: '/dashboard/dashboard',
     isActive: true,
     disabled: false,

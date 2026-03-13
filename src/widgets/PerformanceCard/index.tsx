@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { format } from "date-fns";
 import { Card, CardContent } from "@/components/ui/card";
 import ArrowCircleDown from "@/assets/rebel-icons/ArrowCircleDown";
@@ -13,6 +13,7 @@ import {
   PieChart,
   Pie,
   Tooltip,
+  type PieSectorDataItem,
   type TooltipContentProps,
 } from "recharts";
 
@@ -25,6 +26,13 @@ type SummaryMetric = {
   value: number;
   format: ValueFormat;
   variance: number;
+};
+
+
+type TooltipMetricRowProps = {
+  label: string;
+  booked: string;
+  remaining: string;
 };
 
 type TooltipRow = {
@@ -101,10 +109,14 @@ type CardState = {
   barData: DailyBarDatum[];
 };
 
+const DONUT_TOOLTIP_WIDTH = 320;
+const DONUT_TOOLTIP_HEIGHT = 150;
+const DONUT_TOOLTIP_OFFSET = 16;
+
 const fallbackState: CardState = {
   summaryMetrics: [
-    { label: "OCCP", value: 67.2, format: "percent", variance: -3 },
-    { label: "Rms", value: 3340, format: "number", variance: 1645 },
+    { label: "Occupancy", value: 67.2, format: "percent", variance: -3 },
+    { label: "Rooms", value: 3340, format: "number", variance: 1645 },
     { label: "ADR", value: 323.19, format: "currency", variance: -32.99 },
     { label: "REVPAR", value: 156.16, format: "currency", variance: 6.34 },
   ],
@@ -119,8 +131,8 @@ const fallbackState: CardState = {
       label: "Total",
       booked: 408_021,
       remaining: 262_125,
-      bookedColor: "var(--total-var)",
-      remainingColor: "var(--total)",
+      bookedColor: "var(--color-total-var)",
+      remainingColor: "color-mix(in oklch, var(--color-total) 20%, transparent)",
       innerRadius: 94,
       outerRadius: 118,
       tooltipTitle: METRIC_NAME,
@@ -135,8 +147,8 @@ const fallbackState: CardState = {
       label: "Transient",
       booked: 280_000,
       remaining: 140_000,
-      bookedColor: "var(--transient-var)",
-      remainingColor: "var(--transient)",
+      bookedColor: "var(--color-transient-var)",
+      remainingColor: "color-mix(in oklch, var(--color-transient) 20%, transparent)",
       innerRadius: 68,
       outerRadius: 90,
       tooltipTitle: "TRANSIENT",
@@ -151,8 +163,8 @@ const fallbackState: CardState = {
       label: "Group",
       booked: 128_021,
       remaining: 122_125,
-      bookedColor: "var(--group-var)",
-      remainingColor: "var(--group)",
+      bookedColor: "var(--color-group-var)",
+      remainingColor: "color-mix(in oklch, var(--color-group) 20%, transparent)",
       innerRadius: 46,
       outerRadius: 64,
       tooltipTitle: "GROUP",
@@ -174,6 +186,24 @@ const fallbackState: CardState = {
     leftToBookRevenue: 0,
   })),
 };
+
+
+function TooltipMetricRow({
+  label,
+  booked,
+  remaining,
+}: TooltipMetricRowProps) {
+  return (
+    <div className="grid grid-cols-[3fr_1fr_3fr_1fr_3fr] items-center gap-x-3">
+      <span className="text-left items-end font-display font-bold uppercase text-foreground">{label}</span>
+      <span className="text-left items-end font-serif text-sm text-muted-foreground"> OTB</span>
+      <span className="text-left items-end font-serif text-muted-foreground">{booked} </span>
+      <span className="text-left items-end font-serif text-sm text-muted-foreground"> Reach</span>
+      <span className="text-left items-end font-serif text-foreground">{remaining}</span>
+    </div>
+  );
+}
+
 
 function toNumber(value: number | string | null | undefined) {
   if (value == null) return 0;
@@ -209,7 +239,7 @@ function buildTooltipRow(label: string, booked: string, remaining: string): Tool
 function Variance({ value, format }: { value: number; format: ValueFormat }) {
   const positive = value >= 0;
   const Icon = positive ? ArrowCircleUp : ArrowCircleDown;
-  const tone = positive ? "var(--positive)" : "var(--negative)";
+  const tone = positive ? "var(--color-positive)" : "var(--color-negative)";
 
   return (
     <div className="mt-2 flex items-center text-sm font-serif" style={{ color: tone }}>
@@ -219,32 +249,39 @@ function Variance({ value, format }: { value: number; format: ValueFormat }) {
   );
 }
 
-function TooltipMetricRow({ label, booked, remaining }: TooltipRow) {
+function HeroMetricVariance({ value, format }: { value: number; format: ValueFormat }) {
+  const positive = value >= 0;
+  const Icon = positive ? ArrowCircleUp : ArrowCircleDown;
+  const tone = positive ? "var(--color-positive)" : "var(--color-negative)";
+
   return (
-    <div className="flex items-baseline justify-between gap-6 text-sm text-[color:var(--primary)]">
-      <span className="shrink-0 font-display font-bold uppercase">{label}</span>
-      <span className="text-right font-serif">
-        {booked} OTB <span className="mx-2 opacity-50">|</span> {remaining} Left to Book
-      </span>
+    <div className="mt-2 flex items-center text-lg font-serif" style={{ color: tone }}>
+      <Icon className="mr-1 size-8 fill-current" />
+      {formatValue(Math.abs(value), format)} var
     </div>
   );
 }
 
-function DonutTooltip({ active, payload }: TooltipContentProps<number, string>) {
-  if (!active || !payload?.length) {
-    return null;
-  }
-
-  const ring = payload[0]?.payload?.ring as DonutRing | undefined;
-  if (!ring) {
-    return null;
-  }
-
+function DonutTooltipCard({
+  ring,
+  shouldAnimateIn,
+}: {
+  ring: DonutRing;
+  shouldAnimateIn: boolean;
+}) {
   return (
-    <div className="relative z-[60] min-w-64 rounded-lg border border-[var(--border)] bg-[var(--card)] px-4 py-3 shadow-lg">
-      <p className="mb-3 text-left font-display text-md font-bold uppercase text-[color:var(--primary)]">
+    <div
+      className={`relative z-[60] min-w-100 rounded-lg border border-border bg-card px-4 py-3 shadow-xl transition-all duration-200 ease-out ${shouldAnimateIn
+        ? "motion-safe:animate-in motion-safe:fade-in-0 motion-safe:zoom-in-95"
+        : ""
+        }`}
+    >
+      <p className="text-left font-display text-md font-bold uppercase text-primary">
         {ring.tooltipTitle}
       </p>
+
+      <div className="my-3 h-[2px] bg-primary" />
+
       <div className="flex flex-col gap-2">
         {ring.tooltipRows.map((row) => (
           <TooltipMetricRow key={row.label} {...row} />
@@ -254,7 +291,30 @@ function DonutTooltip({ active, payload }: TooltipContentProps<number, string>) 
   );
 }
 
-function BarTooltip({ active, payload }: TooltipContentProps<number, string>) {
+function BarTooltip({ active, payload }: TooltipContentProps<any, any>) {
+  // function BarTooltip({ active, payload }: TooltipContentProps<number, string>) {
+  const wasActiveRef = useRef(false);
+  const [shouldAnimateIn, setShouldAnimateIn] = useState(false);
+
+  useEffect(() => {
+    if (active && !wasActiveRef.current) {
+      setShouldAnimateIn(true);
+
+      const timeoutId = window.setTimeout(() => {
+        setShouldAnimateIn(false);
+      }, 200);
+
+      wasActiveRef.current = true;
+
+      return () => window.clearTimeout(timeoutId);
+    }
+
+    if (!active) {
+      wasActiveRef.current = false;
+      setShouldAnimateIn(false);
+    }
+  }, [active]);
+
   if (!active || !payload?.length) {
     return null;
   }
@@ -265,10 +325,18 @@ function BarTooltip({ active, payload }: TooltipContentProps<number, string>) {
   }
 
   return (
-    <div className="relative z-[60] min-w-72 rounded-lg border border-[var(--border)] bg-[var(--card)] px-4 py-3 shadow-lg">
-      <p className="mb-3 text-left font-display text-md font-bold uppercase text-[color:var(--primary)]">
+    <div
+      className={`relative z-[60] min-w-100 rounded-lg border border-border bg-card px-4 py-3 shadow-xl transition-all duration-200 ease-out ${shouldAnimateIn
+        ? "motion-safe:animate-in motion-safe:fade-in-0 motion-safe:zoom-in-95"
+        : ""
+        }`}
+    >
+      <p className="text-left font-display text-md font-bold uppercase text-primary">
         {datum.dateLabel}
       </p>
+
+      <div className="my-3 h-[2px] bg-primary" />
+
       <div className="flex flex-col gap-2">
         <TooltipMetricRow
           label="Rooms"
@@ -367,8 +435,8 @@ function buildCardState(currentRow: CurrentMonthlyRow | undefined, segmentRows: 
 
   return {
     summaryMetrics: [
-      { label: "OCCP", value: occOtb * 100, format: "percent", variance: (occBudget - occOtb) * 100 },
-      { label: "Rms", value: roomsOtb, format: "number", variance: roomsLeftToBook },
+      { label: "Occupancy", value: occOtb * 100, format: "percent", variance: (occBudget - occOtb) * 100 },
+      { label: "Rooms", value: roomsOtb, format: "number", variance: roomsLeftToBook },
       { label: "ADR", value: adrOtb, format: "currency", variance: adrBudget - adrOtb },
       { label: "REVPAR", value: revparOtb, format: "currency", variance: revparBudget - revparOtb },
     ],
@@ -377,14 +445,15 @@ function buildCardState(currentRow: CurrentMonthlyRow | undefined, segmentRows: 
       value: revenueBudget,
       variance: revenueLeftToBook,
     },
+
     donutRings: [
       {
         key: "total",
         label: "Total",
         booked: revenueOtb,
         remaining: revenueLeftToBook,
-        bookedColor: "var(--total-var)",
-        remainingColor: "var(--total)",
+        bookedColor: "var(--color-total-var)",
+        remainingColor: "color-mix(in oklch, var(--color-total) 20%, transparent)",
         innerRadius: 94,
         outerRadius: 118,
         tooltipTitle: METRIC_NAME,
@@ -394,16 +463,60 @@ function buildCardState(currentRow: CurrentMonthlyRow | undefined, segmentRows: 
           buildTooltipRow("ADR", formatValue(adrOtb, "currency"), formatValue(Math.max(adrBudget - adrOtb, 0), "currency")),
         ],
       },
-      buildSegmentRing("transient", "TRANSIENT", "var(--transient-var)", "var(--transient)", 68, 90),
-      buildSegmentRing("group", "GROUP", "var(--group-var)", "var(--group)", 46, 64),
+      buildSegmentRing("transient", "TRANSIENT", "var(--color-transient)", "color-mix(in oklch, var(--color-transient-var) 20%, transparent)", 68, 90),
+      buildSegmentRing("group", "GROUP", "var(--color-group)", "color-mix(in oklch, var(--color-group-var) 20%, transparent)", 46, 64),
     ],
     barData,
+  };
+}
+
+function getDonutTooltipPosition(
+  event: React.MouseEvent<SVGGraphicsElement>,
+  container: HTMLDivElement,
+) {
+  const rect = container.getBoundingClientRect();
+  const overflowX = rect.width / 2;
+  const overflowY = rect.height / 2;
+  const minX = -overflowX;
+  const minY = -overflowY;
+  const maxX = rect.width + overflowX - DONUT_TOOLTIP_WIDTH;
+  const maxY = rect.height + overflowY - DONUT_TOOLTIP_HEIGHT;
+
+  return {
+    x: Math.max(
+      minX,
+      Math.min(event.clientX - rect.left + DONUT_TOOLTIP_OFFSET, maxX)
+    ),
+    y: Math.max(
+      minY,
+      Math.min(event.clientY - rect.top + DONUT_TOOLTIP_OFFSET, maxY)
+    ),
   };
 }
 
 export default function HospitalityDashboard({ year, month }: { year: string; month: string }) {
   const { execute, isInitializing, error } = useDuckDb();
   const [cardState, setCardState] = useState<CardState>(fallbackState);
+  const donutCardRef = useRef<HTMLDivElement | null>(null);
+  const [donutTooltipState, setDonutTooltipState] = useState<
+    { ring: DonutRing; x: number; y: number } | null
+  >(null);
+  const [donutTooltipShouldAnimateIn, setDonutTooltipShouldAnimateIn] = useState(false);
+
+  useEffect(() => {
+    if (!donutTooltipState) {
+      setDonutTooltipShouldAnimateIn(false);
+      return;
+    }
+
+    setDonutTooltipShouldAnimateIn(true);
+
+    const timeoutId = window.setTimeout(() => {
+      setDonutTooltipShouldAnimateIn(false);
+    }, 180);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [donutTooltipState?.ring.key]);
 
   useEffect(() => {
     async function fetchData() {
@@ -485,51 +598,53 @@ export default function HospitalityDashboard({ year, month }: { year: string; mo
   const totalRemaining = cardState.donutRings[0]?.remaining ?? 0;
 
   return (
-    <Card className="metrics w-full max-w-4xl border-none bg-[#f0f4f8] p-6 shadow-lg">
-      <CardContent className="grid grid-cols-1 gap-8 p-0 md:grid-cols-2">
-        <div className="flex flex-col justify-between gap-8">
-          <div className="grid grid-cols-2 gap-4">
+    <Card className="metrics shadow-none retro-shadow-primary-lg w-full max-w-2xl border-2x border-color-primary bg-card p-6">
+      <CardContent className="grid grid-cols-1 column-gap-2 p-0 md:grid-cols-2">
+        <div className="flex flex-col justify-between">
+          <div className="grid grid-cols-2 gap-2">
             <div>
-              <p className="font-display text-2xl font-bold uppercase text-[color:var(--primary)]">{topLeft.label}</p>
-              <p className="font-serif text-4xl text-[color:var(--primary)]">{formatValue(topLeft.value, topLeft.format)}</p>
+              <p className="font-display text-lg font-bold uppercase text-primary">{topLeft.label}</p>
+              <p className="font-serif text-3xl text-primary">{formatValue(topLeft.value, topLeft.format)}</p>
               <Variance value={topLeft.variance} format={topLeft.format} />
             </div>
             <div>
-              <p className="font-display text-2xl font-bold uppercase text-[color:var(--primary)]">{topRight.label}</p>
-              <p className="font-serif text-4xl text-[color:var(--primary)]">{formatValue(topRight.value, topRight.format)}</p>
+              <p className="font-display text-lg font-bold uppercase text-primary">{topRight.label}</p>
+              <p className="font-serif text-3xl text-primary">{formatValue(topRight.value, topRight.format)}</p>
               <Variance value={topRight.variance} format={topRight.format} />
             </div>
           </div>
 
           <div>
-            <p className="font-display text-7xl font-bold tracking-tighter uppercase text-[color:var(--primary)]">{cardState.heroMetric.label}</p>
-            <p className="mt-2 font-serif text-6xl font-medium text-[color:var(--primary)]">{formatValue(cardState.heroMetric.value, "currency")}</p>
-            <Variance value={cardState.heroMetric.variance} format="currency" />
+            <p className="font-display text-7xl font-bold tracking-tighter uppercase text-primary">{cardState.heroMetric.label}</p>
+            <p className=" font-serif text-6xl font-medium text-primary">{formatValue(cardState.heroMetric.value, "currency")}</p>
+            <HeroMetricVariance value={cardState.heroMetric.variance} format="currency" />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <p className="font-display text-2xl font-bold uppercase text-[color:var(--primary)]">{bottomLeft.label}</p>
-              <p className="font-serif text-4xl text-[color:var(--primary)]">{formatValue(bottomLeft.value, bottomLeft.format)}</p>
+              <p className="font-display text-lg font-bold uppercase text-primary">{bottomLeft.label}</p>
+              <p className="font-serif text-3xl text-primary">{formatValue(bottomLeft.value, bottomLeft.format)}</p>
               <Variance value={bottomLeft.variance} format={bottomLeft.format} />
             </div>
             <div>
-              <p className="font-display text-2xl font-bold uppercase text-[color:var(--primary)]">{bottomRight.label}</p>
-              <p className="font-serif text-4xl text-[color:var(--primary)]">{formatValue(bottomRight.value, bottomRight.format)}</p>
+              <p className="font-display text-lg font-bold uppercase text-primary">{bottomRight.label}</p>
+              <p className="font-serif text-3xl text-primary">{formatValue(bottomRight.value, bottomRight.format)}</p>
               <Variance value={bottomRight.variance} format={bottomRight.format} />
             </div>
           </div>
         </div>
 
         <div className="space-y-4">
-          <Card className="relative flex h-[300px] items-center justify-center overflow-hidden border-none bg-[#e2edf7] p-4">
+          <Card
+            ref={donutCardRef}
+            className="relative flex h-[275px] items-center justify-center overflow-visible border-none bg-secondary p-4"
+          >
             <div className="pointer-events-none absolute inset-0 z-0 flex flex-col items-center justify-center">
-              <p className="font-serif text-2xl text-[color:var(--primary)]">{formatCompactCurrency(totalRemaining)}</p>
-              <p className="font-display text-sm font-bold uppercase text-[color:var(--primary)] opacity-70">To Book</p>
+              <p className="font-serif text-2xl text-primary">{formatCompactCurrency(totalRemaining)}</p>
+              <p className="font-display text-sm font-bold uppercase text-primary opacity-70">To Book</p>
             </div>
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Tooltip cursor={false} content={<DonutTooltip />} />
                 {cardState.donutRings.map((ring) => (
                   <Pie
                     key={ring.key}
@@ -552,25 +667,87 @@ export default function HospitalityDashboard({ year, month }: { year: string; mo
                     cx="50%"
                     cy="50%"
                     startAngle={90}
-                    endAngle={-270}
+                    endAngle={-370}
                     innerRadius={ring.innerRadius}
                     outerRadius={ring.outerRadius}
                     paddingAngle={0}
-                    cornerRadius={999}
+                    cornerRadius={2}
                     stroke="none"
-                    isAnimationActive={false}
+                    isAnimationActive={true}
+                    onMouseEnter={(_data: PieSectorDataItem, _index, event) => {
+                      const container = donutCardRef.current;
+                      if (!container) return;
+                      const position = getDonutTooltipPosition(event, container);
+
+                      setDonutTooltipState({
+                        ring,
+                        ...position,
+                      });
+                    }}
+                    onMouseMove={(_data: PieSectorDataItem, _index, event) => {
+                      const container = donutCardRef.current;
+                      if (!container) return;
+                      const position = getDonutTooltipPosition(event, container);
+
+                      setDonutTooltipState({ ring, ...position });
+                    }}
+                    onMouseLeave={() => setDonutTooltipState(null)}
                   />
                 ))}
               </PieChart>
             </ResponsiveContainer>
+            {donutTooltipState && (
+              <div
+                className="pointer-events-none absolute z-[60]"
+                style={{
+                  left: `${donutTooltipState.x}px`,
+                  top: `${donutTooltipState.y}px`,
+                }}
+              >
+                <DonutTooltipCard
+                  ring={donutTooltipState.ring}
+                  shouldAnimateIn={donutTooltipShouldAnimateIn}
+                />
+              </div>
+            )}
           </Card>
 
-          <Card className="flex h-[180px] items-end border-none bg-[#e2edf7] p-4">
+          <Card className="flex h-[120px] items-end border-none bg-secondary p-2">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={cardState.barData} barGap={0} barCategoryGap="12%">
-                <Tooltip cursor={false} content={<BarTooltip />} />
-                <Bar dataKey="otbRooms" stackId="rooms" fill="var(--total-var)" stroke="none" radius={[0, 0, 4, 4]} />
-                <Bar dataKey="leftToBookRooms" stackId="rooms" fill="var(--total)" stroke="none" radius={[4, 4, 0, 0]} />
+
+              <BarChart
+                data={cardState.barData}
+                barGap={0}
+                barCategoryGap="12%"
+              >
+                <Tooltip
+                  cursor={false}
+                  allowEscapeViewBox={{ x: true, y: true }}
+                  isAnimationActive={true}
+                  animationEasing="ease-out"
+                  animationDuration={320}
+                  wrapperStyle={{ zIndex: 60, pointerEvents: "none" }}
+                  content={(props) => <BarTooltip {...props} />}
+                />
+
+                <Bar
+                  dataKey="otbRooms"
+                  stackId="rooms"
+                  fill="var(--color-total-var)"
+                  stroke="none"
+                  radius={[0, 0, 1, 1]}
+                  isAnimationActive={true}
+                />
+
+                <Bar
+                  dataKey="leftToBookRooms"
+                  stackId="rooms"
+                  fill="var(--color-total)"
+                  stroke="none"
+                  radius={[1, 1, 0, 0]}
+                  isAnimationActive={true}
+                />
+
               </BarChart>
             </ResponsiveContainer>
           </Card>

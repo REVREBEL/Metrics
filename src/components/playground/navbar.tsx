@@ -17,7 +17,7 @@ import {
 import dynamic from "next/dynamic";
 import { ShadcnExamplePicker } from "@/components/playground/shadcn-example-picker";
 import { RegistryPicker } from "@/components/playground/registry-picker";
-import type { RegistryGroup } from "@/lib/workshop/registry-adapter";
+import type { RegistryGroup } from "@/lib/playground/registry-adapter";
 
 const PresetPicker = dynamic(
   () =>
@@ -54,41 +54,11 @@ export function Navbar({
     <header className="flex h-12 shrink-0 items-center justify-between border-b border-border bg-background px-4">
       <div className="flex min-w-0 items-center gap-2">
         <div className="flex items-center gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 256 256"
-            className="size-5"
-            aria-hidden="true"
-          >
-            <rect width="256" height="256" fill="none" />
-            <line
-              x1="208"
-              y1="128"
-              x2="128"
-              y2="208"
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="32"
-            />
-            <line
-              x1="192"
-              y1="40"
-              x2="40"
-              y2="192"
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="32"
-            />
-          </svg>
-          <span className="text-base font-semibold text-foreground tracking-tight">
-            revrebel/playground
+          <span className="text-base font-display uppercase font-bold text-foreground tracking-tight">
+            revrebel playground
           </span>
         </div>
-        <Separator orientation="vertical" className="mx-1 h-6 self-center" />
+        <Separator orientation="vertical" className="mx-1 h-6 self-center font-serif text-color-primary" />
         <RegistryPicker
           groups={registryGroups}
           code={code}
@@ -116,15 +86,15 @@ export function Navbar({
           <Tooltip>
             <TooltipTrigger asChild>
               <ToggleGroupItem value="horizontal" aria-label="Side by side">
-                <IconLayoutColumns className="size-3.5" />
+                <IconLayoutColumns className="size-3.5 font-serif text-color-primary" />
               </ToggleGroupItem>
             </TooltipTrigger>
-            <TooltipContent>Side by side</TooltipContent>
+            <TooltipContent>Side by ide</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
               <ToggleGroupItem value="preview-only" aria-label="Preview only">
-                <IconLayoutSidebarRight className="size-3.5" />
+                <IconLayoutSidebarRight className="size-3.5 font-serif text-color-primary" />
               </ToggleGroupItem>
             </TooltipTrigger>
             <TooltipContent>Preview only</TooltipContent>
@@ -139,12 +109,12 @@ export function Navbar({
               variant="ghost"
               size="icon-sm"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              aria-label="Toggle theme"
+              aria-label="Toggle Theme"
             >
               <IconCircleHalf2 className="size-3.5 text-black dark:text-white" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Toggle theme</TooltipContent>
+          <TooltipContent>Toggle Theme</TooltipContent>
         </Tooltip>
       </div>
     </header>
