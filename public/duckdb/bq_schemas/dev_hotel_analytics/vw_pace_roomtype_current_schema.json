@@ -1,114 +1,128 @@
 [
   {
     "name": "property_code",
-    "type": "STRING"
+    "mode": "",
+    "type": "STRING",
+    "description": "The unique identifier for a specific hotel property.",
+    "fields": []
   },
   {
     "name": "property_name",
-    "type": "STRING"
+    "mode": "",
+    "type": "STRING",
+    "description": "The name of the hotel property.",
+    "fields": []
   },
   {
     "name": "stay_date",
-    "type": "DATE"
+    "mode": "",
+    "type": "DATE",
+    "description": "The specific date for which the data is recorded.",
+    "fields": []
   },
   {
-    "name": "roomtype",
-    "type": "STRING"
+    "name": "special_events",
+    "mode": "",
+    "type": "STRING",
+    "description": "Information about special events occurring on the stay date.",
+    "fields": []
   },
   {
-    "name": "roomclass",
-    "type": "STRING"
+    "name": "special_events_ly",
+    "mode": "",
+    "type": "STRING",
+    "description": "Information about special events occurring on the same stay date in the previous year.",
+    "fields": []
+  },
+  {
+    "name": "available_rooms",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "The number of rooms available for booking on the stay date.",
+    "fields": []
+  },
+  {
+    "name": "available_rooms_ly",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "The number of rooms available for booking on the same stay date in the previous year.",
+    "fields": []
+  },
+  {
+    "name": "total_demand_total",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "The total projected demand for rooms on the stay date.",
+    "fields": []
+  },
+  {
+    "name": "total_demand_total_ly_actual",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "The actual total demand for rooms on the same stay date in the previous year.",
+    "fields": []
+  },
+  {
+    "name": "total_demand_group",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "The projected demand for rooms from group bookings on the stay date.",
+    "fields": []
+  },
+  {
+    "name": "total_demand_group_ly_actual",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "The actual demand for rooms from group bookings on the same stay date in the previous year.",
+    "fields": []
+  },
+  {
+    "name": "total_demand_transient",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "The projected demand for rooms from transient (individual) bookings on the stay date.",
+    "fields": []
+  },
+  {
+    "name": "total_demand_transient_ly_actual",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "The actual demand for rooms from transient (individual) bookings on the same stay date in the previous year.",
+    "fields": []
+  },
+  {
+    "name": "lrv",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "The Last Room Value, representing the estimated revenue for the last room sold.",
+    "fields": []
+  },
+  {
+    "name": "wash_pct",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "The percentage of bookings that are expected to cancel or no-show.",
+    "fields": []
+  },
+  {
+    "name": "wash_pct_ly_actual",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "The actual percentage of bookings that cancelled or no-showed on the same stay date in the previous year.",
+    "fields": []
+  },
+  {
+    "name": "bar_price",
+    "mode": "",
+    "type": "FLOAT",
+    "description": "The Best Available Rate for rooms on the stay date.",
+    "fields": []
   },
   {
     "name": "snapshot_date",
-    "type": "DATE"
-  },
-  {
-    "name": "capacity",
-    "type": "INTEGER"
-  },
-  {
-    "name": "rooms_otb",
-    "type": "INTEGER"
-  },
-  {
-    "name": "rooms_stly",
-    "type": "INTEGER"
-  },
-  {
-    "name": "rooms_st2y",
-    "type": "INTEGER"
-  },
-  {
-    "name": "rooms_ly_actual",
-    "type": "INTEGER"
-  },
-  {
-    "name": "rms_adr_forecast",
-    "type": "INTEGER"
-  },
-  {
-    "name": "rev_otb",
-    "type": "FLOAT"
-  },
-  {
-    "name": "rev_stly",
-    "type": "FLOAT"
-  },
-  {
-    "name": "rev_st2y",
-    "type": "FLOAT"
-  },
-  {
-    "name": "rev_ly_actual",
-    "type": "FLOAT"
-  },
-  {
-    "name": "rms_rev_forecast",
-    "type": "FLOAT"
-  },
-  {
-    "name": "cancelled_rooms",
-    "type": "INTEGER"
-  },
-  {
-    "name": "cancelled_rooms_ly_actual",
-    "type": "INTEGER"
-  },
-  {
-    "name": "noshow_rooms",
-    "type": "INTEGER"
-  },
-  {
-    "name": "noshow_rooms_ly_actual",
-    "type": "FLOAT"
-  },
-  {
-    "name": "roomtype_code",
-    "type": "STRING"
-  },
-  {
-    "name": "roomtype_class",
-    "type": "STRING"
-  },
-  {
-    "name": "roomtype_category_code",
-    "type": "STRING"
-  },
-  {
-    "name": "roomtype_category_base",
-    "type": "STRING"
-  },
-  {
-    "name": "roomtype_category",
-    "type": "STRING"
-  },
-  {
-    "name": "roomtype_physical_capacity",
-    "type": "INTEGER"
-  },
-  {
-    "name": "roomtype_sort",
-    "type": "INTEGER"
+    "mode": "",
+    "type": "DATE",
+    "description": "The date when this data snapshot was taken.",
+    "fields": []
   }
 ]

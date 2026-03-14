@@ -1,147 +1,205 @@
 [
   {
-    "description": "This column holds the unique identifier for a specific hotel property.",
     "name": "property_code",
-    "type": "STRING"
+    "mode": "",
+    "type": "STRING",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the name of the hotel property.",
     "name": "property_name",
-    "type": "STRING"
+    "mode": "",
+    "type": "STRING",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the date of the guest's stay.",
     "name": "stay_date",
-    "type": "DATE"
+    "mode": "",
+    "type": "DATE",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the general classification of a room.",
     "name": "roomtype",
-    "type": "STRING"
+    "mode": "",
+    "type": "STRING",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the specific class or category of a room.",
     "name": "roomclass",
-    "type": "STRING"
+    "mode": "",
+    "type": "STRING",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the date when the data snapshot was taken.",
     "name": "snapshot_date",
-    "type": "DATE"
+    "mode": "",
+    "type": "DATE",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the total number of rooms available for booking.",
     "name": "available_rooms",
-    "type": "INTEGER"
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the number of rooms on the books for a future date.",
     "name": "rooms_otb",
-    "type": "INTEGER"
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the number of rooms on the books for the same time last year.",
     "name": "rooms_stly",
-    "type": "INTEGER"
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the number of rooms on the books for the same time two years ago.",
     "name": "rooms_st2y",
-    "type": "INTEGER"
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the actual number of rooms booked for the same period last year.",
     "name": "rooms_ly_actual",
-    "type": "INTEGER"
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the forecasted number of rooms expected to be booked.",
     "name": "rooms_forecast",
-    "type": "INTEGER"
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the forecasted average daily rate for rooms.",
-    "name": "rms_adr_forecast",
-    "type": "INTEGER"
+    "name": "adr_forecast",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the revenue on the books for a future date.",
     "name": "rev_otb",
-    "type": "FLOAT"
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the revenue on the books for the same time last year.",
     "name": "rev_stly",
-    "type": "INTEGER"
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the revenue on the books for the same time two years ago.",
     "name": "rev_st2y",
-    "type": "INTEGER"
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the actual revenue generated for the same period last year.",
     "name": "rev_ly_actual",
-    "type": "INTEGER"
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the forecasted revenue from rooms.",
-    "name": "rms_rev_forecast",
-    "type": "INTEGER"
+    "name": "rev_forecast",
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the number of rooms that have been cancelled.",
     "name": "cancelled_rooms",
-    "type": "INTEGER"
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the actual number of cancelled rooms for the same period last year.",
     "name": "cancelled_rooms_ly_actual",
-    "type": "INTEGER"
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the number of rooms where guests did not arrive.",
     "name": "noshow_rooms",
-    "type": "INTEGER"
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the actual number of no-show rooms for the same period last year.",
     "name": "noshow_rooms_ly_actual",
-    "type": "FLOAT"
+    "mode": "",
+    "type": "FLOAT",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the unique code for a specific room type.",
     "name": "roomtype_code",
-    "type": "STRING"
+    "mode": "",
+    "type": "STRING",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the classification of a room type.",
     "name": "roomtype_class",
-    "type": "STRING"
+    "mode": "",
+    "type": "STRING",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the code for the category of a room type.",
     "name": "roomtype_category_code",
-    "type": "STRING"
+    "mode": "",
+    "type": "STRING",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the base category description for a room type.",
     "name": "roomtype_category_base",
-    "type": "STRING"
+    "mode": "",
+    "type": "STRING",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the general category of a room type.",
     "name": "roomtype_category",
-    "type": "STRING"
+    "mode": "",
+    "type": "STRING",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds the number of available rooms for a specific room type.",
     "name": "roomtype_available_rooms",
-    "type": "INTEGER"
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
   },
   {
-    "description": "This column holds a numerical value used for sorting room types.",
     "name": "roomtype_sort",
-    "type": "INTEGER"
+    "mode": "",
+    "type": "INTEGER",
+    "description": "",
+    "fields": []
   }
 ]
