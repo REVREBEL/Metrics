@@ -14,12 +14,12 @@ import {
 
 // --- Rebel Style Constants ---
 const COLORS = {
-  primary: '#4F46E5', // Indigo 600
-  background: '#F8FAFC', // Slate 50
-  text: '#0F172A', // Slate 900
-  muted: '#64748B', // Slate 500
-  positive: '#10B981', // Emerald 500
-  negative: '#F43F5E', // Rose 500
+  primary: 'var(--color-dark-blue;',
+  background: 'var(--color-background)',
+  text: 'var(--color-dark-blue;',
+  muted: 'var(--color-muted)',
+  positive: 'var(--color-positive',
+  negative: 'var(--color-negative',
 };
 
 // --- Mock Data representing the PDF structure ---
@@ -41,7 +41,31 @@ const DAILY_DATA = [
 
 // --- Sub-components (Rebel Styled) ---
 
-const Variance = ({ value, isNegative }) => {
+type VarianceProps = {
+  value: string;
+  isNegative: boolean;
+};
+
+type SummaryCardProps = {
+  title: string;
+  value: string;
+  subValue: string;
+  isNegative: boolean;
+};
+
+type HeatmapCellProps = {
+  value: number;
+  max: number;
+  type?: "occ" | "currency" | "revpar";
+};
+
+type MarketMixBarProps = {
+  transient: number;
+  group: number;
+  other: number;
+};
+
+const Variance = ({ value, isNegative }: VarianceProps) => {
   const positive = !isNegative;
   const Icon = positive ? ArrowCircleUp : ArrowCircleDown;
   const tone = positive ? 'var(--positive)' : 'var(--negative)';
@@ -54,17 +78,17 @@ const Variance = ({ value, isNegative }) => {
   );
 };
 
-const SummaryCard = ({ title, value, subValue, isNegative }) => (
-  <Card className="min-w-[220px] border-none bg-[var(--background)] shadow-none">
+const SummaryCard = ({ title, value, subValue, isNegative }: SummaryCardProps) => (
+  <Card className="min-w-[220px] border-none bg-background shadow-none">
     <CardContent className="p-5">
-      <p className="font-display text-2xl font-bold uppercase text-[color:var(--primary)]">{title}</p>
-      <p className="font-serif text-4xl text-[color:var(--primary)]">{value}</p>
+      <p className="font-display text-2xl font-bold uppercase text-color-primary">{title}</p>
+      <p className="font-serif text-4xl text-color-primary">{value}</p>
       <Variance value={subValue} isNegative={isNegative} />
     </CardContent>
   </Card>
 );
 
-const HeatmapCell = ({ value, max, type = 'occ' }) => {
+const HeatmapCell = ({ value, max, type = 'occ' }: HeatmapCellProps) => {
   const intensity = Math.min(Math.floor((value / max) * 100), 100);
   // Rebel Theme Color Scaling
   const bgColor = type === 'occ'
@@ -72,23 +96,23 @@ const HeatmapCell = ({ value, max, type = 'occ' }) => {
     : `rgba(15, 23, 42, ${intensity / 100 * 0.08})`;
 
   return (
-    <td className="p-3 border-r border-slate-100 text-center font-bold tabular-nums text-slate-800" style={{ backgroundColor: bgColor }}>
+    <td className="p-3 border-r border-slate-100 text-center font-bold tabular-nums text-dark-blue" style={{ backgroundColor: bgColor }}>
       {type === 'occ' ? `${value}%` : `$${value.toFixed(2)}`}
     </td>
   );
 };
 
-const MarketMixBar = ({ transient, group, other }) => (
+const MarketMixBar = ({ transient, group, other }: MarketMixBarProps) => (
   <td className="p-3 border-r border-slate-100 min-w-[110px]">
     <div className="flex h-1.5 w-full rounded-full overflow-hidden bg-slate-100 border border-slate-200/50">
-      <div className="bg-[var(--transient)]" style={{ width: `${transient}%` }} />
-      <div className="bg-[var(--group)]" style={{ width: `${group}%` }} />
-      <div className="bg-[var(--other)]" style={{ width: `${other}%` }} />
+      <div className="bg-transient" style={{ width: `${transient}%` }} />
+      <div className="bg-group" style={{ width: `${group}%` }} />
+      <div className="bg-other" style={{ width: `${other}%` }} />
     </div>
   </td>
 );
 
-const MARKET_MIX_DATA: PieSectorDataItem[] = [
+const MARKET_MIX_DATA = [
   { name: 'Transient', value: 60, fill: 'var(--transient)' },
   { name: 'Group', value: 25, fill: 'var(--group)' },
   { name: 'Other', value: 15, fill: 'var(--other)' },
@@ -96,9 +120,13 @@ const MARKET_MIX_DATA: PieSectorDataItem[] = [
 
 // --- Main App Component ---
 
-export default function App() {
+interface DailyPickupTableProps {
+  year?: string;
+  month?: string;
+}
+
+export default function App({ year = "2025", month = "Sep" }: DailyPickupTableProps) {
   const [activeSegment, setActiveSegment] = useState("Transient");
-  const [selectedMonth, setSelectedMonth] = useState("Sep");
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] font-sans text-slate-900 p-8 antialiased">
@@ -112,22 +140,22 @@ export default function App() {
                 <div className="bg-indigo-600 p-2 rounded-lg shadow-lg shadow-indigo-200">
                   <Activity size={20} className="text-white" />
                 </div>
-                <h1 className="text-2xl text-[color:var(--primary)] font-bold  uppercase tracking-tighter">
-                  Daily Pickup <span className="text-[color:var(--primary)]">Metric</span>
+                <h1 className="text-2xl text-primary font-bold  uppercase tracking-tighter">
+                  Daily Pickup <span className="text-primary ">Metric</span>
                 </h1>
               </div>
             </div>
           </div>
 
           {/* Key Performance Row */}
-          <div className="space-y-6 bg-[var(--background)] px-8 py-6">
+          <div className="space-y-6 bg-background px-8 py-6">
             <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
               <div>
-                <span className="font-display text-2xl font-bold uppercase tracking-tight text-[color:var(--primary)]">
-                  {selectedMonth} 2025
+                <span className="font-display text-2xl font-bold uppercase tracking-tight text-primary ">
+                  {month} {year}
                 </span>
                 <div className="mt-1 flex items-center gap-2">
-                  <CalendarDays size={14} className="text-[color:var(--primary)]/60" />
+                  <CalendarDays size={14} className="text-primary /60" />
                   <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">OTB Summary</span>
                 </div>
               </div>
@@ -136,9 +164,9 @@ export default function App() {
                 <div className="text-right">
                   <span className="mb-2 block text-[10px] font-black uppercase tracking-[0.15em] text-slate-400">Market Mix OTB</span>
                   <div className="flex gap-4 text-[10px] font-black text-slate-600">
-                    <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-[var(--transient)]" /> TRN</span>
-                    <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-[var(--group)]" /> GRP</span>
-                    <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-[var(--other)]" /> OTH</span>
+                    <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-transient" /> TRN</span>
+                    <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-group" /> GRP</span>
+                    <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-other" /> OTH</span>
                   </div>
                 </div>
                 <div className="relative h-16 w-16">
@@ -195,8 +223,8 @@ export default function App() {
           <div className="flex items-center gap-4 text-xs font-bold text-slate-400">
           </div>
           <div className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
-            <Activity size={14} className="text-emerald-500" />
-            <span className="text-slate-900 uppercase tracking-tighter">Live Status</span>
+            <Activity size={14} className="text-green" />
+            <span className="text-dark-blue uppercase tracking-tighter">Live Status</span>
           </div>
         </div>
       </div>
@@ -207,13 +235,13 @@ export default function App() {
           <table className="w-full text-left border-collapse min-w-[1600px]">
             <thead>
               {/* Visual Groups Header */}
-              <tr className="bg-slate-900 text-[10px] font-black text-indigo-400 uppercase tracking-[0.25em] border-b border-slate-800">
-                <th colSpan={5} className="px-6 py-4 border-r border-slate-800">Operational Log</th>
-                <th colSpan={6} className="px-6 py-4 border-r border-slate-800 text-center text-white">Daily Performance Metrics (OTB)</th>
-                <th colSpan={8} className="px-6 py-4 text-center text-emerald-400 bg-emerald-950/20">Velocity Delta (Pickup)</th>
+              <tr className="bg-dark-blue text-[10px] font-black text-foreground uppercase tracking-[0.25em] border-b border-slate-800">
+                <th colSpan={5} className="px-6 py-4 border-r border-dark-blue">Operational Log</th>
+                <th colSpan={6} className="px-6 py-4 border-r border-dark-blue text-center text-white">Daily Performance Metrics (OTB)</th>
+                <th colSpan={8} className="px-6 py-4 text-center text-green bg-light-blue">Velocity Delta (Pickup)</th>
               </tr>
               {/* Individual Column Header */}
-              <tr className="bg-white text-[11px] font-black text-slate-900 uppercase border-b border-slate-200 sticky top-0 z-20">
+              <tr className="bg-white text-[11px] font-black text-dark-blue uppercase border-b border-slate-200 sticky top-0 z-20">
                 <th className="p-4 border-r border-slate-100">DOW</th>
                 <th className="p-4 border-r border-slate-100">Date</th>
                 <th className="p-4 border-r border-slate-100">BAR Rate</th>
@@ -247,7 +275,7 @@ export default function App() {
                       <ArrowRight size={12} className="text-slate-200 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                   </td>
-                  <td className="p-3.5 border-r border-slate-100 text-[11px] font-semibold text-slate-800 italic truncate max-w-[130px]" title={row.eventsCy}>
+                  <td className="p-3.5 border-r border-slate-100 text-[11px] font-semibold text-slate-800 italic truncate max-w-[130px]" title={row.eventsCy || undefined}>
                     {row.eventsCy || "—"}
                   </td>
                   <td className="p-3.5 border-r border-slate-100 text-[11px] text-slate-300 truncate max-w-[130px]">
@@ -264,7 +292,7 @@ export default function App() {
 
                   {/* Pickup Delta Block */}
                   {[row.pu1, row.pu3, row.pu7, row.pu14, row.pu21, row.pu30, row.pu60, row.pu90].map((val, pIdx) => (
-                    <td key={pIdx} className={`p-3.5 border-r border-slate-100 text-center tabular-nums font-black ${val > 0 ? 'text-emerald-500 bg-emerald-50/5' : val < 0 ? 'text-rose-500 bg-rose-50/5' : 'text-slate-200'}`}>
+                    <td key={pIdx} className={`p-3.5 border-r border-slate-100 text-center tabular-nums font-black ${val > 0 ? 'text-is-positive bg-emerald-50/5' : val < 0 ? 'text-is-negative bg-rose-50/5' : 'text-slate-200'}`}>
                       {val === 0 ? "—" : val > 0 ? `+${val}` : val}
                     </td>
                   ))}

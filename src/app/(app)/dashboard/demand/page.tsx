@@ -8,50 +8,60 @@ import { TopNav } from '@/components/layout/top-nav'
 import { ProfileDropdown } from '@/components/profile-dropdown'
 import { Search } from '@/components/search'
 import { ThemeSwitch } from '@/components/theme-switch'
-import { SubNav } from "@/components/sub-nav"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { DashboardTabs } from '../components/dashboard-tabs'
+
+
 import { YearMonthSelector } from "@/widgets/YearMonthSelector/dynamic";
-
-
-
 
 const topNav = [
   {
-    title: 'Channels',
-    href: '/dashboard/channels',
+    title: 'Metrics',
+    href: '/dashboard',
     isActive: true,
     disabled: false,
-    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
+    className: 'font-display text-md text-dark-blue-fade font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-dark-blue hover:text-light-blue-600',
   },
   {
     title: 'Segments',
     href: '/dashboard/segments',
     isActive: false,
-    disabled: true,
-    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
+    disabled: false,
+    className: 'font-display text-md text-dark-blue-fade  font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-dark-blue hover:text-light-blue-600',
   },
+
+  {
+    title: 'Channels',
+    href: '/dashboard/channels',
+    isActive: false,
+    disabled: false,
+    className: 'font-display text-md text-dark-blue-fade font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-dark-blue hover:text-light-blue-600',
+  },
+
   {
     title: 'Room Types',
     href: '/dashboard/room-types',
     isActive: false,
-    disabled: true,
-    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
+    disabled: false,
+    className: 'font-display text-md text-dark-blue-fade  font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-dark-blue hover:text-light-blue-600',
   },
+
   {
     title: 'Demand',
     href: '/dashboard/demand',
-    isActive: false,
+    isActive: true,
     disabled: false,
-    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
+    className: 'font-display text-md text-dark-blue-fade  font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-dark-blue hover:text-light-blue-600',
   },
+
   {
     title: 'Website',
     href: '/dashboard/website',
     isActive: false,
     disabled: false,
-    className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-4-inverse)] hover:text-accent',
-  },
+    className: 'font-display text-md text-dark-blue-fade  font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-dark-blue hover:text-light-blue-600',
+  }
 ]
+
 
 export default function Page() {
   const [selectedYear, setSelectedYear] = useState<string>('');
@@ -62,67 +72,69 @@ export default function Page() {
     setSelectedMonth(month);
   };
 
-  return (<> <Header>
+  return (
 
-    {/* ===== Top Heading ===== */}
-    <TopNav links={topNav} />
-    <div className='ms-auto flex items-center space-x-4'>
-      <Search />
-      <ThemeSwitch />
-      <ConfigDrawer />
-      <ProfileDropdown />
-    </div>
-  </Header>
+    <> <Header>
 
-    {/* ===== Main ===== */}
-    <Main fluid>
+      {/* ===== Top Heading ===== */}
+      <TopNav links={topNav} />
+      <div className='ms-auto flex items-center space-x-4'>
+        <Search />
+        <ThemeSwitch />
+        <ConfigDrawer />
+        <ProfileDropdown />
+      </div>
+    </Header>
 
-      {/* ===== Tabs ===== */}
-      <SubNav>
-        <div className='mb-2 flex items-center justify-between space-y-2'>
-          <h1 className='text-3xl font-bold font-display uppercase tracking-tight'>Demand</h1>
-          <div className='flex items-center space-x-2'>
-            <Button>Download</Button>
-          </div>
-        </div>
+      {/* ===== Main ===== */}
+      <Main fluid>
+        <DashboardTabs
+          title='Demand'
+          defaultValue='overview'
+          globalSlot={
+            <YearMonthSelector onSelectionChange={handleDateChange} />
+          }
+        >
+          <DashboardTabs.Panel value='overview' title='Overview'>
+            <div className='flex flex-1 flex-col gap-4 pt-0'>
+        
 
-        <Tabs orientation='vertical' defaultValue='overview' className='space-y-4 shadow-none'>
-          <div className='w-full overflow-x-auto pb-2'>
-            <TabsList>
-              <TabsTrigger
-                value='overview'
-                className="h-8 justify-center text-md font-display font-bold uppercase text-muted-foreground transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground">
-                Overview
-              </TabsTrigger>
-              <TabsTrigger
-                value='analytics'
-                className="h-8 justify-center text-md font-display font-bold uppercase text-muted-foreground transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground">
-                Analytics
-              </TabsTrigger>
-              <TabsTrigger
-                value='performance'
-                className="h-8 justify-center text-md font-display font-bold uppercase text-muted-foreground transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground">
-                Performance
-              </TabsTrigger>
-              <TabsTrigger
-                value='reports'
-                className="h-8 justify-center text-md font-display font-bold uppercase text-muted-foreground transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground">
-                Reports
-              </TabsTrigger>
-              <TabsTrigger
-                value='notifications'
-                className="h-8 justify-center text-md font-display font-bold uppercase text-muted-foreground transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground">
-                Notifications
-              </TabsTrigger>
-            </TabsList>
-          </div>
-          <TabsContent value='overview' className='space-y-4'></TabsContent>
-        </Tabs>
-      </SubNav>
+
+            </div>
+          </DashboardTabs.Panel>
+
+          <DashboardTabs.Panel value='pace' title='Pace'>
+            <div className='flex flex-1 flex-col gap-4 pt-0'>
 
 
 
-    </Main>
-  </>
-  )
+            </div>
+          </DashboardTabs.Panel>
+
+          <DashboardTabs.Panel value='pickup' title='Pickup'>
+            <div className='flex flex-1 flex-col gap-4 pt-0' />
+
+
+        
+          </DashboardTabs.Panel>
+
+          <DashboardTabs.Panel value='reports' title='Reports'>
+            <div className='flex flex-1 flex-col gap-4 pt-0' />
+
+
+
+            
+          </DashboardTabs.Panel>
+
+         
+          <DashboardTabs.Panel value='insights' title='Insights'>
+            <div className='flex flex-1 flex-col gap-4 pt-0' />
+
+            
+        
+          </DashboardTabs.Panel>
+        </DashboardTabs>
+      </Main >
+    </>
+  );
 }

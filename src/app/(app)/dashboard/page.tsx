@@ -20,7 +20,7 @@ import PerformanceCardOther from "@/widgets/PerformanceCardOther"
 const topNav = [
   {
     title: 'Metrics',
-    href: '/dashboard/dashboard',
+    href: '/dashboard',
     isActive: true,
     disabled: false,
     className: 'font-display text-md text-green font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-green hover: dark-blue',

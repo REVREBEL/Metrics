@@ -1,6 +1,5 @@
 "use client"
 import React, { useState } from "react";
-import { Button } from '@/components/ui/button'
 import { ConfigDrawer } from '@/components/config-drawer'
 import { Header } from '@/components/layout/header'
 import { Main } from '@/components/layout/main'
@@ -8,58 +7,69 @@ import { TopNav } from '@/components/layout/top-nav'
 import { ProfileDropdown } from '@/components/profile-dropdown'
 import { Search } from '@/components/search'
 import { ThemeSwitch } from '@/components/theme-switch'
-import { SubNav } from "@/components/sub-nav"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { YearMonthSelector } from "@/widgets/YearMonthSelector/dynamic";
+import { DashboardTabs } from '../components/dashboard-tabs'
 
 import MarketSegmentTransientRoomsTable from "@/widgets/MarketSegmentTransientRoomsTable"
 import OTBStackedBarChart from "@/widgets/OTBStackedBarChart"
-import DailyPickupTable from "@/widgets/DailyPickupTable"
+import DailyPickupTable from "@/widgets/DailyPickupTable";
+
+import { RevenueCard } from "@/widgets/metric-cards/RevenueCard";
+import { SessionsCard } from "@/widgets/metric-cards/SessionsCard";
+import { OverviewCard } from "@/widgets/metric-cards/OverviewCard";
+import { GrowthCard } from "@/widgets/metric-cards/GrowthCard";
+import { ProfitCard } from "@/widgets/metric-cards/ProfitCard";
+import { CardHeaderData } from "@/widgets/metric-cards/components/card-header";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 
 
 const topNav = [
   {
     title: 'Metrics',
-    href: '/dashboard/dashboard',
-    isActive: true,
+    href: '/dashboard',
+    isActive: false,
     disabled: false,
-    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
+    className: 'font-display text-md text-dark-blue-fade font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-dark-blue hover:text-light-blue-600',
   },
   {
     title: 'Segments',
     href: '/dashboard/segments',
     isActive: true,
     disabled: false,
-    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
+    className: 'font-display text-md text-dark-blue-fade font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-dark-blue hover:text-light-blue-600',
   },
+
   {
     title: 'Channels',
     href: '/dashboard/channels',
-    isActive: true,
+    isActive: false,
     disabled: false,
-    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
+    className: 'font-display text-md text-dark-blue-fade font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-dark-blue hover:text-light-blue-600',
   },
+
   {
     title: 'Room Types',
     href: '/dashboard/room-types',
-    isActive: true,
+    isActive: false,
     disabled: false,
-    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
+    className: 'font-display text-md text-dark-blue-fade font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-dark-blue hover:text-light-blue-600',
   },
+
   {
     title: 'Demand',
     href: '/dashboard/demand',
-    isActive: true,
+    isActive: false,
     disabled: false,
-    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
+    className: 'font-display text-md text-dark-blue-fade font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-dark-blue hover:text-light-blue-600',
   },
+
   {
     title: 'Website',
     href: '/dashboard/website',
-    isActive: true,
+    isActive: false,
     disabled: false,
-    className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)]',
-  },
+    className: 'font-display text-md text-dark-blue-fade font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-dark-blue hover:text-light-blue-600',
+  }
 ]
 
 export default function Page() {
@@ -71,121 +81,93 @@ export default function Page() {
     setSelectedMonth(month);
   };
 
-  return (<> <Header>
+  return (
 
-    {/* ===== Top Heading ===== */}
-    <TopNav links={topNav} />
-    <div className='ms-auto flex items-center space-x-4'>
-      <Search />
-      <ThemeSwitch />
-      <ConfigDrawer />
-      <ProfileDropdown />
-    </div>
-  </Header>
+    <> <Header>
 
-    {/* ===== Main ===== */}
-    <Main fluid>
+      {/* ===== Top Heading ===== */}
+      <TopNav links={topNav} />
+      <div className='ms-auto flex items-center space-x-4'>
+        <Search />
+        <ThemeSwitch />
+        <ConfigDrawer />
+        <ProfileDropdown />
+      </div>
+    </Header>
 
-      {/* ===== Tabs ===== */}
-      <Tabs orientation='vertical' defaultValue='overview' className='space-y-4 shadow-none'>
-        <SubNav>
-          <div className='mb-2 flex items-center justify-between space-y-2'>
-            <h1 className='text-3xl font-bold font-display uppercase tracking-tight'>Segments</h1>
-            <div className='flex items-center space-x-2'>
-              <Button>Download</Button>
+      {/* ===== Main ===== */}
+      <Main fluid>
+        <DashboardTabs
+          title='Segments'
+          defaultValue='overview'
+          globalSlot={
+            <YearMonthSelector onSelectionChange={handleDateChange} />
+          }
+        >
+          <DashboardTabs.Panel value='overview' title='Overview'>
+            <div className='flex flex-1 flex-col gap-4 pt-0'>
+              {selectedYear && selectedMonth ? (
+                <MarketSegmentTransientRoomsTable
+                  year={selectedYear}
+                  month={selectedMonth}
+                />
+              ) : null}
             </div>
-          </div>
 
-          <div className='w-full overflow-x-auto pb-2'>
-            <TabsList>
-              <TabsTrigger
-                value='performance'
-                className="h-8 justify-center text-md font-display font-bold uppercase text-muted-foreground transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground">
-                Performance
-              </TabsTrigger>
-              <TabsTrigger
-                value='pace'
-                className="h-8 justify-center text-md font-display font-bold uppercase text-muted-foreground transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground">
-                Pace
-              </TabsTrigger>
-              <TabsTrigger
-                value='pickup'
-                className="h-8 justify-center text-md font-display font-bold uppercase text-muted-foreground transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground">
-                Pickup
-              </TabsTrigger>
-              <TabsTrigger
-                value='reports'
-                className="h-8 justify-center text-md font-display font-bold uppercase text-muted-foreground transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground">
-                Reports
-              </TabsTrigger>
-              <TabsTrigger
-                value='notifications'
-                className="h-8 justify-center text-md font-display font-bold uppercase text-muted-foreground transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground">
-                Notifications
-              </TabsTrigger>
-            </TabsList>
-          </div>
-        </SubNav>
+            <div className='flex flex-1 flex-col gap-4 pt-0'>
+              {selectedYear && selectedMonth ? (
+                <OTBStackedBarChart
+                  year={selectedYear}
+                  month={selectedMonth}
+                />
+              ) : null}
+            </div>
+          </DashboardTabs.Panel>
 
-        {/* ===== Performance Tab===== */}
-        <TabsContent value='performance' className='space-y-4'>
-          <YearMonthSelector onSelectionChange={handleDateChange} />
+          <DashboardTabs.Panel value='pace' title='Pace'>
+            <div className='flex flex-1 flex-col gap-4 pt-0'>
+              {selectedYear && selectedMonth ? (
+                <DailyPickupTable
+                  year={selectedYear}
+                  month={selectedMonth}
+                />
+              ) : null}
+            </div>
+          </DashboardTabs.Panel>
 
-          <div className="flex flex-1 flex-col pt-0 gap-4">
-            {selectedYear && selectedMonth && (
-              <
-                MarketSegmentTransientRoomsTable
-                year={selectedYear} month={selectedMonth}
-              />
-            )}
-          </div>
+          <DashboardTabs.Panel value='pickup' title='Pickup'>
+            <div className='flex flex-1 flex-col gap-4 pt-0' />
 
-          <div className="flex flex-1 flex-col pt-0 gap-4">
-            {selectedYear && selectedMonth && (
-              <
-                OTBStackedBarChart
-                year={selectedYear} month={selectedMonth}
-              />
-            )}
-          </div>
-        </TabsContent>
+            <div className="p-8 bg-[#E9F1F3] min-h-screen">
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <RevenueCard />
+                <SessionsCard />
+                <Card className="p-6 h-64 border-none shadow-md">
+                  <CardHeaderData value="$22.6k" change="+38%" label="Total sales" />
+                </Card>
+                <OverviewCard />
+                <GrowthCard />
+                <ProfitCard />
+              </div>
+            </div>
 
-        {/* ===== Pace Tab===== */}
-        <TabsContent value='pace' className='space-y-4'>
-          <YearMonthSelector onSelectionChange={handleDateChange} />
+          </DashboardTabs.Panel>
 
-          <div className="flex flex-1 flex-col pt-0 gap-4">
+          <DashboardTabs.Panel value='reports' title='Reports'>
+            <div className='flex flex-1 flex-col gap-4 pt-0' />
 
-          </div>
-        </TabsContent>
 
-        {/* ===== Pickup Tab===== */}
-        <TabsContent value='pickup' className='space-y-4'>
-          <YearMonthSelector onSelectionChange={handleDateChange} />
 
-          <div className="flex flex-1 flex-col pt-0 gap-4">
-            {selectedYear && selectedMonth && (
-              <
-                DailyPickupTable
-                year={selectedYear} month={selectedMonth}
-              />
-            )}
-          </div>
-        </TabsContent>
 
-        {/* ===== Reports Tab===== */}
-        <TabsContent value='reports' className='space-y-4'>
-          <YearMonthSelector onSelectionChange={handleDateChange} />
+          </DashboardTabs.Panel>
 
-          <div className="flex flex-1 flex-col pt-0 gap-4">
+          <DashboardTabs.Panel value='insights' title='Insights'>
+            <div className='flex flex-1 flex-col gap-4 pt-0' />
 
-          </div>
-        </TabsContent>
 
-      </Tabs>
-    </Main>
-  </>
-  )
+          </DashboardTabs.Panel>
+        </DashboardTabs>
+      </Main >
+    </>
+  );
 }
-
-

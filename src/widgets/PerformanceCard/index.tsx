@@ -271,12 +271,12 @@ function DonutTooltipCard({
 }) {
   return (
     <div
-      className={`relative z-[60] min-w-100 rounded-lg border border-border bg-card px-4 py-3 shadow-xl transition-all duration-200 ease-out ${shouldAnimateIn
+      className={`relative z-60 min-w-100 rounded-lg border border-border bg-card px-4 py-3 shadow-xl transition-all duration-200 ease-out ${shouldAnimateIn
         ? "motion-safe:animate-in motion-safe:fade-in-0 motion-safe:zoom-in-95"
         : ""
         }`}
     >
-      <p className="text-left font-display text-md font-bold uppercase text-primary">
+      <p className="text-left font-display text-lg font-bold uppercase text-primary">
         {ring.tooltipTitle}
       </p>
 
@@ -326,12 +326,12 @@ function BarTooltip({ active, payload }: TooltipContentProps<any, any>) {
 
   return (
     <div
-      className={`relative z-[60] min-w-100 rounded-lg border border-border bg-card px-4 py-3 shadow-xl transition-all duration-200 ease-out ${shouldAnimateIn
+      className={`relative z-60 min-w-100 rounded-lg border border-border bg-card px-4 py-3 shadow-xl transition-all duration-200 ease-out ${shouldAnimateIn
         ? "motion-safe:animate-in motion-safe:fade-in-0 motion-safe:zoom-in-95"
         : ""
         }`}
     >
-      <p className="text-left font-display text-md font-bold uppercase text-primary">
+      <p className="text-left font-display text-lg font-bold uppercase text-primary">
         {datum.dateLabel}
       </p>
 
@@ -604,12 +604,12 @@ export default function HospitalityDashboard({ year, month }: { year: string; mo
           <div className="grid grid-cols-2 gap-2">
             <div>
               <p className="font-display text-lg font-bold uppercase text-primary">{topLeft.label}</p>
-              <p className="font-serif text-3xl text-primary">{formatValue(topLeft.value, topLeft.format)}</p>
+              <p className="font-serif text-3xl  font-light  text-primary">{formatValue(topLeft.value, topLeft.format)}</p>
               <Variance value={topLeft.variance} format={topLeft.format} />
             </div>
             <div>
               <p className="font-display text-lg font-bold uppercase text-primary">{topRight.label}</p>
-              <p className="font-serif text-3xl text-primary">{formatValue(topRight.value, topRight.format)}</p>
+              <p className="font-serif text-3xl  font-light  text-primary">{formatValue(topRight.value, topRight.format)}</p>
               <Variance value={topRight.variance} format={topRight.format} />
             </div>
           </div>
@@ -623,12 +623,12 @@ export default function HospitalityDashboard({ year, month }: { year: string; mo
           <div className="grid grid-cols-2 gap-4">
             <div>
               <p className="font-display text-lg font-bold uppercase text-primary">{bottomLeft.label}</p>
-              <p className="font-serif text-3xl text-primary">{formatValue(bottomLeft.value, bottomLeft.format)}</p>
+              <p className="font-serif text-3xl  font-light  text-primary">{formatValue(bottomLeft.value, bottomLeft.format)}</p>
               <Variance value={bottomLeft.variance} format={bottomLeft.format} />
             </div>
             <div>
               <p className="font-display text-lg font-bold uppercase text-primary">{bottomRight.label}</p>
-              <p className="font-serif text-3xl text-primary">{formatValue(bottomRight.value, bottomRight.format)}</p>
+              <p className="font-serif text-3xl  font-light  text-primary">{formatValue(bottomRight.value, bottomRight.format)}</p>
               <Variance value={bottomRight.variance} format={bottomRight.format} />
             </div>
           </div>
@@ -698,7 +698,7 @@ export default function HospitalityDashboard({ year, month }: { year: string; mo
             </ResponsiveContainer>
             {donutTooltipState && (
               <div
-                className="pointer-events-none absolute z-[60]"
+                className="pointer-events-none absolute z-60"
                 style={{
                   left: `${donutTooltipState.x}px`,
                   top: `${donutTooltipState.y}px`,

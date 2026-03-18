@@ -4,7 +4,7 @@
 @import "./partials/typography.css";
 @import "./partials/zoom.css";
 
-@reference "../../../../app/globals.css";
+@reference "../../../../styles/tailwind-reference.css";
 
 :root {
   --mt-overlay: rgba(251, 251, 251, 0.75);
@@ -18,14 +18,14 @@
   --mt-pre-color: #2f2f31;
   --mt-hr: #dcdcdc;
   --mt-drag-handle-hover: #5c5c5e;
-  --mt-accent-bold-blue: #05c;
-  --mt-accent-bold-teal: #206a83;
-  --mt-accent-bold-green: #216e4e;
-  --mt-accent-bold-orange: #a54800;
-  --mt-accent-bold-red: #ae2e24;
-  --mt-accent-bold-purple: #5e4db2;
+  --mt-accent-bold-blue:  var(--color-dark-blue);
+  --mt-accent-bold-teal:  var(--color-dark-green);
+  --mt-accent-bold-green:  var(--color-green);
+  --mt-accent-bold-orange:  var(--color-orange);
+  --mt-accent-bold-red:var(--base-color-7-b000);
+  --mt-accent-bold-purple: var(--base-color-8-b000);
   --mt-accent-gray: #758195;
-  --mt-accent-blue: #1d7afc;
+  --mt-accent-blue: var(--color-dark-blue-fade);
   --mt-accent-teal: #2898bd;
   --mt-accent-green: #22a06b;
   --mt-accent-orange: #fea362;
@@ -124,7 +124,7 @@
 }
 
 .minimal-tiptap-editor .ProseMirror p {
-  @apply break-words;
+  @apply wrap-break-word;
 }
 
 .minimal-tiptap-editor .ProseMirror li .text-node:has(+ .list-node),
@@ -144,7 +144,7 @@
 }
 
 .minimal-tiptap-editor .ProseMirror hr {
-  @apply my-3 h-0.5 w-full border-none bg-[var(--mt-hr)];
+  @apply my-3 h-0.5 w-full border-none bg-(--mt-hr);
 }
 
 .minimal-tiptap-editor .ProseMirror-focused hr.ProseMirror-selectednode {
@@ -259,5 +259,5 @@
 }
 
 .minimal-tiptap-editor .ProseMirror .ProseMirror-selectednode iframe {
-  @apply outline outline-2 outline-offset-2 outline-primary;
+  @apply outline outline-offset-2 outline-primary;
 }
