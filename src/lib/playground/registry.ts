@@ -12,16 +12,100 @@ import { metadata as widget_YearMonthSelector_metadata } from '@/widgets/YearMon
 
 
 export const PLAYGROUND_REGISTRY: Record<string, any> = {
+  widget_AnalyticsOverview: { 
+    name: "AnalyticsOverview", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/AnalyticsOverview/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_AnalyticsSection: { 
+    name: "AnalyticsSection", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/AnalyticsSection/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_AreaChartInterActive: { 
+    name: "AreaChartInterActive", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/AreaChartInterActive/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_BarChartInteractive: { 
+    name: "BarChartInteractive", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/BarChartInteractive/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_BarWithLabelCustom: { 
+    name: "BarWithLabelCustom", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/BarWithLabelCustom/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_BrowserStatsCard: { 
+    name: "BrowserStatsCard", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/BrowserStatsCard/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
   widget_CalendarHeatmap: { 
     name: "CalendarHeatmap", 
     type: "widget",
     component: dynamic(() => import('@/widgets/CalendarHeatmap/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: widget_CalendarHeatmap_metadata
   },
+  widget_CampaignsSection: { 
+    name: "CampaignsSection", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/CampaignsSection/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_ChartsGrid: { 
+    name: "ChartsGrid", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/ChartsGrid/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
   widget_DailyPickupTable: { 
     name: "DailyPickupTable", 
     type: "widget",
     component: dynamic(() => import('@/widgets/DailyPickupTable/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_DashboardDropdown: { 
+    name: "DashboardDropdown", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/DashboardDropdown/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_DashboardSection: { 
+    name: "DashboardSection", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/DashboardSection/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_DataTable: { 
+    name: "DataTable", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/DataTable/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_EmptyState: { 
+    name: "EmptyState", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/EmptyState/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_InteractiveAreaLineCombo: { 
+    name: "InteractiveAreaLineCombo", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/InteractiveAreaLineCombo/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_LineChartInteractive: { 
+    name: "LineChartInteractive", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/LineChartInteractive/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: null
   },
   widget_MarketSegmentGroupRoomsTable: { 
@@ -36,11 +120,23 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
     component: dynamic(() => import('@/widgets/MarketSegmentTransientRoomsTable/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: widget_MarketSegmentTransientRoomsTable_metadata
   },
+  widget_ModelComparisonCard: { 
+    name: "ModelComparisonCard", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/ModelComparisonCard/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
   widget_OTBStackedBarChart: { 
     name: "OTBStackedBarChart", 
     type: "widget",
     component: dynamic(() => import('@/widgets/OTBStackedBarChart/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: widget_OTBStackedBarChart_metadata
+  },
+  widget_OverviewSection: { 
+    name: "OverviewSection", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/OverviewSection/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
   },
   widget_PerformanceCard: { 
     name: "PerformanceCard", 
@@ -54,17 +150,119 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
     component: dynamic(() => import('@/widgets/PerformanceCardOther/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: widget_PerformanceCardOther_metadata
   },
+  widget_PieChartDonutCenterText: { 
+    name: "PieChartDonutCenterText", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/PieChartDonutCenterText/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_PieChartInteractive: { 
+    name: "PieChartInteractive", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/PieChartInteractive/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_PieDonutChartActive: { 
+    name: "PieDonutChartActive", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/PieDonutChartActive/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_PostsSection: { 
+    name: "PostsSection", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/PostsSection/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_RadialRingChartWithLabel: { 
+    name: "RadialRingChartWithLabel", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/RadialRingChartWithLabel/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_SalesMetrics: { 
+    name: "SalesMetrics", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/SalesMetrics/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_SalesMetricsCard: { 
+    name: "SalesMetricsCard", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/SalesMetricsCard/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_SimpleKPICards: { 
+    name: "SimpleKPICards", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/SimpleKPICards/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_SimpleStatisticsCards: { 
+    name: "SimpleStatisticsCards", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/SimpleStatisticsCards/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_SocialVisitsCard: { 
+    name: "SocialVisitsCard", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/SocialVisitsCard/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
   widget_StatCard1: { 
     name: "StatCard1", 
     type: "widget",
     component: dynamic(() => import('@/widgets/StatCard1/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: widget_StatCard1_metadata
   },
+  widget_StatisticsCardFin: { 
+    name: "StatisticsCardFin", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/StatisticsCardFin/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_TempAnalyticsDashboard: { 
+    name: "TempAnalyticsDashboard", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/TempAnalyticsDashboard/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_TimelineComponent: { 
+    name: "TimelineComponent", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/TimelineComponent/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_TopServicesChart: { 
+    name: "TopServicesChart", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/TopServicesChart/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_TotalEarningCard: { 
+    name: "TotalEarningCard", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/TotalEarningCard/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_TotalStatsCard: { 
+    name: "TotalStatsCard", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/TotalStatsCard/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
   widget_YearMonthSelector: { 
     name: "YearMonthSelector", 
     type: "widget",
     component: dynamic(() => import('@/widgets/YearMonthSelector/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: widget_YearMonthSelector_metadata
+  },
+  widget_metric_cards: { 
+    name: "metric-cards", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/metric-cards/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
   },
   ui_accordion: { 
     name: "accordion", 
@@ -406,6 +604,16 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
     })),
     metadata: null
   },
+  ui_chart_demos: { 
+    name: "chart-demos", 
+    type: "ui-primitive",
+    component: dynamic(() => import('@/components/ui/chart-demos').then(mod => {
+      const m = mod as Record<string, any>;
+      const componentLike = Object.keys(m).find((key) => /^[A-Z]/.test(key) && typeof m[key] === 'function');
+      return m["ChartDemos"] || m.default || (componentLike ? m[componentLike] : m[Object.keys(m)[0]]);
+    })),
+    metadata: null
+  },
   ui_chart: { 
     name: "chart", 
     type: "ui-primitive",
@@ -463,6 +671,16 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
       const m = mod as Record<string, any>;
       const componentLike = Object.keys(m).find((key) => /^[A-Z]/.test(key) && typeof m[key] === 'function');
       return m["ContextMenu"] || m.default || (componentLike ? m[componentLike] : m[Object.keys(m)[0]]);
+    })),
+    metadata: null
+  },
+  ui_copy_code: { 
+    name: "copy-code", 
+    type: "ui-primitive",
+    component: dynamic(() => import('@/components/ui/copy-code').then(mod => {
+      const m = mod as Record<string, any>;
+      const componentLike = Object.keys(m).find((key) => /^[A-Z]/.test(key) && typeof m[key] === 'function');
+      return m["CopyCode"] || m.default || (componentLike ? m[componentLike] : m[Object.keys(m)[0]]);
     })),
     metadata: null
   },
@@ -1970,6 +2188,16 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
     name: "long-text", 
     type: "custom-component",
     component: dynamic(() => import('@/components/long-text').then(mod => {
+      const m = mod as Record<string, any>;
+      const componentLike = Object.keys(m).find((key) => /^[A-Z]/.test(key) && typeof m[key] === 'function');
+      return m.default || (componentLike ? m[componentLike] : m[Object.keys(m)[0]]);
+    })),
+    metadata: null
+  },
+  custom_metric: { 
+    name: "metric", 
+    type: "custom-component",
+    component: dynamic(() => import('@/components/metric').then(mod => {
       const m = mod as Record<string, any>;
       const componentLike = Object.keys(m).find((key) => /^[A-Z]/.test(key) && typeof m[key] === 'function');
       return m.default || (componentLike ? m[componentLike] : m[Object.keys(m)[0]]);

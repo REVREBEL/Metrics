@@ -239,18 +239,25 @@ export function YearMonthSelector({
   }
 
   return (
-    <div className="flex w-fit flex-row items-center gap-2 rounded-md border bg-card p-2 shadow-none">
+    <div className="flex w-fit flex-row items-center gap-2 rounded-md transparent shadow-none">
       <ToggleGroup
         type="single"
         value={selectedYear}
         onValueChange={handleYearChange}
-        className="flex items-center gap-1 rounded-sm bg-muted p-1"
+        className="flex items-center gap-1 rounded-sm bg-muted  border border-dark-blue/10 p-1"
       >
         {availableYears.map((year) => (
           <ToggleGroupItem
             key={year}
             value={year}
-            className="h-8 w-24 justify-center text-md font-display font-bold text-muted-foreground shadow-none transition-all data-[state=on]:bg-[var(--color-4)] data-[state=on]:text-[var(--color-4-inverse)] hover:bg-secondary hover:text-secondary-foreground"
+            className="h-8 w-24 justify-center text-md font-display font-bold rounded-md text-muted-foreground 
+            transition-all data-[state=on]:bg-primary-inverse data-[state=on]:text-primary-foreground-inverse
+              hover:bg-primary
+              hover:text-primary-foreground
+              disabled:cursor-not-allowed 
+              disabled:opacity-35 
+              disabled:hover:bg-transparent 
+              disabled:hover:text-muted-foreground"
           >
             {year}
           </ToggleGroupItem>
@@ -261,7 +268,7 @@ export function YearMonthSelector({
         type="single"
         value={selectedMonth}
         onValueChange={handleMonthChange}
-        className="flex items-center gap-1 rounded-sm bg-muted p-1"
+        className="flex items-center gap-1 rounded-sm bg-muted border border-dark-blue/10  p-1"
       >
         {ALL_MONTHS.map((month) => {
           const isAvailable = availableMonthsForSelectedYear.includes(month)
@@ -271,7 +278,13 @@ export function YearMonthSelector({
               key={`${selectedYear}-${month}`}
               value={month}
               disabled={!isAvailable}
-              className="h-8 w-16 justify-center text-md font-display font-bold uppercase text-muted-foreground shadow-none transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground"
+              className="h-8 w-16 justify-center text-md font-display font-bold uppercase rounded-md text-muted-foreground shadow-none transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground             
+                hover:bg-primary-inverse 
+                hover:text-primary-foreground-inverse
+                disabled:cursor-not-allowed 
+                disabled:opacity-35 
+                disabled:hover:bg-transparent 
+                disabled:hover:text-muted-foreground"
             >
               {month}
             </ToggleGroupItem>

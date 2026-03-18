@@ -1,13 +1,9 @@
-import { AuthenticatedLayout } from '@/components/layout/authenticated-layout'
+import { AuthenticatedLayout } from "@/components/layout/authenticated-layout";
 
-export default function DashboardLayout({
-    children,
+export default function AppLayout({
+  children,
 }: {
-    children: React.ReactNode
+  children: React.ReactNode;
 }) {
-    return (
-        <AuthenticatedLayout>
-            {children}
-        </AuthenticatedLayout>
-    )
+  return <AuthenticatedLayout>{children}</AuthenticatedLayout>;
 }

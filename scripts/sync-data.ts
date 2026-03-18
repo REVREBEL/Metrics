@@ -586,6 +586,7 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
       { days: 30,  chg: '030_day' },
       { days: 60,  chg: '060_day' },
       { days: 90,  chg: '090_day' },
+      { days: 120, chg: '120_day' },
     ] as const;
 
     // Segment column suffixes that exist in the consolidated pickup view
@@ -610,6 +611,20 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
       'transient_qualified',
       'transient_retail',
       'transient_unqualified',
+    ] as const;
+
+    // Roomtype column suffixes that exist in the consolidated pickup view
+    const PICKUP_ROOMTYPES = [
+      'commissioner_suite',
+      'deluxe_king',
+      'foundation_king',
+      'foundation_king_ada',
+      'foundation_two_queen',
+      'junior_suite',
+      'king_guestroom',
+      'secretary_suite',
+      'two_queen_guestroom',
+      'two_queen_guestroom_ada',
     ] as const;
 
     // ─── Phase 1: Sync the single consolidated BQ pickup view → raw parquet ────
@@ -696,6 +711,77 @@ async function runDuckDbQuery<T = Record<string, unknown>>(
     async function syncRoomtypePace(context: SyncContext) {
       await runQueryToParquet(context, getRoomtypeCurrentQuery(HOTEL_DATASET), 'dashboard_roomtypes.parquet');
       await runQueryToParquet(context, getRoomtypeTrendQuery(HOTEL_DATASET), 'dashboard_roomtype_trend.parquet');
+      
+      await syncRoomtypePickupRaw(context, HOTEL_DATASET);
+      await buildRoomtypePickupLongFormat(context);
+    }
+
+    // ─── Phase 1: Sync the single consolidated BQ pickup view → raw parquet (Roomtypes) ────
+    async function syncRoomtypePickupRaw(context: SyncContext, dataset: string) {
+      const bqQuery = `
+        SELECT *
+        FROM \`${dataset}.vw_pace_roomtype_change_by_period_current\`
+      `;
+      await runQueryToParquet(context, bqQuery, 'roomtype_pickup_raw.parquet');
+    }
+
+    // ─── Phase 2: DuckDB transforms single raw view → long-format parquet (Roomtypes) ─────────
+    async function buildRoomtypePickupLongFormat(context: SyncContext) {
+      requireParquetFiles(context, ['roomtype_pickup_raw.parquet']);
+
+      // Generate one SELECT block per window × roomtype combination.
+      const blocks: string[] = [];
+      const filePath = resolveOutputPath(context.publicDataDir, 'roomtype_pickup_raw.parquet');
+      for (const w of PICKUP_WINDOWS) {
+        for (const rt of PICKUP_ROOMTYPES) {
+          blocks.push(`
+            SELECT
+              property_name,
+              stay_month,
+              stay_date,
+              snapshot_date,
+              ${w.days} AS period_days,
+              '${rt}' AS roomtype,
+              CAST(rooms_otb__${rt} AS INTEGER)          AS rooms_otb,
+              CAST(rooms_stly__${rt} AS INTEGER)         AS rooms_stly,
+              CAST(rev_otb__${rt} AS FLOAT)              AS rev_otb,
+              CAST(rev_stly__${rt} AS FLOAT)             AS rev_stly,
+              CAST(rooms_otb_chg_${w.chg}__${rt} AS INTEGER)            AS rooms_pickup,
+              CAST(rooms_stly_chg_${w.chg}__${rt} AS INTEGER)           AS rooms_stly_pickup,
+              CAST(rev_otb_chg_${w.chg}__${rt} AS FLOAT)                AS rev_pickup,
+              CAST(rev_stly_chg_${w.chg}__${rt} AS FLOAT)               AS rev_stly_pickup
+            FROM '${filePath}'`);
+        }
+      }
+
+      const combinedQuery = `
+        WITH combined AS (
+          ${blocks.join('\n          UNION ALL')}
+        )
+        SELECT
+          property_name,
+          stay_month,
+          stay_date,
+          snapshot_date,
+          period_days,
+          roomtype,
+          rooms_otb,
+          rooms_stly,
+          rev_otb,
+          rev_stly,
+          rooms_pickup,
+          rooms_stly_pickup,
+          rev_pickup,
+          rev_stly_pickup,
+          CASE WHEN rooms_pickup = 0 OR rooms_pickup IS NULL THEN NULL
+               ELSE rev_pickup / rooms_pickup END AS adr_pickup,
+          CASE WHEN rooms_stly_pickup = 0 OR rooms_stly_pickup IS NULL THEN NULL
+               ELSE rev_stly_pickup / rooms_stly_pickup END AS adr_stly_pickup
+        FROM combined
+        ORDER BY stay_date, period_days, roomtype
+      `;
+
+      await runLocalQueryToParquet(context, combinedQuery, 'dashboard_roomtype_pickup.parquet');
     }
 
     async function syncDerivedPaceData(context: SyncContext) {

@@ -120,7 +120,7 @@ export function Playground({
   const handleClearConsole = useCallback(() => setConsoleLogs([]), []);
 
   const content = (
-    <div className="font-funnel flex h-dvh flex-col bg-background">
+    <div className="font-display  font-light flex h-dvh flex-col bg-background">
       <Navbar
         layoutMode={layoutMode}
         onLayoutModeChange={setLayoutMode}

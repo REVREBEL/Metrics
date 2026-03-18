@@ -82,10 +82,16 @@ const CUSTOM_COMPONENT_NAMES = [
 ] as const;
 
 const WIDGET_NAMES = [
+  "AnalyticsSection",
   "CalendarHeatmap",
+  "CampaignsSection",
+  "DashboardSection",
+  "DataTable",
   "MarketSegmentGroupRoomsTable",
   "MarketSegmentTransientRoomsTable",
   "OTBStackedBarChart",
+  "OverviewSection",
+  "PostsSection",
   "StatCard1",
   "YearMonthSelector",
 ] as const;

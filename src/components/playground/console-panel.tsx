@@ -17,7 +17,7 @@ const methodColors: Record<ConsoleEntry["method"], string> = {
   log: "text-foreground",
   info: "text-blue-500",
   warn: "text-amber-500",
-  error: "text-red-500",
+  error: "text-amber-500",
 };
 
 function formatTime(ts: number): string {

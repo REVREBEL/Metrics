@@ -220,7 +220,9 @@ export function AddComponentsPopover({
   return (
     <div className={cn("relative flex justify-center", className)}>
       <Popover open={open} onOpenChange={handleOpenChange}>
-        <PopoverTrigger asChild>{children}</PopoverTrigger>
+        <PopoverTrigger asChild nativeButton={false}>
+          {children}
+        </PopoverTrigger>
         <PopoverContent className="w-[320px] p-0" align="start">
           {/* Top-level toggle between Components and Blocks */}
           {hasBlocks && (

@@ -1,90 +1,39 @@
-"use client"
+"use client";
 
-import React, { useState } from "react";
-import { Button } from '@/components/ui/button'
-import { ConfigDrawer } from '@/components/config-drawer'
-import { Header } from '@/components/layout/header'
-import { Main } from '@/components/layout/main'
-import { TopNav } from '@/components/layout/top-nav'
-import { ProfileDropdown } from '@/components/profile-dropdown'
-import { Search } from '@/components/search'
-import { ThemeSwitch } from '@/components/theme-switch'
-import PerformanceCardOther from "@/widgets/PerformanceCardOther"
-import { YearMonthSelector } from "@/widgets/YearMonthSelector/dynamic";
+import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
+import { Main } from "@/components/layout/main";
 
 export default function Page() {
-  const [selectedYear, setSelectedYear] = useState<string>('');
-  const [selectedMonth, setSelectedMonth] = useState<string>('');
-
-  const handleDateChange = (year: string, month: string) => {
-    setSelectedYear(year);
-    setSelectedMonth(month);
-  };
-
-  const topNav = [
-    {
-      title: 'Channels',
-      href: '/dashboard/channels',
-      isActive: true,
-      disabled: false,
-      className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)] ',
-    },
-    {
-      title: 'Segments',
-      href: '/dashboard/segments',
-      isActive: false,
-      disabled: true,
-      className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)] ',
-    },
-    {
-      title: 'Room Types',
-      href: '/dashboard/room-types',
-      isActive: false,
-      disabled: true,
-      className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)] ',
-    },
-    {
-      title: 'Demand',
-      href: '/dashboard/demand',
-      isActive: false,
-      disabled: false,
-      className: 'font-display text-md font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover:[var(--color-1)]',
-    },
-    {
-      title: 'Website',
-      href: '/dashboard/website',
-      isActive: false,
-      disabled: false,
-      className: 'font-display text-md text-[var(--color-3-fade)] font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-[var(--color-3)] hover: [var(--color-1)] ',
-    },
-  ]
-
   return (
-    <>
-      <Header>
-        <TopNav links={topNav} />
-        <div className='ms-auto flex items-center space-x-4'>
-          <Search />
-          <ThemeSwitch />
-          <ConfigDrawer />
-          <ProfileDropdown />
+    <Main fluid>
+      <div className="mx-auto flex min-h-dvh w-full max-w-5xl flex-col justify-center gap-8 px-6 py-12">
+        <div className="flex flex-col gap-3">
+          <p className="font-display text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">
+            RevRebel Toolkit
+          </p>
+          <h1 className="font-display text-4xl font-bold uppercase tracking-tight sm:text-5xl">
+            Choose a workspace
+          </h1>
+          <p className="max-w-2xl text-base text-muted-foreground">
+            The main app lives under the authenticated `(app)` group. Builder and
+            playground tools live separately so they do not inherit the app shell.
+          </p>
         </div>
-      </Header>
-      <Main>
-        <div className='mb-2 flex items-center justify-between space-y-2'>
-          <h1 className='font-display text-3xl font-bold tracking-widest uppercase'>Dashboard Metrics</h1>
-          <div className='flex items-center'>
-            <Button>Download</Button>
-          </div>
+
+        <div className="flex flex-wrap gap-3">
+          <Button asChild>
+            <Link href="/dashboard">Open Dashboard</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="/ui-builder">Open UI Builder</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="/playground">Open Playground</Link>
+          </Button>
         </div>
-        <div className="flex flex-1 flex-col pt-0 gap-4">
-          <YearMonthSelector onSelectionChange={handleDateChange} />
-          {selectedYear && selectedMonth && (
-            <PerformanceCardOther year={selectedYear} month={selectedMonth} />
-          )}
-        </div>
-      </Main>
-    </>
-  )
+      </div>
+    </Main>
+  );
 }

@@ -1,11 +1,13 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import { HugeiconsIcon } from "@hugeicons/react";
+import * as HugeIcons from "@hugeicons/core-free-icons";
 import { cn } from "@/lib/utils";
 
-export type LucideIconName = keyof typeof LucideIcons;
-type LucideIconComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>;
+export type HugeIconName = keyof typeof HugeIcons;
+type HugeIconDefinition = (typeof HugeIcons)[HugeIconName];
 
-const iconVariants = cva("inline-flex", {
+const iconVariants = cva("inline-flex shrink-0", {
   variants: {
     size: {
       small: "h-4 w-4",
@@ -30,7 +32,7 @@ const iconVariants = cva("inline-flex", {
       none: "rotate-0",
       "90": "rotate-90",
       "180": "rotate-180",
-      "270": "rotate-270",
+      "270": "rotate-[270deg]",
     },
   },
   defaultVariants: {
@@ -41,34 +43,61 @@ const iconVariants = cva("inline-flex", {
 });
 
 export interface IconProps
-  extends Omit<React.HTMLAttributes<SVGElement>, "color">,
+  extends Omit<React.HTMLAttributes<HTMLSpanElement>, "color">,
     VariantProps<typeof iconVariants> {
-  iconName: LucideIconName;
+  iconName: HugeIconName;
+  strokeWidth?: number;
+  filled?: boolean;
 }
 
-const Icon = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ className, iconName, size, color, rotate, ...props }, ref) => {
-    const IconComponent = LucideIcons[iconName] as LucideIconComponent;
+const sizeMap = {
+  small: 16,
+  medium: 24,
+  large: 32,
+} as const;
 
-    if (!IconComponent) {
-      console.error(`Icon "${iconName}" does not exist in lucide-react`);
+const Icon = React.forwardRef<HTMLSpanElement, IconProps>(
+  (
+    {
+      className,
+      iconName,
+      size = "medium",
+      color,
+      rotate,
+      strokeWidth = 1.5,
+      filled,
+      ...props
+    },
+    ref
+  ) => {
+    const iconDef = HugeIcons[iconName] as HugeIconDefinition | undefined;
+
+    if (!iconDef) {
+      console.error(`Icon "${iconName}" does not exist in Hugeicons`);
       return null;
     }
 
     return (
-      <IconComponent
-        className={cn(iconVariants({ size, color, rotate, className }))}
+      <span
         ref={ref}
-        {...props}
-      />
+        className={cn(iconVariants({ size, color, rotate, className }))}
+        aria-hidden={props["aria-label"] ? undefined : true}
+      >
+        <HugeiconsIcon
+          icon={iconDef}
+          size={sizeMap[size ?? "medium"]}
+          strokeWidth={strokeWidth}
+          {...(filled !== undefined ? { filled } : {})}
+        />
+      </span>
     );
   }
 );
 
 Icon.displayName = "Icon";
 
-export const iconNames = Object.keys(LucideIcons)
-  .filter((key) => (!key.startsWith("Lucide") && !key.endsWith("Icon")) && key !== "icons")
-  .map((key) => key as LucideIconName) as [LucideIconName, ...LucideIconName[]];
+export const iconNames = Object.keys(HugeIcons)
+  .filter((key) => key !== "default")
+  .sort() as [HugeIconName, ...HugeIconName[]];
 
 export { Icon, iconVariants };
