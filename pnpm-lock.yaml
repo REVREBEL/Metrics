@@ -38,8 +38,8 @@ importers:
         specifier: ^3.2.2
         version: 3.2.2(react@19.2.4)
       '@duckdb/duckdb-wasm':
-        specifier: 1.33.1-dev20.0
-        version: 1.33.1-dev20.0
+        specifier: 1.33.1-dev45.0
+        version: 1.33.1-dev45.0
       '@floating-ui/react':
         specifier: ^0.27.19
         version: 0.27.19(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -659,8 +659,8 @@ packages:
     resolution: {integrity: sha512-41gU3q7v05GM92QPuPUf4CmUw+mmF8p4wLUh6MCRlxpCkJ9ByLcY9jUf6MwrMNmiKyG/rIckNxj9SCfmNCmCqw==}
     hasBin: true
 
-  '@duckdb/duckdb-wasm@1.33.1-dev20.0':
-    resolution: {integrity: sha512-ual3d/WDZnyZHNZ3tGdFvTZY22IDdg63Bh0icSBA6JPOy1u89rNfVH/3wQhtoJPv3Xn7eWVJ/4gpT3wprrisoA==}
+  '@duckdb/duckdb-wasm@1.33.1-dev45.0':
+    resolution: {integrity: sha512-ETlrjhiGQzNdaOhpro/Y9u/RCcK+iyuczLy7uOn0kG5Mqlj8C+gTuhBXjs4JpK9ocdUgr3oT8zYYIbUnFD9AYA==}
 
   '@ecies/ciphers@0.2.5':
     resolution: {integrity: sha512-GalEZH4JgOMHYYcYmVqnFirFsjZHeoGMDt9IxEnM9F7GRUUyUksJ7Ou53L83WHJq3RWKD3AcBpo0iQh0oMpf8A==}
@@ -7245,7 +7245,7 @@ snapshots:
       picomatch: 4.0.3
       which: 4.0.0
 
-  '@duckdb/duckdb-wasm@1.33.1-dev20.0':
+  '@duckdb/duckdb-wasm@1.33.1-dev45.0':
     dependencies:
       apache-arrow: 17.0.0(patch_hash=7eff5fa10fa30aec2fcf19cd428e31a2ffd0e2dc68e094790f4073a4ce8e0d90)
       qs: 6.15.0
