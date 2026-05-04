@@ -22,6 +22,13 @@ import CampaignsSection from "@/widgets/CampaignsSection";
 import TempAnalyticsDashboard from "@/widgets/TempAnalyticsDashboard";
 
 
+import TopServicesChart from "@/widgets/TopServicesChart";
+import TopServicesBarChart from "@/widgets/TopServicesBarChart";
+import BudgetSnapshotCard from "@/widgets/BudgetSnapshotCard";
+import ConversionCard from "@/widgets/ConversionCard";
+
+
+
 import { Analytics } from './components/analytics'
 import { Overview } from './components/overview'
 import { RecentSales } from './components/recent-sales'
@@ -281,10 +288,10 @@ export default function Page() {
             <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-4'></div>
             <SocialVisitsCard />
             <BrowserStatsCard />
-
-
-
-
+            <TopServicesBarChart/>
+            <TopServicesChart/>
+            <BudgetSnapshotCard/>
+              <ConversionCard/>
           </DashboardTabs.Panel>
 
 
