@@ -178,60 +178,62 @@ export default function BudgetSnapshotCard() {
           onValueChange={setActiveTab}
         />
 
-        <div className="relative mx-auto h-65 w-full max-w-75">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={chartData}
-                cx="50%"
-                cy="50%"
-                innerRadius={65}
-                outerRadius={95}
-                paddingAngle={5}
-                dataKey="value"
-                stroke="none"
-              >
-                {chartData.map((entry) => (
-                  <Cell
-                    key={entry.metric}
-                    fill={entry.color}
-                    className="outline-none"
-                  />
-                ))}
-                <Label
-                  content={({ viewBox }) => {
-                    if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                      return (
-                        <text
-                          x={viewBox.cx}
-                          y={viewBox.cy}
-                          textAnchor="middle"
-                          dominantBaseline="middle"
-                        >
-                          <tspan
+        <div className="metric-card__chart-section">
+          <div className="relative h-65 w-full max-w-75">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={chartData}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={65}
+                  outerRadius={95}
+                  paddingAngle={5}
+                  dataKey="value"
+                  stroke="none"
+                >
+                  {chartData.map((entry) => (
+                    <Cell
+                      key={entry.metric}
+                      fill={entry.color}
+                      className="outline-none"
+                    />
+                  ))}
+                  <Label
+                    content={({ viewBox }) => {
+                      if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                        return (
+                          <text
                             x={viewBox.cx}
                             y={viewBox.cy}
-                            className="metric-card__value fill-(--primary-b000) text-2xl"
+                            textAnchor="middle"
+                            dominantBaseline="middle"
                           >
-                            {totalRooms.toLocaleString()}
-                          </tspan>
-                          <tspan
-                            x={viewBox.cx}
-                            y={(viewBox.cy || 0) + 20}
-                            className="metric-card__label fill-slate-400 tracking-[0.2em]"
-                          >
-                            {getSubLabel()}
-                          </tspan>
-                        </text>
-                      );
-                    }
+                            <tspan
+                              x={viewBox.cx}
+                              y={viewBox.cy}
+                              className="metric-card__value fill-[var(--primary-b000)] text-2xl"
+                            >
+                              {totalRooms.toLocaleString()}
+                            </tspan>
+                            <tspan
+                              x={viewBox.cx}
+                              y={(viewBox.cy || 0) + 20}
+                              className="metric-card__label fill-slate-400 tracking-[0.2em]"
+                            >
+                              {getSubLabel()}
+                            </tspan>
+                          </text>
+                        );
+                      }
 
-                    return null;
-                  }}
-                />
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
+                      return null;
+                    }}
+                  />
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
         </div>
 
         <div className="grid grid-cols-[minmax(130px,1.35fr)_minmax(180px,1.2fr)_minmax(110px,0.9fr)_minmax(120px,1fr)] gap-4 border-b border-(--color-dark-blue-200) px-2 pb-3 text-[10px] font-black uppercase tracking-[0.2em] text-primary-400">
@@ -274,17 +276,16 @@ export default function BudgetSnapshotCard() {
                           className="metric-card__mix-bar"
                           style={{ width: mixWidth }}
                         />
-                        {shouldPlaceLabelInside && (
-                          <span className="metric-card__mix-label metric-card__mix-label--inside">
-                            {percentage}%
-                          </span>
-                        )}
-                      </div>
-                      {!shouldPlaceLabelInside && (
-                        <span className="metric-card__mix-label metric-card__mix-label--outside">
+                        <span
+                          className={
+                            shouldPlaceLabelInside
+                              ? "metric-card__mix-label metric-card__mix-label--inside"
+                              : "metric-card__mix-label metric-card__mix-label--outside"
+                          }
+                        >
                           {percentage}%
                         </span>
-                      )}
+                      </div>
                     </div>
                   </div>
 
