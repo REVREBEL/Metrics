@@ -70,3 +70,11 @@ next-env.d.ts
 data/
 mcp-data/
 
+/.vibe
+/.agents
+/.claude
+/.clerk
+/.continue
+/.git
+/.next
+/.agent

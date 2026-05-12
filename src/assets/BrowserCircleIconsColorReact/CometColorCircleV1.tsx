@@ -1,0 +1,6 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgCometColorCircleV1 = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" id="CometColorCircle_v1_svg__Layer_1" data-name="Layer 1" viewBox="0 0 500 500" width="1em" height="1em" {...props}><defs><style>{".CometColorCircle_v1_svg__cls-2{fill:#fff}"}</style></defs><circle cx={250} cy={249.97} r={238.01} style={{
+    fill: "#f37d59"
+  }} /><path d="M256 367.19c-15.16 21.77-36.09 35.85-61.3 39.69-43.98 6.7-84.37-17.57-99.36-57.4-15.71-41.75.96-86.19 39.09-110.21l149.59-106.15 4.4.23c7.03.36-22.26 44.98-27.99 64.1l143.93-99.99 5.44.2c1.29.05.68 3.69-.24 4.96L306.43 244.99l61.68-26.47 4.32-.34c1.33-.11 1.37 4.32 1.03 6.15L256 367.2Zm-7.14-49.23c0-38.3-31.05-69.34-69.34-69.34s-69.34 31.05-69.34 69.34 31.05 69.34 69.34 69.34 69.34-31.05 69.34-69.34" className="CometColorCircle_v1_svg__cls-2" /><circle cx={179.52} cy={317.94} r={54.94} className="CometColorCircle_v1_svg__cls-2" /></svg>;
+export default SvgCometColorCircleV1;

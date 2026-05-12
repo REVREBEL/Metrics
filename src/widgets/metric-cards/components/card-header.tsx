@@ -11,7 +11,7 @@ export const CardHeaderData = ({ value, change, label }: { value: string, change
           {change}
         </span>
       </div>
-      <p className="text-xs  text-dark-blue font-displayfont-semibold uppercase tracking-wider">{label}</p>
+      <p className="text-[10px] text-dark-blue font-display font-bold uppercase tracking-widest">{label}</p>
     </div>
   );
 };

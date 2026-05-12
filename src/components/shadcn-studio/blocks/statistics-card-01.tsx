@@ -23,7 +23,7 @@ const StatisticsCard = ({ icon, value, title, changePercentage, className }: Sta
         <span className='text-2xl'>{value}</span>
       </CardHeader>
       <CardContent className='flex flex-col gap-2'>
-        <span className='font-semibold'>{title}</span>
+        <span className='font-display font-bold uppercase tracking-widest text-[10px] text-dark-blue'>{title}</span>
         <p className='space-x-2'>
           <span className='text-sm'>{changePercentage}</span>
           <span className='text-muted-foreground text-sm'>than last week</span>

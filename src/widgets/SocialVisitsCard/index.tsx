@@ -1,6 +1,10 @@
 import { MoreVertical, ChevronUp } from "lucide-react";
+import FacebookIcon from '@/assets/SocialIconsReact/SocialIconsFilledReact/Facebook'
+import LinkedinIcon from '@/assets/SocialIconsReact/SocialIconsFilledReact/LinkedIn'
+import XIcon from '@/assets/SocialIconsReact/SocialIconsFilledReact/X'
+import InstagramIcon from '@/assets/SocialIconsReact/SocialIconsFilledReact/Instagram'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 
 const socialData = [
@@ -10,8 +14,7 @@ const socialData = [
     visits: "10,436",
     change: "+15%",
     color: "bg-[#1877F2]",
-    // You can use actual icons or images here
-    icon: "https://upload.wikimedia.org/wikipedia/commons/b/b9/2023_Facebook_icon.svg",
+    icon: FacebookIcon,
   },
   {
     name: "LinkedIn",
@@ -19,7 +22,7 @@ const socialData = [
     visits: "2,345",
     change: "+5%",
     color: "bg-[#0A66C2]",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg",
+    icon: LinkedinIcon,
   },
   {
     name: "Twitter",
@@ -27,7 +30,7 @@ const socialData = [
     visits: "6,789",
     change: "-10%",
     color: "bg-[#000000]",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg",
+    icon: XIcon,
   },
   {
     name: "Instagram",
@@ -35,13 +38,13 @@ const socialData = [
     visits: "8,234",
     change: "+20%",
     color: "bg-gradient-to-tr from-[#FFD600] via-[#FF0069] to-[#7638FF]",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png",
+    icon: InstagramIcon,
   },
 ];
 
 export default function SocialVisitsCard() {
   return (
-    <Card className="w-full max-w-md border-none shadow-xl bg-white p-2">
+    <Card className="w-full border-none shadow-xl bg-white p-2">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-6">
         <CardTitle className="text-lg font-display upperase font-bold text-dark-blue">
           Social Network Visits
@@ -69,17 +72,17 @@ export default function SocialVisitsCard() {
             return (
               <div key={item.name} className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <Avatar className="h-11 w-11 rounded-full border border-slate-100 shadow-sm">
-                    <AvatarImage src={item.icon} className="p-2" />
+                  <Avatar className="h-11 w-11 rounded-full border border-slate-100 shadow-sm flex items-center justify-center overflow-hidden">
+                    <item.icon className="p-2 size-full" />
                     <AvatarFallback className={item.color}>
                       {item.name[0]}
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex flex-col">
-                    <span className="text-sm font-bold text-[#0B1E3B]">
+                    <span className="text-[10px] font-display font-bold uppercase tracking-widest text-dark-blue">
                       {item.name}
                     </span>
-                    <span className="text-xs font-medium text-slate-400">
+                    <span className="text-[9px] font-display font-medium uppercase tracking-widest text-slate-400">
                       {item.category}
                     </span>
                   </div>

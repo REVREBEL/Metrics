@@ -143,7 +143,7 @@ export function ChartBarInteractive() {
         <Card className="py-0">
             <CardHeader className="flex flex-col items-stretch border-b p-0! sm:flex-row">
                 <div className="flex flex-1 flex-col justify-center gap-1 px-6 pt-4 pb-3 sm:py-0!">
-                    <CardTitle>Bar Chart - Interactive</CardTitle>
+                    <CardTitle className="font-display font-bold uppercase tracking-widest text-dark-blue">Bar Chart - Interactive</CardTitle>
                     <CardDescription>
                         Showing total visitors for the last 3 months
                     </CardDescription>
@@ -158,7 +158,7 @@ export function ChartBarInteractive() {
                                 className="relative z-30 flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l data-[active=true]:bg-muted/50 sm:border-t-0 sm:border-l sm:px-8 sm:py-6"
                                 onClick={() => setActiveChart(chart)}
                             >
-                                <span className="text-xs text-muted-foreground">
+                                <span className="text-[10px] font-display font-bold uppercase tracking-widest text-muted-foreground">
                                     {chartConfig[chart].label}
                                 </span>
                                 <span className="text-lg leading-none font-bold sm:text-3xl">
