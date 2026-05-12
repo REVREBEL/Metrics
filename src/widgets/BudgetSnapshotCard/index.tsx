@@ -8,10 +8,14 @@ import {
   PieChart,
   ResponsiveContainer,
 } from "recharts";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
-import { Info, MoreVertical } from "lucide-react";
-import { MetricCardShell } from "@/widgets/_shared/MetricCardShell";
+import { MoreVertical } from "lucide-react";
+import {
+  MetricCardDescription,
+  MetricCardShell,
+  MetricCardTabs,
+  MetricInsight,
+} from "@/widgets/_shared/MetricCard";
 import type { ProductionSegment } from "@/widgets/_shared/metric-theme";
 
 type SnapshotTab = "budget" | "forecast" | "stly";
@@ -23,6 +27,12 @@ type SegmentDatum = {
   color: string;
   varianceColor: string;
 };
+
+const SNAPSHOT_TABS = [
+  { label: "Budget", value: "budget" },
+  { label: "OTB", value: "forecast" },
+  { label: "STLY", value: "stly" },
+] satisfies Array<{ label: string; value: SnapshotTab }>;
 
 const SEGMENT_CONFIG = {
   transient: {
@@ -93,7 +103,6 @@ const HOTEL_DATA = {
 
 export default function BudgetSnapshotCard() {
   const [activeTab, setActiveTab] = useState<SnapshotTab>("budget");
-  const isFutureDate = true;
 
   const currentData = HOTEL_DATA[activeTab];
   const totalSpend = useMemo(
@@ -106,7 +115,7 @@ export default function BudgetSnapshotCard() {
       case "budget":
         return "total budget";
       case "forecast":
-        return isFutureDate ? "expected otb" : "actual revenue";
+        return "expected otb";
       case "stly":
         return "prior year total";
       default:
@@ -120,30 +129,15 @@ export default function BudgetSnapshotCard() {
         title="Budget Breakdown"
         metric="total"
         className="overflow-hidden shadow-xl"
-        contentClassName="pt-0"
         headerAction={<MoreVertical className="h-5 w-5 cursor-pointer text-primary" />}
       >
-        <p className="mb-6 mt-1 text-xs font-serif text--foreground">
-          Spend distribution across production segments.
-        </p>
+        <MetricCardDescription description="Spend distribution across production segments." />
 
-        <Tabs
-          defaultValue="budget"
-          className="mb-6 w-full"
-          onValueChange={(value) => setActiveTab(value as SnapshotTab)}
-        >
-          <TabsList className="metric-card-tabs">
-            <TabsTrigger value="budget" className="metric-card-tab">
-              Budget
-            </TabsTrigger>
-            <TabsTrigger value="forecast" className="metric-card-tab">
-              {isFutureDate ? "OTB" : "Actuals"}
-            </TabsTrigger>
-            <TabsTrigger value="stly" className="metric-card-tab">
-              STLY
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
+        <MetricCardTabs
+          tabs={SNAPSHOT_TABS}
+          value={activeTab}
+          onValueChange={setActiveTab}
+        />
 
         <div className="relative h-65 w-full">
           <ResponsiveContainer width="100%" height="100%">
@@ -178,7 +172,7 @@ export default function BudgetSnapshotCard() {
                           <tspan
                             x={viewBox.cx}
                             y={viewBox.cy}
-                            className="metric-card__value fill-(--primary-b000)] text-2xl"
+                            className="metric-card__value fill-[var(--primary-b000)] text-2xl"
                           >
                             ${totalSpend.toLocaleString()}
                           </tspan>
@@ -225,11 +219,11 @@ export default function BudgetSnapshotCard() {
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <span className="metric-card__value text-sm font-normal text-(--primary-b000)]">
+                    <span className="metric-card__value text-sm font-normal text-[var(--primary-b000)]">
                       ${item.value.toLocaleString()}
                     </span>
                     <div
-                      className="min-w-15 rounded px-2 py-1 text-center text-[10px] font-black text-(--primary-b000)]"
+                      className="min-w-15 rounded px-2 py-1 text-center text-[10px] font-black text-[var(--primary-b000)]"
                       style={{
                         backgroundColor:
                           "color-mix(in oklch, var(--metric-color) 15%, transparent)",
@@ -246,17 +240,11 @@ export default function BudgetSnapshotCard() {
           })}
         </div>
 
-        <div className="mt-6 flex items-start gap-3 rounded-xl border border-primary bg-background p-4">
-          <Info className="mt-0.5 h-4 w-4 shrink-0 " />
-          <p className="text-[11px] font-light  leading-relaxed font-serif text-foreground">
-            <strong className="text-[10px] uppercase tracking-wider font-display font-bold text-foreground">
-              Insight:
-            </strong>{" "}
-            {activeTab === "forecast"
-              ? "Pacing is currently 4.2% ahead of STLY. Group bookings for Q3 are showing strong conversion."
-              : "Spend distribution remains consistent with seasonal trends. No major variance detected."}
-          </p>
-        </div>
+        <MetricInsight>
+          {activeTab === "forecast"
+            ? "Pacing is currently 4.2% ahead of STLY. Group bookings for Q3 are showing strong conversion."
+            : "Spend distribution remains consistent with seasonal trends. No major variance detected."}
+        </MetricInsight>
       </MetricCardShell>
     </div>
   );
