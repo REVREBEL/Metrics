@@ -5,6 +5,7 @@ import { getMetricThemeClass, type MetricTheme } from "./metric-theme";
 type MetricCardShellProps = {
   title?: string;
   eyebrow?: string;
+  description?: React.ReactNode;
   metric?: MetricTheme;
   children: React.ReactNode;
   className?: string;
@@ -15,6 +16,7 @@ type MetricCardShellProps = {
 export function MetricCardShell({
   title,
   eyebrow,
+  description,
   metric = "total",
   children,
   className,
@@ -23,12 +25,13 @@ export function MetricCardShell({
 }: MetricCardShellProps) {
   return (
     <Card className={cn("metric-card", getMetricThemeClass(metric), className)}>
-      {(title || eyebrow || headerAction) && (
+      {(title || eyebrow || description || headerAction) && (
         <CardHeader className="metric-card__header">
           <div className="metric-card__heading">
             <div className="metric-card__heading-text">
               {eyebrow && <p className="metric-card__eyebrow">{eyebrow}</p>}
               {title && <CardTitle className="metric-card__title">{title}</CardTitle>}
+              {description && <p className="metric-card__description">{description}</p>}
             </div>
             {headerAction && <div className="metric-card__header-action">{headerAction}</div>}
           </div>
