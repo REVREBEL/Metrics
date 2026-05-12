@@ -195,6 +195,39 @@ function getSideMetric(item: ChannelDatum, metric: ChannelMetric, totals: { room
   }
 }
 
+function getMetricLabel(metric: ChannelMetric) {
+  switch (metric) {
+    case "rooms":
+      return (
+        <>
+          % of
+          <span>total rooms</span>
+        </>
+      );
+    case "adr":
+      return (
+        <>
+          vs
+          <span>retail ADR</span>
+        </>
+      );
+    case "revenue":
+      return (
+        <>
+          % of
+          <span>total revenue</span>
+        </>
+      );
+    case "alos":
+      return (
+        <>
+          vs
+          <span>transient ALOS</span>
+        </>
+      );
+  }
+}
+
 export default function TopChannelsChart() {
   const [activeMetric, setActiveMetric] = useState<ChannelMetric>("rooms");
   const [hoveredKey, setHoveredKey] = useState<ChannelKey | null>(null);
@@ -299,10 +332,7 @@ export default function TopChannelsChart() {
                 <div>
                   <div className="top-channels-chart__metric-value">{channel.sideLabel}</div>
                   <div className="top-channels-chart__metric-label">
-                    {activeMetric === "rooms" && "% of total rooms"}
-                    {activeMetric === "adr" && "vs retail ADR"}
-                    {activeMetric === "revenue" && "% of total revenue"}
-                    {activeMetric === "alos" && "vs transient ALOS"}
+                    {getMetricLabel(activeMetric)}
                   </div>
                 </div>
               </div>
