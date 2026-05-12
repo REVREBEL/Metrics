@@ -17,7 +17,7 @@ const ChartsGrid = ({ Components, title, Additional }: ChartsGridProps) => {
             'repeat(auto-fit, minmax(min(100%, 500px), 1fr))',
         }}
       >
-        {Components.map((Component, index) => (
+        {Array.isArray(Components) && Components.map((Component, index) => (
           <div key={index} className='w-full'>
             {Component}
           </div>

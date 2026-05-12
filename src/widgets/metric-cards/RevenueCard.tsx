@@ -9,7 +9,7 @@ const data = [
 ];
 
 export const RevenueCard = () => (
-  <Card className="p-6 h-64 border-none shadow-md">
+  <Card className="w-full p-6 h-64 border-none shadow-md">
     <CardHeaderData value="$42.5k" change="-22%" label="Total Revenue" />
     <ResponsiveContainer width="100%" height={100}>
       <BarChart data={data} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>

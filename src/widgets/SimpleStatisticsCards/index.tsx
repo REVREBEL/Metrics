@@ -1,29 +1,32 @@
-import { CalendarX2Icon, Clock8Icon, TriangleAlertIcon, TruckIcon } from 'lucide-react'
+import InTransitIcon from '@/assets/ShadowIconsReact/InTransit'
+import BrokenBottleIcon from '@/assets/ShadowIconsReact/BrokenBottle'
+import CalendarIcon from '@/assets/ShadowIconsReact/CalendarPlus'
+import AlarmClockIcon from '@/assets/ShadowIconsReact/AlarmClock'
 
 import StatisticsCard from '@/components/shadcn-studio/blocks/statistics-card-01'
 
 // Statistics card data
 const StatisticsCardData = [
   {
-    icon: <TruckIcon className='size-4' />,
+    icon: <InTransitIcon className='size-4' />,
     value: '42',
     title: 'Shipped Orders',
     changePercentage: '+18.2%'
   },
   {
-    icon: <TriangleAlertIcon className='size-4' />,
+    icon: <BrokenBottleIcon className='size-4' />,
     value: '8',
     title: 'Damaged Returns',
     changePercentage: '-8.7%'
   },
   {
-    icon: <CalendarX2Icon className='size-4' />,
+    icon: <CalendarIcon className='size-4' />,
     value: '27',
     title: 'Missed Delivery Slots',
     changePercentage: '+4.3%'
   },
   {
-    icon: <Clock8Icon className='size-4' />,
+    icon: <AlarmClockIcon className='size-4' />,
     value: '13',
     title: 'Late Deliveries',
     changePercentage: '-2.5%'

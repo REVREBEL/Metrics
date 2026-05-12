@@ -11,7 +11,7 @@ const growthData = [
 ];
 
 export const GrowthCard = () => (
-    <Card className="p-6 h-64 border-none shadow-md relative">
+    <Card className="w-full p-6 h-64 border-none shadow-md relative">
         <CardHeaderData value="$27.9k" change="+49%" label="Total Growth" />
         <div className="flex justify-center items-center h-24">
             <ResponsiveContainer width="100%" height="100%">

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import ArrowCircleDown from "@/assets/rebel-icons/ArrowCircleDown";
-import ArrowCircleUp from "@/assets/rebel-icons/ArrowCircleUp";
+import ArrowCircleDown from "@/assets/RebelIconsReact/ArrowCircleDown";
+import ArrowCircleUp from "@/assets/RebelIconsReact/ArrowCircleUp";
 import { TrendingUp } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -52,7 +52,7 @@ export default function AnalyticsOverview() {
               {/* Blue indicator line for active state */}
               {isActive && <div className="absolute top-0 left-0 w-full h-1 bg-secondary" />}
 
-              <span className="text-xs font-semibold text-dark-blue uppercase tracking-wider mb-2">
+              <span className="text-[10px] font-display font-bold text-dark-blue uppercase tracking-widest mb-2">
                 {m.label}
               </span>
 
@@ -79,12 +79,12 @@ export default function AnalyticsOverview() {
       <CardContent className="p-8">
         <div className="mb-4 flex items-end justify-between">
           <div>
-            <h2 className="font-display uppercase font-bold text-xl text-dark-blue">Area Chart</h2>
+            <h2 className="font-display font-bold uppercase tracking-widest text-xl text-dark-blue">Area Chart</h2>
             <p className="font-serif font-light text-sm text-slate-500">
               Showing {activeMetric.label.toLowerCase()} for the last 6 months
             </p>
           </div>
-          <div className="flex items-center gap-2 font-display font-bold text-[12px] uppercase text-primary">
+          <div className="flex items-center gap-2 font-display font-bold text-[10px] uppercase tracking-widest text-primary">
             <div className={`w-3 h-3 rounded-sm ${activeMetric.bgColor}`} />
             {activeMetric.label}
           </div>
@@ -98,13 +98,13 @@ export default function AnalyticsOverview() {
                 dataKey="month"
                 axisLine={false}
                 tickLine={false}
-                tick={{ className: "font-dispay font-bold uppercase text-[11px] fill-slate-400" }}
+                tick={{ className: "font-display font-bold uppercase text-[10px] tracking-widest fill-slate-400" }}
                 dy={15}
               />
               <YAxis
                 axisLine={false}
                 tickLine={false}
-                tick={{ className: "font-dispay font-bold uppercase  text-[11px] fill-slate-400" }}
+                tick={{ className: "font-display font-bold uppercase text-[10px] tracking-widest fill-slate-400" }}
               />
               <Tooltip
                 content={<CustomTooltip activeColorVar={activeMetric.colorVar} />}
@@ -128,13 +128,13 @@ export default function AnalyticsOverview() {
         {/* 3. Footer */}
         <div className="mt-12 pt-6 border-t border-muted flex items-center justify-between">
           <div>
-            <div className="flex items-center gap-2 font-display uppercase font-bold text-green">
+            <div className="flex items-center gap-2 font-display font-bold uppercase tracking-widest text-green">
               <span>Trending up by 5.2% this month</span>
               <TrendingUp className="w-4 h-4" />
             </div>
             <p className="font-serif font-light text-xs text-primary mt-1 tracking-tighter">January - June 2024</p>
           </div>
-          <button className="text-[14x] font-display font-bold uppercase text-dark-blue hover:underline underline-offset-4">
+          <button className="text-[12px] font-display font-bold uppercase tracking-widest text-dark-blue hover:underline underline-offset-4">
             View Details →
           </button>
         </div>

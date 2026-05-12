@@ -9,7 +9,7 @@ const data = [
 ];
 
 export const ProfitCard = () => (
-    <Card className="p-6 h-64 border-none shadow-md">
+    <Card className="w-full p-6 h-64 border-none shadow-md">
         <CardHeaderData value="$88.5k" change="-18%" label="Total Profit" />
         <ResponsiveContainer width="100%" height={100}>
             <BarChart data={data}>

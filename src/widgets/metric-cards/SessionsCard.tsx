@@ -6,7 +6,8 @@ import  { CardHeaderData }  from "@/widgets/metric-cards/components/card-header"
 const lineData = [{v: 10}, {v: 40}, {v: 25}, {v: 60}, {v: 50}, {v: 90}];
 
 export const SessionsCard = () => (
-  <Card className="p-6 h-64 border-none shadow-md">
+  <Card className="w-full p-6 h-64 border-none shadow-md">
+    <CardHeaderData value="24.5k" change="+42%" label="Sessions" />
     <ResponsiveContainer width="100%" height={100}>
       <LineChart data={lineData}>
         <CartesianGrid strokeDasharray="3 3" vertical={true} horizontal={false} stroke="#CBD5E1" />
