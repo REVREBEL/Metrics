@@ -1,49 +1,77 @@
 @layer components {
   :root {
     /* Metric status */
-    --color-positive: var(--base-color-3);
-    --color-negative: var(--base-color-7);
+    --color-positive: var(--color-light-green);
+    --color-negative: var(--color-red);
 
     /* Production Segments */
-    --color-total: var(--base-color-primary);
-    --color-total-var: var(--base-color-primary-inverse);
+    --color-total: var(--color-dark-blue);
+    --color-total-var: var(--color-dark-blue-inverse);
 
-    --color-transient: var(--base-color-3);
-    --color-transient-var: var(--base-color-3-inverse);
+    --color-transient: var(--color-light-green);
+    --color-transient-var:var(--color-light-green-inverse);
 
-    --color-group: var(--base-color-5);
+    --color-group: var(--color-yellow);
     --color-group-var: var(--base-color-5-inverse);
 
-    --color-crew: var(--base-color-8);
-    --color-crew-var: var(--base-color-8-inverse);
+    --color-crew: var(--color-purple);
+    --color-crew-var: var(--color-purple-inverse);
 
     --color-complimentary: var(--base-grey-l700);
     --color-complimentary-var: var(--base-grey-l400);
 
-    --color-other: var(--base-grey-d700);
-    --color-other-var: var(--base-grey-d400);
+    --color-other: var(--color-grey-550);
+    --color-other-var: var(--color-grey-250);
 
     /* Socials */
-    --color-facebook: var(--base-color-8-b000);
-    --color-instagram: var(--base-color-7-b000);
-    --color-x: var(--base-color-3-b000);
-    --color-liinkedin: var(--base-color-2-b000);
-    --color-tiktok: var(--base-color-3-l400);
-    --color-blog: var(--base-color-5-b000);
-    --color-telegram: var(--base-color-4-b000);
-    --color-slack: var(--base-color-6-b000);
-    --color-youtube: var(--base-color-7-d100);
-    --color-pintrest: var(--base-color-7-l200);
-    --color-github: var(--base-color-4-b000);
+    --color-facebook: var(--color-purple);
+    --color-instagram: var(--color-red);
+    --color-x: var(--color-light-green);
+    --color-linkedin: var(--color-green);
+    --color-tiktok: var(--color-light-green-100);
+    --color-blog: var(--color-yellow);
+    --color-telegram: var(--color-light-blue);
+    --color-slack: var(--color-orange);
+    --color-youtube:var(--color-red-600);
+     --color-pinterest:var(--color-red-200);
+    --color-github: var(--color-grey-650);
 
-      /* Reviews */
-    --color-yelp: var(--base-color-7-d100);
-    --color-tripadvisor: var(--base-color-1-d200);
-    --color-expedia: var(--primary-l100);
-    --color-booking: var(--base-color-4-b000);
+    --color-facebook-inverse: var(--color-purple-inverse);
+    --color-instagram-inverse: var(--color-red-inverse);
+    --color-x-inverse: var(--color-light-green-inverse);
+    --color-linkedin-inverse: var(--color-green-inverse);
+    --color-tiktok-inverse: var(--color-light-green-100-inverse);
+    --color-blog-inverse: var(--color-yellow-inverse);
+    --color-telegram-inverse: var(--color-light-blue-inverse);
+    --color-slack-inverse: var(--color-orange-inverse);
+    --color-youtube-inverse: var(--color-red-600-inverse);
+     --color-pinterest-inverse: var(--color-red-200-inverse);
+    --color-github-inverse: var(--color-grey-250);
+
+    /* Reviews */
+    --color-yelp: var(--color-red-700);
+    --color-tripadvisor: var(--color-dark-green-700);
 
     /* Channels */
+    --color-expedia:  var(--color-yellow);
+    --color-booking: var(--color-light-blue);
+    --color-agoda: var(--color-dark-blue-700);
+    --color-hopper: var(--color-red-600);
+    --color-hoteltonight: var(--color-purple-700);
+    --color-hotelbeds: var(--color-purple-700);
+    --color-priceline: var(--color-dark-blue-500);
+    --color-airbnb: var(--color-red-200);
+    --color-hotwire: var(--color-red);
 
+    --color-expedia-inverse:  var(--color-yellow-inverse);
+    --color-booking-inverse: var(--color-light-blue-inverse);
+    --color-agoda-inverse: var(--color-dark-blue-700-inverse);
+    --color-hopper-inverse: var(--color-red-600-inverse);
+    --color-hoteltonight-inverse: var(--color-purple-700-inverse);
+    --color-hotelbeds-inverse: var(--color-purple-700-inverse);
+    --color-priceline-inverse: var(--color-dark-blue-500-inverse);
+    --color-airbnb-inverse: var(--color-red-200-inverse);
+    --color-hotwire-inverse: var(--color-red-inverse);
 
   }
 
@@ -178,13 +206,13 @@
     gap: 0;
     height: auto;
     min-height: 2.875rem;
-    
+
     border-radius: 2px;
     background-color: var(--background);
     padding: 4px;
   }
 
-  .metric-card-tabs > * {
+  .metric-card-tabs>* {
     flex: 1 1 0;
     min-width: 0;
   }
@@ -317,76 +345,124 @@
   .metric-card--linkedin {
     --metric-color: var(--color-linkedin);
     --metric-variance-color: var(--color-linkedin);
+    --metric-inverse-color: var(--color-linkedin-inverse);
   }
 
   .metric-card--tiktok {
     --metric-color: var(--color-tiktok);
     --metric-variance-color: var(--color-tiktok);
+    --metric-inverse-color: var(--color-tiktok-inverse);
   }
 
   .metric-card--blog {
     --metric-color: var(--color-blog);
     --metric-variance-color: var(--color-blog);
+    --metric-inverse-color: var(--color-blog-inverse);
   }
 
   .metric-card--telegram {
     --metric-color: var(--color-telegram);
     --metric-variance-color: var(--color-telegram);
+    --metric-inverse-color: var(--color-blog-inverse);
   }
 
   .metric-card--slack {
     --metric-color: var(--color-slack);
     --metric-variance-color: var(--color-slack);
+    --metric-inverse-color: var(--color-slack-inverse);
   }
 
   .metric-card--youtube {
     --metric-color: var(--color-youtube);
     --metric-variance-color: var(--color-youtube);
+    --metric-inverse-color: var(--color-youtube-inverse);
   }
 
   .metric-card--pinterest {
     --metric-color: var(--color-pinterest);
     --metric-variance-color: var(--color-pinterest);
+    --metric-inverse-color: var(--color-pinterest-inverse);
   }
 
   .metric-card--github {
     --metric-color: var(--color-github);
     --metric-variance-color: var(--color-github);
+    --metric-inverse-color: var(--color-github-inverse);
+
   }
 
   .metric-card--yelp {
     --metric-color: var(--color-yelp);
     --metric-variance-color: var(--color-yelp);
+    --metric-inverse-color: var(--color-yelp-inverse);
   }
 
   .metric-card--tripadvisor {
     --metric-color: var(--color-tripadvisor);
     --metric-variance-color: var(--color-tripadvisor);
+    --metric-inverse-color: var(--color-tripadvisor-inverse);
   }
 
   .metric-card--expedia {
     --metric-color: var(--color-expedia);
     --metric-variance-color: var(--color-expedia);
+    --metric-inverse-color: var(--color-expedia-inverse);
   }
 
   .metric-card--booking {
     --metric-color: var(--color-booking);
     --metric-variance-color: var(--color-booking);
+    --metric-inverse-color: var(--color-booking-inverse);
   }
 }
 
-  .metric-card--month01 {--metric-color: var(--color-light-blue);}
-  .metric-card--month02 {--metric-color: var(--color-yellow);}
-  .metric-card--month03 {--metric-color: var(--color-orange);}
-  .metric-card--month04 {--metric-color: var(--color-red);}
-  .metric-card--month05 {--metric-color: var(--color-purple);}
-  .metric-card--month06 {--metric-color: var(--color-dark-green);}
-  .metric-card--month07 {--metric-color: var(--color-green);}
-  .metric-card--month08 {--metric-color: var(--color-light-green);}
-  .metric-card--month09 {--metric-color: var(--color-light-blue-700);}
-  .metric-card--month10 {--metric-color: var(--color-yellow-600);}
-  .metric-card--month11 {--metric-color: var(--color-orange-600);}
-  .metric-card--month12 {--metric-color: var(--color-red-600);}
+.metric-card--month01 {
+  --metric-color: var(--color-light-blue);
+}
+
+.metric-card--month02 {
+  --metric-color: var(--color-yellow);
+}
+
+.metric-card--month03 {
+  --metric-color: var(--color-orange);
+}
+
+.metric-card--month04 {
+  --metric-color: var(--color-red);
+}
+
+.metric-card--month05 {
+  --metric-color: var(--color-purple);
+}
+
+.metric-card--month06 {
+  --metric-color: var(--color-dark-green);
+}
+
+.metric-card--month07 {
+  --metric-color: var(--color-green);
+}
+
+.metric-card--month08 {
+  --metric-color: var(--color-light-green);
+}
+
+.metric-card--month09 {
+  --metric-color: var(--color-light-blue-700);
+}
+
+.metric-card--month10 {
+  --metric-color: var(--color-yellow-600);
+}
+
+.metric-card--month11 {
+  --metric-color: var(--color-orange-600);
+}
+
+.metric-card--month12 {
+  --metric-color: var(--color-red-600);
+}
 
 
 /*
@@ -408,7 +484,7 @@
   color: var(--primary-b000);
 }
 
-[data-slot="tabs-list"].metric-card-tabs > [data-slot="tabs-trigger"] {
+[data-slot="tabs-list"].metric-card-tabs>[data-slot="tabs-trigger"] {
   flex: 1 1 0;
   min-width: 0;
 }

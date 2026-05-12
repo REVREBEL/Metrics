@@ -124,19 +124,19 @@
 
 
   /* Dark-Green */
-  --base-color-1: oklch(52% 0.10 230.09);
+  --base-color-1:  oklch(54.28% 0.0982 220.31); 
   --base-color-1-fade: oklch(71.63% 0.0762 214.60);
   --base-color-1-inverse: oklch(96% 0.01 210);
   --base-color-1-inverse-fade: oklch(86.40% 0.009 210);
 
   /* Green */
-  --base-color-2: oklch(65% 0.12 219.43);
+  --base-color-2: oklch(66.27% 0.114 206.90);
   --base-color-2-fade: oklch(78.23% 0.094 203.21);
   --base-color-2-inverse: oklch(84% 0.14 85.21);
   --base-color-2-inverse-fade: oklch(94.00% 0.050 85.21);
 
   /* Light-Green */
-  --base-color-3: oklch(78% 0.11 195.12);
+  --base-color-3:oklch(77.98% 0.085 191.74);
   --base-color-3-fade: oklch(86.35% 0.054 193.29);
   --base-color-3-inverse: oklch(45% 0.14 340);
   --base-color-3-inverse-fade: oklch(56.00% 0.112 340);
@@ -168,7 +168,7 @@
   /* Purple */
   --base-color-8: oklch(45% 0.14 340);
   --base-color-8-fade: oklch(69.83% 0.061 347.29);
-  --base-color-8-inverse: oklch(78% 0.11 195.12);
+  --base-color-8-inverse: oklch(77.98% 0.085 191.74);
   --base-color-8-inverse-fade: oklch(86.35% 0.054 193.29);
 
   /* Smoke */
@@ -402,6 +402,17 @@
   --color-dark-blue-800: var(--primary-d300);
   --color-dark-blue-900: var(--primary-d400);
 
+  --color-dark-blue-100-inverse: var(--base-color-4-l400);
+  --color-dark-blue-200-inverse: var(--base-color-4-l300);
+  --color-dark-blue-300-inverse: var(--base-color-4-l200);
+  --color-dark-blue-400-inverse: var(--base-color-4-l100);
+  --color-dark-blue-500-inverse: var(--base-color-4-b000);
+  --color-dark-blue-600-inverse: var(--base-color-4-d100);
+  --color-dark-blue-700-inverse: var(--base-color-4-d200);
+  --color-dark-blue-800-inverse: var(--base-color-4-d300);
+  --color-dark-blue-900-inverse: var(--base-color-4-d400);
+
+
   /* Dark-Green */
   --color-dark-green: var(--base-color-1);
   --color-dark-green-fade: var(--base-color-1-fade);
@@ -419,6 +430,17 @@
   --color-dark-green-800: var(--base-color-1-d300);
   --color-dark-green-900: var(--base-color-1-d400);
 
+  --color-dark-green-100-inverse:: var(--base-color-9-l400);
+  --color-dark-green-200-inverse:: var(--base-color-9-l300);
+  --color-dark-green-300-inverse:: var(--base-color-9-l200);
+  --color-dark-green-400-inverse:: var(--base-color-9-l100);
+  --color-dark-green-500-inverse:: var(--base-color-9-b000);
+  --color-dark-green-600-inverse:: var(--base-color-9-d100);
+  --color-dark-green-700-inverse:: var(--base-color-9-d200);
+  --color-dark-green-800-inverse:: var(--base-color-9-d300);
+  --color-dark-green-900-inverse:: var(--base-color-9-d400);
+
+
   /* Green */
   --color-green: var(--base-color-2);
   --color-green-fade: var(--base-color-2-fade);
@@ -435,6 +457,17 @@
   --color-green-800: var(--base-color-2-d300);
   --color-green-900: var(--base-color-2-d400);
 
+  --color-green-100-inverse: var(--base-color-5-l400);
+  --color-green-200-inverse: var(--base-color-5-l300);
+  --color-green-300-inverse: var(--base-color-5-l200);
+  --color-green-400-inverse: var(--base-color-5-l100);
+  --color-green-500-inverse: var(--base-color-5-b000);
+  --color-green-600-inverse: var(--base-color-5-d100);
+  --color-green-700-inverse: var(--base-color-5-d200);
+  --color-green-800-inverse: var(--base-color-5-d300);
+  --color-green-900-inverse: var(--base-color-5-d400);
+
+
   /* Light-Green */
   --color-light-green: var(--base-color-3);
   --color-light-green-fade: var(--base-color-3-fade);
@@ -449,6 +482,15 @@
   --color-light-green-600: var(--base-color-3-d100);
   --color-light-green-700: var(--base-color-3-d200);
   --color-light-green-800: var(--base-color-3-d300);
+
+  --color-light-green-100-inverse: var(--base-color-8-l400);
+  --color-light-green-200-inverse: var(--base-color-8-l300);
+  --color-light-green-300-inverse: var(--base-color-8-l200);
+  --color-light-green-400-inverse: var(--base-color-8-l100);
+  --color-light-green-500-inverse: var(--base-color-8-b000);
+  --color-light-green-600-inverse: var(--base-color-8-d100);
+  --color-light-green-700-inverse: var(--base-color-8-d200);
+  --color-light-green-800-inverse: var(--base-color-8-d300);
 
   /* Light-Blue */
   --color-light-blue: var(--base-color-4);
@@ -466,6 +508,17 @@
   --color-light-blue-800: var(--base-color-4-d300);
   --color-light-blue-900: var(--base-color-4-d400);
 
+  --color-light-blue-100-inverse: var(--primary-l400);
+  --color-light-blue-200-inverse: var(--primary-l300);
+  --color-light-blue-300-inverse: var(--primary-l200);
+  --color-light-blue-400-inverse: var(--primary-l100);
+  --color-light-blue-500-inverse: var(--primary-b000);
+  --color-light-blue-600-inverse: var(--primary-d100);
+  --color-light-blue-700-inverse: var(--primary-d200);
+  --color-light-blue-800-inverse: var(--primary-d300);
+  --color-light-blue-900-inverse: var(--primary-d400);
+
+
   /* Yellow */
   --color-yellow: var(--base-color-5);
   --color-yellow-fade: var(--base-color-5-fade);
@@ -481,6 +534,17 @@
   --color-yellow-700: var(--base-color-5-d200);
   --color-yellow-800: var(--base-color-5-d300);
   --color-yellow-900: var(--base-color-5-d400);
+
+  --color-yellow-100-inverse: var(--primary-l400);
+  --color-yellow-200-inverse: var(--primary-l300);
+  --color-yellow-300-inverse: var(--primary-l200);
+  --color-yellow-400-inverse: var(--primary-l100);
+  --color-yellow-500-inverse: var(--primary-b000);
+  --color-yellow-600-inverse: var(--primary-d100);
+  --color-yellow-700-inverse: var(--primary-d200);
+  --color-yellow-800-inverse: var(--primary-d300);
+  --color-yellow-900-inverse: var(--primary-d400);
+
 
   /* Orange */
   --color-orange: var(--base-color-6);
@@ -498,6 +562,16 @@
   --color-orange-800: var(--base-color-6-d300);
   --color-orange-900: var(--base-color-6-d400);
 
+  --color-orange-100-inverse: var(--primary-l400);
+  --color-orange-200-inverse: var(--primary-l300);
+  --color-orange-300-inverse: var(--primary-l200);
+  --color-orange-400-inverse: var(--primary-l100);
+  --color-orange-500-inverse: var(--primary-b000);
+  --color-orange-600-inverse: var(--primary-d100);
+  --color-orange-700-inverse: var(--primary-d200);
+  --color-orange-800-inverse: var(--primary-d300);
+  --color-orange-900-inverse: var(--primary-d400);
+
   /* Red */
   --color-red: var(--base-color-7);
   --color-red-fade: var(--base-color-7-fade);
@@ -514,6 +588,16 @@
   --color-red-800: var(--base-color-7-d300);
   --color-red-900: var(--base-color-7-d400);
 
+  --color-red-100-inverse: var(--base-color-4-l400);
+  --color-red-200-inverse: var(--base-color-4-l300);
+  --color-red-300-inverse: var(--base-color-4-l200);
+  --color-red-400-inverse: var(--base-color-4-l100);
+  --color-red-500-inverse: var(--base-color-4-b000);
+  --color-red-600-inverse: var(--base-color-4-d100);
+  --color-red-700-inverse: var(--base-color-4-d200);
+  --color-red-800-inverse: var(--base-color-4-d300);
+  --color-red-900-inverse: var(--base-color-4-d400);
+
   /* Purple */
   --color-purple: var(--base-color-8);
   --color-purple-fade: var(--base-color-8-fade);
@@ -529,6 +613,16 @@
   --color-purple-700: var(--base-color-8-d200);
   --color-purple-800: var(--base-color-8-d300);
   --color-purple-900: var(--base-color-8-d400);
+
+  --color-purple-100-inverse: var(--base-color-3-l400);
+  --color-purple-200-inverse: var(--base-color-3-l300);
+  --color-purple-300-inverse: var(--base-color-3-l200);
+  --color-purple-400-inverse: var(--base-color-3-l100);
+  --color-purple-500-inverse: var(--base-color-3-b000);
+  --color-purple-600-inverse: var(--base-color-3-d100);
+  --color-purple-700-inverse: var(--base-color-3-d200);
+  --color-purple-800-inverse: var(--base-color-3-d300);
+  --color-purple-900-inverse: var(--base-color-3-d400);
 
   /* Smoke */
   --color-smoke: var(--base-color-9);

@@ -1,10 +1,10 @@
 import { MoreVertical } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import GoogleChromeColorCircle from "@/assets/BrowserCircleIconsColorReact/GoogleChromeColorCircle";
-import FirefoxMozillaColorCircle from "@/assets/BrowserCircleIconsColorReact/FirefoxMozillaColorCircle";
-import MicrosoftEdgeColorCircle from "@/assets/BrowserCircleIconsColorReact/MicrosoftEdgeColorCircle";
-import OperaColorCircle from "@/assets/BrowserCircleIconsColorReact/OperaColorCircle";
-import SafariColorCircle from "@/assets/BrowserCircleIconsColorReact/SafariColorCircle";
+import GoogleChromeColorCircle from "@/assets/BrowserIconsReact/BrowserCircleIconsColorReact/GoogleChromeColorCircle";
+import FirefoxMozillaColorCircle from "@/assets/BrowserIconsReact/BrowserCircleIconsColorReact/FirefoxMozillaColorCircle";
+import MicrosoftEdgeColorCircle from "@/assets/BrowserIconsReact/BrowserCircleIconsColorReact/MicrosoftEdgeColorCircle";
+import OperaColorCircle from "@/assets/BrowserIconsReact/BrowserCircleIconsColorReact/OperaColorCircle";
+import SafariColorCircle from "@/assets/BrowserIconsReact/BrowserCircleIconsColorReact/SafariColorCircle";
 import type { ComponentType, SVGProps } from "react";
 
 interface BrowserEntry {
