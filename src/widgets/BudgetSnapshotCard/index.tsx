@@ -115,15 +115,15 @@ export default function BudgetSnapshotCard() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-50 p-8 font-sans">
+    <div className="flex min-h-screen items-center justify-center p-8 font-sans">
       <MetricCardShell
         title="Budget Breakdown"
         metric="total"
-        className="max-w-[500px] overflow-hidden shadow-xl"
+        className="overflow-hidden shadow-xl"
         contentClassName="pt-0"
-        headerAction={<MoreVertical className="h-5 w-5 cursor-pointer text-slate-400" />}
+        headerAction={<MoreVertical className="h-5 w-5 cursor-pointer text-primary" />}
       >
-        <p className="mb-6 mt-1 text-xs text-slate-500">
+        <p className="mb-6 mt-1 text-xs font-serif text--foreground">
           Spend distribution across production segments.
         </p>
 
@@ -145,7 +145,7 @@ export default function BudgetSnapshotCard() {
           </TabsList>
         </Tabs>
 
-        <div className="relative h-[260px] w-full">
+        <div className="relative h-65 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
@@ -178,7 +178,7 @@ export default function BudgetSnapshotCard() {
                           <tspan
                             x={viewBox.cx}
                             y={viewBox.cy}
-                            className="metric-card__value fill-[var(--primary-b000)] text-2xl"
+                            className="metric-card__value fill-(--primary-b000)] text-2xl"
                           >
                             ${totalSpend.toLocaleString()}
                           </tspan>
@@ -201,7 +201,7 @@ export default function BudgetSnapshotCard() {
           </ResponsiveContainer>
         </div>
 
-        <div className="mb-2 flex justify-between px-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+        <div className="mb-2 flex justify-between px-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary-400">
           <span>Segment</span>
           <span>Amount / Share</span>
         </div>
@@ -219,17 +219,17 @@ export default function BudgetSnapshotCard() {
                       className="h-4 w-1.5 rounded-full"
                       style={{ backgroundColor: "var(--metric-color)" }}
                     />
-                    <span className="metric-card__label text-sm text-slate-700">
+                    <span className="metric-card__label text-sm text-primary-700">
                       {item.name}
                     </span>
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <span className="text-sm font-black text-[var(--primary-b000)]">
+                    <span className="metric-card__value text-sm font-normal text-(--primary-b000)]">
                       ${item.value.toLocaleString()}
                     </span>
                     <div
-                      className="min-w-[60px] rounded px-2 py-1 text-center text-[10px] font-black text-[var(--primary-b000)]"
+                      className="min-w-15 rounded px-2 py-1 text-center text-[10px] font-black text-(--primary-b000)]"
                       style={{
                         backgroundColor:
                           "color-mix(in oklch, var(--metric-color) 15%, transparent)",
@@ -246,10 +246,10 @@ export default function BudgetSnapshotCard() {
           })}
         </div>
 
-        <div className="mt-6 flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
-          <Info className="mt-0.5 h-4 w-4 shrink-0 text-slate-400" />
-          <p className="text-[11px] font-medium leading-relaxed text-slate-500">
-            <strong className="text-[9px] uppercase tracking-wider text-slate-700">
+        <div className="mt-6 flex items-start gap-3 rounded-xl border border-primary bg-background p-4">
+          <Info className="mt-0.5 h-4 w-4 shrink-0 " />
+          <p className="text-[11px] font-light  leading-relaxed font-serif text-foreground">
+            <strong className="text-[10px] uppercase tracking-wider font-display font-bold text-foreground">
               Insight:
             </strong>{" "}
             {activeTab === "forecast"
