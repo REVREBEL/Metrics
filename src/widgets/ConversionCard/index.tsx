@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState, useMemo } from 'react';
 import { 
   PieChart, 
@@ -71,7 +73,7 @@ const ConversionCard = () => {
       <CardHeader className="pb-4">
         <div className="flex justify-between items-start">
           <div>
-            <CardTitle className="text-[#0B1E3F] text-sm font-bold uppercase tracking-widest">
+            <CardTitle className="text-[#0B1E3F] text-sm font-display font-bold uppercase tracking-widest">
               Conversion rate
             </CardTitle>
             <CardDescription className="text-slate-500 mt-1 text-xs">
@@ -141,7 +143,7 @@ const ConversionCard = () => {
           ].map((item, idx) => (
             <div key={idx} className="flex justify-between items-center px-1">
               <div className="space-y-0.5">
-                <h4 className="text-sm font-bold text-[#0B1E3F]">{item.label}</h4>
+                <h4 className="text-[10px] font-display font-bold text-[#0B1E3F] uppercase tracking-widest">{item.label}</h4>
                 <p className="text-[11px] text-slate-400 font-medium">{item.sub}</p>
               </div>
               <div className={`flex items-center gap-1.5 text-xs font-bold ${item.up ? 'text-slate-700' : 'text-slate-700'}`}>
@@ -183,7 +185,7 @@ const App = () => {
         <CardHeader className="pb-2">
           <div className="flex justify-between items-start">
             <div>
-              <CardTitle className="text-[#0B1E3F] text-sm font-bold uppercase tracking-widest">
+              <CardTitle className="text-[#0B1E3F] text-sm font-display font-bold uppercase tracking-widest">
                 Budget Breakdown
               </CardTitle>
               <CardDescription className="text-slate-500 mt-1 text-xs">
@@ -195,13 +197,13 @@ const App = () => {
 
           <Tabs defaultValue="budget" className="w-full mt-6" onValueChange={setActiveTab}>
             <TabsList className="grid w-full grid-cols-3 bg-slate-100/50 p-1 rounded-lg">
-              <TabsTrigger value="budget" className="data-[state=active]:bg-white data-[state=active]:shadow-sm text-[10px] uppercase tracking-widest font-bold">
+              <TabsTrigger value="budget" className="data-[state=active]:bg-white data-[state=active]:shadow-sm text-[10px] font-display uppercase tracking-widest font-bold">
                 Budget
               </TabsTrigger>
-              <TabsTrigger value="forecast" className="data-[state=active]:bg-white data-[state=active]:shadow-sm text-[10px] uppercase tracking-widest font-bold">
+              <TabsTrigger value="forecast" className="data-[state=active]:bg-white data-[state=active]:shadow-sm text-[10px] font-display uppercase tracking-widest font-bold">
                 {isFutureDate ? 'OTB' : 'Actuals'}
               </TabsTrigger>
-              <TabsTrigger value="stly" className="data-[state=active]:bg-white data-[state=active]:shadow-sm text-[10px] uppercase tracking-widest font-bold">
+              <TabsTrigger value="stly" className="data-[state=active]:bg-white data-[state=active]:shadow-sm text-[10px] font-display uppercase tracking-widest font-bold">
                 STLY
               </TabsTrigger>
             </TabsList>
@@ -233,7 +235,7 @@ const App = () => {
                             <tspan x={viewBox.cx} y={viewBox.cy} className="fill-[#0B1E3F] text-2xl font-black">
                               ${totalSpend.toLocaleString()}
                             </tspan>
-                            <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 20} className="fill-slate-400 text-[10px] font-bold uppercase tracking-[0.2em]">
+                            <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 20} className="fill-slate-400 text-[10px] font-display font-bold uppercase tracking-[0.2em]">
                               {getSubLabel()}
                             </tspan>
                           </text>
@@ -246,7 +248,7 @@ const App = () => {
             </ResponsiveContainer>
           </div>
 
-          <div className="flex justify-between text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] px-2 mb-2">
+          <div className="flex justify-between text-[10px] font-display font-black text-slate-400 uppercase tracking-[0.2em] px-2 mb-2">
             <span>Segment</span>
             <span>Amount / Share</span>
           </div>
@@ -260,7 +262,7 @@ const App = () => {
                   <div className="flex items-center justify-between py-3 px-2 transition-colors hover:bg-slate-50/80 cursor-default">
                     <div className="flex items-center gap-3">
                       <div className="w-1.5 h-4 rounded-full" style={{ backgroundColor: item.color }} />
-                      <span className="text-sm font-bold text-slate-700">{item.name}</span>
+                      <span className="text-sm font-display font-bold text-slate-700 uppercase tracking-widest">{item.name}</span>
                     </div>
                     
                     <div className="flex items-center gap-4">

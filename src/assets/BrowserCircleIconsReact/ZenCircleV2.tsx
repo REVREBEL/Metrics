@@ -1,0 +1,6 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgZenCircleV2 = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" id="ZenCircle_v2_svg__Layer_1" data-name="Layer 1" viewBox="0 0 500 500" width="1em" height="1em" {...props}><defs><style>{".ZenCircle_v2_svg__cls-1{fill:#fff;fill-rule:evenodd}"}</style></defs><circle cx={250} cy={250} r={238.01} style={{
+    fill: "#231f20"
+  }} /><path d="M250 316.86c36.93 0 66.86-29.93 66.86-66.86s-29.93-66.86-66.86-66.86-66.86 29.93-66.86 66.86 29.93 66.86 66.86 66.86M303.49 250c0 29.54-23.95 53.49-53.49 53.49s-53.49-23.95-53.49-53.49 23.95-53.49 53.49-53.49 53.49 23.95 53.49 53.49" className="ZenCircle_v2_svg__cls-1" /><path d="M365.89 250c0 64-51.89 115.89-115.89 115.89S134.11 314 134.11 250 186 134.11 250 134.11 365.89 186 365.89 250M250 343.6c51.7 0 93.6-41.91 93.6-93.6s-41.91-93.6-93.6-93.6-93.6 41.91-93.6 93.6 41.91 93.6 93.6 93.6" className="ZenCircle_v2_svg__cls-1" /><path d="M423.84 250c0 96.01-77.83 173.84-173.84 173.84S76.16 346.01 76.16 250 153.99 76.16 250 76.16 423.84 153.99 423.84 250M250 392.63c78.78 0 142.63-63.86 142.63-142.63S328.77 107.37 250 107.37 107.37 171.23 107.37 250 171.23 392.63 250 392.63" className="ZenCircle_v2_svg__cls-1" /></svg>;
+export default SvgZenCircleV2;

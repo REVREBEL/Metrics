@@ -72,6 +72,12 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
     component: dynamic(() => import('@/widgets/ChartsGrid/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: null
   },
+  widget_ConversionCard: { 
+    name: "ConversionCard", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/ConversionCard/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
   widget_DailyPickupTable: { 
     name: "DailyPickupTable", 
     type: "widget",
