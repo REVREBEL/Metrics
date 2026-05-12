@@ -9,10 +9,42 @@ import type { MetricTheme } from "./metric-theme";
 
 export { MetricCardShell };
 
-type MetricCardRootProps = React.ComponentProps<typeof MetricCardShell>;
+type MetricCardProps = React.ComponentProps<typeof MetricCardShell>;
 
-export function MetricCardRoot(props: MetricCardRootProps) {
+/**
+ * Primary card component for metric widgets.
+ * This wraps the shadcn Card and applies the standard metric-card styles,
+ * including background, shadow, spacing, responsive width, and metric theme class.
+ */
+export function MetricCard(props: MetricCardProps) {
   return <MetricCardShell {...props} />;
+}
+
+/**
+ * Backward-compatible alias while older widgets migrate from MetricCardRoot.
+ */
+export function MetricCardRoot(props: MetricCardProps) {
+  return <MetricCardShell {...props} />;
+}
+
+type MetricCardTitleProps = {
+  title?: React.ReactNode;
+  children?: React.ReactNode;
+  as?: "h2" | "h3" | "h4" | "div" | "p";
+  className?: string;
+};
+
+export function MetricCardTitle({
+  title,
+  children,
+  as: Component = "h3",
+  className,
+}: MetricCardTitleProps) {
+  const content = children ?? title;
+
+  if (!content) return null;
+
+  return <Component className={cn("metric-card__title", className)}>{content}</Component>;
 }
 
 type MetricCardDescriptionProps = {
