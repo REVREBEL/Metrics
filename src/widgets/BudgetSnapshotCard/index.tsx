@@ -12,7 +12,6 @@ import { Separator } from "@/components/ui/separator";
 import { MoreVertical } from "lucide-react";
 import {
   MetricCard,
-  MetricCardDescription,
   MetricCardTabs,
   MetricInsight,
 } from "@/widgets/_shared/MetricCard";
@@ -167,11 +166,10 @@ export default function BudgetSnapshotCard() {
     <div className="flex min-h-screen items-center justify-center p-8 font-sans">
       <MetricCard
         title="Budget Breakdown"
+        description="Rooms, ADR, and revenue distribution across production segments."
         metric="total"
         headerAction={<MoreVertical className="h-5 w-5 cursor-pointer text-primary" />}
       >
-        <MetricCardDescription description="Rooms, ADR, and revenue distribution across production segments." />
-
         <MetricCardTabs
           tabs={SNAPSHOT_TABS}
           value={activeTab}
@@ -179,7 +177,7 @@ export default function BudgetSnapshotCard() {
         />
 
         <div className="metric-card__chart-section">
-          <div className="relative h-65 w-full max-w-75">
+          <div className="metric-card__chart-inner">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
