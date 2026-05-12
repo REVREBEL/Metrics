@@ -212,7 +212,7 @@ export default function BudgetSnapshotCard() {
                             <tspan
                               x={viewBox.cx}
                               y={viewBox.cy}
-                              className="metric-card__value fill-[var(--primary-b000)] text-2xl"
+                              className="metric-card__value fill-(--primary-b000) text-2xl"
                             >
                               {totalRooms.toLocaleString()}
                             </tspan>
