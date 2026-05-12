@@ -3,12 +3,12 @@
 import { useMemo, useState } from "react";
 import { MoreVertical } from "lucide-react";
 
-import ExpediaIcon from "@/assets/ChannelIconsReact/Expedia";
-import BookingIcon from "@/assets/ChannelIconsReact/Booking";
-import AgodaIcon from "@/assets/ChannelIconsReact/Agoda";
-import PricelineIcon from "@/assets/ChannelIconsReact/Priceline";
-import HotelbedsIcon from "@/assets/ChannelIconsReact/Hotelbeds";
-import HopperIcon from "@/assets/ChannelIconsReact/Hopper";
+import ExpediaIcon from "@/assets/ChannelIconsReact/ChannelIconsCircleReact/ExpediaCircle";
+import BookingIcon from "@/assets/ChannelIconsReact/ChannelIconsCircleReact/BookingCircle";
+import AgodaIcon from "@/assets/ChannelIconsReact/ChannelIconsCircleReact/AgodaCircle";
+import PricelineIcon from "@/assets/ChannelIconsReact/ChannelIconsCircleReact/PricelineCircle";
+import HotelbedsIcon from "@/assets/ChannelIconsReact/ChannelIconsCircleReact/HotelbedsCircle";
+import HopperIcon from "@/assets/ChannelIconsReact/ChannelIconsCircleReact/HopperCircle";
 import {
   MetricCard,
   MetricCardTabs,
