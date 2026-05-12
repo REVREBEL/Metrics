@@ -51,16 +51,25 @@
     --metric-chart-variance-color: var(--metric-variance-color);
     --metric-value-color: var(--primary-b000);
 
-    @apply w-full border-none bg-card p-6 shadow-md;
+    width: 100%;
+    border: 0;
+    background-color: var(--card);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
     color: var(--primary-b000);
   }
 
   .metric-card__header {
-    @apply flex flex-row items-center justify-between space-y-0 p-0 pb-4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 0 1rem;
   }
 
   .metric-card__content {
-    @apply p-0;
+    padding: 0;
   }
 
   .metric-card__title,
@@ -75,22 +84,28 @@
   }
 
   .metric-card__title {
-    @apply text-lg leading-none;
+    font-size: 1.125rem;
+    line-height: 1;
   }
 
   .metric-card__eyebrow,
   .metric-card__label {
-    @apply text-[10px] leading-none;
+    font-size: 0.625rem;
+    line-height: 1;
   }
 
   .metric-card__eyebrow {
-    @apply mb-1 opacity-70;
+    margin-bottom: 0.25rem;
+    opacity: 0.7;
   }
 
   .metric-card__value {
     font-family: var(--font-numbers);
     color: var(--metric-value-color);
-    @apply text-4xl font-extrabold leading-none tabular-nums;
+    font-size: 2.25rem;
+    line-height: 1;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
   }
 
   .metric-card__metric-color {
