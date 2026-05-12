@@ -682,48 +682,46 @@ dark {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  
+/* Metrics */
+--color-positive: var(--base-color-3);
+--color-negative: var(--base-color-7);
+--color-total: var(--base-color-4);
+--color-total-var: var(--primary-b000);
 
-  /* Metrics */
-  --color-positive: var(--base-color-3);
-  --color-negative: var(--base-color-7);
-  --color-total: var(--base-color-4);
-  --color-total-var: var(--primary-b000);
+--color-transient: var(--base-color-3);
+--color-transient-var: var(--base-color-1);
 
-  --color-transient: var(--base-color-3);
-  --color-transient-var: var(--base-color-1);
+--color-group: var(--base-color-5);
+--color-group-var: var(--base-color-6);
 
-  --color-group: var(--base-color-5);
-  --color-group-var: var(--base-color-6);
+--color-crew: var(--base-grey-l700);
+--color-crew-var: var(--base-grey-l400);
 
-  --color-crew: var(--base-grey-l700);
-  --color-crew-var: var(--base-grey-l400);
+--color-complimentary: var(--base-grey-l700);
+--color-complimentary-var: var(--base-grey-l400);
 
-  --color-complimentary: var(--base-grey-l700);
-  --color-complimentary-var: var(--base-grey-l400);
+--color-other: var(--base-grey-l700);
+--color-other-var: var(--base-grey-l400);
 
-  --color-other-var: var(--base-grey-l400);
+/* Socials */
+--color-facebook: var(--base-color-8-b000);
+--color-instagram: var(--base-color-7-b000);
+--color-x: var(--base-color-3-b000);
+--color-linkedin: var(--base-color-2-b000);
+--color-tiktok: var(--base-color-3-l400);
+--color-blog: var(--base-color-5-b000);
+--color-telegram: var(--base-color-4-b000);
+--color-slack: var(--base-color-6-b000);
+--color-youtube: var(--base-color-7-d100);
+--color-pinterest: var(--base-color-7-l200);
+--color-github: var(--base-color-4-b000);
 
-  /* Socials */
---color-facebook: var(--base-color-8-b000)
---color-instagram: var(--base-color-7-b000)
---color-x: var(--base-color-3-b000)
---color-liinkedin: var(--base-color-2-b000)
---color-tiktok: var(--base-color-3-l400)
---color-blog: var(--base-color-5-b000)
---color-telegram: var(--base-color-4-b000)
---color-slack: var(--base-color-6-b000)
---color-youtube: var(--base-color-7-d100)
---color-pintrest: var(--base-color-7-l200)
---color-github: var(--base-color-4-b000)
-
-  /* Reviews */
---color-yelp: var(--base-color-7-d100)
---color-tripadvisor: var(--base-color-1-d200)
---color-expedia: var(--primary-l100)
---color-booking: var(--base-color-4-b000)
-
-  /* Channels */
-
+/* Reviews */
+--color-yelp: var(--base-color-7-d100);
+--color-tripadvisor: var(--base-color-1-d200);
+--color-expedia: var(--primary-l100);
+--color-booking: var(--base-color-4-b000);
 
 
 
