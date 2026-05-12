@@ -35,20 +35,23 @@
   letter-spacing: 0.1em;
 }
 
-.metric-card .metric-card__description,
-.metric-card__description.metric-card__description {
-  margin: 0.25rem 0 1rem;
-}
-
 .metric-card .metric-card-tabs-root,
 .metric-card-tabs-root.metric-card-tabs-root {
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 .metric-card .metric-card__chart-section {
   display: flex;
+  min-height: 16.5rem;
+  align-items: center;
   justify-content: center;
-  padding: 1.75rem 0;
+  padding: 1.25rem 0;
+}
+
+.metric-card .metric-card__chart-inner {
+  height: 15rem;
+  width: 100%;
+  max-width: 18.75rem;
 }
 
 .metric-card .metric-card__value,
