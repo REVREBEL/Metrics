@@ -11,8 +11,8 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { MoreVertical } from "lucide-react";
 import {
+  MetricCard,
   MetricCardDescription,
-  MetricCardShell,
   MetricCardTabs,
   MetricInsight,
 } from "@/widgets/_shared/MetricCard";
@@ -125,10 +125,9 @@ export default function BudgetSnapshotCard() {
 
   return (
     <div className="flex min-h-screen items-center justify-center p-8 font-sans">
-      <MetricCardShell
+      <MetricCard
         title="Budget Breakdown"
         metric="total"
-        className="overflow-hidden shadow-xl"
         headerAction={<MoreVertical className="h-5 w-5 cursor-pointer text-primary" />}
       >
         <MetricCardDescription description="Spend distribution across production segments." />
@@ -245,7 +244,7 @@ export default function BudgetSnapshotCard() {
             ? "Pacing is currently 4.2% ahead of STLY. Group bookings for Q3 are showing strong conversion."
             : "Spend distribution remains consistent with seasonal trends. No major variance detected."}
         </MetricInsight>
-      </MetricCardShell>
+      </MetricCard>
     </div>
   );
 }
