@@ -54,7 +54,6 @@
     --metric-chart-color: var(--metric-color);
     --metric-chart-variance-color: var(--metric-variance-color);
     --metric-value-color: var(--primary-b000);
-
     width: 100%;
     border: 0;
     background-color: var(--card);
@@ -166,7 +165,6 @@
 
   .metric-card-tabs-root {
     width: 100%;
-    
     border-radius: 2px;
     margin-bottom: 1.5rem;
   }
@@ -242,7 +240,7 @@
     margin-top: 1.5rem;
     border: 1px solid color-mix(in oklch, var(--primary-b000) 16%, transparent);
     border-radius: 0.75rem;
-    background-color: color-mix(in oklch, var(--background) 72%, transparent);
+    background-color: var(--color-smoke-fade);
     padding: 1rem;
   }
 
@@ -390,7 +388,6 @@
   gap: 0;
   height: auto;
   min-height: 2.875rem;
-
   border-radius: 2px;
   background-color: var(--background);
   padding: 8px;

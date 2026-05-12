@@ -296,6 +296,18 @@
   --base-color-8-d300: oklch(38.53% 0.081 349.71); /* #63304a */
   --base-color-8-d400: oklch(34.77% 0.071 350.15); /* #55293f */
 
+  /* {Smok-Color-Range */
+  /* prettier-ignore */
+  --base-color-9-l400: oklch(97.93% 0.004 215.51); /* #f5f9fa */
+  --base-color-9-l300: oklab(97.63% -0.003 -0.00); /* #f4f8f9 */
+  --base-color-9-l200: oklch(97.26% 0.005 212.03); /* #f2f7f8 */
+  --base-color-9-l100: oklch(96.96% 0.005 212.02); /* #f1f6f7 */
+  --base-color-9-b000: oklch(96.59% 0.006 209.63); /* #eff5f6 */
+  --base-color-9-d100: oklch(89.29% 0.006 197.89); /* #d7dddd */
+  --base-color-9-d200: oklch(81.66% 0.005 211.84); /* #bfc4c5 */
+  --base-color-9-d300: oklch(74.04% 0.005 197.84); /* #a7acac */
+  --base-color-9-d400: oklch(66.02% 0.004 215.06); /* #8f9394 */
+
   /* Grey-Color-Range */
   /* prettier-ignore */
   --base-grey-l700: oklch(95.0% 0.009 254);
@@ -523,6 +535,16 @@
   --color-smoke-fade: var(--base-color-9-fade);
   --color-smoke-inverse: var(--base-color-9-inverse);
   --color-smoke-inverse-fade: var(--base-color-9-inverse-fade);
+
+  --color-smoke-100: var(--base-color-9-l400);
+  --color-smoke-200: var(--base-color-9-l300);
+  --color-smoke-300: var(--base-color-9-l200);
+  --color-smoke-400: var(--base-color-9-l100);
+  --color-smoke-500: var(--base-color-9-b000);
+  --color-smoke-600: var(--base-color-9-d100);
+  --color-smoke-700: var(--base-color-9-d200);
+  --color-smoke-800: var(--base-color-9-d300);
+  --color-smoke-900: var(--base-color-9-d400);
 
   /* Greys */
   --color-grey-100: var(--base-grey-l700);

@@ -39,7 +39,7 @@
 .metric-card__value.metric-card__value {
   font-family: var(--font-numbers);
   color: var(--metric-value-color);
-  font-weight: 800;
+  font-weight: 400;
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
