@@ -1,0 +1,185 @@
+.top-channels-chart {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(14rem, 0.9fr);
+  gap: 2rem;
+  align-items: start;
+  margin-top: 1.25rem;
+}
+
+.top-channels-chart [data-channel="expedia"] {
+  --channel-primary: var(--color-expedia, var(--base-color-4));
+  --channel-inverse: var(--color-expedia-inverse, var(--primary-b000));
+}
+
+.top-channels-chart [data-channel="booking"] {
+  --channel-primary: var(--color-booking, var(--base-color-3));
+  --channel-inverse: var(--color-booking-inverse, var(--background));
+}
+
+.top-channels-chart [data-channel="agoda"] {
+  --channel-primary: var(--color-agoda, var(--base-color-7));
+  --channel-inverse: var(--color-agoda-inverse, var(--background));
+}
+
+.top-channels-chart [data-channel="priceline"] {
+  --channel-primary: var(--color-priceline, var(--base-color-2));
+  --channel-inverse: var(--color-priceline-inverse, var(--background));
+}
+
+.top-channels-chart [data-channel="hotelbeds"] {
+  --channel-primary: var(--color-hotelbeds, var(--base-color-5));
+  --channel-inverse: var(--color-hotelbeds-inverse, var(--primary-b000));
+}
+
+.top-channels-chart [data-channel="hopper"] {
+  --channel-primary: var(--color-hopper, var(--base-color-8));
+  --channel-inverse: var(--color-hopper-inverse, var(--background));
+}
+
+.top-channels-chart__bars {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.top-channels-chart__row {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
+  transition: opacity 180ms ease, filter 180ms ease;
+}
+
+.top-channels-chart__row[data-muted="true"],
+.top-channels-chart__metric[data-muted="true"] {
+  opacity: 0.38;
+  filter: grayscale(0.45);
+}
+
+.top-channels-chart__rank {
+  color: var(--muted-foreground);
+  font-family: var(--font-numbers);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.top-channels-chart__bar-track {
+  position: relative;
+  height: 2.25rem;
+  min-width: 0;
+  background: var(--color-smoke-fade, var(--background));
+  border-radius: 0 999px 999px 0;
+}
+
+.top-channels-chart__bar {
+  display: flex;
+  height: 100%;
+  min-width: 2.25rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-radius: 0 999px 999px 0;
+  background: var(--channel-primary);
+  color: var(--channel-inverse);
+  padding: 0 0.875rem;
+  transition: width 240ms ease, filter 180ms ease, box-shadow 180ms ease;
+}
+
+.top-channels-chart__row:hover .top-channels-chart__bar {
+  filter: brightness(1.02);
+  box-shadow: 0 0.5rem 1.25rem color-mix(in oklch, var(--channel-inverse) 24%, var(--card));
+}
+
+.top-channels-chart__bar-name {
+  overflow: hidden;
+  color: currentColor;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.top-channels-chart__bar-value {
+  font-family: var(--font-numbers);
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.top-channels-chart__bar-value--inside {
+  color: var(--channel-inverse);
+}
+
+.top-channels-chart__bar-value--outside {
+  position: absolute;
+  top: 50%;
+  color: var(--channel-primary);
+  transform: translateY(-50%);
+}
+
+.top-channels-chart__metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
+  align-items: start;
+}
+
+.top-channels-chart__metric {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--channel-primary);
+  transition: opacity 180ms ease, filter 180ms ease, transform 180ms ease;
+}
+
+.top-channels-chart__metric:hover {
+  transform: translateX(0.25rem);
+}
+
+.top-channels-chart__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: 0 0 auto;
+  color: var(--channel-primary);
+  fill: currentColor;
+}
+
+.top-channels-chart__icon * {
+  fill: currentColor;
+}
+
+.top-channels-chart__metric-value {
+  color: var(--channel-primary);
+  font-family: var(--font-numbers);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.top-channels-chart__metric-label {
+  margin-top: 0.25rem;
+  color: var(--muted-foreground);
+  font-family: var(--font-display);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .top-channels-chart {
+    grid-template-columns: 1fr;
+  }
+
+  .top-channels-chart__metrics {
+    grid-template-columns: 1fr;
+  }
+}
