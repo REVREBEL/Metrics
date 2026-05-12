@@ -72,6 +72,21 @@
     padding: 0;
   }
 
+  .metric-card__section {
+    margin-top: 1.5rem;
+  }
+
+  .metric-card__section:first-child {
+    margin-top: 0;
+  }
+
+  .metric-card__description {
+    margin: 0.25rem 0 1.5rem;
+    color: var(--muted-foreground);
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
   .metric-card__title,
   .metric-card__eyebrow,
   .metric-card__label,
@@ -127,6 +142,11 @@
 
   .metric-card__change--negative {
     color: var(--color-negative);
+  }
+
+  .metric-card-tabs-root {
+    width: 100%;
+    margin-bottom: 1.5rem;
   }
 
   .metric-card-tabs {
@@ -191,6 +211,41 @@
   .metric-card-tab:focus-visible {
     outline: 2px solid var(--primary-b000);
     outline-offset: 2px;
+  }
+
+  .metric-card__insight {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    border: 1px solid color-mix(in oklch, var(--primary-b000) 16%, transparent);
+    border-radius: 0.75rem;
+    background-color: color-mix(in oklch, var(--background) 72%, white);
+    padding: 1rem;
+  }
+
+  .metric-card__insight-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    margin-top: 0.125rem;
+    color: color-mix(in oklch, var(--primary-b000) 55%, transparent);
+  }
+
+  .metric-card__insight-copy {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    line-height: 1.55;
+  }
+
+  .metric-card__insight-label {
+    font-family: var(--font-display);
+    color: var(--primary-b000);
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   .metric-card--total {
