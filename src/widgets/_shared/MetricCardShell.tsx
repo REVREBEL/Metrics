@@ -25,11 +25,13 @@ export function MetricCardShell({
     <Card className={cn("metric-card", getMetricThemeClass(metric), className)}>
       {(title || eyebrow || headerAction) && (
         <CardHeader className="metric-card__header">
-          <div className="min-w-0">
-            {eyebrow && <p className="metric-card__eyebrow">{eyebrow}</p>}
-            {title && <CardTitle className="metric-card__title">{title}</CardTitle>}
+          <div className="metric-card__heading">
+            <div className="metric-card__heading-text">
+              {eyebrow && <p className="metric-card__eyebrow">{eyebrow}</p>}
+              {title && <CardTitle className="metric-card__title">{title}</CardTitle>}
+            </div>
+            {headerAction && <div className="metric-card__header-action">{headerAction}</div>}
           </div>
-          {headerAction}
         </CardHeader>
       )}
 
