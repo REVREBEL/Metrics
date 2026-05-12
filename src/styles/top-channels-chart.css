@@ -83,12 +83,14 @@
   background: var(--channel-primary);
   color: var(--channel-inverse);
   padding: 0 0.875rem;
-  transition: width 240ms ease, filter 180ms ease, box-shadow 180ms ease;
+  transition: width 240ms ease, filter 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .top-channels-chart__row:hover .top-channels-chart__bar {
-  filter: brightness(1.02);
-  box-shadow: 0 0.5rem 1.25rem color-mix(in oklch, var(--channel-inverse) 24%, var(--card));
+  color: var(--channel-inverse);
+  filter: none;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 currentColor;
 }
 
 .top-channels-chart__bar-name {
