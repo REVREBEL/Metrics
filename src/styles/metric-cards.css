@@ -130,46 +130,62 @@
   }
 
   .metric-card-tabs {
-    display: grid;
+    display: flex;
     width: 100%;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    min-width: 0;
     align-items: stretch;
+    justify-content: stretch;
     gap: 0;
-    height: 2.875rem;
+    height: auto;
+    min-height: 2.875rem;
     border: 2px solid var(--primary-b000);
-    border-radius: 0;
-    background: var(--background);
-    padding: 0;
+    border-radius: 2px;
+    background-color: var(--background);
+    padding: 4px;
+  }
+
+  .metric-card-tabs > * {
+    flex: 1 1 0;
+    min-width: 0;
   }
 
   .metric-card-tab {
     display: inline-flex;
-    height: 100%;
-    min-height: 0;
+    flex: 1 1 0;
+    width: 100%;
+    height: auto;
+    min-height: 2.125rem;
     align-items: center;
     justify-content: center;
-    border-radius: 0;
+    border-radius: 2px;
     border: 0;
-    background: transparent;
+    background-color: transparent;
     color: var(--primary-b000);
     font-family: var(--font-display);
     font-size: 0.875rem;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    padding: 0.5rem 1rem;
     box-shadow: none;
     transition: background-color 150ms ease, color 150ms ease;
   }
 
   .metric-card-tab:hover {
-    background: color-mix(in oklch, var(--primary-b000) 8%, transparent);
+    background-color: color-mix(in oklch, var(--primary-b000) 8%, transparent);
   }
 
   .metric-card-tab[data-state="active"] {
-    background: var(--primary-b000);
-    color: white;
+    background-color: var(--foreground);
+    color: var(--background);
+    font-weight: 700;
+    border-radius: 2px;
     box-shadow: none;
+  }
+
+  .metric-card-tab[data-state="active"]:hover {
+    background-color: var(--foreground);
   }
 
   .metric-card-tab:focus-visible {
