@@ -132,23 +132,14 @@ export default function BudgetSnapshotCard() {
           className="mb-6 w-full"
           onValueChange={(value) => setActiveTab(value as SnapshotTab)}
         >
-          <TabsList className="grid w-full grid-cols-3 rounded-lg bg-slate-100/50 p-1">
-            <TabsTrigger
-              value="budget"
-              className="metric-card__label data-[state=active]:bg-white data-[state=active]:shadow-sm"
-            >
+          <TabsList className="metric-card-tabs">
+            <TabsTrigger value="budget" className="metric-card-tab">
               Budget
             </TabsTrigger>
-            <TabsTrigger
-              value="forecast"
-              className="metric-card__label data-[state=active]:bg-white data-[state=active]:shadow-sm"
-            >
+            <TabsTrigger value="forecast" className="metric-card-tab">
               {isFutureDate ? "OTB" : "Actuals"}
             </TabsTrigger>
-            <TabsTrigger
-              value="stly"
-              className="metric-card__label data-[state=active]:bg-white data-[state=active]:shadow-sm"
-            >
+            <TabsTrigger value="stly" className="metric-card-tab">
               STLY
             </TabsTrigger>
           </TabsList>
