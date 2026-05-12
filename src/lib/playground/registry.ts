@@ -48,6 +48,12 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
     component: dynamic(() => import('@/widgets/BrowserStatsCard/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: null
   },
+  widget_BudgetSnapshotCard: { 
+    name: "BudgetSnapshotCard", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/BudgetSnapshotCard/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
   widget_CalendarHeatmap: { 
     name: "CalendarHeatmap", 
     type: "widget",
@@ -232,6 +238,12 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
     name: "TimelineComponent", 
     type: "widget",
     component: dynamic(() => import('@/widgets/TimelineComponent/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_TopServicesBarChart: { 
+    name: "TopServicesBarChart", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/TopServicesBarChart/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: null
   },
   widget_TopServicesChart: { 
