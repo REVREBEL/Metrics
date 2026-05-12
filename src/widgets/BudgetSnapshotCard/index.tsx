@@ -211,7 +211,7 @@ export default function BudgetSnapshotCard() {
                           <tspan
                             x={viewBox.cx}
                             y={viewBox.cy}
-                            className="metric-card__value fill-[var(--primary-b000)] text-2xl"
+                            className="metric-card__value fill-(--primary-b000) text-2xl"
                           >
                             {totalRooms.toLocaleString()}
                           </tspan>
@@ -234,7 +234,7 @@ export default function BudgetSnapshotCard() {
           </ResponsiveContainer>
         </div>
 
-        <div className="grid grid-cols-[minmax(130px,1.35fr)_minmax(180px,1.2fr)_minmax(110px,0.9fr)_minmax(120px,1fr)] gap-4 border-b border-slate-200 px-2 pb-3 text-[10px] font-black uppercase tracking-[0.2em] text-primary-400">
+        <div className="grid grid-cols-[minmax(130px,1.35fr)_minmax(180px,1.2fr)_minmax(110px,0.9fr)_minmax(120px,1fr)] gap-4 border-b border-(--color-dark-blue-200) px-2 pb-3 text-[10px] font-black uppercase tracking-[0.2em] text-primary-400">
           <span>Segment</span>
           <span className="text-right">Rooms / % Mix</span>
           <span className="text-right">ADR</span>

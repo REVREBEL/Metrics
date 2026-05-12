@@ -51,7 +51,11 @@
 }
 
 .metric-card .metric-card__unit {
-  color: var(--muted-foreground);
+  font-family: var(--font-display);
+  color: var(--metric-value-color);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 600;
   font-size: 0.75rem;
   line-height: 1;
 }
