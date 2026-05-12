@@ -94,8 +94,6 @@
   }
 
   .metric-card__title,
-  .metric-card__eyebrow,
-  .metric-card__label,
   .metric-card-title {
     font-family: var(--font-display);
     color: var(--primary-b000);
@@ -103,6 +101,22 @@
     font-weight: 700;
     letter-spacing: 0.08em;
   }
+
+  .metric-card__eyebrow {
+    font-family: var(--font-eyebrow);
+    color: var(--base-color-3);
+    letter-spacing: 0.1em;
+    font-weight: 300;
+  }
+
+  .metric-card__label {
+    font-family: var(--font-display);
+    color: var(--primary-b000);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
 
   .metric-card__title {
     font-size: 1.125rem;
