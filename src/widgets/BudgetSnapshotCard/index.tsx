@@ -126,6 +126,8 @@ const formatAdr = (value: number) =>
     maximumFractionDigits: 2,
   }).format(value);
 
+const MIX_LABEL_INSIDE_THRESHOLD = 22;
+
 export default function BudgetSnapshotCard() {
   const [activeTab, setActiveTab] = useState<SnapshotTab>("budget");
 
@@ -232,7 +234,7 @@ export default function BudgetSnapshotCard() {
           </ResponsiveContainer>
         </div>
 
-        <div className="grid grid-cols-[minmax(130px,1.35fr)_minmax(120px,1fr)_minmax(110px,0.9fr)_minmax(120px,1fr)] gap-4 border-b border-slate-200 px-2 pb-3 text-[10px] font-black uppercase tracking-[0.2em] text-primary-400">
+        <div className="grid grid-cols-[minmax(130px,1.35fr)_minmax(180px,1.2fr)_minmax(110px,0.9fr)_minmax(120px,1fr)] gap-4 border-b border-slate-200 px-2 pb-3 text-[10px] font-black uppercase tracking-[0.2em] text-primary-400">
           <span>Segment</span>
           <span className="text-right">Rooms / % Mix</span>
           <span className="text-right">ADR</span>
@@ -242,10 +244,12 @@ export default function BudgetSnapshotCard() {
         <div className="space-y-0">
           {chartData.map((item) => {
             const percentage = item.mix.toFixed(1);
+            const mixWidth = `${Math.max(item.mix, 1.5)}%`;
+            const shouldPlaceLabelInside = item.mix >= MIX_LABEL_INSIDE_THRESHOLD;
 
             return (
               <div key={item.metric} className={`group metric-card--${item.metric}`}>
-                <div className="grid grid-cols-[minmax(130px,1.35fr)_minmax(120px,1fr)_minmax(110px,0.9fr)_minmax(120px,1fr)] items-center gap-4 px-2 py-3 transition-colors hover:bg-slate-50/80">
+                <div className="grid grid-cols-[minmax(130px,1.35fr)_minmax(180px,1.2fr)_minmax(110px,0.9fr)_minmax(120px,1fr)] items-center gap-4 px-2 py-3 transition-colors hover:bg-slate-50/80">
                   <div className="flex items-center gap-3">
                     <div
                       className="h-4 w-1.5 rounded-full"
@@ -256,28 +260,44 @@ export default function BudgetSnapshotCard() {
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-end gap-2 text-right">
-                    <span className="text-sm text-[var(--primary-b000)]">
+                  <div className="flex items-center justify-end gap-3 text-right">
+                    <span className="metric-card__number">
                       {item.rooms.toLocaleString()}
                     </span>
-                    <span className="text-xs text-slate-500">rn</span>
-                    <span
-                      className="min-w-10 rounded px-2 py-1 text-center text-[10px] font-black text-[var(--primary-b000)]"
-                      style={{
-                        backgroundColor:
-                          "color-mix(in oklch, var(--metric-color) 18%, var(--card))",
-                      }}
+                    <span className="metric-card__unit">rn</span>
+                    <div
+                      className="metric-card__mix"
+                      style={{ "--mix-width": mixWidth } as React.CSSProperties}
                     >
-                      {percentage}%
-                    </span>
+                      <div className="metric-card__mix-track">
+                        <div
+                          className="metric-card__mix-bar"
+                          style={{ width: mixWidth }}
+                        />
+                        {shouldPlaceLabelInside && (
+                          <span className="metric-card__mix-label metric-card__mix-label--inside">
+                            {percentage}%
+                          </span>
+                        )}
+                      </div>
+                      {!shouldPlaceLabelInside && (
+                        <span className="metric-card__mix-label metric-card__mix-label--outside">
+                          {percentage}%
+                        </span>
+                      )}
+                    </div>
                   </div>
 
-                  <div className="text-right text-sm text-[var(--primary-b000)]">
-                    {formatAdr(item.adr)} <span className="text-xs text-slate-500">adr</span>
+                  <div className="text-right">
+                    <span className="metric-card__number">{formatAdr(item.adr)}</span>{" "}
+                    <span className="metric-card__unit">adr</span>
                   </div>
 
-                  <div className="text-right text-sm text-[var(--primary-b000)]">
-                    {formatCurrency(item.revenue)} <span className="text-xs text-slate-500">rev</span>
+                  <div className="text-right">
+                    <span className="metric-card__number">
+                      {formatCurrency(item.revenue)}
+                    </span>{" "}
+                    <span className="metric-card__unit">rev</span>
                   </div>
                 </div>
                 <Separator className="bg-slate-200/60" />
