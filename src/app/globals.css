@@ -118,64 +118,64 @@
 
   /* Dark-Green */
   --base-color-primary: oklch(0.3373 0.0925 258.5200);
-  --base-color-primary-fade:  oklch(47.91% 0.0703 259.06);
+  --base-color-primary-fade:  oklch(61.56% 0.0494 258.73);
   --base-color-primary-inverse: oklch(83% 0.04 220);
   --base-color-primary-inverse-fade:  oklch(86.40% 0.032 220);
 
 
   /* Dark-Green */
   --base-color-1: oklch(52% 0.10 230.09);
-  --base-color-1-fade: oklch(61.60% 0.08 230.09);
+  --base-color-1-fade: oklch(71.63% 0.0762 214.60);
   --base-color-1-inverse: oklch(96% 0.01 210);
   --base-color-1-inverse-fade: oklch(86.40% 0.009 210);
 
   /* Green */
   --base-color-2: oklch(65% 0.12 219.43);
-  --base-color-2-fade: oklch(69.40% 0.088 219.43);
+  --base-color-2-fade: oklch(78.23% 0.094 203.21);
   --base-color-2-inverse: oklch(84% 0.14 85.21);
-  --base-color-2-inverse-fade: oklch(87.20% 0.112 85.21);
+  --base-color-2-inverse-fade: oklch(94.00% 0.050 85.21);
 
   /* Light-Green */
   --base-color-3: oklch(78% 0.11 195.12);
-  --base-color-3-fade: oklch(82.40% 0.088 195.12);
+  --base-color-3-fade: oklch(86.35% 0.054 193.29);
   --base-color-3-inverse: oklch(45% 0.14 340);
   --base-color-3-inverse-fade: oklch(56.00% 0.112 340);
 
   /* Light-Blue */
   --base-color-4: oklch(83% 0.04 220);
-  --base-color-4-fade: oklch(86.40% 0.032 220);
+  --base-color-4-fade: oklch(90.61% 0.023 220.74);
   --base-color-4-inverse: oklch(27% 0.09 254.40);
-  --base-color-4-inverse-fade: oklch(41.60% 0.072 254.40);
+  --base-color-4-inverse-fade: oklch(61.56% 0.0494 258.73);
 
   /* Yellow */
   --base-color-5: oklch(84% 0.14 85.21);
-  --base-color-5-fade: oklch(87.20% 0.112 85.21);
+  --base-color-5-fade: oklch(94.00% 0.050 85.21);
   --base-color-5-inverse: oklch(27% 0.09 254.40);
-  --base-color-5-inverse-fade: oklch(34.30% 0.081 254.40);
+  --base-color-5-inverse-fade: oklch(61.56% 0.0494 258.73);
 
   /* Orange */
   --base-color-6: oklch(66% 0.18 45);
-  --base-color-6-fade: oklch(72.80% 0.144 45);
+  --base-color-6-fade: oklch(82.08% 0.088 38.17);
   --base-color-6-inverse: oklch(27% 0.09 254.40);
-  --base-color-6-inverse-fade: oklch(41.60% 0.072 254.40);
+  --base-color-6-inverse-fade: oklch(61.56% 0.0494 258.73);
 
   /* Red */
   --base-color-7: oklch(55% 0.21 32);
   --base-color-7-fade: oklch(68.73% 0.144 25.60);
   --base-color-7-inverse: oklch(83% 0.04 220);
-  --base-color-7-inverse-fade: oklch(22.95% 0.076 254.40);
+  --base-color-7-inverse-fade: oklch(90.61% 0.023 220.74);
 
   /* Purple */
   --base-color-8: oklch(45% 0.14 340);
-  --base-color-8-fade: oklch(56.00% 0.112 340);
+  --base-color-8-fade: oklch(69.83% 0.061 347.29);
   --base-color-8-inverse: oklch(78% 0.11 195.12);
-  --base-color-8-inverse-fade: oklch(82.40% 0.088 195.12);
+  --base-color-8-inverse-fade: oklch(86.35% 0.054 193.29);
 
   /* Smoke */
   --base-color-9: oklch(96% 0.01 210);
-  --base-color-9-fade: oklch(96.80% 0.008 210);
+  --base-color-9-fade: oklch(96.96% 0.005 212.02 / 0.5);
   --base-color-9-inverse: oklch(27% 0.09 254.40);
-  --base-color-9-inverse-fade: oklch(41.60% 0.072 254.40);
+  --base-color-9-inverse-fade: oklch(61.56% 0.0494 258.73);
 
   /* Sidebar */
   --sidebar: oklch(96% 0 0);
@@ -468,7 +468,7 @@
 
   /* Yellow */
   --color-yellow: var(--base-color-5);
-  --color-yellow-fade: var(--base-color-5-inverse);
+  --color-yellow-fade: var(--base-color-5-fade);
   --color-yellow-inverse: var(--base-color-5-inverse);
   --color-yellow-inverse-fade: var(--base-color-5-inverse-fade);
 
@@ -532,7 +532,7 @@
 
   /* Smoke */
   --color-smoke: var(--base-color-9);
-  --color-smoke-fade: var(--base-color-9-fade);
+  --color-smoke-fade:  var(--base-color-9-fade);
   --color-smoke-inverse: var(--base-color-9-inverse);
   --color-smoke-inverse-fade: var(--base-color-9-inverse-fade);
 
