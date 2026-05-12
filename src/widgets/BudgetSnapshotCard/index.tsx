@@ -225,9 +225,9 @@ export default function BudgetSnapshotCard() {
                       className="min-w-15 rounded px-2 py-1 text-center text-[10px] font-black text-[var(--primary-b000)]"
                       style={{
                         backgroundColor:
-                          "color-mix(in oklch, var(--metric-color) 15%, transparent)",
+                          "color-mix(in oklch, var(--metric-color) 15%, var(--card))",
                         border:
-                          "1px solid color-mix(in oklch, var(--metric-variance-color) 30%, transparent)",
+                          "1px solid color-mix(in oklch, var(--metric-variance-color) 30%, var(--card))",
                       }}
                     >
                       {percentage}%
