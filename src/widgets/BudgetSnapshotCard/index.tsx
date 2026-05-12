@@ -22,10 +22,17 @@ type SnapshotTab = "budget" | "forecast" | "stly";
 
 type SegmentDatum = {
   name: string;
-  value: number;
+  rooms: number;
+  adr: number;
+  revenue: number;
   metric: ProductionSegment;
   color: string;
   varianceColor: string;
+};
+
+type ChartDatum = SegmentDatum & {
+  value: number;
+  mix: number;
 };
 
 const SNAPSHOT_TABS = [
@@ -68,10 +75,13 @@ const SEGMENT_CONFIG = {
 
 const createSegment = (
   metric: Exclude<ProductionSegment, "total">,
-  value: number
+  rooms: number,
+  adr: number
 ): SegmentDatum => ({
   name: SEGMENT_CONFIG[metric].label,
-  value,
+  rooms,
+  adr,
+  revenue: Math.round(rooms * adr),
   metric,
   color: SEGMENT_CONFIG[metric].color,
   varianceColor: SEGMENT_CONFIG[metric].varianceColor,
@@ -79,47 +89,75 @@ const createSegment = (
 
 const HOTEL_DATA = {
   budget: [
-    createSegment("transient", 1250),
-    createSegment("group", 850),
-    createSegment("crew", 320),
-    createSegment("complimentary", 185),
-    createSegment("other", 50),
+    createSegment("transient", 47, 255.32),
+    createSegment("group", 32, 218.75),
+    createSegment("crew", 12, 120),
+    createSegment("complimentary", 7, 0),
+    createSegment("other", 2, 175),
   ],
   forecast: [
-    createSegment("transient", 1100),
-    createSegment("group", 920),
-    createSegment("crew", 310),
-    createSegment("complimentary", 210),
-    createSegment("other", 45),
+    createSegment("transient", 43, 248.84),
+    createSegment("group", 36, 225),
+    createSegment("crew", 12, 118.5),
+    createSegment("complimentary", 8, 0),
+    createSegment("other", 3, 165),
   ],
   stly: [
-    createSegment("transient", 1180),
-    createSegment("group", 790),
-    createSegment("crew", 300),
-    createSegment("complimentary", 170),
-    createSegment("other", 60),
+    createSegment("transient", 45, 238.5),
+    createSegment("group", 30, 210),
+    createSegment("crew", 11, 115),
+    createSegment("complimentary", 6, 0),
+    createSegment("other", 3, 150),
   ],
 } satisfies Record<SnapshotTab, SegmentDatum[]>;
+
+const formatCurrency = (value: number) =>
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(value);
+
+const formatAdr = (value: number) =>
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(value);
 
 export default function BudgetSnapshotCard() {
   const [activeTab, setActiveTab] = useState<SnapshotTab>("budget");
 
   const currentData = HOTEL_DATA[activeTab];
-  const totalSpend = useMemo(
-    () => currentData.reduce((acc, curr) => acc + curr.value, 0),
+  const totalRooms = useMemo(
+    () => currentData.reduce((acc, curr) => acc + curr.rooms, 0),
     [currentData]
+  );
+  const totalRevenue = useMemo(
+    () => currentData.reduce((acc, curr) => acc + curr.revenue, 0),
+    [currentData]
+  );
+  const chartData = useMemo<ChartDatum[]>(
+    () =>
+      currentData.map((item) => ({
+        ...item,
+        value: item.rooms,
+        mix: totalRooms ? (item.rooms / totalRooms) * 100 : 0,
+      })),
+    [currentData, totalRooms]
   );
 
   const getSubLabel = () => {
     switch (activeTab) {
       case "budget":
-        return "total budget";
+        return "budget rooms";
       case "forecast":
         return "expected otb";
       case "stly":
-        return "prior year total";
+        return "prior year rooms";
       default:
-        return "total spend";
+        return "total rooms";
     }
   };
 
@@ -130,7 +168,7 @@ export default function BudgetSnapshotCard() {
         metric="total"
         headerAction={<MoreVertical className="h-5 w-5 cursor-pointer text-primary" />}
       >
-        <MetricCardDescription description="Spend distribution across production segments." />
+        <MetricCardDescription description="Rooms, ADR, and revenue distribution across production segments." />
 
         <MetricCardTabs
           tabs={SNAPSHOT_TABS}
@@ -138,11 +176,11 @@ export default function BudgetSnapshotCard() {
           onValueChange={setActiveTab}
         />
 
-        <div className="relative h-65 w-full">
+        <div className="relative mx-auto h-65 w-full max-w-75">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
-                data={currentData}
+                data={chartData}
                 cx="50%"
                 cy="50%"
                 innerRadius={65}
@@ -151,7 +189,7 @@ export default function BudgetSnapshotCard() {
                 dataKey="value"
                 stroke="none"
               >
-                {currentData.map((entry) => (
+                {chartData.map((entry) => (
                   <Cell
                     key={entry.metric}
                     fill={entry.color}
@@ -173,7 +211,7 @@ export default function BudgetSnapshotCard() {
                             y={viewBox.cy}
                             className="metric-card__value fill-[var(--primary-b000)] text-2xl"
                           >
-                            ${totalSpend.toLocaleString()}
+                            {totalRooms.toLocaleString()}
                           </tspan>
                           <tspan
                             x={viewBox.cx}
@@ -194,19 +232,20 @@ export default function BudgetSnapshotCard() {
           </ResponsiveContainer>
         </div>
 
-        <div className="mb-2 flex justify-between px-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary-400">
+        <div className="grid grid-cols-[minmax(130px,1.35fr)_minmax(120px,1fr)_minmax(110px,0.9fr)_minmax(120px,1fr)] gap-4 border-b border-slate-200 px-2 pb-3 text-[10px] font-black uppercase tracking-[0.2em] text-primary-400">
           <span>Segment</span>
-          <span>Amount / Share</span>
+          <span className="text-right">Rooms / % Mix</span>
+          <span className="text-right">ADR</span>
+          <span className="text-right">Revenue</span>
         </div>
 
         <div className="space-y-0">
-          {currentData.map((item) => {
-            const percentage = ((item.value / totalSpend) * 100).toFixed(1);
+          {chartData.map((item) => {
+            const percentage = item.mix.toFixed(1);
 
             return (
               <div key={item.metric} className={`group metric-card--${item.metric}`}>
-                <Separator className="bg-slate-200/60" />
-                <div className="flex cursor-default items-center justify-between px-2 py-3 transition-colors hover:bg-slate-50/80">
+                <div className="grid grid-cols-[minmax(130px,1.35fr)_minmax(120px,1fr)_minmax(110px,0.9fr)_minmax(120px,1fr)] items-center gap-4 px-2 py-3 transition-colors hover:bg-slate-50/80">
                   <div className="flex items-center gap-3">
                     <div
                       className="h-4 w-1.5 rounded-full"
@@ -217,23 +256,31 @@ export default function BudgetSnapshotCard() {
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-4">
-                    <span className="metric-card__value text-sm font-normal text-[var(--primary-b000)]">
-                      ${item.value.toLocaleString()}
+                  <div className="flex items-center justify-end gap-2 text-right">
+                    <span className="text-sm text-[var(--primary-b000)]">
+                      {item.rooms.toLocaleString()}
                     </span>
-                    <div
-                      className="min-w-15 rounded px-2 py-1 text-center text-[10px] font-black text-[var(--primary-b000)]"
+                    <span className="text-xs text-slate-500">rn</span>
+                    <span
+                      className="min-w-10 rounded px-2 py-1 text-center text-[10px] font-black text-[var(--primary-b000)]"
                       style={{
                         backgroundColor:
-                          "color-mix(in oklch, var(--metric-color) 15%, var(--card))",
-                        border:
-                          "1px solid color-mix(in oklch, var(--metric-variance-color) 30%, var(--card))",
+                          "color-mix(in oklch, var(--metric-color) 18%, var(--card))",
                       }}
                     >
                       {percentage}%
-                    </div>
+                    </span>
+                  </div>
+
+                  <div className="text-right text-sm text-[var(--primary-b000)]">
+                    {formatAdr(item.adr)} <span className="text-xs text-slate-500">adr</span>
+                  </div>
+
+                  <div className="text-right text-sm text-[var(--primary-b000)]">
+                    {formatCurrency(item.revenue)} <span className="text-xs text-slate-500">rev</span>
                   </div>
                 </div>
+                <Separator className="bg-slate-200/60" />
               </div>
             );
           })}
@@ -241,8 +288,8 @@ export default function BudgetSnapshotCard() {
 
         <MetricInsight>
           {activeTab === "forecast"
-            ? "Pacing is currently 4.2% ahead of STLY. Group bookings for Q3 are showing strong conversion."
-            : "Spend distribution remains consistent with seasonal trends. No major variance detected."}
+            ? `${formatCurrency(totalRevenue)} in forecasted revenue, with group room nights showing strong conversion.`
+            : `${totalRooms.toLocaleString()} room nights and ${formatCurrency(totalRevenue)} in revenue are distributed across the current segment mix.`}
         </MetricInsight>
       </MetricCard>
     </div>
