@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 import "@/styles/metric-cards.css";
+import "@/styles/metric-card-overrides.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
