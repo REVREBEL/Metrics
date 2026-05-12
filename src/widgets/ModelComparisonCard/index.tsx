@@ -43,7 +43,7 @@ export default function ModelComparisonCard() {
         {/* Top Dropdowns */}
         <div className="flex items-center gap-4 text-sm">
           <div className="space-y-1">
-            <button className="flex items-center gap-1 font-serif font-bold text-dark-blue hover:bg-gray-50 p-1 rounded">
+            <button className="flex items-center gap-1 font-display font-bold text-dark-blue uppercase tracking-widest text-[10px] hover:bg-gray-50 p-1 rounded">
               Last click <ChevronDown className="h-4 w-4 text-gray-400" />
             </button>
             <p className="text-[11px] text-gray-400">Paid and organic channels</p>
@@ -52,7 +52,7 @@ export default function ModelComparisonCard() {
           <span className="text-gray-400 font-medium">vs</span>
 
           <div className="space-y-1">
-            <button className="flex items-center gap-1 font-serif font-bold text-dark-blue hover:bg-gray-50 p-1 rounded">
+            <button className="flex items-center gap-1 font-display font-bold text-dark-blue uppercase tracking-widest text-[10px] hover:bg-gray-50 p-1 rounded">
               Data-driven <ChevronDown className="h-4 w-4 text-gray-400" />
             </button>
             <p className="text-[11px] text-gray-400">Paid and organic channels</p>
@@ -81,7 +81,7 @@ export default function ModelComparisonCard() {
         <div className="divide-y divide-gray-100">
           {channelData.map((channel) => (
             <div key={channel.name} className="flex items-center justify-between py-3 group hover:bg-gray-50/50">
-              <span className="text-sm font-bold text-gray-700">{channel.name}</span>
+              <span className="text-[10px] font-display font-bold uppercase tracking-widest text-gray-700">{channel.name}</span>
               
               <div className="flex items-center gap-8">
                 <span className="text-xs font-medium text-gray-500 w-12 text-right">

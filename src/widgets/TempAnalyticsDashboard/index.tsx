@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import ArrowCircleUp from "@/assets/rebel-icons/ArrowCircleUp";
-import ArrowCircleDown from "@/assets/rebel-icons/ArrowCircleDown";
+import ArrowCircleUp from "@/assets/RebelIconsReact/ArrowCircleUp";
+import ArrowCircleDown from "@/assets/RebelIconsReact/ArrowCircleDown";
 import { TrendingUp } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import {

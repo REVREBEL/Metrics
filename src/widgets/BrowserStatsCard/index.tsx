@@ -1,12 +1,24 @@
 import { MoreVertical } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import GoogleChromeColorCircle from "@/assets/BrowserCircleIconsColorReact/GoogleChromeColorCircle";
+import FirefoxMozillaColorCircle from "@/assets/BrowserCircleIconsColorReact/FirefoxMozillaColorCircle";
+import MicrosoftEdgeColorCircle from "@/assets/BrowserCircleIconsColorReact/MicrosoftEdgeColorCircle";
+import OperaColorCircle from "@/assets/BrowserCircleIconsColorReact/OperaColorCircle";
+import SafariColorCircle from "@/assets/BrowserCircleIconsColorReact/SafariColorCircle";
+import type { ComponentType, SVGProps } from "react";
 
-const browserData = [
-  { name: "Google Chrome", value: 54.6, icon: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" },
-  { name: "Mozilla Firefox", value: 37.5, icon: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg" },
-  { name: "Microsoft Edge", value: 22.8, icon: "https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg" },
-  { name: "Opera", value: 10, icon: "https://upload.wikimedia.org/wikipedia/commons/d/d0/Opera_Logo_2015.svg" },
-  { name: "Safari", value: 6.7, icon: "https://upload.wikimedia.org/wikipedia/commons/5/52/Safari_browser_logo.svg" },
+interface BrowserEntry {
+  name: string;
+  value: number;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
+}
+
+const browserData: BrowserEntry[] = [
+  { name: "Google Chrome", value: 54.6, icon: GoogleChromeColorCircle },
+  { name: "Mozilla Firefox", value: 37.5, icon: FirefoxMozillaColorCircle },
+  { name: "Microsoft Edge", value: 22.8, icon: MicrosoftEdgeColorCircle },
+  { name: "Opera", value: 10, icon: OperaColorCircle },
+  { name: "Safari", value: 6.7, icon: SafariColorCircle },
 ];
 
 // Helper for the Circular Ring
@@ -48,11 +60,11 @@ const ProgressRing = ({ value }: { value: number }) => {
 
 export default function BrowserStatsCard() {
   return (
-    <Card className="w-full max-w-md border-none shadow-xl bg-white p-2">
+    <Card className="w-full border-none shadow-xl bg-white p-2">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <div>
-          <CardTitle className="text-lg font-display font-bold uppercase text-dark-blue">
-            Browser states
+          <CardTitle className="font-display font-bold uppercase tracking-widest text-dark-blue">
+            Browser stats
           </CardTitle>
           <p className="text-sm font-serif font-semibold text-slate-400 mt-1">
             Counter April 2022
@@ -62,27 +74,26 @@ export default function BrowserStatsCard() {
       </CardHeader>
 
       <CardContent className="pt-6 space-y-6">
-        {browserData.map((browser) => (
-          <div key={browser.name} className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <img 
-                src={browser.icon} 
-                alt={browser.name} 
-                className="w-9 h-9 object-contain"
-              />
-              <span className="text-sm font-bold text-dark-blue">
-                {browser.name}
-              </span>
-            </div>
+        {browserData.map((browser) => {
+          const IconComponent = browser.icon;
+          return (
+            <div key={browser.name} className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <IconComponent className="w-9 h-9" />
+                <span className="text-[10px] font-display font-bold uppercase tracking-widest text-dark-blue">
+                  {browser.name}
+                </span>
+              </div>
 
-            <div className="flex items-center gap-6">
-              <span className="text-sm font-bold text-slate-500">
-                {browser.value}%
-              </span>
-              <ProgressRing value={browser.value} />
+              <div className="flex items-center gap-6">
+                <span className="text-sm font-bold text-slate-500">
+                  {browser.value}%
+                </span>
+                <ProgressRing value={browser.value} />
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </CardContent>
     </Card>
   );

@@ -47,7 +47,7 @@ export function ChartBarLabelCustom() {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Bar Chart - Custom Label</CardTitle>
+                <CardTitle className="text-sm font-display font-bold uppercase tracking-widest">Bar Chart - Custom Label</CardTitle>
                 <CardDescription>January - June 2024</CardDescription>
             </CardHeader>
             <CardContent>

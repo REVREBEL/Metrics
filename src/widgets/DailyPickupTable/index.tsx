@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { PieChart as RechartsPieChart, Pie, ResponsiveContainer } from 'recharts';
 import { type PieSectorDataItem } from 'recharts/types/polar/Pie';
 import { Card, CardContent } from '@/components/ui/card';
-import ArrowCircleDown from '@/assets/rebel-icons/ArrowCircleDown';
-import ArrowCircleUp from '@/assets/rebel-icons/ArrowCircleUp';
+import ArrowCircleDown from '@/assets/RebelIconsReact/ArrowCircleDown';
+import ArrowCircleUp from '@/assets/RebelIconsReact/ArrowCircleUp';
 import {
   Filter,
   ArrowRight,

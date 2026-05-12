@@ -489,35 +489,35 @@ export default function RoomstransientTable({ year, month }: { year: string, mon
   return (<DataGrid table={table} recordCount={filteredData?.length || 0} tableLayout={{ dense: true, cellBorder: true, rowBorder: true, rowRounded: true, headerSticky: true, width: "fixed", columnsMovable: true, columnsPinnable: true, columnsVisibility: true }}>
     <div className="w-full space-y-2.5">
 
-      <div>
+      <div className="flex flex-wrap items-center gap-3">
         <Input
-          className="peer min-w-60 h-8"
+          className="peer min-w-60 h-8 font-display font-bold uppercase tracking-widest text-[10px]"
           value={(table.getState().globalFilter ?? "") as string}
           onChange={(e) => table.setGlobalFilter(e.target.value)}
-          placeholder="Search all columns..."
+          placeholder="SEARCH ALL COLUMNS..."
           type="text"
           aria-label="Search all columns"
         />
-      </div>
 
-      <div className="flex items-center gap-3">
         <DataGridColumnVisibility
           table={table}
-          trigger={<Button variant="outline" size='sm'><Settings2 />View</Button>}
+          trigger={<Button variant="outline" size='sm' className="font-display font-bold uppercase tracking-widest text-[10px]"><Settings2 />View</Button>}
         />
-      </div>
 
-      <div className="flex-1"><Filters
-        filters={filters}
-        fields={filterFields}
-        variant="outline"
-        onChange={handleFiltersChange}
-      /></div>
-      {filters.length > 0 && (
-        <Button variant="outline" onClick={() => setFilters([])}>
-          <FunnelX /> Clear
-        </Button>
-      )}
+        <Filters
+          filters={filters}
+          fields={filterFields}
+          variant="outline"
+          onChange={handleFiltersChange}
+          className="font-display font-bold uppercase tracking-widest text-[10px]"
+        />
+
+        {filters.length > 0 && (
+          <Button variant="outline" size="sm" onClick={() => setFilters([])} className="font-display font-bold uppercase tracking-widest text-[10px]">
+            <FunnelX /> Clear
+          </Button>
+        )}
+      </div>
       <DataGridContainer>
         <ScrollArea>
           <DataGridTable />

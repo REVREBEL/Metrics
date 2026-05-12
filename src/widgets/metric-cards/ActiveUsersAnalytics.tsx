@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
-import { ChartHeader } from "@widgets/metric-cards/components/shared-components";
+import { ChartHeader } from "@/widgets/metric-cards/components/shared-components";
 import {
   PieChart,
   Pie,
@@ -23,7 +23,7 @@ const genderData = [
 
 export function ActiveUsersGenderCard() {
   return (
-    <Card className="w-full max-w-sm p-6 border-none shadow-md bg-white relative">
+    <Card className="w-full p-6 border-none shadow-md bg-white relative">
       <ChartHeader label="Active Users" total="Gender Split" />
       
       <div className="flex justify-center items-center h-40">
@@ -73,7 +73,7 @@ const interestsData = [
 
 export function ActiveUsersInterestsCard() {
   return (
-    <Card className="w-full max-w-xl p-6 border-none shadow-md bg-white">
+    <Card className="w-full p-6 border-none shadow-md bg-white">
       <ChartHeader label="Top Interests" total="Active Users" />
 
       <div className="overflow-x-auto mt-6">
@@ -116,7 +116,7 @@ const ageData = [
 
 export function ActiveUsersAgeCard() {
   return (
-    <Card className="w-full max-w-xl p-6 border-none shadow-md bg-white">
+    <Card className="w-full p-6 border-none shadow-md bg-white">
       <ChartHeader label="Age Distribution" total="Active Users" />
 
       <div className="h-56 mt-6">
