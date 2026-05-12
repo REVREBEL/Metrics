@@ -213,19 +213,19 @@
   }
 
   .metric-card-tab:hover {
-    background-color: color-mix(in oklch, var(--primary-b000) 8%, transparent);
+    background-color: var(--color-light-blue-100);
   }
 
   .metric-card-tab[data-state="active"] {
-    background-color: var(--foreground);
-    color: var(--background);
+    background-color: var(--color-dark-blue-inverse);
+    color: var(--color-dark-blue);
     font-weight: 700;
     border-radius: 2px;
     box-shadow: none;
   }
 
   .metric-card-tab[data-state="active"]:hover {
-    background-color: var(--foreground);
+    background-color: var(--color-dark-blue-fade);
   }
 
   .metric-card-tab:focus-visible {
@@ -374,6 +374,20 @@
     --metric-variance-color: var(--color-booking);
   }
 }
+
+  .metric-card--month01 {--metric-color: var(--color-light-blue);}
+  .metric-card--month02 {--metric-color: var(--color-yellow);}
+  .metric-card--month03 {--metric-color: var(--color-orange);}
+  .metric-card--month04 {--metric-color: var(--color-red);}
+  .metric-card--month05 {--metric-color: var(--color-purple);}
+  .metric-card--month06 {--metric-color: var(--color-dark-green);}
+  .metric-card--month07 {--metric-color: var(--color-green);}
+  .metric-card--month08 {--metric-color: var(--color-light-green);}
+  .metric-card--month09 {--metric-color: var(--color-light-blue-700);}
+  .metric-card--month10 {--metric-color: var(--color-yellow-600);}
+  .metric-card--month11 {--metric-color: var(--color-orange-600);}
+  .metric-card--month12 {--metric-color: var(--color-red-600);}
+
 
 /*
   Unlayered overrides intentionally sit outside @layer components.

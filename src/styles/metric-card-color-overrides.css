@@ -5,7 +5,12 @@
 
 .metric-card-tab:hover,
 [data-slot="tabs-trigger"].metric-card-tab:hover {
-  background-color: color-mix(in oklch, var(--primary-b000) 8%, var(--background));
+  background-color: var(--color-light-blue-100);
+}
+
+.metric-card-tab[data-state="active"]:hover,
+[data-slot="tabs-trigger"].metric-card-tab[data-state="active"]:hover {
+  background-color: var(--color-dark-blue-fade);
 }
 
 .metric-card .metric-card__insight {
