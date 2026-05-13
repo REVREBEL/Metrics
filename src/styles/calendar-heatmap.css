@@ -1,5 +1,5 @@
 .calendar-heatmap {
-  --heatmap-empty: var(--color-smoke-fade, var(--background));
+  --heatmap-empty: var(--background);
 
   width: 100%;
 }
@@ -97,8 +97,8 @@
 }
 
 .metric-card-heatmmap-empty {
-  --heatmap-color: var(--heatmap-empty);
-  --heatmap-number-color: var(--muted-foreground);
+  --heatmap-color: var(--background);
+  --heatmap-number-color: var(--background);
 }
 
 .metric-card-heatmmap-low {
@@ -134,7 +134,7 @@
   border: 0;
   border-radius: 2px;
   padding: 0;
-  color: transparent;
+  color: inherit;
   box-shadow: none;
 }
 
