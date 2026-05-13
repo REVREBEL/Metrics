@@ -5,6 +5,7 @@ import "@/styles/metric-card-header-overrides.css";
 import "@/styles/metric-card-color-overrides.css";
 import "@/styles/metric-card-chart-overrides.css";
 import "@/styles/top-channels-chart.css";
+import "@/styles/calendar-heatmap.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
