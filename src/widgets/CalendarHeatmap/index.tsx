@@ -8,6 +8,7 @@ import { MetricCard, MetricCardTabs } from "@/widgets/_shared/MetricCard";
 
 const DAY_SIZE = "16px";
 const DAY_MARGIN = "2px";
+const PLACEHOLDER_AVAILABLE_ROOMS = 100;
 
 const PICKUP_WINDOWS = [
   { label: "1 Day", value: "1d" },
@@ -61,34 +62,40 @@ interface DayButtonComponentProps {
 }
 
 type PickupWindow = "1d" | "3d" | "7d" | "14d" | "30d" | "60d" | "90d" | "120d";
-type HeatmapBucket = "zero" | "one" | "two" | "three" | "four";
+type HeatmapBucket = "empty" | "low" | "mediumLow" | "mediumHigh" | "high" | "extreme";
 
-const heatmapStyles: Record<HeatmapBucket, { backgroundColor: string }> = {
-  zero: { backgroundColor: "var(--color-smoke-fade, var(--muted))" },
-  one: { backgroundColor: "var(--base-color-5-fade, var(--color-group-var))" },
-  two: { backgroundColor: "var(--base-color-5-l400, var(--color-group))" },
-  three: { backgroundColor: "var(--base-color-5, var(--color-group))" },
-  four: { backgroundColor: "var(--base-color-5-d200, var(--primary-b000))" },
+const heatmapClassMap: Record<HeatmapBucket, string> = {
+  empty: "metric-card-heatmmap-empty",
+  low: "metric-card-heatmmap-low",
+  mediumLow: "metric-card-heatmmap-medium-low",
+  mediumHigh: "metric-card-heatmmap-medium-high",
+  high: "metric-card-heatmmap-high",
+  extreme: "metric-card-heatmmap-extreme",
+};
+
+const heatmapFallbackColorMap: Record<HeatmapBucket, string> = {
+  empty: "var(--color-smoke-fade, var(--muted))",
+  low: "var(--color-light-blue, var(--base-color-4))",
+  mediumLow: "var(--color-yellow, var(--base-color-5))",
+  mediumHigh: "var(--color-orange, var(--base-color-6))",
+  high: "var(--color-red, var(--base-color-7))",
+  extreme: "var(--color-purple, var(--base-color-8))",
 };
 
 function getLookbackDays(selectedRange: PickupWindow) {
   return Number.parseInt(selectedRange.replace("d", ""), 10);
 }
 
-function getHeatmapBucket(
-  rooms: number,
-  minCount: number,
-  maxCount: number,
-): HeatmapBucket {
-  if (rooms <= 0) return "zero";
+function getHeatmapBucket(rooms: number, availableRooms = PLACEHOLDER_AVAILABLE_ROOMS): HeatmapBucket {
+  if (rooms <= 0) return "empty";
 
-  const range = maxCount - minCount || 1;
-  const ratio = (rooms - minCount) / range;
+  const pickupRatio = rooms / availableRooms;
 
-  if (ratio <= 0.25) return "one";
-  if (ratio <= 0.5) return "two";
-  if (ratio <= 0.75) return "three";
-  return "four";
+  if (pickupRatio <= 0.02) return "low";
+  if (pickupRatio <= 0.05) return "mediumLow";
+  if (pickupRatio <= 0.1) return "mediumHigh";
+  if (pickupRatio <= 0.2) return "high";
+  return "extreme";
 }
 
 function createMockHeatmapData(startDate: Date, months: number, lookbackDays: number): CalendarHeatmapData[] {
@@ -99,14 +106,22 @@ function createMockHeatmapData(startDate: Date, months: number, lookbackDays: nu
   for (let cursor = new Date(start); cursor < end; cursor.setDate(cursor.getDate() + 1)) {
     const date = new Date(cursor);
     const day = date.getDate();
+    const monthIndex = date.getMonth();
     const isWeekend = [0, 6].includes(date.getDay());
-    const seasonality = Math.max(0, Math.sin((date.getMonth() + 1) / 12 * Math.PI));
-    const pickupFactor = Math.max(1, Math.round(lookbackDays / 7));
-    const rooms = Math.max(
-      0,
-      Math.round((isWeekend ? 5 : 2) + ((day * 3 + date.getMonth() * 5) % 18) + seasonality * 8 + pickupFactor)
-    );
-    const adr = 165 + ((date.getMonth() * 9 + day * 2) % 75);
+    const lookbackFactor = Math.min(1.75, Math.max(0.35, lookbackDays / 30));
+    const seasonalLift = monthIndex >= 4 && monthIndex <= 8 ? 1.25 : 0.85;
+    const basePattern = (day * 7 + monthIndex * 11) % 28;
+
+    let rooms = Math.round((basePattern * lookbackFactor + (isWeekend ? 5 : 1)) * seasonalLift);
+
+    // Demo spikes to make every heat bucket visible against the placeholder 100-room inventory.
+    if (day === 5 || day === 19) rooms = Math.max(rooms, 2);
+    if (day === 8 || day === 22) rooms = Math.max(rooms, 5);
+    if (day === 12 || day === 26) rooms = Math.max(rooms, 10);
+    if (day === 15) rooms = Math.max(rooms, 20);
+    if (day === 28) rooms = Math.max(rooms, 24);
+
+    const adr = 165 + ((monthIndex * 9 + day * 2) % 75);
     const revenue = Math.round(rooms * adr);
 
     data.push({
@@ -125,17 +140,25 @@ export default function CalendarHeatmap({
   startDate,
 }: CalendarHeatmapProps): React.JSX.Element {
   const calendarStartDate = useMemo(() => startOfMonth(startDate ?? new Date()), [startDate]);
-  const [heatmapData, setHeatmapData] = useState<CalendarHeatmapData[]>([]);
   const [selectedRange, setSelectedRange] = useState<PickupWindow>("7d");
+  const initialDemoData = useMemo(
+    () => createMockHeatmapData(calendarStartDate, 12, getLookbackDays(selectedRange)),
+    [calendarStartDate, selectedRange],
+  );
+  const [heatmapData, setHeatmapData] = useState<CalendarHeatmapData[]>(initialDemoData);
   const [loadError, setLoadError] = useState<string | null>(null);
   const { execute, isInitializing, error } = useDuckDb();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (isInitializing) return;
-
     const endDate = addMonths(calendarStartDate, 12);
     const lookbackDays = getLookbackDays(selectedRange);
+    const demoData = createMockHeatmapData(calendarStartDate, 12, lookbackDays);
+
+    if (isInitializing) {
+      setHeatmapData(demoData);
+      return;
+    }
 
     async function loadData() {
       setLoading(true);
@@ -167,16 +190,10 @@ export default function CalendarHeatmap({
             adr: Number(pickupRow.adr) || 0,
           };
         });
-        setHeatmapData(transformedData.length ? transformedData : createMockHeatmapData(calendarStartDate, 12, lookbackDays));
+        setHeatmapData(transformedData.length ? transformedData : demoData);
       } catch (e) {
-        const message = e instanceof Error ? e.message : String(e);
-        if (message.includes("dashboard_pickup.parquet")) {
-          setLoadError(null);
-          setHeatmapData(createMockHeatmapData(calendarStartDate, 12, lookbackDays));
-        } else {
-          setLoadError(null);
-          setHeatmapData(createMockHeatmapData(calendarStartDate, 12, lookbackDays));
-        }
+        setLoadError(null);
+        setHeatmapData(demoData);
         console.error("Failed to fetch heatmap data", e);
       } finally {
         setLoading(false);
@@ -197,23 +214,20 @@ export default function CalendarHeatmap({
   }, [heatmapData]);
 
   const heatmapStats = useMemo(() => {
-    const positiveCounts = heatmapData.map((item) => item.rooms).filter((rooms) => rooms > 0);
-    const maxCount = Math.max(...positiveCounts, 1);
-    const minCount = Math.min(...positiveCounts, 1);
+    const maxCount = Math.max(...heatmapData.map((item) => item.rooms), 0);
     const totalRooms = heatmapData.reduce((sum, item) => sum + item.rooms, 0);
 
-    return { maxCount, minCount, totalRooms };
+    return { maxCount, totalRooms };
   }, [heatmapData]);
 
-  const accentColorMap = useMemo(() => {
+  const bucketMap = useMemo(() => {
     return heatmapData.reduce((acc, item) => {
-      const bucket = getHeatmapBucket(item.rooms, heatmapStats.minCount, heatmapStats.maxCount);
-      acc.set(item.dateStr, heatmapStyles[bucket].backgroundColor);
+      acc.set(item.dateStr, getHeatmapBucket(item.rooms));
       return acc;
-    }, new Map<string, string>());
-  }, [heatmapData, heatmapStats]);
+    }, new Map<string, HeatmapBucket>());
+  }, [heatmapData]);
 
-  if (isInitializing || loading) {
+  if (loading && !heatmapData.length) {
     return <Skeleton className="h-120 w-full" />;
   }
 
@@ -250,15 +264,15 @@ export default function CalendarHeatmap({
       >
         <div className="calendar-heatmap__summary">
           <div>
-            <div className="metric-card__label mb-1">Pickup Window</div>
-            <div className="metric-card__number text-4xl">{getLookbackDays(selectedRange)}</div>
+            <div className="metric-card__label mb-1">Available Rooms</div>
+            <div className="metric-card__number text-4xl">{PLACEHOLDER_AVAILABLE_ROOMS}</div>
           </div>
           <div>
             <div className="metric-card__label mb-1">Rooms Picked Up</div>
             <div className="metric-card__number text-4xl">{heatmapStats.totalRooms.toLocaleString()}</div>
           </div>
           <div>
-            <div className="metric-card__label mb-1">Peak Day</div>
+            <div className="metric-card__label mb-1">Peak Pickup Day</div>
             <div className="metric-card__number text-4xl">{heatmapStats.maxCount.toLocaleString()}</div>
           </div>
         </div>
@@ -289,7 +303,7 @@ export default function CalendarHeatmap({
               <CustomDayButton
                 dayProps={props}
                 dataMap={dataMap}
-                accentColorMap={accentColorMap}
+                bucketMap={bucketMap}
               />
             ),
           }}
@@ -302,19 +316,29 @@ export default function CalendarHeatmap({
 }
 
 function HeatmapLegend() {
+  const legendItems: Array<{ label: string; bucket: HeatmapBucket }> = [
+    { label: "1-2%", bucket: "low" },
+    { label: "≤5%", bucket: "mediumLow" },
+    { label: "≤10%", bucket: "mediumHigh" },
+    { label: "≤20%", bucket: "high" },
+    { label: "21%+", bucket: "extreme" },
+  ];
+
   return (
     <div className="calendar-heatmap__legend">
-      <span>Less</span>
+      <span>Low</span>
       <div className="calendar-heatmap__legend-scale">
-        {(Object.keys(heatmapStyles) as HeatmapBucket[]).map((bucket) => (
-          <div
-            key={bucket}
-            className="calendar-heatmap__legend-box"
-            style={heatmapStyles[bucket]}
-          />
+        {legendItems.map((item) => (
+          <div key={item.bucket} className="calendar-heatmap__legend-item">
+            <div
+              className={`calendar-heatmap__legend-box ${heatmapClassMap[item.bucket]}`}
+              style={{ backgroundColor: `var(--metric-color, ${heatmapFallbackColorMap[item.bucket]})` }}
+            />
+            <span>{item.label}</span>
+          </div>
         ))}
       </div>
-      <span>More</span>
+      <span>Extreme</span>
     </div>
   );
 }
@@ -322,18 +346,21 @@ function HeatmapLegend() {
 interface CustomDayButtonProps {
   dayProps: DayButtonComponentProps;
   dataMap: Map<string, Omit<CalendarHeatmapData, "date" | "dateStr">>;
-  accentColorMap: Map<string, string>;
+  bucketMap: Map<string, HeatmapBucket>;
 }
 
 function CustomDayButton({
   dayProps,
   dataMap,
-  accentColorMap,
+  bucketMap,
 }: CustomDayButtonProps): React.JSX.Element {
   const { day } = dayProps;
   const dayStr = formatLocalYYYYMMDD(day.date);
   const metrics = dataMap.get(dayStr) || { rooms: 0, revenue: 0, adr: 0 };
-  const accentColor = accentColorMap.get(dayStr) ?? heatmapStyles.zero.backgroundColor;
+  const bucket = bucketMap.get(dayStr) ?? "empty";
+  const bucketClassName = heatmapClassMap[bucket];
+  const fallbackColor = heatmapFallbackColorMap[bucket];
+  const pickupPct = (metrics.rooms / PLACEHOLDER_AVAILABLE_ROOMS) * 100;
   const formattedDate = day.date
     .toLocaleDateString("en-US", {
       weekday: "long",
@@ -346,8 +373,8 @@ function CustomDayButton({
     <div className="calendar-heatmap__day-wrap group">
       <CalendarDayButton
         {...dayProps}
-        className="calendar-heatmap__day-button"
-        style={{ backgroundColor: accentColor } as React.CSSProperties}
+        className={`calendar-heatmap__day-button ${bucketClassName}`}
+        style={{ backgroundColor: `var(--metric-color, ${fallbackColor})` } as React.CSSProperties}
       />
       <div className="calendar-heatmap__tooltip-wrap">
         <div className="calendar-heatmap__tooltip retro-shadow-base">
@@ -357,10 +384,15 @@ function CustomDayButton({
           <div className="calendar-heatmap__tooltip-grid">
             <div className="calendar-heatmap__tooltip-number">{metrics.rooms.toLocaleString()}</div>
             <div
-              className="calendar-heatmap__tooltip-accent"
-              style={{ backgroundColor: accentColor }}
+              className={`calendar-heatmap__tooltip-accent ${bucketClassName}`}
+              style={{ backgroundColor: `var(--metric-color, ${fallbackColor})` }}
             />
             <div className="calendar-heatmap__tooltip-label">Rooms</div>
+
+            <div className="calendar-heatmap__tooltip-number">
+              {pickupPct.toFixed(1)}%
+            </div>
+            <div className="calendar-heatmap__tooltip-label">Of Available</div>
 
             <div className="calendar-heatmap__tooltip-number">
               {new Intl.NumberFormat("en-US", {
@@ -370,16 +402,6 @@ function CustomDayButton({
               }).format(metrics.revenue)}
             </div>
             <div className="calendar-heatmap__tooltip-label">Revenue</div>
-
-            <div className="calendar-heatmap__tooltip-number">
-              {new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: "USD",
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }).format(metrics.adr)}
-            </div>
-            <div className="calendar-heatmap__tooltip-label">ADR</div>
           </div>
         </div>
       </div>
