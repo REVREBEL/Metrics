@@ -46,7 +46,7 @@ export default function SocialVisitsCard() {
   return (
     <Card className="w-full border-none shadow-xl bg-white p-2">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-6">
-        <CardTitle className="text-lg font-display upperase font-bold text-dark-blue">
+        <CardTitle className="text-lg font-display uppercase font-bold text-dark-blue">
           Social Network Visits
         </CardTitle>
         <MoreVertical className="h-5 w-5 text-gray-400 cursor-pointer" />
