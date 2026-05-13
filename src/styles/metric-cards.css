@@ -81,6 +81,13 @@
 .metric-card-heatmmap-high {--metric-color:  var(--color-red);}
 .metric-card-heatmmap-extreme {--metric-color:   var(--color-purple);}
 
+.metric-card-heatmmap-low-inverse {--metric-color: var(--color-light-blue-inverse);}
+.metric-card-heatmmap-medium-low-inverse {--metric-color: var(--color-yellow-inverse);}
+.metric-card-heatmmap-medium-high-inverse {--metric-color: var(--color-orange-inverse);}
+.metric-card-heatmmap-high-inverse {--metric-color:  var(--color-red-inverse);}
+.metric-card-heatmmap-extreme-inverse {--metric-color:   var(--color-purple-inverse);}
+
+
 
   .metric-card {
     --metric-color: var(--color-total);
