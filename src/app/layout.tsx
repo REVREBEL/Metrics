@@ -7,6 +7,7 @@ import "@/styles/metric-card-chart-overrides.css";
 import "@/styles/top-channels-chart.css";
 import "@/styles/calendar-heatmap.css";
 import "@/styles/analytics-section.css";
+import "@/styles/campaigns-section.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
