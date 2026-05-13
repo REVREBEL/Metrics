@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { format } from "date-fns";
 import { Card, CardContent } from "@/components/ui/card";
 import ArrowCircleDown from "@/assets/RebelIconsReact/ArrowCircleDown";
 import ArrowCircleUp from "@/assets/RebelIconsReact/ArrowCircleUp";
@@ -113,6 +112,18 @@ const DONUT_TOOLTIP_WIDTH = 320;
 const DONUT_TOOLTIP_HEIGHT = 150;
 const DONUT_TOOLTIP_OFFSET = 16;
 
+function formatDayNumber(date: Date) {
+  return date.toLocaleDateString("en-US", { day: "numeric" });
+}
+
+function formatLongDateLabel(date: Date) {
+  return date.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+  });
+}
+
 const fallbackState: CardState = {
   summaryMetrics: [
     { label: "Occupancy", value: 67.2, format: "percent", variance: -3 },
@@ -175,16 +186,20 @@ const fallbackState: CardState = {
       ],
     },
   ],
-  barData: Array.from({ length: 31 }, (_, index) => ({
-    day: String(index + 1),
-    dateLabel: format(new Date(2026, 0, index + 1), "EEEE, MMM d"),
-    otbRooms: 0,
-    leftToBookRooms: 0,
-    otbAdr: 0,
-    leftToBookAdr: 0,
-    otbRevenue: 0,
-    leftToBookRevenue: 0,
-  })),
+  barData: Array.from({ length: 31 }, (_, index) => {
+    const date = new Date(2026, 0, index + 1);
+
+    return {
+      day: formatDayNumber(date),
+      dateLabel: formatLongDateLabel(date),
+      otbRooms: 0,
+      leftToBookRooms: 0,
+      otbAdr: 0,
+      leftToBookAdr: 0,
+      otbRevenue: 0,
+      leftToBookRevenue: 0,
+    };
+  }),
 };
 
 
@@ -422,8 +437,8 @@ function buildCardState(currentRow: CurrentMonthlyRow | undefined, segmentRows: 
     const date = new Date(row.stay_date);
 
     return {
-      day: format(date, "d"),
-      dateLabel: format(date, "EEEE, MMM d"),
+      day: formatDayNumber(date),
+      dateLabel: formatLongDateLabel(date),
       otbRooms,
       leftToBookRooms,
       otbAdr,
