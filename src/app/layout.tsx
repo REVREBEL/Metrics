@@ -8,6 +8,7 @@ import "@/styles/top-channels-chart.css";
 import "@/styles/calendar-heatmap.css";
 import "@/styles/analytics-section.css";
 import "@/styles/campaigns-section.css";
+import "@/styles/posts-section.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
