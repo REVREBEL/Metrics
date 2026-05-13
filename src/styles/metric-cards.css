@@ -1,0 +1,486 @@
+@layer components {
+  :root {
+    /* Metric status */
+    --color-positive: var(--color-light-green);
+    --color-negative: var(--color-red);
+
+    /* Production Segments */
+    --color-total: var(--color-dark-blue);
+    --color-total-var: var(--color-dark-blue-inverse);
+
+    --color-transient: var(--color-light-blue);
+    --color-transient-var: var(--color-yellow);
+
+    --color-group: var(--color-light-green);
+    --color-group-var: var(--color-orange);
+
+    --color-crew: var(--color-yellow);
+    --color-crew-var: var(--color-purple);
+
+    --color-complimentary: var(--base-grey-l700);
+    --color-complimentary-var: var(--base-grey-l400);
+
+    --color-other: var(--color-grey-550);
+    --color-other-var: var(--color-grey-250);
+
+    /* Socials */
+    --color-facebook: var(--color-purple);
+    --color-instagram: var(--color-red);
+    --color-x: var(--color-light-green);
+    --color-linkedin: var(--color-green);
+    --color-tiktok: var(--color-light-green-100);
+    --color-blog: var(--color-yellow);
+    --color-telegram: var(--color-light-blue);
+    --color-slack: var(--color-orange);
+    --color-youtube: var(--color-red-600);
+    --color-pinterest: var(--color-red-200);
+    --color-github: var(--color-grey-650);
+
+    --color-facebook-inverse: var(--color-purple-inverse);
+    --color-instagram-inverse: var(--color-red-inverse);
+    --color-x-inverse: var(--color-light-green-inverse);
+    --color-linkedin-inverse: var(--color-green-inverse);
+    --color-tiktok-inverse: var(--color-light-green-100-inverse);
+    --color-blog-inverse: var(--color-yellow-inverse);
+    --color-telegram-inverse: var(--color-light-blue-inverse);
+    --color-slack-inverse: var(--color-orange-inverse);
+    --color-youtube-inverse: var(--color-red-600-inverse);
+    --color-pinterest-inverse: var(--color-red-200-inverse);
+    --color-github-inverse: var(--color-grey-250);
+
+    /* Reviews */
+    --color-yelp: var(--color-red-700);
+    --color-tripadvisor: var(--color-dark-green-700);
+
+    /* Channels */
+    --color-expedia: var(--color-yellow);
+    --color-booking: var(--color-light-blue);
+    --color-agoda: var(--color-dark-blue-700);
+    --color-hopper: var(--color-red-600);
+    --color-hoteltonight: var(--color-purple-700);
+    --color-hotelbeds: var(--color-purple-700);
+    --color-priceline: var(--color-dark-blue-500);
+    --color-airbnb: var(--color-red-200);
+    --color-hotwire: var(--color-red);
+
+    --color-expedia-inverse: var(--color-yellow-inverse);
+    --color-booking-inverse: var(--color-light-blue-inverse);
+    --color-agoda-inverse: var(--color-dark-blue-700-inverse);
+    --color-hopper-inverse: var(--color-red-600-inverse);
+    --color-hoteltonight-inverse: var(--color-purple-700-inverse);
+    --color-hotelbeds-inverse: var(--color-purple-700-inverse);
+    --color-priceline-inverse: var(--color-dark-blue-500-inverse);
+    --color-airbnb-inverse: var(--color-red-200-inverse);
+    --color-hotwire-inverse: var(--color-red-inverse);
+  }
+
+
+  .metric-card {
+    --metric-color: var(--color-total);
+    --metric-variance-color: var(--color-total-var);
+    --metric-icon-color: var(--metric-color);
+    --metric-chart-color: var(--metric-color);
+    --metric-chart-variance-color: var(--metric-variance-color);
+    --metric-value-color: var(--primary-b000);
+    width: 100%;
+    border: 0;
+    background-color: var(--card);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    color: var(--primary-b000);
+  }
+
+  .metric-card__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 0 1rem;
+  }
+
+  .metric-card__content {
+    padding: 0;
+  }
+
+  .metric-card__section {
+    margin-top: 1.5rem;
+  }
+
+  .metric-card__section:first-child {
+    margin-top: 0;
+  }
+
+  .metric-card__description {
+    margin: 0.25rem 0 1.5rem;
+    color: var(--muted-foreground);
+    font-family: var(--font-serif);
+    font-weight: var(--font-weight-light);
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .metric-card__title,
+  .metric-card-title {
+    font-family: var(--font-display);
+    color: var(--primary-b000);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .metric-card__eyebrow {
+    font-family: var(--font-eyebrow);
+    color: var(--base-color-3);
+    letter-spacing: 0.1em;
+    font-weight: 300;
+  }
+
+  .metric-card__label {
+    font-family: var(--font-display);
+    color: var(--primary-b000);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+
+  .metric-card__title {
+    font-size: 1.125rem;
+    line-height: 1;
+  }
+
+  .metric-card__eyebrow,
+  .metric-card__label {
+    font-size: 0.625rem;
+    line-height: 1;
+  }
+
+  .metric-card__eyebrow {
+    margin-bottom: 0.25rem;
+    opacity: 0.7;
+  }
+
+  .metric-card__value {
+    font-family: var(--font-numbers);
+    color: var(--metric-value-color);
+    font-size: 2.25rem;
+    line-height: 1;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .metric-card__metric-color {
+    color: var(--metric-color);
+  }
+
+  .metric-card__variance-color {
+    color: var(--metric-variance-color);
+  }
+
+  .metric-card__icon {
+    background: var(--metric-icon-color);
+    color: white;
+  }
+
+  .metric-card__change--positive {
+    color: var(--color-positive);
+  }
+
+  .metric-card__change--negative {
+    color: var(--color-negative);
+  }
+
+  .metric-card-tabs-root {
+    width: 100%;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .metric-card-tabs {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    align-items: stretch;
+    justify-content: stretch;
+    gap: 0;
+    height: auto;
+    min-height: 2.875rem;
+
+    border-radius: 2px;
+    background-color: var(--background);
+    padding: 4px;
+  }
+
+  .metric-card-tabs>* {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .metric-card-tab {
+    display: inline-flex;
+    flex: 1 1 0;
+    width: 100%;
+    height: auto;
+    min-height: 2.125rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    border: 0;
+    background-color: transparent;
+    color: var(--primary-b000);
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    box-shadow: none;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+
+  .metric-card-tab:hover {
+    background-color: var(--color-light-blue-100);
+  }
+
+  .metric-card-tab[data-state="active"] {
+    background-color: var(--color-dark-blue-inverse);
+    color: var(--color-dark-blue);
+    font-weight: 700;
+    border-radius: 2px;
+    box-shadow: none;
+  }
+
+  .metric-card-tab[data-state="active"]:hover {
+    background-color: var(--color-dark-blue-fade);
+  }
+
+  .metric-card-tab:focus-visible {
+    outline: 2px solid var(--primary-b000);
+    outline-offset: 2px;
+  }
+
+  .metric-card__insight {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    border: 1px solid color-mix(in oklch, var(--primary-b000) 16%, transparent);
+    border-radius: 0.75rem;
+    background-color: var(--color-smoke-fade);
+    padding: 1rem;
+  }
+
+  .metric-card__insight-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    margin-top: 0.125rem;
+    color: color-mix(in oklch, var(--primary-b000) 55%, transparent);
+  }
+
+  .metric-card__insight-copy {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.6875rem;
+    font-family: var(--font-serif);
+    font-weight: var(--font-weight-light);
+    line-height: 1.55;
+  }
+
+  .metric-card__insight-label {
+    font-family: var(--font-display);
+    color: var(--primary-b000);
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .metric-card--total {
+    --metric-color: var(--color-total);
+    --metric-variance-color: var(--color-total-var);
+  }
+
+  .metric-card--transient {
+    --metric-color: var(--color-transient);
+    --metric-variance-color: var(--color-transient-var);
+  }
+
+  .metric-card--group {
+    --metric-color: var(--color-group);
+    --metric-variance-color: var(--color-group-var);
+  }
+
+  .metric-card--crew {
+    --metric-color: var(--color-crew);
+    --metric-variance-color: var(--color-crew-var);
+  }
+
+  .metric-card--complimentary {
+    --metric-color: var(--color-complimentary);
+    --metric-variance-color: var(--color-complimentary-var);
+  }
+
+  .metric-card--other {
+    --metric-color: var(--color-other);
+    --metric-variance-color: var(--color-other-var);
+  }
+
+  .metric-card--facebook {
+    --metric-color: var(--color-facebook);
+    --metric-variance-color: var(--color-facebook);
+  }
+
+  .metric-card--instagram {
+    --metric-color: var(--color-instagram);
+    --metric-variance-color: var(--color-instagram);
+  }
+
+  .metric-card--x {
+    --metric-color: var(--color-x);
+    --metric-variance-color: var(--color-x);
+  }
+
+  .metric-card--linkedin {
+    --metric-color: var(--color-linkedin);
+    --metric-variance-color: var(--color-linkedin);
+    --metric-inverse-color: var(--color-linkedin-inverse);
+  }
+
+  .metric-card--tiktok {
+    --metric-color: var(--color-tiktok);
+    --metric-variance-color: var(--color-tiktok);
+    --metric-inverse-color: var(--color-tiktok-inverse);
+  }
+
+  .metric-card--blog {
+    --metric-color: var(--color-blog);
+    --metric-variance-color: var(--color-blog);
+    --metric-inverse-color: var(--color-blog-inverse);
+  }
+
+  .metric-card--telegram {
+    --metric-color: var(--color-telegram);
+    --metric-variance-color: var(--color-telegram);
+    --metric-inverse-color: var(--color-blog-inverse);
+  }
+
+  .metric-card--slack {
+    --metric-color: var(--color-slack);
+    --metric-variance-color: var(--color-slack);
+    --metric-inverse-color: var(--color-slack-inverse);
+  }
+
+  .metric-card--youtube {
+    --metric-color: var(--color-youtube);
+    --metric-variance-color: var(--color-youtube);
+    --metric-inverse-color: var(--color-youtube-inverse);
+  }
+
+  .metric-card--pinterest {
+    --metric-color: var(--color-pinterest);
+    --metric-variance-color: var(--color-pinterest);
+    --metric-inverse-color: var(--color-pinterest-inverse);
+  }
+
+  .metric-card--github {
+    --metric-color: var(--color-github);
+    --metric-variance-color: var(--color-github);
+    --metric-inverse-color: var(--color-github-inverse);
+
+  }
+
+  .metric-card--yelp {
+    --metric-color: var(--color-yelp);
+    --metric-variance-color: var(--color-yelp);
+    --metric-inverse-color: var(--color-yelp-inverse);
+  }
+
+  .metric-card--tripadvisor {
+    --metric-color: var(--color-tripadvisor);
+    --metric-variance-color: var(--color-tripadvisor);
+    --metric-inverse-color: var(--color-tripadvisor-inverse);
+  }
+
+  .metric-card--expedia {
+    --metric-color: var(--color-expedia);
+    --metric-variance-color: var(--color-expedia);
+    --metric-inverse-color: var(--color-expedia-inverse);
+  }
+
+  .metric-card--booking {
+    --metric-color: var(--color-booking);
+    --metric-variance-color: var(--color-booking);
+    --metric-inverse-color: var(--color-booking-inverse);
+  }
+}
+
+
+
+
+/*
+  Unlayered overrides intentionally sit outside @layer components.
+  Tailwind utilities generated by the shadcn Tabs component otherwise win the cascade.
+*/
+[data-slot="tabs-list"].metric-card-tabs {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: stretch;
+  justify-content: stretch;
+  gap: 0;
+  height: auto;
+  min-height: 2.875rem;
+  border-radius: 2px;
+  background-color: var(--background);
+  padding: 8px;
+  color: var(--foreground);
+}
+
+[data-slot="tabs-list"].metric-card-tabs>[data-slot="tabs-trigger"] {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+[data-slot="tabs-trigger"].metric-card-tab {
+  display: inline-flex;
+  flex: 1 1 0;
+  width: 100%;
+  height: auto;
+  min-height: 2.125rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  border: 0;
+  border-radius: 2px;
+  background-color: transparent;
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  box-shadow: none;
+  white-space: nowrap;
+}
+
+[data-slot="tabs-trigger"].metric-card-tab:hover {
+  background-color: color-mix(in oklch, var(--foreground) 8%, transparent);
+  color:var(--foreground);
+}
+
+[data-slot="tabs-trigger"].metric-card-tab[data-state="active"] {
+  background-color: var(--foreground);
+  color: var(--background);
+  font-weight: 700;
+  border-radius: 2px;
+  box-shadow: none;
+}
+
+[data-slot="tabs-trigger"].metric-card-tab[data-state="active"]:hover {
+  background-color: var(--foreground);
+  color: var(--background);
+}

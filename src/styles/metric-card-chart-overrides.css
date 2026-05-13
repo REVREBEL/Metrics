@@ -1,0 +1,40 @@
+/**
+  Metric card chart helpers.
+  Month variables are used by bar/line charts in sequence: month01, month02, etc.
+*/
+
+.metric-card {
+  --metric-month01: var(--color-light-blue);
+  --metric-month02: var(--color-yellow);
+  --metric-month03: var(--color-orange);
+  --metric-month04: var(--color-red);
+  --metric-month05: var(--color-purple);
+  --metric-month06: var(--color-dark-green);
+  --metric-month07: var(--color-green);
+  --metric-month08: var(--color-light-green);
+  --metric-month09: var(--color-light-blue-200);
+  --metric-month10: var(--color-yellow-600);
+  --metric-month11: var(--color-orange-600);
+  --metric-month12: var(--color-red-600);
+  --metric-chart-label-color: var(--background);
+  --metric-chart-value-color: var(--color-foreground);
+}
+
+.metric-card .metric-card__chart-label {
+  fill: var(--metric-chart-label-color);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.metric-card .metric-card__chart-value {
+  fill: var(--metric-chart-value-color);
+  font-family: var(--font-numbers);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.metric-card .metric-card__chart-footer {
+  margin-top: 1.25rem;
+}

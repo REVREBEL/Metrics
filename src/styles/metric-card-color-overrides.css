@@ -1,0 +1,23 @@
+/*
+  Safer color-mix overrides.
+  Avoid mixing OKLCH custom properties directly with `transparent`; mix with real theme colors instead.
+*/
+
+.metric-card-tab:hover,
+[data-slot="tabs-trigger"].metric-card-tab:hover {
+  background-color: var(--color-light-blue-100);
+}
+
+.metric-card-tab[data-state="active"]:hover,
+[data-slot="tabs-trigger"].metric-card-tab[data-state="active"]:hover {
+  background-color: var(--color-dark-blue-fade);
+}
+
+.metric-card .metric-card__insight {
+  border-color: color-mix(in oklch, var(--foreground) 16%, var(--card));
+  background-color: var(--color-smoke-fade, var(--background));
+}
+
+.metric-card .metric-card__insight-icon {
+  color: color-mix(in oklch, var(--foreground) 55%, var(--card));
+}
