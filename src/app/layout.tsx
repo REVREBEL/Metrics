@@ -11,6 +11,7 @@ import "@/styles/campaigns-section.css";
 import "@/styles/posts-section.css";
 import "@/styles/model-comparison-card.css";
 import "@/styles/daily-pickup-table.css";
+import "@/styles/dashboard-section.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
