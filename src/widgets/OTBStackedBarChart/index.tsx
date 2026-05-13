@@ -43,6 +43,10 @@ const MOCK_CHART_DATA: OTBChartDatum[] = Array.from({ length: 31 }, (_, index) =
 
 const getMonthName = (month?: string) => month || "Jul";
 const getYearLabel = (year?: string) => year || "2024";
+const getTransientColor = (isWeekend?: boolean) =>
+  isWeekend ? "var(--color-transient-var)" : "var(--color-transient)";
+const getGroupColor = (isWeekend?: boolean) =>
+  isWeekend ? "var(--color-group-var)" : "var(--color-group)";
 
 // Custom Tooltip Component to match the metric card system
 const OTBMixTooltip = ({
@@ -80,12 +84,12 @@ const OTBMixTooltip = ({
   const isWeekend = payload[0]?.payload?.isWeekend;
 
   return (
-    <div className="metric-card border-2 border-(--primary-b000) bg-(--card) p-6 shadow-primary min-w-75">
+    <div className="metric-card retro-shadow-base min-w-75 border-2 border-(--primary-b000) bg-(--card) p-6 text-(--primary-b000)">
       <h3 className="metric-card__title mb-4 text-3xl">
         {`${weekday}, ${monthName} ${label}`}
       </h3>
 
-      <div className="flex gap-8 mb-6">
+      <div className="mb-6 flex gap-8">
         <div className="flex w-full flex-col gap-2">
           <span className="metric-card__label text-(--muted-foreground)">
             {isWeekend ? "Weekend" : "Weekday"}
@@ -94,7 +98,7 @@ const OTBMixTooltip = ({
             <div className="flex items-center gap-4">
               <div
                 className="h-8 w-2"
-                style={{ backgroundColor: "var(--color-transient)" }}
+                style={{ backgroundColor: getTransientColor(isWeekend) }}
               />
               <div className="metric-card__number text-lg">
                 {String(transient).padStart(2, "0")} | {String(transientPct).padStart(2, "0")}%
@@ -106,7 +110,7 @@ const OTBMixTooltip = ({
             <div className="flex items-center gap-4">
               <div
                 className="h-8 w-2"
-                style={{ backgroundColor: "var(--color-group)" }}
+                style={{ backgroundColor: getGroupColor(isWeekend) }}
               />
               <div className="metric-card__number text-lg">
                 {String(group).padStart(2, "0")} | {String(groupPct).padStart(2, "0")}%
@@ -192,18 +196,18 @@ export default function OTBChart({ year, month }: { year?: string; month?: strin
       description={`${getMonthName(month)} ${getYearLabel(year)} rooms on the books by transient and group mix.`}
       metric="total"
     >
-      <div className="mb-4 grid grid-cols-3 gap-3">
+      <div className="mb-6 grid grid-cols-3 gap-5">
         <div>
-          <div className="metric-card__label mb-1">Transient</div>
-          <div className="metric-card__number text-2xl">{totals.transient.toLocaleString()}</div>
+          <div className="metric-card__label mb-2">Transient</div>
+          <div className="metric-card__number text-7xl">{totals.transient.toLocaleString()}</div>
         </div>
         <div>
-          <div className="metric-card__label mb-1">Group</div>
-          <div className="metric-card__number text-2xl">{totals.group.toLocaleString()}</div>
+          <div className="metric-card__label mb-2">Group</div>
+          <div className="metric-card__number text-7xl">{totals.group.toLocaleString()}</div>
         </div>
         <div>
-          <div className="metric-card__label mb-1">Total OTB</div>
-          <div className="metric-card__number text-2xl">{totals.total.toLocaleString()}</div>
+          <div className="metric-card__label mb-2">Total OTB</div>
+          <div className="metric-card__number text-7xl">{totals.total.toLocaleString()}</div>
         </div>
       </div>
 
@@ -226,19 +230,19 @@ export default function OTBChart({ year, month }: { year?: string; month?: strin
               cursor={{ fill: "transparent" }}
             />
 
+            <Bar dataKey="group" stackId="a" radius={[0, 0, 2, 2]}>
+              {chartData.map((entry, index) => (
+                <Cell
+                  key={`cell-group-${index}`}
+                  fill={getGroupColor(entry.isWeekend)}
+                />
+              ))}
+            </Bar>
             <Bar dataKey="transient" stackId="a" radius={[2, 2, 0, 0]}>
               {chartData.map((entry, index) => (
                 <Cell
                   key={`cell-transient-${index}`}
-                  fill={entry.isWeekend ? "var(--color-transient-var)" : "var(--color-transient)"}
-                />
-              ))}
-            </Bar>
-            <Bar dataKey="group" stackId="a" radius={[2, 2, 0, 0]}>
-              {chartData.map((entry, index) => (
-                <Cell
-                  key={`cell-group-${index}`}
-                  fill={entry.isWeekend ? "var(--color-group-var)" : "var(--color-group)"}
+                  fill={getTransientColor(entry.isWeekend)}
                 />
               ))}
             </Bar>
