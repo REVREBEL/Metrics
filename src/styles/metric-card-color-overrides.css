@@ -14,10 +14,10 @@
 }
 
 .metric-card .metric-card__insight {
-  border-color: color-mix(in oklch, var(--primary-b000) 16%, var(--card));
+  border-color: color-mix(in oklch, var(--foreground) 16%, var(--card));
   background-color: var(--color-smoke-fade, var(--background));
 }
 
 .metric-card .metric-card__insight-icon {
-  color: color-mix(in oklch, var(--primary-b000) 55%, var(--card));
+  color: color-mix(in oklch, var(--foreground) 55%, var(--card));
 }

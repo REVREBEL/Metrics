@@ -9,7 +9,7 @@
 .metric-card__title.metric-card__title,
 .metric-card-title.metric-card-title {
   font-family: var(--font-display);
-  color: var(--primary-b000);
+  color: var(--foreground);
   text-transform: uppercase;
   font-weight: 700;
   line-height: 1.1;
@@ -19,7 +19,7 @@
 .metric-card .metric-card__label,
 .metric-card__label.metric-card__label {
   font-family: var(--font-display);
-  color: var(--primary-b000);
+  color: var(--foreground);
   text-transform: uppercase;
   font-weight: 600;
   line-height: 1;
@@ -59,7 +59,7 @@
 .metric-card .metric-card__number,
 .metric-card__number.metric-card__number {
   font-family: var(--font-numbers);
-  color: var(--metric-value-color);
+  color: var(--foreground);
   font-weight: 400;
   line-height: 1;
   font-variant-numeric: tabular-nums;
@@ -71,7 +71,7 @@
 
 .metric-card .metric-card__unit {
   font-family: var(--font-display);
-  color: var(--metric-value-color);
+  color: var(--foreground);
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.75rem;
@@ -108,7 +108,7 @@
   display: inline-flex;
   align-items: center;
   height: 100%;
-  color: var(--primary-b000);
+  color: var(--foreground);
   font-family: var(--font-numbers);
   font-size: 0.625rem;
   font-weight: 700;
@@ -120,10 +120,10 @@
 
 .metric-card .metric-card__mix-label--inside {
   right: calc(100% - var(--mix-width) + 0.375rem);
-  color: var(--primary-b000);
+  color: var(--foreground);
 }
 
 .metric-card .metric-card__mix-label--outside {
   left: calc(var(--mix-width) + 0.375rem);
-  color: var(--primary-b000);
+  color: var(--foreground);
 }

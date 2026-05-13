@@ -1,23 +1,23 @@
-/*
+/**
   Metric card chart helpers.
   Month variables are used by bar/line charts in sequence: month01, month02, etc.
 */
 
 .metric-card {
-  --metric-month01: var(--base-color-1, var(--metric-color));
-  --metric-month02: var(--base-color-2, var(--metric-color));
-  --metric-month03: var(--base-color-3, var(--metric-color));
-  --metric-month04: var(--base-color-4, var(--metric-color));
-  --metric-month05: var(--base-color-5, var(--metric-color));
-  --metric-month06: var(--base-color-6, var(--metric-color));
-  --metric-month07: var(--base-color-7, var(--metric-color));
-  --metric-month08: var(--base-color-8, var(--metric-color));
-  --metric-month09: var(--base-color-9, var(--metric-color));
-  --metric-month10: var(--base-color-10, var(--metric-color));
-  --metric-month11: var(--base-color-11, var(--metric-color));
-  --metric-month12: var(--base-color-12, var(--metric-color));
+  --metric-month01: var(--color-light-blue);
+  --metric-month02: var(--color-yellow);
+  --metric-month03: var(--color-orange);
+  --metric-month04: var(--color-red);
+  --metric-month05: var(--color-purple);
+  --metric-month06: var(--color-dark-green);
+  --metric-month07: var(--color-green);
+  --metric-month08: var(--color-light-green);
+  --metric-month09: var(--color-light-blue-200);
+  --metric-month10: var(--color-yellow-600);
+  --metric-month11: var(--color-orange-600);
+  --metric-month12: var(--color-red-600);
   --metric-chart-label-color: var(--background);
-  --metric-chart-value-color: var(--primary-b000);
+  --metric-chart-value-color: var(--color-foreground);
 }
 
 .metric-card .metric-card__chart-label {

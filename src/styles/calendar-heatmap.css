@@ -1,5 +1,5 @@
 .calendar-heatmap {
-  --heatmap-empty: var(--background);
+  --heatmap-empty: var(--color-dark-blue);
 
   width: 100%;
 }
@@ -40,7 +40,7 @@
 }
 
 .calendar-heatmap__caption-label {
-  color: var(--primary-b000);
+  color: var(--color-dark-blue);
   font-family: var(--font-display);
   font-size: 0.75rem;
   font-weight: 700;
@@ -66,7 +66,7 @@
   padding: 0 0 0 4px;
   margin: var(--box-margin);
   aspect-ratio: 1;
-  color: var(--heatmap-number-color, var(--primary-b000));
+  color:var(--color-dark-blue);
   font-family: var(--font-display);
   font-size: medium;
   font-weight: 600;
@@ -79,7 +79,7 @@
 }
 
 .calendar-heatmap__today {
-  outline: 2px solid var(--primary-b000);
+  outline: 2px solid var(--color-dark-blue);
   outline-offset: 1px;
 }
 
@@ -93,38 +93,39 @@
 .calendar-heatmap__day-button,
 .calendar-heatmap__legend-box,
 .calendar-heatmap__tooltip-accent {
-  background-color: var(--heatmap-color, var(--heatmap-empty));
+  background-color:  oklch(1.0000 0 0);
 }
 
 .metric-card-heatmmap-empty {
-  --heatmap-color: var(--background);
-  --heatmap-number-color: var(--background);
+  --heatmap-color: oklch(1.0000 0 0);
+  --heatmap-number-color:  var(--color-dark-blue-100);
 }
 
-.metric-card-heatmmap-low {
-  --heatmap-color: var(--metric-color, var(--color-light-blue, var(--base-color-4)));
-  --heatmap-number-color: var(--metric-color-inverse, var(--color-light-blue-inverse, var(--primary-b000)));
+.metric-card-heatmap-low {
+  --heatmap-color: var(--color-light-blue);
+  --heatmap-number-color: var(--color-light-blue-inverse);
 }
 
-.metric-card-heatmmap-medium-low {
-  --heatmap-color: var(--metric-color, var(--color-yellow, var(--base-color-5)));
-  --heatmap-number-color: var(--metric-color-inverse, var(--color-yellow-inverse, var(--primary-b000)));
+.metric-card-heatmap-medium-low {
+  --heatmap-color: var(--color-yellow);
+  --heatmap-number-color: var(--color-yellow-inverse);
 }
 
-.metric-card-heatmmap-medium-high {
-  --heatmap-color: var(--metric-color, var(--color-orange, var(--base-color-6)));
-  --heatmap-number-color: var(--metric-color-inverse, var(--color-orange-inverse, var(--primary-b000)));
+.metric-card-heatmap-medium-high {
+  --heatmap-color: var(--color-orange);
+  --heatmap-number-color: var(--color-orange-inverse);
 }
 
-.metric-card-heatmmap-high {
-  --heatmap-color: var(--metric-color, var(--color-red, var(--base-color-7)));
-  --heatmap-number-color: var(--metric-color-inverse, var(--color-red-inverse, var(--background)));
+.metric-card-heatmap-high {
+  --heatmap-color: var(--color-red);
+  --heatmap-number-color: var(--color-red-inverse);
 }
 
-.metric-card-heatmmap-extreme {
-  --heatmap-color: var(--metric-color, var(--color-purple, var(--base-color-8)));
-  --heatmap-number-color: var(--metric-color-inverse, var(--color-purple-inverse, var(--background)));
+.metric-card-heatmap-extreme {
+  --heatmap-color: var(--color-purple);
+  --heatmap-number-color: var(--color-purple-inverse);
 }
+
 
 .calendar-heatmap__day-button {
   width: var(--box-size);
@@ -139,7 +140,7 @@
 }
 
 .calendar-heatmap__day-button:hover {
-  box-shadow: 2px 2px 0 var(--primary-b000);
+  box-shadow: 2px 2px 0 var(--color-dark-blue);
   transform: translate(-1px, -1px);
 }
 
@@ -161,15 +162,15 @@
 
 .calendar-heatmap__tooltip {
   min-width: 17rem;
-  border: 2px solid var(--primary-b000);
+  border: 2px solid var(--color-dark-blue);
   background: var(--card);
-  color: var(--primary-b000);
+  color: var(--color-dark-blue);
   padding: 1.25rem;
 }
 
 .calendar-heatmap__tooltip-date {
   margin-bottom: 1rem;
-  color: var(--primary-b000);
+  color: var(--color-dark-blue);
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 700;
@@ -185,7 +186,7 @@
   align-items: center;
   column-gap: 1.5rem;
   row-gap: 0.5rem;
-  color: var(--primary-b000);
+  color: var(--color-dark-blue);
 }
 
 .calendar-heatmap__tooltip-number {

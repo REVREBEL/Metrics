@@ -1,7 +1,6 @@
 "use client";
-
 import React, { useEffect, useMemo, useState } from "react";
-import { Calendar, CalendarDayButton } from "@/widgets/CalendarHeatmap/components/calendar";
+import { Calendar, CalendarDayButton,  } from "@/widgets/CalendarHeatmap/components/calendar";
 import { useDuckDb } from "@/hooks/useDuckDb";
 import { Skeleton } from "@/components/ui/skeleton";
 import { MetricCard, MetricCardTabs } from "@/widgets/_shared/MetricCard";
@@ -29,6 +28,12 @@ export interface CalendarHeatmapData {
   revenue: number;
   adr: number;
 }
+
+
+
+/**
+ * HELPERS
+ */
 
 export function formatLocalYYYYMMDD(date: Date) {
   const y = date.getFullYear();
@@ -62,31 +67,37 @@ interface PickupQueryRow {
   adr: number | string;
 }
 
+import { CalendarDay, Modifiers } from "react-day-picker";
+
 interface DayButtonComponentProps {
-  day: {
-    date: Date;
-  };
+  day: CalendarDay;      
+  modifiers: Modifiers; 
 }
+
+/**
+ * HEATMAP LOGIC & CONSTANTS
+ * Consolidated here to resolve build errors and ensure self-contained execution.
+ */
 
 type PickupWindow = "1d" | "3d" | "7d" | "14d" | "30d" | "60d" | "90d" | "120d";
 type HeatmapBucket = "empty" | "low" | "mediumLow" | "mediumHigh" | "high" | "extreme";
 
 const heatmapClassMap: Record<HeatmapBucket, string> = {
-  empty: "metric-card-heatmmap-empty",
-  low: "metric-card-heatmmap-low",
-  mediumLow: "metric-card-heatmmap-medium-low",
-  mediumHigh: "metric-card-heatmmap-medium-high",
-  high: "metric-card-heatmmap-high",
-  extreme: "metric-card-heatmmap-extreme",
+  empty: "metric-card-heatmap-empty",
+  low: "metric-card-heatmap-low",
+  mediumLow: "metric-card-heatmap-medium-low",
+  mediumHigh: "metric-card-heatmap-medium-high",
+  high: "metric-card-heatmap-high",
+  extreme: "metric-card-heatmap-extreme",
 };
 
 const heatmapColorMap: Record<HeatmapBucket, string> = {
-  empty: "var(--background)",
-  low: "var(--color-light-blue, var(--base-color-4))",
-  mediumLow: "var(--color-yellow, var(--base-color-5))",
-  mediumHigh: "var(--color-orange, var(--base-color-6))",
-  high: "var(--color-red, var(--base-color-7))",
-  extreme: "var(--color-purple, var(--base-color-8))",
+  empty: "var(--heatmap-color)",
+  low: "var(--heatmap-color)",
+  mediumLow: "var(--heatmap-color)",
+  mediumHigh: "var(--heatmap-color)",
+  high: "var(--heatmap-color)",
+  extreme: "var(--heatmap-color)",
 };
 
 function getHeatmapColor(bucket: HeatmapBucket) {
@@ -412,39 +423,56 @@ function HeatmapLegend() {
   );
 }
 
+
+
 interface CustomDayButtonProps {
   dayProps: DayButtonComponentProps;
-  dataMap: Map<string, Omit<CalendarHeatmapData, "date" | "dateStr">>;
+  dataMap: Map<string, { rooms: number; revenue: number; adr: number }>;
   bucketMap: Map<string, HeatmapBucket>;
 }
 
-function CustomDayButton({
+
+
+export function CustomDayButton({
   dayProps,
   dataMap,
   bucketMap,
 }: CustomDayButtonProps): React.JSX.Element {
   const { day } = dayProps;
   const dayStr = formatLocalYYYYMMDD(day.date);
+  
   const metrics = dataMap.get(dayStr) || { rooms: 0, revenue: 0, adr: 0 };
   const bucket = bucketMap.get(dayStr) ?? "empty";
   const bucketClassName = heatmapClassMap[bucket];
-  const heatmapColor = getHeatmapColor(bucket);
-  const occupancyPct = (metrics.rooms / PLACEHOLDER_AVAILABLE_ROOMS) * 100;
-  const formattedDate = day.date
-    .toLocaleDateString("en-US", {
-      weekday: "long",
-      month: "long",
-      day: "numeric",
-    })
-    .replace(",", ", ");
+  
+  const heatmapColor = `var(--heatmap-color)`; 
+  const heatmapTextColor = `var(--heatmap-number-color)`;
+  
+  const occupancyPct = (metrics.rooms / 100) * 100; // Using 100 as placeholder total rooms
+  const formattedDate = day.date.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  });
 
   return (
     <div className="calendar-heatmap__day-wrap group">
+      {/* The Actual Button: 
+          We pass the day number as a child so it renders inside the heatmap cell.
+          The color is controlled by the --heatmap-number-color variable.
+      */}
       <CalendarDayButton
         {...dayProps}
         className={`calendar-heatmap__day-button ${bucketClassName}`}
-        style={{ backgroundColor: heatmapColor } as React.CSSProperties}
-      />
+        style={{ 
+          backgroundColor: heatmapColor,
+          color: heatmapTextColor 
+        } as React.CSSProperties}
+      >
+        {day.date.getDate()} 
+      </CalendarDayButton>
+
+      {/* The Tooltip: Shows detailed metrics on hover */}
       <div className="calendar-heatmap__tooltip-wrap">
         <div className="calendar-heatmap__tooltip retro-shadow-base">
           <div className="calendar-heatmap__tooltip-date">
@@ -460,7 +488,9 @@ function CustomDayButton({
             />
             <div className="calendar-heatmap__tooltip-label">Occupancy</div>
 
-            <div className="calendar-heatmap__tooltip-number">{metrics.rooms.toLocaleString()}</div>
+            <div className="calendar-heatmap__tooltip-number">
+              {metrics.rooms.toLocaleString()}
+            </div>
             <div className="calendar-heatmap__tooltip-label">Rooms</div>
           </div>
         </div>
