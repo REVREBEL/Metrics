@@ -45,6 +45,12 @@ function addMonths(date: Date, months: number) {
   return new Date(date.getFullYear(), date.getMonth() + months, 1);
 }
 
+function differenceInCalendarDays(date: Date, startDate: Date) {
+  const start = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()).getTime();
+  const current = new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
+  return Math.round((current - start) / 86_400_000);
+}
+
 interface CalendarHeatmapProps {
   startDate?: Date;
 }
@@ -103,8 +109,19 @@ function getHeatmapBucket(rooms: number, availableRooms = PLACEHOLDER_AVAILABLE_
   return "extreme";
 }
 
-function scaleDemoRooms(rooms: number) {
-  return Math.max(rooms > 0 ? 1 : 0, Math.round(rooms * DEMO_PICKUP_SCALE));
+function getArrivalHorizonWeight(daysOut: number) {
+  if (daysOut <= 90) return 1;
+  if (daysOut <= 120) return 0.35;
+
+  const sparsePattern = daysOut % 17 === 0 || daysOut % 31 === 0;
+  return sparsePattern ? 0.08 : 0;
+}
+
+function scaleDemoRooms(rooms: number, daysOut: number) {
+  const horizonWeight = getArrivalHorizonWeight(daysOut);
+  if (horizonWeight === 0) return 0;
+
+  return Math.max(rooms > 0 ? 1 : 0, Math.round(rooms * DEMO_PICKUP_SCALE * horizonWeight));
 }
 
 function createMockHeatmapData(startDate: Date, months: number, lookbackDays: number): CalendarHeatmapData[] {
@@ -116,6 +133,7 @@ function createMockHeatmapData(startDate: Date, months: number, lookbackDays: nu
     const date = new Date(cursor);
     const day = date.getDate();
     const monthIndex = date.getMonth();
+    const daysOut = differenceInCalendarDays(date, start);
     const isWeekend = [0, 6].includes(date.getDay());
     const lookbackFactor = Math.min(1.75, Math.max(0.35, lookbackDays / 30));
     const seasonalLift = monthIndex >= 4 && monthIndex <= 8 ? 1.25 : 0.85;
@@ -123,13 +141,15 @@ function createMockHeatmapData(startDate: Date, months: number, lookbackDays: nu
 
     let rooms = Math.round((basePattern * lookbackFactor + (isWeekend ? 5 : 1)) * seasonalLift);
 
-    if (day === 5 || day === 19) rooms = Math.max(rooms, 2);
-    if (day === 8 || day === 22) rooms = Math.max(rooms, 5);
-    if (day === 12 || day === 26) rooms = Math.max(rooms, 10);
-    if (day === 15) rooms = Math.max(rooms, 20);
-    if (day === 28) rooms = Math.max(rooms, 24);
+    if (daysOut <= 90) {
+      if (day === 5 || day === 19) rooms = Math.max(rooms, 2);
+      if (day === 8 || day === 22) rooms = Math.max(rooms, 5);
+      if (day === 12 || day === 26) rooms = Math.max(rooms, 10);
+      if (day === 15) rooms = Math.max(rooms, 20);
+      if (day === 28) rooms = Math.max(rooms, 24);
+    }
 
-    rooms = scaleDemoRooms(rooms);
+    rooms = scaleDemoRooms(rooms, daysOut);
 
     const adr = 165 + ((monthIndex * 9 + day * 2) % 75);
     const revenue = Math.round(rooms * adr);
@@ -349,11 +369,7 @@ export default function CalendarHeatmap({
           components={{
             Weekdays: () => <></>,
             DayButton: (props: DayButtonComponentProps) => (
-              <CustomDayButton
-                dayProps={props}
-                dataMap={dataMap}
-                bucketMap={bucketMap}
-              />
+              <CustomDayButton dayProps={props} />
             ),
           }}
         />
@@ -394,57 +410,15 @@ function HeatmapLegend() {
 
 interface CustomDayButtonProps {
   dayProps: DayButtonComponentProps;
-  dataMap: Map<string, Omit<CalendarHeatmapData, "date" | "dateStr">>;
-  bucketMap: Map<string, HeatmapBucket>;
 }
 
 function CustomDayButton({
   dayProps,
-  dataMap,
-  bucketMap,
 }: CustomDayButtonProps): React.JSX.Element {
-  const { day } = dayProps;
-  const dayStr = formatLocalYYYYMMDD(day.date);
-  const metrics = dataMap.get(dayStr) || { rooms: 0, revenue: 0, adr: 0 };
-  const bucket = bucketMap.get(dayStr) ?? "empty";
-  const bucketClassName = heatmapClassMap[bucket];
-  const heatmapColor = getHeatmapColor(bucket);
-  const occupancyPct = (metrics.rooms / PLACEHOLDER_AVAILABLE_ROOMS) * 100;
-  const formattedDate = day.date
-    .toLocaleDateString("en-US", {
-      weekday: "long",
-      month: "long",
-      day: "numeric",
-    })
-    .replace(",", ", ");
-
   return (
-    <div className="calendar-heatmap__day-wrap group">
-      <CalendarDayButton
-        {...dayProps}
-        className={`calendar-heatmap__day-button ${bucketClassName}`}
-        style={{ backgroundColor: heatmapColor } as React.CSSProperties}
-      />
-      <div className="calendar-heatmap__tooltip-wrap">
-        <div className="calendar-heatmap__tooltip retro-shadow-base">
-          <div className="calendar-heatmap__tooltip-date">
-            {formattedDate}
-          </div>
-          <div className="calendar-heatmap__tooltip-grid">
-            <div className="calendar-heatmap__tooltip-number">
-              {occupancyPct.toFixed(1)}%
-            </div>
-            <div
-              className={`calendar-heatmap__tooltip-accent ${bucketClassName}`}
-              style={{ backgroundColor: heatmapColor }}
-            />
-            <div className="calendar-heatmap__tooltip-label">Occupancy</div>
-
-            <div className="calendar-heatmap__tooltip-number">{metrics.rooms.toLocaleString()}</div>
-            <div className="calendar-heatmap__tooltip-label">Rooms</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <CalendarDayButton
+      {...dayProps}
+      className="calendar-heatmap__day-button"
+    />
   );
 }
