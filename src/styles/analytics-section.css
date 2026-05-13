@@ -180,33 +180,33 @@
 }
 
 .analytics-section [data-social="facebook"] {
-  --metric-color: var(--color-facebook, var(--base-color-8));
-  --metric-color-inverse: var(--color-facebook-inverse, var(--background));
+  --metric-color: var(--color-facebook);
+  --metric-color-inverse: var(--color-facebook-inverse);
 }
 
 .analytics-section [data-social="instagram"] {
-  --metric-color: var(--color-instagram, var(--base-color-7));
-  --metric-color-inverse: var(--color-instagram-inverse, var(--background));
+  --metric-color: var(--color-instagram);
+  --metric-color-inverse: var(--color-instagram-inverse);
 }
 
 .analytics-section [data-social="x"] {
-  --metric-color: var(--color-x, var(--base-color-3));
-  --metric-color-inverse: var(--color-x-inverse, var(--background));
+  --metric-color: var(--color-x);
+  --metric-color-inverse: var(--color-x-inverse);
 }
 
 .analytics-section [data-social="linkedin"] {
-  --metric-color: var(--color-linkedin, var(--color-liinkedin, var(--base-color-2)));
-  --metric-color-inverse: var(--color-linkedin-inverse, var(--background));
+  --metric-color: var(--color-linkedin);
+  --metric-color-inverse: var(--color-linkedin-inverse);
 }
 
 .analytics-section [data-social="tiktok"] {
-  --metric-color: var(--color-tiktok, var(--base-color-3));
-  --metric-color-inverse: var(--color-tiktok-inverse, var(--background));
+  --metric-color: var(--color-tiktok);
+  --metric-color-inverse: var(--color-tiktok-inverse);
 }
 
 .analytics-section [data-social="blog"] {
-  --metric-color: var(--color-blog, var(--base-color-5));
-  --metric-color-inverse: var(--color-blog-inverse, var(--primary-b000));
+  --metric-color: var(--color-blog);
+  --metric-color-inverse: var(--color-blog-inverse);
 }
 
 @media (max-width: 1180px) {

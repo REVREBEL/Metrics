@@ -68,7 +68,7 @@
   position: relative;
   height: 2.25rem;
   min-width: 0;
-  background: var(--color-smoke-fade, var(--background));
+  background: var(--color-smoke-fade);
   border-radius: 0 10px 10px 0;
 }
 
@@ -90,7 +90,7 @@
   color: var(--channel-inverse);
   filter: none;
   transform: translate(-2px, -2px);
-  box-shadow: 4px 4px 0 currentColor;
+  box-shadow: var(--retro-shadow-base);
 }
 
 .top-channels-chart__bar-name {
