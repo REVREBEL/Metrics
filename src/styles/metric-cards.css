@@ -75,6 +75,13 @@
 
   }
 
+.metric-card-heatmmap-low {--metric-color: var(--color-light-blue);}
+.metric-card-heatmmap-medium-low {--metric-color: var(--color-yellow);}
+.metric-card-heatmmap-medium-high {--metric-color: var(--color-orange);}
+.metric-card-heatmmap-high {--metric-color:  var(--color-red);}
+.metric-card-heatmmap-extreme {--metric-color:   var(--color-purple);}
+
+
   .metric-card {
     --metric-color: var(--color-total);
     --metric-variance-color: var(--color-total-var);
