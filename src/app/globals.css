@@ -124,54 +124,54 @@
 
 
   /* Dark-Green */
-  --base-color-1:  oklch(54.28% 0.0982 220.31); 
+  --base-color-1: oklch(54.28% 0.0982 220.31); 
   --base-color-1-fade: oklch(71.63% 0.0762 214.60);
   --base-color-1-inverse: oklch(96% 0.01 210);
   --base-color-1-inverse-fade: oklch(86.40% 0.009 210);
 
-  /* Green */
+  /* _Green */
   --base-color-2: oklch(66.27% 0.114 206.90);
   --base-color-2-fade: oklch(78.23% 0.094 203.21);
   --base-color-2-inverse: oklch(84% 0.14 85.21);
   --base-color-2-inverse-fade: oklch(94.00% 0.050 85.21);
 
-  /* Light-Green */
-  --base-color-3:#71c9c5;
+  /* _Light-Green */
+  --base-color-3:oklch(77.981% 0.08538 191.798);
   --base-color-3-fade: oklch(86.35% 0.054 193.29);
   --base-color-3-inverse: oklch(45% 0.14 340);
   --base-color-3-inverse-fade: oklch(56.00% 0.112 340);
 
-  /* Light-Blue */
+  /* _Light-Blue */
   --base-color-4: oklch(83% 0.04 220);
   --base-color-4-fade: oklch(90.61% 0.023 220.74);
   --base-color-4-inverse: oklch(27% 0.09 254.40);
   --base-color-4-inverse-fade: oklch(61.56% 0.0494 258.73);
 
-  /* Yellow */
+  /* _Yellow */
   --base-color-5: oklch(84% 0.14 85.21);
   --base-color-5-fade: oklch(94.00% 0.050 85.21);
   --base-color-5-inverse: oklch(27% 0.09 254.40);
   --base-color-5-inverse-fade: oklch(61.56% 0.0494 258.73);
 
-  /* Orange */
+  /* _Orange */
   --base-color-6: oklch(66% 0.18 45);
   --base-color-6-fade: oklch(82.08% 0.088 38.17);
   --base-color-6-inverse: oklch(27% 0.09 254.40);
   --base-color-6-inverse-fade: oklch(61.56% 0.0494 258.73);
 
-  /* Red */
+  /* _Red */
   --base-color-7: oklch(55% 0.21 32);
   --base-color-7-fade: oklch(68.73% 0.144 25.60);
   --base-color-7-inverse: oklch(83% 0.04 220);
   --base-color-7-inverse-fade: oklch(90.61% 0.023 220.74);
 
-  /* Purple */
+  /* _Purple */
   --base-color-8: oklch(45% 0.14 340);
   --base-color-8-fade: oklch(69.83% 0.061 347.29);
   --base-color-8-inverse: oklch(77.98% 0.085 191.74);
   --base-color-8-inverse-fade: oklch(86.35% 0.054 193.29);
 
-  /* Smoke */
+  /* _Smoke */
   --base-color-9: oklch(96% 0.01 210);
   --base-color-9-fade: oklch(96.96% 0.005 212.02 / 0.5);
   --base-color-9-inverse: oklch(27% 0.09 254.40);
@@ -188,7 +188,7 @@
   --sidebar-ring: oklch(78% 0.11 195.12);
 
 
-  /* {Dark-Blue-Color-Range */
+  /* {Dark-Blue-Color-Range} */
   /* prettier-ignore */
   --primary-l500: oklch(68.50% 0.0399 258.40); /* #8b9bb3 */
   --primary-l400: oklch(61.56% 0.0494 258.73); /* #7386a3 */
@@ -202,7 +202,7 @@
   --primary-d400: oklch(24.53% 0.0608 258.67); /* #0d203d */
   --primary-d500: oklch(22.28% 0.0519 258.36); /* #0b1b33 */
 
-  /* {Dark-Green-Color-Range */
+  /* {Dark-Green-Color-Range} */
   /* prettier-ignore */
   --base-color-1-l400: oklch(71.63% 0.0762 214.60); /* #68b0c1 */
   --base-color-1-l300: oklch(67.07% 0.0856 214.58); /* #4fa3b6 */
@@ -214,7 +214,7 @@
   --base-color-1-d300: oklch(42.26% 0.0757 219.56); /* #03576a */
   --base-color-1-d400: oklch(37.87% 0.0682 220.12); /* #024a5b */
 
-  /* {Green-Color-Range */
+  /* {Green-Color-Range} */
   /* prettier-ignore */
   --base-color-2-l500: oklch(81.68% 0.081 203.65); /* #80d3db */
   --base-color-2-l400: oklch(78.23% 0.094 203.21); /* #66cad3 */
@@ -228,7 +228,7 @@
   --base-color-2-d400: oklch(45.94% 0.079 205.57); /* #00646d */
   --base-color-2-d500: oklch(40.38% 0.069 206.07); /* #00535b */
 
-  /* {Light-Green-Color-Range */
+  /* {Light-Green-Color-Range} */
   /* prettier-ignore */
   --base-color-3-l400: oklch(86.35% 0.054 193.29); /* #a9dedc */
   --base-color-3-l300: oklch(84.26% 0.063 192.24); /* #9bd9d6 */
@@ -240,7 +240,7 @@
   --base-color-3-d300: oklch(59.81% 0.064 191.50); /* #4f8c89 */
   --base-color-3-d400: oklch(53.53% 0.057 192.45); /* #437876 */
 
- /* {Light-Blue-Color-Range */
+ /* {Light-Blue-Color-Range} */
   /* prettier-ignore */
   --base-color-4-l400: oklch(90.61% 0.023 220.74); /* #d0e4eb */
   --base-color-4-l300: oklch(89.18% 0.026 217.96); /* #c9e0e7 */
@@ -252,7 +252,7 @@
   --base-color-4-d300: oklch(64.80% 0.029 220.85); /* #7c939b */
   --base-color-4-d400: oklch(57.94% 0.025 221.09); /* #6a7e85 */
 
-  /* {Yellow-Color-Range */
+  /* {Yellow-Color-Range} */
   /* prettier-ignore */
   --base-color-5-l400: oklch(94.00% 0.050 85.21); /* #fbe9c6 */
   --base-color-5-l300: oklch(91.00% 0.070 85.21); /* #f7dfac */
@@ -264,7 +264,7 @@
   --base-color-5-d300: oklch(66.25% 0.086 79.38); /* #af8d54 */
   --base-color-5-d400: oklch(59.27% 0.076 79.62); /* #967948 */
 
-  /* {Orange-Color-Range */
+  /* {Orange-Color-Range} */
   /* prettier-ignore */
   --base-color-6-l500: oklch(85.02% 0.072 37.58); /* #f9beac */
   --base-color-6-l400: oklch(82.08% 0.088 38.17); /* #f7b19b */
@@ -279,7 +279,7 @@
   --base-color-6-d500: oklch(43.77% 0.087 37.71); /* #7a3f2d */
 
 
-  /* {Red-Color-Range */
+  /* {Red-Color-Range} */
   /* prettier-ignore */
   --base-color-7-l500: oklch(79.91% 0.085 23.54); /* #f0a8a3 */
   --base-color-7-l400: oklch(75.89% 0.105 24.16); /* #ec9690 */
@@ -293,7 +293,7 @@
   --base-color-7-d400: oklch(43.29% 0.119 27.17); /* #86302a */
   --base-color-7-d500: oklch(38.27% 0.103 26.25); /* #702824 */
 
-  /* {Purple-Color-Range */
+  /* {Purple-Color-Range} */
   /* prettier-ignore */
   --base-color-8-l500: oklch(75.12% 0.050 345.99); /* #c7a2b5 */  
   --base-color-8-l400: oklch(69.83% 0.061 347.29); /* #bb8fa5 */
@@ -307,7 +307,7 @@
   --base-color-8-d400: oklch(34.77% 0.071 350.15); /* #55293f */
   --base-color-8-d500: oklch(31.14% 0.060 349.81); /* #472335 */
 
-  /* {Smok-Color-Range */
+  /* {Smok-Color-Range} */
   /* prettier-ignore */
   --base-color-9-l400: oklch(97.93% 0.004 215.51); /* #f5f9fa */
   --base-color-9-l300: oklab(97.63% -0.003 -0.00); /* #f4f8f9 */
@@ -319,7 +319,7 @@
   --base-color-9-d300: oklch(74.04% 0.005 197.84); /* #a7acac */
   --base-color-9-d400: oklch(66.02% 0.004 215.06); /* #8f9394 */
 
-  /* Grey-Color-Range */
+  /* {Grey-Color-Range} */
   /* prettier-ignore */
   --base-grey-l700: oklch(95.0% 0.009 254);
   --base-grey-l600: oklch(90.0% 0.008 254);
@@ -350,7 +350,7 @@
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-card: oklch(1.0000 0 0);
+  --color-card: var-(--card)
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
@@ -397,7 +397,7 @@
   --color-chart-6: var(--chart-6);
   --color-chart-7: var(--chart-7);
 
-  /* Dark-Blue */
+  /* _Dark-Blue */
   --color-dark-blue: var(--primary-b000);
   --color-dark-blue-fade: var(--primary-l200);
   --color-dark-blue-inverse: var(--base-color-4-d100);
@@ -436,13 +436,13 @@
   --color-blue-950: var(--primary-d500);
 
 
-  /* Dark-Green */
+  /* _Dark-Green */
   --color-dark-green: var(--base-color-1);
   --color-dark-green-fade: var(--base-color-1-fade);
   --color-dark-green-inverse: var(--base-color-1-inverse);
   --color-dark-green-inverse-fade: var(--base-color-1-inverse-fade);
 
-  /* Green */
+  /* _Green */
   --color-dark-green-100: var(--base-color-1-l400);
   --color-dark-green-200: var(--base-color-1-l300);
   --color-dark-green-300: var(--base-color-1-l200);
@@ -465,18 +465,17 @@
   --color-emerald-900: var(--base-color-1-d400);
   --color-emerald-950: var(--base-color-1-l400);
 
-  --color-dark-green-100-inverse:: var(--base-color-9-d400);
-  --color-dark-green-200-inverse:: var(--base-color-9-d300);
-  --color-dark-green-300-inverse:: var(--base-color-9-d200);
-  --color-dark-green-400-inverse:: var(--base-color-9-d100);
-  --color-dark-green-500-inverse:: var(--base-color-9-b000);
-  --color-dark-green-600-inverse:: var(--base-color-9-l100);
-  --color-dark-green-700-inverse:: var(--base-color-9-l200);
-  --color-dark-green-800-inverse:: var(--base-color-9-l300);
-  --color-dark-green-900-inverse:: var(--base-color-9-l400);
+  --color-dark-green-100-inverse: var(--base-color-9-d400);
+  --color-dark-green-200-inverse: var(--base-color-9-d300);
+  --color-dark-green-300-inverse: var(--base-color-9-d200);
+  --color-dark-green-400-inverse: var(--base-color-9-d100);
+  --color-dark-green-500-inverse: var(--base-color-9-b000);
+  --color-dark-green-600-inverse: var(--base-color-9-l100);
+  --color-dark-green-700-inverse: var(--base-color-9-l200);
+  --color-dark-green-800-inverse: var(--base-color-9-l300);
+  --color-dark-green-900-inverse: var(--base-color-9-l400);
 
-
-  /* Green */
+  /* _Green */
   --color-green: var(--base-color-2);
   --color-green-fade: var(--base-color-2-fade);
   --color-green-inverse: var(--base-color-2-inverse);
@@ -516,9 +515,9 @@
   --color-green-900-inverse: var(--base-color-5-l400);
 
 
-  /* Light-Green */
+  /* _Light-Green */
 
-  --color-lght-green: var(--base-color-3);
+  --color-light-green: var(--base-color-3);
   --color-light-green-fade: var(--base-color-3-fade);
   --color-light-green-inverse: var(--base-color-3-inverse);
   --color-light-green-inverse-fade: var(--base-color-3-inverse-fade);
@@ -555,7 +554,7 @@
   --color-light-green-800-inverse: var(--base-color-8-l300);
   --color-light-green-900-inverse: var(--base-color-8-l400);
 
-  /* Light-Blue */
+  /* _Light-Blue */
   --color-light-blue: var(--base-color-4);
   --color-light-blue-fade: var(--base-color-4-inverse);
   --color-light-blue-inverse: var(--base-color-4-inverse);
@@ -594,7 +593,7 @@
   --color-light-blue-900-inverse: var(--primary-l400);
 
 
-  /* Yellow */
+  /* _Yellow */
   --color-yellow: var(--base-color-5);
   --color-yellow-fade: var(--base-color-5-fade);
   --color-yellow-inverse: var(--base-color-5-inverse);
@@ -620,7 +619,7 @@
   --color-yellow-800-inverse: var(--primary-l300);
   --color-yellow-900-inverse: var(--primary-l400);
 
-  /* Orange */
+  /* _Orange */
   --color-orange: var(--base-color-6);
   --color-orange-fade: var(--base-color-6-fade);
   --color-orange-inverse: var(--base-color-6-inverse);
@@ -648,7 +647,7 @@
   --color-orange-800-inverse: var(--primary-d300);
   --color-orange-900-inverse: var(--primary-d400);
 
-  /* Red */
+  /* _Red */
   --color-red: var(--base-color-7);
   --color-red-fade: var(--base-color-7-fade);
   --color-red-inverse: var(--base-color-7-inverse);
@@ -677,7 +676,7 @@
   --color-red-900-inverse: var(--base-color-4-l400);
 
 
-  /* Purple */
+  /* _Purple */
   --color-purple: var(--base-color-8);
   --color-purple-fade: var(--base-color-8-fade);
   --color-purple-inverse: var(--base-color-8-inverse);
@@ -705,7 +704,7 @@
   --color-purple-800-inverse: var(--base-color-3-l300);
   --color-purple-900-inverse: var(--base-color-3-l400);
 
-  /* Smoke */
+  /* _Smoke */
   --color-smoke: var(--base-color-9);
   --color-smoke-fade:  var(--base-color-9-fade);
   --color-smoke-inverse: var(--base-color-9-inverse);
@@ -733,7 +732,7 @@
   --color-slate-900: var(--base-color-9-d400);
   --color-slate-950: var(--base-color-9-d400);
 
-  /* Greys */
+  /* _Greys */
   --color-grey-100: var(--base-grey-l700);
   --color-grey-150: var(--base-grey-l600);
   --color-grey-200: var(--base-grey-l500);
@@ -791,7 +790,6 @@
   --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
   --animate-heartbeat: heartbeat 2s infinite ease-in-out;
 
-
   --spacing-xxs: .5rem;
   --spacing-xs: 1rem;
   --spacing-sm: 2rem;
@@ -845,13 +843,6 @@
       5.5px 5.5px 0 var(--base-color-1-inverse)
   }
 
-  .card.shadow-light-green {
-    align-items: center;
-    justify-content: center;
-    box-shadow: .5px .5px 0 var(--base-color-3), 1px 1px 0 var(--base-color-3), 1.5px 1.5px 0 var(--base-color-3), 2px 2px 0 var(--base-color-3), 2.5px 2.5px 0 var(--base-color-3), 3px 3px 0 var(--base-color-3), 3.5px 3.5px 0 var(--base-color-3), 4px 4px 0 var(--base-color-3), 4.5px 4.5px 0 var(--base-color-3), 5px 5px 0 var(--base-color-3), 5.5px 5.5px 0 var(--base-color-3)
-  }
-
-
   .card.is-orange {
     background-color: var(--base-color-6);
     border-color: var(--base-color-6);
@@ -880,16 +871,16 @@
     box-shadow: .5px .5px 0 var(--base-color-9-inverse), 1px 1px 0 var(--base-color-9-inverse), 1.5px 1.5px 0 var(--base-color-9-inverse), 2px 2px 0 var(--base-color-9-inverse), 2.5px 2.5px 0 var(--base-color-9-inverse), 3px 3px 0 var(--base-color-9-inverse), 3.5px 3.5px 0 var(--base-color-9-inverse), 4px 4px 0 var(--base-color-9-inverse), 4.5px 4.5px 0 var(--base-color-9-inverse), 5px 5px 0 var(--base-color-9-inverse), 5.5px 5.5px 0 var(--base-color-9-inverse)
   }
 
-  .bg-color-primary{background-color:var(--primary);border-color:var(--primary)}
-  .bg-dark-green{background-color:var(--base-color-1);border-color:var(--base-color-1)}
-  .bg-green{background-color:var(--base-color-2);border-color:var(--base-color-2)}
-  .bg-light-green{background-color:var(--base-color-3);border-color:var(--base-color-3)}
-  .bg-light-blue{background-color:var(--base-color-4);border-color:var(--base-color-4)}
-  .bg-yellow{background-color:var(--base-color-5);border-color:var(--base-color-5)}
-  .bg-orange{background-color:var(--base-color-6);border-color:var(--base-color-6)}
-  .bg-red{background-color:var(--base-color-7);border-color:var(--base-color-7)}
-  .bg-purple{background-color:var(--base-color-8);border-color:var(--base-color-8)}
-  .bg-smoke{background-color:var(--base-color-9);border-color:var(--base-color-9)}
+  .bg-color-primary{background-color: var(--base-color-primary); border-color: var(--base-color-primary)}
+  .bg-dark-green{background-color:var(--base-color-1); border-color: var(--base-color-1)}
+  .bg-green{background-color:var(--base-color-2); border-color: var(--base-color-2)}
+  .bg-light-green{background-color: var(--base-color-3); border-color: var(--base-color-3)}
+  .bg-light-blue{background-color: var(--base-color-4); border-color: var(--base-color-4)}
+  .bg-yellow{background-color: var(--base-color-5); border-color: var(--base-color-5)}
+  .bg-orange{background-color: var(--base-color-6); border-color: var(--base-color-6)}
+  .bg-red{background-color: var(--base-color-7); border-color: var(--base-color-7)}
+  .bg-purple{background-color: var(--base-color-8); border-color: var(--base-color-8)}
+  .bg-smoke{background-color: var(--base-color-9); border-color: var(--base-color-9)}
 
   .tag {
     align-self: center;
@@ -1020,16 +1011,16 @@
       12.95px 12.5px currentColor;
   }
 
-  .jsx-text {color: var(--primary) !important;}
-  .jsx-tag-angle-bracket {color: var(--secondary) !important;}
+  .jsx-text {color: var(--color-primary) !important;}
+  .jsx-tag-angle-bracket {color: var(--color-green) !important;}
   .jsx-tag-name {color: var(--base-color-7) !important;}
-  .jsx-tag-attribute-key {color: var(--base-color-8) !important;}
-  .jsx-expression-braces {color: var(--base-color-8-l200) !important;}
-  .dark .jsx-text {color: var(--base-color-8-l400) !important;}
+  .jsx-tag-attribute-key {color: var(--color-yellow) !important;}
+  .jsx-expression-braces {color: var(--color-purple-200) !important;}
+  .dark .jsx-text {color:  var(--color-purple) !important;}
   .dark .jsx-tag-angle-bracket { color: var(--base-grey-l200) !important;}
-  .dark .jsx-tag-name { color: var(--base-color-7-l400) !important; }
-  .dark .jsx-tag-attribute-key {color: var(--base-color-7-d200) !important;}
-  .dark .jsx-expression-braces {color: var(--base-color-7-d400) !important;}
+  .dark .jsx-tag-name { color:  var(--color-red-700) !important; }
+  .dark .jsx-tag-attribute-key {color: var(--color-red-700) !important;}
+  .dark .jsx-expression-braces {color:  var(--color-red-900) !important;}
 }
 
 

@@ -343,6 +343,7 @@ export default function CalendarHeatmap({
         <Calendar
           formatters={{ formatCaption }}
           numberOfMonths={12}
+         onDayClick={() => {}}
           month={calendarStartDate}
           defaultMonth={calendarStartDate}
           className="calendar-heatmap__calendar"
@@ -370,12 +371,12 @@ export default function CalendarHeatmap({
             extreme: heatmapClassMap.extreme,
           }}
           modifiersStyles={{
-            empty: { backgroundColor: getHeatmapColor("empty") },
-            low: { backgroundColor: getHeatmapColor("low") },
-            mediumLow: { backgroundColor: getHeatmapColor("mediumLow") },
-            mediumHigh: { backgroundColor: getHeatmapColor("mediumHigh") },
-            high: { backgroundColor: getHeatmapColor("high") },
-            extreme: { backgroundColor: getHeatmapColor("extreme") },
+          empty: { backgroundColor: getHeatmapColor("empty"), color: "var(--heatmap-number-color)" },
+          low: { backgroundColor: getHeatmapColor("low"), color: "var(--heatmap-number-color)" },
+          mediumLow: { backgroundColor: getHeatmapColor("mediumLow"), color: "var(--heatmap-number-color)" },
+          mediumHigh: { backgroundColor: getHeatmapColor("mediumHigh"), color: "var(--heatmap-number-color)" },
+          high: { backgroundColor: getHeatmapColor("high"), color: "var(--heatmap-number-color)" },
+          extreme: { backgroundColor: getHeatmapColor("extreme"), color: "var(--heatmap-number-color)" },
           }}
           components={{
             Weekdays: () => <></>,
