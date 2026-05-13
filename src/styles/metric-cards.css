@@ -8,14 +8,14 @@
     --color-total: var(--color-dark-blue);
     --color-total-var: var(--color-dark-blue-inverse);
 
-    --color-transient: var(--color-light-green);
-    --color-transient-var:var(--color-light-green-inverse);
+    --color-transient: var(--color-light-blue);
+    --color-transient-var:var(--color-yellow);
 
-    --color-group: var(--color-yellow);
-    --color-group-var: var(--base-color-5-inverse);
+    --color-group: var(--color-light-green);
+    --color-group-var: var(--color-orange);
 
-    --color-crew: var(--color-purple);
-    --color-crew-var: var(--color-purple-inverse);
+    --color-crew: var(--color-yellow);
+    --color-crew-var: var(--color-purple);
 
     --color-complimentary: var(--base-grey-l700);
     --color-complimentary-var: var(--base-grey-l400);
