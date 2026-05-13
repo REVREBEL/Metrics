@@ -73,7 +73,7 @@ const heatmapClassMap: Record<HeatmapBucket, string> = {
   extreme: "metric-card-heatmmap-extreme",
 };
 
-const heatmapFallbackColorMap: Record<HeatmapBucket, string> = {
+const heatmapColorMap: Record<HeatmapBucket, string> = {
   empty: "var(--color-smoke-fade, var(--muted))",
   low: "var(--color-light-blue, var(--base-color-4))",
   mediumLow: "var(--color-yellow, var(--base-color-5))",
@@ -81,6 +81,10 @@ const heatmapFallbackColorMap: Record<HeatmapBucket, string> = {
   high: "var(--color-red, var(--base-color-7))",
   extreme: "var(--color-purple, var(--base-color-8))",
 };
+
+function getHeatmapColor(bucket: HeatmapBucket) {
+  return heatmapColorMap[bucket];
+}
 
 function getLookbackDays(selectedRange: PickupWindow) {
   return Number.parseInt(selectedRange.replace("d", ""), 10);
@@ -134,6 +138,10 @@ function createMockHeatmapData(startDate: Date, months: number, lookbackDays: nu
   }
 
   return data;
+}
+
+function hasVisiblePickup(data: CalendarHeatmapData[]) {
+  return data.some((item) => item.rooms > 0);
 }
 
 export default function CalendarHeatmap({
@@ -190,7 +198,7 @@ export default function CalendarHeatmap({
             adr: Number(pickupRow.adr) || 0,
           };
         });
-        setHeatmapData(transformedData.length ? transformedData : demoData);
+        setHeatmapData(hasVisiblePickup(transformedData) ? transformedData : demoData);
       } catch (e) {
         setLoadError(null);
         setHeatmapData(demoData);
@@ -332,7 +340,7 @@ function HeatmapLegend() {
           <div key={item.bucket} className="calendar-heatmap__legend-item">
             <div
               className={`calendar-heatmap__legend-box ${heatmapClassMap[item.bucket]}`}
-              style={{ backgroundColor: `var(--metric-color, ${heatmapFallbackColorMap[item.bucket]})` }}
+              style={{ backgroundColor: getHeatmapColor(item.bucket) }}
             />
             <span>{item.label}</span>
           </div>
@@ -359,7 +367,7 @@ function CustomDayButton({
   const metrics = dataMap.get(dayStr) || { rooms: 0, revenue: 0, adr: 0 };
   const bucket = bucketMap.get(dayStr) ?? "empty";
   const bucketClassName = heatmapClassMap[bucket];
-  const fallbackColor = heatmapFallbackColorMap[bucket];
+  const heatmapColor = getHeatmapColor(bucket);
   const pickupPct = (metrics.rooms / PLACEHOLDER_AVAILABLE_ROOMS) * 100;
   const formattedDate = day.date
     .toLocaleDateString("en-US", {
@@ -374,7 +382,7 @@ function CustomDayButton({
       <CalendarDayButton
         {...dayProps}
         className={`calendar-heatmap__day-button ${bucketClassName}`}
-        style={{ backgroundColor: `var(--metric-color, ${fallbackColor})` } as React.CSSProperties}
+        style={{ backgroundColor: heatmapColor } as React.CSSProperties}
       />
       <div className="calendar-heatmap__tooltip-wrap">
         <div className="calendar-heatmap__tooltip retro-shadow-base">
@@ -385,7 +393,7 @@ function CustomDayButton({
             <div className="calendar-heatmap__tooltip-number">{metrics.rooms.toLocaleString()}</div>
             <div
               className={`calendar-heatmap__tooltip-accent ${bucketClassName}`}
-              style={{ backgroundColor: `var(--metric-color, ${fallbackColor})` }}
+              style={{ backgroundColor: heatmapColor }}
             />
             <div className="calendar-heatmap__tooltip-label">Rooms</div>
 
