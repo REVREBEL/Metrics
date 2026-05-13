@@ -6,9 +6,10 @@ import { useDuckDb } from "@/hooks/useDuckDb";
 import { Skeleton } from "@/components/ui/skeleton";
 import { MetricCard, MetricCardTabs } from "@/widgets/_shared/MetricCard";
 
-const DAY_SIZE = "16px";
-const DAY_MARGIN = "2px";
+const DAY_SIZE = "24px";
+const DAY_MARGIN = "1px";
 const PLACEHOLDER_AVAILABLE_ROOMS = 100;
+const DEMO_PICKUP_SCALE = 0.3;
 
 const PICKUP_WINDOWS = [
   { label: "1 Day", value: "1d" },
@@ -102,6 +103,10 @@ function getHeatmapBucket(rooms: number, availableRooms = PLACEHOLDER_AVAILABLE_
   return "extreme";
 }
 
+function scaleDemoRooms(rooms: number) {
+  return Math.max(rooms > 0 ? 1 : 0, Math.round(rooms * DEMO_PICKUP_SCALE));
+}
+
 function createMockHeatmapData(startDate: Date, months: number, lookbackDays: number): CalendarHeatmapData[] {
   const start = startOfMonth(startDate);
   const end = addMonths(start, months);
@@ -123,6 +128,8 @@ function createMockHeatmapData(startDate: Date, months: number, lookbackDays: nu
     if (day === 12 || day === 26) rooms = Math.max(rooms, 10);
     if (day === 15) rooms = Math.max(rooms, 20);
     if (day === 28) rooms = Math.max(rooms, 24);
+
+    rooms = scaleDemoRooms(rooms);
 
     const adr = 165 + ((monthIndex * 9 + day * 2) % 75);
     const revenue = Math.round(rooms * adr);
@@ -402,7 +409,7 @@ function CustomDayButton({
   const bucket = bucketMap.get(dayStr) ?? "empty";
   const bucketClassName = heatmapClassMap[bucket];
   const heatmapColor = getHeatmapColor(bucket);
-  const pickupPct = (metrics.rooms / PLACEHOLDER_AVAILABLE_ROOMS) * 100;
+  const occupancyPct = (metrics.rooms / PLACEHOLDER_AVAILABLE_ROOMS) * 100;
   const formattedDate = day.date
     .toLocaleDateString("en-US", {
       weekday: "long",
@@ -424,26 +431,17 @@ function CustomDayButton({
             {formattedDate}
           </div>
           <div className="calendar-heatmap__tooltip-grid">
-            <div className="calendar-heatmap__tooltip-number">{metrics.rooms.toLocaleString()}</div>
+            <div className="calendar-heatmap__tooltip-number">
+              {occupancyPct.toFixed(1)}%
+            </div>
             <div
               className={`calendar-heatmap__tooltip-accent ${bucketClassName}`}
               style={{ backgroundColor: heatmapColor }}
             />
+            <div className="calendar-heatmap__tooltip-label">Occupancy</div>
+
+            <div className="calendar-heatmap__tooltip-number">{metrics.rooms.toLocaleString()}</div>
             <div className="calendar-heatmap__tooltip-label">Rooms</div>
-
-            <div className="calendar-heatmap__tooltip-number">
-              {pickupPct.toFixed(1)}%
-            </div>
-            <div className="calendar-heatmap__tooltip-label">Of Available</div>
-
-            <div className="calendar-heatmap__tooltip-number">
-              {new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: "USD",
-                maximumFractionDigits: 0,
-              }).format(metrics.revenue)}
-            </div>
-            <div className="calendar-heatmap__tooltip-label">Revenue</div>
           </div>
         </div>
       </div>
