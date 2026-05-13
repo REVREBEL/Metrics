@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import { PieChart as RechartsPieChart, Pie, ResponsiveContainer } from 'recharts';
-import { type PieSectorDataItem } from 'recharts/types/polar/Pie';
 import { Card, CardContent } from '@/components/ui/card';
 import ArrowCircleDown from '@/assets/RebelIconsReact/ArrowCircleDown';
 import ArrowCircleUp from '@/assets/RebelIconsReact/ArrowCircleUp';
 import {
-  Filter,
   ArrowRight,
-  Database,
   CalendarDays,
-  Activity
 } from 'lucide-react';
 
 // --- Rebel Style Constants ---
@@ -136,14 +132,9 @@ export default function App({ year = "2025", month = "Sep" }: DailyPickupTablePr
         <header className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-slate-200 overflow-hidden">
           <div className="flex flex-col md:flex-row md:items-center justify-between px-8 py-6 border-b border-slate-100">
             <div className="space-y-1.5">
-              <div className="flex items-center gap-3">
-                <div className="bg-indigo-600 p-2 rounded-lg shadow-lg shadow-indigo-200">
-                  <Activity size={20} className="text-white" />
-                </div>
-                <h1 className="text-2xl text-primary font-bold  uppercase tracking-tighter">
-                  Daily Pickup <span className="text-primary ">Metric</span>
-                </h1>
-              </div>
+              <h1 className="text-2xl text-primary font-bold uppercase tracking-tighter">
+                Daily Pickup <span className="text-primary">Metric</span>
+              </h1>
             </div>
           </div>
 
@@ -219,12 +210,6 @@ export default function App({ year = "2025", month = "Sep" }: DailyPickupTablePr
                 </button>
               ))}
             </div>
-          </div>
-          <div className="flex items-center gap-4 text-xs font-bold text-slate-400">
-          </div>
-          <div className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
-            <Activity size={14} className="text-green" />
-            <span className="text-dark-blue uppercase tracking-tighter">Live Status</span>
           </div>
         </div>
       </div>
@@ -302,18 +287,6 @@ export default function App({ year = "2025", month = "Sep" }: DailyPickupTablePr
           </table>
         </div>
       </div>
-
-      {/* --- Report Footer Meta --- */}
-      <footer className="flex flex-col md:flex-row justify-between items-center px-6 py-4 bg-white rounded-xl border border-slate-200 shadow-sm gap-4">
-        <div className="flex items-center gap-8 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
-          <span className="flex items-center gap-2.5 text-slate-700">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)] animate-pulse" />
-            Live Feed Connection Active
-          </span>
-          <span>Query Sync: 06:17 AM</span>
-          <span className="bg-slate-100 px-2 py-0.5 rounded border border-slate-200">ID: DTW-DFH-2026</span>
-        </div>
-      </footer>
     </div>
   );
 }
