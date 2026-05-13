@@ -63,9 +63,14 @@
   position: relative;
   width: var(--box-size);
   height: var(--box-size);
-  padding: 0;
+  padding: 0 0 0 4px;
   margin: var(--box-margin);
   aspect-ratio: 1;
+  color: var(--heatmap-number-color, var(--primary-b000));
+  font-family: var(--font-display);
+  font-size: medium;
+  font-weight: 600;
+  line-height: 1.5;
 }
 
 .calendar-heatmap__outside {
@@ -93,26 +98,32 @@
 
 .metric-card-heatmmap-empty {
   --heatmap-color: var(--heatmap-empty);
+  --heatmap-number-color: var(--muted-foreground);
 }
 
 .metric-card-heatmmap-low {
   --heatmap-color: var(--metric-color, var(--color-light-blue, var(--base-color-4)));
+  --heatmap-number-color: var(--metric-color-inverse, var(--color-light-blue-inverse, var(--primary-b000)));
 }
 
 .metric-card-heatmmap-medium-low {
   --heatmap-color: var(--metric-color, var(--color-yellow, var(--base-color-5)));
+  --heatmap-number-color: var(--metric-color-inverse, var(--color-yellow-inverse, var(--primary-b000)));
 }
 
 .metric-card-heatmmap-medium-high {
   --heatmap-color: var(--metric-color, var(--color-orange, var(--base-color-6)));
+  --heatmap-number-color: var(--metric-color-inverse, var(--color-orange-inverse, var(--primary-b000)));
 }
 
 .metric-card-heatmmap-high {
   --heatmap-color: var(--metric-color, var(--color-red, var(--base-color-7)));
+  --heatmap-number-color: var(--metric-color-inverse, var(--color-red-inverse, var(--background)));
 }
 
 .metric-card-heatmmap-extreme {
   --heatmap-color: var(--metric-color, var(--color-purple, var(--base-color-8)));
+  --heatmap-number-color: var(--metric-color-inverse, var(--color-purple-inverse, var(--background)));
 }
 
 .calendar-heatmap__day-button {
@@ -185,9 +196,9 @@
 }
 
 .calendar-heatmap__tooltip-accent {
-  grid-row: span 3;
+  grid-row: span 2;
   height: 100%;
-  min-height: 4.5rem;
+  min-height: 3rem;
   border-radius: 2px;
 }
 
