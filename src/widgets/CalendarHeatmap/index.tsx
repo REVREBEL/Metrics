@@ -81,7 +81,7 @@ const heatmapClassMap: Record<HeatmapBucket, string> = {
 };
 
 const heatmapColorMap: Record<HeatmapBucket, string> = {
-  empty: "var(--color-smoke-fade, var(--muted))",
+  empty: "var(--background)",
   low: "var(--color-light-blue, var(--base-color-4))",
   mediumLow: "var(--color-yellow, var(--base-color-5))",
   mediumHigh: "var(--color-orange, var(--base-color-6))",
@@ -369,7 +369,11 @@ export default function CalendarHeatmap({
           components={{
             Weekdays: () => <></>,
             DayButton: (props: DayButtonComponentProps) => (
-              <CustomDayButton dayProps={props} />
+              <CustomDayButton
+                dayProps={props}
+                dataMap={dataMap}
+                bucketMap={bucketMap}
+              />
             ),
           }}
         />
@@ -410,15 +414,57 @@ function HeatmapLegend() {
 
 interface CustomDayButtonProps {
   dayProps: DayButtonComponentProps;
+  dataMap: Map<string, Omit<CalendarHeatmapData, "date" | "dateStr">>;
+  bucketMap: Map<string, HeatmapBucket>;
 }
 
 function CustomDayButton({
   dayProps,
+  dataMap,
+  bucketMap,
 }: CustomDayButtonProps): React.JSX.Element {
+  const { day } = dayProps;
+  const dayStr = formatLocalYYYYMMDD(day.date);
+  const metrics = dataMap.get(dayStr) || { rooms: 0, revenue: 0, adr: 0 };
+  const bucket = bucketMap.get(dayStr) ?? "empty";
+  const bucketClassName = heatmapClassMap[bucket];
+  const heatmapColor = getHeatmapColor(bucket);
+  const occupancyPct = (metrics.rooms / PLACEHOLDER_AVAILABLE_ROOMS) * 100;
+  const formattedDate = day.date
+    .toLocaleDateString("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+    })
+    .replace(",", ", ");
+
   return (
-    <CalendarDayButton
-      {...dayProps}
-      className="calendar-heatmap__day-button"
-    />
+    <div className="calendar-heatmap__day-wrap group">
+      <CalendarDayButton
+        {...dayProps}
+        className={`calendar-heatmap__day-button ${bucketClassName}`}
+        style={{ backgroundColor: heatmapColor } as React.CSSProperties}
+      />
+      <div className="calendar-heatmap__tooltip-wrap">
+        <div className="calendar-heatmap__tooltip retro-shadow-base">
+          <div className="calendar-heatmap__tooltip-date">
+            {formattedDate}
+          </div>
+          <div className="calendar-heatmap__tooltip-grid">
+            <div className="calendar-heatmap__tooltip-number">
+              {occupancyPct.toFixed(1)}%
+            </div>
+            <div
+              className={`calendar-heatmap__tooltip-accent ${bucketClassName}`}
+              style={{ backgroundColor: heatmapColor }}
+            />
+            <div className="calendar-heatmap__tooltip-label">Occupancy</div>
+
+            <div className="calendar-heatmap__tooltip-number">{metrics.rooms.toLocaleString()}</div>
+            <div className="calendar-heatmap__tooltip-label">Rooms</div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
