@@ -101,13 +101,12 @@
   opacity: 0;
   pointer-events: none;
 }
-
-.calendar-heatmap__day.calendar-heatmap__today.metric-card-heatmap-medium-empty,
+.calendar-heatmap__day.calendar-heatmap__today.metric-card-heatmap-empty,
 .calendar-heatmap__day.calendar-heatmap__today.metric-card-heatmap-low,
 .calendar-heatmap__day.calendar-heatmap__today.metric-card-heatmap-medium-low,
-.calendar-heatmap__day.calendar-heatmap__today.metric-card-heatmap-medium-medium,
 .calendar-heatmap__day.calendar-heatmap__today.metric-card-heatmap-medium-high,
-.calendar-heatmap__day.calendar-heatmap__today.metric-card-heatmap-medium-extreme {
+.calendar-heatmap__day.calendar-heatmap__today.metric-card-heatmap-high,
+.calendar-heatmap__day.calendar-heatmap__today.metric-card-heatmap-extreme {
   position: relative;
   outline: 7px solid var(--heatmap-number-color) !important;
   outline-offset: -4px;
