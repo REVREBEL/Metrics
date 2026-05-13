@@ -36,9 +36,9 @@ export default function AnalyticsOverview() {
   const activeMetric = metrics.find((m) => m.key === activeKey)!;
 
   return (
-    <Card className="w-full max-w-5xl border-none bg-background retro-shadow-primary-md overflow-hidden p-0">
+    <Card className="w-full max-w-5xl border-none bg-background retro-shadow-base overflow-hidden p-0">
       {/* 1. Header Navigation */}
-      <div className="grid grid-cols-4 border-b border-muted">
+      <div className="grid grid-cols-4">
         {metrics.map((m) => {
           const isActive = activeKey === m.key;
           return (
@@ -149,7 +149,7 @@ export default function AnalyticsOverview() {
 const CustomTooltip = ({ active, payload, label, activeColorVar }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-secondary border border-muted p-4 rounded-sm retro-shadow-primary-md min-w-[140px]">
+      <div className="bg-secondary border border-muted p-4 rounded-sm retro-shadow-base min-w-[140px]">
         <p className="font-display font-bold text-[10px] uppercase text-dark-blue mb-2 tracking-widest">{label}</p>
         <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-2">

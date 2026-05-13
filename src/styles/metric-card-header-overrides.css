@@ -1,0 +1,55 @@
+/*
+  Metric card header/content layout overrides.
+  Imported last so title, action, description, and content align even when shadcn utilities are present.
+*/
+
+.metric-card .metric-card__header,
+.metric-card [data-slot="card-header"].metric-card__header {
+  display: block;
+  padding: 0 0 1rem;
+}
+
+.metric-card .metric-card__heading {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.metric-card .metric-card__heading-text {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.metric-card .metric-card__heading-text > .metric-card__title + .metric-card__description {
+  margin-top: 0.375rem;
+}
+
+.metric-card .metric-card__header-action {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.metric-card .metric-card__header-action svg {
+  display: block;
+}
+
+.metric-card .metric-card__content,
+.metric-card [data-slot="card-content"].metric-card__content {
+  padding: 0;
+}
+
+.metric-card .metric-card__description,
+.metric-card__description.metric-card__description {
+  margin: 0;
+}
+
+.metric-card .metric-card-tabs-root,
+.metric-card-tabs-root.metric-card-tabs-root {
+  margin-bottom: 0;
+}
