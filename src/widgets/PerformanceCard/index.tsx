@@ -613,9 +613,9 @@ export default function HospitalityDashboard({ year, month }: { year: string; mo
   const totalRemaining = cardState.donutRings[0]?.remaining ?? 0;
 
   return (
-    <Card className="metrics shadow-none retro-shadow-primary-lg w-full max-w-2xl border-2x border-color-primary bg-card p-6">
-      <CardContent className="grid grid-cols-1 column-gap-2 p-0 md:grid-cols-2">
-        <div className="flex flex-col justify-between">
+    <Card className="metrics retro-shadow-primary-lg w-full max-w-2xl border-2 border-color-primary bg-card p-6 shadow-none">
+      <CardContent className="grid min-w-0 grid-cols-1 gap-2 p-0 md:grid-cols-2">
+        <div className="flex min-w-0 flex-col justify-between">
           <div className="grid grid-cols-2 gap-2">
             <div>
               <p className="font-display text-lg font-bold uppercase text-primary">{topLeft.label}</p>
@@ -649,16 +649,16 @@ export default function HospitalityDashboard({ year, month }: { year: string; mo
           </div>
         </div>
 
-        <div className="space-y-4">
+        <div className="min-w-0 space-y-4">
           <Card
             ref={donutCardRef}
-            className="relative flex h-[275px] items-center justify-center overflow-visible border-none bg-secondary p-4"
+            className="relative flex h-[275px] min-h-[275px] min-w-0 items-center justify-center overflow-visible border-none bg-secondary p-4"
           >
             <div className="pointer-events-none absolute inset-0 z-0 flex flex-col items-center justify-center">
               <p className="font-serif text-2xl text-primary">{formatCompactCurrency(totalRemaining)}</p>
               <p className="font-display text-sm font-bold uppercase text-primary opacity-70">To Book</p>
             </div>
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0}>
               <PieChart>
                 {cardState.donutRings.map((ring) => (
                   <Pie
@@ -727,8 +727,8 @@ export default function HospitalityDashboard({ year, month }: { year: string; mo
             )}
           </Card>
 
-          <Card className="flex h-[120px] items-end border-none bg-secondary p-2">
-            <ResponsiveContainer width="100%" height="100%">
+          <Card className="flex h-[120px] min-h-[120px] min-w-0 items-end border-none bg-secondary p-2">
+            <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0}>
 
               <BarChart
                 data={cardState.barData}
