@@ -118,7 +118,6 @@ function createMockHeatmapData(startDate: Date, months: number, lookbackDays: nu
 
     let rooms = Math.round((basePattern * lookbackFactor + (isWeekend ? 5 : 1)) * seasonalLift);
 
-    // Demo spikes to make every heat bucket visible against the placeholder 100-room inventory.
     if (day === 5 || day === 19) rooms = Math.max(rooms, 2);
     if (day === 8 || day === 22) rooms = Math.max(rooms, 5);
     if (day === 12 || day === 26) rooms = Math.max(rooms, 10);
@@ -235,6 +234,24 @@ export default function CalendarHeatmap({
     }, new Map<string, HeatmapBucket>());
   }, [heatmapData]);
 
+  const modifierDates = useMemo(() => {
+    return heatmapData.reduce(
+      (acc, item) => {
+        const bucket = getHeatmapBucket(item.rooms);
+        acc[bucket].push(item.date);
+        return acc;
+      },
+      {
+        empty: [] as Date[],
+        low: [] as Date[],
+        mediumLow: [] as Date[],
+        mediumHigh: [] as Date[],
+        high: [] as Date[],
+        extreme: [] as Date[],
+      },
+    );
+  }, [heatmapData]);
+
   if (loading && !heatmapData.length) {
     return <Skeleton className="h-120 w-full" />;
   }
@@ -304,6 +321,23 @@ export default function CalendarHeatmap({
             day: "calendar-heatmap__day",
             outside: "calendar-heatmap__outside",
             today: "calendar-heatmap__today",
+          }}
+          modifiers={modifierDates}
+          modifiersClassNames={{
+            empty: heatmapClassMap.empty,
+            low: heatmapClassMap.low,
+            mediumLow: heatmapClassMap.mediumLow,
+            mediumHigh: heatmapClassMap.mediumHigh,
+            high: heatmapClassMap.high,
+            extreme: heatmapClassMap.extreme,
+          }}
+          modifiersStyles={{
+            empty: { backgroundColor: getHeatmapColor("empty") },
+            low: { backgroundColor: getHeatmapColor("low") },
+            mediumLow: { backgroundColor: getHeatmapColor("mediumLow") },
+            mediumHigh: { backgroundColor: getHeatmapColor("mediumHigh") },
+            high: { backgroundColor: getHeatmapColor("high") },
+            extreme: { backgroundColor: getHeatmapColor("extreme") },
           }}
           components={{
             Weekdays: () => <></>,
