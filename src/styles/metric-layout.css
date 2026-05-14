@@ -120,8 +120,20 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--metric-color);
+  color: var(--metric-layout-trend-color, var(--metric-color));
   line-height: 1;
+}
+
+.metric-layout[data-trend="up"] {
+  --metric-layout-trend-color: var(--color-positive);
+}
+
+.metric-layout[data-trend="down"] {
+  --metric-layout-trend-color: var(--color-negative);
+}
+
+.metric-layout[data-trend="neutral"] {
+  --metric-layout-trend-color: var(--metric-color);
 }
 
 .metric-layout--inverse .metric-layout__trend-slot {
@@ -174,7 +186,12 @@
   width: 1em;
   height: 1em;
   flex: 0 0 auto;
-  stroke-width: 3;
+  color: currentColor;
+  fill: currentColor;
+}
+
+.metric-layout__trend-icon path {
+  fill: currentColor;
 }
 
 .metric-layout__progress {
@@ -238,9 +255,15 @@
 }
 
 .metric-layout--split .metric-layout__body {
-  align-items: flex-start;
+  align-items: flex-end;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.metric-layout--split .metric-layout__supporting {
+  align-items: flex-end;
+  align-self: flex-end;
+  padding-bottom: 0.125em;
 }
 
 .metric-layout--inline .metric-layout__main {
@@ -340,6 +363,12 @@
   .metric-layout--row .metric-layout__main {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .metric-layout--split .metric-layout__supporting {
+    align-items: flex-start;
+    align-self: flex-start;
+    padding-bottom: 0;
   }
 
   .metric-layout-group--2,
