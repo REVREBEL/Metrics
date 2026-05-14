@@ -8,6 +8,15 @@ import { MetricCardShell } from "./MetricCardShell";
 import type { MetricTheme } from "./metric-theme";
 
 export { MetricCardShell };
+export { MetricLayout, MetricLayoutGroup } from "./MetricLayout";
+export type {
+  MetricLayoutAlign,
+  MetricLayoutProps,
+  MetricLayoutSize,
+  MetricLayoutVariant,
+  MetricTrend,
+  MetricLayoutGroupProps,
+} from "./MetricLayout";
 
 type MetricCardProps = React.ComponentProps<typeof MetricCardShell>;
 
