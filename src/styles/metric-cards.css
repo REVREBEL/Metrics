@@ -1,8 +1,13 @@
 @layer components {
   :root {
+
     /* Metric status */
-    --color-positive: var(--color-light-green);
+    --color-positive: var(--color-green);
     --color-negative: var(--color-red);
+
+    --color-positive-inverse: var(--color-green-inverse);
+    --color-negative-inverse: var(--color-red-inverse);
+
 
     /* Production Segments */
     --color-total: var(--color-dark-blue);
@@ -327,92 +332,82 @@
     --metric-variance-color: var(--color-other-var);
   }
 
+
+  
   .metric-card--facebook {
-    --metric-color: var(--color-facebook);
-    --metric-variance-color: var(--color-facebook);
+    --channel-primary: var(--color-facebook);
+    --channel-inverse: var(--color-facebook-inverse) 
   }
 
   .metric-card--instagram {
-    --metric-color: var(--color-instagram);
-    --metric-variance-color: var(--color-instagram);
+    --channel-primary: var(--color-instagram);
+    --channel-inverse: var(--color-instagram);
   }
 
   .metric-card--x {
-    --metric-color: var(--color-x);
-    --metric-variance-color: var(--color-x);
+   --channel-primary: var(--color-x);
+    --channel-inverse: var(--color-x);
   }
 
   .metric-card--linkedin {
-    --metric-color: var(--color-linkedin);
-    --metric-variance-color: var(--color-linkedin);
-    --metric-inverse-color: var(--color-linkedin-inverse);
+    --channel-primary: var(--color-linkedin);
+    --channel-inverse: var(--color-linkedin-inverse);
   }
 
   .metric-card--tiktok {
-    --metric-color: var(--color-tiktok);
-    --metric-variance-color: var(--color-tiktok);
-    --metric-inverse-color: var(--color-tiktok-inverse);
+    --channel-primary: var(--color-tiktok);
+    --channel-inverse: var(--color-tiktok-inverse);
   }
 
   .metric-card--blog {
-    --metric-color: var(--color-blog);
-    --metric-variance-color: var(--color-blog);
-    --metric-inverse-color: var(--color-blog-inverse);
+    --channel-primary: var(--color-blog);
+    --channel-inverse: var(--color-blog-inverse);
   }
 
   .metric-card--telegram {
-    --metric-color: var(--color-telegram);
-    --metric-variance-color: var(--color-telegram);
-    --metric-inverse-color: var(--color-blog-inverse);
+    --channel-primary: var(--color-telegram);
+    --channel-inverse: var(--color-blog-inverse);
   }
 
   .metric-card--slack {
-    --metric-color: var(--color-slack);
-    --metric-variance-color: var(--color-slack);
-    --metric-inverse-color: var(--color-slack-inverse);
+    --channel-primary: var(--color-slack);
+    --channel-inverse: var(--color-slack-inverse);
   }
 
   .metric-card--youtube {
-    --metric-color: var(--color-youtube);
-    --metric-variance-color: var(--color-youtube);
-    --metric-inverse-color: var(--color-youtube-inverse);
+    --channel-primary: var(--color-youtube);
+    --channel-inverse: var(--color-youtube-inverse);
   }
 
   .metric-card--pinterest {
-    --metric-color: var(--color-pinterest);
-    --metric-variance-color: var(--color-pinterest);
-    --metric-inverse-color: var(--color-pinterest-inverse);
+    --channel-primary: var(--color-pinterest);
+      --channel-inverse: var(--color-pinterest-inverse);
   }
 
   .metric-card--github {
-    --metric-color: var(--color-github);
-    --metric-variance-color: var(--color-github);
-    --metric-inverse-color: var(--color-github-inverse);
+    --channel-primary: var(--color-github);
+    --channel-inverse: var(--color-github-inverse);
 
   }
 
   .metric-card--yelp {
-    --metric-color: var(--color-yelp);
-    --metric-variance-color: var(--color-yelp);
+    --channel-primary: var(--color-yelp);
     --metric-inverse-color: var(--color-yelp-inverse);
   }
 
   .metric-card--tripadvisor {
-    --metric-color: var(--color-tripadvisor);
-    --metric-variance-color: var(--color-tripadvisor);
-    --metric-inverse-color: var(--color-tripadvisor-inverse);
+   --channel-primary: var(--color-tripadvisor);
+    --channel-inverse: var(--color-tripadvisor-inverse);
   }
 
   .metric-card--expedia {
-    --metric-color: var(--color-expedia);
-    --metric-variance-color: var(--color-expedia);
-    --metric-inverse-color: var(--color-expedia-inverse);
+   --channel-primary: var(--color-expedia);
+    --channel-inverse: var(--color-expedia-inverse);
   }
 
   .metric-card--booking {
-    --metric-color: var(--color-booking);
-    --metric-variance-color: var(--color-booking);
-    --metric-inverse-color: var(--color-booking-inverse);
+   --channel-primary: var(--color-booking);
+    --channel-inverse: var(--color-booking-inverse);
   }
 }
 
