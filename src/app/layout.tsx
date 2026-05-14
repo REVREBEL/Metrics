@@ -13,6 +13,7 @@ import "@/styles/model-comparison-card.css";
 import "@/styles/daily-pickup-table.css";
 import "@/styles/dashboard-section.css";
 import "@/styles/overview-section.css";
+import "@/styles/widget-props-showcase.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
