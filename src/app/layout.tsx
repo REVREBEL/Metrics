@@ -16,6 +16,7 @@ import "@/styles/dashboard-section.css";
 import "@/styles/overview-section.css";
 import "@/styles/widget-props-showcase.css";
 import "@/styles/metric-layout-showcase.css";
+import "@/styles/page-traffic-card.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
