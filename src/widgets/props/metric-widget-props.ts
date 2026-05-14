@@ -113,6 +113,80 @@ export const standardMetricWidgetPropDefinitions: MetricWidgetPropDefinition[] =
   },
 ];
 
+export const metricLayoutPropDefinitions: MetricWidgetPropDefinition[] = [
+  {
+    name: "label",
+    type: "React.ReactNode",
+    description: "Primary metric label, such as ADR, REV, Rooms, Occupancy, or Metric.",
+    example: "ADR",
+  },
+  {
+    name: "value",
+    type: "React.ReactNode",
+    description: "Main metric value. Can be a formatted string, number, or custom rendered node.",
+    example: "$362.47",
+  },
+  {
+    name: "change",
+    type: "React.ReactNode",
+    description: "Variance or comparison value displayed with the metric.",
+    example: "0.0%",
+  },
+  {
+    name: "changeLabel / varianceLabel",
+    type: "React.ReactNode",
+    description: "Comparison label displayed next to the variance value.",
+    example: "STLY",
+  },
+  {
+    name: "trend",
+    type: "up | down | neutral",
+    defaultValue: "neutral",
+    description: "Controls positive, negative, or neutral trend styling and default trend icon direction.",
+    example: "up",
+  },
+  {
+    name: "variant / layoutVariant",
+    type: "stack | split | row | inline | hero | compact | tile",
+    defaultValue: "stack",
+    description: "Controls whether the metric renders stacked, horizontal, split-column, compact, or hero style.",
+    example: "row",
+  },
+  {
+    name: "size",
+    type: "xs | sm | base | md | lg | xl | xxl",
+    defaultValue: "md",
+    description: "Scales label, value, variance, and trend icon sizing together.",
+    example: "lg",
+  },
+  {
+    name: "metric",
+    type: "MetricTheme",
+    defaultValue: "total",
+    description: "Applies the same metric color scope used by MetricCard.",
+    example: "transient",
+  },
+  {
+    name: "metricFormat / varianceFormat",
+    type: "base | percent | currency | integer | compactCurrency",
+    description: "Optional formatting helpers for numeric metric and variance values.",
+    example: "currency",
+  },
+  {
+    name: "varianceVisibility / varianceLabelVisibility / iconTrendVisibility",
+    type: "boolean",
+    defaultValue: "true",
+    description: "Visibility toggles for variance value, variance label, and trend icon.",
+    example: "false",
+  },
+  {
+    name: "suffix / iconTrendSlot",
+    type: "React.ReactNode",
+    description: "Optional custom trend icon or node displayed next to the metric value.",
+    example: "<TrendDot />",
+  },
+];
+
 export const metricWidgetImplementationExample = `import type { StandardMetricWidgetProps } from "@/widgets/props";
 import { MetricCard } from "@/widgets/_shared/MetricCard";
 
@@ -140,3 +214,16 @@ export function ExampleWidget({
     </MetricCard>
   );
 }`;
+
+export const metricLayoutImplementationExample = `import { MetricLayout } from "@/widgets/_shared/MetricCard";
+
+<MetricLayout
+  label="ADR"
+  value="$362.47"
+  change="0.0%"
+  changeLabel="STLY"
+  trend="up"
+  metric="transient"
+  variant="row"
+  size="md"
+/>`;
