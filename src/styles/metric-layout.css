@@ -101,7 +101,7 @@
 .metric-layout__value {
   display: inline-flex;
   min-width: 0;
-  align-items: baseline;
+  align-items: center;
   gap: 0.25rem;
   color: currentColor;
   font-family: var(--font-numbers);
@@ -114,6 +114,18 @@
 .metric-layout__prefix,
 .metric-layout__suffix {
   font-size: 0.65em;
+}
+
+.metric-layout__trend-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--metric-color);
+  line-height: 1;
+}
+
+.metric-layout--inverse .metric-layout__trend-slot {
+  color: currentColor;
 }
 
 .metric-layout__description {
@@ -130,7 +142,7 @@
 
 .metric-layout__change {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: 0.25rem;
   color: var(--metric-color);
   font-family: var(--font-numbers);
@@ -226,20 +238,18 @@
 }
 
 .metric-layout--split .metric-layout__body {
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.metric-layout--horizontal-1-row,
 .metric-layout--inline .metric-layout__main {
-  flex-direction: row;
-  align-items: baseline;
+  flex-direction: column;
 }
 
 .metric-layout--row .metric-layout__main {
   flex-direction: row;
-  align-items: baseline;
+  align-items: center;
   gap: 0.75rem;
 }
 
@@ -275,6 +285,7 @@
   --metric-layout-icon-size: 1.125rem;
 }
 
+.metric-layout--base,
 .metric-layout--md {
   --metric-layout-value-size: 1.75rem;
   --metric-layout-label-size: 0.875rem;
@@ -294,6 +305,13 @@
   --metric-layout-label-size: 1.25rem;
   --metric-layout-variance-size: 1.25rem;
   --metric-layout-icon-size: 1.875rem;
+}
+
+.metric-layout--xxl {
+  --metric-layout-value-size: 3.75rem;
+  --metric-layout-label-size: 1.5rem;
+  --metric-layout-variance-size: 1.5rem;
+  --metric-layout-icon-size: 2.25rem;
 }
 
 .metric-layout-group {
@@ -319,8 +337,7 @@
   .metric-layout--split .metric-layout__body,
   .metric-layout--row .metric-layout__body,
   .metric-layout--inline .metric-layout__body,
-  .metric-layout--row .metric-layout__main,
-  .metric-layout--inline .metric-layout__main {
+  .metric-layout--row .metric-layout__main {
     align-items: flex-start;
     flex-direction: column;
   }
