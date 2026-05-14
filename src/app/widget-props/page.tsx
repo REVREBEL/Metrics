@@ -1,9 +1,17 @@
 import {
+  metricLayoutImplementationExample,
+  metricLayoutPropDefinitions,
   metricThemeOptions,
   metricWidgetImplementationExample,
   standardMetricWidgetPropDefinitions,
 } from "@/widgets/props";
-import { MetricCard, MetricCardTabs, MetricInsight } from "@/widgets/_shared/MetricCard";
+import {
+  MetricCard,
+  MetricCardTabs,
+  MetricInsight,
+  MetricLayout,
+  MetricLayoutGroup,
+} from "@/widgets/_shared/MetricCard";
 
 const exampleTabs = [
   { label: "Budget", value: "budget" },
@@ -49,6 +57,20 @@ const usageExamples = [
 />`,
   },
   {
+    title: "Metric Layout",
+    description: "Use MetricLayout inside any card, table row, chart header, or dashboard strip for consistent metric typography.",
+    code: `<MetricLayout
+  label="ADR"
+  value="$362.47"
+  change="0.0%"
+  changeLabel="STLY"
+  trend="up"
+  metric="transient"
+  variant="row"
+  size="md"
+/>`,
+  },
+  {
     title: "Section Layout",
     description: "For complex widgets, keep layout-specific classes local while still using the shared header contract.",
     code: `<MetricCard
@@ -64,6 +86,35 @@ const usageExamples = [
   },
 ];
 
+function PropGrid({
+  title,
+  props,
+}: {
+  title: string;
+  props: typeof standardMetricWidgetPropDefinitions;
+}) {
+  return (
+    <section>
+      <h2 className="widget-props-page__heading">{title}</h2>
+      <div className="widget-props-page__prop-grid">
+        {props.map((prop) => (
+          <article key={prop.name} className="widget-props-page__prop-card">
+            <h3 className="widget-props-page__prop-name">{prop.name}</h3>
+            <span className="widget-props-page__prop-type">{prop.type}</span>
+            {prop.defaultValue ? (
+              <div className="widget-props-page__prop-default">Default: {prop.defaultValue}</div>
+            ) : null}
+            <p className="widget-props-page__prop-description">{prop.description}</p>
+            {prop.example ? (
+              <div className="widget-props-page__prop-example">{prop.example}</div>
+            ) : null}
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function WidgetPropsShowcasePage() {
   return (
     <main className="widget-props-page">
@@ -73,7 +124,7 @@ export default function WidgetPropsShowcasePage() {
           <h1 className="widget-props-page__title">Metric Props</h1>
           <p className="widget-props-page__subtitle">
             A working reference for the standard props every configurable dashboard widget should support:
-            title, eyebrow, description, metric theme, sizing classes, header actions, and tabs.
+            title, eyebrow, description, metric theme, sizing classes, header actions, tabs, and reusable metric layouts.
           </p>
         </section>
 
@@ -82,9 +133,8 @@ export default function WidgetPropsShowcasePage() {
             <h2 className="widget-props-page__heading">Recommended Contract</h2>
             <p className="widget-props-page__copy">
               Every reusable widget should accept the standard metric-card props, pass them into
-              MetricCard, then add only the widget-specific props needed for its data, view mode,
-              filters, or event handlers. This keeps the dashboard builder predictable while still
-              allowing each widget to have custom internals.
+              MetricCard, then use MetricLayout for repeated metric values inside the card. This keeps
+              the dashboard builder predictable while still allowing each widget to have custom internals.
             </p>
           </div>
 
@@ -96,45 +146,95 @@ export default function WidgetPropsShowcasePage() {
             headerAction={<span className="metric-card__label">Menu</span>}
           >
             <MetricCardTabs tabs={exampleTabs} defaultValue="otb" />
-            <div className="mt-6 grid grid-cols-3 gap-4">
-              <div>
-                <div className="metric-card__label">Rooms</div>
-                <div className="metric-card__value">876</div>
-              </div>
-              <div>
-                <div className="metric-card__label">ADR</div>
-                <div className="metric-card__value">$362</div>
-              </div>
-              <div>
-                <div className="metric-card__label">Revenue</div>
-                <div className="metric-card__value">$318K</div>
-              </div>
-            </div>
+            <MetricLayoutGroup columns={3} className="mt-6">
+              <MetricLayout
+                label="Rooms"
+                value="876"
+                change="4.2%"
+                changeLabel="STLY"
+                trend="up"
+                metric="transient"
+                variant="stack"
+                size="md"
+              />
+              <MetricLayout
+                label="ADR"
+                value="$362"
+                change="1.8%"
+                changeLabel="STLY"
+                trend="up"
+                metric="group"
+                variant="stack"
+                size="md"
+              />
+              <MetricLayout
+                label="Revenue"
+                value="$318K"
+                change="6.5%"
+                changeLabel="STLY"
+                trend="up"
+                metric="total"
+                variant="stack"
+                size="md"
+              />
+            </MetricLayoutGroup>
             <MetricInsight className="mt-6">
-              This example uses the shared title, description, metric theme, tabs, value, label,
+              This example uses the shared title, description, metric theme, tabs, MetricLayout values,
               and insight styles.
             </MetricInsight>
           </MetricCard>
         </section>
 
-        <section>
-          <h2 className="widget-props-page__heading">Standard Props</h2>
-          <div className="widget-props-page__prop-grid">
-            {standardMetricWidgetPropDefinitions.map((prop) => (
-              <article key={prop.name} className="widget-props-page__prop-card">
-                <h3 className="widget-props-page__prop-name">{prop.name}</h3>
-                <span className="widget-props-page__prop-type">{prop.type}</span>
-                {prop.defaultValue ? (
-                  <div className="widget-props-page__prop-default">Default: {prop.defaultValue}</div>
-                ) : null}
-                <p className="widget-props-page__prop-description">{prop.description}</p>
-                {prop.example ? (
-                  <div className="widget-props-page__prop-example">{prop.example}</div>
-                ) : null}
-              </article>
-            ))}
-          </div>
-        </section>
+        <MetricCard
+          title="MetricLayout Preview"
+          description="Portable metric blocks for cards, charts, tables, and dashboard summaries."
+          metric="transient"
+        >
+          <MetricLayoutGroup columns={4}>
+            <MetricLayout
+              label="Stacked"
+              value="0.0%"
+              change="0.0%"
+              changeLabel="STLY"
+              trend="up"
+              metric="transient"
+              variant="stack"
+              size="md"
+            />
+            <MetricLayout
+              label="Split"
+              value="0.0%"
+              change="0.0%"
+              changeLabel="STLY"
+              trend="up"
+              metric="group"
+              variant="split"
+              size="md"
+            />
+            <MetricLayout
+              label="Row"
+              value="$362"
+              change="0.0%"
+              changeLabel="STLY"
+              trend="up"
+              metric="total"
+              variant="row"
+              size="md"
+            />
+            <MetricLayout
+              label="No Var"
+              value="$318K"
+              trend="neutral"
+              metric="positive"
+              variant="row"
+              size="md"
+              varianceVisibility={false}
+            />
+          </MetricLayoutGroup>
+        </MetricCard>
+
+        <PropGrid title="Standard Widget Props" props={standardMetricWidgetPropDefinitions} />
+        <PropGrid title="MetricLayout Props" props={metricLayoutPropDefinitions} />
 
         <section>
           <h2 className="widget-props-page__heading">Metric Themes</h2>
@@ -174,6 +274,19 @@ export default function WidgetPropsShowcasePage() {
             <span className="widget-props-page__code-label">TSX</span>
           </div>
           <pre className="widget-props-page__code"><code>{metricWidgetImplementationExample}</code></pre>
+        </section>
+
+        <section className="widget-props-page__example">
+          <div className="widget-props-page__example-header">
+            <div>
+              <h2 className="widget-props-page__heading mb-2">MetricLayout Template</h2>
+              <p className="widget-props-page__copy">
+                Use this inside MetricCard when a widget has repeated metric values.
+              </p>
+            </div>
+            <span className="widget-props-page__code-label">TSX</span>
+          </div>
+          <pre className="widget-props-page__code"><code>{metricLayoutImplementationExample}</code></pre>
         </section>
       </div>
     </main>
