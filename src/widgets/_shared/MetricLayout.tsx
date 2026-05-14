@@ -1,8 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 
+import ArrowCircleDown from "@/assets/RebelIconsReact/ArrowCircleDown";
+import ArrowCircleUp from "@/assets/RebelIconsReact/ArrowCircleUp";
 import { cn } from "@/lib/utils";
 import { getMetricThemeClass, type MetricTheme } from "./metric-theme";
 
@@ -25,7 +26,8 @@ export type MetricLayoutVariant =
 
 export type MetricLayoutSize = "xs" | "sm" | "base" | "md" | "lg" | "xl" | "xxl";
 export type MetricLayoutAlign = "start" | "center" | "end";
-export type MetricTrend = "up" | "down" | "neutral";
+export type MetricTrend = "up" | "down" | "neutral" | "auto";
+export type ResolvedMetricTrend = Exclude<MetricTrend, "auto">;
 export type MetricValueFormat = "base" | "percent" | "currency" | "integer" | "compactCurrency";
 export type MetricType =
   | "base"
@@ -106,15 +108,15 @@ function normalizeVariant(variant?: MetricLayoutVariant, layoutVariant?: Devlink
   return next as Exclude<MetricLayoutVariant, DevlinkMetricLayoutVariant>;
 }
 
-function getTrendClass(trend?: MetricTrend) {
+function getTrendClass(trend?: ResolvedMetricTrend) {
   if (trend === "up") return "metric-layout__change--up";
   if (trend === "down") return "metric-layout__change--down";
   return "metric-layout__change--neutral";
 }
 
-function TrendIcon({ trend }: { trend?: MetricTrend }) {
-  if (trend === "up") return <ArrowUpRight className="metric-layout__trend-icon" />;
-  if (trend === "down") return <ArrowDownRight className="metric-layout__trend-icon" />;
+function TrendIcon({ trend }: { trend?: ResolvedMetricTrend }) {
+  if (trend === "up") return <ArrowCircleUp className="metric-layout__trend-icon" />;
+  if (trend === "down") return <ArrowCircleDown className="metric-layout__trend-icon" />;
   return null;
 }
 
@@ -122,8 +124,26 @@ function parseNumberish(value: React.ReactNode) {
   if (typeof value === "number") return value;
   if (typeof value !== "string") return null;
 
-  const parsed = Number(value.replace(/[$,%]/g, ""));
+  const parsed = Number(value.replace(/[$,%+,]/g, ""));
   return Number.isFinite(parsed) ? parsed : null;
+}
+
+function resolveTrend(trend: MetricTrend | undefined, change: React.ReactNode, value: React.ReactNode): ResolvedMetricTrend {
+  if (trend && trend !== "auto") return trend;
+
+  const changeValue = parseNumberish(change);
+  if (changeValue !== null) {
+    if (changeValue > 0) return "up";
+    if (changeValue < 0) return "down";
+  }
+
+  const metricValue = parseNumberish(value);
+  if (metricValue !== null) {
+    if (metricValue > 0) return "up";
+    if (metricValue < 0) return "down";
+  }
+
+  return "neutral";
 }
 
 export function formatMetricValue(value: React.ReactNode, format: MetricValueFormat | string = "base") {
@@ -176,7 +196,7 @@ export function MetricLayout({
   sublabel,
   change = "0.0%",
   changeLabel,
-  trend = "neutral",
+  trend = "auto",
   icon,
   action,
   progress,
@@ -213,7 +233,8 @@ export function MetricLayout({
   const finalValue = metricSlot ?? formatMetricValue(value, metricFormat);
   const finalChange = metricVarSlot ?? formatMetricValue(change, varianceFormat);
   const finalChangeLabel = getVarianceLabel(varianceType, varianceLabel ?? changeLabel ?? sublabel);
-  const finalTrendIcon = iconTrendSlot ?? <TrendIcon trend={trend} />;
+  const resolvedTrend = resolveTrend(trend, change, value);
+  const finalTrendIcon = iconTrendSlot ?? <TrendIcon trend={resolvedTrend} />;
 
   return (
     <div
@@ -228,6 +249,7 @@ export function MetricLayout({
         elevated && "metric-layout--elevated",
         className
       )}
+      data-trend={resolvedTrend}
       style={
         progressValue !== null
           ? ({ "--metric-layout-progress": `${progressValue}%` } as React.CSSProperties)
@@ -264,7 +286,7 @@ export function MetricLayout({
 
         {varianceVisibility && (finalChange || finalChangeLabel) && (
           <div className="metric-layout__supporting">
-            <div className={cn("metric-layout__change", getTrendClass(trend))} {...metricVarRuntimeProps}>
+            <div className={cn("metric-layout__change", getTrendClass(resolvedTrend))} {...metricVarRuntimeProps}>
               {finalChange && <span className="metric-layout__change-value">{finalChange}</span>}
               {varianceLabelVisibility && finalChangeLabel && (
                 <span className="metric-layout__change-label">{finalChangeLabel}</span>
