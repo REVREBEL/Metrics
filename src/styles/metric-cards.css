@@ -468,14 +468,14 @@
 }
 
 [data-slot="tabs-trigger"].metric-card-tab[data-state="active"] {
-  background-color: var(--foreground);
-  color: var(--background);
+  background-color: var(--color-dark-blue);
+  color: var(--color-dark-blue-inverse);
   font-weight: 700;
   border-radius: 2px;
   box-shadow: none;
 }
 
 [data-slot="tabs-trigger"].metric-card-tab[data-state="active"]:hover {
-  background-color: var(--foreground);
-  color: var(--background);
+  background-color: var(--color-dark-blue);
+  color: var(--color-dark-blue-inverse);
 }
