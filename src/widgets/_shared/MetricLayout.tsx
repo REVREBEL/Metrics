@@ -2,10 +2,9 @@
 
 import * as React from "react";
 
-import ArrowCircleDown from "@/assets/RebelIconsReact/ArrowCircleDown";
-import ArrowCircleUp from "@/assets/RebelIconsReact/ArrowCircleUp";
 import { cn } from "@/lib/utils";
 import { getMetricThemeClass, type MetricTheme } from "./metric-theme";
+import { MetricTrendIcon } from "./MetricTrendIcon";
 
 export type DevlinkMetricLayoutVariant =
   | "Base"
@@ -112,12 +111,6 @@ function getTrendClass(trend?: ResolvedMetricTrend) {
   if (trend === "up") return "metric-layout__change--up";
   if (trend === "down") return "metric-layout__change--down";
   return "metric-layout__change--neutral";
-}
-
-function TrendIcon({ trend }: { trend?: ResolvedMetricTrend }) {
-  if (trend === "up") return <ArrowCircleUp className="metric-layout__trend-icon" />;
-  if (trend === "down") return <ArrowCircleDown className="metric-layout__trend-icon" />;
-  return null;
 }
 
 function parseNumberish(value: React.ReactNode) {
@@ -234,7 +227,7 @@ export function MetricLayout({
   const finalChange = metricVarSlot ?? formatMetricValue(change, varianceFormat);
   const finalChangeLabel = getVarianceLabel(varianceType, varianceLabel ?? changeLabel ?? sublabel);
   const resolvedTrend = resolveTrend(trend, change, value);
-  const finalTrendIcon = iconTrendSlot ?? <TrendIcon trend={resolvedTrend} />;
+  const finalTrendIcon = iconTrendSlot ?? <MetricTrendIcon trend={resolvedTrend} />;
 
   return (
     <div
