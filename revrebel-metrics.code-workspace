@@ -17,6 +17,9 @@
         ],
         "cwd": "${workspaceFolder}"
       }
+      },
+      "files.associations": {
+        "*.css": "tailwindcss"
     }
   }
 }
