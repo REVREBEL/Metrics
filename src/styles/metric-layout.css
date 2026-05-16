@@ -4,6 +4,8 @@
   --metric-layout-label-size: 0.875rem;
   --metric-layout-variance-size: 0.875rem;
   --metric-layout-icon-size: 1.25rem;
+  --metric-layout-trend-circle-color: var(--metric-color);
+  --metric-layout-trend-arrow-color: var(--metric-inverse-color, var(--background));
 
   display: flex;
   min-width: 0;
@@ -120,24 +122,27 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--metric-layout-trend-color, var(--metric-color));
   line-height: 1;
 }
 
 .metric-layout[data-trend="up"] {
-  --metric-layout-trend-color: var(--color-positive);
+  --metric-layout-trend-circle-color: var(--color-positive);
+  --metric-layout-trend-arrow-color: var(--color-positive-inverse, var(--background));
 }
 
 .metric-layout[data-trend="down"] {
-  --metric-layout-trend-color: var(--color-negative);
+  --metric-layout-trend-circle-color: var(--color-negative);
+  --metric-layout-trend-arrow-color: var(--color-negative-inverse, var(--background));
 }
 
 .metric-layout[data-trend="neutral"] {
-  --metric-layout-trend-color: var(--metric-color);
+  --metric-layout-trend-circle-color: var(--metric-color);
+  --metric-layout-trend-arrow-color: var(--metric-inverse-color, var(--background));
 }
 
 .metric-layout--inverse .metric-layout__trend-slot {
-  color: currentColor;
+  --metric-layout-trend-circle-color: currentColor;
+  --metric-layout-trend-arrow-color: var(--metric-color);
 }
 
 .metric-layout__description {
@@ -186,12 +191,14 @@
   width: 1em;
   height: 1em;
   flex: 0 0 auto;
-  color: currentColor;
-  fill: currentColor;
 }
 
-.metric-layout__trend-icon path {
-  fill: currentColor;
+.metric-layout__trend-icon-circle {
+  fill: var(--metric-layout-trend-circle-color);
+}
+
+.metric-layout__trend-icon-arrow {
+  fill: var(--metric-layout-trend-arrow-color);
 }
 
 .metric-layout__progress {
