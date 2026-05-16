@@ -171,6 +171,8 @@
 
 .widget-props-page__theme-card {
   --theme-color: var(--metric-color, var(--foreground));
+  --theme-inverse-color: var(--background);
+  --theme-variance-color: var(--muted-foreground);
   padding: 1rem;
 }
 
@@ -194,7 +196,11 @@
 }
 
 .widget-props-page__theme-token--inverse {
-  color: var(--theme-color);
+  color: var(--theme-inverse-color);
+}
+
+.widget-props-page__theme-token--variance {
+  color: var(--theme-variance-color);
 }
 
 .widget-props-page__theme-note {
