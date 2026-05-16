@@ -44,6 +44,26 @@ export type MetricWidgetPropDefinition = {
   example?: string;
 };
 
+export type MetricThemeToken = {
+  label: string;
+  value: string;
+  cssVar: string;
+  inverseVar?: string;
+  notes?: string;
+};
+
+export type MetricThemeGroup = {
+  title: string;
+  description: string;
+  items: MetricThemeToken[];
+};
+
+export type WidgetUsageGroup = {
+  title: string;
+  description: string;
+  examples: string[];
+};
+
 export const metricThemeOptions = [
   "positive",
   "negative",
@@ -54,6 +74,92 @@ export const metricThemeOptions = [
   "complimentary",
   "other",
 ] as const;
+
+export const metricThemeGroups: MetricThemeGroup[] = [
+  {
+    title: "Metric Indicators",
+    description: "Universal performance indicators used for trend states, totals, and variance accents.",
+    items: [
+      { label: "Positive", value: "positive", cssVar: "--color-positive", inverseVar: "--color-positive-inverse" },
+      { label: "Negative", value: "negative", cssVar: "--color-negative", inverseVar: "--color-negative-inverse" },
+      { label: "Total", value: "total", cssVar: "--color-total", inverseVar: "--color-total-inverse" },
+      { label: "Total Variance", value: "total-var", cssVar: "--color-total-var", notes: "Used for total variance or comparison fills." },
+    ],
+  },
+  {
+    title: "Segments",
+    description: "Hotel production segment tokens used by room night, ADR, revenue, pickup, and mix widgets.",
+    items: [
+      { label: "Transient", value: "transient", cssVar: "--color-transient", inverseVar: "--color-transient-inverse" },
+      { label: "Transient Var", value: "transient-var", cssVar: "--color-transient-var" },
+      { label: "Group", value: "group", cssVar: "--color-group", inverseVar: "--color-group-inverse" },
+      { label: "Group Var", value: "group-var", cssVar: "--color-group-var" },
+      { label: "Crew", value: "crew", cssVar: "--color-crew", inverseVar: "--color-crew-inverse" },
+      { label: "Crew Var", value: "crew-var", cssVar: "--color-crew-var" },
+      { label: "Complimentary", value: "complimentary", cssVar: "--color-complimentary", inverseVar: "--color-complimentary-inverse" },
+      { label: "Complimentary Var", value: "complimentary-var", cssVar: "--color-complimentary-var" },
+      { label: "Other", value: "other", cssVar: "--color-other", inverseVar: "--color-other-inverse" },
+      { label: "Other Var", value: "other-var", cssVar: "--color-other-var" },
+    ],
+  },
+  {
+    title: "Channels",
+    description: "OTA and booking channel tokens used for channel bars, icons, rankings, and source breakdowns.",
+    items: [
+      { label: "Expedia", value: "expedia", cssVar: "--color-expedia", inverseVar: "--color-expedia-inverse" },
+      { label: "Booking", value: "booking", cssVar: "--color-booking", inverseVar: "--color-booking-inverse" },
+      { label: "Agoda", value: "agoda", cssVar: "--color-agoda", inverseVar: "--color-agoda-inverse" },
+      { label: "Priceline", value: "priceline", cssVar: "--color-priceline", inverseVar: "--color-priceline-inverse" },
+      { label: "Hotelbeds", value: "hotelbeds", cssVar: "--color-hotelbeds", inverseVar: "--color-hotelbeds-inverse" },
+      { label: "Hopper", value: "hopper", cssVar: "--color-hopper", inverseVar: "--color-hopper-inverse" },
+    ],
+  },
+  {
+    title: "Socials",
+    description: "Social network tokens used by dashboard, content, campaign, and audience widgets.",
+    items: [
+      { label: "Facebook", value: "facebook", cssVar: "--color-facebook", inverseVar: "--color-facebook-inverse" },
+      { label: "Instagram", value: "instagram", cssVar: "--color-instagram", inverseVar: "--color-instagram-inverse" },
+      { label: "X", value: "x", cssVar: "--color-x", inverseVar: "--color-x-inverse" },
+      { label: "LinkedIn", value: "linkedin", cssVar: "--color-linkedin", inverseVar: "--color-linkedin-inverse", notes: "Fallbacks can support the legacy --color-liinkedin token." },
+      { label: "TikTok", value: "tiktok", cssVar: "--color-tiktok", inverseVar: "--color-tiktok-inverse" },
+      { label: "Blog", value: "blog", cssVar: "--color-blog", inverseVar: "--color-blog-inverse" },
+      { label: "Telegram", value: "telegram", cssVar: "--color-telegram", inverseVar: "--color-telegram-inverse" },
+      { label: "Slack", value: "slack", cssVar: "--color-slack", inverseVar: "--color-slack-inverse" },
+      { label: "YouTube", value: "youtube", cssVar: "--color-youtube", inverseVar: "--color-youtube-inverse" },
+      { label: "Pinterest", value: "pinterest", cssVar: "--color-pinterest", inverseVar: "--color-pinterest-inverse" },
+      { label: "GitHub", value: "github", cssVar: "--color-github", inverseVar: "--color-github-inverse" },
+    ],
+  },
+  {
+    title: "Review Sites",
+    description: "Review and reputation source tokens used for ratings, sentiment, response, and review-mix widgets.",
+    items: [
+      { label: "Yelp", value: "yelp", cssVar: "--color-yelp", inverseVar: "--color-yelp-inverse" },
+      { label: "Tripadvisor", value: "tripadvisor", cssVar: "--color-tripadvisor", inverseVar: "--color-tripadvisor-inverse" },
+      { label: "Expedia", value: "expedia-review", cssVar: "--color-expedia", inverseVar: "--color-expedia-inverse" },
+      { label: "Booking", value: "booking-review", cssVar: "--color-booking", inverseVar: "--color-booking-inverse" },
+    ],
+  },
+];
+
+export const widgetUsageGroups: WidgetUsageGroup[] = [
+  {
+    title: "Elements",
+    description: "Small reusable primitives that can be placed inside any card or custom layout.",
+    examples: ["MetricLayout", "MetricCardTitle", "MetricCardDescription", "MetricCardValue", "MetricCardLabel", "MetricInsight"],
+  },
+  {
+    title: "Cards",
+    description: "Self-contained widget cards with a standard header, description, metric theme, and content region.",
+    examples: ["MetricCard", "BudgetSnapshotCard", "PageTrafficCard", "ModelComparisonCard", "PerformanceCard"],
+  },
+  {
+    title: "Layouts",
+    description: "Section-level patterns for grids, tables, dashboards, and grouped card systems.",
+    examples: ["MetricLayoutGroup", "DashboardSection", "OverviewSection", "DailyPickupTable", "CalendarHeatmap"],
+  },
+];
 
 export const standardMetricWidgetPropDefinitions: MetricWidgetPropDefinition[] = [
   {
