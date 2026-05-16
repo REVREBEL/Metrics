@@ -1,9 +1,10 @@
 import {
   metricLayoutImplementationExample,
   metricLayoutPropDefinitions,
-  metricThemeOptions,
+  metricThemeGroups,
   metricWidgetImplementationExample,
   standardMetricWidgetPropDefinitions,
+  widgetUsageGroups,
 } from "@/widgets/props";
 import {
   MetricCard,
@@ -21,42 +22,7 @@ const exampleTabs = [
 
 const usageExamples = [
   {
-    title: "Minimal Card",
-    description: "The smallest useful widget contract: title, description, metric, and content.",
-    code: `<MetricCard
-  title="Revenue Snapshot"
-  description="Revenue performance against selected comparison period."
-  metric="total"
->
-  <MetricCardValue>$42.5K</MetricCardValue>
-</MetricCard>`,
-  },
-  {
-    title: "Header Action",
-    description: "Use headerAction for icons, menus, export buttons, badges, or compact controls.",
-    code: `<MetricCard
-  title="Budget Breakdown"
-  description="Spend distribution across production segments."
-  metric="group"
-  headerAction={<MoreVertical className="size-5" />}
->
-  ...
-</MetricCard>`,
-  },
-  {
-    title: "Tabs",
-    description: "Use MetricCardTabs so active/inactive tab states stay consistent across all widgets.",
-    code: `<MetricCardTabs
-  tabs={[
-    { label: "Budget", value: "budget" },
-    { label: "OTB", value: "otb" },
-    { label: "STLY", value: "stly" },
-  ]}
-  value={activeView}
-  onValueChange={setActiveView}
-/>`,
-  },
-  {
+    category: "Elements",
     title: "Metric Layout",
     description: "Use MetricLayout inside any card, table row, chart header, or dashboard strip for consistent metric typography.",
     code: `<MetricLayout
@@ -71,6 +37,46 @@ const usageExamples = [
 />`,
   },
   {
+    category: "Elements",
+    title: "Tabs",
+    description: "Use MetricCardTabs so active/inactive tab states stay consistent across all widgets.",
+    code: `<MetricCardTabs
+  tabs={[
+    { label: "Budget", value: "budget" },
+    { label: "OTB", value: "otb" },
+    { label: "STLY", value: "stly" },
+  ]}
+  value={activeView}
+  onValueChange={setActiveView}
+/>`,
+  },
+  {
+    category: "Cards",
+    title: "Minimal Card",
+    description: "The smallest useful widget contract: title, description, metric, and content.",
+    code: `<MetricCard
+  title="Revenue Snapshot"
+  description="Revenue performance against selected comparison period."
+  metric="total"
+>
+  <MetricCardValue>$42.5K</MetricCardValue>
+</MetricCard>`,
+  },
+  {
+    category: "Cards",
+    title: "Header Action",
+    description: "Use headerAction for icons, menus, export buttons, badges, or compact controls.",
+    code: `<MetricCard
+  title="Budget Breakdown"
+  description="Spend distribution across production segments."
+  metric="group"
+  headerAction={<MoreVertical className="size-5" />}
+>
+  ...
+</MetricCard>`,
+  },
+  {
+    category: "Layouts",
     title: "Section Layout",
     description: "For complex widgets, keep layout-specific classes local while still using the shared header contract.",
     code: `<MetricCard
@@ -238,11 +244,53 @@ export default function WidgetPropsShowcasePage() {
 
         <section>
           <h2 className="widget-props-page__heading">Metric Themes</h2>
-          <div className="widget-props-page__theme-grid">
-            {metricThemeOptions.map((theme) => (
-              <article key={theme} className="widget-props-page__theme-card" data-theme={theme}>
-                <div className="widget-props-page__theme-swatch" />
-                <div className="widget-props-page__theme-name">metric=&quot;{theme}&quot;</div>
+          <div className="widget-props-page__theme-sections">
+            {metricThemeGroups.map((group) => (
+              <section key={group.title} className="widget-props-page__theme-section">
+                <div className="widget-props-page__theme-section-header">
+                  <h3 className="widget-props-page__subheading">{group.title}</h3>
+                  <p className="widget-props-page__copy">{group.description}</p>
+                </div>
+                <div className="widget-props-page__theme-grid">
+                  {group.items.map((theme) => (
+                    <article
+                      key={`${group.title}-${theme.value}`}
+                      className="widget-props-page__theme-card"
+                      style={{
+                        "--theme-color": `var(${theme.cssVar}, var(--muted-foreground))`,
+                      } as React.CSSProperties}
+                    >
+                      <div className="widget-props-page__theme-swatch" />
+                      <div className="widget-props-page__theme-name">{theme.label}</div>
+                      <div className="widget-props-page__theme-token">{theme.cssVar}</div>
+                      {theme.inverseVar ? (
+                        <div className="widget-props-page__theme-token widget-props-page__theme-token--inverse">
+                          {theme.inverseVar}
+                        </div>
+                      ) : null}
+                      {theme.notes ? <p className="widget-props-page__theme-note">{theme.notes}</p> : null}
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <h2 className="widget-props-page__heading">Usage</h2>
+          <div className="widget-props-page__usage-sections">
+            {widgetUsageGroups.map((group) => (
+              <article key={group.title} className="widget-props-page__usage-card">
+                <h3 className="widget-props-page__subheading">{group.title}</h3>
+                <p className="widget-props-page__copy">{group.description}</p>
+                <div className="widget-props-page__usage-tags">
+                  {group.examples.map((example) => (
+                    <span key={example} className="widget-props-page__usage-tag">
+                      {example}
+                    </span>
+                  ))}
+                </div>
               </article>
             ))}
           </div>
@@ -253,6 +301,7 @@ export default function WidgetPropsShowcasePage() {
             <article key={example.title} className="widget-props-page__example">
               <div className="widget-props-page__example-header">
                 <div>
+                  <div className="widget-props-page__eyebrow mb-2">{example.category}</div>
                   <h2 className="widget-props-page__heading mb-2">{example.title}</h2>
                   <p className="widget-props-page__copy">{example.description}</p>
                 </div>
