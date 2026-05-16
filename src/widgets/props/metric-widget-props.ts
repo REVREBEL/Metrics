@@ -49,6 +49,7 @@ export type MetricThemeToken = {
   value: string;
   cssVar: string;
   inverseVar?: string;
+  varianceVar?: string;
   notes?: string;
 };
 
@@ -82,24 +83,18 @@ export const metricThemeGroups: MetricThemeGroup[] = [
     items: [
       { label: "Positive", value: "positive", cssVar: "--color-positive", inverseVar: "--color-positive-inverse" },
       { label: "Negative", value: "negative", cssVar: "--color-negative", inverseVar: "--color-negative-inverse" },
-      { label: "Total", value: "total", cssVar: "--color-total", inverseVar: "--color-total-inverse" },
-      { label: "Total Variance", value: "total-var", cssVar: "--color-total-var", notes: "Used for total variance or comparison fills." },
+      { label: "Total", value: "total", cssVar: "--color-total", inverseVar: "--color-total-inverse", varianceVar: "--color-total-var" },
     ],
   },
   {
     title: "Segments",
     description: "Hotel production segment tokens used by room night, ADR, revenue, pickup, and mix widgets.",
     items: [
-      { label: "Transient", value: "transient", cssVar: "--color-transient", inverseVar: "--color-transient-inverse" },
-      { label: "Transient Var", value: "transient-var", cssVar: "--color-transient-var" },
-      { label: "Group", value: "group", cssVar: "--color-group", inverseVar: "--color-group-inverse" },
-      { label: "Group Var", value: "group-var", cssVar: "--color-group-var" },
-      { label: "Crew", value: "crew", cssVar: "--color-crew", inverseVar: "--color-crew-inverse" },
-      { label: "Crew Var", value: "crew-var", cssVar: "--color-crew-var" },
-      { label: "Complimentary", value: "complimentary", cssVar: "--color-complimentary", inverseVar: "--color-complimentary-inverse" },
-      { label: "Complimentary Var", value: "complimentary-var", cssVar: "--color-complimentary-var" },
-      { label: "Other", value: "other", cssVar: "--color-other", inverseVar: "--color-other-inverse" },
-      { label: "Other Var", value: "other-var", cssVar: "--color-other-var" },
+      { label: "Transient", value: "transient", cssVar: "--color-transient", inverseVar: "--color-transient-inverse", varianceVar: "--color-transient-var" },
+      { label: "Group", value: "group", cssVar: "--color-group", inverseVar: "--color-group-inverse", varianceVar: "--color-group-var" },
+      { label: "Crew", value: "crew", cssVar: "--color-crew", inverseVar: "--color-crew-inverse", varianceVar: "--color-crew-var" },
+      { label: "Complimentary", value: "complimentary", cssVar: "--color-complimentary", inverseVar: "--color-complimentary-inverse", varianceVar: "--color-complimentary-var" },
+      { label: "Other", value: "other", cssVar: "--color-other", inverseVar: "--color-other-inverse", varianceVar: "--color-other-var", notes: "Catch-all production segment outside transient, group, crew, and comp." },
     ],
   },
   {
