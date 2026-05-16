@@ -34,7 +34,7 @@
 .analytics-section__summary-card:hover {
   color: var(--metric-color);
   transform: translate(-2px, -2px);
-  box-shadow: 4px 4px 0 currentColor;
+  box-shadow: var(--retro-shadow-base);
 }
 
 .analytics-section__summary-label,

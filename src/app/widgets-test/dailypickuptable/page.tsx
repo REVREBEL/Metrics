@@ -31,12 +31,11 @@ const Named_YearMonthSelector_widgetsYearMonthSelector = dynamic(() => import("@
 
 export default function DailyPickupTable() {
   return (
+    
+
     <div className="p-8 bg-slate-50 min-h-screen">
-      <h1 className="text-3xl font-bold mb-8">DailyPickupTable({51})</h1>
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-      
-        
-        <div className="border border-slate-200 rounded-lg p-6 bg-white shadow-sm flex flex-col overflow-hidden">
+      <h1 className="text-3xl font-bold mb-8">DailyPickupTable({51})</h1>        
+        <div className="col-span-full border border-slate-200 rounded-lg p-6 bg-white shadow-sm flex flex-col overflow-hidden">
           <h2 className="text-sm font-mono mb-4 text-slate-500 border-b pb-2 truncate" title="@/widgets/DailyPickupTable (Default)">@/widgets/DailyPickupTable (Default)</h2>
           <div className="flex-1 w-full overflow-auto flex flex-col items-stretch min-h-[300px]">
             <ErrorBoundary name="@/widgets/DailyPickupTable (Default)">
