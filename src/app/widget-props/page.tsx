@@ -258,14 +258,25 @@ export default function WidgetPropsShowcasePage() {
                       className="widget-props-page__theme-card"
                       style={{
                         "--theme-color": `var(${theme.cssVar}, var(--muted-foreground))`,
+                        "--theme-inverse-color": theme.inverseVar
+                          ? `var(${theme.inverseVar}, var(--background))`
+                          : "var(--background)",
+                        "--theme-variance-color": theme.varianceVar
+                          ? `var(${theme.varianceVar}, var(--muted-foreground))`
+                          : "var(--muted-foreground)",
                       } as React.CSSProperties}
                     >
                       <div className="widget-props-page__theme-swatch" />
                       <div className="widget-props-page__theme-name">{theme.label}</div>
-                      <div className="widget-props-page__theme-token">{theme.cssVar}</div>
+                      <div className="widget-props-page__theme-token">Main: {theme.cssVar}</div>
                       {theme.inverseVar ? (
                         <div className="widget-props-page__theme-token widget-props-page__theme-token--inverse">
-                          {theme.inverseVar}
+                          Inverse: {theme.inverseVar}
+                        </div>
+                      ) : null}
+                      {theme.varianceVar ? (
+                        <div className="widget-props-page__theme-token widget-props-page__theme-token--variance">
+                          Var: {theme.varianceVar}
                         </div>
                       ) : null}
                       {theme.notes ? <p className="widget-props-page__theme-note">{theme.notes}</p> : null}
