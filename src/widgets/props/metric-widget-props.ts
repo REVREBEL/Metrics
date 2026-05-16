@@ -129,7 +129,7 @@ export const metricLayoutPropDefinitions: MetricWidgetPropDefinition[] = [
   {
     name: "change",
     type: "React.ReactNode",
-    description: "Variance or comparison value displayed with the metric.",
+    description: "Variance or comparison value displayed with the metric. When trend is auto, this value is used first to resolve positive or negative styling.",
     example: "0.0%",
   },
   {
@@ -140,10 +140,10 @@ export const metricLayoutPropDefinitions: MetricWidgetPropDefinition[] = [
   },
   {
     name: "trend",
-    type: "up | down | neutral",
-    defaultValue: "neutral",
-    description: "Controls positive, negative, or neutral trend styling and default trend icon direction.",
-    example: "up",
+    type: "auto | up | down | neutral",
+    defaultValue: "auto",
+    description: "Controls positive, negative, or neutral trend styling. Auto resolves from change first, then value. Up uses --color-positive / --color-positive-inverse. Down uses --color-negative / --color-negative-inverse.",
+    example: "auto",
   },
   {
     name: "variant / layoutVariant",
@@ -176,14 +176,20 @@ export const metricLayoutPropDefinitions: MetricWidgetPropDefinition[] = [
     name: "varianceVisibility / varianceLabelVisibility / iconTrendVisibility",
     type: "boolean",
     defaultValue: "true",
-    description: "Visibility toggles for variance value, variance label, and trend icon.",
+    description: "Visibility toggles for variance value, variance label, and the two-tone trend icon.",
     example: "false",
   },
   {
-    name: "suffix / iconTrendSlot",
+    name: "iconTrendSlot",
     type: "React.ReactNode",
-    description: "Optional custom trend icon or node displayed next to the metric value.",
-    example: "<TrendDot />",
+    description: "Optional custom trend icon. If omitted, MetricLayout uses the native two-tone Rebel arrow-circle icon. Circle fill uses positive/negative color; arrow fill uses positive/negative inverse color.",
+    example: "<CustomTrendIcon />",
+  },
+  {
+    name: "Trend icon CSS variables",
+    type: "CSS Custom Properties",
+    description: "The default icon exposes --metric-layout-trend-circle-color and --metric-layout-trend-arrow-color. These resolve automatically from data-trend.",
+    example: "--metric-layout-trend-circle-color: var(--color-positive);",
   },
 ];
 
@@ -220,9 +226,9 @@ export const metricLayoutImplementationExample = `import { MetricLayout } from "
 <MetricLayout
   label="ADR"
   value="$362.47"
-  change="0.0%"
+  change="4.2%"
   changeLabel="STLY"
-  trend="up"
+  trend="auto"
   metric="transient"
   variant="row"
   size="md"
