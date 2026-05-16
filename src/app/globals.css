@@ -4,10 +4,7 @@
 @import "../assets/fonts/rebel-fonts.css";
 @import "../styles/theme-reference.css";
 
-
 @custom-variant dark (&:is(.dark *));
-
-
 
 @theme inline {
 

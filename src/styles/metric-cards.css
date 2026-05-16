@@ -11,22 +11,29 @@
 
     /* Production Segments */
     --color-total: var(--color-dark-blue);
+    --color-total-inverse: var(--color-dark-blue-inverse);
     --color-total-var: var(--color-dark-blue-inverse);
 
     --color-transient: var(--color-light-blue);
+    --color-transient-inverse: var(--color-yellow);    
     --color-transient-var: var(--color-yellow);
 
     --color-group: var(--color-light-green);
+    --color-group-inverse: var(--color-orange);    
     --color-group-var: var(--color-orange);
 
     --color-crew: var(--color-yellow);
+    --color-crew-inverse: var(--color-purple);   
     --color-crew-var: var(--color-purple);
 
     --color-complimentary: var(--base-grey-l700);
+    --color-complimentary-inverse: var(--base-grey-l400);    
     --color-complimentary-var: var(--base-grey-l400);
 
     --color-other: var(--color-grey-550);
+    --color-other-inverse: var(--color-grey-250);   
     --color-other-var: var(--color-grey-250);
+
 
     /* Socials */
     --color-facebook: var(--color-purple);
