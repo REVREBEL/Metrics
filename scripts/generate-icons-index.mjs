@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const iconsDir = path.resolve("./src/assets/rebel-icons");
+const iconsDir = path.resolve("./src/assets");
 const files = fs
   .readdirSync(iconsDir)
   .filter((file) => file.endsWith(".tsx"))
