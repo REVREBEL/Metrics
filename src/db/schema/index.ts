@@ -194,7 +194,7 @@ export const appAuditLog = pgTable(
   "app_audit_log",
   {
     id: uuid("id").defaultRandom().primaryKey(),
-    actorUserId: uuid("actor_user_id").references(() => appUsers.id),
+    actorUserId: uuid("actor_user_id").references(() => appUsers.id, { onDelete: "set null" }),
     entityType: varchar("entity_type", { length: 120 }).notNull(),
     entityId: varchar("entity_id", { length: 255 }).notNull(),
     action: varchar("action", { length: 120 }).notNull(),
