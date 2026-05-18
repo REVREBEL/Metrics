@@ -682,6 +682,7 @@ function toChange(
   })
 
   if (row.isActive) {
+    change.isActive = true
     change.mappedValue = row.mappedValue
   }
 
