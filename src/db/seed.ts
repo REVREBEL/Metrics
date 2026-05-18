@@ -1,22 +1,19 @@
 import "server-only"
 
-<<<<<<< ours
+import { drizzle } from "drizzle-orm/postgres-js"
+
+import * as schema from "@/db/schema"
 import {
   campaigns,
   hotelProfiles,
   hotelTaskStatuses,
   strategyTemplates,
 } from "@/db/schema"
-=======
-import { drizzle } from "drizzle-orm/postgres-js"
-
-import { campaigns, hotelProfiles, hotelTaskStatuses, strategyTemplates } from "@/db/schema"
->>>>>>> theirs
 
 import { createPostgresClient } from "./index"
 
 const queryClient = createPostgresClient({ max: 1 })
-const db = drizzle(queryClient)
+const db = drizzle(queryClient, { schema })
 
 export async function seedAppStateFoundation() {
   const [insertedHotel] = await db
@@ -49,7 +46,6 @@ export async function seedAppStateFoundation() {
     ])
     .onConflictDoNothing({ target: hotelTaskStatuses.code })
 
-<<<<<<< ours
   const hotel =
     insertedHotel ??
     (await db.query.hotelProfiles.findFirst({
@@ -68,14 +64,6 @@ export async function seedAppStateFoundation() {
       })
       .onConflictDoNothing()
   }
-=======
-  await db.insert(campaigns).values({
-    hotelId: hotel.id,
-    name: "Demo Campaign",
-    status: "draft",
-    metadata: { source: "seed" },
-  })
->>>>>>> theirs
 
   await db
     .insert(strategyTemplates)
