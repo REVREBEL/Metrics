@@ -1,4 +1,6 @@
 import "@/app/globals.css";
+import "@/styles/metric-theme-tokens.css";
+import "@/styles/metric-theme-sources.css";
 import "@/styles/metric-cards.css";
 import "@/styles/metric-layout.css";
 import "@/styles/metric-card-overrides.css";
