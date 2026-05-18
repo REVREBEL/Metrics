@@ -144,7 +144,7 @@ export const campaignMetricSelections = pgTable(
 
 export const strategyTemplates = pgTable("strategy_templates", {
   id: uuid("id").defaultRandom().primaryKey(),
-  name: varchar("name", { length: 255 }).notNull(),
+  name: varchar("name", { length: 255 }).notNull().unique(),
   description: text("description"),
   content: jsonb("content").$type<Record<string, unknown>>().default({}).notNull(),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
