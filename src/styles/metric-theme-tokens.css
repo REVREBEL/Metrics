@@ -1,0 +1,146 @@
+@layer components {
+  :root {
+    /* Metric indicators */
+    --color-indicator-positive-normal: var(--color-green);
+    --color-indicator-positive-inverse: var(--color-green-inverse);
+    --color-indicator-positive-var: var(--color-green);
+
+    --color-indicator-negative-normal: var(--color-red);
+    --color-indicator-negative-inverse: var(--color-red-inverse);
+    --color-indicator-negative-var: var(--color-red);
+
+    --color-indicator-total-normal: var(--color-dark-blue);
+    --color-indicator-total-inverse: var(--color-dark-blue-inverse);
+    --color-indicator-total-var: var(--color-dark-blue-inverse);
+
+    /* Segment tokens */
+    --color-segment-total-normal: var(--color-indicator-total-normal);
+    --color-segment-total-inverse: var(--color-indicator-total-inverse);
+    --color-segment-total-var: var(--color-indicator-total-var);
+
+    --color-segment-transient-normal: var(--color-light-blue);
+    --color-segment-transient-inverse: var(--color-yellow);
+    --color-segment-transient-var: var(--color-yellow);
+
+    --color-segment-group-normal: var(--color-light-green);
+    --color-segment-group-inverse: var(--color-orange);
+    --color-segment-group-var: var(--color-orange);
+
+    --color-segment-crew-normal: var(--color-yellow);
+    --color-segment-crew-inverse: var(--color-purple);
+    --color-segment-crew-var: var(--color-purple);
+
+    --color-segment-complimentary-normal: var(--base-grey-l700);
+    --color-segment-complimentary-inverse: var(--base-grey-l400);
+    --color-segment-complimentary-var: var(--base-grey-l400);
+
+    --color-segment-other-normal: var(--color-grey-550);
+    --color-segment-other-inverse: var(--color-grey-250);
+    --color-segment-other-var: var(--color-grey-250);
+
+    /* Channel tokens */
+    --color-channel-expedia-normal: var(--color-yellow);
+    --color-channel-expedia-inverse: var(--color-yellow-inverse);
+    --color-channel-expedia-var: var(--color-yellow);
+
+    --color-channel-booking-normal: var(--color-light-blue);
+    --color-channel-booking-inverse: var(--color-light-blue-inverse);
+    --color-channel-booking-var: var(--color-light-blue);
+
+    --color-channel-agoda-normal: var(--color-dark-blue-700);
+    --color-channel-agoda-inverse: var(--color-dark-blue-700-inverse);
+    --color-channel-agoda-var: var(--color-dark-blue-700);
+
+    --color-channel-hopper-normal: var(--color-red-600);
+    --color-channel-hopper-inverse: var(--color-red-600-inverse);
+    --color-channel-hopper-var: var(--color-red-600);
+
+    --color-channel-hoteltonight-normal: var(--color-purple-700);
+    --color-channel-hoteltonight-inverse: var(--color-purple-700-inverse);
+    --color-channel-hoteltonight-var: var(--color-purple-700);
+
+    --color-channel-hotelbeds-normal: var(--color-purple-700);
+    --color-channel-hotelbeds-inverse: var(--color-purple-700-inverse);
+    --color-channel-hotelbeds-var: var(--color-purple-700);
+
+    --color-channel-priceline-normal: var(--color-dark-blue-500);
+    --color-channel-priceline-inverse: var(--color-dark-blue-500-inverse);
+    --color-channel-priceline-var: var(--color-dark-blue-500);
+
+    --color-channel-airbnb-normal: var(--color-red-200);
+    --color-channel-airbnb-inverse: var(--color-red-200-inverse);
+    --color-channel-airbnb-var: var(--color-red-200);
+
+    --color-channel-hotwire-normal: var(--color-red);
+    --color-channel-hotwire-inverse: var(--color-red-inverse);
+    --color-channel-hotwire-var: var(--color-red);
+
+    /* Social tokens */
+    --color-social-facebook-normal: var(--color-purple);
+    --color-social-facebook-inverse: var(--color-purple-inverse);
+    --color-social-facebook-var: var(--color-purple);
+
+    --color-social-instagram-normal: var(--color-red);
+    --color-social-instagram-inverse: var(--color-red-inverse);
+    --color-social-instagram-var: var(--color-red);
+
+    --color-social-x-normal: var(--color-light-green);
+    --color-social-x-inverse: var(--color-light-green-inverse);
+    --color-social-x-var: var(--color-light-green);
+
+    --color-social-linkedin-normal: var(--color-green);
+    --color-social-linkedin-inverse: var(--color-green-inverse);
+    --color-social-linkedin-var: var(--color-green);
+
+    --color-social-tiktok-normal: var(--color-light-green-100);
+    --color-social-tiktok-inverse: var(--color-light-green-100-inverse);
+    --color-social-tiktok-var: var(--color-light-green-100);
+
+    --color-social-blog-normal: var(--color-yellow);
+    --color-social-blog-inverse: var(--color-yellow-inverse);
+    --color-social-blog-var: var(--color-yellow);
+
+    --color-social-telegram-normal: var(--color-light-blue);
+    --color-social-telegram-inverse: var(--color-light-blue-inverse);
+    --color-social-telegram-var: var(--color-light-blue);
+
+    --color-social-slack-normal: var(--color-orange);
+    --color-social-slack-inverse: var(--color-orange-inverse);
+    --color-social-slack-var: var(--color-orange);
+
+    --color-social-youtube-normal: var(--color-red-600);
+    --color-social-youtube-inverse: var(--color-red-600-inverse);
+    --color-social-youtube-var: var(--color-red-600);
+
+    --color-social-pinterest-normal: var(--color-red-200);
+    --color-social-pinterest-inverse: var(--color-red-200-inverse);
+    --color-social-pinterest-var: var(--color-red-200);
+
+    --color-social-github-normal: var(--color-grey-650);
+    --color-social-github-inverse: var(--color-grey-250);
+    --color-social-github-var: var(--color-grey-650);
+
+    /* Review tokens */
+    --color-review-yelp-normal: var(--color-red-700);
+    --color-review-yelp-inverse: var(--color-red-700-inverse, var(--background));
+    --color-review-yelp-var: var(--color-red-700);
+
+    --color-review-tripadvisor-normal: var(--color-dark-green-700);
+    --color-review-tripadvisor-inverse: var(--color-dark-green-700-inverse, var(--background));
+    --color-review-tripadvisor-var: var(--color-dark-green-700);
+
+    --color-review-expedia-normal: var(--color-channel-expedia-normal);
+    --color-review-expedia-inverse: var(--color-channel-expedia-inverse);
+    --color-review-expedia-var: var(--color-channel-expedia-var);
+
+    --color-review-booking-normal: var(--color-channel-booking-normal);
+    --color-review-booking-inverse: var(--color-channel-booking-inverse);
+    --color-review-booking-var: var(--color-channel-booking-var);
+
+    /* Current public aliases until the old names are removed from all docs and widgets */
+    --color-positive: var(--color-indicator-positive-normal);
+    --color-positive-inverse: var(--color-indicator-positive-inverse);
+    --color-negative: var(--color-indicator-negative-normal);
+    --color-negative-inverse: var(--color-indicator-negative-inverse);
+  }
+}
