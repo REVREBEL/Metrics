@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import type { ComponentProps, ComponentType } from "react"
+import type { ComponentProps, ComponentType } from "react";
 import {
   Bar,
   BarChart,
@@ -12,111 +12,111 @@ import {
   PieChart,
   XAxis,
   YAxis,
-} from "recharts"
+} from "recharts";
 import {
   DollarSign,
   Eye,
   Heart,
-  MessageCircle,
   TrendingUp,
   Users,
-} from "lucide-react"
+} from "lucide-react";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
+import { MetricCard } from "@/widgets/_shared/MetricCard";
+
+type SocialKey = "facebook" | "instagram" | "x" | "linkedin" | "tiktok" | "blog";
 
 type SummaryMetric = {
-  title: string
-  value: string
-  change: string
-  icon: ComponentType<ComponentProps<"svg">>
-}
+  title: string;
+  value: string;
+  change: string;
+  icon: ComponentType<ComponentProps<"svg">>;
+  social: SocialKey;
+};
 
 type PlatformMetric = {
-  platform: string
-  followers: string
-  engagement: string
-  reach: string
-  color: string
-}
+  platform: string;
+  followers: string;
+  engagement: string;
+  reach: string;
+  social: SocialKey;
+};
 
 type TopPost = {
-  platform: string
-  content: string
-  engagement: string
-  color: string
-}
+  platform: string;
+  content: string;
+  engagement: string;
+  social: SocialKey;
+};
 
 export interface DashboardSectionProps {
-  summaryMetrics?: SummaryMetric[]
-  platformPosts?: { platform: string; posts: number; fill: string }[]
-  engagementMix?: { name: string; value: number; fill: string }[]
-  weeklyTrends?: { week: string; followers: number; impressions: number }[]
-  platformMetrics?: PlatformMetric[]
-  topPosts?: TopPost[]
+  summaryMetrics?: SummaryMetric[];
+  platformPosts?: { platform: string; posts: number; social: SocialKey }[];
+  engagementMix?: { name: string; value: number; social: SocialKey }[];
+  weeklyTrends?: { week: string; followers: number; impressions: number }[];
+  platformMetrics?: PlatformMetric[];
+  topPosts?: TopPost[];
 }
 
 const defaultSummaryMetrics: SummaryMetric[] = [
-  { title: "Total Followers", value: "305.2K", change: "+12.3% from last month", icon: Users },
-  { title: "Total Reach", value: "544K", change: "+8.7% from last month", icon: Eye },
-  { title: "Engagement Rate", value: "4.8%", change: "+0.3% from last month", icon: Heart },
-  { title: "ROI", value: "3.2x", change: "+0.4x from last month", icon: DollarSign },
-]
+  { title: "Total Followers", value: "305.2K", change: "+12.3% from last month", icon: Users, social: "facebook" },
+  { title: "Total Reach", value: "544K", change: "+8.7% from last month", icon: Eye, social: "instagram" },
+  { title: "Engagement Rate", value: "4.8%", change: "+0.3% from last month", icon: Heart, social: "tiktok" },
+  { title: "ROI", value: "3.2x", change: "+0.4x from last month", icon: DollarSign, social: "linkedin" },
+];
 
 const defaultPlatformPosts = [
-  { platform: "Facebook", posts: 15, fill: "#1877f2" },
-  { platform: "Instagram", posts: 22, fill: "#e4405f" },
-  { platform: "Twitter", posts: 18, fill: "#1da1f2" },
-  { platform: "LinkedIn", posts: 8, fill: "#0077b5" },
-  { platform: "TikTok", posts: 12, fill: "#111827" },
-]
+  { platform: "Facebook", posts: 15, social: "facebook" },
+  { platform: "Instagram", posts: 22, social: "instagram" },
+  { platform: "X", posts: 18, social: "x" },
+  { platform: "LinkedIn", posts: 8, social: "linkedin" },
+  { platform: "TikTok", posts: 12, social: "tiktok" },
+] satisfies { platform: string; posts: number; social: SocialKey }[];
 
 const defaultEngagementMix = [
-  { name: "Likes", value: 15420, fill: "#ef4444" },
-  { name: "Comments", value: 3280, fill: "#f59e0b" },
-  { name: "Shares", value: 1950, fill: "#10b981" },
-  { name: "Saves", value: 870, fill: "#6366f1" },
-]
+  { name: "Likes", value: 15420, social: "instagram" },
+  { name: "Comments", value: 3280, social: "blog" },
+  { name: "Shares", value: 1950, social: "tiktok" },
+  { name: "Saves", value: 870, social: "linkedin" },
+] satisfies { name: string; value: number; social: SocialKey }[];
 
 const defaultWeeklyTrends = [
   { week: "Week 1", followers: 1250, impressions: 245 },
   { week: "Week 2", followers: 1890, impressions: 289 },
   { week: "Week 3", followers: 2340, impressions: 334 },
   { week: "Week 4", followers: 2890, impressions: 398 },
-]
+];
 
 const defaultPlatformMetrics: PlatformMetric[] = [
-  { platform: "Facebook", followers: "45.2K", engagement: "3.8%", reach: "120K", color: "#1877f2" },
-  { platform: "Instagram", followers: "67.8K", engagement: "5.2%", reach: "89K", color: "#e4405f" },
-  { platform: "Twitter", followers: "23.1K", engagement: "2.9%", reach: "67K", color: "#1da1f2" },
-  { platform: "LinkedIn", followers: "12.4K", engagement: "4.1%", reach: "34K", color: "#0077b5" },
-  { platform: "TikTok", followers: "156.7K", engagement: "8.7%", reach: "234K", color: "#111827" },
-]
+  { platform: "Facebook", followers: "45.2K", engagement: "3.8%", reach: "120K", social: "facebook" },
+  { platform: "Instagram", followers: "67.8K", engagement: "5.2%", reach: "89K", social: "instagram" },
+  { platform: "X", followers: "23.1K", engagement: "2.9%", reach: "67K", social: "x" },
+  { platform: "LinkedIn", followers: "12.4K", engagement: "4.1%", reach: "34K", social: "linkedin" },
+  { platform: "TikTok", followers: "156.7K", engagement: "8.7%", reach: "234K", social: "tiktok" },
+];
 
 const defaultTopPosts: TopPost[] = [
-  { platform: "Instagram", content: "Summer collection launch", engagement: "2.3K", color: "#e4405f" },
-  { platform: "TikTok", content: "Behind the scenes video", engagement: "5.7K", color: "#111827" },
-  { platform: "Facebook", content: "Customer testimonial feature", engagement: "1.8K", color: "#1877f2" },
-]
+  { platform: "Instagram", content: "Summer collection launch", engagement: "2.3K", social: "instagram" },
+  { platform: "TikTok", content: "Behind the scenes video", engagement: "5.7K", social: "tiktok" },
+  { platform: "Facebook", content: "Customer testimonial feature", engagement: "1.8K", social: "facebook" },
+];
 
 const platformPostsConfig: ChartConfig = {
-  posts: { label: "Posts", color: "var(--chart-1)" },
-}
+  posts: { label: "Posts" },
+};
 
 const trendConfig: ChartConfig = {
-  followers: { label: "Followers", color: "#10b981" },
-  impressions: { label: "Impressions", color: "#6366f1" },
+  followers: { label: "Followers", color: "var(--color-positive)" },
+  impressions: { label: "Impressions", color: "var(--color-total)" },
+};
+
+function getSocialColor(social: SocialKey) {
+  return `var(--color-${social}, var(--foreground))`;
 }
 
 export default function DashboardSection({
@@ -128,148 +128,139 @@ export default function DashboardSection({
   topPosts = defaultTopPosts,
 }: DashboardSectionProps) {
   return (
-    <div className="flex flex-col gap-6">
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+    <section className="dashboard-section">
+      <div className="dashboard-section__summary-grid">
         {summaryMetrics.map((metric) => {
-          const Icon = metric.icon
+          const Icon = metric.icon;
 
           return (
-            <Card key={metric.title}>
-              <CardHeader className="flex flex-row items-start justify-between gap-3 pb-2">
-                <div className="flex flex-col gap-1">
-                  <CardDescription>{metric.title}</CardDescription>
-                  <CardTitle className="text-2xl">{metric.value}</CardTitle>
-                </div>
-                <Icon className="size-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">{metric.change}</p>
-              </CardContent>
-            </Card>
-          )
+            <div key={metric.title} className="dashboard-section__summary-card" data-social={metric.social}>
+              <div>
+                <div className="dashboard-section__summary-label">{metric.title}</div>
+                <div className="dashboard-section__summary-value">{metric.value}</div>
+                <div className="dashboard-section__summary-change">{metric.change}</div>
+              </div>
+              <span className="dashboard-section__summary-icon" aria-hidden="true">
+                <Icon className="size-5" />
+              </span>
+            </div>
+          );
         })}
       </div>
 
-      <div className="grid gap-4 xl:grid-cols-3">
-        <Card>
-          <CardHeader>
-            <CardTitle>Posts by Platform</CardTitle>
-            <CardDescription>Weekly content output across channels.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={platformPostsConfig} className="h-64 w-full">
-              <BarChart data={platformPosts}>
-                <CartesianGrid vertical={false} />
-                <XAxis dataKey="platform" tickLine={false} axisLine={false} />
-                <YAxis tickLine={false} axisLine={false} />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Bar dataKey="posts" radius={[8, 8, 0, 0]}>
-                  {platformPosts.map((entry) => (
-                    <Cell key={entry.platform} fill={entry.fill} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
+      <div className="dashboard-section__chart-grid">
+        <MetricCard
+          title="Posts by Platform"
+          description="Weekly content output across channels."
+          metric="total"
+          className="dashboard-section__chart-card"
+        >
+          <ChartContainer config={platformPostsConfig} className="h-64 w-full">
+            <BarChart data={platformPosts} margin={{ top: 12, right: 12, left: 8, bottom: 0 }}>
+              <CartesianGrid vertical={false} />
+              <XAxis dataKey="platform" tickLine={false} axisLine={false} />
+              <YAxis tickLine={false} axisLine={false} />
+              <ChartTooltip content={<ChartTooltipContent />} />
+              <Bar dataKey="posts" radius={[2, 2, 0, 0]}>
+                {platformPosts.map((entry) => (
+                  <Cell key={entry.platform} fill={getSocialColor(entry.social)} />
+                ))}
+              </Bar>
+            </BarChart>
+          </ChartContainer>
+        </MetricCard>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Engagement Mix</CardTitle>
-            <CardDescription>Distribution of audience actions.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={{ engagement: { label: "Engagement" } }} className="h-64 w-full">
-              <PieChart>
-                <ChartTooltip content={<ChartTooltipContent nameKey="name" />} />
-                <Pie data={engagementMix} dataKey="value" nameKey="name" innerRadius={55} outerRadius={85}>
-                  {engagementMix.map((entry) => (
-                    <Cell key={entry.name} fill={entry.fill} />
-                  ))}
-                </Pie>
-              </PieChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
+        <MetricCard
+          title="Engagement Mix"
+          description="Distribution of audience actions."
+          metric="total"
+          className="dashboard-section__chart-card"
+        >
+          <ChartContainer config={{ engagement: { label: "Engagement" } }} className="h-64 w-full">
+            <PieChart>
+              <ChartTooltip content={<ChartTooltipContent nameKey="name" />} />
+              <Pie data={engagementMix} dataKey="value" nameKey="name" innerRadius={55} outerRadius={85} paddingAngle={4}>
+                {engagementMix.map((entry) => (
+                  <Cell key={entry.name} fill={getSocialColor(entry.social)} />
+                ))}
+              </Pie>
+            </PieChart>
+          </ChartContainer>
+        </MetricCard>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Growth Trends</CardTitle>
-            <CardDescription>Followers and impressions over the last month.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={trendConfig} className="h-64 w-full">
-              <LineChart data={weeklyTrends}>
-                <CartesianGrid vertical={false} />
-                <XAxis dataKey="week" tickLine={false} axisLine={false} />
-                <YAxis tickLine={false} axisLine={false} />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Line dataKey="followers" type="monotone" stroke="var(--color-followers)" strokeWidth={2} dot={false} />
-                <Line dataKey="impressions" type="monotone" stroke="var(--color-impressions)" strokeWidth={2} dot={false} />
-              </LineChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
+        <MetricCard
+          title="Growth Trends"
+          description="Followers and impressions over the last month."
+          metric="positive"
+          className="dashboard-section__chart-card"
+        >
+          <ChartContainer config={trendConfig} className="h-64 w-full">
+            <LineChart data={weeklyTrends} margin={{ top: 12, right: 12, left: 8, bottom: 0 }}>
+              <CartesianGrid vertical={false} />
+              <XAxis dataKey="week" tickLine={false} axisLine={false} />
+              <YAxis tickLine={false} axisLine={false} />
+              <ChartTooltip content={<ChartTooltipContent />} />
+              <Line dataKey="followers" type="monotone" stroke="var(--color-followers)" strokeWidth={3} dot={false} />
+              <Line dataKey="impressions" type="monotone" stroke="var(--color-impressions)" strokeWidth={3} dot={false} />
+            </LineChart>
+          </ChartContainer>
+        </MetricCard>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Platform Performance Overview</CardTitle>
-          <CardDescription>Snapshot of reach and engagement by network.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
-            {platformMetrics.map((platform) => (
-              <div key={platform.platform} className="flex flex-col gap-3 rounded-lg border p-4">
-                <div className="flex items-center gap-2">
-                  <span className="size-3 rounded-full" style={{ backgroundColor: platform.color }} />
-                  <span className="font-medium">{platform.platform}</span>
-                </div>
-                <dl className="grid gap-2 text-sm">
-                  <div className="flex items-center justify-between gap-3">
-                    <dt className="text-muted-foreground">Followers</dt>
-                    <dd className="font-medium">{platform.followers}</dd>
-                  </div>
-                  <div className="flex items-center justify-between gap-3">
-                    <dt className="text-muted-foreground">Engagement</dt>
-                    <dd className="font-medium">{platform.engagement}</dd>
-                  </div>
-                  <div className="flex items-center justify-between gap-3">
-                    <dt className="text-muted-foreground">Reach</dt>
-                    <dd className="font-medium">{platform.reach}</dd>
-                  </div>
-                </dl>
+      <MetricCard
+        title="Platform Performance Overview"
+        description="Snapshot of reach and engagement by network."
+        metric="total"
+      >
+        <div className="dashboard-section__platform-grid">
+          {platformMetrics.map((platform) => (
+            <div key={platform.platform} className="dashboard-section__platform-card" data-social={platform.social}>
+              <div className="dashboard-section__platform-heading">
+                <span className="dashboard-section__platform-dot" />
+                <span className="dashboard-section__platform-name">{platform.platform}</span>
               </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+              <dl className="dashboard-section__platform-list">
+                <div className="dashboard-section__platform-row">
+                  <dt className="dashboard-section__platform-label">Followers</dt>
+                  <dd className="dashboard-section__platform-value">{platform.followers}</dd>
+                </div>
+                <div className="dashboard-section__platform-row">
+                  <dt className="dashboard-section__platform-label">Engagement</dt>
+                  <dd className="dashboard-section__platform-value">{platform.engagement}</dd>
+                </div>
+                <div className="dashboard-section__platform-row">
+                  <dt className="dashboard-section__platform-label">Reach</dt>
+                  <dd className="dashboard-section__platform-value">{platform.reach}</dd>
+                </div>
+              </dl>
+            </div>
+          ))}
+        </div>
+      </MetricCard>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Top Performing Posts</CardTitle>
-          <CardDescription>Recent content with the strongest engagement.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-4 lg:grid-cols-3">
-            {topPosts.map((post) => (
-              <div key={`${post.platform}-${post.content}`} className="flex items-start gap-3 rounded-lg border p-4">
-                <span className="mt-1 size-3 rounded-full" style={{ backgroundColor: post.color }} />
-                <div className="flex min-w-0 flex-1 flex-col gap-1">
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="font-medium">{post.platform}</span>
-                    <span className="inline-flex items-center gap-1 text-sm text-emerald-600">
-                      <TrendingUp className="size-4" />
-                      {post.engagement}
-                    </span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">{post.content}</p>
+      <MetricCard
+        title="Top Performing Posts"
+        description="Recent content with the strongest engagement."
+        metric="total"
+      >
+        <div className="dashboard-section__post-grid">
+          {topPosts.map((post) => (
+            <div key={`${post.platform}-${post.content}`} className="dashboard-section__post-card" data-social={post.social}>
+              <span className="dashboard-section__post-dot" />
+              <div className="dashboard-section__post-body">
+                <div className="dashboard-section__post-topline">
+                  <span className="dashboard-section__post-platform">{post.platform}</span>
+                  <span className="dashboard-section__post-engagement">
+                    <TrendingUp className="size-4" />
+                    {post.engagement}
+                  </span>
                 </div>
+                <p className="dashboard-section__post-content">{post.content}</p>
               </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  )
+            </div>
+          ))}
+        </div>
+      </MetricCard>
+    </section>
+  );
 }

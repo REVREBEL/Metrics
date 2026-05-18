@@ -12,8 +12,8 @@ import { ThemeSwitch } from '@/components/theme-switch'
 import { DashboardTabs } from '../components/dashboard-tabs'
 import { YearMonthSelector } from "@/widgets/YearMonthSelector/dynamic";
 
-import ArrowCircleDown from "@/assets/rebel-icons/ArrowCircleDown";
-import ArrowCircleUp from "@/assets/rebel-icons/ArrowCircleUp";
+import ArrowCircleDown from "@/assets/RebelIconsReact/ArrowCircleDown";
+import ArrowCircleUp from "@/assets/RebelIconsReact/ArrowCircleUp";
 
 import SocialVisitsCard from "@/widgets/SocialVisitsCard";
 import BrowserStatsCard from "@/widgets/BrowserStatsCard";

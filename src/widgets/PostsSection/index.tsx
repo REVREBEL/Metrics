@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 import {
   BarChart3,
   Calendar,
@@ -11,51 +11,48 @@ import {
   Plus,
   Share2,
   Trash2,
-} from "lucide-react"
+} from "lucide-react";
 
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+  MetricCard,
+  MetricCardTitle,
+} from "@/widgets/_shared/MetricCard";
 
-type Platform = "Facebook" | "Instagram" | "Twitter" | "LinkedIn" | "TikTok"
-type PostStatus = "scheduled" | "posted" | "failed" | "draft"
-type MediaType = "text" | "image" | "video" | "carousel"
+type Platform = "Facebook" | "Instagram" | "X" | "LinkedIn" | "TikTok";
+type PostStatus = "scheduled" | "posted" | "failed" | "draft";
+type MediaType = "text" | "image" | "video" | "carousel";
+type SocialKey = "facebook" | "instagram" | "x" | "linkedin" | "tiktok";
 
 export type SocialPost = {
-  id: string
-  content: string
-  platforms: Platform[]
-  scheduledAt: string
-  status: PostStatus
-  mediaType: MediaType
-  tags: string[]
-  campaign?: string
+  id: string;
+  content: string;
+  platforms: Platform[];
+  scheduledAt: string;
+  status: PostStatus;
+  mediaType: MediaType;
+  tags: string[];
+  campaign?: string;
   engagement?: {
-    likes: number
-    comments: number
-    shares: number
-    views: number
-  }
-}
+    likes: number;
+    comments: number;
+    shares: number;
+    views: number;
+  };
+};
 
 export interface PostsSectionProps {
-  initialPosts?: SocialPost[]
-  onCreatePost?: () => void
-  onEditPost?: (post: SocialPost) => void
-  onDeletePost?: (post: SocialPost) => void
+  initialPosts?: SocialPost[];
+  onCreatePost?: () => void;
+  onEditPost?: (post: SocialPost) => void;
+  onDeletePost?: (post: SocialPost) => void;
 }
 
 const defaultPosts: SocialPost[] = [
   {
     id: "1",
     content: "Our summer collection launches next week with brighter colors and lighter materials.",
-    platforms: ["Instagram", "Facebook", "Twitter"],
+    platforms: ["Instagram", "Facebook", "X"],
     scheduledAt: "2026-03-18T10:00:00Z",
     status: "scheduled",
     mediaType: "carousel",
@@ -76,7 +73,7 @@ const defaultPosts: SocialPost[] = [
   {
     id: "3",
     content: "Maintenance notice for tonight’s product release window and support coverage.",
-    platforms: ["Twitter", "LinkedIn"],
+    platforms: ["X", "LinkedIn"],
     scheduledAt: "2026-03-10T22:00:00Z",
     status: "failed",
     mediaType: "text",
@@ -91,30 +88,37 @@ const defaultPosts: SocialPost[] = [
     mediaType: "video",
     tags: ["creative", "behind-the-scenes"],
   },
-]
+];
 
-function getPlatformColor(platform: Platform) {
+function getPlatformSocial(platform: Platform): SocialKey {
   return {
-    Facebook: "#1877f2",
-    Instagram: "#e4405f",
-    Twitter: "#1da1f2",
-    LinkedIn: "#0077b5",
-    TikTok: "#111827",
-  }[platform]
+    Facebook: "facebook",
+    Instagram: "instagram",
+    X: "x",
+    LinkedIn: "linkedin",
+    TikTok: "tiktok",
+  }[platform];
 }
 
-function getStatusVariant(status: PostStatus): "default" | "secondary" | "destructive" | "outline" {
-  if (status === "posted") return "default"
-  if (status === "failed") return "destructive"
-  if (status === "scheduled") return "outline"
-  return "secondary"
+function getPrimarySocial(platforms: Platform[]): SocialKey {
+  return platforms[0] ? getPlatformSocial(platforms[0]) : "facebook";
 }
 
 function getMediaLabel(mediaType: MediaType) {
-  if (mediaType === "video") return "Video"
-  if (mediaType === "image") return "Image"
-  if (mediaType === "carousel") return "Carousel"
-  return "Text"
+  if (mediaType === "video") return "Video";
+  if (mediaType === "image") return "Image";
+  if (mediaType === "carousel") return "Carousel";
+  return "Text";
+}
+
+function formatDateTime(value: string) {
+  return new Date(value).toLocaleString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
 }
 
 export default function PostsSection({
@@ -123,133 +127,149 @@ export default function PostsSection({
   onEditPost,
   onDeletePost,
 }: PostsSectionProps) {
-  const [posts] = useState(initialPosts)
+  const [posts] = useState(initialPosts);
 
-  const totalPosts = posts.length
-  const scheduledPosts = posts.filter((post) => post.status === "scheduled").length
-  const postedPosts = posts.filter((post) => post.status === "posted").length
-  const draftPosts = posts.filter((post) => post.status === "draft").length
+  const totalPosts = posts.length;
+  const scheduledPosts = posts.filter((post) => post.status === "scheduled").length;
+  const postedPosts = posts.filter((post) => post.status === "posted").length;
+  const draftPosts = posts.filter((post) => post.status === "draft").length;
+
+  const summaryStats = [
+    { label: "Total Posts", value: totalPosts, note: "All content items", icon: BarChart3, social: "facebook" },
+    { label: "Scheduled", value: scheduledPosts, note: "Ready to publish", icon: Clock, social: "instagram" },
+    { label: "Published", value: postedPosts, note: "Live content", icon: Eye, social: "tiktok" },
+    { label: "Drafts", value: draftPosts, note: "Needs review", icon: Edit, social: "linkedin" },
+  ] satisfies Array<{ label: string; value: number; note: string; icon: typeof BarChart3; social: SocialKey }>;
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <section className="posts-section">
+      <div className="posts-section__header">
         <div>
-          <h2 className="text-2xl font-semibold">Content Management</h2>
-          <p className="text-sm text-muted-foreground">Review planned, live, and in-progress content.</p>
+          <MetricCardTitle as="h2">Content Management</MetricCardTitle>
+          <p className="metric-card__description">Review planned, live, and in-progress content.</p>
         </div>
-        <Button onClick={onCreatePost}>
+        <Button onClick={onCreatePost} className="posts-section__button posts-section__button--primary">
           <Plus data-icon="inline-start" />
           Create Post
         </Button>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          { label: "Total Posts", value: totalPosts, note: "All content items", icon: BarChart3 },
-          { label: "Scheduled", value: scheduledPosts, note: "Ready to publish", icon: Clock },
-          { label: "Published", value: postedPosts, note: "Live content", icon: Eye },
-          { label: "Drafts", value: draftPosts, note: "Needs review", icon: Edit },
-        ].map((stat) => {
-          const Icon = stat.icon
+      <div className="posts-section__summary-grid">
+        {summaryStats.map((stat) => {
+          const Icon = stat.icon;
 
           return (
-            <Card key={stat.label}>
-              <CardHeader className="flex flex-row items-start justify-between gap-3 pb-2">
-                <div className="flex flex-col gap-1">
-                  <CardDescription>{stat.label}</CardDescription>
-                  <CardTitle className="text-2xl">{stat.value}</CardTitle>
-                </div>
-                <Icon className="size-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">{stat.note}</p>
-              </CardContent>
-            </Card>
-          )
+            <div key={stat.label} className="posts-section__summary-card" data-social={stat.social}>
+              <div>
+                <div className="posts-section__summary-label">{stat.label}</div>
+                <div className="posts-section__summary-value">{stat.value.toLocaleString()}</div>
+                <div className="posts-section__summary-note">{stat.note}</div>
+              </div>
+              <span className="posts-section__summary-icon" aria-hidden="true">
+                <Icon className="size-5" />
+              </span>
+            </div>
+          );
         })}
       </div>
 
-      <div className="flex flex-col gap-4">
-        {posts.map((post) => (
-          <Card key={post.id}>
-            <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-              <div className="flex flex-col gap-2">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline">{getMediaLabel(post.mediaType)}</Badge>
-                  <Badge variant={getStatusVariant(post.status)}>{post.status}</Badge>
-                  {post.campaign ? <Badge variant="secondary">{post.campaign}</Badge> : null}
-                </div>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Calendar className="size-4" />
-                  <span>{new Date(post.scheduledAt).toLocaleString()}</span>
-                </div>
-                <CardTitle className="text-lg leading-6">{post.content}</CardTitle>
-              </div>
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm" onClick={() => onEditPost?.(post)}>
-                  <Edit data-icon="inline-start" />
-                  Edit
-                </Button>
-                <Button variant="outline" size="sm" onClick={() => onDeletePost?.(post)}>
-                  <Trash2 data-icon="inline-start" />
-                  Delete
-                </Button>
-              </div>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-4">
-              <div className="flex flex-col gap-4 lg:flex-row">
-                <div className="flex-1">
-                  <p className="mb-2 text-sm font-medium">Platforms</p>
-                  <div className="flex flex-wrap gap-2">
-                    {post.platforms.map((platform) => (
-                      <span
-                        key={platform}
-                        className="rounded-full px-2.5 py-1 text-xs font-medium text-white"
-                        style={{ backgroundColor: getPlatformColor(platform) }}
-                      >
-                        {platform}
-                      </span>
-                    ))}
+      <MetricCard
+        title="Posts Queue"
+        description="Planned, published, failed, and draft posts across social channels."
+        metric="total"
+      >
+        <div className="posts-section__list">
+          {posts.map((post) => {
+            const primarySocial = getPrimarySocial(post.platforms);
+
+            return (
+              <article
+                key={post.id}
+                className="posts-section__post-row"
+                data-social={primarySocial}
+                data-status={post.status}
+              >
+                <div className="posts-section__post-header">
+                  <div>
+                    <div className="posts-section__post-meta">
+                      <span className="posts-section__media">{getMediaLabel(post.mediaType)}</span>
+                      <span className="posts-section__status">{post.status}</span>
+                      {post.campaign ? <span className="posts-section__tag">{post.campaign}</span> : null}
+                    </div>
+                    <div className="posts-section__post-date">
+                      <Calendar className="size-4" />
+                      <span>{formatDateTime(post.scheduledAt)}</span>
+                    </div>
+                    <h3 className="posts-section__post-content">{post.content}</h3>
+                  </div>
+
+                  <div className="posts-section__actions">
+                    <Button className="posts-section__button" size="sm" onClick={() => onEditPost?.(post)}>
+                      <Edit data-icon="inline-start" />
+                      Edit
+                    </Button>
+                    <Button className="posts-section__button" size="sm" onClick={() => onDeletePost?.(post)}>
+                      <Trash2 data-icon="inline-start" />
+                      Delete
+                    </Button>
                   </div>
                 </div>
-                <div className="flex-1">
-                  <p className="mb-2 text-sm font-medium">Tags</p>
-                  <div className="flex flex-wrap gap-2">
-                    {post.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary">
-                        #{tag}
-                      </Badge>
-                    ))}
+
+                <div className="posts-section__post-body">
+                  <div className="posts-section__platforms">
+                    <div className="posts-section__post-label">Platforms</div>
+                    <div className="posts-section__chip-row">
+                      {post.platforms.map((platform) => (
+                        <span
+                          key={platform}
+                          className="posts-section__platform"
+                          data-social={getPlatformSocial(platform)}
+                        >
+                          {platform}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="posts-section__tags">
+                    <div className="posts-section__post-label">Tags</div>
+                    <div className="posts-section__chip-row">
+                      {post.tags.map((tag) => (
+                        <span key={tag} className="posts-section__tag">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {post.engagement ? (
-                <div className="grid gap-3 border-t pt-4 sm:grid-cols-2 xl:grid-cols-4">
-                  {[
-                    { label: "Views", value: post.engagement.views, icon: Eye },
-                    { label: "Comments", value: post.engagement.comments, icon: MessageCircle },
-                    { label: "Shares", value: post.engagement.shares, icon: Share2 },
-                    { label: "Likes", value: post.engagement.likes, icon: BarChart3 },
-                  ].map((item) => {
-                    const Icon = item.icon
+                {post.engagement ? (
+                  <div className="posts-section__engagement-grid">
+                    {[
+                      { label: "Views", value: post.engagement.views, icon: Eye },
+                      { label: "Comments", value: post.engagement.comments, icon: MessageCircle },
+                      { label: "Shares", value: post.engagement.shares, icon: Share2 },
+                      { label: "Likes", value: post.engagement.likes, icon: BarChart3 },
+                    ].map((item) => {
+                      const Icon = item.icon;
 
-                    return (
-                      <div key={item.label} className="rounded-lg border p-3">
-                        <div className="mb-2 flex items-center gap-2 text-sm text-muted-foreground">
-                          <Icon className="size-4" />
-                          {item.label}
+                      return (
+                        <div key={item.label} className="posts-section__engagement-card">
+                          <div className="posts-section__engagement-label">
+                            <Icon className="size-4" />
+                            {item.label}
+                          </div>
+                          <div className="posts-section__engagement-value">{item.value.toLocaleString()}</div>
                         </div>
-                        <p className="text-lg font-semibold">{item.value.toLocaleString()}</p>
-                      </div>
-                    )
-                  })}
-                </div>
-              ) : null}
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </div>
-  )
+                      );
+                    })}
+                  </div>
+                ) : null}
+              </article>
+            );
+          })}
+        </div>
+      </MetricCard>
+    </section>
+  );
 }

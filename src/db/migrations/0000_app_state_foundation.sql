@@ -1,0 +1,2 @@
+-- Initial migration placeholder.
+-- Run `pnpm db:generate` once dependencies are installed to emit canonical SQL from src/db/schema/index.ts.

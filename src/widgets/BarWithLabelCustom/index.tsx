@@ -1,112 +1,126 @@
-"use client"
+"use client";
 
-import { TrendingUp } from "lucide-react"
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from "recharts"
+import { TrendingUp } from "lucide-react";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  LabelList,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from "@/components/ui/chart";
 import {
-    ChartContainer,
-    ChartTooltip,
-    ChartTooltipContent,
-    type ChartConfig,
-} from "@/components/ui/chart"
+  MetricCard,
+  MetricInsight,
+} from "@/widgets/_shared/MetricCard";
 
-export const description = "A bar chart with a custom label"
+export const description = "A bar chart with a custom label";
+
+type MonthDatum = {
+  month: string;
+  desktop: number;
+  mobile: number;
+};
 
 const chartData = [
-    { month: "January", desktop: 186, mobile: 80 },
-    { month: "February", desktop: 305, mobile: 200 },
-    { month: "March", desktop: 237, mobile: 120 },
-    { month: "April", desktop: 73, mobile: 190 },
-    { month: "May", desktop: 209, mobile: 130 },
-    { month: "June", desktop: 214, mobile: 140 },
-]
+  { month: "January", desktop: 186, mobile: 80 },
+  { month: "February", desktop: 305, mobile: 200 },
+  { month: "March", desktop: 237, mobile: 120 },
+  { month: "April", desktop: 73, mobile: 190 },
+  { month: "May", desktop: 209, mobile: 130 },
+  { month: "June", desktop: 214, mobile: 140 },
+] satisfies MonthDatum[];
+
+const getMonthVariable = (index: number) =>
+  `var(--metric-month${String(index + 1).padStart(2, "0")})`;
 
 const chartConfig = {
-    desktop: {
-        label: "Desktop",
-        color: "var(--chart-2)",
-    },
-    mobile: {
-        label: "Mobile",
-        color: "var(--chart-2)",
-    },
-    label: {
-        color: "var(--background)",
-    },
-} satisfies ChartConfig
+  desktop: {
+    label: "Desktop",
+    color: "var(--metric-color)",
+  },
+  mobile: {
+    label: "Mobile",
+    color: "var(--metric-variance-color)",
+  },
+  label: {
+    color: "var(--metric-chart-label-color)",
+  },
+} satisfies ChartConfig;
 
 export function ChartBarLabelCustom() {
-    return (
-        <Card>
-            <CardHeader>
-                <CardTitle className="text-sm font-display font-bold uppercase tracking-widest">Bar Chart - Custom Label</CardTitle>
-                <CardDescription>January - June 2024</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <ChartContainer config={chartConfig}>
-                    <BarChart
-                        accessibilityLayer
-                        data={chartData}
-                        layout="vertical"
-                        margin={{
-                            right: 16,
-                        }}
-                    >
-                        <CartesianGrid horizontal={false} />
-                        <YAxis
-                            dataKey="month"
-                            type="category"
-                            tickLine={false}
-                            tickMargin={10}
-                            axisLine={false}
-                            tickFormatter={(value) => value.slice(0, 3)}
-                            hide
-                        />
-                        <XAxis dataKey="desktop" type="number" hide />
-                        <ChartTooltip
-                            cursor={false}
-                            content={<ChartTooltipContent indicator="line" />}
-                        />
-                        <Bar
-                            dataKey="desktop"
-                            layout="vertical"
-                            fill="var(--color-desktop)"
-                            radius={4}
-                        >
-                            <LabelList
-                                dataKey="month"
-                                position="insideLeft"
-                                offset={8}
-                                className="fill-(--color-label)"
-                                fontSize={12}
-                            />
-                            <LabelList
-                                dataKey="desktop"
-                                position="right"
-                                offset={8}
-                                className="fill-foreground"
-                                fontSize={12}
-                            />
-                        </Bar>
-                    </BarChart>
-                </ChartContainer>
-            </CardContent>
-            <CardFooter className="flex-col items-start gap-2 text-sm">
-                <div className="flex gap-2 leading-none font-medium">
-                    Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-                </div>
-                <div className="leading-none text-muted-foreground">
-                    Showing total visitors for the last 6 months
-                </div>
-            </CardFooter>
-        </Card>
-    )
+  return (
+    <MetricCard
+      title="Bar Chart - Custom Label"
+      description="January - June 2024"
+      metric="total"
+    >
+      <ChartContainer config={chartConfig}>
+        <BarChart
+          accessibilityLayer
+          data={chartData}
+          layout="vertical"
+          margin={{
+            left: 0,
+            right: 36,
+          }}
+        >
+          <CartesianGrid horizontal={false} />
+          <YAxis
+            dataKey="month"
+            type="category"
+            tickLine={false}
+            tickMargin={10}
+            axisLine={false}
+            tickFormatter={(value) => value.slice(0, 3)}
+            hide
+          />
+          <XAxis dataKey="desktop" type="number" hide />
+          <ChartTooltip
+            cursor={false}
+            content={<ChartTooltipContent indicator="line" />}
+          />
+          <Bar
+            dataKey="desktop"
+            layout="vertical"
+            fill="var(--metric-color)"
+            radius={4}
+          >
+            {chartData.map((entry, index) => (
+              <Cell key={entry.month} fill={getMonthVariable(index)} />
+            ))}
+            <LabelList
+              dataKey="month"
+              position="insideLeft"
+              offset={8}
+              className="metric-card__chart-label"
+              fontSize={12}
+              formatter={(value: string) => value.slice(0, 3)}
+            />
+            <LabelList
+              dataKey="desktop"
+              position="right"
+              offset={8}
+              className="metric-card__chart-value"
+              fontSize={12}
+            />
+          </Bar>
+        </BarChart>
+      </ChartContainer>
+
+      <div className="metric-card__chart-footer">
+        <MetricInsight label="Trend:">
+          Trending up by 5.2% this month <TrendingUp className="inline h-4 w-4 align-text-bottom" />
+        </MetricInsight>
+      </div>
+    </MetricCard>
+  );
 }

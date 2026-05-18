@@ -150,6 +150,12 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
     component: dynamic(() => import('@/widgets/OverviewSection/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: null
   },
+  widget_PageTrafficCard: { 
+    name: "PageTrafficCard", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/PageTrafficCard/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
   widget_PerformanceCard: { 
     name: "PerformanceCard", 
     type: "widget",
@@ -240,10 +246,22 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
     component: dynamic(() => import('@/widgets/TempAnalyticsDashboard/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: null
   },
+  widget_TempDailyPickupTable: { 
+    name: "TempDailyPickupTable", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/TempDailyPickupTable/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
   widget_TimelineComponent: { 
     name: "TimelineComponent", 
     type: "widget",
     component: dynamic(() => import('@/widgets/TimelineComponent/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_TopChannelsChart: { 
+    name: "TopChannelsChart", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/TopChannelsChart/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: null
   },
   widget_TopServicesBarChart: { 
@@ -276,10 +294,22 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
     component: dynamic(() => import('@/widgets/YearMonthSelector/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: widget_YearMonthSelector_metadata
   },
+  widget__shared: { 
+    name: "_shared", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/_shared/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
   widget_metric_cards: { 
     name: "metric-cards", 
     type: "widget",
     component: dynamic(() => import('@/widgets/metric-cards/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
+    metadata: null
+  },
+  widget_props: { 
+    name: "props", 
+    type: "widget",
+    component: dynamic(() => import('@/widgets/props/index').then(mod => (mod as any).default || (mod as any)[Object.keys(mod)[0]])),
     metadata: null
   },
   ui_accordion: { 
