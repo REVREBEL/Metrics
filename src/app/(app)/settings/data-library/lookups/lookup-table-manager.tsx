@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState, useTransition } from "react"
+import { useMemo, useRef, useState, useTransition } from "react"
 import { ArrowDownAZ, ArrowUpAZ, Check, CircleAlert, RefreshCcw, Save, Search as SearchIcon } from "lucide-react"
 import { toast } from "sonner"
 
@@ -79,6 +79,7 @@ export function LookupTableManager({
   const [loadError, setLoadError] = useState<string | null>(null)
   const [isLoadingRows, startRowsTransition] = useTransition()
   const [isSaving, startSaveTransition] = useTransition()
+  const rowsRequestIdRef = useRef(0)
 
   const selectedTable = tables.find((table) => table.key === selectedTableKey)
   const originalRowsById = useMemo(
@@ -140,6 +141,9 @@ export function LookupTableManager({
   const hasValidationErrors = validationErrors.size > 0
 
   function handleTableSelect(tableKey: string) {
+    const requestId = rowsRequestIdRef.current + 1
+    rowsRequestIdRef.current = requestId
+
     setSelectedTableKey(tableKey)
     setQuery("")
     setStatusFilter("all")
@@ -147,9 +151,15 @@ export function LookupTableManager({
     startRowsTransition(async () => {
       try {
         const nextRows = await getLookupTableRowsAction(tableKey)
+        if (rowsRequestIdRef.current !== requestId) {
+          return
+        }
         setRows(nextRows)
         setOriginalRows(nextRows)
       } catch (error) {
+        if (rowsRequestIdRef.current !== requestId) {
+          return
+        }
         setRows([])
         setOriginalRows([])
         setLoadError(
