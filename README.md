@@ -118,6 +118,17 @@ Check out our Next.js deployment documentation for more details.
 
 ## **POSTGRES APP-STATE FOUNDATION**
 
+Metrics includes a Postgres app-state layer backed by Drizzle ORM. The first-pass scope is backend-only: no UI screens, BigQuery writeback, DuckDB serving marts, or production deployment configuration live in this layer yet.
+
+### Ownership boundary
+
+- BigQuery/Dataform remains the source of truth for analytical `metrics_core` lookup, mapping, dimension, fact, and reporting tables.
+- Postgres stores app-owned workflow state: users/roles/access metadata, hotel profile extensions, contacts, systems, preferences, notes, events, tasks, campaigns, strategy workflow, Data Library UI metadata, draft edits, approvals, and audit history.
+- DuckDB remains reserved for later fast app-serving analytical outputs and local parquet-backed dashboard performance work.
+
+### Tooling choice
+
+REV-15 uses Postgres + Drizzle ORM because the repo did not have an existing Postgres ORM/migration convention, and Drizzle keeps the schema typed, lightweight, and close to the TypeScript app code.
 Metrics now includes a Postgres app-state layer backed by Drizzle ORM.
 
 ### Ownership boundary
@@ -135,6 +146,13 @@ POSTGRES_POOL_MAX=10
 ### Database commands
 
 ```bash
+pnpm db:generate   # generate SQL migrations from src/db/schema
+pnpm db:migrate    # apply migrations with drizzle-kit
+pnpm db:studio     # open Drizzle Studio
+pnpm db:seed       # seed baseline demo records/statuses
+```
+
+The server-only client entrypoint is `src/db/index.ts`, typed schema lives in `src/db/schema/index.ts`, and migrations live in `src/db/migrations`.
 pnpm db:generate   # generate SQL migrations from schema
 pnpm db:migrate    # apply migrations
 pnpm db:studio     # open Drizzle Studio
