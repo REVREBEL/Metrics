@@ -127,10 +127,11 @@ export function LookupTableManager({
 
   const visibleRows = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
+    const dirtyRowIds = new Set(dirtyRows.map((r) => r.id))
 
     return rows
       .filter((row) => {
-        const rowIsDirty = dirtyRows.some((dirtyRow) => dirtyRow.id === row.id)
+        const rowIsDirty = dirtyRowIds.has(row.id)
         const rowIsInvalid = validationErrors.has(row.id)
 
         if (statusFilter === "active" && !row.isActive) return false
