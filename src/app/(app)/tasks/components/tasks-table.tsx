@@ -1,19 +1,13 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import {
-  ArrowDownAZ,
-  ArrowUpAZ,
-  Download,
-  MoreHorizontal,
-  Trash2,
-} from "lucide-react"
+import { Download, MoreHorizontal, Trash2 } from "lucide-react"
 import { toast } from "sonner"
 
-import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
+import { SortableTableHead } from "@/components/ui/sortable-table-head"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -269,44 +263,43 @@ export function TasksTable({ data }: TasksTableProps) {
             <TableRow>
               <TableHead className="w-10">
                 <Checkbox
-                  checked={allVisibleSelected || someVisibleSelected}
+                  checked={allVisibleSelected ? true : someVisibleSelected ? "indeterminate" : false}
                   onCheckedChange={(checked) =>
                     toggleVisibleRows(Boolean(checked))
                   }
                   aria-label="Select visible tasks"
-                  data-state={someVisibleSelected ? "indeterminate" : undefined}
                 />
               </TableHead>
-              <SortableHead
+              <SortableTableHead
                 active={sortKey === "id"}
                 direction={sortDirection}
                 onClick={() => toggleSort("id")}
               >
                 Task
-              </SortableHead>
-              <SortableHead
+              </SortableTableHead>
+              <SortableTableHead
                 active={sortKey === "title"}
                 direction={sortDirection}
                 onClick={() => toggleSort("title")}
                 className="min-w-72"
               >
                 Title
-              </SortableHead>
-              <SortableHead
+              </SortableTableHead>
+              <SortableTableHead
                 active={sortKey === "status"}
                 direction={sortDirection}
                 onClick={() => toggleSort("status")}
               >
                 Status
-              </SortableHead>
+              </SortableTableHead>
               <TableHead>Label</TableHead>
-              <SortableHead
+              <SortableTableHead
                 active={sortKey === "priority"}
                 direction={sortDirection}
                 onClick={() => toggleSort("priority")}
               >
                 Priority
-              </SortableHead>
+              </SortableTableHead>
               <TableHead className="w-12" />
             </TableRow>
           </TableHeader>
@@ -424,40 +417,6 @@ export function TasksTable({ data }: TasksTableProps) {
         </div>
       </div>
     </div>
-  )
-}
-
-function SortableHead({
-  active,
-  children,
-  className,
-  direction,
-  onClick,
-}: {
-  active: boolean
-  children: React.ReactNode
-  className?: string
-  direction: SortDirection
-  onClick: () => void
-}) {
-  return (
-    <TableHead className={className}>
-      <button
-        type="button"
-        onClick={onClick}
-        className={cn(
-          "inline-flex items-center gap-1",
-          active && "text-primary"
-        )}
-      >
-        {children}
-        {direction === "asc" ? (
-          <ArrowDownAZ className="size-3" />
-        ) : (
-          <ArrowUpAZ className="size-3" />
-        )}
-      </button>
-    </TableHead>
   )
 }
 
