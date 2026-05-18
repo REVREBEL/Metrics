@@ -48,7 +48,7 @@
   .metric-card__title,
   .metric-card-title {
     font-family: var(--font-display);
-    color: var(--primary-b000);
+    color: var(--color-dark-blue);
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -63,7 +63,7 @@
 
   .metric-card__label {
     font-family: var(--font-display);
-    color: var(--primary-b000);
+    color: var(--color-dark-blue);
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -151,7 +151,7 @@
     border-radius: 2px;
     border: 0;
     background-color: transparent;
-    color: var(--primary-b000);
+    color: var(--color-dark-blue);
     font-family: var(--font-display);
     font-size: 0.875rem;
     font-weight: 600;
@@ -180,7 +180,7 @@
   }
 
   .metric-card-tab:focus-visible {
-    outline: 2px solid var(--primary-b000);
+    outline: 2px solid var(--color-dark-blue);
     outline-offset: 2px;
   }
 
@@ -189,7 +189,7 @@
     align-items: flex-start;
     gap: 0.75rem;
     margin-top: 1.5rem;
-    border: 1px solid color-mix(in oklch, var(--primary-b000) 16%, transparent);
+    border: 1px solid color-mix(in oklch, var(--color-dark-blue) 16%, transparent);
     border-radius: 0.75rem;
     background-color: var(--color-smoke-fade);
     padding: 1rem;
@@ -199,7 +199,7 @@
     display: inline-flex;
     flex: 0 0 auto;
     margin-top: 0.125rem;
-    color: color-mix(in oklch, var(--primary-b000) 55%, transparent);
+    color: color-mix(in oklch, var(--color-dark-blue) 55%, transparent);
   }
 
   .metric-card__insight-copy {
@@ -213,7 +213,7 @@
 
   .metric-card__insight-label {
     font-family: var(--font-display);
-    color: var(--primary-b000);
+    color: var(--color-dark-blue);
     font-size: 0.5625rem;
     font-weight: 700;
     letter-spacing: 0.08em;

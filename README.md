@@ -115,3 +115,30 @@ Check out our Next.js deployment documentation for more details.
     </tr>
   </tbody>
 </table>
+
+## **POSTGRES APP-STATE FOUNDATION**
+
+Metrics now includes a Postgres app-state layer backed by Drizzle ORM.
+
+### Ownership boundary
+
+- BigQuery/Dataform remains the source of truth for analytical `metrics_core` tables.
+- Postgres stores app-owned workflow state (profiles, notes, events, tasks, campaigns, strategy, draft edits, approvals, audit).
+
+### Environment variables
+
+```bash
+DATABASE_URL=postgres://user:password@localhost:5432/metrics
+POSTGRES_POOL_MAX=10
+```
+
+### Database commands
+
+```bash
+pnpm db:generate   # generate SQL migrations from schema
+pnpm db:migrate    # apply migrations
+pnpm db:studio     # open Drizzle Studio
+pnpm db:seed       # seed baseline demo records
+```
+
+Schema files live under `src/db/schema`, client entrypoint is `src/db/index.ts`, and migrations are emitted to `src/db/migrations`.
