@@ -1,5 +1,86 @@
 import type { LookupTableMetadata, LookupTableRow } from "./types"
 
+<<<<<<< ours
+<<<<<<< ours
+=======
+=======
+>>>>>>> theirs
+type LookupTableKey =
+  | "channel_mapping"
+  | "segment_mapping"
+  | "rate_code_mapping"
+  | "source_code_mapping"
+  | "room_type_mapping"
+  | "property_mapping"
+
+type LookupTableMetadataEntry = Omit<LookupTableMetadata, "key"> & {
+  key: LookupTableKey
+}
+
+export const lookupTableMetadata: LookupTableMetadataEntry[] = [
+  {
+    key: "channel_mapping",
+    displayName: "Channel Mapping",
+    description:
+      "Normalizes raw booking channel codes into REVREBEL channel groups.",
+    approximateRowCount: 184,
+    lastUpdated: "2026-05-17T18:34:00.000Z",
+    lastRefreshed: "2026-05-18T08:15:00.000Z",
+    status: "ready",
+  },
+  {
+    key: "segment_mapping",
+    displayName: "Segment Mapping",
+    description:
+      "Maps PMS and CRS segment labels into analytics-ready segment groups.",
+    approximateRowCount: 96,
+    lastUpdated: "2026-05-16T22:11:00.000Z",
+    lastRefreshed: "2026-05-18T08:15:00.000Z",
+    status: "ready",
+  },
+  {
+    key: "rate_code_mapping",
+    displayName: "Rate Code Mapping",
+    description:
+      "Connects raw rate codes to commercial strategy and pricing categories.",
+    approximateRowCount: 421,
+    lastUpdated: "2026-05-14T15:09:00.000Z",
+    lastRefreshed: "2026-05-18T08:15:00.000Z",
+    status: "needs_review",
+  },
+  {
+    key: "source_code_mapping",
+    displayName: "Source Code Mapping",
+    description:
+      "Groups source codes from connected hotel systems for acquisition reporting.",
+    approximateRowCount: 137,
+    lastUpdated: "2026-05-13T20:45:00.000Z",
+    lastRefreshed: "2026-05-18T08:15:00.000Z",
+    status: "ready",
+  },
+  {
+    key: "room_type_mapping",
+    displayName: "Room Type Mapping",
+    description:
+      "Standardizes property-specific room type codes into comparable categories.",
+    approximateRowCount: 78,
+    lastUpdated: "2026-05-12T12:26:00.000Z",
+    lastRefreshed: "2026-05-18T08:15:00.000Z",
+    status: "draft",
+  },
+  {
+    key: "property_mapping",
+    displayName: "Property Mapping",
+    description:
+      "Maintains property identifiers and display labels used across Metrics.",
+    approximateRowCount: 24,
+    lastUpdated: "2026-05-10T16:02:00.000Z",
+    lastRefreshed: "2026-05-18T08:15:00.000Z",
+    status: "ready",
+  },
+]
+
+>>>>>>> theirs
 const baseRows: LookupTableRow[] = [
   {
     id: "chn-001",
@@ -75,7 +156,7 @@ const baseRows: LookupTableRow[] = [
   },
 ]
 
-export const lookupTableRowsByKey: Record<string, LookupTableRow[]> = {
+export const lookupTableRowsByKey: Record<LookupTableKey, LookupTableRow[]> = {
   channel_mapping: baseRows,
   segment_mapping: baseRows.map((row, index) => ({
     ...row,
