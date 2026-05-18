@@ -119,7 +119,7 @@
     "react-textarea-autosize": "^8.5.9",
     "react-top-loading-bar": "^3.0.2",
     "react-use-measure": "^2.1.7",
-    "react-zoom-pan-pinch": "^3.7.0",
+    "react-zoom-pan-pinch": "^4.0.0",
     "recharts": "3.8.1",
     "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
