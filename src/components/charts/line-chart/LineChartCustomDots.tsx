@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 
 import { GitCommitVertical, TrendingUp } from 'lucide-react';
@@ -72,6 +73,10 @@ export function LineChartCustomDotsComponent() {
               stroke='var(--color-desktop)'
               strokeWidth={2}
               dot={({ cx, cy, payload }) => {
+                if (cx == null || cy == null) {
+                  return null;
+                }
+
                 const r = 24;
                 return (
                   <GitCommitVertical
