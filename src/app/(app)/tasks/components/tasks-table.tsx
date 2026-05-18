@@ -82,10 +82,13 @@ export function TasksTable({ data }: TasksTableProps) {
           return true
         }
 
-        return [task.id, task.title, task.status, task.label, task.priority]
-          .join(" ")
-          .toLowerCase()
-          .includes(normalizedSearch)
+        return (
+          task.id.toLowerCase().includes(normalizedSearch) ||
+          task.title.toLowerCase().includes(normalizedSearch) ||
+          task.status.toLowerCase().includes(normalizedSearch) ||
+          (task.label?.toLowerCase().includes(normalizedSearch) ?? false) ||
+          (task.priority?.toLowerCase().includes(normalizedSearch) ?? false)
+        )
       })
       .sort((a, b) => {
         const left = String(a[sortKey]).toLowerCase()

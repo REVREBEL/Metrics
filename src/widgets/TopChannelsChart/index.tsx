@@ -263,6 +263,8 @@ export default function TopChannelsChart() {
       title="Top Channels"
       description="OTA production ranked by rooms, ADR, revenue, and length of stay."
       metric="total"
+      sourceType="indicator"
+      source="total"
       headerAction={<MoreVertical className="h-5 w-5 cursor-pointer text-primary" />}
     >
       <MetricCardTabs
@@ -281,7 +283,8 @@ export default function TopChannelsChart() {
               <div
                 key={channel.key}
                 className="top-channels-chart__row"
-                data-channel={channel.key}
+                data-source-type="channel"
+                data-source={channel.key}
                 data-muted={isMuted ? "true" : undefined}
                 onMouseEnter={() => setHoveredKey(channel.key)}
                 onMouseLeave={() => setHoveredKey(null)}
@@ -323,7 +326,8 @@ export default function TopChannelsChart() {
               <div
                 key={channel.key}
                 className="top-channels-chart__metric"
-                data-channel={channel.key}
+                data-source-type="channel"
+                data-source={channel.key}
                 data-muted={isMuted ? "true" : undefined}
                 onMouseEnter={() => setHoveredKey(channel.key)}
                 onMouseLeave={() => setHoveredKey(null)}

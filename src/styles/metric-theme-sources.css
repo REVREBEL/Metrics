@@ -1,0 +1,246 @@
+@layer components {
+  .metric-source,
+  [data-source-type][data-source] {
+    --source-normal: var(--color-indicator-total-normal);
+    --source-inverse: var(--color-indicator-total-inverse);
+    --source-variance: var(--color-indicator-total-var);
+
+    --metric-color: var(--source-normal);
+    --metric-inverse-color: var(--source-inverse);
+    --metric-variance-color: var(--source-variance);
+    --metric-icon-color: var(--source-normal);
+    --metric-chart-color: var(--source-normal);
+    --metric-chart-variance-color: var(--source-variance);
+  }
+
+  .metric-source--indicator-positive,
+  [data-source-type="indicator"][data-source="positive"] {
+    --source-normal: var(--color-indicator-positive-normal);
+    --source-inverse: var(--color-indicator-positive-inverse);
+    --source-variance: var(--color-indicator-positive-var);
+  }
+
+  .metric-source--indicator-negative,
+  [data-source-type="indicator"][data-source="negative"] {
+    --source-normal: var(--color-indicator-negative-normal);
+    --source-inverse: var(--color-indicator-negative-inverse);
+    --source-variance: var(--color-indicator-negative-var);
+  }
+
+  .metric-source--indicator-total,
+  [data-source-type="indicator"][data-source="total"] {
+    --source-normal: var(--color-indicator-total-normal);
+    --source-inverse: var(--color-indicator-total-inverse);
+    --source-variance: var(--color-indicator-total-var);
+  }
+
+  .metric-source--segment-total,
+  [data-source-type="segment"][data-source="total"] {
+    --source-normal: var(--color-segment-total-normal);
+    --source-inverse: var(--color-segment-total-inverse);
+    --source-variance: var(--color-segment-total-var);
+  }
+
+  .metric-source--segment-transient,
+  [data-source-type="segment"][data-source="transient"] {
+    --source-normal: var(--color-segment-transient-normal);
+    --source-inverse: var(--color-segment-transient-inverse);
+    --source-variance: var(--color-segment-transient-var);
+  }
+
+  .metric-source--segment-group,
+  [data-source-type="segment"][data-source="group"] {
+    --source-normal: var(--color-segment-group-normal);
+    --source-inverse: var(--color-segment-group-inverse);
+    --source-variance: var(--color-segment-group-var);
+  }
+
+  .metric-source--segment-crew,
+  [data-source-type="segment"][data-source="crew"] {
+    --source-normal: var(--color-segment-crew-normal);
+    --source-inverse: var(--color-segment-crew-inverse);
+    --source-variance: var(--color-segment-crew-var);
+  }
+
+  .metric-source--segment-complimentary,
+  [data-source-type="segment"][data-source="complimentary"] {
+    --source-normal: var(--color-segment-complimentary-normal);
+    --source-inverse: var(--color-segment-complimentary-inverse);
+    --source-variance: var(--color-segment-complimentary-var);
+  }
+
+  .metric-source--segment-other,
+  [data-source-type="segment"][data-source="other"] {
+    --source-normal: var(--color-segment-other-normal);
+    --source-inverse: var(--color-segment-other-inverse);
+    --source-variance: var(--color-segment-other-var);
+  }
+
+  .metric-source--channel-expedia,
+  [data-source-type="channel"][data-source="expedia"] {
+    --source-normal: var(--color-channel-expedia-normal);
+    --source-inverse: var(--color-channel-expedia-inverse);
+    --source-variance: var(--color-channel-expedia-var);
+  }
+
+  .metric-source--channel-booking,
+  [data-source-type="channel"][data-source="booking"] {
+    --source-normal: var(--color-channel-booking-normal);
+    --source-inverse: var(--color-channel-booking-inverse);
+    --source-variance: var(--color-channel-booking-var);
+  }
+
+  .metric-source--channel-agoda,
+  [data-source-type="channel"][data-source="agoda"] {
+    --source-normal: var(--color-channel-agoda-normal);
+    --source-inverse: var(--color-channel-agoda-inverse);
+    --source-variance: var(--color-channel-agoda-var);
+  }
+
+  .metric-source--channel-hopper,
+  [data-source-type="channel"][data-source="hopper"] {
+    --source-normal: var(--color-channel-hopper-normal);
+    --source-inverse: var(--color-channel-hopper-inverse);
+    --source-variance: var(--color-channel-hopper-var);
+  }
+
+  .metric-source--channel-hoteltonight,
+  [data-source-type="channel"][data-source="hoteltonight"] {
+    --source-normal: var(--color-channel-hoteltonight-normal);
+    --source-inverse: var(--color-channel-hoteltonight-inverse);
+    --source-variance: var(--color-channel-hoteltonight-var);
+  }
+
+  .metric-source--channel-hotelbeds,
+  [data-source-type="channel"][data-source="hotelbeds"] {
+    --source-normal: var(--color-channel-hotelbeds-normal);
+    --source-inverse: var(--color-channel-hotelbeds-inverse);
+    --source-variance: var(--color-channel-hotelbeds-var);
+  }
+
+  .metric-source--channel-priceline,
+  [data-source-type="channel"][data-source="priceline"] {
+    --source-normal: var(--color-channel-priceline-normal);
+    --source-inverse: var(--color-channel-priceline-inverse);
+    --source-variance: var(--color-channel-priceline-var);
+  }
+
+  .metric-source--channel-airbnb,
+  [data-source-type="channel"][data-source="airbnb"] {
+    --source-normal: var(--color-channel-airbnb-normal);
+    --source-inverse: var(--color-channel-airbnb-inverse);
+    --source-variance: var(--color-channel-airbnb-var);
+  }
+
+  .metric-source--channel-hotwire,
+  [data-source-type="channel"][data-source="hotwire"] {
+    --source-normal: var(--color-channel-hotwire-normal);
+    --source-inverse: var(--color-channel-hotwire-inverse);
+    --source-variance: var(--color-channel-hotwire-var);
+  }
+
+  .metric-source--social-facebook,
+  [data-source-type="social"][data-source="facebook"] {
+    --source-normal: var(--color-social-facebook-normal);
+    --source-inverse: var(--color-social-facebook-inverse);
+    --source-variance: var(--color-social-facebook-var);
+  }
+
+  .metric-source--social-instagram,
+  [data-source-type="social"][data-source="instagram"] {
+    --source-normal: var(--color-social-instagram-normal);
+    --source-inverse: var(--color-social-instagram-inverse);
+    --source-variance: var(--color-social-instagram-var);
+  }
+
+  .metric-source--social-x,
+  [data-source-type="social"][data-source="x"] {
+    --source-normal: var(--color-social-x-normal);
+    --source-inverse: var(--color-social-x-inverse);
+    --source-variance: var(--color-social-x-var);
+  }
+
+  .metric-source--social-linkedin,
+  [data-source-type="social"][data-source="linkedin"] {
+    --source-normal: var(--color-social-linkedin-normal);
+    --source-inverse: var(--color-social-linkedin-inverse);
+    --source-variance: var(--color-social-linkedin-var);
+  }
+
+  .metric-source--social-tiktok,
+  [data-source-type="social"][data-source="tiktok"] {
+    --source-normal: var(--color-social-tiktok-normal);
+    --source-inverse: var(--color-social-tiktok-inverse);
+    --source-variance: var(--color-social-tiktok-var);
+  }
+
+  .metric-source--social-blog,
+  [data-source-type="social"][data-source="blog"] {
+    --source-normal: var(--color-social-blog-normal);
+    --source-inverse: var(--color-social-blog-inverse);
+    --source-variance: var(--color-social-blog-var);
+  }
+
+  .metric-source--social-telegram,
+  [data-source-type="social"][data-source="telegram"] {
+    --source-normal: var(--color-social-telegram-normal);
+    --source-inverse: var(--color-social-telegram-inverse);
+    --source-variance: var(--color-social-telegram-var);
+  }
+
+  .metric-source--social-slack,
+  [data-source-type="social"][data-source="slack"] {
+    --source-normal: var(--color-social-slack-normal);
+    --source-inverse: var(--color-social-slack-inverse);
+    --source-variance: var(--color-social-slack-var);
+  }
+
+  .metric-source--social-youtube,
+  [data-source-type="social"][data-source="youtube"] {
+    --source-normal: var(--color-social-youtube-normal);
+    --source-inverse: var(--color-social-youtube-inverse);
+    --source-variance: var(--color-social-youtube-var);
+  }
+
+  .metric-source--social-pinterest,
+  [data-source-type="social"][data-source="pinterest"] {
+    --source-normal: var(--color-social-pinterest-normal);
+    --source-inverse: var(--color-social-pinterest-inverse);
+    --source-variance: var(--color-social-pinterest-var);
+  }
+
+  .metric-source--social-github,
+  [data-source-type="social"][data-source="github"] {
+    --source-normal: var(--color-social-github-normal);
+    --source-inverse: var(--color-social-github-inverse);
+    --source-variance: var(--color-social-github-var);
+  }
+
+  .metric-source--review-yelp,
+  [data-source-type="review"][data-source="yelp"] {
+    --source-normal: var(--color-review-yelp-normal);
+    --source-inverse: var(--color-review-yelp-inverse);
+    --source-variance: var(--color-review-yelp-var);
+  }
+
+  .metric-source--review-tripadvisor,
+  [data-source-type="review"][data-source="tripadvisor"] {
+    --source-normal: var(--color-review-tripadvisor-normal);
+    --source-inverse: var(--color-review-tripadvisor-inverse);
+    --source-variance: var(--color-review-tripadvisor-var);
+  }
+
+  .metric-source--review-expedia,
+  [data-source-type="review"][data-source="expedia"] {
+    --source-normal: var(--color-review-expedia-normal);
+    --source-inverse: var(--color-review-expedia-inverse);
+    --source-variance: var(--color-review-expedia-var);
+  }
+
+  .metric-source--review-booking,
+  [data-source-type="review"][data-source="booking"] {
+    --source-normal: var(--color-review-booking-normal);
+    --source-inverse: var(--color-review-booking-inverse);
+    --source-variance: var(--color-review-booking-var);
+  }
+}
