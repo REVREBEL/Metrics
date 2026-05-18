@@ -123,15 +123,15 @@
   --color-emerald-900: var(--base-color-1-d400);
   --color-emerald-950: var(--base-color-1-l400);
 
-  --color-dark-green-100-inverse:: var(--base-color-9-d400);
-  --color-dark-green-200-inverse:: var(--base-color-9-d300);
-  --color-dark-green-300-inverse:: var(--base-color-9-d200);
-  --color-dark-green-400-inverse:: var(--base-color-9-d100);
-  --color-dark-green-500-inverse:: var(--base-color-9-b000);
-  --color-dark-green-600-inverse:: var(--base-color-9-l100);
-  --color-dark-green-700-inverse:: var(--base-color-9-l200);
-  --color-dark-green-800-inverse:: var(--base-color-9-l300);
-  --color-dark-green-900-inverse:: var(--base-color-9-l400);
+  --color-dark-green-100-inverse: var(--base-color-9-d400);
+  --color-dark-green-200-inverse: var(--base-color-9-d300);
+  --color-dark-green-300-inverse: var(--base-color-9-d200);
+  --color-dark-green-400-inverse: var(--base-color-9-d100);
+  --color-dark-green-500-inverse: var(--base-color-9-b000);
+  --color-dark-green-600-inverse: var(--base-color-9-l100);
+  --color-dark-green-700-inverse: var(--base-color-9-l200);
+  --color-dark-green-800-inverse: var(--base-color-9-l300);
+  --color-dark-green-900-inverse: var(--base-color-9-l400);
 
 
   /* {Green} */
@@ -763,15 +763,15 @@
   --base-grey-d800: oklch(45.0% 0.005 254);
 
 
-  --shadow-sm: 0.95px .5px 0 var(--currentColor),1.45px 1px 0 var(--currentColor),1.95px 1.5px 0 var(--currentColor),2.45px 2px 0 var(--currentColor),2.95px 2.5px 0 var(--currentColor),3.45px 3px 0 var(--currentColor),3.95px 3.5px 0 var(--currentColor);
+  --shadow-sm: 0.95px .5px 0 currentColor,1.45px 1px 0 currentColor,1.95px 1.5px 0 currentColor,2.45px 2px 0 currentColor,2.95px 2.5px 0 currentColor,3.45px 3px 0 currentColor,3.95px 3.5px 0 currentColor;
 
-  --shadow-md: 0.95px .5px 0 var(--currentColor),1.45px 1px 0 var(--currentColor),1.95px 1.5px 0 var(--currentColor),2.45px 2px 0 var(--currentColor),2.95px 2.5px 0 var(--currentColor),3.45px 3px 0 var(--currentColor),3.95px 3.5px 0 var(--currentColor),4.45px 4px 0 var(--currentColor);
+  --shadow-md: 0.95px .5px 0 currentColor,1.45px 1px 0 currentColor,1.95px 1.5px 0 currentColor,2.45px 2px 0 currentColor,2.95px 2.5px 0 currentColor,3.45px 3px 0 currentColor,3.95px 3.5px 0 currentColor,4.45px 4px 0 currentColor;
 
-  --shadow: 0.95px .5px 0 var(--currentColor),1.45px 1px 0 var(--currentColor),1.95px 1.5px 0 var(--currentColor),2.45px 2px 0 var(--currentColor),2.95px 2.5px 0 var(--currentColor),3.45px 3px 0 var(--currentColor),3.95px 3.5px 0 var(--currentColor),4.45px 4px 0 var(--currentColor), var(--currentColor),4.95px 4.5px 0 var(--currentColor),5.45px 5px 0;
+  --shadow: 0.95px .5px 0 currentColor,1.45px 1px 0 currentColor,1.95px 1.5px 0 currentColor,2.45px 2px 0 currentColor,2.95px 2.5px 0 currentColor,3.45px 3px 0 currentColor,3.95px 3.5px 0 currentColor,4.45px 4px 0 currentColor, currentColor,4.95px 4.5px 0 currentColor,5.45px 5px 0;
 
-  --shadow-lg: 0.95px .5px 0 var(--currentColor),1.45px 1px 0 var(--currentColor),1.95px 1.5px 0 var(--currentColor),2.45px 2px 0 var(--currentColor),2.95px 2.5px 0 var(--currentColor),3.45px 3px 0 var(--currentColor),3.95px 3.5px 0 var(--currentColor),4.45px 4px 0 var(--currentColor),4.95px 4.5px 0 var(--currentColor),5.45px 5px 0 var(--currentColor),5.95px 5.5px 0 var(--currentColor),6.45px 6px 0 var(--currentColor),6.95px 6.5px 0 var(--currentColor),7.45px 7px 0 var(--currentColor),7.95px 7.5px 0 var(--currentColor),8.45px 8px 0;
+  --shadow-lg: 0.95px .5px 0 currentColor,1.45px 1px 0 currentColor,1.95px 1.5px 0 currentColor,2.45px 2px 0 currentColor,2.95px 2.5px 0 currentColor,3.45px 3px 0 currentColor,3.95px 3.5px 0 currentColor,4.45px 4px 0 currentColor,4.95px 4.5px 0 currentColor,5.45px 5px 0 currentColor,5.95px 5.5px 0 currentColor,6.45px 6px 0 currentColor,6.95px 6.5px 0 currentColor,7.45px 7px 0 currentColor,7.95px 7.5px 0 currentColor,8.45px 8px 0;
 
-  --shadow-xl: 0.95px .5px 0 var(--currentColor),1.45px 1px 0 var(--currentColor),1.95px 1.5px 0 var(--currentColor),2.45px 2px 0 var(--currentColor),2.95px 2.5px 0 var(--currentColor),3.45px 3px 0 var(--currentColor),3.95px 3.5px 0 var(--currentColor),4.45px 4px 0 var(--currentColor),4.95px 4.5px 0 var(--currentColor),5.45px 5px 0 var(--currentColor),5.95px 5.5px 0 var(--currentColor),6.45px 6px 0 var(--currentColor),6.95px 6.5px 0 var(--currentColor),7.45px 7px 0 var(--currentColor),7.95px 7.5px 0 var(--currentColor),8.45px 8px 0 var(--currentColor),8.95px 8.5px 0 var(--currentColor),9.45px 9px 0 var(--currentColor),9.95px 9.5px 0 var(--currentColor),10.45px 10px 0 var(--currentColor);
+  --shadow-xl: 0.95px .5px 0 currentColor,1.45px 1px 0 currentColor,1.95px 1.5px 0 currentColor,2.45px 2px 0 currentColor,2.95px 2.5px 0 currentColor,3.45px 3px 0 currentColor,3.95px 3.5px 0 currentColor,4.45px 4px 0 currentColor,4.95px 4.5px 0 currentColor,5.45px 5px 0 currentColor,5.95px 5.5px 0 currentColor,6.45px 6px 0 currentColor,6.95px 6.5px 0 currentColor,7.45px 7px 0 currentColor,7.95px 7.5px 0 currentColor,8.45px 8px 0 currentColor,8.95px 8.5px 0 currentColor,9.45px 9px 0 currentColor,9.95px 9.5px 0 currentColor,10.45px 10px 0 currentColor;
 
 }
 
