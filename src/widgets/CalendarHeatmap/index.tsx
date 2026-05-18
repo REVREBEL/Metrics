@@ -1,14 +1,15 @@
 "use client";
+
 import React, { useEffect, useMemo, useState } from "react";
-import { Calendar, CalendarDayButton,  } from "@/widgets/CalendarHeatmap/components/calendar";
-import { useDuckDb } from "@/hooks/useDuckDb";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useDuckDb } from "@/hooks/useDuckDb";
 import { MetricCard, MetricCardTabs } from "@/widgets/_shared/MetricCard";
 
 const DAY_SIZE = "24px";
 const DAY_MARGIN = "1px";
 const PLACEHOLDER_AVAILABLE_ROOMS = 100;
 const DEMO_PICKUP_SCALE = 0.3;
+const MONTH_COUNT = 12;
 
 const PICKUP_WINDOWS = [
   { label: "1 Day", value: "1d" },
@@ -29,11 +30,42 @@ export interface CalendarHeatmapData {
   adr: number;
 }
 
+interface CalendarHeatmapProps {
+  startDate?: Date;
+}
 
+interface PickupQueryRow {
+  dateStr: string;
+  rooms: number | string;
+  revenue: number | string;
+  adr: number | string;
+}
 
-/**
- * HELPERS
- */
+type PickupWindow = "1d" | "3d" | "7d" | "14d" | "30d" | "60d" | "90d" | "120d";
+type HeatmapBucket = "empty" | "low" | "mediumLow" | "mediumHigh" | "high" | "extreme";
+
+type CalendarCell = {
+  key: string;
+  date?: Date;
+};
+
+const heatmapClassMap: Record<HeatmapBucket, string> = {
+  empty: "metric-card-heatmap-empty",
+  low: "metric-card-heatmap-low",
+  mediumLow: "metric-card-heatmap-medium-low",
+  mediumHigh: "metric-card-heatmap-medium-high",
+  high: "metric-card-heatmap-high",
+  extreme: "metric-card-heatmap-extreme",
+};
+
+const heatmapColorMap: Record<HeatmapBucket, string> = {
+  empty: "var(--background)",
+  low: "var(--color-light-blue, var(--base-color-4))",
+  mediumLow: "var(--color-yellow, var(--base-color-5))",
+  mediumHigh: "var(--color-orange, var(--base-color-6))",
+  high: "var(--color-red, var(--base-color-7))",
+  extreme: "var(--color-purple, var(--base-color-8))",
+};
 
 export function formatLocalYYYYMMDD(date: Date) {
   const y = date.getFullYear();
@@ -55,50 +87,6 @@ function differenceInCalendarDays(date: Date, startDate: Date) {
   const current = new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
   return Math.round((current - start) / 86_400_000);
 }
-
-interface CalendarHeatmapProps {
-  startDate?: Date;
-}
-
-interface PickupQueryRow {
-  dateStr: string;
-  rooms: number | string;
-  revenue: number | string;
-  adr: number | string;
-}
-
-import { CalendarDay, Modifiers } from "react-day-picker";
-
-interface DayButtonComponentProps {
-  day: CalendarDay;      
-  modifiers: Modifiers; 
-}
-
-/**
- * HEATMAP LOGIC & CONSTANTS
- * Consolidated here to resolve build errors and ensure self-contained execution.
- */
-
-type PickupWindow = "1d" | "3d" | "7d" | "14d" | "30d" | "60d" | "90d" | "120d";
-type HeatmapBucket = "empty" | "low" | "mediumLow" | "mediumHigh" | "high" | "extreme";
-
-const heatmapClassMap: Record<HeatmapBucket, string> = {
-  empty: "metric-card-heatmap-empty",
-  low: "metric-card-heatmap-low",
-  mediumLow: "metric-card-heatmap-medium-low",
-  mediumHigh: "metric-card-heatmap-medium-high",
-  high: "metric-card-heatmap-high",
-  extreme: "metric-card-heatmap-extreme",
-};
-
-const heatmapColorMap: Record<HeatmapBucket, string> = {
-  empty: "var(--heatmap-color)",
-  low: "var(--heatmap-color)",
-  mediumLow: "var(--heatmap-color)",
-  mediumHigh: "var(--heatmap-color)",
-  high: "var(--heatmap-color)",
-  extreme: "var(--heatmap-color)",
-};
 
 function getHeatmapColor(bucket: HeatmapBucket) {
   return heatmapColorMap[bucket];
@@ -181,14 +169,56 @@ function hasVisiblePickup(data: CalendarHeatmapData[]) {
   return data.some((item) => item.rooms > 0);
 }
 
-export default function CalendarHeatmap({
-  startDate,
-}: CalendarHeatmapProps): React.JSX.Element {
+function getMonthCells(monthDate: Date): CalendarCell[] {
+  const monthStart = startOfMonth(monthDate);
+  const monthEnd = addMonths(monthStart, 1);
+  const cells: CalendarCell[] = [];
+  const firstDayOffset = monthStart.getDay();
+
+  for (let index = 0; index < firstDayOffset; index += 1) {
+    cells.push({ key: `blank-start-${formatLocalYYYYMMDD(monthStart)}-${index}` });
+  }
+
+  for (let cursor = new Date(monthStart); cursor < monthEnd; cursor.setDate(cursor.getDate() + 1)) {
+    const date = new Date(cursor);
+    cells.push({ key: formatLocalYYYYMMDD(date), date });
+  }
+
+  while (cells.length % 7 !== 0) {
+    cells.push({ key: `blank-end-${formatLocalYYYYMMDD(monthStart)}-${cells.length}` });
+  }
+
+  return cells;
+}
+
+function chunkWeeks(cells: CalendarCell[]) {
+  const weeks: CalendarCell[][] = [];
+
+  for (let index = 0; index < cells.length; index += 7) {
+    weeks.push(cells.slice(index, index + 7));
+  }
+
+  return weeks;
+}
+
+function formatCaption(date: Date) {
+  return date.toLocaleString("default", { month: "short" });
+}
+
+function formatTooltipDate(date: Date) {
+  return date.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+export default function CalendarHeatmap({ startDate }: CalendarHeatmapProps): React.JSX.Element {
   const calendarStartDate = useMemo(() => startOfMonth(startDate ?? new Date()), [startDate]);
   const [selectedRange, setSelectedRange] = useState<PickupWindow>("7d");
   const initialDemoData = useMemo(
-    () => createMockHeatmapData(calendarStartDate, 12, getLookbackDays(selectedRange)),
-    [calendarStartDate, selectedRange],
+    () => createMockHeatmapData(calendarStartDate, MONTH_COUNT, getLookbackDays(selectedRange)),
+    [calendarStartDate, selectedRange]
   );
   const [heatmapData, setHeatmapData] = useState<CalendarHeatmapData[]>(initialDemoData);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -196,9 +226,9 @@ export default function CalendarHeatmap({
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const endDate = addMonths(calendarStartDate, 12);
+    const endDate = addMonths(calendarStartDate, MONTH_COUNT);
     const lookbackDays = getLookbackDays(selectedRange);
-    const demoData = createMockHeatmapData(calendarStartDate, 12, lookbackDays);
+    const demoData = createMockHeatmapData(calendarStartDate, MONTH_COUNT, lookbackDays);
 
     if (isInitializing) {
       setHeatmapData(demoData);
@@ -224,7 +254,7 @@ export default function CalendarHeatmap({
         const transformedData = result.map((row) => {
           const pickupRow = row as PickupQueryRow;
           const [y, m, d] = pickupRow.dateStr.split("-");
-          const localDate = new Date(Number.parseInt(y), Number.parseInt(m) - 1, Number.parseInt(d));
+          const localDate = new Date(Number.parseInt(y, 10), Number.parseInt(m, 10) - 1, Number.parseInt(d, 10));
           const rooms = Number(pickupRow.rooms);
           const revenue = Number(pickupRow.revenue);
           return {
@@ -247,10 +277,6 @@ export default function CalendarHeatmap({
     loadData();
   }, [calendarStartDate, selectedRange, execute, isInitializing]);
 
-  const formatCaption = (date: Date) => {
-    return date.toLocaleString("default", { month: "short" });
-  };
-
   const dataMap = useMemo(() => {
     return heatmapData.reduce((acc, item) => {
       acc.set(item.dateStr, { rooms: item.rooms, revenue: item.revenue, adr: item.adr });
@@ -265,30 +291,10 @@ export default function CalendarHeatmap({
     return { maxCount, totalRooms };
   }, [heatmapData]);
 
-  const bucketMap = useMemo(() => {
-    return heatmapData.reduce((acc, item) => {
-      acc.set(item.dateStr, getHeatmapBucket(item.rooms));
-      return acc;
-    }, new Map<string, HeatmapBucket>());
-  }, [heatmapData]);
-
-  const modifierDates = useMemo(() => {
-    return heatmapData.reduce(
-      (acc, item) => {
-        const bucket = getHeatmapBucket(item.rooms);
-        acc[bucket].push(item.date);
-        return acc;
-      },
-      {
-        empty: [] as Date[],
-        low: [] as Date[],
-        mediumLow: [] as Date[],
-        mediumHigh: [] as Date[],
-        high: [] as Date[],
-        extreme: [] as Date[],
-      },
-    );
-  }, [heatmapData]);
+  const monthDates = useMemo(
+    () => Array.from({ length: MONTH_COUNT }, (_, index) => addMonths(calendarStartDate, index)),
+    [calendarStartDate]
+  );
 
   if (loading && !heatmapData.length) {
     return <Skeleton className="h-120 w-full" />;
@@ -340,59 +346,102 @@ export default function CalendarHeatmap({
           </div>
         </div>
 
-        <Calendar
-          formatters={{ formatCaption }}
-          numberOfMonths={12}
-         onDayClick={() => {}}
-          month={calendarStartDate}
-          defaultMonth={calendarStartDate}
-          className="calendar-heatmap__calendar"
-          classNames={{
-            nav: "hidden",
-            months: "calendar-heatmap__months",
-            month: "calendar-heatmap__month",
-            month_caption: "calendar-heatmap__month-caption",
-            caption_label: "calendar-heatmap__caption-label",
-            table: "calendar-heatmap__table",
-            weekdays: "hidden",
-            weekday: "hidden",
-            week: "calendar-heatmap__week",
-            day: "calendar-heatmap__day",
-            outside: "calendar-heatmap__outside",
-            today: "calendar-heatmap__today",
-          }}
-          modifiers={modifierDates}
-          modifiersClassNames={{
-            empty: heatmapClassMap.empty,
-            low: heatmapClassMap.low,
-            mediumLow: heatmapClassMap.mediumLow,
-            mediumHigh: heatmapClassMap.mediumHigh,
-            high: heatmapClassMap.high,
-            extreme: heatmapClassMap.extreme,
-          }}
-          modifiersStyles={{
-          empty: { backgroundColor: getHeatmapColor("empty"), color: "var(--heatmap-number-color)" },
-          low: { backgroundColor: getHeatmapColor("low"), color: "var(--heatmap-number-color)" },
-          mediumLow: { backgroundColor: getHeatmapColor("mediumLow"), color: "var(--heatmap-number-color)" },
-          mediumHigh: { backgroundColor: getHeatmapColor("mediumHigh"), color: "var(--heatmap-number-color)" },
-          high: { backgroundColor: getHeatmapColor("high"), color: "var(--heatmap-number-color)" },
-          extreme: { backgroundColor: getHeatmapColor("extreme"), color: "var(--heatmap-number-color)" },
-          }}
-          components={{
-            Weekdays: () => <></>,
-            DayButton: (props: DayButtonComponentProps) => (
-              <CustomDayButton
-                dayProps={props}
+        <div className="calendar-heatmap__calendar" role="grid" aria-label="Pickup heatmap calendar">
+          <div className="calendar-heatmap__months">
+            {monthDates.map((monthDate) => (
+              <HeatmapMonth
+                key={formatLocalYYYYMMDD(monthDate)}
+                monthDate={monthDate}
                 dataMap={dataMap}
-                bucketMap={bucketMap}
               />
-            ),
-          }}
-        />
+            ))}
+          </div>
+        </div>
 
         <HeatmapLegend />
       </div>
     </MetricCard>
+  );
+}
+
+function HeatmapMonth({
+  monthDate,
+  dataMap,
+}: {
+  monthDate: Date;
+  dataMap: Map<string, Omit<CalendarHeatmapData, "date" | "dateStr">>;
+}) {
+  const weeks = chunkWeeks(getMonthCells(monthDate));
+
+  return (
+    <div className="calendar-heatmap__month">
+      <div className="calendar-heatmap__month-caption">
+        <span className="calendar-heatmap__caption-label">{formatCaption(monthDate)}</span>
+      </div>
+      <table className="calendar-heatmap__table">
+        <tbody>
+          {weeks.map((week, weekIndex) => (
+            <tr key={`${formatLocalYYYYMMDD(monthDate)}-${weekIndex}`} className="calendar-heatmap__week">
+              {week.map((cell) => {
+                if (!cell.date) {
+                  return <td key={cell.key} className="calendar-heatmap__day calendar-heatmap__outside" />;
+                }
+
+                return <HeatmapDay key={cell.key} date={cell.date} dataMap={dataMap} />;
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function HeatmapDay({
+  date,
+  dataMap,
+}: {
+  date: Date;
+  dataMap: Map<string, Omit<CalendarHeatmapData, "date" | "dateStr">>;
+}) {
+  const dateStr = formatLocalYYYYMMDD(date);
+  const metrics = dataMap.get(dateStr) || { rooms: 0, revenue: 0, adr: 0 };
+  const bucket = getHeatmapBucket(metrics.rooms);
+  const bucketClassName = heatmapClassMap[bucket];
+  const heatmapColor = getHeatmapColor(bucket);
+  const occupancyPct = (metrics.rooms / PLACEHOLDER_AVAILABLE_ROOMS) * 100;
+  const isToday = dateStr === formatLocalYYYYMMDD(new Date());
+
+  return (
+    <td
+      className={`calendar-heatmap__day ${bucketClassName} ${isToday ? "calendar-heatmap__today" : ""}`}
+      data-day={dateStr}
+      role="gridcell"
+      aria-label={formatTooltipDate(date)}
+      style={{ backgroundColor: heatmapColor } as React.CSSProperties}
+    >
+      <div className="calendar-heatmap__day-wrap group">
+        <button className="calendar-heatmap__day-button" type="button">
+          {date.getDate()}
+        </button>
+        <div className="calendar-heatmap__tooltip-wrap">
+          <div className="calendar-heatmap__tooltip retro-shadow-base">
+            <div className="calendar-heatmap__tooltip-date">{formatTooltipDate(date)}</div>
+            <div className="calendar-heatmap__tooltip-grid">
+              <div className="calendar-heatmap__tooltip-number">{occupancyPct.toFixed(1)}%</div>
+              <div
+                className={`calendar-heatmap__tooltip-accent ${bucketClassName}`}
+                style={{ backgroundColor: heatmapColor }}
+              />
+              <div className="calendar-heatmap__tooltip-label">Occupancy</div>
+
+              <div className="calendar-heatmap__tooltip-number">{metrics.rooms.toLocaleString()}</div>
+              <div className="calendar-heatmap__tooltip-label">Rooms</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
   );
 }
 
@@ -420,82 +469,6 @@ function HeatmapLegend() {
         ))}
       </div>
       <span>Extreme</span>
-    </div>
-  );
-}
-
-
-
-interface CustomDayButtonProps {
-  dayProps: DayButtonComponentProps;
-  dataMap: Map<string, { rooms: number; revenue: number; adr: number }>;
-  bucketMap: Map<string, HeatmapBucket>;
-}
-
-
-
-export function CustomDayButton({
-  dayProps,
-  dataMap,
-  bucketMap,
-}: CustomDayButtonProps): React.JSX.Element {
-  const { day } = dayProps;
-  const dayStr = formatLocalYYYYMMDD(day.date);
-  
-  const metrics = dataMap.get(dayStr) || { rooms: 0, revenue: 0, adr: 0 };
-  const bucket = bucketMap.get(dayStr) ?? "empty";
-  const bucketClassName = heatmapClassMap[bucket];
-  
-  const heatmapColor = `var(--heatmap-color)`; 
-  const heatmapTextColor = `var(--heatmap-number-color)`;
-  
-  const occupancyPct = (metrics.rooms / 100) * 100; // Using 100 as placeholder total rooms
-  const formattedDate = day.date.toLocaleDateString("en-US", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-  });
-
-  return (
-    <div className="calendar-heatmap__day-wrap group">
-      {/* The Actual Button: 
-          We pass the day number as a child so it renders inside the heatmap cell.
-          The color is controlled by the --heatmap-number-color variable.
-      */}
-      <CalendarDayButton
-        {...dayProps}
-        className={`calendar-heatmap__day-button ${bucketClassName}`}
-        style={{ 
-          backgroundColor: heatmapColor,
-          color: heatmapTextColor 
-        } as React.CSSProperties}
-      >
-        {day.date.getDate()} 
-      </CalendarDayButton>
-
-      {/* The Tooltip: Shows detailed metrics on hover */}
-      <div className="calendar-heatmap__tooltip-wrap">
-        <div className="calendar-heatmap__tooltip retro-shadow-base">
-          <div className="calendar-heatmap__tooltip-date">
-            {formattedDate}
-          </div>
-          <div className="calendar-heatmap__tooltip-grid">
-            <div className="calendar-heatmap__tooltip-number">
-              {occupancyPct.toFixed(1)}%
-            </div>
-            <div
-              className={`calendar-heatmap__tooltip-accent ${bucketClassName}`}
-              style={{ backgroundColor: heatmapColor }}
-            />
-            <div className="calendar-heatmap__tooltip-label">Occupancy</div>
-
-            <div className="calendar-heatmap__tooltip-number">
-              {metrics.rooms.toLocaleString()}
-            </div>
-            <div className="calendar-heatmap__tooltip-label">Rooms</div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

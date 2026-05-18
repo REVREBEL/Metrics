@@ -1,66 +1,57 @@
 "use client";
 
-import { useState } from "react";
-import { Card } from "@/components/ui/card";
-import { ChartHeader } from "@/widgets/metric-cards/components/shared-components";
-import {
-  PieChart,
-  Pie,
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  YAxis,
-  Tooltip,
-} from "recharts";
+import { Bar, BarChart, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, YAxis } from "recharts";
 
-// ----------------------------------------------------
-// A. Active Users by Gender (Donut Chart)
-// ----------------------------------------------------
+import { MetricCardShell } from "@/widgets/_shared/MetricCardShell";
+import { CardHeaderData } from "@/widgets/metric-cards/components/card-header";
+
 const genderData = [
-  { name: "Female", value: 54.9, fill: "#1A73E8" }, // Blue
-  { name: "Male", value: 45.1, fill: "#EFF8FA" }, // Very Light Blue/Gray
+  { name: "Female", value: 54.9, fill: "var(--color-total)" },
+  { name: "Male", value: 45.1, fill: "var(--color-total-var)" },
 ];
 
 export function ActiveUsersGenderCard() {
   return (
-    <Card className="w-full p-6 border-none shadow-md bg-white relative">
-      <ChartHeader label="Active Users" total="Gender Split" />
-      
-      <div className="flex justify-center items-center h-40">
-        <ResponsiveContainer width="100%" height="100%">
+    <MetricCardShell metric="total" className="relative w-full">
+      <CardHeaderData value="Gender Split" change="+4.9%" label="Active Users" />
+
+      <div className="flex h-40 min-h-0 min-w-0 items-center justify-center">
+        <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0}>
           <PieChart>
             <Pie
               data={genderData}
               innerRadius={50}
-              outerRadius={65}
+              outerRadius={66}
               startAngle={90}
               endAngle={450}
               dataKey="value"
-              cornerRadius={8}
+              cornerRadius={4}
               stroke="none"
-            />
+              isAnimationActive={false}
+            >
+              {genderData.map((entry) => (
+                <Cell key={entry.name} fill={entry.fill} />
+              ))}
+            </Pie>
           </PieChart>
         </ResponsiveContainer>
       </div>
 
-      <div className="flex justify-center gap-6 mt-2">
+      <div className="mt-2 flex justify-center gap-6">
         {genderData.map((gender) => (
           <div key={gender.name} className="flex items-center gap-2">
-            <div className={`h-2 w-2 rounded-full`} style={{ backgroundColor: gender.fill }} />
+            <div className="h-2 w-2" style={{ backgroundColor: gender.fill }} />
             <div className="flex flex-col">
-                <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{gender.name}</span>
-                <span className="text-2xl font-extrabold text-[#0B1E3B]">{gender.value}%</span>
+              <span className="metric-card__label">{gender.name}</span>
+              <span className="metric-card__number text-2xl">{gender.value}%</span>
             </div>
           </div>
         ))}
       </div>
-    </Card>
+    </MetricCardShell>
   );
 }
 
-// ----------------------------------------------------
-// B. Active Users by Interests (Table/List)
-// ----------------------------------------------------
 const interestsData = [
   { name: "News & Politics/Avid News ...", value: 650 },
   { name: "Travel/Travel Buffs", value: 485 },
@@ -73,38 +64,38 @@ const interestsData = [
 
 export function ActiveUsersInterestsCard() {
   return (
-    <Card className="w-full p-6 border-none shadow-md bg-white">
-      <ChartHeader label="Top Interests" total="Active Users" />
+    <MetricCardShell metric="total" className="w-full">
+      <CardHeaderData value="Active Users" change="+12%" label="Top Interests" />
 
-      <div className="overflow-x-auto mt-6">
+      <div className="mt-6 overflow-x-auto">
         <table className="w-full text-left">
-          <thead className="border-b border-gray-100">
+          <thead className="border-b border-(--border)">
             <tr>
-              <th className="text-xs font-semibold text-gray-400 uppercase pb-3">Interests</th>
-              <th className="text-xs font-semibold text-gray-400 uppercase pb-3 text-right">Active Users</th>
+              <th className="metric-card__label pb-3">Interests</th>
+              <th className="metric-card__label pb-3 text-right">Active Users</th>
             </tr>
           </thead>
           <tbody>
             {interestsData.map((interest, index) => (
-              <tr key={interest.name} className={`group ${index !== interestsData.length - 1 ? 'border-b border-gray-100' : ''}`}>
-                <td className="text-sm font-semibold text-[#0B1E3B] py-3.5 group-hover:text-[#1A73E8]">
+              <tr
+                key={interest.name}
+                className={index !== interestsData.length - 1 ? "border-b border-(--border)" : ""}
+              >
+                <td className="py-3.5 font-display text-sm font-bold uppercase tracking-[0.04em] text-(--foreground)">
                   {interest.name}
                 </td>
-                <td className="text-sm font-bold text-[#0B1E3B] py-3.5 text-right tabular-nums">
-                  {interest.value}
+                <td className="metric-card__number py-3.5 text-right text-sm">
+                  {interest.value.toLocaleString()}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-    </Card>
+    </MetricCardShell>
   );
 }
 
-// ----------------------------------------------------
-// C. Active Users by Age (Horizontal Bar Chart)
-// ----------------------------------------------------
 const ageData = [
   { range: "35-44", value: 460 },
   { range: "25-34", value: 370 },
@@ -116,11 +107,11 @@ const ageData = [
 
 export function ActiveUsersAgeCard() {
   return (
-    <Card className="w-full p-6 border-none shadow-md bg-white">
-      <ChartHeader label="Age Distribution" total="Active Users" />
+    <MetricCardShell metric="total" className="w-full">
+      <CardHeaderData value="Active Users" change="+8%" label="Age Distribution" />
 
-      <div className="h-56 mt-6">
-        <ResponsiveContainer width="100%" height="100%">
+      <div className="mt-6 h-56 min-h-0 min-w-0">
+        <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0}>
           <BarChart
             data={ageData}
             layout="vertical"
@@ -128,33 +119,41 @@ export function ActiveUsersAgeCard() {
             barCategoryGap={8}
           >
             <Tooltip
-                cursor={{ fill: 'transparent' }}
-                contentStyle={{ border: 'none', borderRadius: '8px', padding: '12px', background: '#0B1E3B', color: '#fff', boxShadow: 'none' }}
-                labelStyle={{ fontWeight: 'bold' }}
-                itemStyle={{ fontSize: '12px' }}
-                formatter={(value) => `${value} Users`}
+              cursor={{ fill: "transparent" }}
+              contentStyle={{
+                border: "2px solid var(--foreground)",
+                borderRadius: 0,
+                padding: "12px",
+                background: "var(--card)",
+                color: "var(--foreground)",
+                boxShadow: "4px 4px 0 var(--foreground)",
+              }}
+              labelStyle={{ fontFamily: "var(--font-display)", fontWeight: 700, textTransform: "uppercase" }}
+              itemStyle={{ fontFamily: "var(--font-numbers)", fontSize: "12px" }}
+              formatter={(value) => `${value} Users`}
             />
-            {/* Custom YAxis labels */}
             <YAxis
               dataKey="range"
               type="category"
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 11, fontWeight: 'medium', fill: '#0B1E3B' }}
+              tick={{
+                fontSize: 11,
+                fontWeight: 700,
+                fill: "var(--foreground)",
+                fontFamily: "var(--font-display)",
+              }}
             />
-            
-            {/* The Horizontal Bars */}
             <Bar
               dataKey="value"
-              fill="#1A73E8"
-              radius={[4, 4, 4, 4]} // Rounded on all corners
+              fill="var(--metric-color)"
+              radius={[0, 4, 4, 0]}
               barSize={20}
-              // Optional: Add value labels above bars
-              // label={{ position: 'right', fill: '#0B1E3B', fontSize: 11, fontWeight: 'bold' }} 
+              isAnimationActive={false}
             />
           </BarChart>
         </ResponsiveContainer>
       </div>
-    </Card>
+    </MetricCardShell>
   );
 }

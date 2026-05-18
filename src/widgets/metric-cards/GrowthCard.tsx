@@ -1,32 +1,35 @@
-
-
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { Pie, PieChart, ResponsiveContainer } from 'recharts';
-import  { CardHeaderData }  from "@/widgets/metric-cards/components/card-header";
+import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
+import { MetricCardShell } from "@/widgets/_shared/MetricCardShell";
+import { CardHeaderData } from "@/widgets/metric-cards/components/card-header";
 
 const growthData = [
-    { v: 40, fill: "#C92100" },
-    { v: 30, fill: "#F9C775" },
-    { v: 30, fill: "#A7C7D7" }
+  { v: 40, fill: "var(--color-negative)" },
+  { v: 30, fill: "var(--color-group-var)" },
+  { v: 30, fill: "var(--color-total-var)" },
 ];
 
 export const GrowthCard = () => (
-    <Card className="w-full p-6 h-64 border-none shadow-md relative">
-        <CardHeaderData value="$27.9k" change="+49%" label="Total Growth" />
-        <div className="flex justify-center items-center h-24">
-            <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                    <Pie
-                        data={growthData}
-                        innerRadius={30}
-                        outerRadius={45}
-                        dataKey="v"
-                        paddingAngle={5}
-                        stroke="none" // Removes the default white border if desired
-                    />
-                </PieChart>
-            </ResponsiveContainer>
-            <span className="absolute bottom-12 text-xs font-serif font-bold text-dark-blue">$23K</span>
-        </div>
-    </Card>
+  <MetricCardShell metric="positive" className="h-64">
+    <CardHeaderData value="$27.9k" change="+49%" label="Total Growth" />
+    <div className="relative flex h-32 min-h-0 min-w-0 items-center justify-center">
+      <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0}>
+        <PieChart>
+          <Pie
+            data={growthData}
+            innerRadius={34}
+            outerRadius={52}
+            dataKey="v"
+            paddingAngle={5}
+            stroke="none"
+            isAnimationActive={false}
+          >
+            {growthData.map((entry, index) => (
+              <Cell key={`growth-${index}`} fill={entry.fill} />
+            ))}
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
+      <span className="absolute bottom-1 font-numbers text-sm text-(--foreground)">$23K</span>
+    </div>
+  </MetricCardShell>
 );

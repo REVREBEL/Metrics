@@ -1,12 +1,21 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { getMetricThemeClass, type MetricTheme } from "./metric-theme";
+import {
+  getMetricSourceClass,
+  getMetricSourceDataAttributes,
+  getSourceTypeForLegacyMetric,
+  type MetricSource,
+  type MetricSourceType,
+} from "./metric-source";
 
 type MetricCardShellProps = {
   title?: string;
   eyebrow?: string;
   description?: React.ReactNode;
   metric?: MetricTheme;
+  sourceType?: MetricSourceType;
+  source?: MetricSource;
   children: React.ReactNode;
   className?: string;
   contentClassName?: string;
@@ -18,13 +27,26 @@ export function MetricCardShell({
   eyebrow,
   description,
   metric = "total",
+  sourceType,
+  source,
   children,
   className,
   contentClassName,
   headerAction,
 }: MetricCardShellProps) {
+  const resolvedSourceType = sourceType ?? getSourceTypeForLegacyMetric(metric);
+  const resolvedSource = source ?? metric;
+
   return (
-    <Card className={cn("metric-card", getMetricThemeClass(metric), className)}>
+    <Card
+      className={cn(
+        "metric-card",
+        getMetricThemeClass(metric),
+        getMetricSourceClass(resolvedSourceType, resolvedSource),
+        className
+      )}
+      {...getMetricSourceDataAttributes(resolvedSourceType, resolvedSource)}
+    >
       {(title || eyebrow || description || headerAction) && (
         <CardHeader className="metric-card__header">
           <div className="metric-card__heading">
