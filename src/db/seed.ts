@@ -1,10 +1,12 @@
 import "server-only"
 
+import { sql } from "drizzle-orm"
 import { drizzle } from "drizzle-orm/postgres-js"
 
 import * as schema from "@/db/schema"
 import {
   campaigns,
+  dataLibraryTables,
   hotelProfiles,
   hotelTaskStatuses,
   strategyTemplates,
@@ -14,6 +16,69 @@ import { createPostgresClient } from "./index"
 
 const queryClient = createPostgresClient({ max: 1 })
 const db = drizzle(queryClient, { schema })
+
+
+const dataLibrarySeedTables = [
+  {
+    tableName: "metrics_core.dim_property",
+    displayName: "Property Directory",
+    description: "Property dimension used for hotel profile alignment.",
+    uiMetadata: {
+      status: "ready",
+      approximateRowCount: 100,
+      lastUpdated: "2026-05-18T08:15:00.000Z",
+      lastRefreshed: "2026-05-18T08:15:00.000Z",
+    },
+  },
+  {
+    tableName: "metrics_core.lkp_segment",
+    displayName: "Segment Lookup",
+    description: "Canonical segment definitions.",
+    uiMetadata: { status: "ready", approximateRowCount: 25, lastUpdated: "2026-05-18T08:15:00.000Z", lastRefreshed: "2026-05-18T08:15:00.000Z" },
+  },
+  {
+    tableName: "metrics_core.map_segment",
+    displayName: "Segment Mapping",
+    description: "Maps source-system segment values to canonical segment values.",
+    uiMetadata: { status: "draft", approximateRowCount: 250, lastUpdated: "2026-05-18T08:15:00.000Z", lastRefreshed: "2026-05-18T08:15:00.000Z" },
+  },
+  {
+    tableName: "metrics_core.map_roomtype",
+    displayName: "Room Type Mapping",
+    description: "Maps PMS room types to standardized room types.",
+    uiMetadata: { status: "draft", approximateRowCount: 80, lastUpdated: "2026-05-18T08:15:00.000Z", lastRefreshed: "2026-05-18T08:15:00.000Z" },
+  },
+  {
+    tableName: "metrics_core.lkp_channel",
+    displayName: "Channel Lookup",
+    description: "Canonical channel definitions for reporting and mapping.",
+    uiMetadata: { status: "ready", approximateRowCount: 20, lastUpdated: "2026-05-18T08:15:00.000Z", lastRefreshed: "2026-05-18T08:15:00.000Z" },
+  },
+  {
+    tableName: "metrics_core.map_source",
+    displayName: "Source Mapping",
+    description: "Maps source/subsource values to canonical source/channel.",
+    uiMetadata: { status: "needs_review", approximateRowCount: 400, lastUpdated: "2026-05-18T08:15:00.000Z", lastRefreshed: "2026-05-18T08:15:00.000Z" },
+  },
+  {
+    tableName: "metrics_core.map_rate",
+    displayName: "Rate Mapping",
+    description: "Maps raw rate codes to canonical rate dimensions.",
+    uiMetadata: { status: "needs_review", approximateRowCount: 500, lastUpdated: "2026-05-18T08:15:00.000Z", lastRefreshed: "2026-05-18T08:15:00.000Z" },
+  },
+  {
+    tableName: "metrics_core.lkp_event_category",
+    displayName: "Event Category Lookup",
+    description: "Standard event category labels for demand events.",
+    uiMetadata: { status: "ready", approximateRowCount: 15, lastUpdated: "2026-05-18T08:15:00.000Z", lastRefreshed: "2026-05-18T08:15:00.000Z" },
+  },
+  {
+    tableName: "metrics_core.lkp_event_impact",
+    displayName: "Event Impact Lookup",
+    description: "Event impact scoring definitions.",
+    uiMetadata: { status: "ready", approximateRowCount: 10, lastUpdated: "2026-05-18T08:15:00.000Z", lastRefreshed: "2026-05-18T08:15:00.000Z" },
+  },
+]
 
 export async function seedAppStateFoundation() {
   const [insertedHotel] = await db
@@ -64,6 +129,18 @@ export async function seedAppStateFoundation() {
       })
       .onConflictDoNothing()
   }
+
+  await db
+    .insert(dataLibraryTables)
+    .values(dataLibrarySeedTables)
+    .onConflictDoUpdate({
+      target: dataLibraryTables.tableName,
+      set: {
+        displayName: sql`excluded.display_name`,
+        description: sql`excluded.description`,
+        uiMetadata: sql`excluded.ui_metadata`,
+      },
+    })
 
   await db
     .insert(strategyTemplates)

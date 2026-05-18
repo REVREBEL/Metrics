@@ -1802,6 +1802,16 @@ export const PLAYGROUND_REGISTRY: Record<string, any> = {
     })),
     metadata: null
   },
+  ui_sortable_table_head: { 
+    name: "sortable-table-head", 
+    type: "ui-primitive",
+    component: dynamic(() => import('@/components/ui/sortable-table-head').then(mod => {
+      const m = mod as Record<string, any>;
+      const componentLike = Object.keys(m).find((key) => /^[A-Z]/.test(key) && typeof m[key] === 'function');
+      return m["SortableTableHead"] || m.default || (componentLike ? m[componentLike] : m[Object.keys(m)[0]]);
+    })),
+    metadata: null
+  },
   ui_spinner: { 
     name: "spinner", 
     type: "ui-primitive",
