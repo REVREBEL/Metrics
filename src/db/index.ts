@@ -12,7 +12,7 @@ if (!databaseUrl) {
 }
 
 const queryClient = postgres(databaseUrl, {
-  max: Number(process.env.POSTGRES_POOL_MAX ?? 10),
+  max: Number(process.env.POSTGRES_POOL_MAX) || 10,
   prepare: false,
 })
 
