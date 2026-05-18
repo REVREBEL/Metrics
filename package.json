@@ -33,11 +33,7 @@
     "db:seed": "tsx src/db/seed.ts",
     "clean": "rm -rf .next *.tsbuildinfo",
     "clean:node_modules": "rm -rf .next node_modules *.tsbuildinfo",
-    "knip": "knip",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio",
-    "db:seed": "tsx src/db/seed.ts"
+    "knip": "knip"
   },
   "dependencies": {
     "@base-ui/react": "^1.2.0",
@@ -137,9 +133,7 @@
     "vaul": "^1.1.2",
     "zod": "^4.3.6",
     "zundo": "^2.3.0",
-    "zustand": "^5.0.11",
-    "drizzle-orm": "^0.44.2",
-    "postgres": "^3.4.7"
+    "zustand": "^5.0.11"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.7.1",

@@ -2,8 +2,8 @@ import type { LookupTableMetadata, LookupTableRow } from "./types"
 
 export const lookupTableMetadata: LookupTableMetadata[] = [
   {
-    key: "channel_mapping",
-    displayName: "Channel Mapping",
+    key: "metrics_core.lkp_channel",
+    displayName: "Channel Lookup (metrics_core.lkp_channel)",
     description:
       "Normalizes raw booking channel codes into REVREBEL channel groups.",
     approximateRowCount: 184,
@@ -12,8 +12,8 @@ export const lookupTableMetadata: LookupTableMetadata[] = [
     status: "ready",
   },
   {
-    key: "segment_mapping",
-    displayName: "Segment Mapping",
+    key: "metrics_core.map_segment",
+    displayName: "Segment Mapping (metrics_core.map_segment)",
     description:
       "Maps PMS and CRS segment labels into analytics-ready segment groups.",
     approximateRowCount: 96,
@@ -22,8 +22,8 @@ export const lookupTableMetadata: LookupTableMetadata[] = [
     status: "ready",
   },
   {
-    key: "rate_code_mapping",
-    displayName: "Rate Code Mapping",
+    key: "metrics_core.map_rate",
+    displayName: "Rate Mapping (metrics_core.map_rate)",
     description:
       "Connects raw rate codes to commercial strategy and pricing categories.",
     approximateRowCount: 421,
@@ -32,8 +32,8 @@ export const lookupTableMetadata: LookupTableMetadata[] = [
     status: "needs_review",
   },
   {
-    key: "source_code_mapping",
-    displayName: "Source Code Mapping",
+    key: "metrics_core.map_source",
+    displayName: "Source Mapping (metrics_core.map_source)",
     description:
       "Groups source codes from connected hotel systems for acquisition reporting.",
     approximateRowCount: 137,
@@ -42,8 +42,8 @@ export const lookupTableMetadata: LookupTableMetadata[] = [
     status: "ready",
   },
   {
-    key: "room_type_mapping",
-    displayName: "Room Type Mapping",
+    key: "metrics_core.map_roomtype",
+    displayName: "Room Type Mapping (metrics_core.map_roomtype)",
     description:
       "Standardizes property-specific room type codes into comparable categories.",
     approximateRowCount: 78,
@@ -52,8 +52,8 @@ export const lookupTableMetadata: LookupTableMetadata[] = [
     status: "draft",
   },
   {
-    key: "property_mapping",
-    displayName: "Property Mapping",
+    key: "metrics_core.dim_property",
+    displayName: "Property Dimension (metrics_core.dim_property)",
     description:
       "Maintains property identifiers and display labels used across Metrics.",
     approximateRowCount: 24,

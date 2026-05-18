@@ -1,11 +1,16 @@
 import "server-only"
 
-import { campaigns, hotelProfiles, hotelTaskStatuses, strategyTemplates } from "@/db/schema"
+import {
+  campaigns,
+  hotelProfiles,
+  hotelTaskStatuses,
+  strategyTemplates,
+} from "@/db/schema"
 
 import { db } from "./index"
 
 export async function seedAppStateFoundation() {
-  const [hotel] = await db
+  const [insertedHotel] = await db
     .insert(hotelProfiles)
     .values({
       propertyCode: "DEMO_001",
@@ -27,20 +32,31 @@ export async function seedAppStateFoundation() {
     ])
     .onConflictDoNothing({ target: hotelTaskStatuses.code })
 
+  const hotel =
+    insertedHotel ??
+    (await db.query.hotelProfiles.findFirst({
+      where: (table, { eq }) => eq(table.propertyCode, "DEMO_001"),
+      columns: { id: true },
+    }))
+
   if (hotel) {
-    await db.insert(campaigns).values({
-      hotelId: hotel.id,
-      name: "Demo Campaign",
-      status: "draft",
-      metadata: { source: "seed" },
-    })
+    await db
+      .insert(campaigns)
+      .values({
+        hotelId: hotel.id,
+        name: "Demo Campaign",
+        status: "draft",
+        metadata: { source: "seed" },
+      })
+      .onConflictDoNothing()
   }
 
   await db
     .insert(strategyTemplates)
     .values({
       name: "Weekly Revenue Check-In",
-      description: "Baseline strategy prompt for weekly revenue review meetings.",
+      description:
+        "Baseline strategy prompt for weekly revenue review meetings.",
       content: {
         sections: ["pace", "comp-set", "action items"],
       },
