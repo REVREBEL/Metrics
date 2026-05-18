@@ -1,10 +1,5 @@
 import type { LookupTableMetadata, LookupTableRow } from "./types"
 
-<<<<<<< ours
-<<<<<<< ours
-=======
-=======
->>>>>>> theirs
 type LookupTableKey =
   | "channel_mapping"
   | "segment_mapping"
@@ -17,70 +12,6 @@ type LookupTableMetadataEntry = Omit<LookupTableMetadata, "key"> & {
   key: LookupTableKey
 }
 
-export const lookupTableMetadata: LookupTableMetadataEntry[] = [
-  {
-    key: "channel_mapping",
-    displayName: "Channel Mapping",
-    description:
-      "Normalizes raw booking channel codes into REVREBEL channel groups.",
-    approximateRowCount: 184,
-    lastUpdated: "2026-05-17T18:34:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
-    status: "ready",
-  },
-  {
-    key: "segment_mapping",
-    displayName: "Segment Mapping",
-    description:
-      "Maps PMS and CRS segment labels into analytics-ready segment groups.",
-    approximateRowCount: 96,
-    lastUpdated: "2026-05-16T22:11:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
-    status: "ready",
-  },
-  {
-    key: "rate_code_mapping",
-    displayName: "Rate Code Mapping",
-    description:
-      "Connects raw rate codes to commercial strategy and pricing categories.",
-    approximateRowCount: 421,
-    lastUpdated: "2026-05-14T15:09:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
-    status: "needs_review",
-  },
-  {
-    key: "source_code_mapping",
-    displayName: "Source Code Mapping",
-    description:
-      "Groups source codes from connected hotel systems for acquisition reporting.",
-    approximateRowCount: 137,
-    lastUpdated: "2026-05-13T20:45:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
-    status: "ready",
-  },
-  {
-    key: "room_type_mapping",
-    displayName: "Room Type Mapping",
-    description:
-      "Standardizes property-specific room type codes into comparable categories.",
-    approximateRowCount: 78,
-    lastUpdated: "2026-05-12T12:26:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
-    status: "draft",
-  },
-  {
-    key: "property_mapping",
-    displayName: "Property Mapping",
-    description:
-      "Maintains property identifiers and display labels used across Metrics.",
-    approximateRowCount: 24,
-    lastUpdated: "2026-05-10T16:02:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
-    status: "ready",
-  },
-]
-
->>>>>>> theirs
 const baseRows: LookupTableRow[] = [
   {
     id: "chn-001",
@@ -180,20 +111,12 @@ export const lookupTableRowsByKey: Record<LookupTableKey, LookupTableRow[]> = {
         "Group",
         "House Use",
       ][index] ?? row.mappedValue,
-    mappedGroup: [
-      "Retail",
-      "Retail",
-      "Qualified",
-      "Negotiated",
-      "Group",
-      "Internal",
-    ][index],
+    mappedGroup: ["Retail", "Retail", "Qualified", "Negotiated", "Group", "Internal"][index],
   })),
   rate_code_mapping: baseRows.map((row, index) => ({
     ...row,
     id: `rate-${String(index + 1).padStart(3, "0")}`,
-    rawCode:
-      ["RACK", "ADV14", "PKG", "AAA", "CORP1", "OLD"][index] ?? row.rawCode,
+    rawCode: ["RACK", "ADV14", "PKG", "AAA", "CORP1", "OLD"][index] ?? row.rawCode,
     rawName:
       [
         "Rack Rate",
@@ -203,43 +126,26 @@ export const lookupTableRowsByKey: Record<LookupTableKey, LookupTableRow[]> = {
         "Corporate 1",
         "Old Promo",
       ][index] ?? row.rawName,
-    mappedValue:
-      ["Retail", "Advance", "Package", "Qualified", "Corporate", ""][index] ??
-      "",
-    mappedGroup: ["Public", "Public", "Bundled", "Discount", "Negotiated", ""][
-      index
-    ],
+    mappedValue: ["Retail", "Advance", "Package", "Qualified", "Corporate", ""][index] ?? "",
+    mappedGroup: ["Public", "Public", "Bundled", "Discount", "Negotiated", ""][index],
   })),
   source_code_mapping: baseRows,
   room_type_mapping: baseRows.slice(0, 4).map((row, index) => ({
     ...row,
     id: `room-${String(index + 1).padStart(3, "0")}`,
     rawCode: ["KNG", "QQ", "STE", "ADA"][index] ?? row.rawCode,
-    rawName:
-      ["King Room", "Two Queens", "Suite", "Accessible King"][index] ??
-      row.rawName,
-    mappedValue:
-      ["King", "Double Queen", "Suite", "Accessible"][index] ?? row.mappedValue,
+    rawName: ["King Room", "Two Queens", "Suite", "Accessible King"][index] ?? row.rawName,
+    mappedValue: ["King", "Double Queen", "Suite", "Accessible"][index] ?? row.mappedValue,
     mappedGroup: ["Standard", "Standard", "Premium", "Standard"][index],
   })),
   property_mapping: baseRows.slice(0, 3).map((row, index) => ({
     ...row,
     id: `prop-${String(index + 1).padStart(3, "0")}`,
     rawCode: ["RR-AUS", "RR-DEN", "RR-SFO"][index] ?? row.rawCode,
-    rawName:
-      ["Austin Downtown", "Denver Central", "San Francisco Bay"][index] ??
-      row.rawName,
-    mappedValue:
-      ["Austin Downtown", "Denver Central", "San Francisco Bay"][index] ??
-      row.mappedValue,
+    rawName: ["Austin Downtown", "Denver Central", "San Francisco Bay"][index] ?? row.rawName,
+    mappedValue: ["Austin Downtown", "Denver Central", "San Francisco Bay"][index] ?? row.mappedValue,
     mappedGroup: ["Urban", "Urban", "Urban"][index],
   })),
-}
-
-type LookupTableKey = keyof typeof lookupTableRowsByKey
-
-type LookupTableMetadataEntry = Omit<LookupTableMetadata, "key"> & {
-  key: LookupTableKey
 }
 
 export const lookupTableMetadata: LookupTableMetadataEntry[] = [
