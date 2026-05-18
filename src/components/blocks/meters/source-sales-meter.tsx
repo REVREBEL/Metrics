@@ -38,46 +38,50 @@ const timeRanges: TimeRangeOption[] = [
     { value: "year", label: "Year to Date" },
 ];
 
-const getPlatformConfig = (key: string) => {
-    const normalizedKey = key.toLowerCase().trim();
-    switch (normalizedKey) {
-        case "facebook":
-            return {
-                icon: FacebookIcon,
-                label: "Facebook",
-                backgroundClass: "bg-blue-50 dark:bg-blue-800/20",
-                foregroundClass: "text-blue-500",
-            };
-        case "instagram":
-            return {
-                icon: InstagramIcon,
-                foregroundClass: "text-rose-500",
-                backgroundClass: "bg-rose-50 dark:bg-rose-800/20",
-                label: "Instagram",
-            };
-        case "google":
-            return {
-                icon: ChromeIcon,
-                foregroundClass: "text-sky-500",
-                backgroundClass: "bg-sky-50 dark:bg-sky-800/20",
-                label: "Google Ads",
-            };
-        case "dribbble":
-            return {
-                icon: DribbbleIcon,
-                foregroundClass: "text-pink-500",
-                backgroundClass: "bg-pink-50 dark:bg-pink-800/20",
-                label: "Dribbble",
-            };
-        default:
-            return {
-                icon: GlobeIcon,
-                foregroundClass: "text-slate-500",
-                backgroundClass: "bg-slate-50 dark:bg-slate-800/40",
-                label: key.charAt(0).toUpperCase() + key.slice(1),
-            };
-    }
+interface PlatformConfig {
+    icon: typeof FacebookIcon;
+    label: string;
+    color: string;
+    bg: string;
+}
+
+const platformConfigs: Record<string, PlatformConfig> = {
+    facebook: {
+        icon: FacebookIcon,
+        label: "Facebook",
+        color: "text-blue-600",
+        bg: "bg-blue-50 dark:bg-blue-950/40",
+    },
+    instagram: {
+        icon: InstagramIcon,
+        label: "Instagram",
+        color: "text-pink-600",
+        bg: "bg-pink-50 dark:bg-pink-950/40",
+    },
+    dribbble: {
+        icon: DribbbleIcon,
+        label: "Dribbble",
+        color: "text-rose-600",
+        bg: "bg-rose-50 dark:bg-rose-950/40",
+    },
+    google: {
+        icon: ChromeIcon,
+        label: "Google",
+        color: "text-amber-600",
+        bg: "bg-amber-50 dark:bg-amber-950/40",
+    },
 };
+
+function getPlatformConfig(source: string): PlatformConfig {
+    return (
+        platformConfigs[source] ?? {
+            icon: GlobeIcon,
+            label: source,
+            color: "text-muted-foreground",
+            bg: "bg-muted",
+        }
+    );
+}
 
 const apiData = [
     { source: "facebook", visitors: 12450, revenue: 45200, percent: 78 },
@@ -98,13 +102,12 @@ export const SourceSalesMeter = () => {
                 <CardDescription>Revenue contribution from each traffic source</CardDescription>
                 <CardAction>
                     <DropdownMenu>
-                        <DropdownMenuTrigger
-                            render={
-                                <Button variant="outline" size="sm" className="gap-2 max-md:size-8">
-                                    <CalendarDays className="text-muted-foreground size-4" />
-                                    <span className="max-md:hidden">{selectedLabel}</span>
-                                </Button>
-                            }></DropdownMenuTrigger>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="outline" size="sm" className="gap-2 max-md:size-8">
+                                <CalendarDays className="text-muted-foreground size-4" />
+                                <span className="max-md:hidden">{selectedLabel}</span>
+                            </Button>
+                        </DropdownMenuTrigger>
                         <DropdownMenuContent align="end" className="w-44">
                             {timeRanges.map((item) => (
                                 <DropdownMenuItem
@@ -126,36 +129,25 @@ export const SourceSalesMeter = () => {
                     const Icon = config.icon;
 
                     return (
-                        <div key={item.source} className="group flex flex-col gap-3">
-                            <div className="flex items-center justify-between">
+                        <div key={item.source} className="flex flex-col gap-2 rounded-lg border p-3">
+                            <div className="flex items-center justify-between gap-3">
                                 <div className="flex items-center gap-3">
-                                    <div
-                                        className={cn(
-                                            "flex size-9 items-center justify-center rounded-md",
-                                            config.backgroundClass,
-                                        )}>
-                                        <Icon className={cn("size-5", config.foregroundClass)} />
+                                    <div className={cn("rounded-md p-2", config.bg)}>
+                                        <Icon className={cn("size-4", config.color)} />
                                     </div>
                                     <div>
-                                        <p className="text-base font-medium">{config.label}</p>
-                                        <p className="text-muted-foreground text-xs">
+                                        <p className="text-sm font-medium leading-none">{config.label}</p>
+                                        <p className="text-xs text-muted-foreground">
                                             {item.visitors.toLocaleString()} visitors
                                         </p>
                                     </div>
                                 </div>
-                                <div className="text-end">
-                                    <p className="text-base font-medium">
-                                        ${item.revenue.toLocaleString()}
-                                        <span className="text-muted-foreground ms-1 text-xs">({item.percent}%)</span>
-                                    </p>
-                                    <div className="mt-1 flex items-center gap-2.5">
-                                        <Progress
-                                            value={item.percent}
-                                            className="bg-muted **:data-[slot=progress-indicator]:bg-primary/70 h-1 w-30 *:data-[slot=progress-track]:h-1"
-                                        />
-                                    </div>
+                                <div className="text-right">
+                                    <p className="text-sm font-semibold">${item.revenue.toLocaleString()}</p>
+                                    <p className="text-xs text-muted-foreground">Revenue</p>
                                 </div>
                             </div>
+                            <Progress value={item.percent} />
                         </div>
                     );
                 })}
