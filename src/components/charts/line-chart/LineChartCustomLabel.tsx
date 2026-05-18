@@ -99,8 +99,9 @@ export function LineChartCustomLabelComponent() {
                 className='fill-foreground'
                 fontSize={12}
                 dataKey='browser'
-                formatter={(value: keyof typeof chartConfig) =>
-                  chartConfig[value]?.label
+                formatter={(value) =>
+                  chartConfig[String(value) as keyof typeof chartConfig]?.label ??
+                  String(value ?? '')
                 }
               />
             </Line>
