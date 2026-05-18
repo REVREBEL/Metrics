@@ -1,4 +1,3 @@
-
 @theme {
   --font-brand: "Barlow", sans-serif;
   --font-display: "Khand", ui-sans-serif, sans-serif, system-ui;
@@ -557,7 +556,7 @@
   --shadow-blur: 0px;
   --shadow-spread: 0.5px;
   --shadow-opacity: 1;
-  --shadow-color: #163666;
+  --shadow-color: currentColor;
   --shadow-2xs: 2px 2px 0px 0.5px hsl(216 64.5161% 24.3137% / 0.50);
   --shadow-xs: 2px 2px 0px 0.5px hsl(216 64.5161% 24.3137% / 0.50);
 
@@ -565,7 +564,9 @@
   
   --shadow-md: 0.95px .5px 0 var(--shadow-color),1.45px 1px 0 var(--shadow-color),1.95px 1.5px 0 var(--shadow-color),2.45px 2px 0 var(--shadow-color),2.95px 2.5px 0 var(--shadow-color),3.45px 3px 0 var(--shadow-color),3.95px 3.5px 0 var(--shadow-color),4.45px 4px 0 var(--shadow-color);
   
-  --shadow-lg: 0.95px .5px 0 var(--shadow-color),1.45px 1px 0 var(--shadow-color),1.95px 1.5px 0 var(--shadow-color),2.45px 2px 0 var(--shadow-color),2.95px 2.5px 0 var(--shadow-color),3.45px 3px 0 var(--shadow-color),3.95px 3.5px 0 var(--shadow-color),4.45px 4px 0 var(--shadow-color),4.95px 4.5px 0 var(--shadow-color),5.45px 5px 0 var(--shadow-color),5.95px 5.5px 0 var(--shadow-color),6.45px 6px 0 var(--shadow-color),6.95px 6.5px 0 var(--shadow-color),7.45px 7px 0 var(--shadow-color),7.95px 7.5px 0 var(--shadow-color),8.45px 8px 0 var(--shadow-color),8.95px 8.5px 0 var(--shadow-color),9.45px 9px 0 var(--shadow-color),9.95px 9.5px 0 var(--shadow-color),10.45px 10px 0 var(--shadow-color);
+  --shadow: 0.95px .5px 0 var(--shadow-color),1.45px 1px 0 var(--shadow-color),1.95px 1.5px 0 var(--shadow-color),2.45px 2px 0 var(--shadow-color),2.95px 2.5px 0 var(--shadow-color),3.45px 3px 0 var(--shadow-color),3.95px 3.5px 0 var(--shadow-color),4.45px 4px 0 var(--shadow-color), var(--shadow-color),4.95px 4.5px 0 var(--shadow-color),5.45px 5px 0;
+
+  --shadow-lg: 0.95px .5px 0 var(--shadow-color),1.45px 1px 0 var(--shadow-color),1.95px 1.5px 0 var(--shadow-color),2.45px 2px 0 var(--shadow-color),2.95px 2.5px 0 var(--shadow-color),3.45px 3px 0 var(--shadow-color),3.95px 3.5px 0 var(--shadow-color),4.45px 4px 0 var(--shadow-color),4.95px 4.5px 0 var(--shadow-color),5.45px 5px 0 var(--shadow-color),5.95px 5.5px 0 var(--shadow-color),6.45px 6px 0 var(--shadow-color),6.95px 6.5px 0 var(--shadow-color),7.45px 7px 0 var(--shadow-color),7.95px 7.5px 0 var(--shadow-color),8.45px 8px 0;
   
   --shadow-xl: 0.95px .5px 0 var(--shadow-color),1.45px 1px 0 var(--shadow-color),1.95px 1.5px 0 var(--shadow-color),2.45px 2px 0 var(--shadow-color),2.95px 2.5px 0 var(--shadow-color),3.45px 3px 0 var(--shadow-color),3.95px 3.5px 0 var(--shadow-color),4.45px 4px 0 var(--shadow-color),4.95px 4.5px 0 var(--shadow-color),5.45px 5px 0 var(--shadow-color),5.95px 5.5px 0 var(--shadow-color),6.45px 6px 0 var(--shadow-color),6.95px 6.5px 0 var(--shadow-color),7.45px 7px 0 var(--shadow-color),7.95px 7.5px 0 var(--shadow-color),8.45px 8px 0 var(--shadow-color),8.95px 8.5px 0 var(--shadow-color),9.45px 9px 0 var(--shadow-color),9.95px 9.5px 0 var(--shadow-color),10.45px 10px 0 var(--shadow-color);
   
@@ -844,7 +845,7 @@
       5.5px 5.5px 0 var(--base-color-4)
   }
 
-  .card.is-dark-green {
+  .tag-dark-green {
     background-color: var(--base-color-1);
     border-color: var(--base-color-1);
     color: var(--base-color-1-inverse);
@@ -862,28 +863,28 @@
       5.5px 5.5px 0 var(--base-color-1-inverse)
   }
 
-  .card.is-orange {
+  .tag-orange {
     background-color: var(--base-color-6);
     border-color: var(--base-color-6);
     color: var(--base-color-6-inverse);
-    box-shadow: .5px .5px 0 var(--base-color-6-inverse), 1px 1px 0 var(--base-color-6-inverse), 1.5px 1.5px 0 var(--base-color-6-inverse), 2px 2px 0 var(--base-color-6-inverse), 2.5px 2.5px 0 var(--base-color-6-inverse), 3px 3px 0 var(--base-color-6-inverse), 3.5px 3.5px 0 var(--base-color-6-inverse), 4px 4px 0 var(--base-color-6-inverse), 4.5px 4.5px 0 var(--base-color-6-inverse), 5px 5px 0 var(--base-color-6-inverse), 5.5px 5.5px 0 var(--base-color-6-inverse)
+    box-shadow: var(--shadow);
   }
 
-  .card.is-red {
+  .tag-red {
     background-color: var(--base-color-7);
     border-color: var(--base-color-7);
     color: var(--base-color-7-inverse);
     box-shadow: .5px .5px 0 var(--base-color-7-inverse), 1px 1px 0 var(--base-color-7-inverse), 1.5px 1.5px 0 var(--base-color-7-inverse), 2px 2px 0 var(--base-color-7-inverse), 2.5px 2.5px 0 var(--base-color-7-inverse), 3px 3px 0 var(--base-color-7-inverse), 3.5px 3.5px 0 var(--base-color-7-inverse), 4px 4px 0 var(--base-color-7-inverse), 4.5px 4.5px 0 var(--base-color-7-inverse), 5px 5px 0 var(--base-color-7-inverse), 5.5px 5.5px 0 var(--base-color-7-inverse)
   }
 
-  .card.is-purple {
+  .tag-purple {
     background-color: var(--base-color-8);
     border-color: var(--base-color-8);
     color: var(--base-color-8-inverse);
     box-shadow: .5px .5px 0 var(--base-color-8-inverse), 1px 1px 0 var(--base-color-8-inverse), 1.5px 1.5px 0 var(--base-color-8-inverse), 2px 2px 0 var(--base-color-8-inverse), 2.5px 2.5px 0 var(--base-color-8-inverse), 3px 3px 0 var(--base-color-8-inverse), 3.5px 3.5px 0 var(--base-color-8-inverse), 4px 4px 0 var(--base-color-8-inverse), 4.5px 4.5px 0 var(--base-color-8-inverse), 5px 5px 0 var(--base-color-8-inverse), 5.5px 5.5px 0 var(--base-color-8-inverse)
   }
 
-  .card.is-smoke {
+  .tag-smoke {
     background-color: var(--base-color-9);
     border-color: var(--base-color-9);
     color: var(--base-color-9-inverse);
@@ -918,35 +919,35 @@
     border-width: 3px
   }
 
-  .tag.is-primary{background-color:var(--primary-inverse);border-color:var(--primary);border:4px solid var(--primary)}
+  .tag-primary{background-color:var(--primary-inverse);border-color:var(--primary);border:4px solid var(--primary)}
   .tag.bg-primary.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:auto}
 
-  .tag.is-dark-green{background-color:var(--base-color-1);border:4px solid var(--base-color-1);color:var(--base-color-1-inverse);text-overflow:clip}
-  .tag.is-dark-green.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:auto}
+  .tag-dark-green{background-color:var(--base-color-1);border:4px solid var(--base-color-1);color:var(--base-color-1-inverse);text-overflow:clip}
+  .tag-dark-green.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:auto}
 
-  .tag.is-green{background-color:var(--base-color-2);border:4px solid var(--base-color-2);color:var(--base-color-2-inverse)}
-  .tag.is-green.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .tag-green{background-color:var(--base-color-2);border:4px solid var(--base-color-2);color:var(--base-color-2-inverse)}
+  .tag-green.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
   
-  .tag.is-light-green{background-color:var(--base-color-3);border:4px solid var(--base-color-3);color:var(--base-color-3-inverse)}
-  .tag.is-light-green.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .tag-light-green{background-color:var(--base-color-3);border:4px solid var(--base-color-3);color:var(--base-color-3-inverse)}
+  .tag-light-green.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
   
-  .tag.is-light-blue{background-color:var(--base-color-4);border:4px solid var(--base-color-4);color:var(--base-color-4-inverse)}
-  .tag.is-light-blue.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .tag-light-blue{background-color:var(--base-color-4);border:4px solid var(--base-color-4);color:var(--base-color-4-inverse)}
+  .tag-light-blue.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-  .tag.is-yellow{background-color:var(--base-color-5);border:4px solid var(--base-color-5);color:var(--base-color-5-inverse)}
-  .tag.is-yellow.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .tag-yellow{background-color:var(--base-color-5);border:4px solid var(--base-color-5);color:var(--base-color-5-inverse)}
+  .tag-yellow.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-  .tag.is-orange { background-color: var(--base-color-6);border: 4px solid var(--base-color-6); color: var(--base-color-6-inverse);}
-  .tag.is-orange.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .tag-orange { background-color: var(--base-color-6);border: 4px solid var(--base-color-6); color: var(--base-color-6-inverse);}
+  .tag-orange.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-  .tag.is-red{background-color:var(--base-color-7);border:4px solid var(--base-color-7);color:var(--base-color-7-inverse)}
-  .tag.is-red.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .tag-red{background-color:var(--base-color-7);border:4px solid var(--base-color-7);color:var(--base-color-7-inverse)}
+  .tag-red.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-  .tag.is-purple{background-color:var(--base-color-8);border:4px solid var(--base-color-8);color:var(--base-color-8-inverse)}
-  .tag.is-purple.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .tag-purple{background-color:var(--base-color-8);border:4px solid var(--base-color-8);color:var(--base-color-8-inverse)}
+  .tag-purple.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-  .tag.is-smoke{background-color:var(--base-color-9);border:4px solid var(--base-color-9);color:var(--base-color-9-inverse)}
-  .tag.is-smoke.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .tag-smoke{background-color:var(--base-color-9);border:4px solid var(--base-color-9);color:var(--base-color-9-inverse)}
+  .tag-smoke.is-outline{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
   .jsx-text {color: var(--color-primary) !important;}
   .jsx-tag-angle-bracket {color: var(--color-green) !important;}

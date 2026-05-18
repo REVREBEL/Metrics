@@ -93,13 +93,13 @@
     --metric-icon-color: var(--metric-color);
     --metric-chart-color: var(--metric-color);
     --metric-chart-variance-color: var(--metric-variance-color);
-    --metric-value-color: var(--primary-b000);
+    --metric-value-color: var(--foreground);
     width: 100%;
     border: 0;
     background-color: var(--card);
     padding: 1.5rem;
     box-shadow: var(--shadow-md);
-    color: var(--primary-b000);
+    color: var(--foreground);
   }
 
   .metric-card__header {
@@ -396,6 +396,7 @@
     --channel-inverse: var(--color-github-inverse);
 
   }
+
 
   .metric-card--yelp {
     --channel-primary: var(--color-yelp);
