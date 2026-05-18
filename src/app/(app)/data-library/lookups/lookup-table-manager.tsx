@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState, useTransition } from "react"
+import { useMemo, useRef, useState, useTransition } from "react"
 import {
   ArrowDownAZ,
   ArrowUpAZ,
@@ -88,6 +88,7 @@ export function LookupTableManager({
   const [loadError, setLoadError] = useState<string | null>(null)
   const [isLoadingRows, startRowsTransition] = useTransition()
   const [isSaving, startSaveTransition] = useTransition()
+  const rowsRequestIdRef = useRef(0)
 
   const selectedTable = tables.find((table) => table.key === selectedTableKey)
   const originalRowsById = useMemo(
@@ -177,6 +178,9 @@ export function LookupTableManager({
   const hasValidationErrors = validationErrors.size > 0
 
   function handleTableSelect(tableKey: string) {
+    const requestId = rowsRequestIdRef.current + 1
+    rowsRequestIdRef.current = requestId
+
     setSelectedTableKey(tableKey)
     setQuery("")
     setStatusFilter("all")
@@ -184,9 +188,18 @@ export function LookupTableManager({
     startRowsTransition(async () => {
       try {
         const nextRows = await getLookupTableRowsAction(tableKey)
+
+        if (rowsRequestIdRef.current !== requestId) {
+          return
+        }
+
         setRows(nextRows)
         setOriginalRows(nextRows)
       } catch (error) {
+        if (rowsRequestIdRef.current !== requestId) {
+          return
+        }
+
         setRows([])
         setOriginalRows([])
         setLoadError(
@@ -242,18 +255,22 @@ export function LookupTableManager({
       }
 
       const savedAt = result.savedAt ?? new Date().toISOString()
-      const savedRows = rows.map((row) =>
-        dirtyRows.some((dirtyRow) => dirtyRow.id === row.id)
-          ? {
-              ...row,
-              updatedAt: savedAt,
-              updatedBy: "Current user",
-            }
-          : row
-      )
+      const dirtyIds = new Set(dirtyRows.map((row) => row.id))
 
-      setRows(savedRows)
-      setOriginalRows(savedRows)
+      setRows((currentRows) => {
+        const nextRows = currentRows.map((row) =>
+          dirtyIds.has(row.id)
+            ? {
+                ...row,
+                updatedAt: savedAt,
+                updatedBy: "Current user",
+              }
+            : row
+        )
+
+        setOriginalRows(nextRows)
+        return nextRows
+      })
       toast.success(result.message ?? "Lookup changes saved.")
     })
   }
