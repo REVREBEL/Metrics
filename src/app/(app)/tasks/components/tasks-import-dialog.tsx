@@ -25,17 +25,27 @@ import {
 import { Input } from "@/components/ui/input"
 
 const formSchema = z.object({
-  file: z
-    .custom<FileList>((files) => {
-      return typeof FileList !== "undefined" && files instanceof FileList
-    }, "Please upload a file")
-    .refine((files) => files.length > 0, {
-      message: "Please upload a file",
-    })
-    .refine(
-      (files) => ["text/csv"].includes(files?.[0]?.type),
-      "Please upload csv format."
-    ),
+  file: z.any().superRefine((value, ctx) => {
+    const maybeFiles = value as { length?: unknown; item?: unknown; [index: number]: unknown } | undefined
+    const hasFileListShape =
+      typeof maybeFiles?.length === "number" && typeof maybeFiles?.item === "function"
+
+    if (!hasFileListShape) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: "Please upload a file" })
+      return
+    }
+
+    const files = maybeFiles as FileList
+
+    if (files.length === 0) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: "Please upload a file" })
+      return
+    }
+
+    if (!["text/csv"].includes(files[0]?.type)) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: "Please upload csv format." })
+    }
+  }),
 })
 
 type TaskImportDialogProps = {

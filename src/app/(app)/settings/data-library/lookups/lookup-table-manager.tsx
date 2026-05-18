@@ -1,15 +1,7 @@
 "use client"
 
 import { useMemo, useState, useTransition } from "react"
-import {
-  ArrowDownAZ,
-  ArrowUpAZ,
-  Check,
-  CircleAlert,
-  RefreshCcw,
-  Save,
-  Search as SearchIcon,
-} from "lucide-react"
+import { ArrowDownAZ, ArrowUpAZ, Check, CircleAlert, RefreshCcw, Save, Search as SearchIcon } from "lucide-react"
 import { toast } from "sonner"
 
 import { Badge } from "@/components/ui/badge"
@@ -23,7 +15,6 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Switch } from "@/components/ui/switch"
 import {
   Table,
   TableBody,
@@ -32,15 +23,22 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
+import { SortableTableHead } from "@/components/ui/sortable-table-head"
 import { lookupTableChangeSchema } from "@/lib/lookup-tables/schemas"
 import type {
-  LookupTableChange,
   LookupTableMetadata,
   LookupTableRow,
   LookupTableStatus,
 } from "@/lib/lookup-tables/types"
+import { LookupTableManagerRow } from "./lookup-table-manager-row"
+import { formatDate, sortLabel } from "./lookup-table-manager-utils"
+import {
+  isDirty,
+  toChange,
+  useDirtyRows,
+  useLookupValidation,
+} from "./use-lookup-table-manager-state"
 
 import {
   getLookupTableRowsAction,
@@ -62,13 +60,6 @@ const statusLabels: Record<LookupTableStatus, string> = {
   draft: "Draft",
   needs_review: "Needs review",
 }
-
-const rowFields = [
-  "mappedValue",
-  "mappedGroup",
-  "isActive",
-  "notes",
-] as const satisfies readonly (keyof LookupTableChange)[]
 
 export function LookupTableManager({
   tables,
@@ -95,35 +86,8 @@ export function LookupTableManager({
     [originalRows]
   )
 
-  const validationErrors = useMemo(() => {
-    const errors = new Map<string, Record<string, string>>()
-
-    rows.forEach((row) => {
-      const parsed = lookupTableChangeSchema.safeParse({ ...row, lastKnownUpdatedAt: row.updatedAt })
-
-      if (!parsed.success) {
-        const fieldErrors: Record<string, string> = {}
-        parsed.error.issues.forEach((issue) => {
-          const path = issue.path[0]
-          if (typeof path === "string") {
-            fieldErrors[path] = issue.message
-          }
-        })
-        errors.set(row.id, fieldErrors)
-      }
-    })
-
-    return errors
-  }, [rows])
-
-  const dirtyRows = useMemo(
-    () =>
-      rows.filter((row) => {
-        const originalRow = originalRowsById.get(row.id)
-        return originalRow ? isDirty(row, originalRow) : true
-      }),
-    [originalRowsById, rows]
-  )
+  const validationErrors = useLookupValidation(rows)
+  const dirtyRows = useDirtyRows(rows, originalRowsById)
 
   const visibleRows = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
@@ -443,34 +407,38 @@ export function LookupTableManager({
                   <Table className="min-w-[1120px]">
                     <TableHeader>
                       <TableRow>
-                        <SortableHead
+                        <SortableTableHead
                           active={sortKey === "rawCode"}
+                          direction={sortDirection}
                           onClick={() => handleSort("rawCode")}
                         >
                           Raw code
-                        </SortableHead>
-                        <SortableHead
+                        </SortableTableHead>
+                        <SortableTableHead
                           active={sortKey === "rawName"}
+                          direction={sortDirection}
                           onClick={() => handleSort("rawName")}
                         >
                           Raw name
-                        </SortableHead>
+                        </SortableTableHead>
                         <TableHead>Source</TableHead>
-                        <SortableHead
+                        <SortableTableHead
                           active={sortKey === "mappedValue"}
+                          direction={sortDirection}
                           onClick={() => handleSort("mappedValue")}
                         >
                           Mapped value
-                        </SortableHead>
+                        </SortableTableHead>
                         <TableHead>Mapped group</TableHead>
                         <TableHead>Active</TableHead>
                         <TableHead>Notes</TableHead>
-                        <SortableHead
+                        <SortableTableHead
                           active={sortKey === "updatedAt"}
+                          direction={sortDirection}
                           onClick={() => handleSort("updatedAt")}
                         >
                           Updated
-                        </SortableHead>
+                        </SortableTableHead>
                         <TableHead>Status</TableHead>
                       </TableRow>
                     </TableHeader>
@@ -483,104 +451,13 @@ export function LookupTableManager({
                         const rowErrors = validationErrors.get(row.id)
 
                         return (
-                          <TableRow
+                          <LookupTableManagerRow
                             key={row.id}
-                            className={cn(
-                              dirty &&
-                                "bg-amber-50/70 hover:bg-amber-50 dark:bg-amber-950/20",
-                              rowErrors &&
-                                "bg-destructive/5 hover:bg-destructive/10"
-                            )}
-                          >
-                            <TableCell>
-                              <div className="font-mono text-xs">
-                                {row.rawCode}
-                              </div>
-                              <div className="mt-1 font-mono text-[11px] text-muted-foreground">
-                                {row.id}
-                              </div>
-                            </TableCell>
-                            <TableCell className="max-w-52 whitespace-normal">
-                              {row.rawName}
-                            </TableCell>
-                            <TableCell>{row.sourceSystem}</TableCell>
-                            <TableCell className="min-w-48">
-                              <Input
-                                value={row.mappedValue}
-                                aria-invalid={Boolean(rowErrors?.mappedValue)}
-                                onChange={(event) =>
-                                  updateRow(row.id, {
-                                    mappedValue: event.target.value,
-                                  })
-                                }
-                              />
-                              {rowErrors?.mappedValue ? (
-                                <p className="mt-1 text-xs text-destructive">
-                                  {rowErrors.mappedValue}
-                                </p>
-                              ) : null}
-                            </TableCell>
-                            <TableCell className="min-w-44">
-                              <Input
-                                value={row.mappedGroup ?? ""}
-                                onChange={(event) =>
-                                  updateRow(row.id, {
-                                    mappedGroup: event.target.value,
-                                  })
-                                }
-                              />
-                            </TableCell>
-                            <TableCell>
-                              <Switch
-                                checked={row.isActive}
-                                onCheckedChange={(checked) =>
-                                  updateRow(row.id, { isActive: checked })
-                                }
-                                aria-label={`Set ${row.rawCode} active state`}
-                              />
-                            </TableCell>
-                            <TableCell className="min-w-64">
-                              <Textarea
-                                value={row.notes ?? ""}
-                                aria-invalid={Boolean(rowErrors?.notes)}
-                                onChange={(event) =>
-                                  updateRow(row.id, {
-                                    notes: event.target.value,
-                                  })
-                                }
-                                className="min-h-16 resize-none"
-                              />
-                              <div className="mt-1 flex justify-between gap-2 text-xs text-muted-foreground">
-                                {rowErrors?.notes ? (
-                                  <span className="text-destructive">
-                                    {rowErrors.notes}
-                                  </span>
-                                ) : (
-                                  <span>Optional</span>
-                                )}
-                                <span>{(row.notes ?? "").length}/500</span>
-                              </div>
-                            </TableCell>
-                            <TableCell>
-                              <div className="text-xs">
-                                {formatDate(row.updatedAt)}
-                              </div>
-                              <div className="mt-1 text-xs text-muted-foreground">
-                                {row.updatedBy}
-                              </div>
-                            </TableCell>
-                            <TableCell>
-                              {rowErrors ? (
-                                <Badge variant="destructive">Invalid</Badge>
-                              ) : dirty ? (
-                                <Badge>Unsaved</Badge>
-                              ) : row.isActive ? (
-                                <Badge variant="secondary">Active</Badge>
-                              ) : (
-                                <Badge variant="outline">Inactive</Badge>
-                              )}
-                            </TableCell>
-                          </TableRow>
+                            row={row}
+                            dirty={dirty}
+                            rowErrors={rowErrors}
+                            updateRow={updateRow}
+                          />
                         )
                       })}
                     </TableBody>
@@ -608,32 +485,6 @@ function StatusBadge({ status }: { status: LookupTableStatus }) {
     >
       {statusLabels[status]}
     </Badge>
-  )
-}
-
-function SortableHead({
-  active,
-  children,
-  onClick,
-}: {
-  active: boolean
-  children: React.ReactNode
-  onClick: () => void
-}) {
-  return (
-    <TableHead>
-      <button
-        type="button"
-        onClick={onClick}
-        className={cn(
-          "inline-flex items-center gap-1",
-          active && "text-primary"
-        )}
-      >
-        {children}
-        <ArrowDownAZ className="size-3" aria-hidden="true" />
-      </button>
-    </TableHead>
   )
 }
 
@@ -665,6 +516,7 @@ function RowsLoadingState() {
     </div>
   )
 }
+<<<<<<< ours
 
 function toChange(
   row: LookupTableRow,
@@ -681,8 +533,7 @@ function toChange(
     }
   })
 
-  if (row.isActive) {
-    change.isActive = true
+  if (row.isActive && originalRow && row.mappedValue !== originalRow.mappedValue) {
     change.mappedValue = row.mappedValue
   }
 
@@ -713,3 +564,5 @@ function formatDate(value: string) {
     minute: "2-digit",
   }).format(new Date(value))
 }
+=======
+>>>>>>> theirs

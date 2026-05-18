@@ -2,7 +2,12 @@ import { existsSync, readFileSync } from "node:fs"
 import { resolve } from "node:path"
 
 import { defineConfig } from "drizzle-kit"
+import { loadEnvFile } from "node:process"
 
+loadEnvFile(".env.local")
+loadEnvFile(".env")
+
+<<<<<<< ours
 function hydrateDatabaseUrlFromEnvFiles() {
   const envFiles = [".env.local", ".env"]
 
@@ -38,13 +43,16 @@ if (!databaseUrl) {
     "DATABASE_URL must be set (env or .env/.env.local) to run Drizzle migrations"
   )
 }
+=======
+import { getDatabaseUrl } from "./src/db/config"
+>>>>>>> theirs
 
 export default defineConfig({
   dialect: "postgresql",
   schema: "./src/db/schema/index.ts",
   out: "./src/db/migrations",
   dbCredentials: {
-    url: databaseUrl,
+    url: getDatabaseUrl(),
   },
   strict: true,
 })

@@ -1,13 +1,22 @@
 import "server-only"
 
+<<<<<<< ours
 import {
   campaigns,
   hotelProfiles,
   hotelTaskStatuses,
   strategyTemplates,
 } from "@/db/schema"
+=======
+import { drizzle } from "drizzle-orm/postgres-js"
 
-import { db } from "./index"
+import { campaigns, hotelProfiles, hotelTaskStatuses, strategyTemplates } from "@/db/schema"
+>>>>>>> theirs
+
+import { createPostgresClient } from "./index"
+
+const queryClient = createPostgresClient({ max: 1 })
+const db = drizzle(queryClient)
 
 export async function seedAppStateFoundation() {
   const [insertedHotel] = await db
@@ -19,7 +28,15 @@ export async function seedAppStateFoundation() {
       timezone: "America/Chicago",
       profileData: { tier: "pilot" },
     })
-    .onConflictDoNothing({ target: hotelProfiles.propertyCode })
+    .onConflictDoUpdate({
+      target: hotelProfiles.propertyCode,
+      set: {
+        name: "Demo Hotel",
+        market: "Austin",
+        timezone: "America/Chicago",
+        profileData: { tier: "pilot" },
+      },
+    })
     .returning({ id: hotelProfiles.id })
 
   await db
@@ -32,6 +49,7 @@ export async function seedAppStateFoundation() {
     ])
     .onConflictDoNothing({ target: hotelTaskStatuses.code })
 
+<<<<<<< ours
   const hotel =
     insertedHotel ??
     (await db.query.hotelProfiles.findFirst({
@@ -50,6 +68,14 @@ export async function seedAppStateFoundation() {
       })
       .onConflictDoNothing()
   }
+=======
+  await db.insert(campaigns).values({
+    hotelId: hotel.id,
+    name: "Demo Campaign",
+    status: "draft",
+    metadata: { source: "seed" },
+  })
+>>>>>>> theirs
 
   await db
     .insert(strategyTemplates)
@@ -64,7 +90,13 @@ export async function seedAppStateFoundation() {
     .onConflictDoNothing()
 }
 
-void (async () => {
-  await seedAppStateFoundation()
-  process.exit(0)
-})()
+if (process.argv[1]?.endsWith("seed.ts")) {
+  void seedAppStateFoundation()
+    .catch((error) => {
+      console.error("Failed to seed app state foundation", error)
+      process.exitCode = 1
+    })
+    .finally(async () => {
+      await queryClient.end()
+    })
+}

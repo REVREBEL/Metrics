@@ -5,18 +5,21 @@ import postgres from "postgres"
 
 import * as schema from "@/db/schema"
 
-const databaseUrl = process.env.DATABASE_URL
+import { getDatabaseUrl, getPostgresPoolMax } from "./config"
 
-if (!databaseUrl) {
-  throw new Error("DATABASE_URL is required to initialize the Postgres client")
+const databaseUrl = getDatabaseUrl()
+
+export function createPostgresClient(options?: { max?: number }) {
+  const max = Number.isFinite(options?.max) ? options.max! : getPostgresPoolMax()
+
+  return postgres(databaseUrl, {
+    max,
+    prepare: false,
+  })
 }
 
-const queryClient = postgres(databaseUrl, {
-  max: Number(process.env.POSTGRES_POOL_MAX) || 10,
-  prepare: false,
-})
+export const queryClient = createPostgresClient()
 
 export const db = drizzle(queryClient, { schema })
 
 export type Database = typeof db
-export { queryClient }
