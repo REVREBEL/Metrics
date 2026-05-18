@@ -1,306 +1,379 @@
 import type { LookupTableMetadata, LookupTableRow } from "./types"
 
-<<<<<<< ours
-<<<<<<< ours
-=======
-=======
->>>>>>> theirs
-type LookupTableKey =
-  | "channel_mapping"
-  | "segment_mapping"
-  | "rate_code_mapping"
-  | "source_code_mapping"
-  | "room_type_mapping"
-  | "property_mapping"
+export type LookupTableKey =
+  | "metrics_core.dim_property"
+  | "metrics_core.lkp_segment"
+  | "metrics_core.map_segment"
+  | "metrics_core.map_roomtype"
+  | "metrics_core.lkp_channel"
+  | "metrics_core.map_source"
+  | "metrics_core.map_rate"
+  | "metrics_core.lkp_event_category"
+  | "metrics_core.lkp_event_impact"
 
 type LookupTableMetadataEntry = Omit<LookupTableMetadata, "key"> & {
   key: LookupTableKey
 }
 
+const now = "2026-05-18T08:15:00.000Z"
+
+export const lookupTableRowsByKey: Record<string, LookupTableRow[]> = {
+  "metrics_core.dim_property": [
+    {
+      id: "property-001",
+      sourceSystem: "Dataform / metrics_core.dim_property",
+      rawCode: "DEMO_001",
+      rawName: "Demo Hotel",
+      mappedValue: "Demo Hotel",
+      mappedGroup: "Austin",
+      isActive: true,
+      notes: "App-facing fixture for the property dimension. BigQuery/Dataform remains the analytical source of truth.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+    {
+      id: "property-002",
+      sourceSystem: "Dataform / metrics_core.dim_property",
+      rawCode: "RR_DEN",
+      rawName: "Denver Central",
+      mappedValue: "Denver Central",
+      mappedGroup: "Denver",
+      isActive: true,
+      notes: "Example property row for UI scaffolding.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+  ],
+
+  "metrics_core.lkp_segment": [
+    {
+      id: "segment-001",
+      sourceSystem: "Dataform / metrics_core.lkp_segment",
+      rawCode: "TRANSIENT",
+      rawName: "Transient",
+      mappedValue: "Transient",
+      mappedGroup: "Transient",
+      isActive: true,
+      notes: "Standard commercial segment lookup value.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+    {
+      id: "segment-002",
+      sourceSystem: "Dataform / metrics_core.lkp_segment",
+      rawCode: "GROUP",
+      rawName: "Group",
+      mappedValue: "Group",
+      mappedGroup: "Group",
+      isActive: true,
+      notes: "Standard commercial segment lookup value.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+    {
+      id: "segment-003",
+      sourceSystem: "Dataform / metrics_core.lkp_segment",
+      rawCode: "CONTRACT",
+      rawName: "Contract",
+      mappedValue: "Contract",
+      mappedGroup: "Contract",
+      isActive: true,
+      notes: "Standard commercial segment lookup value.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+  ],
+
+  "metrics_core.map_segment": [
+    {
+      id: "map-segment-001",
+      sourceSystem: "PMS / metrics_core.map_segment",
+      rawCode: "BAR",
+      rawName: "Best Available Rate",
+      mappedValue: "TRANSIENT",
+      mappedGroup: "Transient",
+      isActive: true,
+      notes: "Maps source-system segment values to standard commercial segment values.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+    {
+      id: "map-segment-002",
+      sourceSystem: "CRS / metrics_core.map_segment",
+      rawCode: "LNR",
+      rawName: "Local Negotiated Rate",
+      mappedValue: "NEGOTIATED",
+      mappedGroup: "Transient",
+      isActive: true,
+      notes: "Example mapped source segment row for UI scaffolding.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+    {
+      id: "map-segment-003",
+      sourceSystem: "PMS / metrics_core.map_segment",
+      rawCode: "UNK",
+      rawName: "Unknown Segment",
+      mappedValue: "",
+      mappedGroup: "",
+      isActive: false,
+      notes: "Inactive fixture row to test validation and unmapped-state handling.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+  ],
+
+  "metrics_core.map_roomtype": [
+    {
+      id: "map-roomtype-001",
+      sourceSystem: "PMS / metrics_core.map_roomtype",
+      rawCode: "KNG",
+      rawName: "King Room",
+      mappedValue: "KING",
+      mappedGroup: "Standard",
+      isActive: true,
+      notes: "Maps source room type to standard room type and room class.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+    {
+      id: "map-roomtype-002",
+      sourceSystem: "PMS / metrics_core.map_roomtype",
+      rawCode: "STE",
+      rawName: "Suite",
+      mappedValue: "SUITE",
+      mappedGroup: "Premium",
+      isActive: true,
+      notes: "Example room type mapping fixture.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+  ],
+
+  "metrics_core.lkp_channel": [
+    {
+      id: "channel-001",
+      sourceSystem: "Dataform / metrics_core.lkp_channel",
+      rawCode: "DIRECT",
+      rawName: "Direct",
+      mappedValue: "Direct",
+      mappedGroup: "Owned",
+      isActive: true,
+      notes: "Standard channel lookup value.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+    {
+      id: "channel-002",
+      sourceSystem: "Dataform / metrics_core.lkp_channel",
+      rawCode: "OTA",
+      rawName: "Online Travel Agency",
+      mappedValue: "OTA",
+      mappedGroup: "Third Party",
+      isActive: true,
+      notes: "Standard channel lookup value.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+  ],
+
+  "metrics_core.map_source": [
+    {
+      id: "map-source-001",
+      sourceSystem: "CRS / metrics_core.map_source",
+      rawCode: "BKNG",
+      rawName: "Booking.com",
+      mappedValue: "OTA",
+      mappedGroup: "Third Party",
+      isActive: true,
+      notes: "Maps source-system source/subsource values to standard source, subsource, and channel values.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+    {
+      id: "map-source-002",
+      sourceSystem: "PMS / metrics_core.map_source",
+      rawCode: "WEB",
+      rawName: "Brand Website",
+      mappedValue: "DIRECT",
+      mappedGroup: "Owned",
+      isActive: true,
+      notes: "Example source mapping fixture.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+  ],
+
+  "metrics_core.map_rate": [
+    {
+      id: "map-rate-001",
+      sourceSystem: "CRS / metrics_core.map_rate",
+      rawCode: "BAR",
+      rawName: "Best Available Rate",
+      mappedValue: "RETAIL",
+      mappedGroup: "Public",
+      isActive: true,
+      notes: "Maps source-system rate codes to standard rate, rate type, company, segment, channel, source, subsource, and consortia values.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+    {
+      id: "map-rate-002",
+      sourceSystem: "CRS / metrics_core.map_rate",
+      rawCode: "ADV14",
+      rawName: "Advance Purchase 14",
+      mappedValue: "ADVANCE_PURCHASE",
+      mappedGroup: "Public",
+      isActive: true,
+      notes: "Example rate mapping fixture.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+  ],
+
+  "metrics_core.lkp_event_category": [
+    {
+      id: "event-category-001",
+      sourceSystem: "Dataform / metrics_core.lkp_event_category",
+      rawCode: "Convention",
+      rawName: "Convention",
+      mappedValue: "Convention",
+      mappedGroup: "Demand Driver",
+      isActive: true,
+      notes: "Controlled event category used by event calendars, demand context, pricing notes, forecast overlays, and BI filters.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+    {
+      id: "event-category-002",
+      sourceSystem: "Dataform / metrics_core.lkp_event_category",
+      rawCode: "Renovation",
+      rawName: "Renovation",
+      mappedValue: "Renovation",
+      mappedGroup: "Property Context",
+      isActive: true,
+      notes: "Controlled event category fixture.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+  ],
+
+  "metrics_core.lkp_event_impact": [
+    {
+      id: "event-impact-001",
+      sourceSystem: "Dataform / metrics_core.lkp_event_impact",
+      rawCode: "High Impact",
+      rawName: "High Impact",
+      mappedValue: "High Impact",
+      mappedGroup: "Demand Impact",
+      isActive: true,
+      notes: "Controlled event impact classification used to indicate demand, pricing, compression, or location-based impact.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+    {
+      id: "event-impact-002",
+      sourceSystem: "Dataform / metrics_core.lkp_event_impact",
+      rawCode: "No Impact",
+      rawName: "No Impact",
+      mappedValue: "No Impact",
+      mappedGroup: "Demand Impact",
+      isActive: true,
+      notes: "Controlled event impact fixture.",
+      updatedAt: now,
+      updatedBy: "Dataform Inventory",
+    },
+  ],
+}
+
 export const lookupTableMetadata: LookupTableMetadataEntry[] = [
   {
-    key: "channel_mapping",
-    displayName: "Channel Mapping",
+    key: "metrics_core.dim_property",
+    displayName: "Property Dimension",
     description:
-      "Normalizes raw booking channel codes into REVREBEL channel groups.",
-    approximateRowCount: 184,
-    lastUpdated: "2026-05-17T18:34:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
+      "Standard property/hotel reference table from Dataform metrics_core.",
+    approximateRowCount: lookupTableRowsByKey["metrics_core.dim_property"].length,
+    lastUpdated: now,
+    lastRefreshed: now,
     status: "ready",
   },
   {
-    key: "segment_mapping",
+    key: "metrics_core.lkp_segment",
+    displayName: "Segment Lookup",
+    description:
+      "Controlled lookup table for standard commercial segments.",
+    approximateRowCount: lookupTableRowsByKey["metrics_core.lkp_segment"].length,
+    lastUpdated: now,
+    lastRefreshed: now,
+    status: "ready",
+  },
+  {
+    key: "metrics_core.map_segment",
     displayName: "Segment Mapping",
     description:
-      "Maps PMS and CRS segment labels into analytics-ready segment groups.",
-    approximateRowCount: 96,
-    lastUpdated: "2026-05-16T22:11:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
-    status: "ready",
-  },
-  {
-    key: "rate_code_mapping",
-    displayName: "Rate Code Mapping",
-    description:
-      "Connects raw rate codes to commercial strategy and pricing categories.",
-    approximateRowCount: 421,
-    lastUpdated: "2026-05-14T15:09:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
+      "Maps source-system segment values to standardized commercial and finance segment values.",
+    approximateRowCount: lookupTableRowsByKey["metrics_core.map_segment"].length,
+    lastUpdated: now,
+    lastRefreshed: now,
     status: "needs_review",
   },
   {
-    key: "source_code_mapping",
-    displayName: "Source Code Mapping",
-    description:
-      "Groups source codes from connected hotel systems for acquisition reporting.",
-    approximateRowCount: 137,
-    lastUpdated: "2026-05-13T20:45:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
-    status: "ready",
-  },
-  {
-    key: "room_type_mapping",
+    key: "metrics_core.map_roomtype",
     displayName: "Room Type Mapping",
     description:
-      "Standardizes property-specific room type codes into comparable categories.",
-    approximateRowCount: 78,
-    lastUpdated: "2026-05-12T12:26:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
+      "Maps source room type values to standardized room type, room class, bed type, and optional room pool values.",
+    approximateRowCount: lookupTableRowsByKey["metrics_core.map_roomtype"].length,
+    lastUpdated: now,
+    lastRefreshed: now,
     status: "draft",
   },
   {
-    key: "property_mapping",
-    displayName: "Property Mapping",
-    description:
-      "Maintains property identifiers and display labels used across Metrics.",
-    approximateRowCount: 24,
-    lastUpdated: "2026-05-10T16:02:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
-    status: "ready",
-  },
-]
-
->>>>>>> theirs
-const baseRows: LookupTableRow[] = [
-  {
-    id: "chn-001",
-    sourceSystem: "PMS",
-    rawCode: "DIR",
-    rawName: "Direct Booking",
-    mappedValue: "Direct",
-    mappedGroup: "Owned",
-    isActive: true,
-    notes: "Primary direct channel.",
-    updatedAt: "2026-05-17T18:34:00.000Z",
-    updatedBy: "Gary Stringham",
-  },
-  {
-    id: "chn-002",
-    sourceSystem: "CRS",
-    rawCode: "OTA-BK",
-    rawName: "Booking.com",
-    mappedValue: "OTA",
-    mappedGroup: "Third Party",
-    isActive: true,
-    notes: "",
-    updatedAt: "2026-05-17T17:18:00.000Z",
-    updatedBy: "Gary Stringham",
-  },
-  {
-    id: "chn-003",
-    sourceSystem: "CRS",
-    rawCode: "OTA-EX",
-    rawName: "Expedia",
-    mappedValue: "OTA",
-    mappedGroup: "Third Party",
-    isActive: true,
-    notes: "",
-    updatedAt: "2026-05-16T20:01:00.000Z",
-    updatedBy: "Revenue Ops",
-  },
-  {
-    id: "chn-004",
-    sourceSystem: "PMS",
-    rawCode: "CORP",
-    rawName: "Corporate",
-    mappedValue: "Corporate",
-    mappedGroup: "Negotiated",
-    isActive: true,
-    notes: "Review with sales ops before changing group.",
-    updatedAt: "2026-05-15T19:45:00.000Z",
-    updatedBy: "Revenue Ops",
-  },
-  {
-    id: "chn-005",
-    sourceSystem: "PMS",
-    rawCode: "WALK",
-    rawName: "Walk In",
-    mappedValue: "Direct",
-    mappedGroup: "Property",
-    isActive: true,
-    notes: "",
-    updatedAt: "2026-05-14T22:20:00.000Z",
-    updatedBy: "Gary Stringham",
-  },
-  {
-    id: "chn-006",
-    sourceSystem: "Legacy PMS",
-    rawCode: "UNK",
-    rawName: "Unknown Source",
-    mappedValue: "",
-    mappedGroup: "",
-    isActive: false,
-    notes: "Inactive until source ownership is confirmed.",
-    updatedAt: "2026-05-12T13:11:00.000Z",
-    updatedBy: "System",
-  },
-]
-
-export const lookupTableRowsByKey: Record<LookupTableKey, LookupTableRow[]> = {
-  channel_mapping: baseRows,
-  segment_mapping: baseRows.map((row, index) => ({
-    ...row,
-    id: `seg-${String(index + 1).padStart(3, "0")}`,
-    rawCode: ["BAR", "DISC", "GOV", "LNR", "GRP", "COMP"][index] ?? row.rawCode,
-    rawName:
-      [
-        "Best Available",
-        "Discount",
-        "Government",
-        "Local Negotiated",
-        "Group",
-        "Comp",
-      ][index] ?? row.rawName,
-    mappedValue:
-      [
-        "Transient",
-        "Discount",
-        "Government",
-        "Corporate",
-        "Group",
-        "House Use",
-      ][index] ?? row.mappedValue,
-    mappedGroup: [
-      "Retail",
-      "Retail",
-      "Qualified",
-      "Negotiated",
-      "Group",
-      "Internal",
-    ][index],
-  })),
-  rate_code_mapping: baseRows.map((row, index) => ({
-    ...row,
-    id: `rate-${String(index + 1).padStart(3, "0")}`,
-    rawCode:
-      ["RACK", "ADV14", "PKG", "AAA", "CORP1", "OLD"][index] ?? row.rawCode,
-    rawName:
-      [
-        "Rack Rate",
-        "Advance Purchase 14",
-        "Package Rate",
-        "AAA Rate",
-        "Corporate 1",
-        "Old Promo",
-      ][index] ?? row.rawName,
-    mappedValue:
-      ["Retail", "Advance", "Package", "Qualified", "Corporate", ""][index] ??
-      "",
-    mappedGroup: ["Public", "Public", "Bundled", "Discount", "Negotiated", ""][
-      index
-    ],
-  })),
-  source_code_mapping: baseRows,
-  room_type_mapping: baseRows.slice(0, 4).map((row, index) => ({
-    ...row,
-    id: `room-${String(index + 1).padStart(3, "0")}`,
-    rawCode: ["KNG", "QQ", "STE", "ADA"][index] ?? row.rawCode,
-    rawName:
-      ["King Room", "Two Queens", "Suite", "Accessible King"][index] ??
-      row.rawName,
-    mappedValue:
-      ["King", "Double Queen", "Suite", "Accessible"][index] ?? row.mappedValue,
-    mappedGroup: ["Standard", "Standard", "Premium", "Standard"][index],
-  })),
-  property_mapping: baseRows.slice(0, 3).map((row, index) => ({
-    ...row,
-    id: `prop-${String(index + 1).padStart(3, "0")}`,
-    rawCode: ["RR-AUS", "RR-DEN", "RR-SFO"][index] ?? row.rawCode,
-    rawName:
-      ["Austin Downtown", "Denver Central", "San Francisco Bay"][index] ??
-      row.rawName,
-    mappedValue:
-      ["Austin Downtown", "Denver Central", "San Francisco Bay"][index] ??
-      row.mappedValue,
-    mappedGroup: ["Urban", "Urban", "Urban"][index],
-  })),
-}
-
-type LookupTableKey = keyof typeof lookupTableRowsByKey
-
-type LookupTableMetadataEntry = Omit<LookupTableMetadata, "key"> & {
-  key: LookupTableKey
-}
-
-export const lookupTableMetadata: LookupTableMetadataEntry[] = [
-  {
-    key: "channel_mapping",
-    displayName: "Channel Mapping",
-    description:
-      "Normalizes raw booking channel codes into REVREBEL channel groups.",
-    approximateRowCount: 184,
-    lastUpdated: "2026-05-17T18:34:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
+    key: "metrics_core.lkp_channel",
+    displayName: "Channel Lookup",
+    description: "Controlled lookup table for standard channels.",
+    approximateRowCount: lookupTableRowsByKey["metrics_core.lkp_channel"].length,
+    lastUpdated: now,
+    lastRefreshed: now,
     status: "ready",
   },
   {
-    key: "segment_mapping",
-    displayName: "Segment Mapping",
+    key: "metrics_core.map_source",
+    displayName: "Source Mapping",
     description:
-      "Maps PMS and CRS segment labels into analytics-ready segment groups.",
-    approximateRowCount: 96,
-    lastUpdated: "2026-05-16T22:11:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
-    status: "ready",
-  },
-  {
-    key: "rate_code_mapping",
-    displayName: "Rate Code Mapping",
-    description:
-      "Connects raw rate codes to commercial strategy and pricing categories.",
-    approximateRowCount: 421,
-    lastUpdated: "2026-05-14T15:09:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
+      "Maps source-system source and subsource values to standardized source, subsource, and channel values.",
+    approximateRowCount: lookupTableRowsByKey["metrics_core.map_source"].length,
+    lastUpdated: now,
+    lastRefreshed: now,
     status: "needs_review",
   },
   {
-    key: "source_code_mapping",
-    displayName: "Source Code Mapping",
+    key: "metrics_core.map_rate",
+    displayName: "Rate Mapping",
     description:
-      "Groups source codes from connected hotel systems for acquisition reporting.",
-    approximateRowCount: 137,
-    lastUpdated: "2026-05-13T20:45:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
+      "Maps source-system rate codes to standardized rate, rate type, company, segment, channel, source, subsource, and consortia values.",
+    approximateRowCount: lookupTableRowsByKey["metrics_core.map_rate"].length,
+    lastUpdated: now,
+    lastRefreshed: now,
+    status: "needs_review",
+  },
+  {
+    key: "metrics_core.lkp_event_category",
+    displayName: "Event Category Lookup",
+    description:
+      "Controlled event categories for demand context, event calendars, pricing notes, forecast overlays, and BI filters.",
+    approximateRowCount: lookupTableRowsByKey["metrics_core.lkp_event_category"].length,
+    lastUpdated: now,
+    lastRefreshed: now,
     status: "ready",
   },
   {
-    key: "room_type_mapping",
-    displayName: "Room Type Mapping",
+    key: "metrics_core.lkp_event_impact",
+    displayName: "Event Impact Lookup",
     description:
-      "Standardizes property-specific room type codes into comparable categories.",
-    approximateRowCount: 78,
-    lastUpdated: "2026-05-12T12:26:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
-    status: "draft",
-  },
-  {
-    key: "property_mapping",
-    displayName: "Property Mapping",
-    description:
-      "Maintains property identifiers and display labels used across Metrics.",
-    approximateRowCount: 24,
-    lastUpdated: "2026-05-10T16:02:00.000Z",
-    lastRefreshed: "2026-05-18T08:15:00.000Z",
+      "Controlled event impact classifications for demand, pricing, compression, and location-based event context.",
+    approximateRowCount: lookupTableRowsByKey["metrics_core.lkp_event_impact"].length,
+    lastUpdated: now,
+    lastRefreshed: now,
     status: "ready",
   },
 ]
