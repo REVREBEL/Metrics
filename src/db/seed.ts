@@ -1,31 +1,8 @@
-import { eq } from "drizzle-orm"
-import { drizzle } from "drizzle-orm/postgres-js"
-import postgres from "postgres"
+import "server-only"
 
-import {
-  campaigns,
-  dataLibraryTables,
-  hotelProfiles,
-  hotelTaskStatuses,
-  strategyTemplates,
-} from "./schema"
-import * as schema from "./schema"
+import { campaigns, hotelProfiles, hotelTaskStatuses, strategyTemplates } from "@/db/schema"
 
-const databaseUrl = process.env.DATABASE_URL
-
-if (!databaseUrl) {
-  throw new Error(
-    "DATABASE_URL is required to seed the Postgres app-state database"
-  )
-}
-
-const maxConnections = Number(process.env.POSTGRES_POOL_MAX ?? 1)
-const queryClient = postgres(databaseUrl, {
-  max: Number.isFinite(maxConnections) ? maxConnections : 1,
-  prepare: false,
-})
-
-const db = drizzle(queryClient, { schema })
+import { db } from "./index"
 
 export async function seedAppStateFoundation() {
   const [hotel] = await db
@@ -37,15 +14,7 @@ export async function seedAppStateFoundation() {
       timezone: "America/Chicago",
       profileData: { tier: "pilot" },
     })
-    .onConflictDoUpdate({
-      target: hotelProfiles.propertyCode,
-      set: {
-        name: "Demo Hotel",
-        market: "Austin",
-        timezone: "America/Chicago",
-        profileData: { tier: "pilot" },
-      },
-    })
+    .onConflictDoNothing({ target: hotelProfiles.propertyCode })
     .returning({ id: hotelProfiles.id })
 
   await db
@@ -58,43 +27,7 @@ export async function seedAppStateFoundation() {
     ])
     .onConflictDoNothing({ target: hotelTaskStatuses.code })
 
-  await db
-    .insert(strategyTemplates)
-    .values({
-      slug: "weekly-revenue-check-in",
-      name: "Weekly Revenue Check-In",
-      description:
-        "Baseline strategy prompt for weekly revenue review meetings.",
-      content: {
-        sections: ["pace", "comp-set", "action items"],
-      },
-    })
-    .onConflictDoNothing({ target: strategyTemplates.slug })
-
-  await db
-    .insert(dataLibraryTables)
-    .values({
-      warehouseSchema: "metrics_core",
-      tableName: "dim_property",
-      displayName: "Properties",
-      description: "Analytical property dimension owned by BigQuery/Dataform.",
-      uiMetadata: { editable: false },
-    })
-    .onConflictDoNothing({
-      target: [dataLibraryTables.warehouseSchema, dataLibraryTables.tableName],
-    })
-
-  if (!hotel) {
-    return
-  }
-
-  const [existingCampaign] = await db
-    .select({ id: campaigns.id })
-    .from(campaigns)
-    .where(eq(campaigns.name, "Demo Campaign"))
-    .limit(1)
-
-  if (!existingCampaign) {
+  if (hotel) {
     await db.insert(campaigns).values({
       hotelId: hotel.id,
       name: "Demo Campaign",
@@ -102,12 +35,20 @@ export async function seedAppStateFoundation() {
       metadata: { source: "seed" },
     })
   }
+
+  await db
+    .insert(strategyTemplates)
+    .values({
+      name: "Weekly Revenue Check-In",
+      description: "Baseline strategy prompt for weekly revenue review meetings.",
+      content: {
+        sections: ["pace", "comp-set", "action items"],
+      },
+    })
+    .onConflictDoNothing()
 }
 
 void (async () => {
-  try {
-    await seedAppStateFoundation()
-  } finally {
-    await queryClient.end()
-  }
+  await seedAppStateFoundation()
+  process.exit(0)
 })()

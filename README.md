@@ -6,21 +6,21 @@
     />
     <img
       src=".github/assets/readme-banner_light.jpg"
-      alt="__REPO__ repository banner"
+      alt="Metrics repository banner"
     />
   </picture>
 </p>
 
-<p align="right">__REPO__ a project by REVREBEL</p>
+<p align="right">Metrics a project by REVREBEL</p>
 
-# __REPO_UPPER__
+# METRICS
 
 <div align="left">
-  <a href="https://github.com/__OWNER__/__REPO__/issues">
-    <img src="https://img.shields.io/github/issues/__OWNER__/__REPO__?color=163666&style=for-the-badge&logo=github" alt="Issues"/>
+  <a href="https://github.com/REVREBEL/Metrics/issues">
+    <img src="https://img.shields.io/github/issues/REVREBEL/Metrics?color=163666&style=for-the-badge&logo=github" alt="Issues"/>
   </a>
-  <a href="https://github.com/__OWNER__/__REPO__/pulls">
-    <img src="https://img.shields.io/github/issues-pr/__OWNER__/__REPO__?color=71c9c5&style=for-the-badge&logo=github" alt="PRs"/>
+  <a href="https://github.com/REVREBEL/Metrics/pulls">
+    <img src="https://img.shields.io/github/issues-pr/REVREBEL/Metrics?color=71c9c5&style=for-the-badge&logo=github" alt="PRs"/>
   </a>
 </div>
 
@@ -129,6 +129,12 @@ Metrics includes a Postgres app-state layer backed by Drizzle ORM. The first-pas
 ### Tooling choice
 
 REV-15 uses Postgres + Drizzle ORM because the repo did not have an existing Postgres ORM/migration convention, and Drizzle keeps the schema typed, lightweight, and close to the TypeScript app code.
+Metrics now includes a Postgres app-state layer backed by Drizzle ORM.
+
+### Ownership boundary
+
+- BigQuery/Dataform remains the source of truth for analytical `metrics_core` tables.
+- Postgres stores app-owned workflow state (profiles, notes, events, tasks, campaigns, strategy, draft edits, approvals, audit).
 
 ### Environment variables
 
@@ -147,3 +153,10 @@ pnpm db:seed       # seed baseline demo records/statuses
 ```
 
 The server-only client entrypoint is `src/db/index.ts`, typed schema lives in `src/db/schema/index.ts`, and migrations live in `src/db/migrations`.
+pnpm db:generate   # generate SQL migrations from schema
+pnpm db:migrate    # apply migrations
+pnpm db:studio     # open Drizzle Studio
+pnpm db:seed       # seed baseline demo records
+```
+
+Schema files live under `src/db/schema`, client entrypoint is `src/db/index.ts`, and migrations are emitted to `src/db/migrations`.

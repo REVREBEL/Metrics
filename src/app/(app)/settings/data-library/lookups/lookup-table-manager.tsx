@@ -99,7 +99,7 @@ export function LookupTableManager({
     const errors = new Map<string, Record<string, string>>()
 
     rows.forEach((row) => {
-      const parsed = lookupTableChangeSchema.safeParse(toChange(row, row))
+      const parsed = lookupTableChangeSchema.safeParse({ ...row, lastKnownUpdatedAt: row.updatedAt })
 
       if (!parsed.success) {
         const fieldErrors: Record<string, string> = {}
@@ -682,6 +682,7 @@ function toChange(
   })
 
   if (row.isActive) {
+    change.isActive = true
     change.mappedValue = row.mappedValue
   }
 
