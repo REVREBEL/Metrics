@@ -1,5 +1,7 @@
 "use client";
-import { format } from "date-fns";
+
+import { forwardRef } from "react";
+import { CalendarIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -8,8 +10,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { forwardRef } from "react";
-import { CalendarIcon } from "@radix-ui/react-icons";
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+});
 
 export const DatePicker = forwardRef<
   HTMLDivElement,
@@ -22,22 +28,21 @@ export const DatePicker = forwardRef<
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant={"outline"}
+          variant="outline"
           className={cn(
             "w-full justify-start text-left font-normal",
             !date && "text-muted-foreground",
           )}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? format(date, "PPP") : <span>Pick a date</span>}
+          {date ? dateFormatter.format(date) : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" ref={ref}>
-        <CalendarIcon
+        <Calendar
           mode="single"
           selected={date}
           onSelect={setDate}
-          initialFocus
         />
       </PopoverContent>
     </Popover>
