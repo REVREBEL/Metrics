@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { Fragment } from 'react/jsx-runtime'
-import { format } from 'date-fns'
 import {
   ArrowLeft,
   MoreVertical,
@@ -32,7 +31,17 @@ import { type ChatUser, type Convo } from './data/chat-types'
 // Fake Data
 import { conversations } from './data/convo.json'
 
-export function Chats() {
+const dateFormatter = new Intl.DateTimeFormat('en-US', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+})
+
+function formatDateGroup(value: string | number | Date) {
+  return dateFormatter.format(new Date(value))
+}
+
+export default function ChatsPage() {
   const [search, setSearch] = useState('')
   const [selectedUser, setSelectedUser] = useState<ChatUser | null>(null)
   const [mobileSelectedUser, setMobileSelectedUser] = useState<ChatUser | null>(
@@ -48,7 +57,7 @@ export function Chats() {
 
   const currentMessage = selectedUser?.messages.reduce(
     (acc: Record<string, Convo[]>, obj) => {
-      const key = format(obj.timestamp, 'd MMM, yyyy')
+      const key = formatDateGroup(obj.timestamp)
 
       // Create an array for the category if it doesn't exist
       if (!acc[key]) {
@@ -239,19 +248,19 @@ export function Chats() {
                                 className={cn(
                                   'chat-box max-w-72 px-3 py-2 wrap-break-word shadow-lg',
                                   msg.sender === 'You'
-                                    ? 'self-end rounded-[16px_16px_0_16px] bg-primary/90 text-primary-foreground/75'
-                                    : 'self-start rounded-[16px_16px_16px_0] bg-muted'
+                                    ? 'self-end rounded-[16px_16px_0_16px] bg-primary/85 text-primary-foreground/75'
+                                    : 'self-start rounded-[16px_16px_16px_0] bg-secondary'
                                 )}
                               >
-                                {msg.message}{' '}
+                                {msg.message}
                                 <span
                                   className={cn(
-                                    'mt-1 block text-xs font-light text-foreground/75 italic',
+                                    'mt-1 block text-xs font-light italic text-muted-foreground',
                                     msg.sender === 'You' &&
-                                      'text-end text-primary-foreground/85'
+                                      'text-right text-primary-foreground/75'
                                   )}
                                 >
-                                  {format(msg.timestamp, 'h:mm a')}
+                                  {msg.sender} · {msg.timestamp}
                                 </span>
                               </div>
                             ))}
@@ -262,90 +271,41 @@ export function Chats() {
                   </div>
                 </div>
                 <form className='flex w-full flex-none gap-2'>
-                  <div className='flex flex-1 items-center gap-2 rounded-md border border-input bg-card px-2 py-1 focus-within:ring-1 focus-within:ring-ring focus-within:outline-hidden lg:gap-4'>
-                    <div className='space-x-1'>
-                      <Button
-                        size='icon'
-                        type='button'
-                        variant='ghost'
-                        className='h-8 rounded-md'
-                      >
-                        <Plus size={20} className='stroke-muted-foreground' />
-                      </Button>
-                      <Button
-                        size='icon'
-                        type='button'
-                        variant='ghost'
-                        className='hidden h-8 rounded-md lg:inline-flex'
-                      >
-                        <ImagePlus
-                          size={20}
-                          className='stroke-muted-foreground'
-                        />
-                      </Button>
-                      <Button
-                        size='icon'
-                        type='button'
-                        variant='ghost'
-                        className='hidden h-8 rounded-md lg:inline-flex'
-                      >
-                        <Paperclip
-                          size={20}
-                          className='stroke-muted-foreground'
-                        />
-                      </Button>
-                    </div>
-                    <label className='flex-1'>
-                      <span className='sr-only'>Chat Text Box</span>
-                      <input
-                        type='text'
-                        placeholder='Type your messages...'
-                        className='h-8 w-full bg-inherit focus-visible:outline-hidden'
-                      />
-                    </label>
-                    <Button
-                      variant='ghost'
-                      size='icon'
-                      className='hidden sm:inline-flex'
-                    >
-                      <Send size={20} />
+                  <div className='flex flex-1 items-center gap-2 rounded-md border border-input px-2'>
+                    <Button size='icon' type='button' variant='ghost'>
+                      <Plus size={20} className='stroke-muted-foreground' />
+                    </Button>
+                    <input
+                      type='text'
+                      placeholder='Type your messages...'
+                      className='h-10 min-w-0 flex-1 bg-inherit text-sm focus-visible:outline-hidden'
+                    />
+                    <Button size='icon' type='button' variant='ghost'>
+                      <Paperclip size={20} className='stroke-muted-foreground' />
+                    </Button>
+                    <Button size='icon' type='button' variant='ghost'>
+                      <ImagePlus size={20} className='stroke-muted-foreground' />
                     </Button>
                   </div>
-                  <Button className='h-full sm:hidden'>
-                    <Send size={18} /> Send
+                  <Button size='icon' type='submit' className='hidden sm:inline-flex'>
+                    <Send size={20} />
                   </Button>
                 </form>
               </div>
             </div>
           ) : (
-            <div
-              className={cn(
-                'absolute inset-0 start-full z-50 hidden w-full flex-1 flex-col justify-center rounded-md border bg-card shadow-xs sm:static sm:z-auto sm:flex'
-              )}
-            >
-              <div className='flex flex-col items-center space-y-6'>
-                <div className='flex size-16 items-center justify-center rounded-full border-2 border-border'>
-                  <MessagesSquare className='size-8' />
-                </div>
-                <div className='space-y-2 text-center'>
-                  <h1 className='text-xl font-semibold'>Your messages</h1>
-                  <p className='text-sm text-muted-foreground'>
-                    Send a message to start a chat.
-                  </p>
-                </div>
-                <Button onClick={() => setCreateConversationDialog(true)}>
-                  Send message
-                </Button>
-              </div>
+            <div className='flex flex-1 items-center justify-center rounded-md border border-dashed text-muted-foreground'>
+              Select a chat to start messaging.
             </div>
           )}
         </section>
-        <NewChat
-          users={users}
-          onOpenChange={setCreateConversationDialog}
-          open={createConversationDialogOpened}
-        />
       </Main>
+
+      <NewChat
+        users={users}
+        open={createConversationDialogOpened}
+        onOpenChange={setCreateConversationDialog}
+      />
     </>
   )
 }
