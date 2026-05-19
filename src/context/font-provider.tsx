@@ -1,12 +1,8 @@
-
 "use client"
 
 import { createContext, useContext, useEffect, useState } from 'react'
+import { fonts, type Font } from '@/config/fonts'
 import { getCookie, setCookie, removeCookie } from '@/lib/cookies'
-
-const fonts = ['Funnel Sans', 'Khand', 'Fira Code', 'General Sans', 'Supreme', 'Barlow'] as const
-
-type Font = (typeof fonts)[number]
 
 const FONT_COOKIE_NAME = 'font'
 const FONT_COOKIE_MAX_AGE = 60 * 60 * 24 * 365 // 1 year
