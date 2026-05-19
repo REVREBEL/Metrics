@@ -2,7 +2,7 @@
 
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from "recharts"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ChartConfig, ChartContainer } from "@/components/ui/chart"
+import { type ChartConfig, ChartContainer } from "@/components/ui/chart"
 import { MoreVertical } from "lucide-react"
 
 

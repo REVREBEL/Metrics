@@ -1,7 +1,7 @@
 "use client";
 // @ts-nocheck
 
-import React, { Component, ReactNode } from "react";
+import React, { Component, type ReactNode } from "react";
 import dynamic from "next/dynamic";
 
 // Error boundary to prevent one broken widget from taking down the page

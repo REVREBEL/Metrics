@@ -3,7 +3,7 @@
 
 import { TrendingUp } from 'lucide-react';
 import { Pie, PieChart, Sector } from 'recharts';
-import { PieSectorDataItem } from 'recharts/types/polar/Pie';
+import { type PieSectorDataItem } from 'recharts/types/polar/Pie';
 
 import {
   Card,
@@ -14,7 +14,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import {
-  ChartConfig,
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,

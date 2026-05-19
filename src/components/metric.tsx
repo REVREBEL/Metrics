@@ -3,7 +3,7 @@
 import { Line, LineChart } from 'recharts';
 
 import {
-  ChartConfig,
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
