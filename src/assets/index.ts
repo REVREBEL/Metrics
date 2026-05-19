@@ -1,1 +1,1 @@
-export { default as clerk-logo } from "./clerk-logo";
+export { ClerkLogo } from "./clerk-logo"
