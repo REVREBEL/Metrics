@@ -3,6 +3,23 @@ import nextVitals from "eslint-config-next/core-web-vitals"
 import tseslint from "typescript-eslint"
 import nextTs from "eslint-config-next/typescript";
 
+function withoutLegacyReactRules(config) {
+  const rules = Object.fromEntries(
+    Object.entries(config.rules ?? {}).filter(
+      ([ruleName]) => !ruleName.startsWith("react/")
+    )
+  )
+
+  const plugins = { ...(config.plugins ?? {}) }
+  delete plugins.react
+
+  return {
+    ...config,
+    plugins,
+    rules,
+  }
+}
+
 const eslintConfig = tseslint.config(
   globalIgnores([
     "node_modules/**",
@@ -21,13 +38,14 @@ const eslintConfig = tseslint.config(
     "temp/**",
     "test_loop.js",
   ]),
-  // Remove the @typescript-eslint plugin from next/typescript to prevent
-  // duplicate registration with tseslint.configs.recommended.
+  // Remove incompatible or duplicate plugin registrations from inherited configs.
   ...nextTs,
   ...nextVitals.map((config) =>
-    config.name === "next/typescript"
-      ? { ...config, plugins: {} }
-      : config
+    withoutLegacyReactRules(
+      config.name === "next/typescript"
+        ? { ...config, plugins: {} }
+        : config
+    )
   ),
   ...tseslint.configs.recommended,
   {
