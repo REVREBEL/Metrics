@@ -1,5 +1,3 @@
-import "server-only"
-
 import { sql } from "drizzle-orm"
 import { drizzle } from "drizzle-orm/postgres-js"
 
@@ -12,7 +10,7 @@ import {
   strategyTemplates,
 } from "@/db/schema"
 
-import { createPostgresClient } from "./index"
+import { createPostgresClient } from "./postgres"
 
 const queryClient = createPostgresClient({ max: 1 })
 const db = drizzle(queryClient, { schema })
