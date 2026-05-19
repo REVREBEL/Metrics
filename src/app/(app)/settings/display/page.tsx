@@ -1,7 +1,7 @@
 import { ContentSection } from '../components/content-section'
 import { DisplayForm } from './display-form'
 
-export function SettingsDisplay() {
+export default function SettingsDisplayPage() {
   return (
     <ContentSection
       title='Display'
