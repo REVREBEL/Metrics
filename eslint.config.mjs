@@ -1,12 +1,28 @@
-import { defineConfig, globalIgnores } from "eslint/config";
+import { globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals"
 import tseslint from "typescript-eslint"
 import nextTs from "eslint-config-next/typescript";
 
 const eslintConfig = tseslint.config(
+  globalIgnores([
+    "node_modules/**",
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+    ".source/**",
+    "**/__index__.tsx",
+    "public/*",
+    "public/duckdb/*",
+    "public/playground/*",
+    ".agent/**",
+    ".agents/**",
+    ".github/**",
+    "temp/**",
+    "test_loop.js",
+  ]),
   // Remove the @typescript-eslint plugin from next/typescript to prevent
   // duplicate registration with tseslint.configs.recommended.
-
   ...nextTs,
   ...nextVitals.map((config) =>
     config.name === "next/typescript"
@@ -14,24 +30,6 @@ const eslintConfig = tseslint.config(
       : config
   ),
   ...tseslint.configs.recommended,
-  {
-    ignores: [
-      "node_modules/**",
-      ".next/**",
-      "out/**",
-      "build/**",
-      "next-env.d.ts",
-      ".source/**",
-      "**/__index__.tsx",
-      "public/*",
-      "public/duckdb/*",
-      "public/playground/*",
-      ".agent/**",
-      ".agents/**",
-      "temp/**",
-      "test_loop.js"
-    ],
-  },
   {
     rules: {
       "react-hooks/incompatible-library": "off",
