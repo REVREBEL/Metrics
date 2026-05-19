@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { AddComponentsPopover } from "@/components/ui/ui-builder/internal/components/add-component-popover";
 import { hasLayerChildren } from "@/lib/ui-builder/store/layer-utils";
 import { Cross2Icon, CaretSortIcon } from "@radix-ui/react-icons";
-import XIcon from "@/assets/rebel-icons/XIcon";
+import XIcon from "@/assets/RebelIconsReact/XIcon";
 
 
 interface ChildrenSearchableSelectProps {
