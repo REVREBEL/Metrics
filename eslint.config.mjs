@@ -54,6 +54,7 @@ const eslintConfig = tseslint.config(
       "react-hooks/purity": "off",
       "@next/next/no-html-link-for-pages": "off",
       "@next/next/no-img-element": "off",
+      "react/display-name": "off",
       "@typescript-eslint/no-unused-vars": "off",
       "@typescript-eslint/consistent-type-imports": [
         "error",
