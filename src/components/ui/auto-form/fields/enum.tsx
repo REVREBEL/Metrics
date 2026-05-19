@@ -55,7 +55,7 @@ export default function AutoFormEnum({
     values = baseValues.map((value: string) => [value, value]);
   }
 
-  function findItem(value: any) {
+  function findItem(value: unknown) {
     return values.find((item) => item[0] === value);
   }
 

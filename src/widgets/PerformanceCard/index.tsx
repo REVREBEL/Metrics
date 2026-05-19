@@ -520,10 +520,12 @@ export default function HospitalityDashboard({ year, month }: { year: string; mo
 
   useEffect(() => {
     if (!donutTooltipState) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Animation state cleanup
       setDonutTooltipShouldAnimateIn(false);
       return;
     }
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Animation state trigger
     setDonutTooltipShouldAnimateIn(true);
 
     const timeoutId = window.setTimeout(() => {
@@ -531,7 +533,7 @@ export default function HospitalityDashboard({ year, month }: { year: string; mo
     }, 180);
 
     return () => window.clearTimeout(timeoutId);
-  }, [donutTooltipState?.ring.key]);
+  }, [donutTooltipState]);
 
   useEffect(() => {
     async function fetchData() {

@@ -12,7 +12,9 @@ export function useTranspile(code: string): TranspileResult | null {
   const codeRef = useRef(code)
 
   const prevCodeRef = useRef(code)
+  // eslint-disable-next-line react-hooks/refs -- Intentional derived state tracking
   if (code !== prevCodeRef.current) {
+    // eslint-disable-next-line react-hooks/refs -- Intentional derived state tracking
     prevCodeRef.current = code
     if (!code.trim() && result !== null) {
       setResult(null)

@@ -5,13 +5,13 @@ import React, { Component, type ReactNode } from "react";
 import dynamic from "next/dynamic";
 
 // Error boundary to prevent one broken widget from taking down the page
-class ErrorBoundary extends Component<{ children: ReactNode; name: string }, { hasError: boolean; error: any }> {
-  constructor(props: any) {
+class ErrorBoundary extends Component<{ children: ReactNode; name: string }, { hasError: boolean; error: unknown }> {
+  constructor(props: { children: ReactNode; name: string }) {
     super(props);
     this.state = { hasError: false, error: null };
   }
 
-  static getDerivedStateFromError(error: any) {
+  static getDerivedStateFromError(error: unknown) {
     return { hasError: true, error };
   }
 
