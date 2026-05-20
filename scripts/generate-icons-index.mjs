@@ -72,10 +72,10 @@ function writeIndex(dir) {
     const componentFile = path.join(dir, file);
     const componentSource = fs.readFileSync(componentFile, "utf8");
 
-    if (/export\s+default\b/.test(componentSource)) {
-      return `export { default as ${exportName} } from "./${componentName}";`;
-    }
-
+// More robust: accept default re-exports and handle multiline declarations.
+  if (/export\s+(default\s+|{.*\bdefault\b)/.test(componentSource)) {
+    return `export { default as ${exportName} } from "./${componentName}";`;
+  }
     return `export { ${exportName} } from "./${componentName}";`;
   });
 
