@@ -12,6 +12,7 @@ export function useMediaQuery(query: string) {
 
     const result = matchMedia(query)
     result.addEventListener("change", onChange)
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Client-only mounted state / hydration guard
     setValue(result.matches)
 
     return () => result.removeEventListener("change", onChange)

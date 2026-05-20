@@ -124,6 +124,7 @@ export default function DataTable({
   }, [data, searchTerm, sortDirection, sortField, statusFilter])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional page reset on filter change
     setCurrentPage(1)
   }, [itemsPerPage, searchTerm, statusFilter])
 

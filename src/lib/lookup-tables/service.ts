@@ -9,8 +9,11 @@ import type {
   SaveLookupTableChangesResult,
 } from "./types"
 
-type DbModule = typeof import("@/db/index")
-type SchemaModule = typeof import("@/db/schema")
+import type * as DbModuleTypes from "@/db/index"
+import type * as SchemaModuleTypes from "@/db/schema"
+
+type DbModule = typeof DbModuleTypes
+type SchemaModule = typeof SchemaModuleTypes
 
 async function getDbModules(): Promise<{ db: DbModule["db"]; schema: SchemaModule } | null> {
   try {

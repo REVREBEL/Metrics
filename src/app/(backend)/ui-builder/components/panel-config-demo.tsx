@@ -19,9 +19,9 @@ const SimpleNav = () => {
   const [showCodeDialog, setShowCodeDialog] = useState(false);
   const [showPreviewDialog, setShowPreviewDialog] = useState(false);
   
-  const selectedPageId = useLayerStore((state: any) => state.selectedPageId);
-  const findLayerById = useLayerStore((state: any) => state.findLayerById);
-  const componentRegistry = useEditorStore((state: any) => state.registry);
+  const selectedPageId = useLayerStore((state) => state.selectedPageId);
+  const findLayerById = useLayerStore((state) => state.findLayerById);
+  const componentRegistry = useEditorStore((state) => state.registry);
   
   const page = findLayerById(selectedPageId) as ComponentLayer;
 

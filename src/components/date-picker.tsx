@@ -1,4 +1,3 @@
-import { format } from 'date-fns'
 import { Calendar as CalendarIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
@@ -14,6 +13,12 @@ type DatePickerProps = {
   placeholder?: string
 }
 
+const dateFormatter = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+})
+
 export function DatePicker({
   selected,
   onSelect,
@@ -28,7 +33,7 @@ export function DatePicker({
           className='w-[240px] justify-start text-start font-normal data-[empty=true]:text-muted-foreground'
         >
           {selected ? (
-            format(selected, 'MMM d, yyyy')
+            dateFormatter.format(selected)
           ) : (
             <span>{placeholder}</span>
           )}

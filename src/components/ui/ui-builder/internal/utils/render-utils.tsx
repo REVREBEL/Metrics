@@ -127,6 +127,7 @@ export const RenderLayer: React.FC<{
     // Memoize child editor config to avoid creating objects in JSX
     const childEditorConfig = useMemo(() => {
       return editorConfig
+        // eslint-disable-next-line react-hooks/refs -- Intentional check against previous render layer
         ? { ...editorConfig, zIndex: editorConfig.zIndex + 1, parentUpdated: editorConfig.parentUpdated || !isDeepEqual(prevLayer.current, layer) }
         : undefined;
     }, [editorConfig, layer]);
@@ -195,6 +196,8 @@ export const RenderLayer: React.FC<{
 
     if (!Component) return null;
     
+    const finalProps = { ...childProps };
+    
     // Handle children rendering with improved drop zones
     if (hasLayerChildren(layer) && layer.children.length > 0) {
       const childElements = layer.children.map((child, index) => {
@@ -241,20 +244,20 @@ export const RenderLayer: React.FC<{
         );
       }
 
-      childProps.children = childElements;
+      finalProps.children = childElements;
     } else if (isVariableReference(layer.children)) {
       // Resolve variable reference for children
       const resolvedChildren = resolveChildrenVariableReference(
         layer.children, effectiveVariables, variableValues
       );
-      childProps.children = resolvedChildren;
+      finalProps.children = resolvedChildren;
     } else if (typeof layer.children === "string") {
-      childProps.children = layer.children;
+      finalProps.children = layer.children;
     } else if (showDropZones && hasLayerChildren(layer)) {
       // Show drop zone for empty containers
       // Note: position:relative is already added via useMemo when showDropZones is true
       // Add min-height so empty containers are droppable
-      childProps.children = (
+      finalProps.children = (
         <div className="min-h-[2rem] w-full">
           <DropPlaceholder
             parentId={layer.id}
@@ -266,10 +269,10 @@ export const RenderLayer: React.FC<{
     }
 
     const WrappedComponent = isPrimitive ? (
-      <Component id={layer.id} data-testid={layer.id} data-layer-id={layer.id} {...childProps} />
+      <Component id={layer.id} data-testid={layer.id} data-layer-id={layer.id} {...finalProps} />
     ) : (
       <ErrorSuspenseWrapper key={layer.id} id={layer.id}>
-        <Component data-testid={layer.id} data-layer-id={layer.id} {...childProps} />
+        <Component data-testid={layer.id} data-layer-id={layer.id} {...finalProps} />
       </ErrorSuspenseWrapper>
     );
 

@@ -374,7 +374,7 @@ export const debugCollisionDetection = (
   adjustedPointer: Coordinates,
   droppableRects: Map<UniqueIdentifier, any>,
   collisions: Collision[],
-  debugInfo?: any
+  debugInfo?: Record<string, unknown>
 ) => {
   if (!DEBUG) return;
 

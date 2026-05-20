@@ -170,6 +170,7 @@ export const useAutoScroll = () => {
     handleParentMouseMove,
     handleIframeMouseMove,
     stopAutoScroll,
+    // eslint-disable-next-line react-hooks/refs -- Intentional exposure of mutable state
     autoScrollState: autoScrollStateRef.current,
   };
 }; 
