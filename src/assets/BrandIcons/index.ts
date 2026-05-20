@@ -1,5 +1,4 @@
-export { default as IconDiscord } from "./icon-discord";
-export { default as IconDocker } from "./icon-docker";
+export { IconDiscord } from "./icon-discord";
 export { default as IconFacebook } from "./icon-facebook";
 export { default as IconFigma } from "./icon-figma";
 export { default as IconGithub } from "./icon-github";
