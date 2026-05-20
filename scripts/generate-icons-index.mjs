@@ -69,7 +69,14 @@ function writeIndex(dir) {
   const lines = files.map((file) => {
     const componentName = path.basename(file, ".tsx");
     const exportName = toSafeExportName(file, usedNames);
-    return `export { default as ${exportName} } from "./${componentName}";`;
+    const componentFile = path.join(dir, file);
+    const componentSource = fs.readFileSync(componentFile, "utf8");
+
+    if (/export\s+default\b/.test(componentSource)) {
+      return `export { default as ${exportName} } from "./${componentName}";`;
+    }
+
+    return `export { ${exportName} } from "./${componentName}";`;
   });
 
   fs.writeFileSync(path.join(dir, "index.ts"), `${lines.join("\n")}\n`, "utf8");

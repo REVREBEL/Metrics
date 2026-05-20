@@ -260,7 +260,7 @@ export default function ChatsPage() {
                                       'text-right text-primary-foreground/75'
                                   )}
                                 >
-                                  {msg.sender} · {msg.timestamp}
+                                  {msg.sender} · {new Date(msg.timestamp).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}
                                 </span>
                               </div>
                             ))}
