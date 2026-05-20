@@ -37,17 +37,8 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
 })
 
-const timeFormatter = new Intl.DateTimeFormat('en-US', {
-  hour: 'numeric',
-  minute: '2-digit',
-})
-
 function formatDateGroup(value: string | number | Date) {
   return dateFormatter.format(new Date(value))
-}
-
-function formatMessageTime(value: string | number | Date) {
-  return timeFormatter.format(new Date(value))
 }
 
 export default function ChatsPage() {
@@ -269,7 +260,7 @@ export default function ChatsPage() {
                                       'text-right text-primary-foreground/75'
                                   )}
                                 >
-                                  {msg.sender} · {formatMessageTime(msg.timestamp)}
+                                  {msg.sender} · {msg.timestamp}
                                 </span>
                               </div>
                             ))}
