@@ -1,7 +1,7 @@
 import { ContentSection } from '../components/content-section'
 import { NotificationsForm } from './notifications-form'
 
-export function SettingsNotifications() {
+export default function SettingsNotificationsPage() {
   return (
     <ContentSection
       title='Notifications'

@@ -7,7 +7,9 @@ import {
   ChevronsUpDown,
   CreditCard,
   LogOut,
-  Sparkles,
+  Settings,
+  ShieldCheck,
+  User,
 } from 'lucide-react'
 import useDialogState from '@/hooks/use-dialog-state'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -81,13 +83,12 @@ export function NavUser({ user }: NavUserProps) {
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
-                <DropdownMenuItem>
-                  <Sparkles />
-                  Upgrade to Pro
+                <DropdownMenuItem asChild>
+                  <Link href='/settings/profile'>
+                    <User />
+                    Profile
+                  </Link>
                 </DropdownMenuItem>
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
                 <DropdownMenuItem asChild>
                   <Link href='/settings/account'>
                     <BadgeCheck />
@@ -104,6 +105,18 @@ export function NavUser({ user }: NavUserProps) {
                   <Link href='/settings/notifications'>
                     <Bell />
                     Notifications
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href='/settings'>
+                    <Settings />
+                    Settings
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href='/users'>
+                    <ShieldCheck />
+                    User Management / Admin
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuGroup>

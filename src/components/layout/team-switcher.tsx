@@ -1,14 +1,14 @@
 "use client"
 
 import * as React from 'react'
-import { ChevronsUpDown, Plus } from 'lucide-react'
+import { ChevronsUpDown, Plus, Search } from 'lucide-react'
+import { Input } from '@/components/ui/input'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import {
@@ -29,6 +29,12 @@ type TeamSwitcherProps = {
 export function TeamSwitcher({ teams }: TeamSwitcherProps) {
   const { isMobile } = useSidebar()
   const [activeTeam, setActiveTeam] = React.useState(teams[0])
+  const [query, setQuery] = React.useState('')
+  const filteredTeams = teams.filter((team) => {
+    const searchableText = `${team.name} ${team.plan}`.toLowerCase()
+
+    return searchableText.includes(query.trim().toLowerCase())
+  })
 
   return (
     <SidebarMenu>
@@ -58,9 +64,20 @@ export function TeamSwitcher({ teams }: TeamSwitcherProps) {
             sideOffset={4}
           >
             <DropdownMenuLabel className='text-xs text-muted-foreground'>
-              Teams
+              Properties
             </DropdownMenuLabel>
-            {teams.map((team, index) => (
+            <div className='px-2 pb-2'>
+              <div className='relative'>
+                <Search className='pointer-events-none absolute start-2 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground' />
+                <Input
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder='Search properties...'
+                  className='h-8 ps-7 text-xs'
+                />
+              </div>
+            </div>
+            {filteredTeams.map((team) => (
               <DropdownMenuItem
                 key={team.name}
                 onClick={() => setActiveTeam(team)}
@@ -70,15 +87,21 @@ export function TeamSwitcher({ teams }: TeamSwitcherProps) {
                   <team.logo className='size-4 shrink-0' />
                 </div>
                 {team.name}
-                <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
               </DropdownMenuItem>
             ))}
+            {filteredTeams.length === 0 && (
+              <div className='px-2 py-3 text-xs text-muted-foreground'>
+                No properties found.
+              </div>
+            )}
             <DropdownMenuSeparator />
             <DropdownMenuItem className='gap-2 p-2'>
               <div className='flex size-6 items-center justify-center rounded-md border bg-background'>
                 <Plus className='size-4' />
               </div>
-              <div className='font-medium text-muted-foreground'>Add team</div>
+              <div className='font-medium text-muted-foreground'>
+                Manage Properties
+              </div>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
