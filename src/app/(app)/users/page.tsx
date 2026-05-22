@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo } from 'react'
+import { Suspense, useMemo } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { ConfigDrawer } from '@/components/config-drawer'
 import { Header } from '@/components/layout/header'
@@ -51,7 +51,7 @@ function recordToSearchParams(record: Record<string, unknown>) {
   return params
 }
 
-export default function UsersPage() {
+function UsersPageContent() {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -104,5 +104,13 @@ export default function UsersPage() {
 
       <UsersDialogs />
     </UsersProvider>
+  )
+}
+
+export default function UsersPage() {
+  return (
+    <Suspense fallback={null}>
+      <UsersPageContent />
+    </Suspense>
   )
 }

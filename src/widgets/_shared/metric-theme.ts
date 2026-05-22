@@ -25,7 +25,11 @@ export type ReviewMetric =
   | "expedia"
   | "booking";
 
-export type MetricTheme = ProductionSegment | SocialMetric | ReviewMetric;
+export type ToneMetric =
+  | "positive"
+  | "negative";
+
+export type MetricTheme = ProductionSegment | SocialMetric | ReviewMetric | ToneMetric;
 
 export const productionSegmentLabels = {
   total: "Total",
@@ -56,6 +60,11 @@ export const reviewMetricLabels = {
   expedia: "Expedia",
   booking: "Booking",
 } satisfies Record<ReviewMetric, string>;
+
+export const toneMetricLabels = {
+  positive: "Positive",
+  negative: "Negative",
+} satisfies Record<ToneMetric, string>;
 
 export function getMetricThemeClass(metric: MetricTheme = "total") {
   return `metric-card--${metric}`;
