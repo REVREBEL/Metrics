@@ -50,6 +50,7 @@ const eslintConfig = tseslint.config(
   ...tseslint.configs.recommended,
   {
     rules: {
+      "react-refresh/only-export-components": "off",
       "react-hooks/incompatible-library": "off",
       "react-hooks/purity": "off",
       "@next/next/no-html-link-for-pages": "off",

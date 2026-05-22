@@ -1,4 +1,6 @@
-function AutoFormTooltip({ fieldConfigItem }: { fieldConfigItem: any }) {
+import type { ReactNode } from "react";
+
+function AutoFormTooltip({ fieldConfigItem }: { fieldConfigItem: { description?: ReactNode } }) {
   return (
     <>
       {fieldConfigItem?.description && (

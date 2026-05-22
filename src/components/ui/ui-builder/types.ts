@@ -125,7 +125,7 @@ export type CreateVariable = <T extends VariableValueType>(
 ) => Variable<T>;
 
 // Utility to check if a value is a variable reference
-export function isVariableReference(value: any): value is VariableReference {
+export function isVariableReference(value: unknown): value is VariableReference {
   return typeof value === 'object' && value !== null && '__variableRef' in value;
 }
 
@@ -176,7 +176,7 @@ export interface FunctionDefinition {
   /** Zod schema describing the function parameters (use z.tuple for ordered args, z.object for named params) */
   schema: ZodTuple<any, any> | ZodObject<any> | ZodSchema<any>;
   /** The actual function to call at runtime */
-  fn: (...args: any[]) => any;
+  fn: (...args: unknown[]) => unknown;
   /** Optional description shown in the UI */
   description?: string;
   /** 

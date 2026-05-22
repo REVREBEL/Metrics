@@ -149,12 +149,12 @@ export const ImageViewBlock: React.FC<NodeViewProps> = ({
         setActiveResizeHandle(direction)
         initiateResize(direction)(event)
       },
-    [initiateResize]
+    [initiateResize, setActiveResizeHandle]
   )
 
   const handleResizeEnd = React.useCallback(() => {
     setActiveResizeHandle(null)
-  }, [])
+  }, [setActiveResizeHandle])
 
   React.useEffect(() => {
     if (!isResizing) {

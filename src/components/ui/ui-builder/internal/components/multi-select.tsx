@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 import { useDebounce } from "@/hooks/use-debounce";
 import { Cross2Icon } from "@radix-ui/react-icons";
 
-const EMPTY_ARRAY: any[] = [];
+const EMPTY_ARRAY: Option[] = [];
 
 export interface Option {
   value: string;
@@ -285,6 +285,7 @@ const MultipleSelector = React.forwardRef<
 
     useEffect(() => {
       if (value) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- Syncing local state with external prop
         setSelected(value);
       }
     }, [value]);
@@ -299,6 +300,7 @@ const MultipleSelector = React.forwardRef<
         groupBy
       );
       if (JSON.stringify(newOption) !== JSON.stringify(options)) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- Syncing local options with external prop
         setOptions(newOption);
       }
     }, [arrayDefaultOptions, arrayOptions, groupBy, onSearch, options]);

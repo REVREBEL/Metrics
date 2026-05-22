@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 'use client';
 
 import { TrendingUp } from 'lucide-react';
@@ -86,6 +86,7 @@ export function BarChartActiveComponent() {
                   <Rectangle
                     {...props}
                     fillOpacity={0.8}
+                    // @ts-expect-error -- Recharts activeBar props do not have strong typing for payload
                     stroke={props.payload.fill}
                     strokeDasharray={4}
                     strokeDashoffset={4}
