@@ -68,7 +68,7 @@ export function CardsMetric() {
         </CardDescription>
       </CardHeader>
       <CardContent className='pb-4'>
-        <ChartContainer config={chartConfig} className='w-full md:h-50'>
+        <ChartContainer config={chartConfig} className='w-full md:h-52'>
           <LineChart
             data={data}
             margin={{
