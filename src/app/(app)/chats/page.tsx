@@ -37,17 +37,29 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
 const messageTimeFormatter = new Intl.DateTimeFormat('en-US', {
   hour: 'numeric',
   minute: '2-digit',
-  timeZone: 'UTC',
 })
 
 function formatDateGroup(value: string | number | Date) {
   return dateFormatter.format(new Date(value))
 }
 
-function formatMessageTime(timestamp: Date | string) {
-  const date = new Date(timestamp)
+function parseMessageTimestamp(timestamp: Date | string) {
+  if (timestamp instanceof Date) return timestamp
 
-  if (Number.isNaN(date.getTime())) return 'Unknown time'
+  const isIsoLikeTimestamp =
+    /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d{1,3})?)?(?:Z|[+-]\d{2}:?\d{2})?$/.test(
+      timestamp
+    )
+
+  if (!isIsoLikeTimestamp) return null
+
+  return new Date(timestamp)
+}
+
+function formatMessageTime(timestamp: Date | string) {
+  const date = parseMessageTimestamp(timestamp)
+
+  if (!date || Number.isNaN(date.getTime())) return 'Unknown time'
 
   return messageTimeFormatter.format(date)
 }
