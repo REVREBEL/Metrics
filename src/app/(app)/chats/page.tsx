@@ -38,6 +38,34 @@ function formatDateGroup(value: string | number | Date) {
   return dateFormatter.format(new Date(value))
 }
 
+function formatMessageTime(timestamp: string) {
+  const timeMatch = timestamp.match(/T(\d{2}):(\d{2})/)
+
+  if (!timeMatch) return 'Unknown time'
+
+  const hours = Number(timeMatch[1])
+  const minutes = timeMatch[2]
+
+  if (!Number.isInteger(hours) || hours < 0 || hours > 23) {
+    return 'Unknown time'
+  }
+
+  const period = hours >= 12 ? 'PM' : 'AM'
+  const displayHour = hours % 12 || 12
+
+  return `${displayHour}:${minutes} ${period}`
+}
+
+function MessageTimestamp({ sender, timestamp }: { sender: string; timestamp: string }) {
+  const formattedTime = formatMessageTime(timestamp)
+
+  return (
+    <>
+      {sender} · {formattedTime}
+    </>
+  )
+}
+
 export default function ChatsPage() {
   const [search, setSearch] = useState('')
   const [selectedUser, setSelectedUser] = useState<ChatUser | null>(null)
@@ -254,7 +282,10 @@ export default function ChatsPage() {
                                       'text-right text-primary-foreground/75'
                                   )}
                                 >
-                                  {msg.sender} · {new Date(msg.timestamp).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}
+                                  <MessageTimestamp
+                                    sender={msg.sender}
+                                    timestamp={msg.timestamp}
+                                  />
                                 </span>
                               </div>
                             ))}

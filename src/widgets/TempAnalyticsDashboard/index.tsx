@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useState } from "react";
 import ArrowCircleUp from "@/assets/RebelIconsReact/ArrowCircleUp";
 import ArrowCircleDown from "@/assets/RebelIconsReact/ArrowCircleDown";
@@ -146,7 +147,18 @@ export default function AnalyticsOverview() {
   );
 }
 
-const CustomTooltip = ({ active, payload, label, activeColorVar }: { active?: boolean; payload?: Record<string, unknown>[]; label?: string; activeColorVar?: string }) => {
+type TooltipPayloadItem = {
+  value: ReactNode;
+}
+
+type CustomTooltipProps = {
+  active?: boolean;
+  payload?: TooltipPayloadItem[];
+  label?: string;
+  activeColorVar?: string;
+}
+
+const CustomTooltip = ({ active, payload, label, activeColorVar }: CustomTooltipProps) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-secondary border border-muted p-4 rounded-sm retro-shadow-base min-w-[140px]">
