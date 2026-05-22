@@ -460,7 +460,7 @@ const MultipleSelector = React.forwardRef<
       }
       // Using default filter in `cmdk`. We don't have to provide it.
       return undefined;
-    }, [creatable, commandProps]);
+    }, [creatable, commandProps?.filter]);
 
     const handlePrimitiveInputValueChange = useCallback(
       (value: string) => {
