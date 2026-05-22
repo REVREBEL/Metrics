@@ -109,7 +109,7 @@ function UsersPageContent() {
 
 export default function UsersPage() {
   return (
-    <Suspense>
+    <Suspense fallback={null}>
       <UsersPageContent />
     </Suspense>
   )
