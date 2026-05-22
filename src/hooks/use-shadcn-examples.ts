@@ -55,6 +55,7 @@ export function useShadcnExamples(): UseShadcnExamplesResult {
 
   useEffect(() => {
     const ignore = { current: false };
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Fetching data on mount
     void load(ignore);
 
     return () => {

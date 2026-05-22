@@ -7,14 +7,14 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from '../ui/chart';
+} from '@/components/ui/chart';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '../ui/card';
+} from '@/components/ui/card';
 
 const data = [
   {
@@ -68,7 +68,7 @@ export function CardsMetric() {
         </CardDescription>
       </CardHeader>
       <CardContent className='pb-4'>
-        <ChartContainer config={chartConfig} className='w-full md:h-[200px]'>
+        <ChartContainer config={chartConfig} className='w-full md:h-50'>
           <LineChart
             data={data}
             margin={{

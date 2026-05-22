@@ -5,6 +5,7 @@ export const useTheme = () => {
 
   React.useEffect(() => {
     const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Client-only mounted state / hydration guard
     setIsDarkMode(darkModeMediaQuery.matches)
 
     const handleChange = (e: MediaQueryListEvent) => {

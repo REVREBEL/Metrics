@@ -143,7 +143,7 @@ export default function AnalyticsOverview() {
   );
 }
 
-const CustomTooltip = ({ active, payload, label, activeColorVar }: any) => {
+const CustomTooltip = ({ active, payload, label, activeColorVar }: { active?: boolean; payload?: { value: React.ReactNode }[]; label?: string; activeColorVar?: string }) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-background border border-primary p-4 rounded-sm retro-shadow-primary-sm min-w-[140px]">

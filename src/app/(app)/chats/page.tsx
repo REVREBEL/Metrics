@@ -254,7 +254,7 @@ export default function ChatsPage() {
                                       'text-right text-primary-foreground/75'
                                   )}
                                 >
-                                  {msg.sender} · {msg.timestamp}
+                                  {msg.sender} · {new Date(msg.timestamp).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}
                                 </span>
                               </div>
                             ))}
@@ -264,7 +264,7 @@ export default function ChatsPage() {
                     </div>
                   </div>
                 </div>
-                <form className='flex w-full flex-none gap-2'>
+                <form className='flex w-full flex-none gap-2' onSubmit={(e) => e.preventDefault()}>
                   <div className='flex flex-1 items-center gap-2 rounded-md border border-input px-2'>
                     <Button size='icon' type='button' variant='ghost'>
                       <Plus size={20} className='stroke-muted-foreground' />

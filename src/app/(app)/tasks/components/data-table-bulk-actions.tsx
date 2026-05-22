@@ -132,7 +132,6 @@ export function DataTableBulkActions<TData>({
             {priorities.map((priority) => (
               <DropdownMenuItem
                 key={priority.value}
-                defaultValue={priority.value}
                 onClick={() => handleBulkPriorityChange(priority.value)}
               >
                 {priority.icon && (

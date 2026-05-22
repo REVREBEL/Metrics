@@ -9,6 +9,7 @@ export const useStore = <T, F>(
     const [data, setData] = useState<F>()
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- Client-only mounted state / hydration guard
         setData(result)
     }, [result])
 
