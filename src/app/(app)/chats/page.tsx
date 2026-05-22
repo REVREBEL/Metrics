@@ -34,29 +34,31 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
 })
 
+const messageTimeFormatter = new Intl.DateTimeFormat('en-US', {
+  hour: 'numeric',
+  minute: '2-digit',
+  timeZone: 'UTC',
+})
+
 function formatDateGroup(value: string | number | Date) {
   return dateFormatter.format(new Date(value))
 }
 
-function formatMessageTime(timestamp: string) {
-  const timeMatch = timestamp.match(/T(\d{2}):(\d{2})/)
+function formatMessageTime(timestamp: Date | string) {
+  const date = new Date(timestamp)
 
-  if (!timeMatch) return 'Unknown time'
+  if (Number.isNaN(date.getTime())) return 'Unknown time'
 
-  const hours = Number(timeMatch[1])
-  const minutes = timeMatch[2]
-
-  if (!Number.isInteger(hours) || hours < 0 || hours > 23) {
-    return 'Unknown time'
-  }
-
-  const period = hours >= 12 ? 'PM' : 'AM'
-  const displayHour = hours % 12 || 12
-
-  return `${displayHour}:${minutes} ${period}`
+  return messageTimeFormatter.format(date)
 }
 
-function MessageTimestamp({ sender, timestamp }: { sender: string; timestamp: string }) {
+function MessageTimestamp({
+  sender,
+  timestamp,
+}: {
+  sender: string
+  timestamp: Date | string
+}) {
   const formattedTime = formatMessageTime(timestamp)
 
   return (
