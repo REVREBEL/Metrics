@@ -1,13 +1,14 @@
 
+"use client"
+
 import { Monitor, Bell, Palette, Wrench, UserCog } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
-import { ConfigDrawer } from '@/components/config-drawer'
 import { Header } from '@/components/layout/header'
 import { Main } from '@/components/layout/main'
-import { ProfileDropdown } from '@/components/profile-dropdown'
-import { Search } from '@/components/search'
 import { ThemeSwitch } from '@/components/theme-switch'
+import { ContentSection } from './components/content-section'
 import { SidebarNav } from './components/sidebar-nav'
+import { ProfileForm } from './profile/profile-form'
 
 const sidebarNavItems = [
   {
@@ -37,16 +38,13 @@ const sidebarNavItems = [
   },
 ]
 
-export function Settings() {
+export default function SettingsPage() {
   return (
     <>
       {/* ===== Top Heading ===== */}
       <Header>
-        <Search />
         <div className='ms-auto flex items-center space-x-4'>
           <ThemeSwitch />
-          <ConfigDrawer />
-          <ProfileDropdown />
         </div>
       </Header>
 
@@ -65,7 +63,12 @@ export function Settings() {
             <SidebarNav items={sidebarNavItems} />
           </aside>
           <div className='flex w-full overflow-y-hidden p-1'>
-            {children}
+            <ContentSection
+              title='Profile'
+              desc='This is how others will see you on the site.'
+            >
+              <ProfileForm />
+            </ContentSection>
           </div>
         </div>
       </Main>

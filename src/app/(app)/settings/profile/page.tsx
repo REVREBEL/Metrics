@@ -1,7 +1,7 @@
 import { ContentSection } from '../components/content-section'
 import { ProfileForm } from './profile-form'
 
-export function SettingsProfile() {
+export default function SettingsProfilePage() {
   return (
     <ContentSection
       title='Profile'

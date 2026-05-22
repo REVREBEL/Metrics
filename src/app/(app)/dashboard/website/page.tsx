@@ -2,12 +2,9 @@
 
 import React, { useState } from "react";
 import { Button } from '@/components/ui/button'
-import { ConfigDrawer } from '@/components/config-drawer'
 import { Header } from '@/components/layout/header'
 import { Main } from '@/components/layout/main'
 import { TopNav } from '@/components/layout/top-nav'
-import { ProfileDropdown } from '@/components/profile-dropdown'
-import { Search } from '@/components/search'
 import { ThemeSwitch } from '@/components/theme-switch'
 import { DashboardTabs } from '../components/dashboard-tabs'
 import { YearMonthSelector } from "@/widgets/YearMonthSelector/dynamic";
@@ -126,10 +123,7 @@ export default function Page() {
       {/* ===== Top Heading ===== */}
       <TopNav links={topNav} />
       <div className='ms-auto flex items-center space-x-4'>
-        <Search />
         <ThemeSwitch />
-        <ConfigDrawer />
-        <ProfileDropdown />
       </div>
     </Header>
 
