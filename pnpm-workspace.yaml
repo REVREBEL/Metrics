@@ -1,6 +1,8 @@
-minimumReleaseAge: 0
+minimumReleaseAge: 86400
+
 overrides:
   date-fns: 3.6.0
+
 ignoredBuiltDependencies:
   - '@clerk/shared'
   - sharp
@@ -19,5 +21,5 @@ allowBuilds:
   duckdb: true
   esbuild: true
   msw: true
-  sharp: false
-  unrs-resolver: false
+  sharp: true
+  unrs-resolver: true
