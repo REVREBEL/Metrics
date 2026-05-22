@@ -533,7 +533,7 @@ export default function HospitalityDashboard({ year, month }: { year: string; mo
     }, 180);
 
     return () => window.clearTimeout(timeoutId);
-  }, [donutTooltipState]);
+  }, [donutTooltipState?.ring.key]);
 
   useEffect(() => {
     async function fetchData() {
