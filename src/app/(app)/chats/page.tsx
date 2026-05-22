@@ -34,10 +34,11 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
 })
 
-const ISO_LIKE_TIMESTAMP_REGEX =
+const CHAT_MESSAGE_ISO_LIKE_TIMESTAMP_PATTERN =
   /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d{1,3})?)?(?:Z|[+-]\d{2}:?\d{2})?$/
 
-// Intentionally omit timeZone so chat times render in the user's local timezone.
+// Intentionally omit timeZone so chat messages render in the user's local time.
+// This favors user-facing readability over fixed server/test timezone output.
 const messageTimeFormatter = new Intl.DateTimeFormat('en-US', {
   hour: 'numeric',
   minute: '2-digit',
@@ -50,7 +51,8 @@ function formatDateGroup(value: string | number | Date) {
 function parseMessageTimestamp(timestamp: Date | string) {
   if (timestamp instanceof Date) return timestamp
 
-  const isIsoLikeTimestamp = ISO_LIKE_TIMESTAMP_REGEX.test(timestamp)
+  const isIsoLikeTimestamp =
+    CHAT_MESSAGE_ISO_LIKE_TIMESTAMP_PATTERN.test(timestamp)
 
   if (!isIsoLikeTimestamp) return null
 
