@@ -18,7 +18,7 @@ import { sidebarData } from './layout/data/sidebar-data'
 import { ScrollArea } from './ui/scroll-area'
 
 export function CommandMenu() {
-  const navigate = useRouter()
+  const router = useRouter()
   const { setTheme } = useTheme()
   const { open, setOpen } = useSearch()
 
@@ -43,9 +43,9 @@ export function CommandMenu() {
                   return (
                     <CommandItem
                       key={`${navItem.url}-${i}`}
-                      value={navItem.title}
+                      value={`${navItem.title} ${navItem.url}`}
                       onSelect={() => {
-                        runCommand(() => navigate({ to: navItem.url }))
+                        runCommand(() => router.push(navItem.url))
                       }}
                     >
                       <div className='flex size-4 items-center justify-center'>
@@ -60,7 +60,7 @@ export function CommandMenu() {
                     key={`${navItem.title}-${subItem.url}-${i}`}
                     value={`${navItem.title}-${subItem.url}`}
                     onSelect={() => {
-                      runCommand(() => navigate({ to: subItem.url }))
+                      runCommand(() => router.push(subItem.url))
                     }}
                   >
                     <div className='flex size-4 items-center justify-center'>

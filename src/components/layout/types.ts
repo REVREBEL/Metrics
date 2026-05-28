@@ -1,3 +1,4 @@
+import type { ElementType } from 'react'
 
 type User = {
   name: string
@@ -7,23 +8,23 @@ type User = {
 
 type Team = {
   name: string
-  logo: React.ElementType
+  logo: ElementType
   plan: string
 }
 
 type BaseNavItem = {
   title: string
   badge?: string
-  icon?: React.ElementType
+  icon?: ElementType
 }
 
 type NavLink = BaseNavItem & {
-  url: LinkProps['to'] | (string & {})
+  url: string
   items?: never
 }
 
 type NavCollapsible = BaseNavItem & {
-  items: (BaseNavItem & { url: LinkProps['to'] | (string & {}) })[]
+  items: (BaseNavItem & { url: string })[]
   url?: never
 }
 

@@ -12,11 +12,12 @@ import {
 import { IconInnerShadowTop } from '@tabler/icons-react'
 import type { SidebarData } from '../types'
 
-user: {
-  name: '',  // replace with dynamic auth or placeholder
-  email: '', // replace with dynamic auth or placeholder
-  avatar: '',
-},
+export const sidebarData: SidebarData = {
+  user: {
+    name: '',
+    email: '',
+    avatar: '',
+  },
   teams: [
     {
       name: 'Portfolio / All Properties',
@@ -59,7 +60,7 @@ user: {
           icon: Megaphone,
         },
         {
-          title: 'Metric Library',
+          title: 'Signals',
           url: '/metric-library',
           icon: BarChart3,
         },
