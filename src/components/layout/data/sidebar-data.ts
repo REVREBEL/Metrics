@@ -12,12 +12,11 @@ import {
 import { IconInnerShadowTop } from '@tabler/icons-react'
 import type { SidebarData } from '../types'
 
-export const sidebarData: SidebarData = {
-  user: {
-    name: 'User Name',
-    email: 'user@example.com',
-    avatar: '',
-  },
+user: {
+  name: '',  // replace with dynamic auth or placeholder
+  email: '', // replace with dynamic auth or placeholder
+  avatar: '',
+},
   teams: [
     {
       name: 'Portfolio / All Properties',
