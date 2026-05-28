@@ -521,7 +521,11 @@ export function MappingTablesManager({
                     {query && (
                       <Badge variant="secondary" className="gap-1">
                         Search: {query}
-                        <button onClick={() => setQuery("")}>
+                        <button
+                          type="button"
+                          onClick={() => setQuery("")}
+                          aria-label="Remove search filter"
+                        >
                           <X className="size-3" />
                         </button>
                       </Badge>
