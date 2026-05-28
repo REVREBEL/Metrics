@@ -38,6 +38,11 @@ if (publishableKey) lines.push(`NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${publishableK
 if (secretKey)      lines.push(`CLERK_SECRET_KEY=${secretKey}`)
 if (encryptionKey)  lines.push(`CLERK_ENCRYPTION_KEY=${encryptionKey}`)
 
+lines.push(`NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in`)
+lines.push(`NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up`)
+lines.push(`NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/`)
+lines.push(`NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/`)
+
 if (lines.length > 0) {
   writeFileSync(".env.local", lines.join("\n") + "\n")
   console.log("[env] .env.local written with Clerk keys")
