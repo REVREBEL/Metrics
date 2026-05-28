@@ -206,7 +206,7 @@ export function MappingRowEditDrawer({
 
   return (
     <Sheet open={open} onOpenChange={handleOpenChange}>
-      <SheetContent side="right" className="w-full max-w-lg overflow-y-auto">
+      <SheetContent side="right" className="w-full overflow-y-auto sm:max-w-lg">
         <SheetHeader className="pb-4">
           <SheetTitle className="flex items-center gap-2">
             Edit Mapping Row
