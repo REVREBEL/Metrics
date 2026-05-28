@@ -1,3 +1,9 @@
+"use client"
+
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { ChevronRight } from "lucide-react"
+
 import { ThemeSwitch } from "@/components/theme-switch"
 import { Header } from "@/components/layout/header"
 import { Main } from "@/components/layout/main"
@@ -8,11 +14,29 @@ type ProductAreaPageProps = {
   items?: string[]
 }
 
+// Map display names to actual route slugs
+const routeOverrides: Record<string, string> = {
+  "Lookup Tables": "lookups",
+  "Mapping Tables": "mappings",
+}
+
+function toSlug(item: string): string {
+  if (routeOverrides[item]) {
+    return routeOverrides[item]
+  }
+  return item
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "")
+}
+
 export function ProductAreaPage({
   title,
   description,
   items = [],
 }: ProductAreaPageProps) {
+  const pathname = usePathname()
+
   return (
     <>
       <Header>
@@ -34,14 +58,21 @@ export function ProductAreaPage({
         </div>
         {items.length > 0 && (
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {items.map((item) => (
-              <div
-                key={item}
-                className="rounded-lg border bg-card p-4 text-sm font-medium"
-              >
-                {item}
-              </div>
-            ))}
+            {items.map((item) => {
+              const slug = toSlug(item)
+              const href = `${pathname.replace(/\/$/, "")}/${slug}`
+
+              return (
+                <Link
+                  key={item}
+                  href={href}
+                  className="group flex items-center justify-between rounded-lg border bg-card p-4 text-sm font-medium transition-colors hover:border-primary/50 hover:bg-muted"
+                >
+                  <span>{item}</span>
+                  <ChevronRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground" />
+                </Link>
+              )
+            })}
           </div>
         )}
       </Main>
