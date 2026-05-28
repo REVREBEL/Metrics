@@ -60,7 +60,7 @@ export function ProductAreaPage({
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((item) => {
               const slug = toSlug(item)
-              const href = `${pathname}/${slug}`
+              const href = `${pathname.replace(/\/$/, "")}/${slug}`
 
               return (
                 <Link
