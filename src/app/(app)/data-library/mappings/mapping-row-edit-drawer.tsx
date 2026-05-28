@@ -15,13 +15,14 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet"
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import { Textarea } from "@/components/ui/textarea"
 import type { MappingColumnDefinition } from "@/lib/mapping-tables/mapping-table-columns"
 import type { MappingTableRow } from "@/lib/mapping-tables/types"
@@ -205,18 +206,18 @@ export function MappingRowEditDrawer({
   )
 
   return (
-    <Sheet open={open} onOpenChange={handleOpenChange}>
-      <SheetContent side="right" className="w-full max-w-lg overflow-y-auto">
-        <SheetHeader className="pb-4">
-          <SheetTitle className="flex items-center gap-2">
+    <Dialog open={open} onOpenChange={handleOpenChange}>
+      <DialogContent className="flex h-[75vh] w-[75vw] max-w-none flex-col gap-0 p-0">
+        <DialogHeader className="shrink-0 border-b px-6 py-4">
+          <DialogTitle className="flex items-center gap-2">
             Edit Mapping Row
             {isDirty && (
               <Badge variant="outline" className="text-amber-600 border-amber-300">
                 Unsaved changes
               </Badge>
             )}
-          </SheetTitle>
-          <SheetDescription>
+          </DialogTitle>
+          <DialogDescription>
             {row ? (
               <span>
                 <span className="font-mono">{row.sourceCode}</span>
@@ -226,49 +227,50 @@ export function MappingRowEditDrawer({
             ) : (
               "No row selected."
             )}
-          </SheetDescription>
-        </SheetHeader>
+          </DialogDescription>
+        </DialogHeader>
 
         {row && (
-          <div className="space-y-5 py-2">
-            {editableColumns.map((col) => (
-              <FieldRenderer
-                key={col.field}
-                col={col}
-                value={values[col.field] ?? ""}
-                onChange={(val) => setField(col.field, val)}
-                errors={fieldErrors[col.field] ?? []}
-                options={
-                  col.lookupSource ? (lookupOptions[col.lookupSource] ?? []) : []
-                }
-              />
-            ))}
+          <ScrollArea className="flex-1 px-6 py-4">
+            <div className="space-y-5">
+              {editableColumns.map((col) => (
+                <FieldRenderer
+                  key={col.field}
+                  col={col}
+                  value={values[col.field] ?? ""}
+                  onChange={(val) => setField(col.field, val)}
+                  errors={fieldErrors[col.field] ?? []}
+                  options={
+                    col.lookupSource ? (lookupOptions[col.lookupSource] ?? []) : []
+                  }
+                />
+              ))}
 
-            {saveResult && (
-              <div
-                className={cn(
-                  "flex items-start gap-2 rounded-md border p-3 text-sm",
-                  saveResult.ok
-                    ? "border-green-200 bg-green-50 text-green-800 dark:border-green-800 dark:bg-green-950/40 dark:text-green-300"
-                    : "border-destructive/30 bg-destructive/5 text-destructive"
-                )}
-              >
-                {saveResult.ok ? (
-                  <CheckCircle2 className="mt-0.5 size-4 shrink-0" />
-                ) : (
-                  <AlertTriangle className="mt-0.5 size-4 shrink-0" />
-                )}
-                <p>{saveResult.message}</p>
-              </div>
-            )}
-          </div>
+              {saveResult && (
+                <div
+                  className={cn(
+                    "flex items-start gap-2 rounded-md border p-3 text-sm",
+                    saveResult.ok
+                      ? "border-green-200 bg-green-50 text-green-800 dark:border-green-800 dark:bg-green-950/40 dark:text-green-300"
+                      : "border-destructive/30 bg-destructive/5 text-destructive"
+                  )}
+                >
+                  {saveResult.ok ? (
+                    <CheckCircle2 className="mt-0.5 size-4 shrink-0" />
+                  ) : (
+                    <AlertTriangle className="mt-0.5 size-4 shrink-0" />
+                  )}
+                  <p>{saveResult.message}</p>
+                </div>
+              )}
+            </div>
+          </ScrollArea>
         )}
 
-        <SheetFooter className="mt-6 flex flex-col gap-2 sm:flex-row">
+        <DialogFooter className="shrink-0 border-t px-6 py-4">
           <Button
             variant="outline"
             onClick={() => handleOpenChange(false)}
-            className="sm:order-first"
           >
             <X className="size-4" />
             Close
@@ -288,9 +290,9 @@ export function MappingRowEditDrawer({
             {isPublishing && <Loader2 className="size-4 animate-spin" />}
             Publish
           </Button>
-        </SheetFooter>
-      </SheetContent>
-    </Sheet>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   )
 }
 

@@ -4,7 +4,11 @@ import { and, eq, ne } from "drizzle-orm"
 
 import { getMappingTableRows } from "@/lib/mapping-tables/service"
 import { getColumnsForTable } from "@/lib/mapping-tables/mapping-table-columns"
-import { validateDropdownValue } from "@/lib/mapping-tables/mapping-table-lookups"
+import {
+  resolveLookupOptions,
+  validateDropdownValue,
+  type LookupOption,
+} from "@/lib/mapping-tables/mapping-table-lookups"
 import { checkPermission } from "@/lib/permissions/permission-service"
 import type {
   MappingDraftSavePayload,
@@ -15,6 +19,12 @@ import type {
 
 export async function getMappingTableRowsAction(tableKey: string) {
   return getMappingTableRows(tableKey)
+}
+
+export async function resolveLookupOptionsAction(
+  lookupSource: string
+): Promise<LookupOption[]> {
+  return resolveLookupOptions(lookupSource)
 }
 
 async function getDbModules() {
