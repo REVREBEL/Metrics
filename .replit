@@ -42,9 +42,9 @@ externalPort = 5000
 [userenv]
 
 [userenv.shared]
-BQ_PROJECT = "revrebel-metrics"
 BQ_DATASET_ID = "metrics_core"
 BQ_DATA_LOCATION = "us-central1"
+BQ_PROJECT_ID = "revrebel-metrics"
 
 [agent]
 expertMode = true

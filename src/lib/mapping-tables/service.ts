@@ -24,6 +24,32 @@ async function getDbModules(): Promise<{
   }
 }
 
+async function tryGetBigQueryCounts(
+  tableKey: string
+): Promise<
+  | {
+      mappedRowCount: number
+      partialRowCount: number
+      unmappedRowCount: number
+      approximateRowCount: number
+    }
+  | null
+> {
+  try {
+    const { getMappingTableCounts } = await import(
+      "@/lib/bigquery/mapping-table-queries"
+    )
+    return await getMappingTableCounts(tableKey)
+  } catch (err) {
+    console.warn(
+      `[mapping-tables] BigQuery count query failed for "${tableKey}", falling back to fixture counts.`,
+      "To enable live counts, configure BigQuery credentials (see docs/bigquery-setup.md).",
+      err instanceof Error ? err.message : err
+    )
+    return null
+  }
+}
+
 export async function listMappingTables(): Promise<MappingTableMetadata[]> {
   const modules = await getDbModules()
 
@@ -52,9 +78,21 @@ export async function listMappingTables(): Promise<MappingTableMetadata[]> {
       mappingTableMetadata.map((table) => [table.key, table])
     )
 
+    const bqCountsResults = await Promise.all(
+      rows.map(async (row) => {
+        const counts = await tryGetBigQueryCounts(row.tableName)
+        return { tableName: row.tableName, counts }
+      })
+    )
+
+    const bqCountsByKey = new Map(
+      bqCountsResults.map(({ tableName, counts }) => [tableName, counts])
+    )
+
     const mapped = rows.map((row) => {
       const fixture = metadataByKey.get(row.tableName)
       const uiMetadata = (row.uiMetadata ?? {}) as Record<string, unknown>
+      const bqCounts = bqCountsByKey.get(row.tableName) ?? null
 
       return {
         key: row.tableName,
@@ -69,18 +107,18 @@ export async function listMappingTables(): Promise<MappingTableMetadata[]> {
           fixture?.standardTableName ||
           "",
         category: String(uiMetadata.category ?? "") || fixture?.category || "",
-        approximateRowCount: Number(
-          uiMetadata.approximateRowCount ?? fixture?.approximateRowCount ?? 0
-        ),
-        mappedRowCount: Number(
-          uiMetadata.mappedRowCount ?? fixture?.mappedRowCount ?? 0
-        ),
-        partialRowCount: Number(
-          uiMetadata.partialRowCount ?? fixture?.partialRowCount ?? 0
-        ),
-        unmappedRowCount: Number(
-          uiMetadata.unmappedRowCount ?? fixture?.unmappedRowCount ?? 0
-        ),
+        approximateRowCount:
+          bqCounts?.approximateRowCount ??
+          Number(uiMetadata.approximateRowCount ?? fixture?.approximateRowCount ?? 0),
+        mappedRowCount:
+          bqCounts?.mappedRowCount ??
+          Number(uiMetadata.mappedRowCount ?? fixture?.mappedRowCount ?? 0),
+        partialRowCount:
+          bqCounts?.partialRowCount ??
+          Number(uiMetadata.partialRowCount ?? fixture?.partialRowCount ?? 0),
+        unmappedRowCount:
+          bqCounts?.unmappedRowCount ??
+          Number(uiMetadata.unmappedRowCount ?? fixture?.unmappedRowCount ?? 0),
         lastUpdated: String(
           uiMetadata.lastUpdated ??
             fixture?.lastUpdated ??
@@ -111,6 +149,19 @@ export async function listMappingTables(): Promise<MappingTableMetadata[]> {
 export async function getMappingTableRows(
   tableKey: string
 ): Promise<MappingTableRow[]> {
+  try {
+    const { queryMappingTable } = await import(
+      "@/lib/bigquery/mapping-table-queries"
+    )
+    return await queryMappingTable(tableKey)
+  } catch (err) {
+    console.warn(
+      `[mapping-tables] BigQuery row query failed for "${tableKey}", falling back to fixtures.`,
+      "To enable live data, configure BigQuery credentials (see docs/bigquery-setup.md).",
+      err instanceof Error ? err.message : err
+    )
+  }
+
   const rows =
     mappingTableRowsByKey[tableKey as keyof typeof mappingTableRowsByKey]
 
