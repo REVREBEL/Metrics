@@ -1,15 +1,25 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
+import { NextResponse, type NextRequest } from "next/server";
 
-export default clerkMiddleware(
-    async () => {
-        // Auth disabled for development — all routes are public.
-        // To re-enable, restore the isPublicRoute matcher and call auth.protect().
-    },
-    {
-        publishableKey: process.env.CLERK_PUBLISHABLE_KEY,
-        secretKey: process.env.CLERK_SECRET_KEY,
-    }
-);
+// Passthrough middleware when Clerk is not configured
+function noopMiddleware() {
+    return NextResponse.next();
+}
+
+const hasClerkConfig = !!(process.env.CLERK_PUBLISHABLE_KEY && process.env.CLERK_SECRET_KEY);
+
+export default hasClerkConfig
+    ? clerkMiddleware(
+        async () => {
+            // Auth disabled for development — all routes are public.
+            // To re-enable, restore the isPublicRoute matcher and call auth.protect().
+        },
+        {
+            publishableKey: process.env.CLERK_PUBLISHABLE_KEY,
+            secretKey: process.env.CLERK_SECRET_KEY,
+        }
+    )
+    : noopMiddleware;
 
 export const config = {
     matcher: [
