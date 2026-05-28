@@ -472,6 +472,8 @@ export function MappingTablesManager({
                         size="icon"
                         className="absolute right-1 top-1/2 size-7 -translate-y-1/2"
                         onClick={() => setQuery("")}
+                        aria-label="Clear search"
+                        title="Clear search"
                       >
                         <X className="size-3" />
                       </Button>
