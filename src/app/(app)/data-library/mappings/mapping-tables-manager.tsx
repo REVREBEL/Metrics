@@ -584,5 +584,6 @@ function formatDate(value: string) {
     year: "numeric",
     hour: "numeric",
     minute: "2-digit",
+    timeZone: "UTC",
   }).format(new Date(value))
 }
