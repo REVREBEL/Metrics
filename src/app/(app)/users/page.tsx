@@ -2,11 +2,17 @@
 
 import { Suspense, useMemo } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { ConfigDrawer } from '@/components/config-drawer'
 import { Header } from '@/components/layout/header'
 import { Main } from '@/components/layout/main'
 import { ThemeSwitch } from '@/components/theme-switch'
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/components/ui/tabs'
 import type { NavigateFn } from '@/hooks/use-table-url-state'
+import { PermissionsPanel } from './components/permissions-panel'
 import { UsersDialogs } from './components/users-dialogs'
 import { UsersPrimaryButtons } from './components/users-primary-buttons'
 import { UsersProvider } from './components/users-provider'
@@ -92,14 +98,30 @@ function UsersPageContent() {
       <Main className='flex flex-1 flex-col gap-4 sm:gap-6'>
         <div className='flex flex-wrap items-end justify-between gap-2'>
           <div>
-            <h2 className='text-2xl font-bold tracking-tight'>User List</h2>
+            <h2 className='text-2xl font-bold tracking-tight'>Users &amp; Permissions</h2>
             <p className='text-muted-foreground'>
-              Manage your users and their roles here.
+              Manage users, roles, and the permission registry.
             </p>
           </div>
-          <UsersPrimaryButtons />
         </div>
-        <UsersTable data={users} search={search} navigate={navigate} />
+
+        <Tabs defaultValue='users'>
+          <TabsList className='mb-4'>
+            <TabsTrigger value='users'>Users</TabsTrigger>
+            <TabsTrigger value='permissions'>Permissions</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value='users'>
+            <div className='flex flex-wrap items-center justify-end gap-2 mb-4'>
+              <UsersPrimaryButtons />
+            </div>
+            <UsersTable data={users} search={search} navigate={navigate} />
+          </TabsContent>
+
+          <TabsContent value='permissions'>
+            <PermissionsPanel />
+          </TabsContent>
+        </Tabs>
       </Main>
 
       <UsersDialogs />

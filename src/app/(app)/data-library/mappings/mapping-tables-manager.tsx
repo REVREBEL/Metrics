@@ -1,7 +1,7 @@
 "use client"
 
 import type { ReactNode } from "react"
-import { useMemo, useRef, useState, useTransition } from "react"
+import { useEffect, useMemo, useRef, useState, useTransition } from "react"
 import {
   ArrowDownAZ,
   ArrowUpAZ,
@@ -9,6 +9,7 @@ import {
   CircleAlert,
   DatabaseZap,
   Filter,
+  Pencil,
   Search as SearchIcon,
 } from "lucide-react"
 
@@ -31,6 +32,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import type { MappingColumnDefinition } from "@/lib/mapping-tables/mapping-table-columns"
+import { getDetailColumnsForTable } from "@/lib/mapping-tables/mapping-table-columns"
+import type { LookupOption } from "@/lib/mapping-tables/mapping-table-lookups"
+import { resolveLookupOptions } from "@/lib/mapping-tables/mapping-table-lookups"
 import type {
   MappingCoverageStatus,
   MappingRowStatus,
@@ -40,6 +45,7 @@ import type {
 import { cn } from "@/lib/utils"
 
 import { getMappingTableRowsAction } from "./actions"
+import { MappingRowEditDrawer } from "./mapping-row-edit-drawer"
 
 type MappingTablesManagerProps = {
   tables: MappingTableMetadata[]
@@ -62,6 +68,9 @@ const rowStatusLabels: Record<MappingRowStatus, string> = {
   partial: "Partial",
   unmapped: "Unmapped",
   inactive: "Inactive",
+  draft: "Draft",
+  needs_review: "Needs Review",
+  deprecated: "Deprecated",
 }
 
 export function MappingTablesManager({
@@ -80,6 +89,13 @@ export function MappingTablesManager({
   const [loadError, setLoadError] = useState<string | null>(null)
   const [isLoadingRows, startRowsTransition] = useTransition()
   const rowsRequestIdRef = useRef(0)
+
+  const [editDrawerOpen, setEditDrawerOpen] = useState(false)
+  const [editingRow, setEditingRow] = useState<MappingTableRow | null>(null)
+  const [drawerColumns, setDrawerColumns] = useState<MappingColumnDefinition[]>([])
+  const [drawerLookupOptions, setDrawerLookupOptions] = useState<
+    Record<string, LookupOption[]>
+  >({})
 
   const selectedTable = tables.find((table) => table.key === selectedTableKey)
 
@@ -103,7 +119,11 @@ export function MappingTablesManager({
     return rows
       .filter((row) => {
         if (statusFilter === "needs_review") {
-          if (row.status !== "partial" && row.status !== "unmapped") {
+          if (
+            row.status !== "partial" &&
+            row.status !== "unmapped" &&
+            row.status !== "needs_review"
+          ) {
             return false
           }
         } else if (statusFilter !== "all" && row.status !== statusFilter) {
@@ -138,7 +158,10 @@ export function MappingTablesManager({
   }, [query, rows, sortDirection, sortKey, statusFilter])
 
   const reviewCount = rows.filter(
-    (row) => row.status === "partial" || row.status === "unmapped"
+    (row) =>
+      row.status === "partial" ||
+      row.status === "unmapped" ||
+      row.status === "needs_review"
   ).length
 
   function handleTableSelect(tableKey: string) {
@@ -183,6 +206,40 @@ export function MappingTablesManager({
     setSortDirection("asc")
   }
 
+  async function handleRowClick(row: MappingTableRow) {
+    const columns = getDetailColumnsForTable(selectedTableKey)
+    setDrawerColumns(columns)
+
+    const lookupSourceKeys = [
+      ...new Set(
+        columns
+          .filter((col) => col.lookupSource)
+          .map((col) => col.lookupSource as string)
+      ),
+    ]
+
+    const resolved: Record<string, LookupOption[]> = {}
+    await Promise.all(
+      lookupSourceKeys.map(async (src) => {
+        resolved[src] = await resolveLookupOptions(src)
+      })
+    )
+
+    setDrawerLookupOptions(resolved)
+    setEditingRow(row)
+    setEditDrawerOpen(true)
+  }
+
+  function handleSaved(rowId: string, savedAt: string) {
+    setRows((prev) =>
+      prev.map((r) =>
+        r.id === rowId
+          ? { ...r, status: "draft" as MappingRowStatus, updatedAt: savedAt }
+          : r
+      )
+    )
+  }
+
   return (
     <div className="flex min-h-0 flex-1 flex-col gap-5">
       <section className="flex flex-col gap-3 border-b pb-5 lg:flex-row lg:items-end lg:justify-between">
@@ -191,10 +248,9 @@ export function MappingTablesManager({
             <h1 className="font-display text-3xl font-bold uppercase tracking-tight">
               Mapping Tables
             </h1>
-            <Badge variant="outline">Mock data</Badge>
           </div>
           <p className="text-sm text-muted-foreground">
-            Inspect source-to-standard mappings across hotels, segments,
+            Inspect and edit source-to-standard mappings across hotels, segments,
             channels, room types, sources, markets, and rates from the Data
             Library control layer.
           </p>
@@ -334,10 +390,12 @@ export function MappingTablesManager({
                     <SelectContent>
                       <SelectItem value="all">All rows</SelectItem>
                       <SelectItem value="mapped">Mapped</SelectItem>
+                      <SelectItem value="draft">Draft</SelectItem>
                       <SelectItem value="partial">Partial</SelectItem>
+                      <SelectItem value="needs_review">Needs Review</SelectItem>
                       <SelectItem value="unmapped">Unmapped</SelectItem>
+                      <SelectItem value="deprecated">Deprecated</SelectItem>
                       <SelectItem value="inactive">Inactive</SelectItem>
-                      <SelectItem value="needs_review">Needs review</SelectItem>
                     </SelectContent>
                   </Select>
                   <Button
@@ -397,6 +455,7 @@ export function MappingTablesManager({
                           Status
                         </SortableHead>
                         <TableHead>Review note</TableHead>
+                        <TableHead className="w-10" />
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -404,11 +463,21 @@ export function MappingTablesManager({
                         <TableRow
                           key={row.id}
                           className={cn(
+                            "cursor-pointer",
                             row.status === "unmapped" &&
                               "bg-destructive/5 hover:bg-destructive/10",
                             row.status === "partial" &&
-                              "bg-amber-50/70 hover:bg-amber-50 dark:bg-amber-950/20"
+                              "bg-amber-50/70 hover:bg-amber-50 dark:bg-amber-950/20",
+                            row.status === "needs_review" &&
+                              "bg-amber-50/70 hover:bg-amber-50 dark:bg-amber-950/20",
+                            row.status === "draft" &&
+                              "bg-blue-50/50 hover:bg-blue-50/80 dark:bg-blue-950/20",
+                            row.status === "deprecated" &&
+                              "opacity-60",
+                            row.status === "inactive" &&
+                              "opacity-60"
                           )}
+                          onClick={() => handleRowClick(row)}
                         >
                           <TableCell>
                             <div className="font-mono text-xs">
@@ -440,6 +509,20 @@ export function MappingTablesManager({
                           <TableCell className="max-w-72 whitespace-normal text-sm text-muted-foreground">
                             {row.reviewReason || "No review needed"}
                           </TableCell>
+                          <TableCell>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="size-7"
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                handleRowClick(row)
+                              }}
+                              aria-label="Edit row"
+                            >
+                              <Pencil className="size-3.5" />
+                            </Button>
+                          </TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
@@ -450,6 +533,16 @@ export function MappingTablesManager({
           )}
         </section>
       </div>
+
+      <MappingRowEditDrawer
+        open={editDrawerOpen}
+        onOpenChange={setEditDrawerOpen}
+        row={editingRow}
+        tableKey={selectedTableKey}
+        columns={drawerColumns}
+        lookupOptions={drawerLookupOptions}
+        onSaved={handleSaved}
+      />
     </div>
   )
 }
@@ -471,16 +564,21 @@ function CoverageBadge({ status }: { status: MappingCoverageStatus }) {
 }
 
 function RowStatusBadge({ status }: { status: MappingRowStatus }) {
+  const variants: Record<
+    MappingRowStatus,
+    "destructive" | "outline" | "secondary" | "default"
+  > = {
+    unmapped: "destructive",
+    needs_review: "destructive",
+    partial: "outline",
+    draft: "default",
+    mapped: "secondary",
+    deprecated: "outline",
+    inactive: "outline",
+  }
+
   return (
-    <Badge
-      variant={
-        status === "unmapped"
-          ? "destructive"
-          : status === "partial"
-            ? "outline"
-            : "secondary"
-      }
-    >
+    <Badge variant={variants[status]}>
       {rowStatusLabels[status]}
     </Badge>
   )
