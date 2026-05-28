@@ -1,3 +1,5 @@
+import { ClerkProvider } from "@clerk/nextjs"
+
 import "@/app/globals.css";
 import "@/styles/metric-theme-tokens.css";
 import "@/styles/metric-theme-sources.css";
@@ -22,8 +24,10 @@ import "@/styles/page-traffic-card.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>{children}</body>
-    </html>
+    <ClerkProvider publishableKey={process.env.CLERK_PUBLISHABLE_KEY}>
+      <html lang="en" suppressHydrationWarning>
+        <body>{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }
