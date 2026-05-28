@@ -7,7 +7,7 @@ The product should not only display performance. It should help define what the 
 ## Core Product Areas
 
 - **Dashboard** — analytical performance views for metrics, segments, channels, room types, demand, and website performance.
-- **Hotels** — property context, hotel profiles, events, notes, revenue meeting tasks, campaigns, and strategy plans.
+- **Properties** — property context, hotel and resort profiles, events, notes, revenue meeting tasks, campaigns, and strategy plans.
 - **Data Library** — internal REVREBEL control layer for lookup tables, mapping tables, unmapped codes, data health, and source visibility.
 - **Metric Library** — catalog of base and calculated metrics, formulas, source fields, allowed dimensions, and supported dashboard use cases.
 - **Campaigns** — initiative tracking across rate codes, channels, GA tags, booking links, promo codes, goals, and campaign performance.
@@ -19,7 +19,7 @@ The product should not only display performance. It should help define what the 
 ## Architecture Direction
 
 - **BigQuery** is the analytical source of truth for raw hotel data, staging tables, fact tables, dimensions, lookup tables, mapping tables, and reporting views.
-- **App database** is the operational source of truth for users, roles, hotel profiles, notes, events, campaigns, strategy library, metric definitions, dashboard/card configuration, and draft mapping edits.
+- **App database** is the operational source of truth for users, roles, property profiles, notes, events, campaigns, strategy library, metric definitions, dashboard/card configuration, and draft mapping edits.
 - **DuckDB** is the fast local/server-side serving layer for precomputed BI-ready tables and lightweight dashboard interactions.
 
 ## Authenticated App Structure
@@ -46,22 +46,22 @@ src/app/(app)/
 │   └── components/
 │       └── dashboard-tabs.tsx
 │
-├── hotels/
-│   ├── page.tsx                         # Hotel list / portfolio view
-│   └── [hotelId]/
-│       ├── page.tsx                     # Hotel overview
+├── properties/
+│   ├── page.tsx                         # Property list / portfolio view
+│   └── [propertyId]/
+│       ├── page.tsx                     # Property overview
 │       ├── profile/
-│       │   └── page.tsx                 # General hotel information
+│       │   └── page.tsx                 # General property information
 │       ├── events/
-│       │   └── page.tsx                 # Hotel events and demand drivers
+│       │   └── page.tsx                 # Property events and demand drivers
 │       ├── notes/
 │       │   └── page.tsx                 # Strategy notes / property notes
 │       ├── tasks/
 │       │   └── page.tsx                 # Revenue meeting Kanban board and follow-ups
 │       ├── campaigns/
-│       │   └── page.tsx                 # Hotel-specific campaigns
+│       │   └── page.tsx                 # Property-specific campaigns
 │       └── strategies/
-│           └── page.tsx                 # Hotel-specific strategy plans
+│           └── page.tsx                 # Property-specific strategy plans
 │
 ├── data-library/
 │   ├── page.tsx                         # Data Library overview
@@ -123,7 +123,7 @@ Do not rename route folders only to match product language. Route names should r
 | UI Product Label | Backend Route | Route / Area Name | Purpose |
 |---|---|---|---|
 | Metrics | `/dashboard` | Dashboard | Main analytics and performance intelligence area. |
-| Properties | `/hotels` | Hotels | Property, hotel, resort, and portfolio context. |
+| Properties | `/properties` | Properties | Property, hotel, resort, and portfolio context. |
 | Growth Plan | `/tasks` | Tasks | Global execution layer for tasks, follow-ups, and work planning. |
 | Broadcast | `/campaigns` | Campaigns | Campaign setup, coordination, and performance tracking. |
 | Signals | `/metric-library` | Metric Library | Metric definitions, formulas, source fields, and allowed dimensions. |
@@ -146,7 +146,7 @@ Do not rename route folders only to match product language. Route names should r
 ```text
 Metrics
 ├── Metrics          -> /dashboard
-├── Properties       -> /hotels
+├── Properties       -> /properties
 ├── Growth Plan      -> /tasks
 ├── Broadcast        -> /campaigns
 ├── Signals          -> /metric-library
@@ -161,7 +161,7 @@ Metrics
 - Keep dashboard sections as distinct pages: `segments`, `channels`, `room-types`, `demand`, and `website`.
 - Keep `chats` in the structure for future development.
 - Keep `settings` limited to account, appearance, notifications, and profile preferences.
-- Move `tasks` into the hotel context because it represents a Kanban board for revenue meeting tasks and follow-ups.
+- Move `tasks` into the property context because it represents a Kanban board for revenue meeting tasks and follow-ups.
 - Keep `users` as its own user-management area.
 - Remove `apps` from the product navigation and route structure.
 - Build new product functionality inside the existing authenticated Metrics shell rather than creating detached admin surfaces.
