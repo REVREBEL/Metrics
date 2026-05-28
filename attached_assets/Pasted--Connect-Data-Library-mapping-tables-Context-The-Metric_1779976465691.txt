@@ -1,0 +1,421 @@
+# Connect Data Library mapping tables
+
+## Context
+
+The Metrics app has a Data Library area with routes for lookup tables, mapping tables, unmapped codes, and data health. The next step is to connect the Mapping Tables experience so it can manage source-to-standard mappings instead of remaining a placeholder.
+
+Mapping tables are part of the internal REVREBEL control layer. They define how raw source-system values become standardized app/reporting values for properties, segments, channels, sources, room types, rate codes, markets, agencies, and other hotel commercial data dimensions.
+
+This issue should be treated as an implementation spec, not just a UI ticket. The Mapping Tables feature must understand BigQuery tables, lookup dependencies, editable vs read-only fields, save/publish behavior, audit history, unmapped code flow, and a permission shell that can be enabled later.
+
+## Primary route
+
+Build out the Mapping Tables area under:
+
+```text
+src/app/(app)/data-library/mappings/page.tsx
+```
+
+The UI label remains **Data Library**, while the route remains implementation-specific as `/data-library/mappings`.
+
+## BigQuery mapping table registry
+
+Create a typed mapping table registry that defines the mapping tables the UI can manage. The exact table names should be confirmed against the Metrics Dataform / BigQuery model before final implementation, but the app should be structured to support tables like:
+
+| Mapping category | Expected mapping table | Purpose |
+| -- | -- | -- |
+| Properties | `property_mapping` / `dim_property_mapping` | Maps source hotel/property identifiers to standardized property records. |
+| Segments | `segment_mapping` / `dim_segment_mapping` | Maps PMS/RMS/BI source segment codes to standard segments and segment groups. |
+| Channels | `channel_mapping` / `dim_channel_mapping` | Maps channel/source channel values to standard channel definitions. |
+| Sources | `source_mapping` / `dim_source_mapping` | Maps source/source-of-business values to standardized source definitions. |
+| Room Types | `room_type_mapping` / `dim_room_type_mapping` | Maps property-specific room type codes to standard room type categories. |
+| Rate Codes | `rate_code_mapping` / `dim_rate_code_mapping` | Maps rate codes to standard rate categories, campaign linkage, and business rules. |
+| Market / Demand | `market_mapping` / `dim_market_mapping` | Maps market or demand-source values to standardized demand classifications. |
+| Agencies / Accounts | `agency_mapping` / `account_mapping` | Maps agency/account/company codes to standardized account entities where applicable. |
+
+Each mapping table definition should include:
+
+```text
+id
+label
+description
+bigQueryDataset
+bigQueryTable
+primaryKey
+sourceSystemField
+sourceCodeField
+sourceNameField
+standardValueField
+lookupTableDependencies
+scope: global | property | portfolio
+supportsDrafts
+supportsPublish
+supportsUnmappedQueue
+requiredPermissions
+```
+
+## Column-level UI rules
+
+Each table must define column metadata so the UI knows which fields are read-only, editable, dropdown-driven, free-form, or system generated.
+
+Supported column input types should include:
+
+```text
+readonly
+text
+textarea
+dropdown
+multi_select
+boolean
+date
+number
+system
+```
+
+Each column definition should include:
+
+```text
+field
+label
+description
+inputType
+required
+editable
+lookupSource
+validationRules
+displayOrder
+visibleInTable
+visibleInDetail
+```
+
+Example Segment Mapping rules:
+
+| Column | UI behavior | Notes |
+| -- | -- | -- |
+| `source_system` | read-only | Source system name. |
+| `property_id` | read-only or dropdown depending scope | Property-scoped when applicable. |
+| `source_segment_code` | read-only | Raw source value. |
+| `source_segment_name` | read-only | Raw source label. |
+| `standard_segment` | dropdown | Powered by segment lookup table. |
+| `standard_segment_group` | dropdown | Powered by segment group lookup table. |
+| `mapping_status` | dropdown | Suggested values: Unmapped, Draft, Mapped, Needs Review, Deprecated. |
+| `is_active` | boolean | Controls active mapping use. |
+| `notes` | free-form textarea | Internal mapping rationale. |
+| `updated_by` | system | Set on save/publish. |
+| `updated_at` | system | Set on save/publish. |
+
+## Lookup-to-mapping relationships
+
+Do not hard-code dropdown options in the mapping page. Dropdown fields must be powered by lookup table definitions from the Data Library lookup layer.
+
+Document and implement relationships like:
+
+| Mapping field | Lookup dependency | Behavior |
+| -- | -- | -- |
+| `segment_mapping.standard_segment` | `segment_lookup` / `dim_segment_lookup` | Dropdown of active standard segments. |
+| `segment_mapping.standard_segment_group` | `segment_group_lookup` | Dropdown of active segment groups. |
+| `channel_mapping.standard_channel` | `channel_lookup` / `dim_channel_lookup` | Dropdown of active standard channels. |
+| `source_mapping.standard_source` | `source_lookup` / `dim_source_lookup` | Dropdown of active standard source values. |
+| `room_type_mapping.standard_room_type` | `room_type_lookup` / `dim_room_type_lookup` | Dropdown of active room type categories. |
+| `rate_code_mapping.rate_category` | `rate_category_lookup` | Dropdown of active rate categories. |
+| `rate_code_mapping.campaign_id` | Campaign registry / campaigns table | Optional linkage to Broadcast/Campaign records. |
+| `property_mapping.standard_property_id` | Property registry | Dropdown/search of active Properties. |
+
+Inactive lookup values should not be selectable for new mappings, but existing historical mappings that use inactive values should still display with an inactive/deprecated indicator.
+
+## Save, draft, and publish logic
+
+The UI should support controlled mapping edits rather than silently mutating production mappings.
+
+Recommended flow:
+
+```text
+User edits mapping value
+↓
+Change is stored in local dirty state
+↓
+User clicks Save Draft
+↓
+App validates required fields and dropdown values
+↓
+Draft mapping change is written to app database or mapping change staging table
+↓
+Audit fields are captured
+↓
+User reviews pending changes
+↓
+User clicks Publish Mapping Updates
+↓
+Published values update the authoritative mapping table or mapped BigQuery-ready layer
+↓
+Unmapped queue status is updated where applicable
+```
+
+For the first version, implementation may support a simplified **Save** action, but the architecture should distinguish:
+
+```text
+Save Draft = store pending change
+Publish = commit approved change to active mapping layer
+```
+
+Do not build the page as a raw editable BigQuery table without validation, audit metadata, or a future publish path.
+
+## Commit behavior on user save
+
+On user save:
+
+* Validate all required fields.
+* Validate dropdown values against active lookup values.
+* Block or flag duplicate active mappings for the same source key/scope.
+* Preserve the raw source value; users should not edit source-system fields.
+* Capture `updated_by`, `updated_at`, `change_source`, and `change_reason` where available.
+* Track previous value and new value for auditable fields.
+* Mark affected unmapped-code records as resolved, mapped, or pending review when relevant.
+* Return a success/error state that clearly tells the user what changed.
+
+## Audit trail requirements
+
+Mapping changes affect reporting logic, so changes must be traceable.
+
+Audit fields should support:
+
+```text
+mapping_table
+mapping_key
+source_system
+property_id / portfolio_scope
+field_name
+previous_value
+new_value
+change_reason
+created_by
+created_at
+updated_by
+updated_at
+published_by
+published_at
+status
+```
+
+The first implementation does not need a complete audit browser, but the data model and save service should be audit-ready.
+
+## Unmapped Codes relationship
+
+Mapping Tables should connect to the future `/data-library/unmapped-codes` workflow.
+
+Expected behavior:
+
+* Source values that appear in data but lack a valid mapping should appear in the Unmapped Codes queue.
+* Mapping a value from the Mapping Tables UI should allow related unmapped codes to move to resolved/mapped status.
+* Mapping fields should identify whether a source value is unmapped, partially mapped, mapped, deprecated, or needs review.
+* The UI should make it clear which mappings originated from unmapped-code resolution vs manual mapping maintenance.
+
+## Permissions shell
+
+Build a permission configuration shell now, but do not enforce permission blocks during active development yet.
+
+The app needs a user-configurable permissions model that can eventually determine what a user can see and do in Data Library and Mapping Tables. The shell should exist in the UI and data model so permissions can be assigned, reviewed, and expanded as new needs emerge.
+
+### Permission shell route / UI placement
+
+Add or prepare a user/admin configuration area that can eventually support assigning permissions to users or roles. Suggested location:
+
+```text
+src/app/(app)/users
+```
+
+or a future nested route such as:
+
+```text
+src/app/(app)/users/[userId]/permissions
+```
+
+The first version can be a shell/mock UI, but it should be structured enough to show:
+
+* User or role.
+* Permission group.
+* Permission key.
+* Description.
+* Enabled/disabled state.
+* Scope: global, portfolio, property, table, field, action.
+* Enforcement status: not enforced, soft warning, enforced.
+
+### Permission registry pattern
+
+Create a central permission registry or configuration shape that can grow over time without rewriting feature code.
+
+Suggested permission key format:
+
+```text
+data_library.view
+data_library.lookup_tables.view
+data_library.lookup_tables.edit
+data_library.mapping_tables.view
+data_library.mapping_tables.edit
+data_library.mapping_tables.save_draft
+data_library.mapping_tables.publish
+data_library.mapping_tables.audit.view
+data_library.unmapped_codes.view
+data_library.unmapped_codes.resolve
+users.permissions.view
+users.permissions.edit
+```
+
+Each permission definition should include:
+
+```text
+key
+label
+description
+group
+scope
+riskLevel
+defaultEnabledForDev
+enforcementMode
+```
+
+### Development enforcement mode
+
+During active development, permissions should be **visible and assignable but not hard-blocking**.
+
+Use an explicit enforcement mode so the app can keep moving while permission requirements are discovered:
+
+```text
+disabled = permission exists but is not checked
+audit_only = log/check permission but do not block UI or actions
+warn_only = show warning but allow action
+enforced = block UI/action when missing permission
+```
+
+For now, default new Mapping Tables permissions to:
+
+```text
+enforcementMode: audit_only
+```
+
+or:
+
+```text
+enforcementMode: disabled
+```
+
+Do not block development workflows because a permission has not been fully modeled yet. The goal is to build the permission surface area and registry now so enforcement can be turned on intentionally later.
+
+### Permission acceptance criteria
+
+* A permission shell exists in user/admin configuration.
+* Mapping Tables permissions are represented in a typed registry or config object.
+* Permissions can be assigned to users or roles in the UI shell, even if mocked initially.
+* Permission checks can be called by Mapping Tables services/components, but default to non-blocking during development.
+* The UI can display whether a permission is not enforced, audit-only, warning-only, or enforced.
+* Adding a new permission should not require rebuilding the entire user config UI.
+
+## Service / server-action architecture
+
+Mapping table data should be loaded and saved through a service/server-action layer rather than hard-coded directly in the page.
+
+Suggested layers:
+
+```text
+mapping-table-registry.ts
+mapping-table-columns.ts
+mapping-table-lookups.ts
+mapping-table-service.ts
+mapping-table-actions.ts
+permissions-registry.ts
+permission-service.ts
+```
+
+The page should consume typed data from these layers and avoid embedding BigQuery table names, dropdown values, or validation rules directly in the React component.
+
+## UI requirements
+
+The Mapping Tables UI should support:
+
+* Mapping category selector.
+* Search/filter by source value, standard value, status, property, source system.
+* Table of mappings with clear source vs standardized values.
+* Detail/edit drawer or inline edit pattern.
+* Dropdowns for lookup-backed fields.
+* Free-form notes/change reason fields.
+* Dirty state and unsaved changes handling.
+* Save Draft / Save behavior.
+* Future Publish behavior.
+* Empty states and error states.
+* Clear badges for Unmapped, Draft, Mapped, Needs Review, Deprecated, and Inactive.
+
+## Validation rules
+
+* Required mapped values cannot be blank when saving a mapped status.
+* Dropdown values must exist in the relevant active lookup table.
+* Inactive lookup values can display historically but should not be selectable for new active mappings.
+* Duplicate active mappings should be blocked or flagged.
+* Source-system fields should be read-only.
+* A change reason should be captured for publish-level changes.
+* The UI should warn when a mapping change could affect multiple properties, reports, or dashboards.
+
+## Acceptance criteria
+
+* `/data-library/mappings` renders a real Mapping Tables experience instead of a placeholder page.
+* Users can view available mapping table categories.
+* Users can inspect raw source values and standardized mapped values.
+* Users can identify unmapped, partially mapped, draft, mapped, deprecated, and inactive records.
+* Mapping table definitions are driven by a typed registry/config.
+* Column behavior is driven by metadata, including free-form vs dropdown vs read-only behavior.
+* Dropdown values come from lookup table dependencies, not hard-coded page values.
+* Save behavior validates changes and routes through a service/server-action layer.
+* Mapping changes capture audit-ready metadata.
+* Unmapped-code resolution is considered in the mapping workflow.
+* A permission shell exists for user/role assignment.
+* Mapping-table permission keys are defined but not enforced as blocking during development.
+* Main product documentation remains consistent with Data Library as the UI area and mapping tables as implementation/data-governance routes.
+
+## Related areas
+
+* Data Library
+* Lookup Table Manager
+* Mapping Tables
+* Unmapped Codes
+* Data Health
+* User Management / Permissions
+* Metrics Library documentation / source table definitions
+* Metrics Dataform / BigQuery mapping tables
+
+## Metadata
+- URL: [https://linear.app/revrebel/issue/REV-37/connect-data-library-mapping-tables](https://linear.app/revrebel/issue/REV-37/connect-data-library-mapping-tables)
+- Identifier: REV-37
+- Status: In Progress
+- Priority: Medium
+- Assignee: Gary Stringham
+- Project: [Metrics](https://linear.app/revrebel/project/metrics-d049776a0a24/overview). Hotel commercial intelligence platform: dashboard, properties, data library, metric library, campaigns, strategies, chats, users, and settings.
+- Created: 2026-05-28T06:07:33.492Z
+- Updated: 2026-05-28T11:18:04.239Z
+
+## Pull requests
+
+- [#140 Connect Data Library mapping tables](https://github.com/REVREBEL/Metrics/issues/140)
+- [Codex rev 37 data library mappings](https://github.com/REVREBEL/Metrics/pull/144)
+
+## Comments
+
+- GitHub integration:
+
+  This comment thread is synced to a corresponding [GitHub issue](<https://github.com/REVREBEL/Metrics/issues/140>). All replies are displayed in both locations.
+
+- Gary Stringham:
+
+  Started [REV-37](https://linear.app/revrebel/issue/REV-37/connect-data-library-mapping-tables) and moved it to In Progress.
+
+  Local progress:
+
+  * Replaced `/data-library/mappings` placeholder with a real Data Library Mapping Tables page.
+  * Added a typed `src/lib/mapping-tables` service/fixture layer so the route does not hard-code mapping rows directly in the page.
+  * Added server action loading for mapping table row changes when selecting categories.
+  * UI now supports mapping categories, source/standard values, mapped/partial/unmapped status, search, status filtering, sorting, coverage summaries, review notes, and permission-key metadata.
+
+  Validation so far:
+
+  * Targeted ESLint passed for the new/changed mapping files.
+  * `git diff --check` passed.
+  * Full `tsc --noEmit` is still blocked by existing repo-wide baseline errors outside this change; reran with a filter and found no errors under `src/app/(app)/data-library/mappings` or `src/lib/mapping-tables`.
+  * Local Next dev server starts on `http://127.0.0.1:3000`; unauthenticated curl to `/data-library/mappings` is blocked by Clerk dev-browser middleware, so browser-level route verification still needs an authenticated/dev-browser session.
