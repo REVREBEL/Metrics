@@ -54,7 +54,7 @@ export async function listMappingTables(): Promise<MappingTableMetadata[]> {
 
     const mapped = rows.map((row) => {
       const fixture = metadataByKey.get(row.tableName)
-      const uiMetadata = row.uiMetadata as Record<string, unknown>
+      const uiMetadata = (row.uiMetadata ?? {}) as Record<string, unknown>
 
       return {
         key: row.tableName,
