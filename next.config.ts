@@ -5,13 +5,14 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-typescript: {
-    // Temporarily ignore errors during dev; remove when baseline is clean.
-    ignoreBuildErrors: process.env.VERCEL_ENV === "development" ? true : false,
-  },
+  outputFileTracingIncludes: {
     "/*": ["./registry/**/*"],
   },
   allowedDevOrigins: ["*.replit.dev", "*.worf.replit.dev", "*.repl.co"],
+  env: {
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
+      process.env.CLERK_PUBLISHABLE_KEY ?? process.env.VITE_CLERK_PUBLISHABLE_KEY ?? "",
+  },
   experimental: {
     turbopackFileSystemCacheForDev: true,
   },
