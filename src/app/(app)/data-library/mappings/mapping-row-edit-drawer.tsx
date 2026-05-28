@@ -207,7 +207,10 @@ export function MappingRowEditDrawer({
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="flex h-[75%] w-[75%] max-h-[75%] max-w-[75%] flex-col gap-0 p-0">
+      <DialogContent 
+        className="flex h-[75vh] w-[75vw] max-h-[75vh] max-w-[75vw] flex-col gap-0 p-0"
+        showCloseButton={false}
+      >
         <DialogHeader className="shrink-0 border-b px-6 py-4">
           <DialogTitle className="flex items-center gap-2">
             Edit Mapping Row
