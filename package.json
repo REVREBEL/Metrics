@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "tsx scripts/generate-registry.mjs && NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${CLERK_PUBLISHABLE_KEY:-$VITE_CLERK_PUBLISHABLE_KEY} next dev",
+    "dev": "node scripts/setup-env.mjs && tsx scripts/generate-registry.mjs && next dev",
     "build": "tsx scripts/generate-registry.mjs && next build",
     "create:registry": "tsx scripts/generate-registry.mjs",
     "start": "next start",
