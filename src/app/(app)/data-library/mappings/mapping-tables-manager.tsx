@@ -45,7 +45,6 @@ import {
 import type { MappingColumnDefinition } from "@/lib/mapping-tables/mapping-table-columns"
 import { getDetailColumnsForTable } from "@/lib/mapping-tables/mapping-table-columns"
 import type { LookupOption } from "@/lib/mapping-tables/mapping-table-lookups"
-import { resolveLookupOptions } from "@/lib/mapping-tables/mapping-table-lookups"
 import type {
   MappingCoverageStatus,
   MappingRowStatus,
@@ -54,7 +53,7 @@ import type {
 } from "@/lib/mapping-tables/types"
 import { cn } from "@/lib/utils"
 
-import { getMappingTableRowsAction } from "./actions"
+import { getMappingTableRowsAction, resolveLookupOptionsAction } from "./actions"
 import { MappingRowEditDrawer } from "./mapping-row-edit-drawer"
 
 type MappingTablesManagerProps = {
@@ -232,7 +231,7 @@ export function MappingTablesManager({
     const resolved: Record<string, LookupOption[]> = {}
     await Promise.all(
       lookupSourceKeys.map(async (src) => {
-        resolved[src] = await resolveLookupOptions(src)
+        resolved[src] = await resolveLookupOptionsAction(src)
       })
     )
 
