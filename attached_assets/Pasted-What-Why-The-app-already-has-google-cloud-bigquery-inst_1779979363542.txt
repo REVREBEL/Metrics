@@ -1,0 +1,39 @@
+What & Why
+The app already has @google-cloud/bigquery installed and uses it in sync scripts, but there is no server-side service layer the application itself can call to query mapping table rows or read table schemas at runtime. Currently getMappingTableRows returns static fixture data only. This task builds the BigQuery client and query service so the Mapping Tables feature can read real row data and structural metadata directly from BigQuery, replacing fixtures as the live data source.
+
+Done looks like
+A reusable, server-side BigQuery client module exists that initializes once and handles credential resolution (service account JSON from environment variable, with Application Default Credentials as fallback).
+A queryMappingTable(tableKey, options) function exists that executes a typed, parameterized query against the correct BigQuery dataset and table for each mapping category, and returns typed MappingTableRow results.
+A getMappingTableSchema(tableKey) function exists that fetches the live column schema for a given mapping table from BigQuery metadata, so column-level definitions in the registry can be cross-referenced against reality.
+getMappingTableRows in src/lib/mapping-tables/service.ts calls the BigQuery query service when credentials are available, and gracefully falls back to fixtures when they are not (dev without credentials, test environments).
+Row counts (mapped, partial, unmapped, approximate total) in listMappingTables are derived from a lightweight BigQuery summary query rather than fixture constants.
+Queries are scoped correctly to the devrebel-big-query-database project and the appropriate dataset (dev_hotel_analytics or the Dataform-published metrics_core equivalent).
+Credentials are sourced from a GOOGLE_APPLICATION_CREDENTIALS_JSON environment variable (the service account JSON as a string), consistent with how Replit manages secrets — no 1Password dependency at runtime.
+The credential setup and dataset configuration are documented in a clear error message when BigQuery is unavailable, so developers know exactly what to set.
+Out of scope
+Writing data back to BigQuery (mapping saves go to the app's Postgres layer; BigQuery is read-only from the app).
+Replacing the existing scripts/sync-data.ts Parquet sync pipeline (that pipeline is separate and unaffected).
+Migrating analytical views or changing Dataform models.
+Adding BigQuery support to lookup tables (only mapping tables in this task).
+Building the edit UI, save-draft flow, or permissions shell (covered in Task #3).
+Steps
+Create the BigQuery client module — Create src/lib/bigquery/client.ts. Initialize a singleton BigQuery instance using @google-cloud/bigquery. Credential resolution order: parse GOOGLE_APPLICATION_CREDENTIALS_JSON env var as service account JSON if present; otherwise fall back to Application Default Credentials. Export a getBigQueryClient() function that returns the client or throws a descriptive error if no credentials are available. Keep the module server-only (no client bundle leakage).
+
+Define the dataset/table configuration — Create src/lib/bigquery/config.ts. Map each mapping table key (e.g., metrics_core.map_segment) to its fully-qualified BigQuery reference: GCP project ID, dataset ID, and table/view name. Source project and dataset IDs from environment variables (BQ_PROJECT_ID, BQ_DATASET_ID) with documented fallback defaults matching the existing scripts (devrebel-big-query-database, dev_hotel_analytics). This file is the single place to update if table names change.
+
+Build the mapping table query service — Create src/lib/bigquery/mapping-table-queries.ts. Implement queryMappingTable(tableKey, options) that builds and executes a parameterized BigQuery SQL query for the given table, applying optional filters (source system, status, search term) and pagination. Map raw BigQuery result rows to the typed MappingTableRow shape. Implement getMappingTableSchema(tableKey) that calls the BigQuery Tables API to retrieve column metadata for the given table and returns it as a structured list.
+
+Implement summary count queries — Add getMappingTableCounts(tableKey) in the query service. This runs a lightweight aggregation query (grouped by mapping status) to return accurate mapped/partial/unmapped/total counts for each table. These replace the hardcoded fixture counts.
+
+Wire into the service layer — Update src/lib/mapping-tables/service.ts. In getMappingTableRows, attempt to call queryMappingTable from the BigQuery query service; catch any credential or connectivity errors and fall back to fixtures with a logged warning. In listMappingTables, use getMappingTableCounts to populate row count fields when BigQuery is reachable.
+
+Document credential setup — Add or update the relevant section of the project README or a docs/bigquery-setup.md file describing how to set GOOGLE_APPLICATION_CREDENTIALS_JSON and BQ_PROJECT_ID / BQ_DATASET_ID for local development and production deployment.
+
+Relevant files
+src/lib/mapping-tables/service.ts
+src/lib/mapping-tables/types.ts
+src/lib/mapping-tables/fixtures.ts
+scripts/sync-data.ts
+scripts/list-bq.ts
+src/db/seed.ts
+src/db/schema/index.ts

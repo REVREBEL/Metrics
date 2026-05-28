@@ -19,13 +19,13 @@ author = "agent"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "pnpm install --no-frozen-lockfile && pnpm run dev"
-waitForPort = 3000
 
 [workflows.workflow.metadata]
 outputType = "webview"
 
 [[ports]]
 localPort = 3000
+externalPort = 80
 
 [[ports]]
 localPort = 3001
@@ -35,9 +35,9 @@ externalPort = 3001
 localPort = 5000
 externalPort = 5000
 
-[[ports]]
-localPort = 22581
-externalPort = 80
+#[[ports]]
+#localPort = 22581
+#externalPort = 80
 
 [userenv]
 
@@ -48,3 +48,4 @@ BQ_DATA_LOCATION = "us-central1"
 
 [agent]
 expertMode = true
+
