@@ -208,7 +208,7 @@ export function MappingRowEditDrawer({
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent 
-        className="flex !h-[75vh] !w-[75vw] !max-h-[75vh] !max-w-[75vw] flex-col gap-0 p-0"
+        className="flex !h-[75vh] !w-[75vw] !max-h-[75vh] !max-w-[75vw] flex-col gap-0 overflow-hidden p-0"
         showCloseButton={false}
       >
         <DialogHeader className="shrink-0 border-b px-6 py-4">
@@ -234,8 +234,8 @@ export function MappingRowEditDrawer({
         </DialogHeader>
 
         {row && (
-          <ScrollArea className="flex-1 px-6 py-4">
-            <div className="space-y-5">
+          <ScrollArea className="min-h-0 flex-1">
+            <div className="space-y-5 px-6 py-4">
               {editableColumns.map((col) => (
                 <FieldRenderer
                   key={col.field}
