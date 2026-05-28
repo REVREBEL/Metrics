@@ -46,7 +46,7 @@ export const sidebarData: SidebarData = {
         },
         {
           title: 'Properties',
-          url: '/hotels',
+          url: '/properties',
           icon: Building2,
         },
         {
