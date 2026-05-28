@@ -7,6 +7,9 @@ PORT="${PORT:-3000}"
 next dev -H 0.0.0.0 -p "$PORT" &
 NEXT_PID=$!
 
+# Ensure the background process is terminated when this script exits
+trap 'kill "$NEXT_PID" 2>/dev/null || true' EXIT
+
 echo "[start-dev] Next.js started (PID $NEXT_PID), warming up port $PORT..."
 
 # Next.js 16 Turbopack lazily binds the TCP socket on first request.
