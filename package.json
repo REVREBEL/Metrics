@@ -163,7 +163,7 @@
     "prettier": "^3.8.3",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "react-docgen-typescript": "^2.4.0",
-    "shadcn": "4.7.0",
+    "shadcn": "4.8.2",
     "tailwindcss": "^4.3.0",
     "tailwindcss-animate": "^1.0.7",
     "ts-morph": "^27.0.2",
