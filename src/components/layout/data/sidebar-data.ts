@@ -60,7 +60,7 @@ export const sidebarData: SidebarData = {
           icon: Megaphone,
         },
         {
-          title: 'Signals',
+          title: 'Metric Library',
           url: '/metric-library',
           icon: BarChart3,
         },
