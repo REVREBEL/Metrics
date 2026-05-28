@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "../assets/fonts/rebel-fonts.css";
+@import "../assets/Fonts/rebel-fonts.css";
 @import "../styles/theme-reference.css";
 
 @custom-variant dark (&:is(.dark *));
