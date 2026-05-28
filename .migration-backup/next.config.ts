@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/*": ["./registry/**/*"],
   },
+  allowedDevOrigins: ["*.replit.dev", "*.worf.replit.dev", "*.repl.co"],
   experimental: {
     turbopackFileSystemCacheForDev: true,
   },

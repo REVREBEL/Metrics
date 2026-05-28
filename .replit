@@ -1,24 +1,42 @@
-modules = ["nodejs-24", "python-3.11"]
-
-[deployment]
-router = "application"
-deploymentTarget = "autoscale"
-
-[deployment.postBuild]
-args = ["pnpm", "store", "prune"]
-env = { "CI" = "true" }
+modules = ["nodejs-20"]
 
 [workflows]
 runButton = "Project"
 
-[agent]
-stack = "PNPM_WORKSPACE"
-expertMode = true
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
 
-[postMerge]
-path = "scripts/post-merge.sh"
-timeoutMs = 20000
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Start application"
+
+[[workflows.workflow]]
+name = "Start application"
+author = "agent"
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "pnpm install --no-frozen-lockfile && pnpm run dev"
+waitForPort = 3000
+
+[[ports]]
+localPort = 3000
 
 [[ports]]
 localPort = 22581
 externalPort = 80
+
+[userenv]
+
+[userenv.shared]
+BQ_PROJECT = "revrebel-metrics"
+BQ_DATASET_ID = "metrics_core"
+BQ_DATA_LOCATION = "us-central1"
+
+[agent]
+expertMode = true

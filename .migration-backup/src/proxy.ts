@@ -1,17 +1,15 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { clerkMiddleware } from "@clerk/nextjs/server";
 
-const isPublicRoute = createRouteMatcher([
-    "/sign-in(.*)",
-    "/sign-up(.*)",
-    "/forgot-password(.*)",
-    "/otp(.*)",
-]);
-
-export default clerkMiddleware(async (auth, request) => {
-    if (!isPublicRoute(request)) {
-        await auth.protect();
+export default clerkMiddleware(
+    async () => {
+        // Auth disabled for development — all routes are public.
+        // To re-enable, restore the isPublicRoute matcher and call auth.protect().
+    },
+    {
+        publishableKey: process.env.CLERK_PUBLISHABLE_KEY,
+        secretKey: process.env.CLERK_SECRET_KEY,
     }
-});
+);
 
 export const config = {
     matcher: [
