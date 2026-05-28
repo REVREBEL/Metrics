@@ -30,6 +30,7 @@ export type LookupTableChange = {
   isActive?: boolean
   notes?: string
   lastKnownUpdatedAt?: string
+  isDeleted?: boolean
 }
 
 export type SaveLookupTableChangesPayload = {
