@@ -121,8 +121,8 @@ Metrics uses branded product labels in the user interface while keeping backend 
 Do not rename route folders only to match product language. Route names should remain clear, durable, and implementation-friendly. Product language can evolve independently through navigation data, page metadata, and display copy.
 
 | UI Product Label | Backend Route | Route / Area Name | Purpose |
-|---|---:|---|---|
-| Signals | `/dashboard` | Dashboard | Main analytics and performance intelligence area. |
+|---|---|---|---|
+| Metrics | `/dashboard` | Dashboard | Main analytics and performance intelligence area. |
 | Properties | `/hotels` | Hotels | Property, hotel, resort, and portfolio context. |
 | Growth Plan | `/tasks` | Tasks | Global execution layer for tasks, follow-ups, and work planning. |
 | Broadcast | `/campaigns` | Campaigns | Campaign setup, coordination, and performance tracking. |
@@ -145,7 +145,7 @@ Do not rename route folders only to match product language. Route names should r
 
 ```text
 Metrics
-├── Signals          -> /dashboard
+├── Metrics          -> /dashboard
 ├── Properties       -> /hotels
 ├── Growth Plan      -> /tasks
 ├── Broadcast        -> /campaigns
