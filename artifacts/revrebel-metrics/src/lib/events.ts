@@ -1,4 +1,3 @@
-import va from "@vercel/analytics"
 import { z } from "zod"
 
 const eventSchema = z.object({
@@ -22,7 +21,6 @@ const eventSchema = z.object({
     "copy_registry_add_command",
     "copy_preset_command",
   ]),
-  // declare type AllowedPropertyValues = string | number | boolean | null
   properties: z
     .record(z.union([z.string(), z.number(), z.boolean(), z.null()]))
     .optional(),
@@ -33,6 +31,8 @@ export type Event = z.infer<typeof eventSchema>
 export function trackEvent(input: Event): void {
   const event = eventSchema.parse(input)
   if (event) {
-    va.track(event.name, event.properties)
+    if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).__va) {
+      (window as unknown as Record<string, { track: (name: string, props?: unknown) => void }>).__va.track(event.name, event.properties)
+    }
   }
 }

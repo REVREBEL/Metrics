@@ -1,5 +1,3 @@
-import { eq, inArray } from "drizzle-orm"
-
 import { saveLookupTableChangesSchema } from "./schemas"
 import { lookupTableMetadata, lookupTableRowsByKey } from "./fixtures"
 import type {
@@ -15,10 +13,19 @@ import type * as SchemaModuleTypes from "@/db/schema"
 type DbModule = typeof DbModuleTypes
 type SchemaModule = typeof SchemaModuleTypes
 
-async function getDbModules(): Promise<{ db: DbModule["db"]; schema: SchemaModule } | null> {
+async function getDbModules(): Promise<{
+  db: DbModule["db"]
+  schema: SchemaModule
+  eq: (a: unknown, b: unknown) => unknown
+  inArray: (col: unknown, vals: unknown[]) => unknown
+} | null> {
   try {
-    const [{ db }, schema] = await Promise.all([import("@/db/index"), import("@/db/schema")])
-    return { db, schema }
+    const [{ db }, schema, { eq, inArray }] = await Promise.all([
+      import(/* @vite-ignore */ "@/db/index"),
+      import(/* @vite-ignore */ "@/db/schema"),
+      import(/* @vite-ignore */ "drizzle-orm"),
+    ])
+    return { db, schema, eq, inArray }
   } catch {
     return null
   }
@@ -31,13 +38,13 @@ export async function listLookupTables(): Promise<LookupTableMetadata[]> {
     return lookupTableMetadata
   }
 
-  const { db, schema } = modules
+  const { db, schema, inArray } = modules
 
   try {
     const rows = await db
       .select()
       .from(schema.dataLibraryTables)
-      .where(inArray(schema.dataLibraryTables.tableName, lookupTableMetadata.map((table) => table.key)))
+      .where((inArray as typeof import("drizzle-orm").inArray)(schema.dataLibraryTables.tableName, lookupTableMetadata.map((table) => table.key)))
 
     if (rows.length === 0) {
       return lookupTableMetadata
@@ -93,14 +100,14 @@ export async function saveLookupTableChanges(payload: SaveLookupTableChangesPayl
   const modules = await getDbModules()
 
   if (modules) {
-    const { db, schema } = modules
+    const { db, schema, eq } = modules
 
     try {
       await db.transaction(async (tx) => {
         const [table] = await tx
           .select({ id: schema.dataLibraryTables.id })
           .from(schema.dataLibraryTables)
-          .where(eq(schema.dataLibraryTables.tableName, parsed.data.tableKey))
+          .where((eq as typeof import("drizzle-orm").eq)(schema.dataLibraryTables.tableName, parsed.data.tableKey))
           .limit(1)
 
         if (!table) {

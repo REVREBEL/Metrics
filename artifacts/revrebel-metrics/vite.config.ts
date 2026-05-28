@@ -57,6 +57,15 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      external: (id) =>
+        id === "drizzle-orm" ||
+        id.startsWith("drizzle-orm/") ||
+        id === "@/db/index" ||
+        id === "@/db/schema" ||
+        id === "postgres" ||
+        id.startsWith("@clerk/nextjs"),
+    },
   },
   server: {
     port,

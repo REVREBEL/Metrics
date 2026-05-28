@@ -1,5 +1,3 @@
-import { inArray } from "drizzle-orm"
-
 import { mappingTableMetadata, mappingTableRowsByKey } from "./fixtures"
 import type { MappingTableMetadata, MappingTableRow } from "./types"
 
@@ -12,13 +10,15 @@ type SchemaModule = typeof SchemaModuleTypes
 async function getDbModules(): Promise<{
   db: DbModule["db"]
   schema: SchemaModule
+  inArray: (col: unknown, vals: unknown[]) => unknown
 } | null> {
   try {
-    const [{ db }, schema] = await Promise.all([
-      import("@/db/index"),
-      import("@/db/schema"),
+    const [{ db }, schema, { inArray }] = await Promise.all([
+      import(/* @vite-ignore */ "@/db/index"),
+      import(/* @vite-ignore */ "@/db/schema"),
+      import(/* @vite-ignore */ "drizzle-orm"),
     ])
-    return { db, schema }
+    return { db, schema, inArray }
   } catch {
     return null
   }
@@ -31,14 +31,14 @@ export async function listMappingTables(): Promise<MappingTableMetadata[]> {
     return mappingTableMetadata
   }
 
-  const { db, schema } = modules
+  const { db, schema, inArray } = modules
 
   try {
     const rows = await db
       .select()
       .from(schema.dataLibraryTables)
       .where(
-        inArray(
+        (inArray as typeof import("drizzle-orm").inArray)(
           schema.dataLibraryTables.tableName,
           mappingTableMetadata.map((table) => table.key)
         )
