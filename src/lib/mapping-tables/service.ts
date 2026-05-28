@@ -1,5 +1,9 @@
 import { inArray } from "drizzle-orm"
 
+import {
+  mappingTableRegistry,
+  getMappingTableRegistryEntry,
+} from "./mapping-table-registry"
 import { mappingTableMetadata, mappingTableRowsByKey } from "./fixtures"
 import type { MappingTableMetadata, MappingTableRow } from "./types"
 
@@ -50,6 +54,67 @@ async function tryGetBigQueryCounts(
   }
 }
 
+function registryEntryToMetadata(
+  registryKey: string,
+  overrides: Partial<MappingTableMetadata> = {},
+  counts?: {
+    approximateRowCount: number
+    mappedRowCount: number
+    partialRowCount: number
+    unmappedRowCount: number
+  }
+): MappingTableMetadata {
+  const entry = getMappingTableRegistryEntry(registryKey)
+  const fixtureRows = mappingTableRowsByKey[registryKey as keyof typeof mappingTableRowsByKey] ?? []
+
+  const now = new Date().toISOString()
+  const approximateRowCount = counts?.approximateRowCount ?? fixtureRows.length
+  const mappedRowCount =
+    counts?.mappedRowCount ??
+    fixtureRows.filter((r) => r.status === "mapped").length
+  const partialRowCount =
+    counts?.partialRowCount ??
+    fixtureRows.filter((r) => r.status === "partial").length
+  const unmappedRowCount =
+    counts?.unmappedRowCount ??
+    fixtureRows.filter((r) => r.status === "unmapped").length
+
+  const fixtureMetadata = mappingTableMetadata.find((m) => m.key === registryKey)
+
+  return {
+    key: registryKey,
+    displayName:
+      overrides.displayName ?? fixtureMetadata?.displayName ?? entry?.displayName ?? registryKey,
+    description:
+      overrides.description ?? fixtureMetadata?.description ?? entry?.description ?? "",
+    sourceTableName:
+      overrides.sourceTableName ?? fixtureMetadata?.sourceTableName ?? "",
+    standardTableName:
+      overrides.standardTableName ??
+      fixtureMetadata?.standardTableName ??
+      (entry?.bigQueryTable
+        ? `${entry.bigQueryDataset}.${entry.bigQueryTable}`
+        : ""),
+    category: overrides.category ?? fixtureMetadata?.category ?? entry?.category ?? "",
+    approximateRowCount,
+    mappedRowCount,
+    partialRowCount,
+    unmappedRowCount,
+    lastUpdated: overrides.lastUpdated ?? fixtureMetadata?.lastUpdated ?? now,
+    lastRefreshed: overrides.lastRefreshed ?? fixtureMetadata?.lastRefreshed ?? now,
+    status: overrides.status ?? fixtureMetadata?.status ?? "needs_review",
+    requiredPermission:
+      overrides.requiredPermission ??
+      fixtureMetadata?.requiredPermission ??
+      entry?.requiredPermissions.view ??
+      "data_library.mapping_tables.view",
+  }
+}
+
+const activeRegistryKeys = mappingTableRegistry
+  .filter((entry) => entry.supportsDrafts || entry.supportsPublish || entry.supportsUnmappedQueue)
+  .map((entry) => entry.key)
+
 export async function listMappingTables(): Promise<MappingTableMetadata[]> {
   const modules = await getDbModules()
 
@@ -66,22 +131,14 @@ export async function listMappingTables(): Promise<MappingTableMetadata[]> {
       .where(
         inArray(
           schema.dataLibraryTables.tableName,
-          mappingTableMetadata.map((table) => table.key)
+          activeRegistryKeys
         )
       )
 
-    if (rows.length === 0) {
-      return mappingTableMetadata
-    }
-
-    const metadataByKey = new Map(
-      mappingTableMetadata.map((table) => [table.key, table])
-    )
-
     const bqCountsResults = await Promise.all(
-      rows.map(async (row) => {
-        const counts = await tryGetBigQueryCounts(row.tableName)
-        return { tableName: row.tableName, counts }
+      activeRegistryKeys.map(async (key) => {
+        const counts = await tryGetBigQueryCounts(key)
+        return { tableName: key, counts }
       })
     )
 
@@ -89,58 +146,32 @@ export async function listMappingTables(): Promise<MappingTableMetadata[]> {
       bqCountsResults.map(({ tableName, counts }) => [tableName, counts])
     )
 
-    const mapped = rows.map((row) => {
-      const fixture = metadataByKey.get(row.tableName)
-      const uiMetadata = (row.uiMetadata ?? {}) as Record<string, unknown>
-      const bqCounts = bqCountsByKey.get(row.tableName) ?? null
+    const dbRowsByKey = new Map(rows.map((row) => [row.tableName, row]))
 
-      return {
-        key: row.tableName,
-        displayName: row.displayName ?? fixture?.displayName ?? row.tableName,
-        description: row.description ?? fixture?.description ?? "",
-        sourceTableName:
-          String(uiMetadata.sourceTableName ?? "") ||
-          fixture?.sourceTableName ||
-          "",
-        standardTableName:
-          String(uiMetadata.standardTableName ?? "") ||
-          fixture?.standardTableName ||
-          "",
-        category: String(uiMetadata.category ?? "") || fixture?.category || "",
-        approximateRowCount:
-          bqCounts?.approximateRowCount ??
-          Number(uiMetadata.approximateRowCount ?? fixture?.approximateRowCount ?? 0),
-        mappedRowCount:
-          bqCounts?.mappedRowCount ??
-          Number(uiMetadata.mappedRowCount ?? fixture?.mappedRowCount ?? 0),
-        partialRowCount:
-          bqCounts?.partialRowCount ??
-          Number(uiMetadata.partialRowCount ?? fixture?.partialRowCount ?? 0),
-        unmappedRowCount:
-          bqCounts?.unmappedRowCount ??
-          Number(uiMetadata.unmappedRowCount ?? fixture?.unmappedRowCount ?? 0),
-        lastUpdated: String(
-          uiMetadata.lastUpdated ??
-            fixture?.lastUpdated ??
-            row.createdAt.toISOString()
-        ),
-        lastRefreshed: String(
-          uiMetadata.lastRefreshed ??
-            fixture?.lastRefreshed ??
-            row.createdAt.toISOString()
-        ),
-        status:
-          (uiMetadata.status as MappingTableMetadata["status"]) ??
-          fixture?.status ??
-          "needs_review",
-        requiredPermission:
-          String(uiMetadata.requiredPermission ?? "") ||
-          fixture?.requiredPermission ||
-          "data_library.mapping_tables.view",
-      }
+    const result = activeRegistryKeys.map((registryKey) => {
+      const dbRow = dbRowsByKey.get(registryKey)
+      const uiMetadata = (dbRow?.uiMetadata ?? {}) as Record<string, unknown>
+      const bqCounts = bqCountsByKey.get(registryKey) ?? null
+
+      const overrides: Partial<MappingTableMetadata> = {}
+      if (dbRow?.displayName) overrides.displayName = dbRow.displayName
+      if (dbRow?.description) overrides.description = dbRow.description
+      if (uiMetadata.sourceTableName) overrides.sourceTableName = String(uiMetadata.sourceTableName)
+      if (uiMetadata.standardTableName) overrides.standardTableName = String(uiMetadata.standardTableName)
+      if (uiMetadata.category) overrides.category = String(uiMetadata.category)
+      if (uiMetadata.lastUpdated) overrides.lastUpdated = String(uiMetadata.lastUpdated)
+      if (uiMetadata.lastRefreshed) overrides.lastRefreshed = String(uiMetadata.lastRefreshed)
+      if (uiMetadata.status) overrides.status = uiMetadata.status as MappingTableMetadata["status"]
+      if (uiMetadata.requiredPermission) overrides.requiredPermission = String(uiMetadata.requiredPermission)
+
+      return registryEntryToMetadata(
+        registryKey,
+        overrides,
+        bqCounts ?? undefined
+      )
     })
 
-    return mapped.sort((a, b) => a.displayName.localeCompare(b.displayName))
+    return result.sort((a, b) => a.displayName.localeCompare(b.displayName))
   } catch {
     return mappingTableMetadata
   }
@@ -149,6 +180,11 @@ export async function listMappingTables(): Promise<MappingTableMetadata[]> {
 export async function getMappingTableRows(
   tableKey: string
 ): Promise<MappingTableRow[]> {
+  const registryEntry = getMappingTableRegistryEntry(tableKey)
+  if (!registryEntry) {
+    throw new Error(`Mapping table "${tableKey}" is not in the registry`)
+  }
+
   try {
     const { queryMappingTable } = await import(
       "@/lib/bigquery/mapping-table-queries"
@@ -166,7 +202,7 @@ export async function getMappingTableRows(
     mappingTableRowsByKey[tableKey as keyof typeof mappingTableRowsByKey]
 
   if (!rows) {
-    throw new Error(`Mapping table ${tableKey} was not found`)
+    throw new Error(`Mapping table "${tableKey}" was not found in fixtures`)
   }
 
   return rows
