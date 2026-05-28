@@ -9,10 +9,6 @@ const nextConfig: NextConfig = {
     "/*": ["./registry/**/*"],
   },
   allowedDevOrigins: ["*.replit.dev", "*.worf.replit.dev", "*.repl.co"],
-  env: {
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
-      process.env.CLERK_PUBLISHABLE_KEY ?? process.env.VITE_CLERK_PUBLISHABLE_KEY ?? "",
-  },
   experimental: {
     turbopackFileSystemCacheForDev: true,
   },
