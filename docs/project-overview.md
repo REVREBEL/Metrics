@@ -114,39 +114,46 @@ src/app/(app)/
         └── page.tsx
 ```
 
+## Product Labels vs Backend Routes
+
+Metrics uses branded product labels in the user interface while keeping backend routes, folder names, and implementation paths stable and descriptive. The UI label is what users see in the sidebar and command menu. The backend route is the URL and filesystem path used by Next.js.
+
+Do not rename route folders only to match product language. Route names should remain clear, durable, and implementation-friendly. Product language can evolve independently through navigation data, page metadata, and display copy.
+
+| UI Product Label | Backend Route | Route / Area Name | Purpose |
+|---|---:|---|---|
+| Signals | `/dashboard` | Dashboard | Main analytics and performance intelligence area. |
+| Properties | `/hotels` | Hotels | Property, hotel, resort, and portfolio context. |
+| Growth Plan | `/tasks` | Tasks | Global execution layer for tasks, follow-ups, and work planning. |
+| Broadcast | `/campaigns` | Campaigns | Campaign setup, coordination, and performance tracking. |
+| Signals | `/metric-library` | Metric Library | Metric definitions, formulas, source fields, and allowed dimensions. |
+| Data Library | `/data-library` | Data Library | Lookup tables, mappings, unmapped codes, and data health. |
+| The Playbook | `/strategies` | Strategies | Reusable strategy library, playbooks, triggers, and recommended actions. |
+| Threads | `/chats` | Chats | Conversations and future AI/chat workflows. |
+| Help Desk | `/help-desk` | Help Desk | Support, documentation, and REVREBEL contact paths. |
+
+### Navigation Implementation Notes
+
+- Sidebar and command-menu labels should come from `src/components/layout/data/sidebar-data.ts`.
+- Route paths should continue to point to the stable folders under `src/app/(app)/`.
+- Product labels should not be inferred from route folder names.
+- Permission gating should be applied at the navigation/data layer and route level, not by renaming routes.
+- Data Library, Metric Library, and User Management / Admin are internal-first and should be permission-gate ready.
+- The current product language intentionally keeps user-facing labels more strategic than the underlying implementation names.
+
 ## Navigation Direction
 
 ```text
-Main
-├── Dashboard
-│   ├── Metrics
-│   ├── Segments
-│   ├── Channels
-│   ├── Room Types
-│   ├── Demand
-│   └── Website
-├── Hotels
-│   ├── Hotel Profiles
-│   ├── Events
-│   ├── Notes
-│   ├── Tasks
-│   ├── Campaigns
-│   └── Strategies
-├── Campaigns
-├── Metric Library
-├── Data Library
-│   ├── Lookup Tables
-│   ├── Mapping Tables
-│   ├── Unmapped Codes
-│   └── Data Health
-├── Strategies
-├── Chats
-├── Users
-└── Settings
-    ├── Account
-    ├── Appearance
-    ├── Notifications
-    └── Profile
+Metrics
+├── Signals          -> /dashboard
+├── Properties       -> /hotels
+├── Growth Plan      -> /tasks
+├── Broadcast        -> /campaigns
+├── Signals          -> /metric-library
+├── Data Library     -> /data-library
+├── The Playbook     -> /strategies
+├── Threads          -> /chats
+└── Help Desk        -> /help-desk
 ```
 
 ## Current Product Decisions
