@@ -13,9 +13,6 @@ onlyBuiltDependencies:
   - esbuild
   - msw
 
-patchedDependencies:
-  apache-arrow@17.0.0: patches/apache-arrow@17.0.0.patch
-
 allowBuilds:
   '@clerk/shared': false
   duckdb: true
