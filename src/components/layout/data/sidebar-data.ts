@@ -40,9 +40,9 @@ export const sidebarData: SidebarData = {
       title: 'Metrics',
       items: [
         {
-          title: 'Signals',
+          title: 'Metrics',
           url: '/dashboard',
-          icon: Signal,
+          icon: BarChart3,
         },
         {
           title: 'Properties',
@@ -62,7 +62,7 @@ export const sidebarData: SidebarData = {
         {
           title: 'Signals',
           url: '/metric-library',
-          icon: BarChart3,
+          icon: Signal,
         },
         {
           title: 'Data Library',
