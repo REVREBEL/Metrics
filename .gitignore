@@ -63,12 +63,10 @@ next-env.d.ts
 # clerk configuration (can include secrets)
 /.clerk/
 
-# Biq Query Files
-/data
-
+# Big Query Files
 # Memory storage (local development)
-data/
-mcp-data/
+/data/
+/mcp-data/
 
 /.vibe
 /.agents
