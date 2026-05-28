@@ -41,3 +41,7 @@ BQ_PROJECT_ID = "revrebel-metrics"
 [agent]
 expertMode = true
 
+[postMerge]
+path = "scripts/post-merge.sh"
+timeoutMs = 120000
+
