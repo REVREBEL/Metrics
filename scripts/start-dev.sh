@@ -2,6 +2,7 @@
 set -e
 
 PORT="${PORT:-3000}"
+HOST="0.0.0.0"
 
 # Start Next.js in the background
 next dev -H 0.0.0.0 -p "$PORT" &
