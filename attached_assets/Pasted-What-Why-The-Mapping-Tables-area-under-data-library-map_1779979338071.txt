@@ -1,0 +1,49 @@
+What & Why
+The Mapping Tables area under /data-library/mappings currently has a read-only UI shell backed entirely by fixture/mock data. This task makes it a real, functional experience: a typed registry with column-level rules, lookup-powered dropdowns, an edit drawer with dirty-state tracking, a save-draft/publish flow with validation and audit capture, an unmapped codes relationship, and a permission shell that is wired but not enforced during development.
+
+Done looks like
+Each of the 7 mapping categories (Hotel, Segment, Channel, Room Type, Source, Market, Rate) has a full column-level definition that controls which fields are read-only, editable, dropdown-driven, free-form, boolean, or system-set.
+Dropdown fields in the edit UI are powered by active values from the corresponding lookup tables — no hard-coded options in the React component.
+Clicking a mapping row opens an edit drawer. Fields follow the column rules. Read-only fields are clearly non-interactive. Source-system fields cannot be modified.
+Saving a draft writes to the database (reusing or extending lookupTableDraftEdits / lookupTableChangeRequests), validates required fields and dropdown values, blocks duplicate active mappings for the same source key, and captures updated_by, updated_at, previous_value, new_value, and change_reason.
+A Publish action commits the approved change to the active mapping layer and writes a full audit record to appAuditLog.
+Mapping a previously unmapped source code marks related unmapped-code records as resolved/mapped in the database.
+Status badges in the table clearly distinguish Unmapped, Draft, Mapped, Needs Review, Deprecated, and Inactive states.
+A /users route exists with a shell UI showing users/roles, their assigned permission keys, enabled/disabled state, and enforcement mode. It is not yet enforcing access — all mapping table permission checks default to audit_only or disabled.
+The permission registry is a typed, centrally-managed config object covering data_library.mapping_tables.*, data_library.lookup_tables.*, data_library.unmapped_codes.*, and users.permissions.* keys.
+Adding a new permission key does not require rebuilding the user config UI.
+Out of scope
+Live BigQuery query execution (rows continue to come from the fixture/DB pattern already in place; BigQuery integration is a separate concern).
+A complete audit log browser UI (the data model and write path are built; browsing is future work).
+Hard enforcement of any permission during this task (the shell exists but enforcementMode stays disabled or audit_only).
+Agency/Account mapping table (not yet in the existing fixtures; add registry entry as a placeholder only).
+Invoices, billing, or RevenueCat.
+Steps
+Extend the mapping table registry — Replace/extend src/lib/mapping-tables/fixtures.ts and types.ts to add the full table-level fields required by the spec (bigQueryDataset, bigQueryTable, primaryKey, sourceSystemField, sourceCodeField, sourceNameField, standardValueField, lookupTableDependencies, scope, supportsDrafts, supportsPublish, supportsUnmappedQueue, requiredPermissions). Extract this into a dedicated mapping-table-registry.ts so the page never imports raw BigQuery identifiers directly.
+
+Add column-level metadata — Create src/lib/mapping-tables/mapping-table-columns.ts. For each of the 7 mapping tables, define an ordered array of column definitions with field, label, description, inputType (readonly / text / textarea / dropdown / multi_select / boolean / date / number / system), required, editable, lookupSource, validationRules, displayOrder, visibleInTable, and visibleInDetail. Use the Segment Mapping column rules from the spec as the canonical example; apply the same pattern to all other tables.
+
+Build the lookup resolver — Create src/lib/mapping-tables/mapping-table-lookups.ts. It should resolve active lookup values for any column that declares a lookupSource, using the existing lookup tables service (src/lib/lookup-tables/service.ts) as the data source. Inactive lookup values must not be returned as selectable options but should be flaggable so the UI can show a deprecated indicator on historical mappings that reference them.
+
+Add save-draft and publish server actions — Extend src/app/(app)/data-library/mappings/actions.ts with typed server actions for saveMappingDraft and publishMappingChange. Reuse or extend lookupTableDraftEdits and lookupTableChangeRequests schema tables for draft staging. Each save must: validate required fields, validate dropdown values against active lookup values, block duplicate active mappings for the same source key/scope, preserve source-system field immutability, capture updated_by, updated_at, change_reason, previous_value, new_value. Return a typed success/error result the UI can display.
+
+Wire audit trail — On every successful save-draft and publish, write a record to appAuditLog capturing mapping_table, mapping_key, source_system, field_name, previous_value, new_value, change_reason, created_by, created_at, updated_by, updated_at, and where applicable published_by / published_at. The audit write should happen inside the server action, not the client.
+
+Connect unmapped codes — When a save-draft or publish action maps a source code that was previously in an unmapped state, update any matching records in the unmapped-codes table (or related status field) to resolved or pending_review. This creates the link between the Mapping Tables workflow and the future /data-library/unmapped-codes queue.
+
+Build the edit drawer UI — Add an edit drawer (or side panel) to mapping-tables-manager.tsx that opens when a row is selected. The drawer renders fields according to the column definitions from step 2: read-only fields shown as static values, editable fields as appropriate inputs, dropdown fields populated from the lookup resolver (step 3). Track dirty state locally; warn on unsaved changes if the user navigates away or closes the drawer. Show Save Draft and (future) Publish buttons. Display clear status badges for all mapping states.
+
+Create the permission registry — Create src/lib/permissions/permissions-registry.ts with a typed registry of permission definitions. Each entry includes key, label, description, group, scope (global / portfolio / property / table / field / action), riskLevel, defaultEnabledForDev, and enforcementMode (disabled / audit_only / warn_only / enforced). Cover all keys listed in the spec. Default all new mapping table permissions to enforcementMode: 'audit_only'. Create src/lib/permissions/permission-service.ts with a checkPermission(key, context) helper that respects the enforcement mode — for audit_only it logs but does not block.
+
+Build the users/permissions shell UI — Create src/app/(app)/users/page.tsx and supporting components. The page shows a list of users or roles, and for each shows their assigned permissions from the registry: permission group, key, description, enabled/disabled toggle, scope, and enforcement mode label. Permission assignments can be toggled in the UI (persisted or mocked for now). The layout should make it easy to add new permission rows without rebuilding the page. Wire the navigation entry so /users is accessible from the app sidebar or settings area.
+
+Relevant files
+src/lib/mapping-tables/types.ts
+src/lib/mapping-tables/service.ts
+src/lib/mapping-tables/fixtures.ts
+src/lib/lookup-tables/service.ts
+src/lib/lookup-tables/types.ts
+src/lib/lookup-tables/fixtures.ts
+src/lib/lookup-tables/schemas.ts
+src/db/schema/index.ts
+src/app/(app)/data-library/mappings/actions.ts
