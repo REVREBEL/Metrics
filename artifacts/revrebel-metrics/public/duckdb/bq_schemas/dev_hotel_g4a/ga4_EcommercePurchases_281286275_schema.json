@@ -1,0 +1,66 @@
+[
+  {
+    "name": "itemBrand",
+    "type": "STRING"
+  },
+  {
+    "name": "itemCategory",
+    "type": "STRING"
+  },
+  {
+    "name": "itemCategory2",
+    "type": "STRING"
+  },
+  {
+    "name": "itemCategory3",
+    "type": "STRING"
+  },
+  {
+    "name": "itemCategory4",
+    "type": "STRING"
+  },
+  {
+    "name": "itemCategory5",
+    "type": "STRING"
+  },
+  {
+    "name": "itemId",
+    "type": "STRING"
+  },
+  {
+    "name": "itemListPosition",
+    "type": "STRING"
+  },
+  {
+    "name": "itemName",
+    "type": "STRING"
+  },
+  {
+    "name": "itemVariant",
+    "type": "STRING"
+  },
+  {
+    "name": "itemRevenue",
+    "type": "FLOAT"
+  },
+  {
+    "name": "itemsAddedToCart",
+    "type": "INTEGER"
+  },
+  {
+    "name": "itemsPurchased",
+    "type": "INTEGER"
+  },
+  {
+    "name": "itemsViewed",
+    "type": "INTEGER"
+  },
+  {
+    "name": "_LATEST_DATE",
+    "type": "DATE"
+  },
+  {
+    "name": "_DATA_DATE",
+    "type": "DATE"
+  }
+]

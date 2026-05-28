@@ -1,0 +1,1045 @@
+[
+  {
+    "description": "Unique Row Identifier",
+    "mode": "NULLABLE",
+    "name": "index",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Source File Name",
+    "mode": "NULLABLE",
+    "name": "file_name",
+    "type": "STRING"
+  },
+  {
+    "description": "Internal Property Identifier",
+    "mode": "NULLABLE",
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "description": "Property Name",
+    "mode": "NULLABLE",
+    "name": "property_name",
+    "type": "STRING"
+  },
+  {
+    "description": "STAR Property ID",
+    "mode": "NULLABLE",
+    "name": "census_id",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Competitive Set Identifier",
+    "mode": "NULLABLE",
+    "name": "cs_no",
+    "type": "STRING"
+  },
+  {
+    "description": "Competitive Set Reference",
+    "mode": "NULLABLE",
+    "name": "cs_reference",
+    "type": "STRING"
+  },
+  {
+    "description": "Month",
+    "mode": "NULLABLE",
+    "name": "month_name",
+    "type": "STRING"
+  },
+  {
+    "description": "Current Year",
+    "mode": "NULLABLE",
+    "name": "cy",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Prior Year",
+    "mode": "NULLABLE",
+    "name": "py",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Month of the Year",
+    "mode": "NULLABLE",
+    "name": "month",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Weekday",
+    "mode": "NULLABLE",
+    "name": "weekday",
+    "type": "STRING"
+  },
+  {
+    "description": "Day of Week",
+    "mode": "NULLABLE",
+    "name": "dow",
+    "type": "STRING"
+  },
+  {
+    "description": "Day",
+    "mode": "NULLABLE",
+    "name": "day",
+    "type": "STRING"
+  },
+  {
+    "description": "%m-%d-%E4Y",
+    "mode": "NULLABLE",
+    "name": "stay_date_text",
+    "type": "STRING"
+  },
+  {
+    "description": "%m-%d-%E4Y",
+    "mode": "NULLABLE",
+    "name": "stay_date_text_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Consumed Stay Date %m-%d-%y",
+    "mode": "NULLABLE",
+    "name": "stay_date",
+    "type": "DATE"
+  },
+  {
+    "description": "Consumed Stay Date Prior Year %m-%d-%y",
+    "mode": "NULLABLE",
+    "name": "stay_date_py",
+    "type": "DATE"
+  },
+  {
+    "description": "Number of Days in Period",
+    "mode": "NULLABLE",
+    "name": "days",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Number of Days in Period Prior Year",
+    "mode": "NULLABLE",
+    "name": "days_py",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Room Supply based on SIngle Day",
+    "mode": "NULLABLE",
+    "name": "available_rms_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Competitive Set Room Supply based on SIngle Day",
+    "mode": "NULLABLE",
+    "name": "cs_available_rms_day",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Room Revenue",
+    "mode": "NULLABLE",
+    "name": "rms_sold",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Rooms Sold Prior Year",
+    "mode": "NULLABLE",
+    "name": "rms_sold_py",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Demand Percentage Change Prior Year",
+    "mode": "NULLABLE",
+    "name": "rms_sold_pct_chg",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Year Over Year Percentage Change in Demand.",
+    "mode": "NULLABLE",
+    "name": "rms_sold_pct_chg_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Composite Set Room Revenue",
+    "mode": "NULLABLE",
+    "name": "cs_rms_sold",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Competitive Set Rooms Sold  Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_rms_sold_py",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Competitive Set Supply Prior Percentage Change Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_rms_sold_pct_chg",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Supply Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "cs_rms_sold_pct_chg_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Total Available Rooms / Room Supply",
+    "mode": "NULLABLE",
+    "name": "available_rms",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Room Supply Prior Year",
+    "mode": "NULLABLE",
+    "name": "available_rms_py",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Room Supply Percentage Change",
+    "mode": "NULLABLE",
+    "name": "available_rms_pct_chg",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Room Supply Percentage Change from Prior year",
+    "mode": "NULLABLE",
+    "name": "available_rms_pct_chg_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set  Total Available Rooms",
+    "mode": "NULLABLE",
+    "name": "cs_available_rms",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Room Supply Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_available_rms_py",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Supply Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "cs_available_rms_pct_chg",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Supply Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_available_rms_pct_chg_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy",
+    "mode": "NULLABLE",
+    "name": "occ",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Prior Year",
+    "mode": "NULLABLE",
+    "name": "occ_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Percentage Change",
+    "mode": "NULLABLE",
+    "name": "occ_pct_chg",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Percentage Change Prior Year",
+    "mode": "NULLABLE",
+    "name": "occ_pct_chg_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Index",
+    "mode": "NULLABLE",
+    "name": "occ_index",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Index Prior Year",
+    "mode": "NULLABLE",
+    "name": "occ_index_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Index Percentage Change",
+    "mode": "NULLABLE",
+    "name": "occ_index_pct_chg",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Index Percentage Change Prior Year",
+    "mode": "NULLABLE",
+    "name": "occ_index_pct_chg_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Rank",
+    "mode": "NULLABLE",
+    "name": "occ_rank",
+    "type": "STRING"
+  },
+  {
+    "description": "Occupancy Rank Prior Year",
+    "mode": "NULLABLE",
+    "name": "occ_rank_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Occupancy Percentage Change Rank",
+    "mode": "NULLABLE",
+    "name": "occ_rank_pct_chg",
+    "type": "STRING"
+  },
+  {
+    "description": "Occupancy Percentage Change Rank Prior Year",
+    "mode": "NULLABLE",
+    "name": "occ_rank_pct_chg_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Competitive Set Occupancy",
+    "mode": "NULLABLE",
+    "name": "cs_occ",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Occupancy Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_occ_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Occupancy Percentage Change Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_occ_pct_chg",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Occupancy Percentage Change Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_occ_pct_chg_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Dollar Rate",
+    "mode": "NULLABLE",
+    "name": "adr",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Dollar Rate Prior Year Actual",
+    "mode": "NULLABLE",
+    "name": "adr_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Dollar Rate Percentage Change",
+    "mode": "NULLABLE",
+    "name": "adr_pct_chg",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Dollar Rate Percentage Change Prior Year",
+    "mode": "NULLABLE",
+    "name": "adr_pct_chg_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Dollar Rate Index",
+    "mode": "NULLABLE",
+    "name": "adr_index",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Dollar Rate Index Prior Year",
+    "mode": "NULLABLE",
+    "name": "adr_index_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Dollar Rate Index Percentage Change",
+    "mode": "NULLABLE",
+    "name": "adr_index_pct_chg",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Dollar Rate Index Percentage Change Prior Year",
+    "mode": "NULLABLE",
+    "name": "adr_index_pct_chg_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Dollar Rate Rank",
+    "mode": "NULLABLE",
+    "name": "adr_rank",
+    "type": "STRING"
+  },
+  {
+    "description": "Average Dollar Rate Rank Prior Year",
+    "mode": "NULLABLE",
+    "name": "adr_rank_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Average Dollar Rate Percentage Change Rank",
+    "mode": "NULLABLE",
+    "name": "adr_rank_pct_chg",
+    "type": "STRING"
+  },
+  {
+    "description": "Average Dollar Rate Percentage Change Rank Prior Year",
+    "mode": "NULLABLE",
+    "name": "adr_rank_pct_chg_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Competitive Set Average Dollar Rate",
+    "mode": "NULLABLE",
+    "name": "cs_adr",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Average Dollar Rate Percentage Change Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_adr_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Average Dollar Rate Percentage Change",
+    "mode": "NULLABLE",
+    "name": "cs_adr_pct_chg",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Average Dollar Rate Percentage Change Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_adr_pct_chg_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Room Revenue",
+    "mode": "NULLABLE",
+    "name": "rev",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Actualized Prior Year",
+    "mode": "NULLABLE",
+    "name": "rev_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Percentage Change",
+    "mode": "NULLABLE",
+    "name": "rev_pct_chg",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Percentage Change Prior Year",
+    "mode": "NULLABLE",
+    "name": "rev_pct_chg_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Revenue",
+    "mode": "NULLABLE",
+    "name": "cs_rev",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Revenue Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_rev_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Revenue Percentage Change",
+    "mode": "NULLABLE",
+    "name": "cs_rev_pct_chg",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Revenue Percentage Change Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_rev_pct_chg_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room",
+    "mode": "NULLABLE",
+    "name": "revpar",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Prior Year",
+    "mode": "NULLABLE",
+    "name": "revpar_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Percentage Change",
+    "mode": "NULLABLE",
+    "name": "revpar_pct_chg",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Percentage Change Prior Year",
+    "mode": "NULLABLE",
+    "name": "revpar_pct_chg_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Index",
+    "mode": "NULLABLE",
+    "name": "revpar_index",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Index Prior Year",
+    "mode": "NULLABLE",
+    "name": "revpar_index_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Index Percentage Change",
+    "mode": "NULLABLE",
+    "name": "revpar_index_pct_chg",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Index Percentage Change Prior Year",
+    "mode": "NULLABLE",
+    "name": "revpar_index_pct_chg_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Rank",
+    "mode": "NULLABLE",
+    "name": "revpar_rank",
+    "type": "STRING"
+  },
+  {
+    "description": "Revenue Per Available Room Rank Prior Year",
+    "mode": "NULLABLE",
+    "name": "revpar_rank_py",
+    "type": "STRING"
+  },
+  {
+    "description": "RevPAR Ranking Percentage Change",
+    "mode": "NULLABLE",
+    "name": "revpar_rank_pct_chg",
+    "type": "STRING"
+  },
+  {
+    "description": "RevPAR Ranking Percentage Rank Change from Prior Year",
+    "mode": "NULLABLE",
+    "name": "revpar_rank_pct_chg_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Competitive Set Revenue Per Available Room",
+    "mode": "NULLABLE",
+    "name": "cs_revpar",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Revenue Per Available Room Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_revpar_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Revenue Per Available Room Percentage Change",
+    "mode": "NULLABLE",
+    "name": "cs_revpar_pct_chg",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Revenue Per Available Room Percentage Change Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_revpar_pct_chg_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Demand Year to Date",
+    "mode": "NULLABLE",
+    "name": "rms_sold_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Demand Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "rms_sold_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Demand Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "rms_sold_pct_chg_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Demand Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "rms_sold_pct_chg_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Supply Year to Date",
+    "mode": "NULLABLE",
+    "name": "cs_rms_sold_ytd",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Competitive Set Supply Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_rms_sold_ytd_py",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Competitive Set Supply Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_rms_sold_pct_chg_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Supply Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_rms_sold_pct_chg_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Room Supply Year to Date",
+    "mode": "NULLABLE",
+    "name": "available_rms_ytd",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Room Supply Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "available_rms_ytd_py",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Supply Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "available_rms_pct_chg_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Supply Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "available_rms_pct_chg_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Room Supply Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_available_rms_ytd",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Competitive Set Room Supply Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_available_rms_ytd_py",
+    "type": "INTEGER"
+  },
+  {
+    "description": "Competitive Set Supply Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "cs_available_rms_pct_chg_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Supply Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_available_rms_pct_chg_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Year to Date",
+    "mode": "NULLABLE",
+    "name": "occ_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "occ_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "occ_pct_chg_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "occ_pct_chg_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Index Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "occ_index_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Year to Date",
+    "mode": "NULLABLE",
+    "name": "occ_index_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Index Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "occ_index_pct_chg_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Index Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "occ_index_pct_chg_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Occupancy Rank Year to Date",
+    "mode": "NULLABLE",
+    "name": "occ_rank_ytd",
+    "type": "STRING"
+  },
+  {
+    "description": "Occupancy Rank Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "occ_rank_ytd_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Occupancy Percentage Change Rank Year to Date",
+    "mode": "NULLABLE",
+    "name": "occ_rank_pct_chg_ytd",
+    "type": "STRING"
+  },
+  {
+    "description": "Occupancy Percentage Change Rank Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "occ_rank_pct_chg_ytd_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Competitive Set Occupancy Year to Date",
+    "mode": "NULLABLE",
+    "name": "cs_occ_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Occupancy Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_occ_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Occupancy Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "cs_occ_pct_chg_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Occupancy Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_occ_pct_chg_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Daily Rate Year to Date",
+    "mode": "NULLABLE",
+    "name": "adr_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Daily Rate Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "adr_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Dollar Rate Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "adr_pct_chg_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Dollar Rate Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "adr_pct_chg_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Dollar Rate Index Year to Date",
+    "mode": "NULLABLE",
+    "name": "adr_index_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Dollar Rate Index Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "adr_index_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Dollar Rate Index Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "adr_index_pct_chg_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Dollar Rate Index Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "adr_index_pct_chg_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Average Dollar Rate Rank Year to Date",
+    "mode": "NULLABLE",
+    "name": "adr_rank_ytd",
+    "type": "STRING"
+  },
+  {
+    "description": "Average Daily Rate Rank Year to Date",
+    "mode": "NULLABLE",
+    "name": "adr_rank_ytd_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Average Dollar Rate Percentage Change Rank Year to Date",
+    "mode": "NULLABLE",
+    "name": "adr_rank_pct_chg_ytd",
+    "type": "STRING"
+  },
+  {
+    "description": "Average Dollar Rate Percentage Change Rank Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "adr_rank_pct_chg_ytd_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Competitive Set Average Dollar Rate Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_adr_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Average Dollar Rate Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "cs_adr_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Average Dollar Rate Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "cs_adr_pct_chg_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Average Dollar Rate Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_adr_pct_chg_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Year to Date",
+    "mode": "NULLABLE",
+    "name": "rev_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "rev_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "rev_pct_chg_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "rev_pct_chg_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Revenue Year to Date",
+    "mode": "NULLABLE",
+    "name": "cs_rev_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Revenue Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_rev_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Revenue Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "cs_rev_pct_chg_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Revenue Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_rev_pct_chg_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Year to Date",
+    "mode": "NULLABLE",
+    "name": "revpar_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "revpar_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "revpar_pct_chg_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "revpar_pct_chg_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Index Year to Date",
+    "mode": "NULLABLE",
+    "name": "revpar_index_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Index Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "revpar_index_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Index Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "revpar_index_pct_chg_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Index Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "revpar_index_pct_chg_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Revenue Per Available Room Rank Year to Date",
+    "mode": "NULLABLE",
+    "name": "revpar_rank_ytd",
+    "type": "STRING"
+  },
+  {
+    "description": "Revenue Per Available Room Rank Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "revpar_rank_ytd_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Revenue Per Available Room Rank Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "revpar_rank_pct_chg_ytd",
+    "type": "STRING"
+  },
+  {
+    "description": "Revenue Per Available Room Rank Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "revpar_rank_pct_chg_ytd_py",
+    "type": "STRING"
+  },
+  {
+    "description": "Competitive Set Revenue Per Available Room Year to Date",
+    "mode": "NULLABLE",
+    "name": "cs_revpar_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Revenue Per Available Room Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_revpar_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Revenue Per Available Room Percentage Change Year to Date",
+    "mode": "NULLABLE",
+    "name": "cs_revpar_pct_chg_ytd",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Revenue Per Available Room Percentage Change Year to Date Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_revpar_pct_chg_ytd_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Currency Code",
+    "mode": "NULLABLE",
+    "name": "currency_code",
+    "type": "STRING"
+  },
+  {
+    "description": "Competitive Set Census",
+    "mode": "NULLABLE",
+    "name": "cs_census",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Census Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_census_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Supply Percentage of Census",
+    "mode": "NULLABLE",
+    "name": "cs_sample_pct_of_census",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Supply Percentage of Census Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_sample_pct_of_census_py",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Sample",
+    "mode": "NULLABLE",
+    "name": "cs_sample",
+    "type": "NUMERIC"
+  },
+  {
+    "description": "Competitive Set Sample Prior Year",
+    "mode": "NULLABLE",
+    "name": "cs_sample_py",
+    "type": "NUMERIC"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "insert_timestamp",
+    "type": "TIMESTAMP"
+  }
+]

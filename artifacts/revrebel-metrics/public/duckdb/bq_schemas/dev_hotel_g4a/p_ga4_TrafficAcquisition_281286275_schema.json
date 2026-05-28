@@ -1,0 +1,98 @@
+[
+  {
+    "description": "The marketing campaign name for a session. Includes Google Ads Campaigns, Manual Campaigns, & other Campaigns.",
+    "mode": "NULLABLE",
+    "name": "sessionCampaignName",
+    "type": "STRING"
+  },
+  {
+    "description": "The session's default channel group is based primarily on source and medium. An enumeration which includes Direct, Organic Search, Paid Social, Organic Social, Email, Affiliates, Referral, Paid Search, Video, and Display.",
+    "mode": "NULLABLE",
+    "name": "sessionDefaultChannelGroup",
+    "type": "STRING"
+  },
+  {
+    "description": "The medium that initiated a session on your website or app.",
+    "mode": "NULLABLE",
+    "name": "sessionMedium",
+    "type": "STRING"
+  },
+  {
+    "description": "The primary channel group that led to the session. Primary channel groups are the channel groups used in standard reports in Google Analytics and serve as an active record of your property's data in alignment with channel grouping over time.",
+    "mode": "NULLABLE",
+    "name": "sessionPrimaryChannelGroup",
+    "type": "STRING"
+  },
+  {
+    "description": "The source that initiated a session on your website or app.",
+    "mode": "NULLABLE",
+    "name": "sessionSource",
+    "type": "STRING"
+  },
+  {
+    "description": "The combined values of the dimensions sessionSource and sessionMedium.",
+    "mode": "NULLABLE",
+    "name": "sessionSourceMedium",
+    "type": "STRING"
+  },
+  {
+    "description": "The source platform of the session's campaign. Don't depend on this field returning Manual for traffic that uses UTMs; this field will update from returning Manual to returning (not set) for an upcoming feature launch.",
+    "mode": "NULLABLE",
+    "name": "sessionSourcePlatform",
+    "type": "STRING"
+  },
+  {
+    "description": "The number of sessions that lasted longer than 10 seconds, or had a key event, or had 2 or more screen views.",
+    "mode": "NULLABLE",
+    "name": "engagedSessions",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The percentage of engaged sessions (Engaged sessions divided by Sessions). This metric is returned as a fraction; for example, 0.7239 means 72.39% of sessions were engaged sessions.",
+    "mode": "NULLABLE",
+    "name": "engagementRate",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The count of events.",
+    "mode": "NULLABLE",
+    "name": "eventCount",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The average number of events per session (Event count divided by Sessions).",
+    "mode": "NULLABLE",
+    "name": "eventsPerSession",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The number of key events that occurred.",
+    "mode": "NULLABLE",
+    "name": "keyEvents",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The percentage of sessions in which any key event was triggered.",
+    "mode": "NULLABLE",
+    "name": "sessionKeyEventRate",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The number of sessions that began on your site or app (event triggered: session_start).",
+    "mode": "NULLABLE",
+    "name": "sessions",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The sum of revenue from purchases, subscriptions, and advertising (Purchase revenue plus Subscription revenue plus Ad revenue) minus refunded transaction revenue.",
+    "mode": "NULLABLE",
+    "name": "totalRevenue",
+    "type": "FLOAT"
+  },
+  {
+    "description": "Average engagement time per session",
+    "mode": "NULLABLE",
+    "name": "userEngagementDurationPerSession",
+    "type": "FLOAT"
+  }
+]

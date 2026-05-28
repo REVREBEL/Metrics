@@ -1,0 +1,47 @@
+[
+  {
+    "mode": "NULLABLE",
+    "name": "demand_compset_key",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "property_name",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_no",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cs_demand_id",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "property_available_rooms",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_available_rooms",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_start_date",
+    "type": "DATETIME"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_end_date",
+    "type": "DATETIME"
+  }
+]

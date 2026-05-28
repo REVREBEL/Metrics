@@ -1,0 +1,74 @@
+[
+  {
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "description": "The main property being shopped, derived from filename",
+    "name": "property_name",
+    "type": "STRING"
+  },
+  {
+    "description": "The date the data was pulled/shopped",
+    "name": "rateshop_date",
+    "type": "DATE"
+  },
+  {
+    "description": "The date of the actual stay",
+    "name": "arrival_date",
+    "type": "DATE"
+  },
+  {
+    "name": "flex_hotel",
+    "type": "FLOAT"
+  },
+  {
+    "name": "median_flex_compset",
+    "type": "FLOAT"
+  },
+  {
+    "name": "hotel_occ",
+    "type": "FLOAT"
+  },
+  {
+    "name": "market_demand",
+    "type": "FLOAT"
+  },
+  {
+    "name": "compset_price_rank",
+    "type": "STRING"
+  },
+  {
+    "name": "booking_ranking",
+    "type": "STRING"
+  },
+  {
+    "name": "holidays",
+    "type": "STRING"
+  },
+  {
+    "name": "events",
+    "type": "STRING"
+  },
+  {
+    "description": "TRUE if Remark indicates Sold Out",
+    "name": "is_sold_out",
+    "type": "BOOLEAN"
+  },
+  {
+    "description": "Minimum Length of Stay extracted from Remarks",
+    "name": "min_los",
+    "type": "INTEGER"
+  },
+  {
+    "description": "TRUE if rate allows cancellation/flexibility",
+    "name": "is_flexible",
+    "type": "BOOLEAN"
+  },
+  {
+    "defaultValueExpression": "CURRENT_TIMESTAMP()",
+    "description": "Timestamp when the record was inserted into BigQuery",
+    "name": "inserted_at",
+    "type": "TIMESTAMP"
+  }
+]

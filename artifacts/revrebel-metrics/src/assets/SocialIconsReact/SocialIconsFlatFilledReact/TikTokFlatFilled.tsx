@@ -1,0 +1,4 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgTikTokFlatFilled = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 200 200" width="1em" height="1em" {...props}><path d="M143.75 0h-87.5C25 0 0 25 0 56.25v87.5C0 175 25 200 56.25 200h87.5C175 200 200 175 200 143.75v-87.5C200 25 175 0 143.75 0m8.47 89.39c-10.38-.02-20.12-3.18-28.63-9.19l.03 41.28c.01 20.16-15.26 36.87-35.18 38.35h-5.73c-16.96-1.41-31.04-13.96-34.25-30.73-2.32-12.11 1.41-24.49 9.91-33.34 8.3-8.64 20.32-12.97 32.43-11.28v21.02c-9.98-3.09-20.02 3.22-22.06 12.98-2.08 9.96 4.89 19.5 14.93 20.71 9.99 1.21 19.03-6.51 19.29-16.78l.03-82.27h20.6c0 15.85 12.94 28.63 28.64 28.64v20.59Z" /></svg>;
+export default SvgTikTokFlatFilled;

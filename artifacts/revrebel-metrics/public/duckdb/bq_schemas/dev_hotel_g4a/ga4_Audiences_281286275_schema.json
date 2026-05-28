@@ -1,0 +1,38 @@
+[
+  {
+    "name": "audienceName",
+    "type": "STRING"
+  },
+  {
+    "name": "averageSessionDuration",
+    "type": "FLOAT"
+  },
+  {
+    "name": "newUsers",
+    "type": "INTEGER"
+  },
+  {
+    "name": "screenPageViewsPerSession",
+    "type": "FLOAT"
+  },
+  {
+    "name": "sessions",
+    "type": "INTEGER"
+  },
+  {
+    "name": "totalRevenue",
+    "type": "FLOAT"
+  },
+  {
+    "name": "totalUsers",
+    "type": "INTEGER"
+  },
+  {
+    "name": "_LATEST_DATE",
+    "type": "DATE"
+  },
+  {
+    "name": "_DATA_DATE",
+    "type": "DATE"
+  }
+]

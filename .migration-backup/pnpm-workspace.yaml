@@ -1,0 +1,25 @@
+minimumReleaseAge: 1440
+
+overrides:
+  date-fns: 3.6.0
+
+ignoredBuiltDependencies:
+  - '@clerk/shared'
+  - sharp
+  - unrs-resolver
+
+onlyBuiltDependencies:
+  - duckdb
+  - esbuild
+  - msw
+
+patchedDependencies:
+  apache-arrow@17.0.0: patches/apache-arrow@17.0.0.patch
+
+allowBuilds:
+  '@clerk/shared': false
+  duckdb: true
+  esbuild: true
+  msw: true
+  sharp: true
+  unrs-resolver: true

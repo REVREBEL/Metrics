@@ -1,0 +1,143 @@
+"use client"
+
+import React, { useState } from "react";
+import { Header } from '@/components/layout/header'
+import { Main } from '@/components/layout/main'
+import { TopNav } from '@/components/layout/top-nav'
+import { ThemeSwitch } from '@/components/theme-switch'
+import { SubNav } from "@/components/sub-nav"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { YearMonthSelector } from "@/widgets/YearMonthSelector/dynamic";
+
+import PerformanceCard from "@/widgets/PerformanceCard"
+import PerformanceCardOther from "@/widgets/PerformanceCardOther"
+
+
+const topNav = [
+  {
+    title: 'Metrics',
+    href: '/dashboard',
+    isActive: true,
+    disabled: false,
+    className: 'font-display text-md text-green font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-green hover: dark-blue',
+  },
+  {
+    title: 'Segments',
+    href: '/dashboard/segments',
+    isActive: true,
+    disabled: false,
+    className: 'font-display text-md text-green font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-green hover: dark-blue',
+  },
+  {
+    title: 'Channels',
+    href: '/dashboard/channels',
+    isActive: true,
+    disabled: false,
+    className: 'font-display text-md text-green font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-green hover: dark-blue',
+  },
+  {
+    title: 'Room Types',
+    href: '/dashboard/room-types',
+    isActive: true,
+    disabled: false,
+    className: 'font-display text-md text-green font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-green hover: dark-blue',
+  },
+  {
+    title: 'Demand',
+    href: '/dashboard/demand',
+    isActive: true,
+    disabled: false,
+    className: 'font-display text-md text-green font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-green hover:dark-blue',
+  },
+  {
+    title: 'Website',
+    href: '/dashboard/website',
+    isActive: true,
+    disabled: false,
+    className: 'font-display text-md text-green font-bold tracking-tight uppercase border-b-4 border-transparent data-[state=on]:border-current data-[state=on]:text-green hover: dark-blue',
+  },
+]
+
+export default function Page() {
+  const [selectedYear, setSelectedYear] = useState<string>('');
+  const [selectedMonth, setSelectedMonth] = useState<string>('');
+
+  const handleDateChange = (year: string, month: string) => {
+    setSelectedYear(year);
+    setSelectedMonth(month);
+  };
+
+  return (<> <Header>
+
+    {/* ===== Top Heading ===== */}
+    <TopNav links={topNav} />
+    <div className='ms-auto flex items-center space-x-4'>
+      <ThemeSwitch />
+    </div>
+  </Header>
+
+    {/* ===== Main ===== */}
+    <Main fluid>
+      {/* ===== Tabs ===== */}
+      <SubNav>
+        <div className='mb-2 flex items-center justify-between space-y-2'>
+          <h1 className='text-3xl font-bold font-display uppercase tracking-tight'>Metrics</h1>
+        </div>
+
+        <Tabs orientation='vertical' defaultValue='overview' className='space-y-4 shadow-none'>
+          <div className='w-full overflow-x-auto pb-2'>
+            <TabsList>
+              <TabsTrigger
+                value='overview'
+                className="h-8 justify-center text-md font-display font-bold uppercase text-muted-foreground transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground">
+                Overview
+              </TabsTrigger>
+              <TabsTrigger
+                value='analytics'
+                className="h-8 justify-center text-md font-display font-bold uppercase text-muted-foreground transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground">
+                Analytics
+              </TabsTrigger>
+              <TabsTrigger
+                value='performance'
+                className="h-8 justify-center text-md font-display font-bold uppercase text-muted-foreground transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground">
+                Performance
+              </TabsTrigger>
+              <TabsTrigger
+                value='reports'
+
+                className="h-8 justify-center text-md font-display font-bold uppercase text-muted-foreground transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground">
+                Reports
+              </TabsTrigger>
+              <TabsTrigger
+                value='notifications'
+                className="h-8 justify-center text-md font-display font-bold uppercase text-muted-foreground transition-all data-[state=on]:bg-primary data-[state=on]:text-primary-foreground hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-muted-foreground">
+                Notifications
+              </TabsTrigger>
+            </TabsList>
+          </div>
+          <TabsContent value='overview' className='space-y-4'></TabsContent>
+        </Tabs>
+      </SubNav>
+
+      <div className="flex flex-1 pt-0 gap-4 mb-8">
+        <YearMonthSelector onSelectionChange={handleDateChange} />
+      </div>
+
+      <div className="flex flex-col my-8 gap-8">
+        <div className="flex-auto">
+          {selectedYear && selectedMonth && (
+            <PerformanceCard year={selectedYear} month={selectedMonth} />
+          )}
+        </div>
+
+        <div className="flex-auto">
+          {selectedYear && selectedMonth && (
+            <PerformanceCardOther year={selectedYear} month={selectedMonth} />
+          )}
+        </div>
+      </div>
+
+    </Main>
+  </>
+  )
+}

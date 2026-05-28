@@ -1,0 +1,47 @@
+[
+  {
+    "mode": "NULLABLE",
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "property_name",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "property_shortname",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "management_company",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "location",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "property_available_rooms",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "crs_id",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "pms_id",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "rateshop_id",
+    "type": "STRING"
+  }
+]
