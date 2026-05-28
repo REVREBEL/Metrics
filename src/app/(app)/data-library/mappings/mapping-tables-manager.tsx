@@ -217,15 +217,12 @@ export function MappingTablesManager({
   }
 
   function handleRowClick(row: MappingTableRow) {
-    console.log("[v0] handleRowClick called with row:", row.id)
-    
     // Set the row and open drawer immediately
     setEditingRow(row)
     setEditDrawerOpen(true)
     
     // Get columns synchronously
     const columns = getDetailColumnsForTable(selectedTableKey)
-    console.log("[v0] columns from getDetailColumnsForTable:", columns.length)
     setDrawerColumns(columns)
 
     // Load lookup options in the background
@@ -236,12 +233,10 @@ export function MappingTablesManager({
           .map((col) => col.lookupSource as string)
       ),
     ]
-    console.log("[v0] lookupSourceKeys:", lookupSourceKeys)
 
     if (lookupSourceKeys.length > 0) {
       Promise.all(
         lookupSourceKeys.map(async (src) => {
-          console.log("[v0] resolving lookup options for:", src)
           return resolveLookupOptionsAction(src).then((options) => [src, options] as const)
         })
       ).then((results) => {
@@ -249,10 +244,9 @@ export function MappingTablesManager({
         for (const [src, options] of results) {
           resolved[src] = options
         }
-        console.log("[v0] resolved lookup options:", Object.keys(resolved))
         setDrawerLookupOptions(resolved)
       }).catch((err) => {
-        console.error("[v0] Error resolving lookup options:", err)
+        console.error("[mapping-tables] Error resolving lookup options:", err)
       })
     }
   }
