@@ -24,7 +24,7 @@ import "@/styles/page-traffic-card.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <ClerkProvider publishableKey={process.env.CLERK_PUBLISHABLE_KEY}>
+    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
       <html lang="en" suppressHydrationWarning>
         <body>{children}</body>
       </html>
