@@ -31,3 +31,10 @@ externalPort = 3000
 [[ports]]
 localPort = 22581
 externalPort = 80
+
+[userenv]
+
+[userenv.shared]
+BQ_PROJECT = "revrebel-metrics"
+BQ_DATASET_ID = "metrics_core"
+BQ_DATA_LOCATION = "us-central1"
