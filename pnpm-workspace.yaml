@@ -1,4 +1,4 @@
-minimumReleaseAge: 86400
+minimumReleaseAge: 1440
 
 overrides:
   date-fns: 3.6.0
