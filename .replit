@@ -29,3 +29,6 @@ externalPort = 80
 BQ_PROJECT = "revrebel-metrics"
 BQ_DATASET_ID = "metrics_core"
 BQ_DATA_LOCATION = "us-central1"
+
+[agent]
+expertMode = true
