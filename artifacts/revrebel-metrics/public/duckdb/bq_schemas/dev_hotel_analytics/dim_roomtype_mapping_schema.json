@@ -1,0 +1,52 @@
+[
+  {
+    "mode": "NULLABLE",
+    "name": "roomtype_key",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "roomtype_code",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "roomtype",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "roomtype_class",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "roomtype_category_code",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "roomtype_category_base",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "roomtype_category",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "roomtype_available_rooms",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "roomtype_sort",
+    "type": "INTEGER"
+  }
+]

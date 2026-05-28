@@ -1,0 +1,4 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgCometColorV1 = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" id="CometColor_v1_svg__Layer_1" data-name="Layer 1" viewBox="0 0 500 500" width="1em" height="1em" {...props}><defs><style>{".CometColor_v1_svg__cls-1{fill:#f37d59}"}</style></defs><path d="M258.87 419.35c-22.42 32.21-53.39 53.03-90.68 58.71-65.06 9.91-124.82-25.99-146.99-84.91-23.24-61.76 1.42-127.5 57.83-163.04l221.3-157.04 6.51.34c10.41.54-32.94 66.54-41.41 94.82L478.36 20.3l8.05.3c1.91.07 1 5.46-.36 7.34L333.48 238.55l91.24-39.16 6.39-.51c1.97-.16 2.03 6.39 1.53 9.1L258.87 419.34Zm-10.55-72.83c0-56.65-45.93-102.58-102.58-102.58S43.16 289.87 43.16 346.52 89.09 449.1 145.74 449.1s102.58-45.93 102.58-102.58" className="CometColor_v1_svg__cls-1" /><circle cx={145.74} cy={346.49} r={81.27} className="CometColor_v1_svg__cls-1" /></svg>;
+export default SvgCometColorV1;

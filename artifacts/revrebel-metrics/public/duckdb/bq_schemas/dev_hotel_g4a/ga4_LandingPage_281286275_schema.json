@@ -1,0 +1,42 @@
+[
+  {
+    "name": "landingPage",
+    "type": "STRING"
+  },
+  {
+    "name": "activeUsers",
+    "type": "INTEGER"
+  },
+  {
+    "name": "keyEvents",
+    "type": "FLOAT"
+  },
+  {
+    "name": "newUsers",
+    "type": "INTEGER"
+  },
+  {
+    "name": "sessionKeyEventRate",
+    "type": "FLOAT"
+  },
+  {
+    "name": "sessions",
+    "type": "INTEGER"
+  },
+  {
+    "name": "totalRevenue",
+    "type": "FLOAT"
+  },
+  {
+    "name": "userEngagementDurationPerSession",
+    "type": "FLOAT"
+  },
+  {
+    "name": "_LATEST_DATE",
+    "type": "DATE"
+  },
+  {
+    "name": "_DATA_DATE",
+    "type": "DATE"
+  }
+]

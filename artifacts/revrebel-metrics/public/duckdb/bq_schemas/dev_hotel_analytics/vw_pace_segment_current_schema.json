@@ -1,0 +1,132 @@
+[
+  {
+    "description": "The unique identifier for a specific hotel property.",
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "description": "The name of the hotel property.",
+    "name": "property_name",
+    "type": "STRING"
+  },
+  {
+    "description": "The date of the guest's stay.",
+    "name": "stay_date",
+    "type": "DATE"
+  },
+  {
+    "description": "The market segment to which the booking belongs.",
+    "name": "segment",
+    "type": "STRING"
+  },
+  {
+    "description": "The date when the data snapshot was taken.",
+    "name": "snapshot_date",
+    "type": "DATE"
+  },
+  {
+    "description": "The number of rooms on the books.",
+    "name": "rooms_otb",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of rooms on the books for the same time last year.",
+    "name": "rooms_stly",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of rooms on the books for the same time two years ago.",
+    "name": "rooms_st2y",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of rooms for the last year.",
+    "name": "rooms_ly_actual",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The forecasted number of rooms.",
+    "name": "rooms_forecast",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The revenue on the books.",
+    "name": "rev_otb",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue on the books for the same time last year.",
+    "name": "rev_stly",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The revenue on the books for the same time two years ago.",
+    "name": "rev_st2y",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual revenue for the last year.",
+    "name": "rev_ly_actual",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The forecasted revenue.",
+    "name": "rev_forecast",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The budgeted number of rooms.",
+    "name": "rooms_budget",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The budgeted revenue.",
+    "name": "rev_budget",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The number of cancelled rooms.",
+    "name": "cancelled_rooms",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of cancelled rooms for the last year.",
+    "name": "cancelled_rooms_ly_actual",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of no-show rooms.",
+    "name": "noshow_rooms",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of no-show rooms for the last year.",
+    "name": "noshow_rooms_ly_actual",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The unique code for the market segment.",
+    "name": "segment_code",
+    "type": "STRING"
+  },
+  {
+    "description": "The broader group to which the market segment belongs.",
+    "name": "segment_group",
+    "type": "STRING"
+  },
+  {
+    "description": "The unique code for the segment group.",
+    "name": "segment_group_code",
+    "type": "STRING"
+  },
+  {
+    "description": "The financial segment classification.",
+    "name": "finance_segment",
+    "type": "STRING"
+  },
+  {
+    "description": "The sorting order for the segment.",
+    "name": "segment_sort",
+    "type": "INTEGER"
+  }
+]

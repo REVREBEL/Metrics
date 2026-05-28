@@ -1,0 +1,4 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgGalileoCircle = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" id="GalileoCircle_svg__Layer_1" data-name="Layer 1" viewBox="0 0 225 225" width="1em" height="1em" {...props}><defs><style>{".GalileoCircle_svg__cls-1{fill:#fff}"}</style></defs><circle cx={112.5} cy={112.5} r={105} /><path d="M111.2 145.89c6.76 10.19 15.59 16.46 25.15 23.4l-51.11.3c-12.89-7.35-23.5-17.8-28.62-31.92-11.18-30.87.94-65 28.91-82.28l65.48.21c-16.68 7.97-31.76 17.88-41.42 33.68-10.94 17.91-11.22 39.15 1.6 56.6Z" className="GalileoCircle_svg__cls-1" /><path d="M156.09 169.31c-6.06-.11-25.66-17.96-24.82-38.07.9-21.54 18.01-33.6 41.12-38.53l.11 76.9z" className="GalileoCircle_svg__cls-1" /></svg>;
+export default SvgGalileoCircle;

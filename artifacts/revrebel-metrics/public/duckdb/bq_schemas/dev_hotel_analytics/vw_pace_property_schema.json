@@ -1,0 +1,92 @@
+[
+  {
+    "description": "A unique identifier for a specific hotel property.",
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "description": "The name of the hotel property.",
+    "name": "property_name",
+    "type": "STRING"
+  },
+  {
+    "description": "The date for which the hotel stay information is recorded.",
+    "name": "stay_date",
+    "type": "DATE"
+  },
+  {
+    "description": "The date when the data snapshot was taken.",
+    "name": "snapshot_date",
+    "type": "DATE"
+  },
+  {
+    "description": "Information about special events occurring on the stay date.",
+    "name": "special_events",
+    "type": "STRING"
+  },
+  {
+    "description": "Information about special events occurring on the stay date in the previous year.",
+    "name": "special_events_ly",
+    "type": "STRING"
+  },
+  {
+    "description": "The number of rooms available for booking.",
+    "name": "available_rooms",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of rooms available for booking in the previous year.",
+    "name": "available_rooms_ly",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The total number of rooms demanded.",
+    "name": "total_demand_total",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual total number of rooms demanded in the previous year.",
+    "name": "total_demand_total_ly_actual",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of rooms demanded by groups.",
+    "name": "total_demand_group",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of rooms demanded by groups in the previous year.",
+    "name": "total_demand_group_ly_actual",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The number of rooms demanded by transient guests.",
+    "name": "total_demand_transient",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The actual number of rooms demanded by transient guests in the previous year.",
+    "name": "total_demand_transient_ly_actual",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The last room value, representing a pricing metric.",
+    "name": "lrv",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The percentage of rooms that were washed (canceled or no-show).",
+    "name": "wash_pct",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The actual percentage of rooms that were washed in the previous year.",
+    "name": "wash_pct_ly_actual",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The best available rate price for a room.",
+    "name": "bar_price",
+    "type": "FLOAT"
+  }
+]

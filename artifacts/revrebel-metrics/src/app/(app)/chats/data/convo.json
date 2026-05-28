@@ -1,0 +1,119 @@
+{
+  "conversations": [
+    {
+      "id": "1",
+      "profile": "",
+      "username": "SN",
+      "fullName": "Sarah Nguyen",
+      "title": "Revenue Manager",
+      "messages": [
+        {
+          "sender": "Sarah Nguyen",
+          "message": "Hey, the Q3 revenue report looks great!",
+          "timestamp": "2024-05-28T09:30:00Z"
+        },
+        {
+          "sender": "You",
+          "message": "Thanks! The ADR is up 12% compared to last year.",
+          "timestamp": "2024-05-28T09:32:00Z"
+        },
+        {
+          "sender": "Sarah Nguyen",
+          "message": "The occupancy rate improvements are really showing.",
+          "timestamp": "2024-05-28T09:35:00Z"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "profile": "",
+      "username": "MJ",
+      "fullName": "Marcus Johnson",
+      "title": "General Manager",
+      "messages": [
+        {
+          "sender": "Marcus Johnson",
+          "message": "Can we schedule a review of the growth plan?",
+          "timestamp": "2024-05-27T14:00:00Z"
+        },
+        {
+          "sender": "You",
+          "message": "Sure, I'm free Thursday afternoon.",
+          "timestamp": "2024-05-27T14:05:00Z"
+        },
+        {
+          "sender": "Marcus Johnson",
+          "message": "Perfect. I'll send a calendar invite.",
+          "timestamp": "2024-05-27T14:07:00Z"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "profile": "",
+      "username": "AL",
+      "fullName": "Alicia Lee",
+      "title": "Sales Director",
+      "messages": [
+        {
+          "sender": "Alicia Lee",
+          "message": "The new campaign is performing above expectations!",
+          "timestamp": "2024-05-26T11:00:00Z"
+        },
+        {
+          "sender": "You",
+          "message": "Amazing news. Which channel is driving the most bookings?",
+          "timestamp": "2024-05-26T11:10:00Z"
+        },
+        {
+          "sender": "Alicia Lee",
+          "message": "Direct bookings are up 18%, mostly from email outreach.",
+          "timestamp": "2024-05-26T11:12:00Z"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "profile": "",
+      "username": "DP",
+      "fullName": "David Park",
+      "title": "Operations Lead",
+      "messages": [
+        {
+          "sender": "David Park",
+          "message": "Maintenance on floor 3 is complete.",
+          "timestamp": "2024-05-25T08:00:00Z"
+        },
+        {
+          "sender": "You",
+          "message": "Great, thanks for the quick turnaround.",
+          "timestamp": "2024-05-25T08:15:00Z"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "profile": "",
+      "username": "RK",
+      "fullName": "Rachel Kim",
+      "title": "Marketing Manager",
+      "messages": [
+        {
+          "sender": "Rachel Kim",
+          "message": "New social campaign assets are ready for review.",
+          "timestamp": "2024-05-24T16:30:00Z"
+        },
+        {
+          "sender": "You",
+          "message": "I'll take a look this evening and give feedback.",
+          "timestamp": "2024-05-24T16:45:00Z"
+        },
+        {
+          "sender": "Rachel Kim",
+          "message": "Sounds good, thank you!",
+          "timestamp": "2024-05-24T16:46:00Z"
+        }
+      ]
+    }
+  ]
+}

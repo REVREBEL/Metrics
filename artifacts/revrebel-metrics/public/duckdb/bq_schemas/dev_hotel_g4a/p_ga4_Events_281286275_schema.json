@@ -1,0 +1,32 @@
+[
+  {
+    "description": "The name of the event.",
+    "mode": "NULLABLE",
+    "name": "eventName",
+    "type": "STRING"
+  },
+  {
+    "description": "The count of events.",
+    "mode": "NULLABLE",
+    "name": "eventCount",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The average number of events per user (Event count divided by Active users).",
+    "mode": "NULLABLE",
+    "name": "eventCountPerUser",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The sum of revenue from purchases, subscriptions, and advertising (Purchase revenue plus Subscription revenue plus Ad revenue) minus refunded transaction revenue.",
+    "mode": "NULLABLE",
+    "name": "totalRevenue",
+    "type": "FLOAT"
+  },
+  {
+    "description": "The number of distinct users who have logged at least one event, regardless of whether the site or app was in use when that event was logged.",
+    "mode": "NULLABLE",
+    "name": "totalUsers",
+    "type": "INTEGER"
+  }
+]

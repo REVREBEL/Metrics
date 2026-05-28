@@ -1,0 +1,87 @@
+[
+  {
+    "mode": "NULLABLE",
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_no",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_demand_id",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_start_date",
+    "type": "DATETIME"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_name",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_propername",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_shortname",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_brand",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_chain",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_chain_code",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_geo_code",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_available_rooms_string",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_available_rooms",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_pct_share",
+    "type": "FLOAT"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_distance_string",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_phone",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "compset_address",
+    "type": "STRING"
+  }
+]

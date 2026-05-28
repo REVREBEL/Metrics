@@ -1,0 +1,288 @@
+@layer components {
+  .metric-card {
+    --metric-color: var(--color-indicator-total-normal);
+    --metric-inverse-color: var(--color-indicator-total-inverse);
+    --metric-variance-color: var(--color-indicator-total-var);
+    --metric-icon-color: var(--metric-color);
+    --metric-chart-color: var(--metric-color);
+    --metric-chart-variance-color: var(--metric-variance-color);
+    --metric-value-color: var(--foreground);
+    width: 100%;
+    border: 0;
+    background-color: var(--card);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    color: var(--foreground);
+  }
+
+  .metric-card__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 0 1rem;
+  }
+
+  .metric-card__content {
+    padding: 0;
+  }
+
+  .metric-card__section {
+    margin-top: 1.5rem;
+  }
+
+  .metric-card__section:first-child {
+    margin-top: 0;
+  }
+
+  .metric-card__description {
+    margin: 0.25rem 0 1.5rem;
+    color: var(--muted-foreground);
+    font-family: var(--font-serif);
+    font-weight: var(--font-weight-light);
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .metric-card__title,
+  .metric-card-title {
+    font-family: var(--font-display);
+    color: var(--color-dark-blue);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .metric-card__eyebrow {
+    font-family: var(--font-eyebrow);
+    color: var(--base-color-3);
+    letter-spacing: 0.1em;
+    font-weight: 300;
+  }
+
+  .metric-card__label {
+    font-family: var(--font-display);
+    color: var(--color-dark-blue);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .metric-card__title {
+    font-size: 1.125rem;
+    line-height: 1;
+  }
+
+  .metric-card__eyebrow,
+  .metric-card__label {
+    font-size: 0.625rem;
+    line-height: 1;
+  }
+
+  .metric-card__eyebrow {
+    margin-bottom: 0.25rem;
+    opacity: 0.7;
+  }
+
+  .metric-card__value {
+    font-family: var(--font-numbers);
+    color: var(--metric-value-color);
+    font-size: 2.25rem;
+    line-height: 1;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .metric-card__metric-color {
+    color: var(--metric-color);
+  }
+
+  .metric-card__variance-color {
+    color: var(--metric-variance-color);
+  }
+
+  .metric-card__icon {
+    background: var(--metric-icon-color);
+    color: var(--metric-inverse-color);
+  }
+
+  .metric-card__change--positive {
+    color: var(--color-indicator-positive-normal);
+  }
+
+  .metric-card__change--negative {
+    color: var(--color-indicator-negative-normal);
+  }
+
+  .metric-card-tabs-root {
+    width: 100%;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .metric-card-tabs {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    align-items: stretch;
+    justify-content: stretch;
+    gap: 0;
+    height: auto;
+    min-height: 2.875rem;
+    border-radius: 2px;
+    background-color: var(--background);
+    padding: 4px;
+  }
+
+  .metric-card-tabs>* {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .metric-card-tab {
+    display: inline-flex;
+    flex: 1 1 0;
+    width: 100%;
+    height: auto;
+    min-height: 2.125rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    border: 0;
+    background-color: transparent;
+    color: var(--color-dark-blue);
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    box-shadow: none;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+
+  .metric-card-tab:hover {
+    background-color: var(--color-light-blue-100);
+  }
+
+  .metric-card-tab[data-state="active"] {
+    background-color: var(--color-dark-blue-inverse);
+    color: var(--color-dark-blue);
+    font-weight: 700;
+    border-radius: 2px;
+    box-shadow: none;
+  }
+
+  .metric-card-tab[data-state="active"]:hover {
+    background-color: var(--color-dark-blue-fade);
+  }
+
+  .metric-card-tab:focus-visible {
+    outline: 2px solid var(--color-dark-blue);
+    outline-offset: 2px;
+  }
+
+  .metric-card__insight {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    border: 1px solid color-mix(in oklch, var(--color-dark-blue) 16%, transparent);
+    border-radius: 0.75rem;
+    background-color: var(--color-smoke-fade);
+    padding: 1rem;
+  }
+
+  .metric-card__insight-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    margin-top: 0.125rem;
+    color: color-mix(in oklch, var(--color-dark-blue) 55%, transparent);
+  }
+
+  .metric-card__insight-copy {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.6875rem;
+    font-family: var(--font-serif);
+    font-weight: var(--font-weight-light);
+    line-height: 1.55;
+  }
+
+  .metric-card__insight-label {
+    font-family: var(--font-display);
+    color: var(--color-dark-blue);
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
+
+/*
+  Unlayered overrides intentionally sit outside @layer components.
+  Tailwind utilities generated by the shadcn Tabs component otherwise win the cascade.
+*/
+[data-slot="tabs-list"].metric-card-tabs {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: stretch;
+  justify-content: stretch;
+  gap: 0;
+  height: auto;
+  min-height: 2.875rem;
+  border-radius: 2px;
+  background-color: var(--background);
+  padding: 8px;
+  color: var(--foreground);
+}
+
+[data-slot="tabs-list"].metric-card-tabs>[data-slot="tabs-trigger"] {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+[data-slot="tabs-trigger"].metric-card-tab {
+  display: inline-flex;
+  flex: 1 1 0;
+  width: 100%;
+  height: auto;
+  min-height: 2.125rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  border: 0;
+  border-radius: 2px;
+  background-color: transparent;
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  box-shadow: none;
+  white-space: nowrap;
+}
+
+[data-slot="tabs-trigger"].metric-card-tab:hover {
+  background-color: color-mix(in oklch, var(--foreground) 8%, transparent);
+  color: var(--foreground);
+}
+
+[data-slot="tabs-trigger"].metric-card-tab[data-state="active"] {
+  background-color: var(--color-dark-blue);
+  color: var(--color-dark-blue-inverse);
+  font-weight: 700;
+  border-radius: 2px;
+  box-shadow: none;
+}
+
+[data-slot="tabs-trigger"].metric-card-tab[data-state="active"]:hover {
+  background-color: var(--color-dark-blue);
+  color: var(--color-dark-blue-inverse);
+}

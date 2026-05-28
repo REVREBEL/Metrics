@@ -1,0 +1,102 @@
+[
+  {
+    "name": "property_code",
+    "type": "STRING"
+  },
+  {
+    "name": "property_name",
+    "type": "STRING"
+  },
+  {
+    "name": "hotel_id",
+    "type": "INTEGER"
+  },
+  {
+    "description": "The date the data was pulled/shopped",
+    "name": "rateshop_date",
+    "type": "DATE"
+  },
+  {
+    "description": "The date of the actual stay",
+    "name": "arrival_date",
+    "type": "DATE"
+  },
+  {
+    "name": "competitor_id",
+    "type": "INTEGER"
+  },
+  {
+    "name": "competitor_name",
+    "type": "STRING"
+  },
+  {
+    "description": "The numeric price (NULL if Sold Out)",
+    "name": "rate",
+    "type": "FLOAT"
+  },
+  {
+    "name": "currency",
+    "type": "STRING"
+  },
+  {
+    "name": "los",
+    "type": "INTEGER"
+  },
+  {
+    "name": "no_guests",
+    "type": "INTEGER"
+  },
+  {
+    "name": "meal_type",
+    "type": "STRING"
+  },
+  {
+    "name": "membership",
+    "type": "STRING"
+  },
+  {
+    "name": "roomtype_name",
+    "type": "STRING"
+  },
+  {
+    "description": "Source bucket: BAR, Lowest, or Lowest Flex",
+    "name": "roomtype_label",
+    "type": "STRING"
+  },
+  {
+    "name": "channel_id",
+    "type": "STRING"
+  },
+  {
+    "name": "requested_ratetype",
+    "type": "STRING"
+  },
+  {
+    "name": "demand",
+    "type": "FLOAT"
+  },
+  {
+    "description": "TRUE if Remark indicates Sold Out",
+    "name": "is_sold_out",
+    "type": "BOOLEAN"
+  },
+  {
+    "description": "Minimum Length of Stay extracted from Remarks",
+    "name": "min_los",
+    "type": "INTEGER"
+  },
+  {
+    "description": "TRUE if rate allows cancellation/flexibility",
+    "name": "is_flexible",
+    "type": "BOOLEAN"
+  },
+  {
+    "name": "raw_rate_remark",
+    "type": "STRING"
+  },
+  {
+    "defaultValueExpression": "CURRENT_TIMESTAMP()",
+    "name": "inserted_at",
+    "type": "TIMESTAMP"
+  }
+]

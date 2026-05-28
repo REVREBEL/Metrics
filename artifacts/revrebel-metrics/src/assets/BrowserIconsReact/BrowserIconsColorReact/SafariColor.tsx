@@ -1,0 +1,6 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgSafariColor = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" id="SafariColor_svg__Layer_1" data-name="Layer 1" viewBox="0 0 500 500" width="1em" height="1em" {...props}><defs><style>{".SafariColor_svg__cls-1{fill:#b2d3de}"}</style></defs><path d="M250 12.5C118.83 12.5 12.5 118.83 12.5 250S118.83 487.5 250 487.5 487.5 381.17 487.5 250 381.17 12.5 250 12.5m.08 444.4C135.72 456.9 43 364.19 43 249.82S135.72 42.75 250.08 42.75s207.08 92.71 207.08 207.08-92.71 207.08-207.08 207.08Z" className="SafariColor_svg__cls-1" /><path d="m232.91 204.69 138.28-83.57 6.05-10.09-149.02 90.06c-12.67 7.88-22.26 17.76-29.51 30.79l-87.63 146.5 10.03-6.08 81.1-135.59c7.53-13.56 17.51-23.83 30.69-32.02Z" style={{
+    fill: "#163666"
+  }} /><path d="M283.71 267.04c-4.24 7.08-12.01 13.07-19.6 18.66l-143 86.61-10.03 16.77 159.15-96.39c7.89-5.81 15.97-12.05 20.38-19.4l97.27-162.25-16.69 10.09-87.48 145.92Z" className="SafariColor_svg__cls-1" /><path d="m283.71 267.04 87.48-145.92-138.28 83.57c-13.17 8.2-23.15 18.47-30.69 32.02l-81.1 135.59 143-86.61c7.59-5.59 15.36-11.58 19.6-18.66Zm-34.12 2.21c-10.82 0-19.59-8.77-19.59-19.59s8.77-19.59 19.59-19.59 19.59 8.77 19.59 19.59-8.77 19.59-19.59 19.59" className="SafariColor_svg__cls-1" /></svg>;
+export default SvgSafariColor;

@@ -1,0 +1,10 @@
+export { default as IconDir } from "./icon-dir";
+export { default as IconLayoutCompact } from "./icon-layout-compact";
+export { default as IconLayoutDefault } from "./icon-layout-default";
+export { default as IconLayoutFull } from "./icon-layout-full";
+export { default as IconSidebarFloating } from "./icon-sidebar-floating";
+export { default as IconSidebarInset } from "./icon-sidebar-inset";
+export { default as IconSidebarSidebar } from "./icon-sidebar-sidebar";
+export { default as IconThemeDark } from "./icon-theme-dark";
+export { default as IconThemeLight } from "./icon-theme-light";
+export { default as IconThemeSystem } from "./icon-theme-system";
