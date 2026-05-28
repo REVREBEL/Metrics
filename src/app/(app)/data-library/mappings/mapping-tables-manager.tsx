@@ -578,6 +578,10 @@ function sortLabel(sortKey: SortKey) {
 }
 
 function formatDate(value: string) {
+  const date = new Date(value)
+  if (isNaN(date.getTime())) {
+    return "N/A"
+  }
   return new Intl.DateTimeFormat("en", {
     month: "short",
     day: "numeric",
@@ -585,5 +589,5 @@ function formatDate(value: string) {
     hour: "numeric",
     minute: "2-digit",
     timeZone: "UTC",
-  }).format(new Date(value))
+  }).format(date)
 }
