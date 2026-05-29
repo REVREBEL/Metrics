@@ -24,6 +24,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { initiativeStatuses, taskStatuses, strategyTypes } from '../data/data'
 import type { Initiative, Task } from '../data/schema'
+import { useTasks } from './tasks-provider'
 
 
 type KanbanViewProps = {
@@ -295,6 +296,14 @@ function InitiativeCard({ initiative, onClick }: { initiative: Initiative; onCli
 }
 
 function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
+  const { setOpen, setCurrentRow } = useTasks()
+
+  const handleEdit = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setCurrentRow(task)
+    setOpen('update')
+  }
+
   // Get category from department
   const categoryKey = task.assignedDepartment || 'operations'
   const colors = categoryColors[categoryKey] || { bg: 'bg-slate-100 dark:bg-slate-800', text: 'text-slate-700 dark:text-slate-300', label: 'General' }
@@ -321,7 +330,7 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem onClick={handleEdit}>Edit</DropdownMenuItem>
             <DropdownMenuItem>Duplicate</DropdownMenuItem>
             <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
           </DropdownMenuContent>
