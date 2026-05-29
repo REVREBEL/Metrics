@@ -399,15 +399,15 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
         <div className="flex items-center gap-3 text-muted-foreground">
           <span className="flex items-center gap-1 text-xs">
             <Eye className="size-3" />
-            {Math.floor(Math.random() * 10) + 1}
+            {(task.id.charCodeAt(task.id.length - 1) % 10) + 1}
           </span>
           <span className="flex items-center gap-1 text-xs">
             <MessageSquare className="size-3" />
-            {Math.floor(Math.random() * 5)}
+            {task.id.charCodeAt(task.id.length - 1) % 5}
           </span>
           <span className="flex items-center gap-1 text-xs">
             <Link2 className="size-3" />
-            {Math.floor(Math.random() * 3)}
+            {task.id.charCodeAt(task.id.length - 1) % 3}
           </span>
         </div>
       </div>
