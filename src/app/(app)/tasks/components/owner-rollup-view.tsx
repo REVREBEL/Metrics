@@ -12,7 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { CheckCircle2, AlertTriangle, Clock, ArrowRight } from 'lucide-react'
+import { IconCircleCheck, IconAlertTriangle, IconClock } from '@tabler/icons-react'
 import type { Initiative } from '../data/schema'
 
 type OwnerRollupViewProps = {
@@ -81,7 +81,7 @@ export function OwnerRollupView({ initiatives }: OwnerRollupViewProps) {
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="size-5 text-green-500" />
+              <IconCircleCheck size={20} stroke={1.5} className="text-green-500" />
               <span className="text-2xl font-bold">{stats.onTrack}</span>
             </div>
           </CardContent>

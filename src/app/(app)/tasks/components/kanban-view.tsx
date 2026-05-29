@@ -2,15 +2,15 @@
 
 import { useMemo } from 'react'
 import { 
-  MoreHorizontal, 
-  Plus, 
-  AlertTriangle,
-  Eye,
-  MessageSquare,
-  Link2,
-  GripVertical,
-  ListTodo
-} from 'lucide-react'
+  IconDotsVertical,
+  IconPlus,
+  IconAlertTriangle,
+  IconEye,
+  IconMessage,
+  IconLink,
+  IconGripVertical,
+  IconListCheck,
+} from '@tabler/icons-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -118,7 +118,7 @@ export function KanbanView({
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="icon" className="size-7">
-                      <MoreHorizontal className="size-4" />
+                      <IconDotsVertical size={20} stroke={1.5} />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
@@ -134,7 +134,7 @@ export function KanbanView({
                 variant="outline" 
                 className="w-full mb-3 border-dashed border-border/60 text-muted-foreground hover:text-foreground hover:border-border hover:bg-muted/50"
               >
-                <Plus className="size-4 mr-2" />
+                <IconPlus size={20} stroke={1.5} className="mr-2" />
                 Add New {mode === 'initiatives' ? 'Initiative' : 'Task'}
               </Button>
 
@@ -143,7 +143,7 @@ export function KanbanView({
                 {items.length === 0 ? (
                   <div className="rounded-xl border border-dashed border-border/50 bg-muted/30 p-8 text-center">
                     <div className="mx-auto size-10 rounded-full bg-muted flex items-center justify-center mb-3">
-                      <Plus className="size-5 text-muted-foreground" />
+                      <IconPlus size={20} stroke={1.5} className="text-muted-foreground" />
                     </div>
                     <p className="text-sm text-muted-foreground">No {mode === 'initiatives' ? 'initiatives' : 'tasks'} yet</p>
                     <p className="text-xs text-muted-foreground/70 mt-1">Add one to get started</p>
@@ -190,14 +190,14 @@ function InitiativeCard({ initiative, onClick }: { initiative: Initiative; onCli
       onClick={onClick}
     >
       {/* Drag Handle + Menu */}
-      <div className="flex items-start justify-between mb-3">
+        <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
-          <GripVertical className="size-4 text-muted-foreground cursor-grab" />
+          <IconGripVertical size={20} stroke={1.5} className="text-muted-foreground cursor-grab" />
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="size-6 -mt-1 -mr-1" onClick={e => e.stopPropagation()}>
-              <MoreHorizontal className="size-4" />
+              <IconDotsVertical size={20} stroke={1.5} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -228,7 +228,7 @@ function InitiativeCard({ initiative, onClick }: { initiative: Initiative; onCli
       {/* Task Progress */}
       {totalTasks > 0 && (
         <div className="flex items-center gap-2 mb-3">
-          <ListTodo className="size-3.5 text-muted-foreground" />
+          <IconListCheck size={20} stroke={1.5} className="text-muted-foreground" />
           <span className={cn(
             "text-sm font-medium px-2 py-0.5 rounded",
             progress === 100 
@@ -245,7 +245,7 @@ function InitiativeCard({ initiative, onClick }: { initiative: Initiative; onCli
       {/* Risk Indicator */}
       {(initiative.hasRisk || initiative.risksBlockers) && (
         <div className="flex items-center gap-1.5 text-orange-600 dark:text-orange-400 mb-3">
-          <AlertTriangle className="size-3.5" />
+          <IconAlertTriangle size={20} stroke={1.5} />
           <span className="text-xs font-medium line-clamp-1">
             {initiative.risksBlockers || 'At Risk'}
           </span>
@@ -278,15 +278,15 @@ function InitiativeCard({ initiative, onClick }: { initiative: Initiative; onCli
         {/* Metrics */}
         <div className="flex items-center gap-3 text-muted-foreground">
           <span className="flex items-center gap-1 text-xs">
-            <Eye className="size-3" />
+            <IconEye size={20} stroke={1.5} />
             {(initiative.id.charCodeAt(initiative.id.length - 1) % 10) + 1}
           </span>
           <span className="flex items-center gap-1 text-xs">
-            <MessageSquare className="size-3" />
+            <IconMessage size={20} stroke={1.5} />
             {initiative.id.charCodeAt(initiative.id.length - 1) % 5}
           </span>
           <span className="flex items-center gap-1 text-xs">
-            <Link2 className="size-3" />
+            <IconLink size={20} stroke={1.5} />
             {initiative.id.charCodeAt(initiative.id.length - 1) % 3}
           </span>
         </div>
@@ -321,12 +321,12 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
       {/* Drag Handle + Menu */}
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
-          <GripVertical className="size-4 text-muted-foreground cursor-grab" />
+          <IconGripVertical size={20} stroke={1.5} className="text-muted-foreground cursor-grab" />
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="size-6 -mt-1 -mr-1" onClick={e => e.stopPropagation()}>
-              <MoreHorizontal className="size-4" />
+              <IconDotsVertical size={20} stroke={1.5} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -356,7 +356,7 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
 
       {/* Subtask Progress */}
       <div className="flex items-center gap-2 mb-3">
-        <ListTodo className="size-3.5 text-muted-foreground" />
+        <IconListCheck size={20} stroke={1.5} className="text-muted-foreground" />
         <span className={cn(
           "text-sm font-medium px-2 py-0.5 rounded",
           isComplete 
@@ -370,7 +370,7 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
       {/* Blocker Note */}
       {task.blockerNotes && (
         <div className="flex items-center gap-1.5 text-red-600 dark:text-red-400 mb-3">
-          <AlertTriangle className="size-3.5" />
+          <IconAlertTriangle size={20} stroke={1.5} />
           <span className="text-xs font-medium line-clamp-1">{task.blockerNotes}</span>
         </div>
       )}
@@ -401,15 +401,15 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
         {/* Metrics */}
         <div className="flex items-center gap-3 text-muted-foreground">
           <span className="flex items-center gap-1 text-xs">
-            <Eye className="size-3" />
+            <IconEye size={20} stroke={1.5} />
             {(task.id.charCodeAt(task.id.length - 1) % 10) + 1}
           </span>
           <span className="flex items-center gap-1 text-xs">
-            <MessageSquare className="size-3" />
+            <IconMessage size={20} stroke={1.5} />
             {task.id.charCodeAt(task.id.length - 1) % 5}
           </span>
           <span className="flex items-center gap-1 text-xs">
-            <Link2 className="size-3" />
+            <IconLink size={20} stroke={1.5} />
             {task.id.charCodeAt(task.id.length - 1) % 3}
           </span>
         </div>

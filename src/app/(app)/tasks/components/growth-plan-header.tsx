@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { LayoutGrid, List, Plus, Kanban, Calendar, Table2 } from 'lucide-react'
+import { IconPlus, IconLayoutKanban, IconCalendar, IconTable } from '@tabler/icons-react'
 import type { Initiative } from '../data/schema'
 
 export type GrowthPlanMode = 'initiatives' | 'tasks'
@@ -85,7 +85,7 @@ export function GrowthPlanHeader({
 
           {/* Add Member Button */}
           <Button variant="default" size="sm" className="gap-1.5">
-            <Plus className="size-4" />
+            <IconPlus size={20} stroke={1.5} />
             Add Member
           </Button>
         </div>
@@ -140,7 +140,7 @@ export function GrowthPlanHeader({
             size="sm" 
             className="h-8 gap-1.5 bg-background"
           >
-            <Kanban className="size-4" />
+            <IconLayoutKanban size={20} stroke={1.5} />
             Board
           </Button>
           <Button 
@@ -148,7 +148,7 @@ export function GrowthPlanHeader({
             size="sm" 
             className="h-8 gap-1.5"
           >
-            <Calendar className="size-4" />
+            <IconCalendar size={20} stroke={1.5} />
             Schedule
           </Button>
           <Button 
@@ -156,7 +156,7 @@ export function GrowthPlanHeader({
             size="sm" 
             className="h-8 gap-1.5"
           >
-            <Table2 className="size-4" />
+            <IconTable size={20} stroke={1.5} />
             List
           </Button>
         </div>

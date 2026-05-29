@@ -2,18 +2,18 @@
 
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
-import { 
-  MoreVertical, 
-  Plus, 
-  Clock,
-  TrendingUp,
-  ChevronDown,
-  Search,
-  Globe,
-  Smartphone,
-  Monitor,
-  Layers
-} from 'lucide-react'
+import {
+  IconDotsVertical,
+  IconPlus,
+  IconClock,
+  IconTrendingUp,
+  IconChevronDown,
+  IconSearch,
+  IconWorld,
+  IconDeviceMobile,
+  IconDeviceDesktop,
+  IconStack2,
+} from '@tabler/icons-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -50,10 +50,10 @@ const defaultTeamMembers = [
 
 // Initiative icons based on strategy type
 const strategyIcons: Record<string, React.ReactNode> = {
-  'demand_generation': <Globe className="size-4" />,
-  'product_revenue': <Layers className="size-4" />,
-  'retention_expansion': <TrendingUp className="size-4" />,
-  'operational_efficiency': <Monitor className="size-4" />,
+  'demand_generation': <IconWorld size={20} stroke={1.5} />,
+  'product_revenue': <IconStack2 size={20} stroke={1.5} />,
+  'retention_expansion': <IconTrendingUp size={20} stroke={1.5} />,
+  'operational_efficiency': <IconDeviceDesktop size={20} stroke={1.5} />,
 }
 
 export function GrowthPlanSidebar({ 
@@ -81,7 +81,7 @@ export function GrowthPlanSidebar({
       {/* Search */}
       <div className="p-4 border-b border-border">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+          <IconSearch size={20} stroke={1.5} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
           <Input 
             placeholder="Search" 
             className="pl-9 bg-background"
@@ -140,7 +140,7 @@ export function GrowthPlanSidebar({
                           )}
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <MoreVertical className="size-3.5" />
+                          <IconDotsVertical size={20} stroke={1.5} />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
@@ -159,7 +159,7 @@ export function GrowthPlanSidebar({
               variant="outline" 
               className="w-full mt-3 border-dashed justify-start"
             >
-              <Plus className="size-4 mr-2" />
+              <IconPlus size={20} stroke={1.5} className="mr-2" />
               Add Initiative
             </Button>
           </div>
@@ -168,8 +168,8 @@ export function GrowthPlanSidebar({
           <Collapsible open={teamExpanded} onOpenChange={setTeamExpanded}>
             <CollapsibleTrigger className="flex items-center justify-between w-full mb-3">
               <h3 className="text-sm font-semibold text-foreground">Team members</h3>
-              <ChevronDown className={cn(
-                "size-4 text-muted-foreground transition-transform",
+              <IconChevronDown size={20} stroke={1.5} className={cn(
+                "text-muted-foreground transition-transform",
                 teamExpanded ? "" : "-rotate-90"
               )} />
             </CollapsibleTrigger>
@@ -205,7 +205,7 @@ export function GrowthPlanSidebar({
                         )}
                       </p>
                     </div>
-                    <ChevronDown className="size-4 text-muted-foreground" />
+                    <IconChevronDown size={20} stroke={1.5} className="text-muted-foreground" />
                   </div>
                 ))}
               </div>
@@ -221,7 +221,7 @@ export function GrowthPlanSidebar({
           <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Total Hours</p>
           <p className="text-2xl font-bold text-foreground">23.7 hours</p>
           <p className="text-xs text-emerald-600 dark:text-emerald-400 flex items-center gap-1 mt-1">
-            <TrendingUp className="size-3" />
+            <IconTrendingUp size={20} stroke={1.5} />
             2.5% from last week
           </p>
         </div>
