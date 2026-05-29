@@ -46,7 +46,8 @@ type DepartmentGroup = {
 
 function getInitials(name: string): string {
   return name
-    .split(' ')
+    .trim()
+    .split(/\s+/)
     .map(word => word[0])
     .join('')
     .toUpperCase()
