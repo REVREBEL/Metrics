@@ -306,8 +306,8 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
   const colors = categoryColors[categoryKey] || { bg: 'bg-slate-100 dark:bg-slate-800', text: 'text-slate-700 dark:text-slate-300', label: 'General' }
   
   // Mock subtask progress
-  const completed = task.status === 'completed' || task.status === 'complete' ? 3 : Math.floor(Math.random() * 3)
-  const total = Math.floor(Math.random() * 5) + 3
+  const total = (task.id.charCodeAt(task.id.length - 1) % 5) + 3
+  const completed = task.status === 'completed' || task.status === 'complete' ? total : (task.id.charCodeAt(task.id.length - 1) % total)
   const isComplete = task.status === 'completed' || task.status === 'complete'
   
   return (
