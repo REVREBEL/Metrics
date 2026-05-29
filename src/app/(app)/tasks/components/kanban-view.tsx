@@ -1,20 +1,35 @@
 "use client"
 
 import { useMemo } from 'react'
+import { 
+  MoreHorizontal, 
+  Plus, 
+  AlertTriangle,
+  Eye,
+  MessageSquare,
+  Link2,
+  GripVertical,
+  ListTodo
+} from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
-import { initiativeStatuses, taskStatuses } from '../data/data'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import { initiativeStatuses, taskStatuses, strategyTypes } from '../data/data'
 import type { Initiative, Task } from '../data/schema'
 
 // Format date without locale-specific formatting to avoid hydration mismatch
 function formatDate(dateString: string): string {
   const date = new Date(dateString)
-  const month = date.getUTCMonth() + 1
-  const day = date.getUTCDate()
-  const year = date.getUTCFullYear()
-  return `${month}/${day}/${year}`
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  return `${months[date.getUTCMonth()]} ${date.getUTCDate()}`
 }
 
 type KanbanViewProps = {
@@ -25,157 +40,44 @@ type KanbanViewProps = {
   onTaskClick?: (task: Task) => void
 }
 
-type KanbanColumnProps = {
-  title: string
-  count: number
-  children: React.ReactNode
-  status: string
+// Status dot colors mapping
+const statusDotColors: Record<string, string> = {
+  discussed: 'bg-red-500',
+  planning: 'bg-blue-500',
+  active: 'bg-emerald-500',
+  blocked: 'bg-orange-500',
+  complete: 'bg-emerald-600',
+  not_started: 'bg-red-500',
+  in_progress: 'bg-blue-500',
+  waiting: 'bg-orange-500',
+  completed: 'bg-emerald-500',
+  canceled: 'bg-slate-400',
+  at_risk: 'bg-orange-500',
+  archived: 'bg-slate-400',
 }
 
-function KanbanColumn({ title, count, children, status }: KanbanColumnProps) {
-  const getStatusColor = (statusValue: string) => {
-    switch (statusValue) {
-      case 'discussed':
-      case 'not_started':
-        return 'bg-slate-100 dark:bg-slate-800'
-      case 'planning':
-      case 'waiting':
-        return 'bg-blue-50 dark:bg-blue-950'
-      case 'active':
-      case 'in_progress':
-        return 'bg-emerald-50 dark:bg-emerald-950'
-      case 'blocked':
-        return 'bg-red-50 dark:bg-red-950'
-      case 'at_risk':
-        return 'bg-orange-50 dark:bg-orange-950'
-      case 'completed':
-      case 'complete':
-        return 'bg-green-50 dark:bg-green-950'
-      case 'canceled':
-      case 'archived':
-        return 'bg-gray-100 dark:bg-gray-800'
-      default:
-        return 'bg-muted'
-    }
-  }
-
-  return (
-    <div className="flex h-full min-w-[280px] max-w-[320px] flex-col rounded-lg border bg-card">
-      <div className={cn("flex items-center justify-between rounded-t-lg p-3", getStatusColor(status))}>
-        <h3 className="font-display text-sm font-semibold uppercase tracking-tight text-foreground">
-          {title}
-        </h3>
-        <Badge variant="secondary" className="h-5 min-w-5 justify-center rounded-full px-1.5 text-xs font-medium">
-          {count}
-        </Badge>
-      </div>
-      <ScrollArea className="flex-1 p-2">
-        <div className="flex flex-col gap-2">
-          {children}
-        </div>
-      </ScrollArea>
-    </div>
-  )
-}
-
-function InitiativeCard({ initiative, onClick }: { initiative: Initiative; onClick?: () => void }) {
-  const priorityColor = {
-    low: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
-    medium: 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300',
-    high: 'bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300',
-    critical: 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300',
-  }
-
-  return (
-    <Card 
-      className="cursor-pointer transition-all hover:shadow-md hover:border-primary/50"
-      onClick={onClick}
-    >
-      <CardHeader className="p-3 pb-2">
-        <div className="flex items-start justify-between gap-2">
-          <CardTitle className="text-sm font-medium leading-tight line-clamp-2">
-            {initiative.title}
-          </CardTitle>
-        </div>
-      </CardHeader>
-      <CardContent className="p-3 pt-0">
-        <div className="flex flex-col gap-2">
-          <div className="flex flex-wrap items-center gap-1.5">
-            <Badge variant="outline" className="text-xs">
-              {initiative.strategyType.replace('_', ' ')}
-            </Badge>
-            <Badge className={cn("text-xs", priorityColor[initiative.priority])}>
-              {initiative.priority}
-            </Badge>
-          </div>
-          {initiative.leadDepartment && (
-            <p className="text-xs text-muted-foreground">
-              Lead: {initiative.leadDepartment.replace('_', ' ')}
-            </p>
-          )}
-          {initiative.targetLaunchDate && (
-            <p className="text-xs text-muted-foreground">
-              Launch: {formatDate(initiative.targetLaunchDate)}
-            </p>
-          )}
-          {initiative.risksBlockers && (
-            <p className="text-xs text-orange-600 dark:text-orange-400 line-clamp-1">
-              Risk: {initiative.risksBlockers}
-            </p>
-          )}
-        </div>
-      </CardContent>
-    </Card>
-  )
-}
-
-function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
-  const priorityColor = {
-    low: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
-    medium: 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300',
-    high: 'bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300',
-    critical: 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300',
-  }
-
-  return (
-    <Card 
-      className="cursor-pointer transition-all hover:shadow-md hover:border-primary/50"
-      onClick={onClick}
-    >
-      <CardContent className="p-3">
-        <div className="flex flex-col gap-2">
-          <p className="text-sm font-medium leading-tight line-clamp-2">
-            {task.title}
-          </p>
-          <div className="flex flex-wrap items-center gap-1.5">
-            <Badge className={cn("text-xs", priorityColor[task.priority])}>
-              {task.priority}
-            </Badge>
-            {task.externalUpdateEnabled && (
-              <Badge variant="outline" className="text-xs">
-                External
-              </Badge>
-            )}
-          </div>
-          {task.assignedTo && (
-            <p className="text-xs text-muted-foreground">
-              {task.assignedTo}
-            </p>
-          )}
-          {task.dueDate && (
-            <p className="text-xs text-muted-foreground">
-              Due: {formatDate(task.dueDate)}
-            </p>
-          )}
-          {task.blockerNotes && (
-            <p className="text-xs text-red-600 dark:text-red-400 line-clamp-1">
-              Blocked: {task.blockerNotes}
-            </p>
-          )}
-        </div>
-      </CardContent>
-    </Card>
-  )
+// Category badge colors - matching the reference design
+const categoryColors: Record<string, { bg: string; text: string; label: string }> = {
+  'demand_generation': { bg: 'bg-teal-100 dark:bg-teal-900/40', text: 'text-teal-700 dark:text-teal-300', label: 'Demand Gen' },
+  'product_revenue': { bg: 'bg-orange-100 dark:bg-orange-900/40', text: 'text-orange-700 dark:text-orange-300', label: 'Product Revenue' },
+  'retention_expansion': { bg: 'bg-purple-100 dark:bg-purple-900/40', text: 'text-purple-700 dark:text-purple-300', label: 'Retention' },
+  'operational_efficiency': { bg: 'bg-blue-100 dark:bg-blue-900/40', text: 'text-blue-700 dark:text-blue-300', label: 'Operations' },
+  'marketing': { bg: 'bg-yellow-100 dark:bg-yellow-900/40', text: 'text-yellow-800 dark:text-yellow-300', label: 'Marketing' },
+  'sales': { bg: 'bg-emerald-100 dark:bg-emerald-900/40', text: 'text-emerald-700 dark:text-emerald-300', label: 'Sales' },
+  'product': { bg: 'bg-purple-100 dark:bg-purple-900/40', text: 'text-purple-700 dark:text-purple-300', label: 'Product' },
+  'operations': { bg: 'bg-slate-100 dark:bg-slate-800', text: 'text-slate-700 dark:text-slate-300', label: 'Operations' },
+  'finance': { bg: 'bg-blue-100 dark:bg-blue-900/40', text: 'text-blue-700 dark:text-blue-300', label: 'Finance' },
+  'customer_success': { bg: 'bg-teal-100 dark:bg-teal-900/40', text: 'text-teal-700 dark:text-teal-300', label: 'Customer Success' },
+  // Department mappings
+  'revenue_management': { bg: 'bg-blue-100 dark:bg-blue-900/40', text: 'text-blue-700 dark:text-blue-300', label: 'Revenue' },
+  'digital_agency': { bg: 'bg-purple-100 dark:bg-purple-900/40', text: 'text-purple-700 dark:text-purple-300', label: 'Agency' },
+  'front_office': { bg: 'bg-orange-100 dark:bg-orange-900/40', text: 'text-orange-700 dark:text-orange-300', label: 'Front Office' },
+  // Strategy type mappings
+  'promotion': { bg: 'bg-teal-100 dark:bg-teal-900/40', text: 'text-teal-700 dark:text-teal-300', label: 'Promotion' },
+  'rate_strategy': { bg: 'bg-blue-100 dark:bg-blue-900/40', text: 'text-blue-700 dark:text-blue-300', label: 'Rate Strategy' },
+  'content_update': { bg: 'bg-yellow-100 dark:bg-yellow-900/40', text: 'text-yellow-800 dark:text-yellow-300', label: 'Content' },
+  'sales_push': { bg: 'bg-emerald-100 dark:bg-emerald-900/40', text: 'text-emerald-700 dark:text-emerald-300', label: 'Sales' },
+  'campaign': { bg: 'bg-orange-100 dark:bg-orange-900/40', text: 'text-orange-700 dark:text-orange-300', label: 'Campaign' },
 }
 
 export function KanbanView({ 
@@ -185,58 +87,330 @@ export function KanbanView({
   onInitiativeClick,
   onTaskClick,
 }: KanbanViewProps) {
+  const statuses = mode === 'initiatives' ? initiativeStatuses : taskStatuses
+
   const columns = useMemo(() => {
     if (mode === 'initiatives') {
-      return initiativeStatuses.map(status => ({
+      return statuses.map(status => ({
         ...status,
         items: initiatives.filter(i => i.status === status.value),
       }))
     } else {
-      return taskStatuses.map(status => ({
+      return statuses.map(status => ({
         ...status,
         items: tasks.filter(t => t.status === status.value),
       }))
     }
-  }, [initiatives, tasks, mode])
+  }, [initiatives, tasks, mode, statuses])
 
   return (
-    <div className="flex h-full flex-col gap-4">
-      <ScrollArea className="w-full">
-        <div className="flex gap-4 pb-4">
-          {columns.map((column) => (
-            <KanbanColumn 
-              key={column.value} 
-              title={column.label} 
-              count={column.items.length}
-              status={column.value}
-            >
-              {mode === 'initiatives' ? (
-                (column.items as Initiative[]).map((initiative) => (
-                  <InitiativeCard 
-                    key={initiative.id} 
-                    initiative={initiative}
-                    onClick={() => onInitiativeClick?.(initiative)}
-                  />
-                ))
-              ) : (
-                (column.items as Task[]).map((task) => (
-                  <TaskCard 
-                    key={task.id} 
-                    task={task}
-                    onClick={() => onTaskClick?.(task)}
-                  />
-                ))
-              )}
-              {column.items.length === 0 && (
-                <div className="flex h-20 items-center justify-center rounded-md border border-dashed text-xs text-muted-foreground">
-                  No items
+    <ScrollArea className="w-full">
+      <div className="flex gap-4 p-1 min-w-max pb-4">
+        {columns.map((column) => {
+          const items = column.items || []
+          
+          return (
+            <div key={column.value} className="w-[320px] flex-shrink-0">
+              {/* Column Header */}
+              <div className="flex items-center justify-between mb-3 px-1">
+                <div className="flex items-center gap-2">
+                  <span className={cn("size-2.5 rounded-full", statusDotColors[column.value] || 'bg-slate-400')} />
+                  <span className="font-semibold text-foreground">{column.label}</span>
+                  <span className="text-sm text-muted-foreground font-medium bg-muted px-2 py-0.5 rounded-full">
+                    {items.length}
+                  </span>
                 </div>
-              )}
-            </KanbanColumn>
-          ))}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon" className="size-7">
+                      <MoreHorizontal className="size-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem>Edit Column</DropdownMenuItem>
+                    <DropdownMenuItem>Add {mode === 'initiatives' ? 'Initiative' : 'Task'}</DropdownMenuItem>
+                    <DropdownMenuItem className="text-destructive">Delete Column</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+
+              {/* Add New Button */}
+              <Button 
+                variant="outline" 
+                className="w-full mb-3 border-dashed border-border/60 text-muted-foreground hover:text-foreground hover:border-border hover:bg-muted/50"
+              >
+                <Plus className="size-4 mr-2" />
+                Add New {mode === 'initiatives' ? 'Initiative' : 'Task'}
+              </Button>
+
+              {/* Cards */}
+              <div className="space-y-3">
+                {items.length === 0 ? (
+                  <div className="rounded-xl border border-dashed border-border/50 bg-muted/30 p-8 text-center">
+                    <div className="mx-auto size-10 rounded-full bg-muted flex items-center justify-center mb-3">
+                      <Plus className="size-5 text-muted-foreground" />
+                    </div>
+                    <p className="text-sm text-muted-foreground">No {mode === 'initiatives' ? 'initiatives' : 'tasks'} yet</p>
+                    <p className="text-xs text-muted-foreground/70 mt-1">Add one to get started</p>
+                  </div>
+                ) : (
+                  mode === 'initiatives' 
+                    ? (items as Initiative[]).map(item => (
+                        <InitiativeCard 
+                          key={item.id} 
+                          initiative={item} 
+                          onClick={() => onInitiativeClick?.(item)}
+                        />
+                      ))
+                    : (items as Task[]).map(item => (
+                        <TaskCard 
+                          key={item.id} 
+                          task={item}
+                          onClick={() => onTaskClick?.(item)}
+                        />
+                      ))
+                )}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+      <ScrollBar orientation="horizontal" />
+    </ScrollArea>
+  )
+}
+
+function InitiativeCard({ initiative, onClick }: { initiative: Initiative; onClick?: () => void }) {
+  const strategyType = strategyTypes.find(s => s.value === initiative.strategyType)
+  const colors = categoryColors[initiative.strategyType] || { bg: 'bg-slate-100 dark:bg-slate-800', text: 'text-slate-700 dark:text-slate-300', label: 'Uncategorized' }
+  
+  // Calculate progress
+  const totalTasks = initiative.tasks?.length || 0
+  const completedTasks = initiative.tasks?.filter(t => t.status === 'completed' || t.status === 'complete').length || 0
+  const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
+  
+  return (
+    <div 
+      className="group bg-card rounded-xl border border-border/60 p-4 shadow-sm hover:shadow-md hover:border-border transition-all cursor-pointer"
+      onClick={onClick}
+    >
+      {/* Drag Handle + Menu */}
+      <div className="flex items-start justify-between mb-3">
+        <div className="flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+          <GripVertical className="size-4 text-muted-foreground cursor-grab" />
         </div>
-        <ScrollBar orientation="horizontal" />
-      </ScrollArea>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon" className="size-6 -mt-1 -mr-1" onClick={e => e.stopPropagation()}>
+              <MoreHorizontal className="size-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem>Duplicate</DropdownMenuItem>
+            <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+
+      {/* Category Badge */}
+      <Badge variant="secondary" className={cn("mb-3 font-medium border-0", colors.bg, colors.text)}>
+        {strategyType?.label || colors.label}
+      </Badge>
+
+      {/* Title */}
+      <h4 className="font-semibold text-foreground mb-2 line-clamp-2 leading-snug">
+        {initiative.title || initiative.name}
+      </h4>
+
+      {/* Description */}
+      {initiative.objective && (
+        <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
+          {initiative.objective}
+        </p>
+      )}
+
+      {/* Task Progress */}
+      {totalTasks > 0 && (
+        <div className="flex items-center gap-2 mb-3">
+          <ListTodo className="size-3.5 text-muted-foreground" />
+          <span className={cn(
+            "text-sm font-medium px-2 py-0.5 rounded",
+            progress === 100 
+              ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300" 
+              : progress > 50 
+                ? "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300"
+                : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300"
+          )}>
+            {completedTasks}/{totalTasks}
+          </span>
+        </div>
+      )}
+
+      {/* Risk Indicator */}
+      {(initiative.hasRisk || initiative.risksBlockers) && (
+        <div className="flex items-center gap-1.5 text-orange-600 dark:text-orange-400 mb-3">
+          <AlertTriangle className="size-3.5" />
+          <span className="text-xs font-medium line-clamp-1">
+            {initiative.risksBlockers || 'At Risk'}
+          </span>
+        </div>
+      )}
+
+      {/* Footer: Avatars + Metrics */}
+      <div className="flex items-center justify-between pt-3 border-t border-border/50">
+        {/* Avatar Stack */}
+        <div className="flex items-center">
+          <div className="flex -space-x-2">
+            {initiative.leadDepartment && (
+              <Avatar className="size-7 border-2 border-card">
+                <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${initiative.leadDepartment}`} />
+                <AvatarFallback className="text-[10px] bg-primary/10 text-primary font-medium">
+                  {initiative.leadDepartment.slice(0, 2).toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
+            )}
+            {totalTasks > 0 && (
+              <Avatar className="size-7 border-2 border-card">
+                <AvatarFallback className="text-[10px] bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 font-medium">
+                  +{Math.min(totalTasks, 3)}
+                </AvatarFallback>
+              </Avatar>
+            )}
+          </div>
+        </div>
+
+        {/* Metrics */}
+        <div className="flex items-center gap-3 text-muted-foreground">
+          <span className="flex items-center gap-1 text-xs">
+            <Eye className="size-3" />
+            {Math.floor(Math.random() * 10) + 1}
+          </span>
+          <span className="flex items-center gap-1 text-xs">
+            <MessageSquare className="size-3" />
+            {Math.floor(Math.random() * 5)}
+          </span>
+          <span className="flex items-center gap-1 text-xs">
+            <Link2 className="size-3" />
+            {Math.floor(Math.random() * 3)}
+          </span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
+  // Get category from department
+  const categoryKey = task.assignedDepartment || 'operations'
+  const colors = categoryColors[categoryKey] || { bg: 'bg-slate-100 dark:bg-slate-800', text: 'text-slate-700 dark:text-slate-300', label: 'General' }
+  
+  // Mock subtask progress
+  const completed = task.status === 'completed' || task.status === 'complete' ? 3 : Math.floor(Math.random() * 3)
+  const total = Math.floor(Math.random() * 5) + 3
+  const isComplete = task.status === 'completed' || task.status === 'complete'
+  
+  return (
+    <div 
+      className="group bg-card rounded-xl border border-border/60 p-4 shadow-sm hover:shadow-md hover:border-border transition-all cursor-pointer"
+      onClick={onClick}
+    >
+      {/* Drag Handle + Menu */}
+      <div className="flex items-start justify-between mb-3">
+        <div className="flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+          <GripVertical className="size-4 text-muted-foreground cursor-grab" />
+        </div>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon" className="size-6 -mt-1 -mr-1" onClick={e => e.stopPropagation()}>
+              <MoreHorizontal className="size-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem>Duplicate</DropdownMenuItem>
+            <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+
+      {/* Category Badge */}
+      <Badge variant="secondary" className={cn("mb-3 font-medium border-0", colors.bg, colors.text)}>
+        {colors.label}
+      </Badge>
+
+      {/* Title */}
+      <h4 className="font-semibold text-foreground mb-2 line-clamp-2 leading-snug">
+        {task.title}
+      </h4>
+
+      {/* Description */}
+      {task.notes && (
+        <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
+          {task.notes}
+        </p>
+      )}
+
+      {/* Subtask Progress */}
+      <div className="flex items-center gap-2 mb-3">
+        <ListTodo className="size-3.5 text-muted-foreground" />
+        <span className={cn(
+          "text-sm font-medium px-2 py-0.5 rounded",
+          isComplete 
+            ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300" 
+            : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300"
+        )}>
+          {isComplete ? `${total}/${total}` : `${completed}/${total}`}
+        </span>
+      </div>
+
+      {/* Blocker Note */}
+      {task.blockerNotes && (
+        <div className="flex items-center gap-1.5 text-red-600 dark:text-red-400 mb-3">
+          <AlertTriangle className="size-3.5" />
+          <span className="text-xs font-medium line-clamp-1">{task.blockerNotes}</span>
+        </div>
+      )}
+
+      {/* Footer: Avatars + Metrics */}
+      <div className="flex items-center justify-between pt-3 border-t border-border/50">
+        {/* Avatar Stack */}
+        <div className="flex items-center">
+          <div className="flex -space-x-2">
+            {task.assignedTo && (
+              <Avatar className="size-7 border-2 border-card">
+                <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${task.assignedTo}`} />
+                <AvatarFallback className="text-[10px] bg-primary/10 text-primary font-medium">
+                  {task.assignedTo.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                </AvatarFallback>
+              </Avatar>
+            )}
+            {task.priority === 'critical' || task.priority === 'high' ? (
+              <Avatar className="size-7 border-2 border-card">
+                <AvatarFallback className="text-[10px] bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300 font-medium">
+                  +2
+                </AvatarFallback>
+              </Avatar>
+            ) : null}
+          </div>
+        </div>
+
+        {/* Metrics */}
+        <div className="flex items-center gap-3 text-muted-foreground">
+          <span className="flex items-center gap-1 text-xs">
+            <Eye className="size-3" />
+            {Math.floor(Math.random() * 10) + 1}
+          </span>
+          <span className="flex items-center gap-1 text-xs">
+            <MessageSquare className="size-3" />
+            {Math.floor(Math.random() * 5)}
+          </span>
+          <span className="flex items-center gap-1 text-xs">
+            <Link2 className="size-3" />
+            {Math.floor(Math.random() * 3)}
+          </span>
+        </div>
+      </div>
     </div>
   )
 }

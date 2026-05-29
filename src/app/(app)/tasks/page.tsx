@@ -9,6 +9,7 @@ import { TasksProvider } from "./components/tasks-provider"
 import { TasksTable } from "./components/tasks-table"
 import { GrowthPlanViewSwitcher, type GrowthPlanView } from "./components/growth-plan-view-switcher"
 import { GrowthPlanHeader, type GrowthPlanMode } from "./components/growth-plan-header"
+import { GrowthPlanSidebar } from "./components/growth-plan-sidebar"
 import { KanbanView } from "./components/kanban-view"
 import { ByPersonView, ByDepartmentView } from "./components/group-views"
 import { CalendarView } from "./components/calendar-view"
@@ -16,31 +17,31 @@ import { OwnerRollupView } from "./components/owner-rollup-view"
 import { MeetingRecapView } from "./components/meeting-recap-view"
 import { EmptyState } from "./components/growth-plan-states"
 import { tasks, initiatives } from "./data/tasks"
+import type { Initiative, Task } from "./data/schema"
 
 export default function GrowthPlanPage() {
   const [activeView, setActiveView] = useState<GrowthPlanView>('kanban')
-  const [mode, setMode] = useState<GrowthPlanMode>('initiatives')
+  const [mode, setMode] = useState<GrowthPlanMode>('tasks')
+  const [selectedInitiative, setSelectedInitiative] = useState<Initiative | null>(null)
+  const [sidebarOpen, setSidebarOpen] = useState(true)
 
   const handleCreateInitiative = () => {
-    // TODO: Open initiative creation dialog
     console.log('[v0] Create initiative clicked')
   }
 
   const handleCreateTask = () => {
-    // TODO: Open task creation dialog
     console.log('[v0] Create task clicked')
   }
 
-  const handleInitiativeClick = (initiative: typeof initiatives[0]) => {
-    console.log('[v0] Initiative clicked:', initiative.id)
+  const handleInitiativeClick = (initiative: Initiative) => {
+    setSelectedInitiative(initiative)
   }
 
-  const handleTaskClick = (task: typeof tasks[0]) => {
+  const handleTaskClick = (task: Task) => {
     console.log('[v0] Task clicked:', task.id)
   }
 
   const renderView = () => {
-    // Check if we have data
     const hasInitiatives = initiatives.length > 0
     const hasTasks = tasks.length > 0
 
@@ -77,7 +78,6 @@ export default function GrowthPlanPage() {
         )
 
       case 'list':
-        // Use the existing TasksTable for list view
         return <TasksTable data={tasks} />
 
       case 'by-person':
@@ -147,26 +147,36 @@ export default function GrowthPlanPage() {
         </div>
       </Header>
 
-      <Main className="flex flex-1 flex-col gap-6">
-        {/* Header with mode toggle */}
-        <GrowthPlanHeader
-          mode={mode}
-          onModeChange={setMode}
-          onCreateInitiative={handleCreateInitiative}
-          onCreateTask={handleCreateTask}
-        />
+      <div className="flex flex-1 overflow-hidden pt-[var(--header-height)]">
+        {/* Sidebar */}
+        {sidebarOpen && (
+          <aside className="w-[280px] flex-shrink-0 hidden lg:block">
+            <GrowthPlanSidebar 
+              initiatives={initiatives}
+              selectedInitiative={selectedInitiative}
+              onInitiativeSelect={setSelectedInitiative}
+            />
+          </aside>
+        )}
 
-        {/* View Switcher */}
-        <GrowthPlanViewSwitcher
-          activeView={activeView}
-          onViewChange={setActiveView}
-        />
+        {/* Main Content */}
+        <Main className="flex flex-1 flex-col gap-4 overflow-auto">
+          {/* Header with progress and team */}
+          <GrowthPlanHeader
+            mode={mode}
+            onModeChange={setMode}
+            onCreateInitiative={handleCreateInitiative}
+            onCreateTask={handleCreateTask}
+            initiatives={initiatives}
+            selectedInitiative={selectedInitiative}
+          />
 
-        {/* View Content */}
-        <div className="flex-1">
-          {renderView()}
-        </div>
-      </Main>
+          {/* View Content */}
+          <div className="flex-1 min-h-0">
+            {renderView()}
+          </div>
+        </Main>
+      </div>
 
       <TasksDialogs />
     </TasksProvider>
