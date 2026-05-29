@@ -103,11 +103,19 @@ export function GrowthPlanSidebar({
                 const icon = strategyIcons[initiative.strategyType] || <Layers className="size-4" />
                 
                 return (
-                  <button
+                  <div
                     key={initiative.id}
+                    role="button"
+                    tabIndex={0}
                     onClick={() => onInitiativeSelect(initiative)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault()
+                        onInitiativeSelect(initiative)
+                      }
+                    }}
                     className={cn(
-                      "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-colors",
+                      "group w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-colors cursor-pointer",
                       isSelected 
                         ? "bg-primary text-primary-foreground" 
                         : "hover:bg-muted"
@@ -142,7 +150,7 @@ export function GrowthPlanSidebar({
                         <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
-                  </button>
+                  </div>
                 )
               })}
             </div>
