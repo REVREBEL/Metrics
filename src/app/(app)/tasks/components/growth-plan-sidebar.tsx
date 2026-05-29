@@ -39,13 +39,13 @@ type GrowthPlanSidebarProps = {
   teamMembers?: { name: string; role: string; online: boolean }[]
 }
 
-// Mock team members
+// Mock team members with static last active times
 const defaultTeamMembers = [
-  { name: 'Sarah Chen', role: 'Product Lead', online: true },
-  { name: 'Marcus Johnson', role: 'Engineering', online: true },
-  { name: 'Emily Rodriguez', role: 'Marketing', online: false },
-  { name: 'David Kim', role: 'Sales', online: true },
-  { name: 'Lisa Thompson', role: 'Customer Success', online: false },
+  { name: 'Sarah Chen', role: 'Product Lead', online: true, lastActive: '08:23:26' },
+  { name: 'Marcus Johnson', role: 'Engineering', online: true, lastActive: '08:23:26' },
+  { name: 'Emily Rodriguez', role: 'Marketing', online: false, lastActive: '2h ago' },
+  { name: 'David Kim', role: 'Sales', online: true, lastActive: '08:23:26' },
+  { name: 'Lisa Thompson', role: 'Customer Success', online: false, lastActive: '1d ago' },
 ]
 
 // Initiative icons based on strategy type
@@ -199,10 +199,10 @@ export function GrowthPlanSidebar({
                           <>
                             <span className="text-emerald-500">Online</span>
                             <span>-</span>
-                            <span>{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                            <span>{member.lastActive}</span>
                           </>
                         ) : (
-                          <span>Offline</span>
+                          <span>{member.lastActive}</span>
                         )}
                       </p>
                     </div>
