@@ -144,9 +144,9 @@ export function CalendarView({ tasks, onTaskClick }: CalendarViewProps) {
   const stats = useMemo(() => {
     const currentMonthTasks = tasks.filter(task => {
       if (!task.dueDate) return false
-      const taskDate = new Date(task.dueDate)
-      return taskDate.getMonth() === currentDate.getMonth() && 
-             taskDate.getFullYear() === currentDate.getFullYear()
+      const [year, month] = task.dueDate.split('-').map(Number)
+      return (month - 1) === currentDate.getMonth() && 
+             year === currentDate.getFullYear()
     })
     
     return {
