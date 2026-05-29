@@ -42,7 +42,7 @@ export function GrowthPlanHeader({
   const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
 
   return (
-    <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
+    <div className="border border-border bg-card shadow-sm" style={{ borderRadius: '3px', padding: '16px 16px 21px 16px' }}>
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         {/* Left: Title and Progress */}
         <div className="flex items-center gap-4">
