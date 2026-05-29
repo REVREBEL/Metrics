@@ -99,7 +99,7 @@ export function GrowthPlanSidebar({
             <div className="space-y-1">
               {filteredInitiatives.map((initiative) => {
                 const isSelected = selectedInitiative?.id === initiative.id
-                const icon = strategyIcons[initiative.strategyType] || <Layers className="size-4" />
+                const icon = strategyIcons[initiative.strategyType] || <IconStack2 size={20} stroke={1.5} />
                 
                 return (
                   <div
