@@ -5,6 +5,7 @@ import { DirectionProvider } from '@/context/direction-provider'
 import { LayoutProvider } from '@/context/layout-provider'
 import { SearchProvider } from '@/context/search-provider'
 import { FontProvider } from '@/context/font-provider'
+import { PropertyProvider } from '@/context/property-context'
 
 export function AppProviders({ children }: { children: React.ReactNode }) {
     return (
@@ -13,7 +14,9 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
                 <FontProvider>
                     <LayoutProvider>
                         <SearchProvider>
-                            {children}
+                            <PropertyProvider>
+                                {children}
+                            </PropertyProvider>
                         </SearchProvider>
                     </LayoutProvider>
                 </FontProvider>

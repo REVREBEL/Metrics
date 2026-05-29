@@ -26,6 +26,7 @@ import {
 } from '@/components/ui/sheet'
 import { SelectDropdown } from '@/components/select-dropdown'
 import { type Task } from '../data/schema'
+import { useTasks } from './tasks-provider'
 
 type TaskMutateDrawerProps = {
   open: boolean
@@ -38,6 +39,9 @@ const formSchema = z.object({
   status: z.string().min(1, 'Please select a status.'),
   label: z.string().min(1, 'Please select a label.'),
   priority: z.string().min(1, 'Please choose a priority.'),
+  assigneeType: z.enum(['app_user', 'external_assignee', 'department_placeholder', 'entity_placeholder', '']).optional(),
+  assigneeExternalId: z.string().optional(),
+  assignedTo: z.string().optional(),
 })
 type TaskForm = z.infer<typeof formSchema>
 
@@ -47,23 +51,43 @@ export function TasksMutateDrawer({
   currentRow,
 }: TaskMutateDrawerProps) {
   const isUpdate = !!currentRow
+  const { externalAssignees } = useTasks()
 
   const form = useForm<TaskForm>({
     resolver: zodResolver(formSchema),
-    defaultValues: currentRow ?? {
-      title: '',
-      status: '',
-      label: '',
-      priority: '',
-    },
+    defaultValues: currentRow
+      ? {
+          title: currentRow.title,
+          status: currentRow.status,
+          label: currentRow.label ?? '',
+          priority: currentRow.priority,
+          assigneeType: currentRow.assigneeType ?? '',
+          assigneeExternalId: '',
+          assignedTo: currentRow.assignedTo ?? '',
+        }
+      : {
+          title: '',
+          status: '',
+          label: '',
+          priority: '',
+          assigneeType: '',
+          assigneeExternalId: '',
+          assignedTo: '',
+        },
   })
 
+  const assigneeType = form.watch('assigneeType')
+
   const onSubmit = (data: TaskForm) => {
-    // do something with the form data
     onOpenChange(false)
     form.reset()
     showSubmittedData(data)
   }
+
+  const externalAssigneeItems = externalAssignees.map((a) => ({
+    label: a.name,
+    value: a.id,
+  }))
 
   return (
     <Sheet
@@ -111,13 +135,14 @@ export function TasksMutateDrawer({
                   <SelectDropdown
                     defaultValue={field.value}
                     onValueChange={field.onChange}
-                    placeholder='Select dropdown'
+                    placeholder='Select status'
                     items={[
-                      { label: 'In Progress', value: 'in progress' },
-                      { label: 'Backlog', value: 'backlog' },
-                      { label: 'Todo', value: 'todo' },
+                      { label: 'Not Started', value: 'not_started' },
+                      { label: 'In Progress', value: 'in_progress' },
+                      { label: 'Waiting', value: 'waiting' },
+                      { label: 'Blocked', value: 'blocked' },
+                      { label: 'Complete', value: 'complete' },
                       { label: 'Canceled', value: 'canceled' },
-                      { label: 'Done', value: 'done' },
                     ]}
                   />
                   <FormMessage />
@@ -198,6 +223,93 @@ export function TasksMutateDrawer({
                 </FormItem>
               )}
             />
+
+            {/* Assignee Section */}
+            <div className='space-y-3'>
+              <FormField
+                control={form.control}
+                name='assigneeType'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Assignee Type</FormLabel>
+                    <SelectDropdown
+                      defaultValue={field.value ?? ''}
+                      onValueChange={(val) => {
+                        field.onChange(val)
+                        form.setValue('assigneeExternalId', '')
+                        form.setValue('assignedTo', '')
+                      }}
+                      placeholder='Select assignee type'
+                      items={[
+                        { label: 'App User', value: 'app_user' },
+                        { label: 'External Vendor / Agency', value: 'external_assignee' },
+                        { label: 'Department', value: 'department_placeholder' },
+                        { label: 'Other Entity', value: 'entity_placeholder' },
+                      ]}
+                    />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {assigneeType === 'external_assignee' && (
+                <FormField
+                  control={form.control}
+                  name='assigneeExternalId'
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Vendor / Agency</FormLabel>
+                      {externalAssigneeItems.length > 0 ? (
+                        <SelectDropdown
+                          defaultValue={field.value ?? ''}
+                          onValueChange={field.onChange}
+                          placeholder='Select a vendor or agency'
+                          items={externalAssigneeItems}
+                        />
+                      ) : (
+                        <p className='text-xs text-muted-foreground'>
+                          No vendors or agencies added yet. Use the Manage Vendors button to add some.
+                        </p>
+                      )}
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
+
+              {(assigneeType === 'app_user' ||
+                assigneeType === 'department_placeholder' ||
+                assigneeType === 'entity_placeholder') && (
+                <FormField
+                  control={form.control}
+                  name='assignedTo'
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        {assigneeType === 'app_user'
+                          ? 'Assignee Name'
+                          : assigneeType === 'department_placeholder'
+                          ? 'Department Name'
+                          : 'Entity Name'}
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          placeholder={
+                            assigneeType === 'app_user'
+                              ? 'e.g. Jane Smith'
+                              : assigneeType === 'department_placeholder'
+                              ? 'e.g. Revenue Management'
+                              : 'e.g. Brand Corporate'
+                          }
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
+            </div>
           </form>
         </Form>
         <SheetFooter className='gap-2'>
