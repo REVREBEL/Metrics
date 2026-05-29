@@ -30,7 +30,9 @@ export const initiativeSchema = z.object({
   updatedAt: z.string(),
 })
 
-export type Initiative = z.infer<typeof initiativeSchema>
+export type Initiative = z.infer<typeof initiativeSchema> & {
+  tasks?: Task[]
+}
 
 // Task schema from spec
 export const taskSchema = z.object({
