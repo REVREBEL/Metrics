@@ -6,9 +6,11 @@ import {
   ArrowUpAZ,
   Check,
   CircleAlert,
+  Plus,
   RefreshCcw,
   Save,
   Search as SearchIcon,
+  Trash2,
 } from "lucide-react"
 import { toast } from "sonner"
 
@@ -81,6 +83,7 @@ export function LookupTableManager({
   const [rows, setRows] = useState<LookupTableRow[]>(initialRows)
   const [originalRows, setOriginalRows] =
     useState<LookupTableRow[]>(initialRows)
+  const [deletedRowIds, setDeletedRowIds] = useState<Set<string>>(new Set())
   const [query, setQuery] = useState("")
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all")
   const [sortKey, setSortKey] = useState<SortKey>("rawCode")
@@ -123,6 +126,11 @@ export function LookupTableManager({
         const originalRow = originalRowsById.get(row.id)
         return originalRow ? isDirty(row, originalRow) : true
       }),
+    [originalRowsById, rows]
+  )
+
+  const newRows = useMemo(
+    () => rows.filter((row) => !originalRowsById.has(row.id)),
     [originalRowsById, rows]
   )
 
@@ -174,7 +182,7 @@ export function LookupTableManager({
     validationErrors,
   ])
 
-  const changeCount = dirtyRows.length
+  const changeCount = dirtyRows.length + deletedRowIds.size
   const hasValidationErrors = validationErrors.size > 0
 
   function handleTableSelect(tableKey: string) {
@@ -195,6 +203,7 @@ export function LookupTableManager({
 
         setRows(nextRows)
         setOriginalRows(nextRows)
+        setDeletedRowIds(new Set())
       } catch (error) {
         if (rowsRequestIdRef.current !== requestId) {
           return
@@ -217,7 +226,36 @@ export function LookupTableManager({
 
   function resetChanges() {
     setRows(originalRows)
+    setDeletedRowIds(new Set())
     toast.info("Unsaved lookup changes were reset.")
+  }
+
+  function addRow() {
+    const newRow: LookupTableRow = {
+      id: `new-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
+      sourceSystem: selectedTable?.key.split(".")[0] ?? "custom",
+      rawCode: "",
+      rawName: "",
+      mappedValue: "",
+      mappedGroup: "",
+      isActive: true,
+      notes: "",
+      updatedAt: new Date().toISOString(),
+      updatedBy: "Current user",
+    }
+    setRows((currentRows) => [newRow, ...currentRows])
+  }
+
+  function deleteRow(id: string) {
+    const isNewRow = !originalRowsById.has(id)
+    if (isNewRow) {
+      // For new rows, just remove from state
+      setRows((currentRows) => currentRows.filter((row) => row.id !== id))
+    } else {
+      // For existing rows, mark as deleted
+      setDeletedRowIds((current) => new Set([...current, id]))
+      setRows((currentRows) => currentRows.filter((row) => row.id !== id))
+    }
   }
 
   function handleSort(nextSortKey: SortKey) {
@@ -234,6 +272,16 @@ export function LookupTableManager({
     const changes = dirtyRows.map((row) =>
       toChange(row, originalRowsById.get(row.id))
     )
+    
+    // Add deleted rows as changes with a delete flag
+    const deletedChanges = Array.from(deletedRowIds).map((id) => ({
+      id,
+      isDeleted: true,
+      lastKnownUpdatedAt: originalRowsById.get(id)?.updatedAt,
+    }))
+    
+    const allChanges = [...changes, ...deletedChanges]
+    
     const invalidDirtyRows = changes.filter(
       (change) => !lookupTableChangeSchema.safeParse(change).success
     )
@@ -246,7 +294,7 @@ export function LookupTableManager({
     startSaveTransition(async () => {
       const result = await saveLookupTableChangesAction({
         tableKey: selectedTableKey,
-        changes,
+        changes: allChanges,
       })
 
       if (!result.ok) {
@@ -271,6 +319,7 @@ export function LookupTableManager({
         setOriginalRows(nextRows)
         return nextRows
       })
+      setDeletedRowIds(new Set())
       toast.success(result.message ?? "Lookup changes saved.")
     })
   }
@@ -403,8 +452,8 @@ export function LookupTableManager({
                   )}
                 </div>
 
-                <div className="mt-4 grid gap-3 lg:grid-cols-[minmax(240px,1fr)_180px_180px]">
-                  <div className="relative">
+                <div className="mt-4 flex flex-wrap items-center gap-3">
+                  <div className="relative min-w-[240px] flex-1">
                     <SearchIcon
                       className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
                       aria-hidden="true"
@@ -422,7 +471,7 @@ export function LookupTableManager({
                       setStatusFilter(value as StatusFilter)
                     }
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="w-[180px]">
                       <SelectValue placeholder="Filter rows" />
                     </SelectTrigger>
                     <SelectContent>
@@ -436,10 +485,14 @@ export function LookupTableManager({
                   <Button
                     variant="outline"
                     onClick={() => handleSort(sortKey)}
-                    className="justify-start"
+                    className="w-[180px] justify-start"
                   >
                     {sortDirection === "asc" ? <ArrowDownAZ /> : <ArrowUpAZ />}
                     {sortLabel(sortKey)}
+                  </Button>
+                  <Button onClick={addRow}>
+                    <Plus />
+                    Add Row
                   </Button>
                 </div>
               </div>
@@ -490,6 +543,7 @@ export function LookupTableManager({
                           Updated
                         </SortableHead>
                         <TableHead>Status</TableHead>
+                        <TableHead className="w-[60px]">Actions</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -499,6 +553,7 @@ export function LookupTableManager({
                           ? isDirty(row, originalRow)
                           : true
                         const rowErrors = validationErrors.get(row.id)
+                        const isNewRow = !originalRowsById.has(row.id)
 
                         return (
                           <TableRow
@@ -511,15 +566,42 @@ export function LookupTableManager({
                             )}
                           >
                             <TableCell>
-                              <div className="font-mono text-xs">
-                                {row.rawCode}
-                              </div>
-                              <div className="mt-1 font-mono text-[11px] text-muted-foreground">
-                                {row.id}
-                              </div>
+                              {isNewRow ? (
+                                <Input
+                                  value={row.rawCode}
+                                  placeholder="Enter raw code"
+                                  onChange={(event) =>
+                                    updateRow(row.id, {
+                                      rawCode: event.target.value,
+                                    })
+                                  }
+                                  className="font-mono text-xs"
+                                />
+                              ) : (
+                                <>
+                                  <div className="font-mono text-xs">
+                                    {row.rawCode}
+                                  </div>
+                                  <div className="mt-1 font-mono text-[11px] text-muted-foreground">
+                                    {row.id}
+                                  </div>
+                                </>
+                              )}
                             </TableCell>
                             <TableCell className="max-w-52 whitespace-normal">
-                              {row.rawName}
+                              {isNewRow ? (
+                                <Input
+                                  value={row.rawName}
+                                  placeholder="Enter raw name"
+                                  onChange={(event) =>
+                                    updateRow(row.id, {
+                                      rawName: event.target.value,
+                                    })
+                                  }
+                                />
+                              ) : (
+                                row.rawName
+                              )}
                             </TableCell>
                             <TableCell>{row.sourceSystem}</TableCell>
                             <TableCell className="min-w-48">
@@ -597,6 +679,17 @@ export function LookupTableManager({
                               ) : (
                                 <Badge variant="outline">Inactive</Badge>
                               )}
+                            </TableCell>
+                            <TableCell>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={() => deleteRow(row.id)}
+                                className="text-muted-foreground hover:text-destructive"
+                              >
+                                <Trash2 className="size-4" />
+                                <span className="sr-only">Delete row</span>
+                              </Button>
                             </TableCell>
                           </TableRow>
                         )

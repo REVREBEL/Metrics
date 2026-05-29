@@ -23,8 +23,19 @@ import "@/styles/metric-layout-showcase.css";
 import "@/styles/page-traffic-card.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const publishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+  
+  // Skip ClerkProvider if no publishable key is set (development without Clerk)
+  if (!publishableKey) {
+    return (
+      <html lang="en" suppressHydrationWarning>
+        <body>{children}</body>
+      </html>
+    )
+  }
+  
   return (
-    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
+    <ClerkProvider publishableKey={publishableKey}>
       <html lang="en" suppressHydrationWarning>
         <body>{children}</body>
       </html>
