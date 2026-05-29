@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
-import { ChevronDown, ChevronRight, AlertCircle, Clock, CheckCircle2, User, Building2 } from 'lucide-react'
+import { IconChevronDown, IconChevronRight, IconAlertCircle, IconClock, IconCircleCheck, IconUser, IconBuilding } from '@tabler/icons-react'
 import type { Task } from '../data/schema'
 import { taskStatuses, departments, assigneeTypes } from '../data/data'
 
@@ -80,7 +80,7 @@ function TaskMiniCard({ task, onClick }: { task: Task; onClick?: () => void }) {
         <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
           {task.dueDate && (
             <span className="flex items-center gap-1">
-              <Clock className="size-3" />
+              <IconClock size={20} stroke={1.5} />
               {formatDate(task.dueDate)}
             </span>
           )}
@@ -137,21 +137,21 @@ function PersonCard({ person, onTaskClick }: { person: PersonGroup; onTaskClick?
               <div className="flex items-center gap-4 shrink-0">
                 <div className="flex items-center gap-3 text-sm">
                   <span className="flex items-center gap-1">
-                    <CheckCircle2 className="size-4 text-green-500" />
+                    <IconCircleCheck size={20} stroke={1.5} className="text-green-500" />
                     <span className="font-medium">{completedTasks.length}</span>
                   </span>
                   <span className="flex items-center gap-1 text-muted-foreground">
-                    <Clock className="size-4" />
+                    <IconClock size={20} stroke={1.5} />
                     <span>{openTasks.length}</span>
                   </span>
                   {overdueTasks.length > 0 && (
                     <span className="flex items-center gap-1 text-red-500">
-                      <AlertCircle className="size-4" />
+                      <IconAlertCircle size={20} stroke={1.5} />
                       <span className="font-medium">{overdueTasks.length}</span>
                     </span>
                   )}
                 </div>
-                <ChevronDown className="size-5 text-muted-foreground transition-transform [[data-state=closed]_&]:-rotate-90" />
+                <IconChevronDown size={20} stroke={1.5} className="text-muted-foreground transition-transform [[data-state=closed]_&]:-rotate-90" />
               </div>
             </div>
             <Progress value={completionRate} className="h-1.5 mt-3" />
@@ -194,7 +194,7 @@ function DepartmentCard({ department, onTaskClick }: { department: DepartmentGro
           <CardHeader className="cursor-pointer hover:bg-muted/50 transition-colors">
             <div className="flex items-center gap-3">
               <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10">
-                <Building2 className="size-5 text-primary" />
+                <IconBuilding size={20} stroke={1.5} className="text-primary" />
               </div>
               <div className="flex-1 min-w-0">
                 <CardTitle className="text-base font-semibold">
@@ -207,21 +207,21 @@ function DepartmentCard({ department, onTaskClick }: { department: DepartmentGro
               <div className="flex items-center gap-4 shrink-0">
                 <div className="flex items-center gap-3 text-sm">
                   <span className="flex items-center gap-1">
-                    <CheckCircle2 className="size-4 text-green-500" />
+                    <IconCircleCheck size={20} stroke={1.5} className="text-green-500" />
                     <span className="font-medium">{completedTasks.length}</span>
                   </span>
                   <span className="flex items-center gap-1 text-muted-foreground">
-                    <Clock className="size-4" />
+                    <IconClock size={20} stroke={1.5} />
                     <span>{openTasks.length}</span>
                   </span>
                   {blockedTasks.length > 0 && (
                     <span className="flex items-center gap-1 text-red-500">
-                      <AlertCircle className="size-4" />
+                      <IconAlertCircle size={20} stroke={1.5} />
                       <span className="font-medium">{blockedTasks.length}</span>
                     </span>
                   )}
                 </div>
-                <ChevronDown className="size-5 text-muted-foreground transition-transform [[data-state=closed]_&]:-rotate-90" />
+                <IconChevronDown size={20} stroke={1.5} className="text-muted-foreground transition-transform [[data-state=closed]_&]:-rotate-90" />
               </div>
             </div>
             <Progress value={completionRate} className="h-1.5 mt-3" />
@@ -273,7 +273,7 @@ export function ByPersonView({ tasks, onTaskClick }: ByPersonViewProps) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-2 text-sm text-muted-foreground">
-        <User className="size-4" />
+        <IconUser size={20} stroke={1.5} />
         <span>{personGroups.length} assignees</span>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
@@ -317,7 +317,7 @@ export function ByDepartmentView({ tasks, onTaskClick }: ByDepartmentViewProps) 
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-2 text-sm text-muted-foreground">
-        <Building2 className="size-4" />
+        <IconBuilding size={20} stroke={1.5} />
         <span>{departmentGroups.length} departments</span>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">

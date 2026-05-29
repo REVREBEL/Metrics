@@ -5,15 +5,15 @@ import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { 
-  Calendar, 
-  CheckCircle2, 
-  Clock, 
-  AlertCircle, 
-  Plus,
-  ArrowRight,
-  FileText
-} from 'lucide-react'
+import {
+  IconCalendar,
+  IconCircleCheck,
+  IconClock,
+  IconAlertCircle,
+  IconPlus,
+  IconArrowRight,
+  IconFileText,
+} from '@tabler/icons-react'
 import type { Initiative, Task } from '../data/schema'
 import { initiativeStatuses, taskStatuses } from '../data/data'
 
@@ -132,7 +132,7 @@ export function MeetingRecapView({ initiatives, tasks, meetingDate }: MeetingRec
     return [
       {
         title: 'New Initiatives',
-        icon: Plus,
+        icon: IconPlus,
         items: newInitiatives.map(i => ({ 
           id: i.id, 
           title: i.title, 
@@ -143,7 +143,7 @@ export function MeetingRecapView({ initiatives, tasks, meetingDate }: MeetingRec
       },
       {
         title: 'Initiatives Reviewed',
-        icon: FileText,
+        icon: IconFileText,
         items: reviewedInitiatives.map(i => ({ 
           id: i.id, 
           title: i.title, 
@@ -154,7 +154,7 @@ export function MeetingRecapView({ initiatives, tasks, meetingDate }: MeetingRec
       },
       {
         title: 'Completed Tasks',
-        icon: CheckCircle2,
+        icon: IconCircleCheck,
         items: completedTasks.map(t => ({ 
           id: t.id, 
           title: t.title, 
@@ -165,7 +165,7 @@ export function MeetingRecapView({ initiatives, tasks, meetingDate }: MeetingRec
       },
       {
         title: 'Overdue Tasks',
-        icon: AlertCircle,
+        icon: IconAlertCircle,
         items: overdueTasks.map(t => ({ 
           id: t.id, 
           title: t.title, 
@@ -176,7 +176,7 @@ export function MeetingRecapView({ initiatives, tasks, meetingDate }: MeetingRec
       },
       {
         title: 'New Assignments',
-        icon: ArrowRight,
+        icon: IconArrowRight,
         items: newAssignments.map(t => ({ 
           id: t.id, 
           title: t.title, 
@@ -210,7 +210,7 @@ export function MeetingRecapView({ initiatives, tasks, meetingDate }: MeetingRec
       <Card>
         <CardHeader>
           <div className="flex items-center gap-3">
-            <Calendar className="size-5 text-primary" />
+            <IconCalendar size={20} stroke={1.5} className="text-primary" />
             <div>
               <CardTitle className="font-display text-lg uppercase tracking-tight">
                 Meeting Recap

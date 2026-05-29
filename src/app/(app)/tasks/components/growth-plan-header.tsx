@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { LayoutGrid, List, Plus, Kanban, Calendar, Table2 } from 'lucide-react'
+import { IconPlus, IconLayoutKanban, IconCalendar, IconTable } from '@tabler/icons-react'
 import type { Initiative } from '../data/schema'
 
 export type GrowthPlanMode = 'initiatives' | 'tasks'
@@ -39,10 +39,10 @@ export function GrowthPlanHeader({
   const completedTasks = initiatives.reduce((acc, i) => 
     acc + (i.tasks?.filter(t => t.status === 'complete').length || 0), 0
   )
-  const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 20
+  const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
 
   return (
-    <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
+    <div className="border border-border bg-card" style={{ borderRadius: '3px', padding: '16px 16px 21px 16px' }}>
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         {/* Left: Title and Progress */}
         <div className="flex items-center gap-4">
@@ -52,8 +52,8 @@ export function GrowthPlanHeader({
           </div>
           
           <div className="flex-1">
-            <h1 className="font-semibold text-lg text-foreground">
-              {selectedInitiative?.title || selectedInitiative?.name || 'Growth Plan'}
+            <h1 className="font-bold text-lg text-foreground" style={{ textTransform: 'uppercase', letterSpacing: '0.074em' }}>
+              {selectedInitiative?.title || 'Growth Plan'}
             </h1>
             <div className="flex items-center gap-3 mt-1">
               <Progress value={progress} className="w-32 h-2" />
@@ -85,7 +85,7 @@ export function GrowthPlanHeader({
 
           {/* Add Member Button */}
           <Button variant="default" size="sm" className="gap-1.5">
-            <Plus className="size-4" />
+            <IconPlus size={20} stroke={1.5} />
             Add Member
           </Button>
         </div>
@@ -138,9 +138,9 @@ export function GrowthPlanHeader({
           <Button 
             variant="ghost" 
             size="sm" 
-            className="h-8 gap-1.5 bg-background shadow-sm"
+            className="h-8 gap-1.5 bg-background"
           >
-            <Kanban className="size-4" />
+            <IconLayoutKanban size={20} stroke={1.5} />
             Board
           </Button>
           <Button 
@@ -148,7 +148,7 @@ export function GrowthPlanHeader({
             size="sm" 
             className="h-8 gap-1.5"
           >
-            <Calendar className="size-4" />
+            <IconCalendar size={20} stroke={1.5} />
             Schedule
           </Button>
           <Button 
@@ -156,7 +156,7 @@ export function GrowthPlanHeader({
             size="sm" 
             className="h-8 gap-1.5"
           >
-            <Table2 className="size-4" />
+            <IconTable size={20} stroke={1.5} />
             List
           </Button>
         </div>

@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock, AlertCircle, CheckCircle2 } from 'lucide-react'
+import { IconChevronLeft, IconChevronRight, IconCalendar, IconClock, IconAlertCircle, IconCircleCheck } from '@tabler/icons-react'
 import { Button } from '@/components/ui/button'
 import type { Task } from '../data/schema'
 
@@ -99,13 +99,13 @@ function TaskBadge({ task, onClick }: { task: Task; onClick?: () => void }) {
 export function CalendarView({ tasks, onTaskClick }: CalendarViewProps) {
   const [currentDate, setCurrentDate] = useState(new Date())
   
-  const { days, monthYear, tasksByDate } = useMemo(() => {
+  const { days, monthYear } = useMemo(() => {
     const year = currentDate.getFullYear()
     const month = currentDate.getMonth()
-    
+
     const calendarDays = getMonthDays(year, month)
-    
-    // Group tasks by due date
+
+    // Group tasks by due date and assign to calendar days
     const grouped: Record<string, Task[]> = {}
     tasks.forEach(task => {
       if (task.dueDate) {
@@ -114,17 +114,15 @@ export function CalendarView({ tasks, onTaskClick }: CalendarViewProps) {
         grouped[key].push(task)
       }
     })
-    
-    // Assign tasks to calendar days
+
     calendarDays.forEach(day => {
       const key = formatDateKey(day.date)
       day.tasks = grouped[key] || []
     })
-    
+
     return {
       days: calendarDays,
       monthYear: currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
-      tasksByDate: grouped,
     }
   }, [currentDate, tasks])
 
@@ -164,7 +162,7 @@ export function CalendarView({ tasks, onTaskClick }: CalendarViewProps) {
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-2">
-          <CalendarIcon className="size-5 text-muted-foreground" />
+          <IconCalendar size={20} stroke={1.5} className="text-muted-foreground" />
           <h3 className="font-display text-lg font-semibold uppercase tracking-tight">
             {monthYear}
           </h3>
@@ -172,16 +170,16 @@ export function CalendarView({ tasks, onTaskClick }: CalendarViewProps) {
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-4 mr-4 text-sm">
             <span className="flex items-center gap-1.5">
-              <Clock className="size-4 text-muted-foreground" />
+              <IconClock size={20} stroke={1.5} className="text-muted-foreground" />
               <span>{stats.total} due</span>
             </span>
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="size-4 text-green-500" />
+              <IconCircleCheck size={20} stroke={1.5} className="text-green-500" />
               <span>{stats.complete} done</span>
             </span>
             {stats.overdue > 0 && (
               <span className="flex items-center gap-1.5 text-red-500">
-                <AlertCircle className="size-4" />
+                <IconAlertCircle size={20} stroke={1.5} />
                 <span>{stats.overdue} overdue</span>
               </span>
             )}
@@ -190,10 +188,10 @@ export function CalendarView({ tasks, onTaskClick }: CalendarViewProps) {
             Today
           </Button>
           <Button variant="outline" size="icon" className="size-8" onClick={goToPreviousMonth}>
-            <ChevronLeft className="size-4" />
+            <IconChevronLeft size={20} stroke={1.5} />
           </Button>
           <Button variant="outline" size="icon" className="size-8" onClick={goToNextMonth}>
-            <ChevronRight className="size-4" />
+            <IconChevronRight size={20} stroke={1.5} />
           </Button>
         </div>
       </div>

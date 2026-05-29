@@ -1,9 +1,11 @@
 "use client"
 
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import { Header } from "@/components/layout/header"
 import { Main } from "@/components/layout/main"
 import { ThemeSwitch } from "@/components/theme-switch"
+import { Button } from "@/components/ui/button"
+import { PanelLeft } from "lucide-react"
 import { TasksDialogs } from "./components/tasks-dialogs"
 import { TasksProvider } from "./components/tasks-provider"
 import { TasksTable } from "./components/tasks-table"
@@ -139,10 +141,19 @@ export default function GrowthPlanPage() {
     <TasksProvider>
       <Header fixed>
         <div className="min-w-0">
-          <p className="text-sm font-medium leading-none">Growth Plan</p>
+          <p className="text-sm font-semibold leading-none uppercase" style={{ letterSpacing: '0.025em' }}>Growth Plan</p>
           <p className="mt-1 text-xs text-muted-foreground">Revenue Action Plan</p>
         </div>
         <div className="ms-auto flex items-center space-x-4">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="hidden lg:inline-flex"
+            onClick={() => setSidebarOpen((prev) => !prev)}
+            aria-label="Toggle sidebar"
+          >
+            <PanelLeft className="size-5" />
+          </Button>
           <ThemeSwitch />
         </div>
       </Header>
@@ -169,6 +180,12 @@ export default function GrowthPlanPage() {
             onCreateTask={handleCreateTask}
             initiatives={initiatives}
             selectedInitiative={selectedInitiative}
+          />
+
+          {/* View Switcher */}
+          <GrowthPlanViewSwitcher
+            activeView={activeView}
+            onViewChange={setActiveView}
           />
 
           {/* View Content */}

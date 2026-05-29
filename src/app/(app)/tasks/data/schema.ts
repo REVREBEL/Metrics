@@ -8,7 +8,7 @@ export const initiativeSchema = z.object({
   meetingId: z.string().optional(),
   title: z.string(),
   strategyType: z.string(),
-  objective: z.string(),
+  objective: z.string().optional(),
   background: z.string().optional(),
   priority: z.enum(['low', 'medium', 'high', 'critical']),
   status: z.enum(['discussed', 'planning', 'active', 'blocked', 'at_risk', 'completed', 'canceled', 'archived']),
