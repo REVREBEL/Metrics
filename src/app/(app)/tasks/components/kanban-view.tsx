@@ -306,7 +306,7 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
   
   return (
     <div 
-      className="group bg-card rounded-xl border border-border/60 p-4 shadow-sm hover:shadow-md hover:border-border transition-all cursor-pointer"
+      className="group bg-card rounded-xl border border-border/60 p-4 hover:border-border transition-all cursor-pointer"
       onClick={onClick}
     >
       {/* Drag Handle + Menu */}

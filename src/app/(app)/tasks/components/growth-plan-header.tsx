@@ -42,7 +42,7 @@ export function GrowthPlanHeader({
   const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
 
   return (
-    <div className="border border-border bg-card shadow-sm" style={{ borderRadius: '3px', padding: '16px 16px 21px 16px' }}>
+    <div className="border border-border bg-card" style={{ borderRadius: '3px', padding: '16px 16px 21px 16px' }}>
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         {/* Left: Title and Progress */}
         <div className="flex items-center gap-4">
@@ -138,7 +138,7 @@ export function GrowthPlanHeader({
           <Button 
             variant="ghost" 
             size="sm" 
-            className="h-8 gap-1.5 bg-background shadow-sm"
+            className="h-8 gap-1.5 bg-background"
           >
             <Kanban className="size-4" />
             Board
