@@ -93,27 +93,6 @@ export const workstreamSchema = z.object({
 
 export type Workstream = z.infer<typeof workstreamSchema>
 
-// External Assignee schema
-export const externalAssigneeSchema = z.object({
-  id: z.string(),
-  hotelId: z.string(),
-  name: z.string(),
-  entityType: z.enum([
-    'internal_department',
-    'third_party_agency',
-    'ownership',
-    'vendor',
-    'brand_corporate',
-    'management_company',
-    'hotel_team',
-    'other',
-  ]).optional(),
-  contactEmail: z.string().optional(),
-  createdAt: z.string(),
-})
-
-export type ExternalAssignee = z.infer<typeof externalAssigneeSchema>
-
 // Meeting schema from spec
 export const meetingSchema = z.object({
   id: z.string(),

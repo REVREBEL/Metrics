@@ -2,11 +2,14 @@
 
   /* Fonts */
   --font-brand: var(--font-brand);
+  --font-numbers: var(--font-numbers);
+  --font-eyebrow: var(--font-eyebrow)
+  --font-buttons: var(--font-buttons);
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
   --font-mono: var(--font-mono);
-
+  
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: oklch(1.0000 0 0);
@@ -484,6 +487,7 @@
   --font-display: "Khand", ui-sans-serif, sans-serif, system-ui;
   --font-numbers: "Funnel Sans", sans-serif;
   --font-eyebrow: "Supreme", "Segoe UI Variable", "Segoe UI", "Aptos", "Calibri", "Arial", sans-serif;
+  --font-buttons: "Khand", ui-sans-serif, sans-serif, system-ui;  
   --font-sans: "Khand", ui-sans-serif, sans-serif, system-ui;
   --font-serif: "Roboto", ui-sans-serif, sans-serif, system-ui;
   --font-mono: "Fira Code", ui-monospace, monospace;
