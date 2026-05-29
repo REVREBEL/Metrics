@@ -252,9 +252,9 @@ export function ByPersonView({ tasks, onTaskClick }: ByPersonViewProps) {
       const key = task.assignedTo || 'Unassigned'
       if (!groups[key]) {
         groups[key] = {
-          name: task.assignedTo || 'Unassigned',
-          type: task.assigneeType || 'department_placeholder',
-          department: task.assignedDepartment,
+          name: key,
+          type: task.assignedTo ? (task.assigneeType || 'department_placeholder') : 'app_user',
+          department: task.assignedTo ? task.assignedDepartment : undefined,
           tasks: [],
         }
       }
