@@ -115,7 +115,7 @@ export function MeetingRecapView({ initiatives, tasks, meetingDate }: MeetingRec
     // Overdue tasks
     const overdueTasks = tasks.filter(t => {
       if (!t.dueDate || t.status === 'complete' || t.status === 'canceled') return false
-      return new Date(t.dueDate) < recapDate
+      return t.dueDate.split('T')[0] < recapDateStr
     })
 
     // New assignments (tasks created in the last week)
