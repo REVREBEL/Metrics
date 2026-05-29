@@ -65,9 +65,8 @@ export function GrowthPlanSidebar({
   const [searchQuery, setSearchQuery] = useState('')
   const [teamExpanded, setTeamExpanded] = useState(true)
   
-  const filteredInitiatives = initiatives.filter(i => 
-    i.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    i.name?.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredInitiatives = initiatives.filter(i =>
+    i.title?.toLowerCase().includes(searchQuery.toLowerCase())
   )
   
   // Calculate overall progress
@@ -128,7 +127,7 @@ export function GrowthPlanSidebar({
                       {icon}
                     </div>
                     <span className="flex-1 text-sm font-medium truncate">
-                      {initiative.title || initiative.name}
+                      {initiative.title}
                     </span>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>

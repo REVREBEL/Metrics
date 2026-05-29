@@ -25,12 +25,6 @@ import {
 import { initiativeStatuses, taskStatuses, strategyTypes } from '../data/data'
 import type { Initiative, Task } from '../data/schema'
 
-// Format date without locale-specific formatting to avoid hydration mismatch
-function formatDate(dateString: string): string {
-  const date = new Date(dateString)
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-  return `${months[date.getUTCMonth()]} ${date.getUTCDate()}`
-}
 
 type KanbanViewProps = {
   initiatives: Initiative[]

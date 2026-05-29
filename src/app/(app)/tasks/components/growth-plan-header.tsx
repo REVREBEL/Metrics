@@ -39,7 +39,7 @@ export function GrowthPlanHeader({
   const completedTasks = initiatives.reduce((acc, i) => 
     acc + (i.tasks?.filter(t => t.status === 'complete').length || 0), 0
   )
-  const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 20
+  const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
 
   return (
     <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
@@ -53,7 +53,7 @@ export function GrowthPlanHeader({
           
           <div className="flex-1">
             <h1 className="font-semibold text-lg text-foreground">
-              {selectedInitiative?.title || selectedInitiative?.name || 'Growth Plan'}
+              {selectedInitiative?.title || 'Growth Plan'}
             </h1>
             <div className="flex items-center gap-3 mt-1">
               <Progress value={progress} className="w-32 h-2" />

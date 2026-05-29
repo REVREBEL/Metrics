@@ -99,13 +99,13 @@ function TaskBadge({ task, onClick }: { task: Task; onClick?: () => void }) {
 export function CalendarView({ tasks, onTaskClick }: CalendarViewProps) {
   const [currentDate, setCurrentDate] = useState(new Date())
   
-  const { days, monthYear, tasksByDate } = useMemo(() => {
+  const { days, monthYear } = useMemo(() => {
     const year = currentDate.getFullYear()
     const month = currentDate.getMonth()
-    
+
     const calendarDays = getMonthDays(year, month)
-    
-    // Group tasks by due date
+
+    // Group tasks by due date and assign to calendar days
     const grouped: Record<string, Task[]> = {}
     tasks.forEach(task => {
       if (task.dueDate) {
@@ -114,17 +114,15 @@ export function CalendarView({ tasks, onTaskClick }: CalendarViewProps) {
         grouped[key].push(task)
       }
     })
-    
-    // Assign tasks to calendar days
+
     calendarDays.forEach(day => {
       const key = formatDateKey(day.date)
       day.tasks = grouped[key] || []
     })
-    
+
     return {
       days: calendarDays,
       monthYear: currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
-      tasksByDate: grouped,
     }
   }, [currentDate, tasks])
 
