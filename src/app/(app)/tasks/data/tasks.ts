@@ -1,40 +1,4 @@
-import type { ExternalAssignee, Initiative, Task } from './schema'
-
-// Sample external assignees data (scoped to a demo hotel)
-export const externalAssignees: ExternalAssignee[] = [
-  {
-    id: 'ext-001',
-    hotelId: 'hotel-001',
-    name: 'Digital Agency Co.',
-    entityType: 'third_party_agency',
-    contactEmail: 'account@digitalagencyco.com',
-    createdAt: '2026-01-15T10:00:00Z',
-  },
-  {
-    id: 'ext-002',
-    hotelId: 'hotel-001',
-    name: 'Ownership Group LLC',
-    entityType: 'ownership',
-    contactEmail: 'gm@ownershipgroup.com',
-    createdAt: '2026-02-01T09:00:00Z',
-  },
-  {
-    id: 'ext-003',
-    hotelId: 'hotel-001',
-    name: 'Brand Corporate',
-    entityType: 'brand_corporate',
-    contactEmail: 'support@brandcorp.com',
-    createdAt: '2026-02-10T08:00:00Z',
-  },
-  {
-    id: 'ext-004',
-    hotelId: 'hotel-001',
-    name: 'Revenue Management Vendor',
-    entityType: 'vendor',
-    contactEmail: 'help@rmvendor.com',
-    createdAt: '2026-03-01T11:00:00Z',
-  },
-]
+import type { Initiative, Task } from './schema'
 
 // Sample initiatives data
 export const initiatives: Initiative[] = [
