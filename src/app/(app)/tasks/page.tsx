@@ -141,7 +141,7 @@ export default function GrowthPlanPage() {
     <TasksProvider>
       <Header fixed>
         <div className="min-w-0">
-          <p className="text-sm font-medium leading-none">Growth Plan</p>
+          <p className="text-sm font-semibold leading-none uppercase" style={{ letterSpacing: '0.025em' }}>Growth Plan</p>
           <p className="mt-1 text-xs text-muted-foreground">Revenue Action Plan</p>
         </div>
         <div className="ms-auto flex items-center space-x-4">

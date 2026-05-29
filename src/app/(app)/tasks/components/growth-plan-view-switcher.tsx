@@ -46,7 +46,7 @@ export function GrowthPlanViewSwitcher({
               key={view.value}
               value={view.value}
               className={cn(
-                "h-7 min-w-20 justify-center rounded-md px-3 font-display text-xs font-semibold uppercase tracking-tight",
+                "h-7 min-w-20 justify-center rounded-md px-3 font-display text-sm font-semibold uppercase",
                 "text-muted-foreground transition-colors",
                 "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground",
                 "hover:bg-primary/10 hover:text-primary",

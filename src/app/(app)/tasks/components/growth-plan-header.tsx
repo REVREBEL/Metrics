@@ -52,7 +52,7 @@ export function GrowthPlanHeader({
           </div>
           
           <div className="flex-1">
-            <h1 className="font-semibold text-lg text-foreground">
+            <h1 className="font-bold text-lg text-foreground" style={{ textTransform: 'uppercase', letterSpacing: '0.074em' }}>
               {selectedInitiative?.title || 'Growth Plan'}
             </h1>
             <div className="flex items-center gap-3 mt-1">
