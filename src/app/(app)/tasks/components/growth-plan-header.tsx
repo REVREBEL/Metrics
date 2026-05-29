@@ -5,7 +5,9 @@ import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { IconPlus, IconLayoutKanban, IconCalendar, IconTable } from '@tabler/icons-react'
+import { Building2, GitBranch } from 'lucide-react'
 import type { Initiative } from '../data/schema'
+import { useTasks } from './tasks-provider'
 
 export type GrowthPlanMode = 'initiatives' | 'tasks'
 
@@ -34,6 +36,7 @@ export function GrowthPlanHeader({
   initiatives = [],
   selectedInitiative,
 }: GrowthPlanHeaderProps) {
+  const { setOpen } = useTasks()
   // Calculate overall progress
   const totalTasks = initiatives.reduce((acc, i) => acc + (i.tasks?.length || 0), 0)
   const completedTasks = initiatives.reduce((acc, i) => 
@@ -82,6 +85,28 @@ export function GrowthPlanHeader({
               </Avatar>
             </div>
           </div>
+
+          {/* Add Workstream Button */}
+          <Button
+            variant="outline"
+            size="sm"
+            className="gap-1.5"
+            onClick={() => setOpen('add-workstream')}
+          >
+            <GitBranch size={16} />
+            Add Workstream
+          </Button>
+
+          {/* Manage Vendors Button */}
+          <Button
+            variant="outline"
+            size="sm"
+            className="gap-1.5"
+            onClick={() => setOpen('manage-vendors')}
+          >
+            <Building2 size={16} />
+            Manage Vendors
+          </Button>
 
           {/* Add Member Button */}
           <Button variant="default" size="sm" className="gap-1.5">

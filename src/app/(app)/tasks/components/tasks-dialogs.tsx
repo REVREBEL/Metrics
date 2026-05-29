@@ -2,6 +2,8 @@ import { showSubmittedData } from '@/lib/show-submitted-data'
 import { ConfirmDialog } from '@/components/confirm-dialog'
 import { TasksImportDialog } from './tasks-import-dialog'
 import { TasksMutateDrawer } from './tasks-mutate-drawer'
+import { ExternalAssigneesDialog } from './external-assignees-dialog'
+import { WorkstreamMutateDrawer } from './workstream-mutate-drawer'
 import { useTasks } from './tasks-provider'
 
 export function TasksDialogs() {
@@ -18,6 +20,18 @@ export function TasksDialogs() {
         key='tasks-import'
         open={open === 'import'}
         onOpenChange={() => setOpen('import')}
+      />
+
+      <ExternalAssigneesDialog
+        key='manage-vendors'
+        open={open === 'manage-vendors'}
+        onOpenChange={() => setOpen('manage-vendors')}
+      />
+
+      <WorkstreamMutateDrawer
+        key='add-workstream'
+        open={open === 'add-workstream'}
+        onOpenChange={() => setOpen('add-workstream')}
       />
 
       {currentRow && (
