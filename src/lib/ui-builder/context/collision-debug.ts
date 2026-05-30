@@ -90,26 +90,7 @@ export const collisionDebug = (
       y: adjustedPointerCoordinates.y + iframeRect.top
     };
 
-    // Debug: log the coordinate spaces to console  
-    console.log('🎯 Debug Coordinates:', {
-      original: pointerCoordinates,
-      originalRelative: originalPointerRelative,
-      adjusted: adjustedPointerCoordinates,
-      adjustedRelative: adjustedPointerRelative,
-      iframeRect,
-      iframeScrollOffset,
-      // Show first few rectangles for comparison (before and after conversion)
-      sampleRects: Array.from(droppableRects.entries()).slice(0, 2).map(([id, rect]) => ({
-        id,
-        original: rect,
-        converted: {
-          left: rect.left + iframeRect.left,
-          top: rect.top + iframeRect.top,
-          width: rect.width,
-          height: rect.height
-        }
-      }))
-    });
+
 
     // Show pointer positions
     if (showPointer) {
@@ -225,7 +206,7 @@ export const clearDebugElements = () => {
 // Utility function to toggle debug mode
 export const toggleCollisionDebug = () => {
   DEBUG = !DEBUG;
-  console.log(`🎯 Collision Debug ${DEBUG ? 'ENABLED' : 'DISABLED'}`);
+
   if (!DEBUG) {
     clearDebugElements();
   }
@@ -235,7 +216,7 @@ export const toggleCollisionDebug = () => {
 // Utility function to enable debug mode
 export const enableCollisionDebug = () => {
   DEBUG = true;
-  console.log('🎯 Collision Debug ENABLED');
+
   return DEBUG;
 };
 
@@ -243,7 +224,7 @@ export const enableCollisionDebug = () => {
 export const disableCollisionDebug = () => {
   DEBUG = false;
   clearDebugElements();
-  console.log('🎯 Collision Debug DISABLED');
+
   return DEBUG;
 };
 
@@ -378,17 +359,7 @@ export const debugCollisionDetection = (
 ) => {
   if (!DEBUG) return;
 
-  console.group("🎯 Collision Detection Debug");
-  console.log("Original Pointer:", originalPointer);
-  console.log("Adjusted Pointer:", adjustedPointer);
-  console.log("Droppable Rects:", Array.from(droppableRects.entries()));
-  console.log("Collisions:", collisions);
-  
-  if (debugInfo) {
-    console.log("Additional Debug Info:", debugInfo);
-  }
-  
-  console.groupEnd();
+
 
   // Visual debug
   collisionDebug(originalPointer, adjustedPointer, droppableRects, collisions, {

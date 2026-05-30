@@ -62,7 +62,7 @@ function AppSidebarContent({ currentPath, ...props }: AppSidebarProps) {
         ))}
       </SidebarContent>
       <SidebarFooter className="flex flex-row justify-between items-center border-t border-border shadow-sm">
-        <Link href="https://github.com/olliethedev/ui-builder" target="_blank">
+        <Link href="https://github.com/olliethedev/ui-builder" target="_blank" rel="noopener noreferrer">
           <Button size="icon" className="p-1 aspect-square">
             <GithubIcon />
           </Button>
