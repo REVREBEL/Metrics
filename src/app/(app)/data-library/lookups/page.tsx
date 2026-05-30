@@ -1,4 +1,4 @@
-import { IconDatabaseZap } from "@tabler/icons-react"
+import { IconDatabase } from "@tabler/icons-react"
 
 import { Header } from "@/components/layout/header"
 import { Main } from "@/components/layout/main"
@@ -22,7 +22,7 @@ export default async function LookupTableManagerPage() {
     <>
       <Header>
         <div className="flex min-w-0 items-center gap-3">
-          <DatabaseZap className="size-5 text-primary" aria-hidden="true" />
+          <IconDatabase className="size-5 text-primary" aria-hidden="true" />
           <div className="min-w-0">
             <p className="text-sm font-medium leading-none">Data Library</p>
             <p className="text-xs text-muted-foreground">

@@ -1,0 +1,34 @@
+{
+  "env": {
+    "BAILIAN_API_KEY": "sk-ws-H.HLPHLD.a8kc.MEYCIQDN3tr4-os_wKa08leoqh4ze_E6VjvkvQJYsL9i0t1eTAIhAP1DBoEjpmOgHb156G2YEywktwmOSsBQ1mcelIUgLC_x"
+  },
+  "modelProviders": {
+    "openai": [
+      {
+        "id": "qwen3.6-plus",
+        "name": "[Bailian] qwen3.6-plus",
+        "baseUrl": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+        "envKey": "BAILIAN_API_KEY",
+        "generationConfig": {
+          "extra_body": {
+            "enable_thinking": true
+          }
+        }
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(npx *)"
+    ]
+  },
+  "security": {
+    "auth": {
+      "selectedType": "openai"
+    }
+  },
+  "model": {
+    "name": "qwen3.6-plus"
+  },
+  "$version": 4
+}

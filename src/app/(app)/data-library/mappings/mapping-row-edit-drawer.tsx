@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState, useTransition } from "react"
-import { IconAlertTriangle, IconCheckCircle2, IconLoader2, IconX } from "@tabler/icons-react"
+import { IconAlertTriangle, IconCircleCheck, IconLoader2, IconX } from "@tabler/icons-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -259,9 +259,9 @@ export function MappingRowEditDrawer({
                   )}
                 >
                   {saveResult.ok ? (
-                    <CheckCircle2 className="mt-0.5 size-4 shrink-0" />
+                    <IconCircleCheck className="mt-0.5 size-4 shrink-0" />
                   ) : (
-                    <AlertTriangle className="mt-0.5 size-4 shrink-0" />
+                    <IconAlertTriangle className="mt-0.5 size-4 shrink-0" />
                   )}
                   <p>{saveResult.message}</p>
                 </div>
@@ -275,7 +275,7 @@ export function MappingRowEditDrawer({
             variant="outline"
             onClick={() => handleOpenChange(false)}
           >
-            <X className="size-4" />
+            <IconX className="size-4" />
             Close
           </Button>
           <Button
@@ -283,14 +283,14 @@ export function MappingRowEditDrawer({
             onClick={handleSaveDraft}
             disabled={!row || isSaving || isPublishing || !isDirty}
           >
-            {isSaving && <Loader2 className="size-4 animate-spin" />}
+            {isSaving && <IconLoader2 className="size-4 animate-spin" />}
             Save Draft
           </Button>
           <Button
             onClick={handlePublish}
             disabled={!row || isPublishing || isSaving || !lastSavedDraftId}
           >
-            {isPublishing && <Loader2 className="size-4 animate-spin" />}
+            {isPublishing && <IconLoader2 className="size-4 animate-spin" />}
             Publish
           </Button>
         </DialogFooter>
