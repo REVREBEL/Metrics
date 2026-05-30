@@ -9,8 +9,8 @@ const schema = await import("@/db/schema")
 const {
   campaigns,
   dataLibraryTables,
-  hotelProfiles,
-  hotelTaskStatuses,
+  propertyProfiles,
+  propertyTaskStatuses,
   strategyTemplates,
 } = schema
 
@@ -19,12 +19,13 @@ const { createPostgresClient } = await import("./postgres")
 const queryClient = createPostgresClient({ max: 1 })
 const db = drizzle(queryClient, { schema })
 
-
+// DOMAIN NAMING RULE: seed data must use canonical property terminology.
+// Do not add hotel-prefixed app entities here unless mirroring a vendor/source-system field.
 const dataLibrarySeedTables = [
   {
     tableName: "metrics_core.dim_property",
     displayName: "Property Directory",
-    description: "Property dimension used for hotel profile alignment.",
+    description: "Property dimension used for property profile alignment.",
     uiMetadata: {
       status: "ready",
       approximateRowCount: 100,
@@ -83,48 +84,48 @@ const dataLibrarySeedTables = [
 ]
 
 export async function seedAppStateFoundation() {
-  const [insertedHotel] = await db
-    .insert(hotelProfiles)
+  const [insertedProperty] = await db
+    .insert(propertyProfiles)
     .values({
       propertyCode: "DEMO_001",
-      name: "Demo Hotel",
+      name: "Demo Property",
       market: "Austin",
       timezone: "America/Chicago",
       profileData: { tier: "pilot" },
     })
     .onConflictDoUpdate({
-      target: hotelProfiles.propertyCode,
+      target: propertyProfiles.propertyCode,
       set: {
-        name: "Demo Hotel",
+        name: "Demo Property",
         market: "Austin",
         timezone: "America/Chicago",
         profileData: { tier: "pilot" },
       },
     })
-    .returning({ id: hotelProfiles.id })
+    .returning({ id: propertyProfiles.id })
 
   await db
-    .insert(hotelTaskStatuses)
+    .insert(propertyTaskStatuses)
     .values([
       { code: "todo", label: "To Do", sortOrder: 10 },
       { code: "in_progress", label: "In Progress", sortOrder: 20 },
       { code: "blocked", label: "Blocked", sortOrder: 30 },
       { code: "done", label: "Done", sortOrder: 40 },
     ])
-    .onConflictDoNothing({ target: hotelTaskStatuses.code })
+    .onConflictDoNothing({ target: propertyTaskStatuses.code })
 
-  const hotel =
-    insertedHotel ??
-    (await db.query.hotelProfiles.findFirst({
+  const property =
+    insertedProperty ??
+    (await db.query.propertyProfiles.findFirst({
       where: (table, { eq }) => eq(table.propertyCode, "DEMO_001"),
       columns: { id: true },
     }))
 
-  if (hotel) {
+  if (property) {
     await db
       .insert(campaigns)
       .values({
-        hotelId: hotel.id,
+        propertyId: property.id,
         name: "Demo Campaign",
         status: "draft",
         metadata: { source: "seed" },
