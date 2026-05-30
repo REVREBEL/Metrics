@@ -1,51 +1,45 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { sleep } from './utils'
+import { describe, expect, it } from "vitest"
 
-describe('sleep', () => {
-  beforeEach(() => {
-    vi.useFakeTimers()
+import { cn } from "./utils"
+
+describe("cn utility", () => {
+  it("merges simple string class names correctly", () => {
+    expect(cn("bg-red-500", "text-white")).toBe("bg-red-500 text-white")
   })
 
-  afterEach(() => {
-    vi.restoreAllMocks()
-    vi.useRealTimers()
+  it("handles tailwind class conflicts correctly", () => {
+    // twMerge should resolve 'bg-red-500' and 'bg-blue-500' to just 'bg-blue-500'
+    expect(cn("bg-red-500", "bg-blue-500")).toBe("bg-blue-500")
   })
 
-  it('resolves after the specified amount of time', async () => {
-    const sleepPromise = sleep(1000)
-
-    let isResolved = false
-    sleepPromise.then(() => {
-      isResolved = true
-    })
-
-    // Fast-forward time by 500ms
-    vi.advanceTimersByTime(500)
-
-    // Flush microtasks to allow any pending promise callbacks to run
-    await Promise.resolve()
-    expect(isResolved).toBe(false)
-
-    // Fast-forward the rest of the time
-    vi.advanceTimersByTime(500)
-
-    // Flush microtasks again
-    await Promise.resolve()
-    expect(isResolved).toBe(true)
+  it("handles conditional classes correctly", () => {
+    expect(cn("text-lg", true && "font-bold", false && "italic")).toBe(
+      "text-lg font-bold"
+    )
   })
 
-  it('works with 0 ms', async () => {
-    const sleepPromise = sleep(0)
+  it("handles array inputs correctly", () => {
+    expect(cn(["p-4", "m-2"])).toBe("p-4 m-2")
+  })
 
-    let isResolved = false
-    sleepPromise.then(() => {
-      isResolved = true
-    })
+  it("handles object inputs correctly", () => {
+    expect(cn({ "bg-green-500": true, "text-black": false })).toBe(
+      "bg-green-500"
+    )
+  })
 
-    vi.advanceTimersByTime(0)
+  it("handles mixed inputs correctly", () => {
+    expect(
+      cn(
+        "flex",
+        ["items-center", "justify-center"],
+        { "w-full": true },
+        "bg-blue-500 bg-red-500"
+      )
+    ).toBe("flex items-center justify-center w-full bg-red-500")
+  })
 
-    // Flush microtasks
-    await Promise.resolve()
-    expect(isResolved).toBe(true)
+  it("ignores null and undefined values", () => {
+    expect(cn("p-4", null, undefined, "m-2")).toBe("p-4 m-2")
   })
 })
