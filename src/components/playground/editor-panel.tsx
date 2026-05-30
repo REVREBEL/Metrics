@@ -498,7 +498,7 @@ function ItemDemo() {
         </ItemActions>
       </Item>
       <Item variant="outline" size="sm" asChild>
-        <Link href="https://ephraimduncan.com" target="_blank">
+        <Link href="https://ephraimduncan.com" target="_blank" rel="noopener noreferrer">
           <ItemMedia>
             <BadgeCheckIcon className="size-5" />
           </ItemMedia>

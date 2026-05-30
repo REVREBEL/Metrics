@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "scripts": {
+"scripts": {
+    "predev": "tsx scripts/build-icons.ts",
     "dev": "node scripts/setup-env.mjs && tsx scripts/generate-registry.mjs && bash scripts/start-dev.sh",
+    "prebuild": "tsx scripts/build-icons.ts",
     "build": "tsx scripts/generate-registry.mjs && next build",
     "create:registry": "tsx scripts/generate-registry.mjs",
     "start": "next start",
@@ -26,7 +28,7 @@
     "sync-custom-registry": "npx tsx scripts/sync-registry.ts",
     "icons:build": "node ./scripts/build-icons.mjs",
     "icons:build:index": "node ./scripts/generate-icons-index.mjs",
-    "icons:build:all": "pnpm run icons:build && pnpm run icons:build:index",
+    "icons:build:all": "tsx scripts/build-icons.ts && pnpm run icons:build && pnpm run icons:build:index",
     "typecheck": "tsc --noEmit",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
@@ -34,7 +36,8 @@
     "db:seed": "tsx src/db/seed.ts",
     "clean": "rm -rf .next *.tsbuildinfo",
     "clean:node_modules": "rm -rf .next node_modules *.tsbuildinfo",
-    "knip": "knip"
+    "knip": "knip",
+    "test": "vitest run"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
@@ -164,6 +167,7 @@
     "eslint-plugin-import": "^2.32.0",
     "glob": "^13.0.6",
     "js-beautify": "^1.15.4",
+    "jsdom": "^29.1.1",
     "knip": "^6.0.0",
     "prettier": "^3.8.3",
     "prettier-plugin-tailwindcss": "^0.8.0",
