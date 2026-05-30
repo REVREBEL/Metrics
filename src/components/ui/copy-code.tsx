@@ -45,6 +45,11 @@ function CopyCode({ code = 'javascript' }: CopyCodeProps) {
   const highlightCode = (code: string) => {
     let result = code
 
+    // Escape HTML characters to prevent XSS
+    result = result.replace(/&/g, '&amp;')
+    result = result.replace(/</g, '&lt;')
+    result = result.replace(/>/g, '&gt;')
+
     // 1. Strings (blue) - process first to protect content
     result = result.replace(/"([^"]*)"/g, '<span class="text-blue-600 dark:text-blue-400">"$1"</span>')
     result = result.replace(/\b(agent)\b/g, '<span class="text-blue-600 dark:text-blue-400">$1</span>')
