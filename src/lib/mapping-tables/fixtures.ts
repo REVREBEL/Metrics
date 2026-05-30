@@ -321,7 +321,7 @@ const mappingMetadataBase: MappingTableMetadataEntry[] = [
     key: "metrics_core.map_rate",
     displayName: "Rate Mapping",
     description:
-      "Maps rate codes to standard rate, rate type, company, segment, channel, source, and subsource values.",
+      "Maps rate codes to standard rate, rate type, corporate, segment, channel, source, and subsource values.",
     sourceTableName: "source_rate_codes",
     standardTableName: "metrics_core.lkp_rate",
     category: "Rate",
