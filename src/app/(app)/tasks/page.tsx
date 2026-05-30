@@ -152,7 +152,7 @@ export default function GrowthPlanPage() {
             onClick={() => setSidebarOpen((prev) => !prev)}
             aria-label="Toggle sidebar"
           >
-            <PanelLeft className="size-5" />
+            <IconPanelLeft className="size-5" strokeWidth={1.5} />
           </Button>
           <ThemeSwitch />
         </div>

@@ -36,6 +36,10 @@ function normalizeToTablerName(iconName: string): string {
   return `Icon${cleanName}`
 }
 
+function isValidTablerIconName(iconName: string): boolean {
+  return /^Icon[A-Z][A-Za-z0-9]*$/.test(iconName.trim())
+}
+
 function enforceTablerJsxProperties(content: string, tablerIcons: string[]): string {
   let updatedContent = content
   for (const icon of tablerIcons) {
@@ -72,6 +76,9 @@ function enforceTablerJsxProperties(content: string, tablerIcons: string[]): str
 }
 
 function main() {
+  if (process.env.ENABLE_ICON_REWRITE !== "1") {
+    return
+  }
   const files = DIRECTORIES_TO_SCAN.flatMap(dir => findTsxFiles(dir))
 
   for (const file of files) {
@@ -83,10 +90,15 @@ function main() {
     const importRegex = /import\s+\{([^}]+)\}\s+from\s+["'](lucide-react|@hugeicons\/react)["']/g
     content = content.replace(importRegex, (_, iconExports, libraryName) => {
       hasChanges = true
-      const individualIcons = iconExports.split(",").map((i: string) => i.trim().split(/\s+as\s+/)[0]) // handle aliases
+      const individualIcons = iconExports
+        .split(",")
+        .map((i: string) => i.trim().split(/\s+as\s+/)[0])
+        .filter(Boolean)
       const migratedTablerExports = individualIcons.map((icon: string) => {
         const tablerName = normalizeToTablerName(icon)
-        fileTrackedTablerIcons.push(tablerName)
+        if (isValidTablerIconName(tablerName)) {
+          fileTrackedTablerIcons.push(tablerName)
+        }
         return tablerName
       })
       return `import { ${Array.from(new Set(migratedTablerExports)).join(", ")} } from "@tabler/icons-react"`
@@ -95,7 +107,10 @@ function main() {
     // 2. Track existing Tabler elements to ensure their stroke/size are correct too
     const existingTablerImports = content.match(/import\s+\{([^}]+)\}\s+from\s+["']@tabler\/icons-react["']/)
     if (existingTablerImports) {
-      const foundIcons = existingTablerImports[1].split(",").map(i => i.trim().split(/\s+as\s+/).pop()!)
+      const foundIcons = existingTablerImports[1]
+        .split(",")
+        .map(i => i.trim().split(/\s+as\s+/).pop()!)
+        .filter((icon) => isValidTablerIconName(icon))
       fileTrackedTablerIcons.push(...foundIcons)
     }
 

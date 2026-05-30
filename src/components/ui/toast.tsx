@@ -1,7 +1,13 @@
 "use client";
 
 import { Toast } from "@base-ui/react/toast";
-import { IconCircleAlertIcon, IconCircleCheckIcon, IconInfoIcon, IconLoaderCircleIcon, IconTriangleAlertIcon, Icon } from "@tabler/icons-react";
+import {
+  IconAlertCircle,
+  IconAlertTriangle,
+  IconCircleCheck,
+  IconInfoCircle,
+  IconLoader2,
+} from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
@@ -10,11 +16,11 @@ const toastManager = Toast.createToastManager();
 const anchoredToastManager = Toast.createToastManager();
 
 const TOAST_ICONS = {
-  error: CircleAlertIcon,
-  info: InfoIcon,
-  loading: LoaderCircleIcon,
-  success: CircleCheckIcon,
-  warning: TriangleAlertIcon,
+  error: IconAlertCircle,
+  info: IconInfoCircle,
+  loading: IconLoader2,
+  success: IconCircleCheck,
+  warning: IconAlertTriangle,
 } as const;
 
 type ToastPosition =

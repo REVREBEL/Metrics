@@ -72,7 +72,7 @@ export function NewChat({ users, onOpenChange, open }: NewChatProps) {
                   }}
                   onClick={() => handleRemoveUser(user.id)}
                 >
-                  <X className='h-3 w-3 text-muted-foreground hover:text-foreground' />
+                  <IconX className='h-3 w-3 text-muted-foreground hover:text-foreground' />
                 </button>
               </Badge>
             ))}
@@ -108,7 +108,7 @@ export function NewChat({ users, onOpenChange, open }: NewChatProps) {
                     </div>
 
                     {selectedUsers.find((u) => u.id === user.id) && (
-                      <Check className='h-4 w-4' />
+                      <IconCheck className='h-4 w-4' />
                     )}
                   </CommandItem>
                 ))}
