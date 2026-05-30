@@ -52,10 +52,12 @@ export default function InputGroupButtonExample() {
         <InputGroupInput id="input-secure-19" />
         <InputGroupAddon align="inline-end">
           <InputGroupButton onClick={() => setIsFavorite(!isFavorite)} size="icon-xs">
-            <IconStar data-favorite={isFavorite}
+            <IconStar
+              data-favorite={isFavorite}
               className="data-[favorite=true]:fill-blue-600 data-[favorite=true]:stroke-blue-600"
               strokeWidth={1.5}
-              size={20} />
+              size={20}
+            />
           </InputGroupButton>
         </InputGroupAddon>
       </InputGroup>

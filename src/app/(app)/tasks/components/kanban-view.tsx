@@ -126,7 +126,9 @@ export function KanbanView({
     source.forEach((item) => {
       const key = item.status
       const bucket = statusMap.get(key)
-      if (bucket) bucket.push(item)
+      if (bucket) {
+        bucket.push(item)
+      }
     })
     return statusMap
   }, [columns, initiatives, mode, tasks])
@@ -149,7 +151,7 @@ export function KanbanView({
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" className="size-7">
-                      <IconDotsVertical strokeWidth={1.5} size={20} />
+                      <IconDotsVertical strokeWidth={1.5} size={16} />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
@@ -163,14 +165,18 @@ export function KanbanView({
                 variant="outline"
                 className="mb-3 w-full border-dashed border-border/60 text-muted-foreground hover:border-border hover:bg-muted/50 hover:text-foreground"
               >
-                <IconPlus strokeWidth={1.5} className="mr-2" size={20} />
+                <IconPlus strokeWidth={1.5} className="mr-2" size={16} />
                 Add New {mode === "initiatives" ? "Initiative" : "Task"}
               </Button>
 
               <div className="space-y-3">
                 {mode === "initiatives"
                   ? (items as Initiative[]).map((item) => (
-                      <InitiativeCard key={item.id} initiative={item} onClick={() => onInitiativeClick?.(item)} />
+                      <InitiativeCard
+                        key={item.id}
+                        initiative={item}
+                        onClick={() => onInitiativeClick?.(item)}
+                      />
                     ))
                   : (items as Task[]).map((item) => (
                       <TaskCard key={item.id} task={item} onClick={() => onTaskClick?.(item)} />
@@ -185,7 +191,13 @@ export function KanbanView({
   )
 }
 
-function InitiativeCard({ initiative, onClick }: { initiative: Initiative; onClick?: () => void }) {
+function InitiativeCard({
+  initiative,
+  onClick,
+}: {
+  initiative: Initiative
+  onClick?: () => void
+}) {
   const colors = categoryColors[initiative.strategyType] ?? categoryColors.operations
   const totalTasks = initiative.tasks?.length ?? 0
   const completedTasks = initiative.tasks?.filter((task) => task.status === "complete").length ?? 0
@@ -197,12 +209,12 @@ function InitiativeCard({ initiative, onClick }: { initiative: Initiative; onCli
     >
       <div className="mb-3 flex items-start justify-between">
         <div className="flex items-center gap-1.5 opacity-0 transition-opacity group-hover:opacity-100">
-          <IconGripVertical strokeWidth={1.5} className="cursor-grab text-muted-foreground" size={20} />
+          <IconGripVertical strokeWidth={1.5} className="cursor-grab text-muted-foreground" size={16} />
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="-mr-1 -mt-1 size-6" onClick={(event) => event.stopPropagation()}>
-              <IconDotsVertical strokeWidth={1.5} size={20} />
+              <IconDotsVertical strokeWidth={1.5} size={16} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -216,13 +228,15 @@ function InitiativeCard({ initiative, onClick }: { initiative: Initiative; onCli
       </Badge>
       <h4 className="mb-2 line-clamp-2 leading-snug text-foreground">{initiative.title}</h4>
 
+      <h4 className="mb-2 line-clamp-2 leading-snug text-foreground">{initiative.title}</h4>
+
       {initiative.objective ? (
         <p className="mb-3 line-clamp-2 text-sm text-muted-foreground">{initiative.objective}</p>
       ) : null}
 
       {totalTasks > 0 ? (
         <div className="mb-3 flex items-center gap-2">
-          <IconListCheck strokeWidth={1.5} className="text-muted-foreground" size={20} />
+          <IconListCheck strokeWidth={1.5} className="text-muted-foreground" size={16} />
           <span className="rounded bg-slate-100 px-2 py-0.5 text-sm font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
             {completedTasks}/{totalTasks}
           </span>
@@ -231,24 +245,27 @@ function InitiativeCard({ initiative, onClick }: { initiative: Initiative; onCli
 
       {initiative.risksBlockers ? (
         <div className="mb-3 flex items-center gap-1.5 text-orange-600 dark:text-orange-400">
-          <IconAlertTriangle strokeWidth={1.5} size={20} />
+          <IconAlertTriangle strokeWidth={1.5} size={16} />
           <span className="line-clamp-1 text-xs font-medium">{initiative.risksBlockers}</span>
         </div>
       ) : null}
 
       <div className="flex items-center justify-between border-t border-border/50 pt-3">
-        {initiative.leadDepartment ? (
-          <Avatar className="size-7 border-2 border-card">
-            <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${initiative.leadDepartment}`} />
-            <AvatarFallback className="bg-primary/10 text-[10px] font-medium text-primary">
-              {initiative.leadDepartment.slice(0, 2).toUpperCase()}
-            </AvatarFallback>
-          </Avatar>
-        ) : (
-          <span />
-        )}
+        <div className="flex items-center">
+          <div className="flex -space-x-2">
+            {initiative.leadDepartment ? (
+              <Avatar className="size-7 border-2 border-card">
+                <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${initiative.leadDepartment}`} />
+                <AvatarFallback className="bg-primary/10 text-[10px] font-medium text-primary">
+                  {initiative.leadDepartment.slice(0, 2).toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
+            ) : null}
+          </div>
+        </div>
+
         <span className="flex items-center gap-1 text-xs text-muted-foreground">
-          <IconMessage strokeWidth={1.5} size={20} />
+          <IconMessage strokeWidth={1.5} size={16} />
           {initiative.id.charCodeAt(initiative.id.length - 1) % 5}
         </span>
       </div>
@@ -275,12 +292,12 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
     >
       <div className="mb-3 flex items-start justify-between">
         <div className="flex items-center gap-1.5 opacity-0 transition-opacity group-hover:opacity-100">
-          <IconGripVertical strokeWidth={1.5} className="cursor-grab text-muted-foreground" size={20} />
+          <IconGripVertical strokeWidth={1.5} className="cursor-grab text-muted-foreground" size={16} />
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="-mr-1 -mt-1 size-6" onClick={(event) => event.stopPropagation()}>
-              <IconDotsVertical strokeWidth={1.5} size={20} />
+              <IconDotsVertical strokeWidth={1.5} size={16} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -294,23 +311,25 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
       </Badge>
       <h4 className="mb-2 line-clamp-2 leading-snug text-foreground">{task.title}</h4>
 
+      <h4 className="mb-2 line-clamp-2 leading-snug text-foreground">{task.title}</h4>
+
       <div className="flex items-center justify-between border-t border-border/50 pt-3">
-        {task.assignedTo ? (
-          <Avatar className="size-7 border-2 border-card">
-            <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${task.assignedTo}`} />
-            <AvatarFallback className="bg-primary/10 text-[10px] font-medium text-primary">
-              {task.assignedTo
-                .split(" ")
-                .map((namePart) => namePart[0])
-                .join("")
-                .slice(0, 2)}
-            </AvatarFallback>
-          </Avatar>
-        ) : (
-          <span />
-        )}
+        <div className="flex items-center">
+          {task.assignedTo ? (
+            <Avatar className="size-7 border-2 border-card">
+              <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${task.assignedTo}`} />
+              <AvatarFallback className="bg-primary/10 text-[10px] font-medium text-primary">
+                {task.assignedTo
+                  .split(" ")
+                  .map((namePart) => namePart[0])
+                  .join("")
+                  .slice(0, 2)}
+              </AvatarFallback>
+            </Avatar>
+          ) : null}
+        </div>
         <span className="flex items-center gap-1 text-xs text-muted-foreground">
-          <IconLink strokeWidth={1.5} size={20} />
+          <IconLink strokeWidth={1.5} size={16} />
           {task.id.charCodeAt(task.id.length - 1) % 3}
         </span>
       </div>

@@ -69,7 +69,7 @@ export function Navbar({
           <Tooltip>
             <TooltipTrigger asChild>
               <ToggleGroupItem value="horizontal" aria-label="Side by side">
-                <IconLayoutColumns className="size-3.5" strokeWidth={1.5} size={20} />
+                <IconLayoutColumns className="size-3.5" strokeWidth={1.5} />
               </ToggleGroupItem>
             </TooltipTrigger>
             <TooltipContent>Side by side</TooltipContent>
@@ -77,7 +77,7 @@ export function Navbar({
           <Tooltip>
             <TooltipTrigger asChild>
               <ToggleGroupItem value="preview-only" aria-label="Preview only">
-                <IconLayoutSidebarRight className="size-3.5" strokeWidth={1.5} size={20} />
+                <IconLayoutSidebarRight className="size-3.5" strokeWidth={1.5} />
               </ToggleGroupItem>
             </TooltipTrigger>
             <TooltipContent>Preview only</TooltipContent>
@@ -94,7 +94,7 @@ export function Navbar({
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               aria-label="Toggle theme"
             >
-              <IconCircleHalf2 className="size-3.5 text-black dark:text-white" strokeWidth={1.5} size={20} />
+              <IconCircleHalf2 className="size-3.5 text-black dark:text-white" strokeWidth={1.5} />
             </Button>
           </TooltipTrigger>
           <TooltipContent>Toggle theme</TooltipContent>

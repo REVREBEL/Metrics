@@ -64,8 +64,10 @@ export function ProductAreaPage({ title, description, items = [] }: ProductAreaP
                   className="group flex items-center justify-between rounded-lg border bg-card p-4 text-sm font-medium transition-colors hover:border-primary/50 hover:bg-muted"
                 >
                   <span>{item}</span>
-                  <IconChevronRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground"
-                    strokeWidth={1.5} size={20} />
+                  <IconChevronRight
+                    className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground"
+                    strokeWidth={1.5}
+                  />
                 </Link>
               )
             })}

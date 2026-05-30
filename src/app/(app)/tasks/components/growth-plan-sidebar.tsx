@@ -78,9 +78,11 @@ export function GrowthPlanSidebar({
     <div className="flex h-full flex-col border-r border-border bg-card/50">
       <div className="border-b border-border p-4">
         <div className="relative">
-          <IconSearch size={20}
+          <IconSearch
+            size={20}
             strokeWidth={1.5}
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+          />
           <Input
             placeholder="Search"
             className="bg-background pl-9"
@@ -138,7 +140,7 @@ export function GrowthPlanSidebar({
                           )}
                           onClick={(event) => event.stopPropagation()}
                         >
-                          <IconDotsVertical size={20} strokeWidth={1.5} />
+                          <IconDotsVertical size={16} strokeWidth={1.5} />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
@@ -153,7 +155,7 @@ export function GrowthPlanSidebar({
             </div>
 
             <Button variant="outline" className="mt-3 w-full justify-start border-dashed">
-              <IconPlus size={20} strokeWidth={1.5} className="mr-2" />
+              <IconPlus size={16} strokeWidth={1.5} className="mr-2" />
               Add Initiative
             </Button>
           </div>
@@ -161,12 +163,14 @@ export function GrowthPlanSidebar({
           <Collapsible open={teamExpanded} onOpenChange={setTeamExpanded}>
             <CollapsibleTrigger className="mb-3 flex w-full items-center justify-between">
               <h3 className="text-sm font-semibold text-foreground">Team members</h3>
-              <IconChevronDown size={20}
+              <IconChevronDown
+                size={16}
                 strokeWidth={1.5}
                 className={cn(
                   "text-muted-foreground transition-transform",
                   teamExpanded ? "" : "-rotate-90",
-                )} />
+                )}
+              />
             </CollapsibleTrigger>
             <CollapsibleContent>
               <div className="space-y-1">
@@ -203,7 +207,7 @@ export function GrowthPlanSidebar({
                         )}
                       </p>
                     </div>
-                    <IconChevronDown size={20} strokeWidth={1.5} className="text-muted-foreground" />
+                    <IconChevronDown size={14} strokeWidth={1.5} className="text-muted-foreground" />
                   </div>
                 ))}
               </div>
@@ -218,7 +222,7 @@ export function GrowthPlanSidebar({
           <p className="mb-1 text-xs uppercase tracking-wide text-muted-foreground">Total Hours</p>
           <p className="text-2xl font-bold text-foreground">23.7 hours</p>
           <p className="mt-1 flex items-center gap-1 text-xs text-emerald-600 dark:text-emerald-400">
-            <IconTrendingUp size={20} strokeWidth={1.5} />
+            <IconTrendingUp size={14} strokeWidth={1.5} />
             2.5% from last week
           </p>
         </div>

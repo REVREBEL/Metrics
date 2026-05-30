@@ -1,4 +1,13 @@
-import { IconCircle, IconCircleCheck, IconCircleHelp, IconCircleX, IconTimer, IconArrowDown, IconArrowRight, IconArrowUp, Icon } from "@tabler/icons-react"
+import {
+  IconArrowDown,
+  IconArrowRight,
+  IconArrowUp,
+  IconCircle,
+  IconCircleCheck,
+  IconCircleHelp,
+  IconCircleX,
+  IconTimer,
+} from "@tabler/icons-react"
 
 export const labels = [
   {
@@ -19,27 +28,27 @@ export const statuses = [
   {
     value: "backlog",
     label: "Backlog",
-    icon: CircleHelp,
+    icon: IconCircleHelp,
   },
   {
     value: "todo",
     label: "Todo",
-    icon: Circle,
+    icon: IconCircle,
   },
   {
     value: "in progress",
     label: "In Progress",
-    icon: Timer,
+    icon: IconTimer,
   },
   {
     value: "done",
     label: "Done",
-    icon: CircleCheck,
+    icon: IconCircleCheck,
   },
   {
     value: "canceled",
     label: "Canceled",
-    icon: CircleX,
+    icon: IconCircleX,
   },
 ]
 
@@ -47,16 +56,16 @@ export const priorities = [
   {
     value: "low",
     label: "Low",
-    icon: ArrowDown,
+    icon: IconArrowDown,
   },
   {
     value: "medium",
     label: "Medium",
-    icon: ArrowRight,
+    icon: IconArrowRight,
   },
   {
     value: "high",
     label: "High",
-    icon: ArrowUp,
+    icon: IconArrowUp,
   },
 ]

@@ -61,7 +61,7 @@ export function NavUser({ user }: NavUserProps) {
                   <span className="truncate font-semibold">{user.name}</span>
                   <span className="truncate text-xs">{user.email}</span>
                 </div>
-                <IconChevronsDown className="ms-auto size-4" strokeWidth={1.5} size={20} />
+                <IconChevronsDown className="ms-auto size-4" strokeWidth={1.5} />
               </SidebarMenuButton>
             </DropdownMenuTrigger>
 
@@ -89,37 +89,37 @@ export function NavUser({ user }: NavUserProps) {
               <DropdownMenuGroup>
                 <DropdownMenuItem asChild>
                   <Link href="/settings/profile">
-                    <IconUser strokeWidth={1.5} size={20} />
+                    <IconUser strokeWidth={1.5} size={18} />
                     Profile
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/settings/account">
-                    <IconShield strokeWidth={1.5} size={20} />
+                    <IconShield strokeWidth={1.5} size={18} />
                     Account
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/settings">
-                    <IconCreditCard strokeWidth={1.5} size={20} />
+                    <IconCreditCard strokeWidth={1.5} size={18} />
                     Billing
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/settings/notifications">
-                    <IconBell strokeWidth={1.5} size={20} />
+                    <IconBell strokeWidth={1.5} size={18} />
                     Notifications
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/settings">
-                    <IconSettings strokeWidth={1.5} size={20} />
+                    <IconSettings strokeWidth={1.5} size={18} />
                     Settings
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/users">
-                    <IconShieldCheck strokeWidth={1.5} size={20} />
+                    <IconShieldCheck strokeWidth={1.5} size={18} />
                     User Management / Admin
                   </Link>
                 </DropdownMenuItem>
@@ -128,7 +128,7 @@ export function NavUser({ user }: NavUserProps) {
               <DropdownMenuSeparator />
 
               <DropdownMenuItem variant="destructive" onClick={() => setOpen(true)}>
-                <IconLogout strokeWidth={1.5} size={20} />
+                <IconLogout strokeWidth={1.5} size={18} />
                 Sign out
               </DropdownMenuItem>
             </DropdownMenuContent>
