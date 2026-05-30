@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { type Table } from '@tanstack/react-table'
-import { IconTrash2, IconCircleArrowUp, IconArrowUpDown, IconDownload } from "@tabler/icons-react"
+import { IconTrash as Trash2, IconCircleArrowUp as CircleArrowUp, IconArrowsUpDown as ArrowUpDown, IconDownload as Download } from "@tabler/icons-react"
 import { toast } from 'sonner'
 import { sleep } from '@/lib/utils'
 import { Button } from '@/components/ui/button'

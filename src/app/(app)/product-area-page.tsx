@@ -30,11 +30,7 @@ function toSlug(item: string): string {
     .replace(/[^a-z0-9-]/g, "")
 }
 
-export function ProductAreaPage({
-  title,
-  description,
-  items = [],
-}: ProductAreaPageProps) {
+export function ProductAreaPage({ title, description, items = [] }: ProductAreaPageProps) {
   const pathname = usePathname()
 
   return (

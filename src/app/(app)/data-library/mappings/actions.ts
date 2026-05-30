@@ -1,6 +1,6 @@
 "use server"
 
-import { and, eq, ne } from "drizzle-orm"
+import { and, eq, ne, inArray } from "drizzle-orm"
 
 import { getMappingTableRows } from "@/lib/mapping-tables/service"
 import { getColumnsForTable } from "@/lib/mapping-tables/mapping-table-columns"
@@ -272,14 +272,15 @@ export async function saveMappingDraftAction(
             )
           )
 
-        for (const pendingDraft of pendingUnmappedDrafts) {
+        if (pendingUnmappedDrafts.length > 0) {
+          const pendingRequestIds = pendingUnmappedDrafts.map((d) => d.changeRequestId)
           await tx
             .update(schema.lookupTableChangeRequests)
             .set({ status: "pending_review", updatedAt: new Date() })
             .where(
-              eq(
+              inArray(
                 schema.lookupTableChangeRequests.id,
-                pendingDraft.changeRequestId
+                pendingRequestIds
               )
             )
         }
@@ -533,14 +534,15 @@ export async function publishMappingChangeAction(
             )
           )
 
-        for (const pendingDraft of pendingDrafts) {
+        if (pendingDrafts.length > 0) {
+          const pendingRequestIds = pendingDrafts.map((d) => d.changeRequestId)
           await tx
             .update(schema.lookupTableChangeRequests)
             .set({ status: "resolved", updatedAt: new Date() })
             .where(
-              eq(
+              inArray(
                 schema.lookupTableChangeRequests.id,
-                pendingDraft.changeRequestId
+                pendingRequestIds
               )
             )
         }

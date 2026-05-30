@@ -226,6 +226,7 @@ function InitiativeCard({
       <Badge variant="secondary" className={cn("mb-3 border-0 font-medium", colors.bg, colors.text)}>
         {colors.label}
       </Badge>
+      <h4 className="mb-2 line-clamp-2 leading-snug text-foreground">{initiative.title}</h4>
 
       <h4 className="mb-2 line-clamp-2 leading-snug text-foreground">{initiative.title}</h4>
 
@@ -308,6 +309,7 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
       <Badge variant="secondary" className={cn("mb-3 border-0 font-medium", colors.bg, colors.text)}>
         {colors.label}
       </Badge>
+      <h4 className="mb-2 line-clamp-2 leading-snug text-foreground">{task.title}</h4>
 
       <h4 className="mb-2 line-clamp-2 leading-snug text-foreground">{task.title}</h4>
 
