@@ -1,7 +1,7 @@
 
 "use client"
 
-import { IconMonitor, IconBell, IconPalette, IconWrench, IconUserCog } from "@tabler/icons-react"
+import { IconBell, IconDeviceDesktop, IconPalette, IconTool, IconUserCog } from "@tabler/icons-react"
 import { Separator } from '@/components/ui/separator'
 import { Header } from '@/components/layout/header'
 import { Main } from '@/components/layout/main'
@@ -14,27 +14,27 @@ const sidebarNavItems = [
   {
     title: 'Profile',
     href: '/settings',
-    icon: <UserCog size={18} />,
+    icon: <IconUserCog size={20} strokeWidth={1.5} />,
   },
   {
     title: 'Account',
     href: '/settings/account',
-    icon: <Wrench size={18} />,
+    icon: <IconTool size={20} strokeWidth={1.5} />,
   },
   {
     title: 'Appearance',
     href: '/settings/appearance',
-    icon: <Palette size={18} />,
+    icon: <IconPalette size={20} strokeWidth={1.5} />,
   },
   {
     title: 'Notifications',
     href: '/settings/notifications',
-    icon: <Bell size={18} />,
+    icon: <IconBell size={20} strokeWidth={1.5} />,
   },
   {
     title: 'Display',
     href: '/settings/display',
-    icon: <Monitor size={18} />,
+    icon: <IconDeviceDesktop size={20} strokeWidth={1.5} />,
   },
 ]
 

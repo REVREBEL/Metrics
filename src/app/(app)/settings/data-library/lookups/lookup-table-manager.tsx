@@ -1,7 +1,7 @@
 "use client"
 
 import { useMemo, useRef, useState, useTransition } from "react"
-import { IconArrowDownAZ, IconArrowUpAZ, IconCheck, IconCircleAlert, IconRefreshCcw, IconSave, IconSearch } from "@tabler/icons-react"
+import { IconSortAscendingLetters as ArrowUpAZ, IconSortDescendingLetters as ArrowDownAZ, IconCheck as Check, IconAlertCircle as CircleAlert, IconRefresh as RefreshCcw, IconDeviceFloppy as Save, IconSearch as SearchIcon } from "@tabler/icons-react"
 import { toast } from "sonner"
 
 import { Badge } from "@/components/ui/badge"
