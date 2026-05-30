@@ -5,6 +5,18 @@
       "source": "shadcn/ui",
       "sourceType": "github",
       "computedHash": "91c02eb706f046fb9d6a061efbb96496e4be751b5b14c283cf82baaa50f3a985"
+    },
+    "shadcn-ui-expert": {
+      "source": "yuniorglez/gemini-elite-core",
+      "sourceType": "github",
+      "skillPath": "skills/shadcn-ui-expert/SKILL.md",
+      "computedHash": "e5adf6e012b96591e1e590968e5e8382ef29abad81cb20453a946c132724b8e3"
+    },
+    "typescript-react-reviewer": {
+      "source": "dotneet/claude-code-marketplace",
+      "sourceType": "github",
+      "skillPath": "review-tool/skills/typescript-react-reviewer/SKILL.md",
+      "computedHash": "7f86cd28e11d2b4b120b635d18814b82cd655a2b9d9ba8a105b3ee06c478cf38"
     }
   }
 }
