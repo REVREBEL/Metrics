@@ -167,6 +167,9 @@ importers:
       change-case:
         specifier: ^5.4.4
         version: 5.4.4
+      chroma-js:
+        specifier: ^3.2.0
+        version: 3.2.0
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -360,9 +363,6 @@ importers:
       babel-plugin-react-compiler:
         specifier: 1.0.0
         version: 1.0.0
-      chroma-js:
-        specifier: ^3.2.0
-        version: 3.2.0
       drizzle-kit:
         specifier: ^0.31.10
         version: 0.31.10
