@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 
+import { escapeHtml } from '@/lib/utils'
 import { Copy, Check } from 'lucide-react'
 
 type CopyCodeProps = {
@@ -43,7 +44,10 @@ function CopyCode({ code = 'javascript' }: CopyCodeProps) {
 
   // Simple syntax highlighting for JavaScript/TypeScript
   const highlightCode = (code: string) => {
-    let result = code
+    // Escape HTML characters to prevent XSS
+    // It's important to only escape characters that aren't already part of
+    // a valid entity to avoid double-encoding (if desired), but typical simple replace works here.
+    let result = escapeHtml(code)
 
     // Escape HTML characters to prevent XSS
     result = result.replace(/&/g, '&amp;')

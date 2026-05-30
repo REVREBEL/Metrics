@@ -39,3 +39,12 @@ export function getPageNumbers(
 export function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
+
+export function escapeHtml(unsafe: string) {
+  if (typeof unsafe !== 'string') return unsafe;
+  // Replace &, <, >, except if they are already part of an HTML entity to avoid double encoding.
+  return unsafe.replace(/&(?!#?[a-zA-Z0-9]+;)|[<>]/g, (match) => {
+    const escapeMap: Record<string, string> = { '&': '&amp;', '<': '&lt;', '>': '&gt;' };
+    return escapeMap[match] || match;
+  });
+}
