@@ -1,12 +1,17 @@
-import { defineConfig } from 'vitest/config'
+import { fileURLToPath } from "url"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vitest/config"
 
 export default defineConfig({
+  plugins: [react()],
   test: {
-    environment: 'node',
-    include: ['src/**/*.test.ts', 'src/**/*.spec.ts'],
-    coverage: {
-      provider: 'v8',
-      include: ['src/utils/color-converter.ts']
-    }
-  }
+    environment: "jsdom",
+    setupFiles: ["./src/test/setup.ts"],
+    globals: true,
+  },
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
 })
