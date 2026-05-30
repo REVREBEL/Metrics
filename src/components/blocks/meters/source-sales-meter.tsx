@@ -2,15 +2,7 @@
 
 import { useState } from "react";
 
-import {
-    CalendarDays,
-    CheckIcon,
-    ChromeIcon,
-    DribbbleIcon,
-    FacebookIcon,
-    GlobeIcon,
-    InstagramIcon,
-} from "lucide-react";
+import { IconCalendarDays, IconCheckIcon, IconChromeIcon, IconDribbbleIcon, IconFacebookIcon, IconGlobeIcon, IconInstagramIcon, Icon } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
 
@@ -133,7 +125,7 @@ export const SourceSalesMeter = () => {
                             <div className="flex items-center justify-between gap-3">
                                 <div className="flex items-center gap-3">
                                     <div className={cn("rounded-md p-2", config.bg)}>
-                                        <Icon className={cn("size-4", config.color)} />
+                                        <Icon className={cn("size-4", config.color)} strokeWidth={1.5} size={20} />
                                     </div>
                                     <div>
                                         <p className="text-sm font-medium leading-none">{config.label}</p>

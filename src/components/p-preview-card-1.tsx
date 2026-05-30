@@ -1,4 +1,4 @@
-import { CornerUpLeftIcon, StarIcon } from "lucide-react";
+import { IconCornerUpLeftIcon, IconStarIcon } from "@tabler/icons-react";
 
 import { Button } from "@/components/ui/button";
 import {

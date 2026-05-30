@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { ArrowDown, ArrowUp } from "lucide-react"
+import { IconArrowDown, IconArrowUp } from "@tabler/icons-react"
 import { Bar, BarChart, Label, Pie, PieChart, ResponsiveContainer, Sector } from "recharts"
 import type { PieSectorDataItem } from "recharts/types/polar/Pie"
 

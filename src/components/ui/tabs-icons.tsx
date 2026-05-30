@@ -1,5 +1,5 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { AppWindowIcon, CodeIcon } from "lucide-react"
+import { IconAppWindowIcon, IconCodeIcon } from "@tabler/icons-react"
 
 export function TabsIcons() {
   return (

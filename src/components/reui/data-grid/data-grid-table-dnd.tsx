@@ -43,7 +43,7 @@ import {
 } from "@tanstack/react-table"
 
 import { Button } from "@/components/ui/button"
-import { HugeiconsIcon } from "@hugeicons/react"
+import { IconHugeiconsIcon } from "@tabler/icons-react"
 import { DragDropVerticalIcon } from "@hugeicons/core-free-icons"
 
 function DataGridTableDndHeader<TData>({

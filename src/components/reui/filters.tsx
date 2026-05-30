@@ -56,7 +56,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { HugeiconsIcon } from "@hugeicons/react"
+import { IconHugeiconsIcon } from "@tabler/icons-react"
 import { AlertCircleIcon, Cancel01Icon, Tick02Icon, Plus01Icon } from "@hugeicons/core-free-icons"
 
 // i18n Configuration Interface

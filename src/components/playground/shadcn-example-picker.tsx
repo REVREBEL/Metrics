@@ -76,7 +76,7 @@ export function ShadcnExamplePicker({
   if (isLoading) {
     return (
       <Button variant="outline" size="sm" disabled>
-        <IconLoader2 className="size-3.5 animate-spin" />
+        <IconLoader2 className="size-3.5 animate-spin" strokeWidth={1.5} size={20} />
         Loading examples
       </Button>
     );
@@ -108,7 +108,7 @@ export function ShadcnExamplePicker({
                 ? `${selectedSelection.componentLabel} - ${selectedSelection.exampleLabel}`
                 : "Insert shadcn example"}
             </span>
-            <IconChevronDown className="size-3.5" />
+            <IconChevronDown className="size-3.5" strokeWidth={1.5} size={20} />
           </Button>
         </DropdownMenuTrigger>
 

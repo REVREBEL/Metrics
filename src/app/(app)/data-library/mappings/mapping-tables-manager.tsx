@@ -2,19 +2,7 @@
 
 import type { ReactNode } from "react"
 import { useMemo, useRef, useState, useTransition } from "react"
-import {
-  ArrowDownAZ,
-  ArrowUpAZ,
-  Check,
-  ChevronLeft,
-  ChevronRight,
-  CircleAlert,
-  DatabaseZap,
-  Filter,
-  Pencil,
-  Search as SearchIcon,
-  X,
-} from "lucide-react"
+import { IconArrowDownAZ, IconArrowUpAZ, IconCheck, IconChevronLeft, IconChevronRight, IconCircleAlert, IconDatabaseZap, IconFilter, IconPencil, IconSearch, IconX, Icon } from "@tabler/icons-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"

@@ -49,11 +49,11 @@ const defaultTeamMembers = [
 ]
 
 // Initiative icons based on strategy type
-const strategyIcons: Record<string, React.ReactNode> = {
-  'demand_generation': <IconWorld size={20} stroke={1.5} />,
-  'product_revenue': <IconStack2 size={20} stroke={1.5} />,
-  'retention_expansion': <IconTrendingUp size={20} stroke={1.5} />,
-  'operational_efficiency': <IconDeviceDesktop size={20} stroke={1.5} />,
+const strategyIcons: Record< string, React.ReactNode strokeWidth={1.5} size={20}> = {
+  'demand_generation': < IconWorld size={20} stroke={1.5} strokeWidth={1.5} />,
+  'product_revenue': < IconStack2 size={20} stroke={1.5} strokeWidth={1.5} />,
+  'retention_expansion': < IconTrendingUp size={20} stroke={1.5} strokeWidth={1.5} />,
+  'operational_efficiency': < IconDeviceDesktop size={20} stroke={1.5} strokeWidth={1.5} />,
 }
 
 export function GrowthPlanSidebar({ 
@@ -77,36 +77,36 @@ export function GrowthPlanSidebar({
   const overallProgress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
   
   return (
-    <div className="flex flex-col h-full border-r border-border bg-card/50">
+    < div className="flex flex-col h-full border-r border-border bg-card/50" strokeWidth={1.5} size={20}>
       {/* Search */}
-      <div className="p-4 border-b border-border">
-        <div className="relative">
-          <IconSearch size={20} stroke={1.5} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-          <Input 
+      < div className="p-4 border-b border-border" strokeWidth={1.5} size={20}>
+        < div className="relative" strokeWidth={1.5} size={20}>
+          < IconSearch size={20} stroke={1.5} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" strokeWidth={1.5} />
+          < Input 
             placeholder="Search" 
             className="pl-9 bg-background"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) = strokeWidth={1.5} size={20}> setSearchQuery(e.target.value)}
           />
         </div>
       </div>
       
-      <ScrollArea className="flex-1">
-        <div className="p-4">
+      < ScrollArea className="flex-1" strokeWidth={1.5} size={20}>
+        < div className="p-4" strokeWidth={1.5} size={20}>
           {/* Initiatives Section */}
-          <div className="mb-6">
-            <h3 className="text-sm font-semibold text-foreground mb-3">Initiatives</h3>
-            <div className="space-y-1">
+          < div className="mb-6" strokeWidth={1.5} size={20}>
+            < h3 className="text-sm font-semibold text-foreground mb-3" strokeWidth={1.5} size={20}>Initiatives</h3>
+            < div className="space-y-1" strokeWidth={1.5} size={20}>
               {filteredInitiatives.map((initiative) => {
                 const isSelected = selectedInitiative?.id === initiative.id
-                const icon = strategyIcons[initiative.strategyType] || <IconStack2 size={20} stroke={1.5} />
+                const icon = strategyIcons[initiative.strategyType] || < IconStack2 size={20} stroke={1.5} strokeWidth={1.5} />
                 
                 return (
-                  <div
+                  < div
                     key={initiative.id}
                     role="button"
                     tabIndex={0}
-                    onClick={() => onInitiativeSelect(initiative)}
+                    onClick={() = strokeWidth={1.5} size={20}> onInitiativeSelect(initiative)}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault()
@@ -120,33 +120,33 @@ export function GrowthPlanSidebar({
                         : "hover:bg-muted"
                     )}
                   >
-                    <div className={cn(
+                    < div className={cn(
                       "flex items-center justify-center size-8 rounded-lg",
                       isSelected ? "bg-primary-foreground/20" : "bg-muted"
-                    )}>
+                    )} strokeWidth={1.5} size={20}>
                       {icon}
                     </div>
-                    <span className="flex-1 text-sm font-medium truncate">
+                    < span className="flex-1 text-sm font-medium truncate" strokeWidth={1.5} size={20}>
                       {initiative.title}
                     </span>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button 
+                    < DropdownMenu strokeWidth={1.5} size={20}>
+                      < DropdownMenuTrigger asChild strokeWidth={1.5} size={20}>
+                        < Button 
                           variant="ghost" 
-                          size="icon" 
+                          size={20} 
                           className={cn(
                             "size-6 opacity-0 group-hover:opacity-100",
                             isSelected ? "hover:bg-primary-foreground/20" : ""
                           )}
-                          onClick={(e) => e.stopPropagation()}
+                          onClick={(e) = strokeWidth={1.5}> e.stopPropagation()}
                         >
-                          <IconDotsVertical size={20} stroke={1.5} />
+                          < IconDotsVertical size={20} stroke={1.5} strokeWidth={1.5} />
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem>Edit</DropdownMenuItem>
-                        <DropdownMenuItem>Duplicate</DropdownMenuItem>
-                        <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
+                      < DropdownMenuContent align="end" strokeWidth={1.5} size={20}>
+                        < DropdownMenuItem strokeWidth={1.5} size={20}>Edit</DropdownMenuItem>
+                        < DropdownMenuItem strokeWidth={1.5} size={20}>Duplicate</DropdownMenuItem>
+                        < DropdownMenuItem className="text-destructive" strokeWidth={1.5} size={20}>Delete</DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </div>
@@ -155,57 +155,55 @@ export function GrowthPlanSidebar({
             </div>
             
             {/* Add Initiative Button */}
-            <Button 
+            < Button 
               variant="outline" 
-              className="w-full mt-3 border-dashed justify-start"
-            >
-              <IconPlus size={20} stroke={1.5} className="mr-2" />
+              className="w-full mt-3 border-dashed justify-start" strokeWidth={1.5} size={20}>
+              < IconPlus size={20} stroke={1.5} className="mr-2" strokeWidth={1.5} />
               Add Initiative
             </Button>
           </div>
 
           {/* Team Members Section */}
-          <Collapsible open={teamExpanded} onOpenChange={setTeamExpanded}>
-            <CollapsibleTrigger className="flex items-center justify-between w-full mb-3">
-              <h3 className="text-sm font-semibold text-foreground">Team members</h3>
-              <IconChevronDown size={20} stroke={1.5} className={cn(
+          < Collapsible open={teamExpanded} onOpenChange={setTeamExpanded} strokeWidth={1.5} size={20}>
+            < CollapsibleTrigger className="flex items-center justify-between w-full mb-3" strokeWidth={1.5} size={20}>
+              < h3 className="text-sm font-semibold text-foreground" strokeWidth={1.5} size={20}>Team members</h3>
+              < IconChevronDown size={20} stroke={1.5} className={cn(
                 "text-muted-foreground transition-transform",
                 teamExpanded ? "" : "-rotate-90"
-              )} />
+              )} strokeWidth={1.5} />
             </CollapsibleTrigger>
-            <CollapsibleContent>
-              <div className="space-y-1">
+            < CollapsibleContent strokeWidth={1.5} size={20}>
+              < div className="space-y-1" strokeWidth={1.5} size={20}>
                 {teamMembers.map((member, index) => (
-                  <div 
+                  < div 
                     key={index}
-                    className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-muted transition-colors cursor-pointer"
-                  >
-                    <div className="relative">
-                      <Avatar className="size-8">
-                        <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${member.name}`} />
-                        <AvatarFallback className="text-xs">
+                    className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-muted transition-colors cursor-pointer" strokeWidth={1.5} size={20}>
+                    < div className="relative" strokeWidth={1.5} size={20}>
+                      < Avatar className="size-8" strokeWidth={1.5} size={20}>
+                        < AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${member.name}`} strokeWidth={1.5} size={20} />
+                        < AvatarFallback className="text-xs" strokeWidth={1.5} size={20}>
                           {member.name.split(' ').map(n => n[0]).join('')}
                         </AvatarFallback>
                       </Avatar>
                       {member.online && (
-                        <span className="absolute bottom-0 right-0 size-2.5 bg-emerald-500 rounded-full border-2 border-card" />
+                        < span className="absolute bottom-0 right-0 size-2.5 bg-emerald-500 rounded-full border-2 border-card" strokeWidth={1.5} size={20} />
                       )}
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium truncate">{member.name}</p>
-                      <p className="text-xs text-muted-foreground flex items-center gap-1">
+                    < div className="flex-1 min-w-0" strokeWidth={1.5} size={20}>
+                      < p className="text-sm font-medium truncate" strokeWidth={1.5} size={20}>{member.name}</p>
+                      < p className="text-xs text-muted-foreground flex items-center gap-1" strokeWidth={1.5} size={20}>
                         {member.online ? (
                           <>
-                            <span className="text-emerald-500">Online</span>
-                            <span>-</span>
-                            <span>{member.lastActive}</span>
+                            < span className="text-emerald-500" strokeWidth={1.5} size={20}>Online</span>
+                            < span strokeWidth={1.5} size={20}>-</span>
+                            < span strokeWidth={1.5} size={20}>{member.lastActive}</span>
                           </>
                         ) : (
-                          <span>{member.lastActive}</span>
+                          < span strokeWidth={1.5} size={20}>{member.lastActive}</span>
                         )}
                       </p>
                     </div>
-                    <IconChevronDown size={20} stroke={1.5} className="text-muted-foreground" />
+                    < IconChevronDown size={20} stroke={1.5} className="text-muted-foreground" strokeWidth={1.5} />
                   </div>
                 ))}
               </div>
@@ -215,13 +213,13 @@ export function GrowthPlanSidebar({
       </ScrollArea>
       
       {/* Time Tracking Section */}
-      <div className="p-4 border-t border-border">
-        <h3 className="text-sm font-semibold text-foreground mb-3">Time</h3>
-        <div className="bg-muted/50 rounded-lg p-3">
-          <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Total Hours</p>
-          <p className="text-2xl font-bold text-foreground">23.7 hours</p>
-          <p className="text-xs text-emerald-600 dark:text-emerald-400 flex items-center gap-1 mt-1">
-            <IconTrendingUp size={20} stroke={1.5} />
+      < div className="p-4 border-t border-border" strokeWidth={1.5} size={20}>
+        < h3 className="text-sm font-semibold text-foreground mb-3" strokeWidth={1.5} size={20}>Time</h3>
+        < div className="bg-muted/50 rounded-lg p-3" strokeWidth={1.5} size={20}>
+          < p className="text-xs text-muted-foreground uppercase tracking-wide mb-1" strokeWidth={1.5} size={20}>Total Hours</p>
+          < p className="text-2xl font-bold text-foreground" strokeWidth={1.5} size={20}>23.7 hours</p>
+          < p className="text-xs text-emerald-600 dark:text-emerald-400 flex items-center gap-1 mt-1" strokeWidth={1.5} size={20}>
+            < IconTrendingUp size={20} stroke={1.5} strokeWidth={1.5} />
             2.5% from last week
           </p>
         </div>

@@ -51,70 +51,68 @@ export function Navbar({
   const { theme, setTheme } = useTheme();
 
   return (
-    <header className="flex h-12 shrink-0 items-center justify-between border-b border-border bg-background px-4">
-      <div className="flex min-w-0 items-center gap-2">
-        <div className="flex items-center gap-2">
-          <span className="text-base font-display uppercase font-bold text-foreground tracking-tight">
+    < header className="flex h-12 shrink-0 items-center justify-between border-b border-border bg-background px-4" strokeWidth={1.5} size={20}>
+      < div className="flex min-w-0 items-center gap-2" strokeWidth={1.5} size={20}>
+        < div className="flex items-center gap-2" strokeWidth={1.5} size={20}>
+          < span className="text-base font-display uppercase font-bold text-foreground tracking-tight" strokeWidth={1.5} size={20}>
             revrebel playground
           </span>
         </div>
-        <Separator orientation="vertical" className="mx-1 h-6 self-center font-serif text-color-primary" />
-        <RegistryPicker
+        < Separator orientation="vertical" className="mx-1 h-6 self-center font-serif text-color-primary" strokeWidth={1.5} size={20} />
+        < RegistryPicker
           groups={registryGroups}
           code={code}
-          onReplaceCode={onReplaceCode}
-        />
-        <Separator orientation="vertical" className="mx-1 h-6 self-center" />
-        <ShadcnExamplePicker code={code} onReplaceCode={onReplaceCode} />
-        <Separator orientation="vertical" className="mx-1 h-6 self-center" />
-        <PresetPicker
+          onReplaceCode={onReplaceCode} strokeWidth={1.5} size={20} />
+        < Separator orientation="vertical" className="mx-1 h-6 self-center" strokeWidth={1.5} size={20} />
+        < ShadcnExamplePicker code={code} onReplaceCode={onReplaceCode} strokeWidth={1.5} size={20} />
+        < Separator orientation="vertical" className="mx-1 h-6 self-center" strokeWidth={1.5} size={20} />
+        < PresetPicker
           globalCSS={globalCode}
-          onApplyPreset={onReplaceGlobalCSS}
-        />
+          onApplyPreset={onReplaceGlobalCSS} strokeWidth={1.5} size={20} />
       </div>
 
-      <div className="flex items-center gap-1">
-        <ToggleGroup
+      < div className="flex items-center gap-1" strokeWidth={1.5} size={20}>
+        < ToggleGroup
           type="single"
           value={layoutMode}
-          onValueChange={(value) => {
+          onValueChange={(value) = strokeWidth={1.5} size={20}> {
             if (value) onLayoutModeChange(value as LayoutMode);
           }}
           variant="outline"
           size="sm"
         >
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <ToggleGroupItem value="horizontal" aria-label="Side by side">
-                <IconLayoutColumns className="size-3.5 font-serif text-color-primary" />
+          < Tooltip strokeWidth={1.5} size={20}>
+            < TooltipTrigger asChild strokeWidth={1.5} size={20}>
+              < ToggleGroupItem value="horizontal" aria-label="Side by side" strokeWidth={1.5} size={20}>
+                < IconLayoutColumns className="size-3.5 font-serif text-color-primary" strokeWidth={1.5} size={20} />
               </ToggleGroupItem>
             </TooltipTrigger>
-            <TooltipContent>Side by ide</TooltipContent>
+            < TooltipContent strokeWidth={1.5} size={20}>Side by ide</TooltipContent>
           </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <ToggleGroupItem value="preview-only" aria-label="Preview only">
-                <IconLayoutSidebarRight className="size-3.5 font-serif text-color-primary" />
+          < Tooltip strokeWidth={1.5} size={20}>
+            < TooltipTrigger asChild strokeWidth={1.5} size={20}>
+              < ToggleGroupItem value="preview-only" aria-label="Preview only" strokeWidth={1.5} size={20}>
+                < IconLayoutSidebarRight className="size-3.5 font-serif text-color-primary" strokeWidth={1.5} size={20} />
               </ToggleGroupItem>
             </TooltipTrigger>
-            <TooltipContent>Preview only</TooltipContent>
+            < TooltipContent strokeWidth={1.5} size={20}>Preview only</TooltipContent>
           </Tooltip>
         </ToggleGroup>
 
-        <Separator orientation="vertical" className="mx-1 self-stretch" />
+        < Separator orientation="vertical" className="mx-1 self-stretch" strokeWidth={1.5} size={20} />
 
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
+        < Tooltip strokeWidth={1.5} size={20}>
+          < TooltipTrigger asChild strokeWidth={1.5} size={20}>
+            < Button
               variant="ghost"
-              size="icon-sm"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              size={20}
+              onClick={() = strokeWidth={1.5}> setTheme(theme === "dark" ? "light" : "dark")}
               aria-label="Toggle Theme"
             >
-              <IconCircleHalf2 className="size-3.5 text-black dark:text-white" />
+              < IconCircleHalf2 className="size-3.5 text-black dark:text-white" strokeWidth={1.5} size={20} />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Toggle Theme</TooltipContent>
+          < TooltipContent strokeWidth={1.5} size={20}>Toggle Theme</TooltipContent>
         </Tooltip>
       </div>
     </header>

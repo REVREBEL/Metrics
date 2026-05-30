@@ -1,6 +1,6 @@
 "use client";
 
-import { SearchIcon } from "lucide-react";
+import { IconSearchIcon } from "@tabler/icons-react";
 import {
   Combobox,
   ComboboxChip,

@@ -1,4 +1,4 @@
-import { ArrowDownAZ, ArrowUpAZ } from "lucide-react"
+import { IconArrowDownAZ, IconArrowUpAZ } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"
 

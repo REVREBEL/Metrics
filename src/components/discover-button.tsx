@@ -9,7 +9,7 @@ import {
   Fire02Icon,
   MultiplicationSignIcon,
 } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { IconHugeiconsIcon } from "@tabler/icons-react";
 
 // Change Here
 const TABS = [

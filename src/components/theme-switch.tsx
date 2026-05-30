@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect } from 'react'
-import { Check, Moon, Sun } from 'lucide-react'
+import { IconCheck, IconMoon, IconSun } from "@tabler/icons-react"
 import { cn } from '@/lib/utils'
 import { useTheme } from '@/context/theme-provider'
 import { Button } from '@/components/ui/button'

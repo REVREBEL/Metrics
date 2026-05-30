@@ -2,8 +2,7 @@
 
 import { useState } from 'react'
 
-import { escapeHtml } from '@/lib/utils'
-import { Copy, Check } from 'lucide-react'
+import { IconCopy, IconCheck } from "@tabler/icons-react"
 
 type CopyCodeProps = {
   code: string

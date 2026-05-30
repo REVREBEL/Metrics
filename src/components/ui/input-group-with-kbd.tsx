@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/input-group"
 import { Kbd, KbdGroup } from "@/components/ui/kbd"
 import { Spinner } from "@/components/ui/spinner"
-import { CheckIcon, InfoIcon, SearchIcon, SparklesIcon } from "lucide-react"
+import { IconCheckIcon, IconInfoIcon, IconSearchIcon, IconSparklesIcon } from "@tabler/icons-react"
 
 export function InputGroupWithKbd() {
   return (

@@ -2,9 +2,7 @@ import React, { useCallback, useState, memo, useMemo } from "react";
 import type { NodeAttrs } from "he-tree-react";
 import isDeepEqual from "fast-deep-equal";
 import { Button } from "@/components/ui/button";
-import {
-  MoreVertical
-} from "lucide-react";
+import { IconMoreVertical } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { hasLayerChildren } from "@/lib/ui-builder/store/layer-utils";
 import type { ComponentLayer } from "@/components/ui/ui-builder/types";

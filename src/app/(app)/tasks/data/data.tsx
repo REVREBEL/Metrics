@@ -1,18 +1,4 @@
-import {
-  ArrowDown,
-  ArrowRight,
-  ArrowUp,
-  CheckCircle,
-  Circle,
-  CircleOff,
-  CircleAlert,
-  AlertTriangle,
-  Archive,
-  MessageCircle,
-  Timer,
-  Clock,
-  Ban,
-} from 'lucide-react'
+import { IconArrowDown, IconArrowRight, IconArrowUp, IconCheckCircle, IconCircle, IconCircleOff, IconCircleAlert, IconAlertTriangle, IconArchive, IconMessageCircle, IconTimer, IconClock, IconBan, Icon } from "@tabler/icons-react"
 
 export const labels = [
   { value: 'bug', label: 'Bug' },

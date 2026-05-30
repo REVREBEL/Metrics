@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { ChevronLeftIcon, ChevronRightIcon, EllipsisVerticalIcon } from 'lucide-react'
+import { IconChevronLeftIcon, IconChevronRightIcon, IconEllipsisVerticalIcon } from "@tabler/icons-react"
 
 import type { ColumnDef, PaginationState } from '@tanstack/react-table'
 import {

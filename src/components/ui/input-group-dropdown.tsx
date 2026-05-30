@@ -14,7 +14,7 @@ import {
   InputGroupInput,
 } from "@/components/ui/input-group"
 import { ChevronDown, MoreHorizontalIcon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
+import { IconHugeiconsIcon } from "@tabler/icons-react"
 
 export function InputGroupDropdown() {
   return (

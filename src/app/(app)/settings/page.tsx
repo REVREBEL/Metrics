@@ -1,7 +1,7 @@
 
 "use client"
 
-import { Monitor, Bell, Palette, Wrench, UserCog } from 'lucide-react'
+import { IconMonitor, IconBell, IconPalette, IconWrench, IconUserCog } from "@tabler/icons-react"
 import { Separator } from '@/components/ui/separator'
 import { Header } from '@/components/layout/header'
 import { Main } from '@/components/layout/main'

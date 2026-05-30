@@ -1,4 +1,4 @@
-import { CircleCheckIcon } from 'lucide-react'
+import { IconCircleCheckIcon } from "@tabler/icons-react"
 
 type Feature = {
   title: string

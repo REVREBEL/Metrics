@@ -1,22 +1,7 @@
 "use client";
 
 import { forwardRef, useCallback, useMemo, useState } from "react";
-import {
-  Eye,
-  FileUp,
-  Redo,
-  Undo,
-  SunIcon,
-  MoonIcon,
-  CheckIcon,
-  PlusIcon,
-  Monitor,
-  Tablet,
-  Smartphone,
-  Maximize,
-  MoreVertical,
-  PanelRight,
-} from "lucide-react";
+import { IconEye, IconFileUp, IconRedo, IconUndo, IconSunIcon, IconMoonIcon, IconCheckIcon, IconPlusIcon, IconMonitor, IconTablet, IconSmartphone, IconMaximize, IconMoreVertical, IconPanelRight, Icon } from "@tabler/icons-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,

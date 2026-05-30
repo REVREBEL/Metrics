@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/sidebar"
 import { MENU_DATA } from "@/app/docs/docs-data/data"
 import Image from "next/image";
-import { GithubIcon } from "lucide-react";
+import { IconGithubIcon } from "@tabler/icons-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/app/platform/theme-toggle"
 

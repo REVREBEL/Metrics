@@ -13,13 +13,7 @@ import {
   InputGroupTextarea,
 } from "@/components/ui/input-group"
 import { Textarea } from "@/components/ui/textarea"
-import {
-  ArrowUpIcon,
-  CodeIcon,
-  CopyIcon,
-  InfoIcon,
-  RefreshCwIcon,
-} from "lucide-react"
+import { IconArrowUpIcon, IconCodeIcon, IconCopyIcon, IconInfoIcon, IconRefreshCwIcon, Icon } from "@tabler/icons-react"
 
 export function InputGroupTextareaExamples() {
   return (

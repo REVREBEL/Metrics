@@ -1,14 +1,4 @@
-import {
-  BarChart3,
-  BookOpenCheck,
-  Building2,
-  Database,
-  Headphones,
-  ListChecks,
-  Megaphone,
-  MessageSquareText,
-  Signal,
-} from 'lucide-react'
+import { IconBarChart3, IconBookOpenCheck, IconBuilding2, IconDatabase, IconHeadphones, IconListChecks, IconMegaphone, IconMessageSquareText, IconSignal, Icon } from "@tabler/icons-react"
 import { IconInnerShadowTop } from '@tabler/icons-react'
 import type { SidebarData } from '../types'
 

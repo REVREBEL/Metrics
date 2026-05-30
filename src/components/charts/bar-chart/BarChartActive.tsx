@@ -1,7 +1,7 @@
 
 'use client';
 
-import { TrendingUp } from 'lucide-react';
+import { IconTrendingUp } from "@tabler/icons-react";
 import { Bar, BarChart, CartesianGrid, Rectangle, XAxis } from 'recharts';
 
 import {

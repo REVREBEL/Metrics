@@ -2,19 +2,7 @@
 
 import { useState } from 'react'
 import { Fragment } from 'react/jsx-runtime'
-import {
-  ArrowLeft,
-  MoreVertical,
-  Edit,
-  Paperclip,
-  Phone,
-  ImagePlus,
-  Plus,
-  Search as SearchIcon,
-  Send,
-  Video,
-  MessagesSquare,
-} from 'lucide-react'
+import { IconArrowLeft, IconMoreVertical, IconEdit, IconPaperclip, IconPhone, IconImagePlus, IconPlus, IconSearch, IconSend, IconVideo, IconMessagesSquare, Icon } from "@tabler/icons-react"
 import { cn } from '@/lib/utils'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'

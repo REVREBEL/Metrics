@@ -32,7 +32,7 @@ type ErrorStateProps = {
   onRetry?: () => void
 }
 
-const viewConfig: Record<GrowthPlanView, { icon: React.ElementType; title: string; description: string }> = {
+const viewConfig: Record< GrowthPlanView, { icon: React.ElementType; title: string; description: string } strokeWidth={1.5} size={20}> = {
   kanban: {
     icon: IconLayoutGrid,
     title: 'No items to display',
@@ -75,23 +75,23 @@ export function EmptyState({ view, mode, onCreateInitiative, onCreateTask }: Emp
   const Icon = config.icon
 
   return (
-    <div className="flex flex-col items-center justify-center py-16 text-center">
-      <div className="flex size-16 items-center justify-center rounded-full bg-muted">
-        <Icon className="size-8 text-muted-foreground" />
+    < div className="flex flex-col items-center justify-center py-16 text-center" strokeWidth={1.5} size={20}>
+      < div className="flex size-16 items-center justify-center rounded-full bg-muted" strokeWidth={1.5} size={20}>
+        < Icon className="size-8 text-muted-foreground" strokeWidth={1.5} size={20} />
       </div>
-      <h3 className="mt-4 font-display text-lg font-semibold uppercase tracking-tight">
+      < h3 className="mt-4 font-display text-lg font-semibold uppercase tracking-tight" strokeWidth={1.5} size={20}>
         {config.title}
       </h3>
-      <p className="mt-2 max-w-sm text-sm text-muted-foreground">
+      < p className="mt-2 max-w-sm text-sm text-muted-foreground" strokeWidth={1.5} size={20}>
         {config.description}
       </p>
-      <div className="mt-6 flex gap-3">
-        <Button variant="outline" onClick={onCreateInitiative}>
-          <IconPlus size={20} stroke={1.5} className="mr-1.5" />
+      < div className="mt-6 flex gap-3" strokeWidth={1.5} size={20}>
+        < Button variant="outline" onClick={onCreateInitiative} strokeWidth={1.5} size={20}>
+          < IconPlus size={20} stroke={1.5} className="mr-1.5" strokeWidth={1.5} />
           New Initiative
         </Button>
-        <Button onClick={onCreateTask}>
-          <IconPlus size={20} stroke={1.5} className="mr-1.5" />
+        < Button onClick={onCreateTask} strokeWidth={1.5} size={20}>
+          < IconPlus size={20} stroke={1.5} className="mr-1.5" strokeWidth={1.5} />
           New Task
         </Button>
       </div>
@@ -101,27 +101,27 @@ export function EmptyState({ view, mode, onCreateInitiative, onCreateTask }: Emp
 
 export function LoadingState({ message = 'Loading...' }: LoadingStateProps) {
   return (
-    <div className="flex flex-col items-center justify-center py-16 text-center">
-      <IconLoader2 size={32} stroke={1.5} className="animate-spin text-muted-foreground" />
-      <p className="mt-4 text-sm text-muted-foreground">{message}</p>
+    < div className="flex flex-col items-center justify-center py-16 text-center" strokeWidth={1.5} size={20}>
+      < IconLoader2 size={32} stroke={1.5} className="animate-spin text-muted-foreground" strokeWidth={1.5} />
+      < p className="mt-4 text-sm text-muted-foreground" strokeWidth={1.5} size={20}>{message}</p>
     </div>
   )
 }
 
 export function ErrorState({ message = 'Something went wrong', onRetry }: ErrorStateProps) {
   return (
-    <div className="flex flex-col items-center justify-center py-16 text-center">
-      <div className="flex size-16 items-center justify-center rounded-full bg-destructive/10">
-        <IconAlertCircle size={32} stroke={1.5} className="text-destructive" />
+    < div className="flex flex-col items-center justify-center py-16 text-center" strokeWidth={1.5} size={20}>
+      < div className="flex size-16 items-center justify-center rounded-full bg-destructive/10" strokeWidth={1.5} size={20}>
+        < IconAlertCircle size={32} stroke={1.5} className="text-destructive" strokeWidth={1.5} />
       </div>
-      <h3 className="mt-4 font-display text-lg font-semibold uppercase tracking-tight">
+      < h3 className="mt-4 font-display text-lg font-semibold uppercase tracking-tight" strokeWidth={1.5} size={20}>
         Error
       </h3>
-      <p className="mt-2 max-w-sm text-sm text-muted-foreground">
+      < p className="mt-2 max-w-sm text-sm text-muted-foreground" strokeWidth={1.5} size={20}>
         {message}
       </p>
       {onRetry && (
-        <Button variant="outline" className="mt-6" onClick={onRetry}>
+        < Button variant="outline" className="mt-6" onClick={onRetry} strokeWidth={1.5} size={20}>
           Try Again
         </Button>
       )}

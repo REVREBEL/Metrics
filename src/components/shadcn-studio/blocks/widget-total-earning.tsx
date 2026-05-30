@@ -1,4 +1,4 @@
-import { ChevronDownIcon, ChevronUpIcon, EllipsisVerticalIcon } from 'lucide-react'
+import { IconChevronDownIcon, IconChevronUpIcon, IconEllipsisVerticalIcon } from "@tabler/icons-react"
 
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'

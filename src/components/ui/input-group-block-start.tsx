@@ -12,7 +12,7 @@ import {
   InputGroupText,
   InputGroupTextarea,
 } from "@/components/ui/input-group"
-import { CopyIcon, FileCodeIcon } from "lucide-react"
+import { IconCopyIcon, IconFileCodeIcon } from "@tabler/icons-react"
 
 export function InputGroupBlockStart() {
   return (

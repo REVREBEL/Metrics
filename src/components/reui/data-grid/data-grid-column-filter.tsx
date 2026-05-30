@@ -13,7 +13,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { Separator } from "@/components/ui/separator"
-import { HugeiconsIcon } from "@hugeicons/react"
+import { IconHugeiconsIcon } from "@tabler/icons-react"
 import { AddCircleIcon, Tick02Icon } from "@hugeicons/core-free-icons"
 
 interface DataGridColumnFilterProps<TData, TValue> {

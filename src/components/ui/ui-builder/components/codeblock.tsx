@@ -2,7 +2,7 @@
 import React, { memo, useCallback, useMemo } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import { CopyIcon, CheckIcon } from "lucide-react";
+import { IconCopyIcon, IconCheckIcon } from "@tabler/icons-react";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { Button } from "@/components/ui/button";
 

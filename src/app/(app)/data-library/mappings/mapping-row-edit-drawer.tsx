@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState, useTransition } from "react"
-import { AlertTriangle, CheckCircle2, Loader2, X } from "lucide-react"
+import { IconAlertTriangle, IconCheckCircle2, IconLoader2, IconX } from "@tabler/icons-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"

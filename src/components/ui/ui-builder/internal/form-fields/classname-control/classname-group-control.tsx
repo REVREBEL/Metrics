@@ -1,7 +1,7 @@
 import { CONFIG, type ConfigItem, type StateType } from "@/components/ui/ui-builder/internal/form-fields/classname-control/config";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { MoreVertical } from "lucide-react";
+import { IconMoreVertical } from "@tabler/icons-react";
 import { useMemo, useCallback } from "react";
 
 const EMPTY_OBJECT = {};

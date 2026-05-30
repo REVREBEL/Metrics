@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Trash } from "lucide-react";
+import { IconTrash } from "@tabler/icons-react";
 import { buttonVariants } from "@/components/ui/button";
 import { useLayerStore } from "@/lib/ui-builder/store/layer-store";
 import { useEditorStore } from "@/lib/ui-builder/store/editor-store";

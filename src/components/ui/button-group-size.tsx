@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
-import { PlusIcon } from "lucide-react"
+import { IconPlusIcon } from "@tabler/icons-react"
 
 export default function ButtonGroupSize() {
   return (

@@ -1,14 +1,6 @@
 import type { ReactNode } from 'react'
 
-import {
-  UserIcon,
-  SettingsIcon,
-  CreditCardIcon,
-  UsersIcon,
-  SquarePenIcon,
-  CirclePlusIcon,
-  LogOutIcon
-} from 'lucide-react'
+import { IconUserIcon, IconSettingsIcon, IconCreditCardIcon, IconUsersIcon, IconSquarePenIcon, IconCirclePlusIcon, IconLogOutIcon } from "@tabler/icons-react"
 
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import {

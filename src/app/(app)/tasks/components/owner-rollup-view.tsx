@@ -81,7 +81,7 @@ export function OwnerRollupView({ initiatives }: OwnerRollupViewProps) {
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-2">
-              <IconCircleCheck size={20} stroke={1.5} className="text-green-500" />
+              <IconCircleCheck size={20} stroke={1.5} className="text-green-500" strokeWidth={1.5} />
               <span className="text-2xl font-bold">{stats.onTrack}</span>
             </div>
           </CardContent>

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from 'react'
-import { ChevronsUpDown, Plus, Search } from 'lucide-react'
+import { IconChevronsUpDown, IconPlus, IconSearch } from "@tabler/icons-react"
 import { Input } from '@/components/ui/input'
 import {
   DropdownMenu,

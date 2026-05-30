@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Shield, ShieldAlert, ShieldCheck, ShieldOff } from "lucide-react"
+import { IconShield, IconShieldAlert, IconShieldCheck, IconShieldOff } from "@tabler/icons-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Switch } from "@/components/ui/switch"

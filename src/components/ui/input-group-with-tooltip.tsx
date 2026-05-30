@@ -32,7 +32,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { ChevronDownIcon, InfoIcon, StarIcon } from "lucide-react"
+import { IconChevronDownIcon, IconInfoIcon, IconStarIcon } from "@tabler/icons-react"
 import { toast } from "sonner"
 
 export function InputGroupWithTooltip({

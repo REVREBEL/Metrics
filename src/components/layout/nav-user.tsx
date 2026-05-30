@@ -1,16 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import {
-  BadgeCheck,
-  Bell,
-  ChevronsUpDown,
-  CreditCard,
-  LogOut,
-  Settings,
-  ShieldCheck,
-  User,
-} from 'lucide-react'
+import { IconBadgeCheck, IconBell, IconChevronsUpDown, IconCreditCard, IconLogOut, IconSettings, IconShieldCheck, IconUser, Icon } from "@tabler/icons-react"
 import useDialogState from '@/hooks/use-dialog-state'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {

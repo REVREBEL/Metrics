@@ -16,5 +16,6 @@ export { default as TikTok1 } from "./TikTok1";
 export { default as Tripadvisor } from "./Tripadvisor";
 export { default as X } from "./X";
 export { default as Yahoo } from "./Yahoo'";
+export { default as Yahoo2 } from "./Yahoo";
 export { default as Yelp } from "./Yelp";
 export { default as Youtube } from "./Youtube";

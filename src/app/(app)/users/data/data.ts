@@ -1,4 +1,4 @@
-import { Shield, UserCheck, Users, CreditCard } from 'lucide-react'
+import { IconShield, IconUserCheck, IconUsers, IconCreditCard } from "@tabler/icons-react"
 import { type UserStatus } from './schema'
 
 export const callTypes = new Map<UserStatus, string>([

@@ -162,7 +162,7 @@ export function RegistryPicker({ groups, code, onReplaceCode }: RegistryPickerPr
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="sm">
             <span className="truncate font-display uppercase text-dark-blue-200 max-w-[260px]">{selectedLabel}</span>
-            <IconChevronDown className="size-3.5" />
+            <IconChevronDown className="size-3.5" strokeWidth={1.5} size={20} />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" className="max-h-[66vh] overflow-y-auto">

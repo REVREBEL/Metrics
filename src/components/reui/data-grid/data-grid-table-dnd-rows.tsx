@@ -46,7 +46,7 @@ import { type Cell, flexRender, type HeaderGroup, type Row } from "@tanstack/rea
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { HugeiconsIcon } from "@hugeicons/react"
+import { IconHugeiconsIcon } from "@tabler/icons-react"
 import { DragDropHorizontalIcon } from "@hugeicons/core-free-icons"
 
 // Context to share sortable listeners from row to handle

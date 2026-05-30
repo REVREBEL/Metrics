@@ -1,4 +1,4 @@
-import { TrendingUpIcon, TrendingDownIcon, MinusIcon, ShieldAlertIcon } from 'lucide-react'
+import { IconTrendingUpIcon, IconTrendingDownIcon, IconMinusIcon, IconShieldAlertIcon } from "@tabler/icons-react"
 
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'

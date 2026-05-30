@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ChevronRight } from "lucide-react"
+import { IconChevronRight } from "@tabler/icons-react"
 
 import { ThemeSwitch } from "@/components/theme-switch"
 import { Header } from "@/components/layout/header"

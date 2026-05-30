@@ -1,13 +1,4 @@
-import {
-  Circle,
-  CircleCheck,
-  CircleHelp,
-  CircleX,
-  Timer,
-  ArrowDown,
-  ArrowRight,
-  ArrowUp,
-} from "lucide-react"
+import { IconCircle, IconCircleCheck, IconCircleHelp, IconCircleX, IconTimer, IconArrowDown, IconArrowRight, IconArrowUp, Icon } from "@tabler/icons-react"
 
 export const labels = [
   {
