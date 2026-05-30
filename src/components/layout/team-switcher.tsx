@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from 'react'
-import { IconChevronsUpDown, IconPlus, IconSearch } from "@tabler/icons-react"
+import { IconChevronsDown, IconPlus, IconSearch } from "@tabler/icons-react"
 import { Input } from '@/components/ui/input'
 import {
   DropdownMenu,
@@ -54,7 +54,7 @@ export function TeamSwitcher({ teams }: TeamSwitcherProps) {
                 </span>
                 <span className='truncate text-xs'>{activeTeam.plan}</span>
               </div>
-              <ChevronsUpDown className='ms-auto' />
+              <IconChevronsDown className='ms-auto' />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -68,7 +68,7 @@ export function TeamSwitcher({ teams }: TeamSwitcherProps) {
             </DropdownMenuLabel>
             <div className='px-2 pb-2'>
               <div className='relative'>
-                <Search className='pointer-events-none absolute start-2 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground' />
+                <IconSearch className='pointer-events-none absolute start-2 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground' />
                 <Input
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
@@ -97,7 +97,7 @@ export function TeamSwitcher({ teams }: TeamSwitcherProps) {
             <DropdownMenuSeparator />
             <DropdownMenuItem className='gap-2 p-2'>
               <div className='flex size-6 items-center justify-center rounded-md border bg-background'>
-                <Plus className='size-4' />
+                <IconPlus className='size-4' />
               </div>
               <div className='font-medium text-muted-foreground'>
                 Manage Properties

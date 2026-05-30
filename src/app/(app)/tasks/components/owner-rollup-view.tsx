@@ -22,7 +22,7 @@ type OwnerRollupViewProps = {
 type RollupStatus = 'on_track' | 'watch' | 'at_risk' | 'complete'
 
 function getOwnerStatus(initiative: Initiative): RollupStatus {
-  if (initiative.status === 'completed') return 'complete'
+  if (initiative.status === 'complete') return 'complete'
   if (initiative.status === 'blocked' || initiative.status === 'at_risk') return 'at_risk'
   if (initiative.status === 'planning' || initiative.status === 'discussed') return 'watch'
   return 'on_track'
@@ -81,7 +81,7 @@ export function OwnerRollupView({ initiatives }: OwnerRollupViewProps) {
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-2">
-              <IconCircleCheck size={20} stroke={1.5} className="text-green-500" strokeWidth={1.5} />
+              <IconCircleCheck stroke={1.5} className="text-green-500" />
               <span className="text-2xl font-bold">{stats.onTrack}</span>
             </div>
           </CardContent>
@@ -94,7 +94,7 @@ export function OwnerRollupView({ initiatives }: OwnerRollupViewProps) {
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-2">
-              <Clock className="size-5 text-yellow-500" />
+              <IconClock className="size-5 text-yellow-500" />
               <span className="text-2xl font-bold">{stats.watch}</span>
             </div>
           </CardContent>
@@ -107,7 +107,7 @@ export function OwnerRollupView({ initiatives }: OwnerRollupViewProps) {
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-2">
-              <AlertTriangle className="size-5 text-red-500" />
+              <IconAlertTriangle className="size-5 text-red-500" />
               <span className="text-2xl font-bold">{stats.atRisk}</span>
             </div>
           </CardContent>
@@ -120,7 +120,7 @@ export function OwnerRollupView({ initiatives }: OwnerRollupViewProps) {
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="size-5 text-blue-500" />
+              <IconCircleCheck className="size-5 text-blue-500" />
               <span className="text-2xl font-bold">{stats.complete}</span>
             </div>
           </CardContent>

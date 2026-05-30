@@ -49,12 +49,13 @@ const defaultTeamMembers = [
 ]
 
 // Initiative icons based on strategy type
-const strategyIcons: Record< string, React.ReactNode strokeWidth={1.5} size={20}> = {
-  'demand_generation': < IconWorld size={20} stroke={1.5} strokeWidth={1.5} />,
-  'product_revenue': < IconStack2 size={20} stroke={1.5} strokeWidth={1.5} />,
-  'retention_expansion': < IconTrendingUp size={20} stroke={1.5} strokeWidth={1.5} />,
-  'operational_efficiency': < IconDeviceDesktop size={20} stroke={1.5} strokeWidth={1.5} />,
+const strategyIcons: Record<string, React.ReactNode> = {
+  'demand_generation': <IconWorld stroke={1.5} />,
+  'product_revenue': <IconStack2 stroke={1.5} />,
+  'retention_expansion': <IconTrendingUp stroke={1.5} />,
+  'operational_efficiency': <IconDeviceDesktop stroke={1.5} />,
 }
+
 
 export function GrowthPlanSidebar({ 
   initiatives, 
@@ -90,7 +91,7 @@ export function GrowthPlanSidebar({
           />
         </div>
       </div>
-      
+    
       < ScrollArea className="flex-1" strokeWidth={1.5} size={20}>
         < div className="p-4" strokeWidth={1.5} size={20}>
           {/* Initiatives Section */}
@@ -153,7 +154,7 @@ export function GrowthPlanSidebar({
                 )
               })}
             </div>
-            
+    
             {/* Add Initiative Button */}
             < Button 
               variant="outline" 
@@ -162,7 +163,7 @@ export function GrowthPlanSidebar({
               Add Initiative
             </Button>
           </div>
-
+    
           {/* Team Members Section */}
           < Collapsible open={teamExpanded} onOpenChange={setTeamExpanded} strokeWidth={1.5} size={20}>
             < CollapsibleTrigger className="flex items-center justify-between w-full mb-3" strokeWidth={1.5} size={20}>
@@ -193,7 +194,6 @@ export function GrowthPlanSidebar({
                       < p className="text-sm font-medium truncate" strokeWidth={1.5} size={20}>{member.name}</p>
                       < p className="text-xs text-muted-foreground flex items-center gap-1" strokeWidth={1.5} size={20}>
                         {member.online ? (
-                          <>
                             < span className="text-emerald-500" strokeWidth={1.5} size={20}>Online</span>
                             < span strokeWidth={1.5} size={20}>-</span>
                             < span strokeWidth={1.5} size={20}>{member.lastActive}</span>
@@ -211,7 +211,7 @@ export function GrowthPlanSidebar({
           </Collapsible>
         </div>
       </ScrollArea>
-      
+    
       {/* Time Tracking Section */}
       < div className="p-4 border-t border-border" strokeWidth={1.5} size={20}>
         < h3 className="text-sm font-semibold text-foreground mb-3" strokeWidth={1.5} size={20}>Time</h3>

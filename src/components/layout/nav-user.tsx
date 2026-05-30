@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import { IconBadgeCheck, IconBell, IconChevronsUpDown, IconCreditCard, IconLogOut, IconSettings, IconShieldCheck, IconUser, Icon } from "@tabler/icons-react"
+import { IconShield, IconBell, IconChevronsDown, IconCreditCard, IconLogout, IconSettings, IconShieldCheck, IconUser } from "@tabler/icons-react"
 import useDialogState from '@/hooks/use-dialog-state'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
@@ -34,7 +34,6 @@ export function NavUser({ user }: NavUserProps) {
   const [open, setOpen] = useDialogState()
 
   return (
-    <>
       <SidebarMenu>
         <SidebarMenuItem>
           <DropdownMenu>
@@ -51,7 +50,7 @@ export function NavUser({ user }: NavUserProps) {
                   <span className='truncate font-semibold'>{user.name}</span>
                   <span className='truncate text-xs'>{user.email}</span>
                 </div>
-                <ChevronsUpDown className='ms-auto size-4' />
+                <IconChevronsDown className='ms-auto size-4' />
               </SidebarMenuButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent
@@ -76,37 +75,37 @@ export function NavUser({ user }: NavUserProps) {
               <DropdownMenuGroup>
                 <DropdownMenuItem asChild>
                   <Link href='/settings/profile'>
-                    <User />
+                    <IconUser />
                     Profile
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href='/settings/account'>
-                    <BadgeCheck />
+                    <IconShield />
                     Account
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href='/settings'>
-                    <CreditCard />
+                    <IconCreditCard />
                     Billing
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href='/settings/notifications'>
-                    <Bell />
+                    <IconBell />
                     Notifications
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href='/settings'>
-                    <Settings />
+                    <IconSettings />
                     Settings
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href='/users'>
-                    <ShieldCheck />
+                    <IconShieldCheck />
                     User Management / Admin
                   </Link>
                 </DropdownMenuItem>
@@ -116,7 +115,7 @@ export function NavUser({ user }: NavUserProps) {
                 variant='destructive'
                 onClick={() => setOpen(true)}
               >
-                <LogOut />
+                <IconLogout />
                 Sign out
               </DropdownMenuItem>
             </DropdownMenuContent>

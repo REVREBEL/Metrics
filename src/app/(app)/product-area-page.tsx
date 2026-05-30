@@ -38,7 +38,6 @@ export function ProductAreaPage({
   const pathname = usePathname()
 
   return (
-    <>
       <Header>
         <div className="min-w-0">
           <p className="text-sm font-medium leading-none">{title}</p>
@@ -69,7 +68,7 @@ export function ProductAreaPage({
                   className="group flex items-center justify-between rounded-lg border bg-card p-4 text-sm font-medium transition-colors hover:border-primary/50 hover:bg-muted"
                 >
                   <span>{item}</span>
-                  <ChevronRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground" />
+                  <IconChevronRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground" />
                 </Link>
               )
             })}
