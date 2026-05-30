@@ -9,7 +9,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { HelpCircle, InfoIcon } from "lucide-react"
+import { IconHelpCircle, IconInfoIcon } from "@tabler/icons-react"
 
 export default function InputGroupTooltip() {
   return (

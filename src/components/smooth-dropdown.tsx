@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { IconHugeiconsIcon } from "@tabler/icons-react";
 import useMeasure from "react-use-measure";
 import {
   UserIcon,

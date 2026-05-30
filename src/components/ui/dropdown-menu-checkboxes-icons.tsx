@@ -10,7 +10,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { BellIcon, MailIcon, MessageSquareIcon } from "lucide-react"
+import { IconBellIcon, IconMailIcon, IconMessageSquareIcon } from "@tabler/icons-react"
 
 export function DropdownMenuCheckboxesIcons() {
   const [notifications, setNotifications] = React.useState({

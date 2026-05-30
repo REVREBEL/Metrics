@@ -7,7 +7,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/components/ui/input-group"
-import { CopyIcon, TrashIcon } from "lucide-react"
+import { IconCopyIcon, IconTrashIcon } from "@tabler/icons-react"
 
 export function InputGroupWithButtons() {
   return (

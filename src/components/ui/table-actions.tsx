@@ -14,7 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { MoreHorizontalIcon } from "lucide-react"
+import { IconMoreHorizontalIcon } from "@tabler/icons-react"
 
 export function TableActions() {
   return (

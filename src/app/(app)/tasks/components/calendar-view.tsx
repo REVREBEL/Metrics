@@ -162,7 +162,7 @@ export function CalendarView({ tasks, onTaskClick }: CalendarViewProps) {
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-2">
-          <IconCalendar size={20} stroke={1.5} className="text-muted-foreground" />
+          <IconCalendar size={20} stroke={1.5} className="text-muted-foreground" strokeWidth={1.5} />
           <h3 className="font-display text-lg font-semibold uppercase tracking-tight">
             {monthYear}
           </h3>
@@ -170,16 +170,16 @@ export function CalendarView({ tasks, onTaskClick }: CalendarViewProps) {
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-4 mr-4 text-sm">
             <span className="flex items-center gap-1.5">
-              <IconClock size={20} stroke={1.5} className="text-muted-foreground" />
+              <IconClock size={20} stroke={1.5} className="text-muted-foreground" strokeWidth={1.5} />
               <span>{stats.total} due</span>
             </span>
             <span className="flex items-center gap-1.5">
-              <IconCircleCheck size={20} stroke={1.5} className="text-green-500" />
+              <IconCircleCheck size={20} stroke={1.5} className="text-green-500" strokeWidth={1.5} />
               <span>{stats.complete} done</span>
             </span>
             {stats.overdue > 0 && (
               <span className="flex items-center gap-1.5 text-red-500">
-                <IconAlertCircle size={20} stroke={1.5} />
+                <IconAlertCircle size={20} stroke={1.5} strokeWidth={1.5} />
                 <span>{stats.overdue} overdue</span>
               </span>
             )}
@@ -188,10 +188,10 @@ export function CalendarView({ tasks, onTaskClick }: CalendarViewProps) {
             Today
           </Button>
           <Button variant="outline" size="icon" className="size-8" onClick={goToPreviousMonth}>
-            <IconChevronLeft size={20} stroke={1.5} />
+            <IconChevronLeft size={20} stroke={1.5} strokeWidth={1.5} />
           </Button>
           <Button variant="outline" size="icon" className="size-8" onClick={goToNextMonth}>
-            <IconChevronRight size={20} stroke={1.5} />
+            <IconChevronRight size={20} stroke={1.5} strokeWidth={1.5} />
           </Button>
         </div>
       </div>

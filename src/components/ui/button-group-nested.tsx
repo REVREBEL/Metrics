@@ -11,7 +11,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { AudioLinesIcon, PlusIcon } from "lucide-react"
+import { IconAudioLinesIcon, IconPlusIcon } from "@tabler/icons-react"
 
 export function ButtonGroupNested() {
   return (

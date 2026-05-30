@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { EyeIcon, EyeOffIcon } from 'lucide-react'
+import { IconEyeIcon, IconEyeOffIcon } from "@tabler/icons-react"
 
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'

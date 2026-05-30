@@ -1,17 +1,7 @@
 "use client"
 
 import { useMemo, useRef, useState, useTransition } from "react"
-import {
-  ArrowDownAZ,
-  ArrowUpAZ,
-  Check,
-  CircleAlert,
-  Plus,
-  RefreshCcw,
-  Save,
-  Search as SearchIcon,
-  Trash2,
-} from "lucide-react"
+import { IconSortAscendingLetters, IconSortDescendingLetters, IconCheck, IconAlertCircle, IconPlus, IconRefresh, IconDeviceFloppy, IconSearch, IconTrash } from "@tabler/icons-react"
 import { toast } from "sonner"
 
 import { Badge } from "@/components/ui/badge"
@@ -352,14 +342,14 @@ export function LookupTableManager({
             onClick={resetChanges}
             disabled={changeCount === 0 || isSaving}
           >
-            <RefreshCcw />
+            <IconRefresh />
             Reset
           </Button>
           <Button
             onClick={saveChanges}
             disabled={changeCount === 0 || hasValidationErrors || isSaving}
           >
-            {isSaving ? <RefreshCcw className="animate-spin" /> : <Save />}
+            {isSaving ? <IconRefresh className="animate-spin" /> : <IconDeviceFloppy />}
             Save
           </Button>
         </div>
@@ -441,12 +431,12 @@ export function LookupTableManager({
                   </div>
                   {hasValidationErrors ? (
                     <Badge variant="destructive" className="h-8">
-                      <CircleAlert />
+                      <IconAlertCircle />
                       Validation blocked
                     </Badge>
                   ) : (
                     <Badge variant="secondary" className="h-8">
-                      <Check />
+                      <IconCheck />
                       Valid
                     </Badge>
                   )}
@@ -454,7 +444,7 @@ export function LookupTableManager({
 
                 <div className="mt-4 flex flex-wrap items-center gap-3">
                   <div className="relative min-w-[240px] flex-1">
-                    <SearchIcon
+                    <IconSearch
                       className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
                       aria-hidden="true"
                     />
@@ -487,11 +477,11 @@ export function LookupTableManager({
                     onClick={() => handleSort(sortKey)}
                     className="w-[180px] justify-start"
                   >
-                    {sortDirection === "asc" ? <ArrowDownAZ /> : <ArrowUpAZ />}
+                    {sortDirection === "asc" ? <IconSortAscendingLetters /> : <IconSortDescendingLetters />}
                     {sortLabel(sortKey)}
                   </Button>
                   <Button onClick={addRow}>
-                    <Plus />
+                    <IconPlus />
                     Add Row
                   </Button>
                 </div>
@@ -687,7 +677,7 @@ export function LookupTableManager({
                                 onClick={() => deleteRow(row.id)}
                                 className="text-muted-foreground hover:text-destructive"
                               >
-                                <Trash2 className="size-4" />
+                                <IconTrash className="size-4" />
                                 <span className="sr-only">Delete row</span>
                               </Button>
                             </TableCell>
@@ -742,7 +732,7 @@ function SortableHead({
         )}
       >
         {children}
-        <ArrowDownAZ className="size-3" aria-hidden="true" />
+        <IconSortAscendingLetters className="size-3" aria-hidden="true" />
       </button>
     </TableHead>
   )

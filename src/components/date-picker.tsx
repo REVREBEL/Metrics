@@ -1,4 +1,4 @@
-import { Calendar as CalendarIcon } from 'lucide-react'
+import { IconCalendar } from "@tabler/icons-react"
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
 import {

@@ -1,0 +1,5 @@
+🔒 Fix XSS vulnerability in copy-code component
+
+🎯 What: Prevented cross-site scripting (XSS) in src/components/ui/copy-code.tsx.
+⚠️ Risk: If arbitrary user-controlled code/snippets contained HTML elements (e.g. <script>), the browser would execute them due to dangerouslySetInnerHTML.
+🛡️ Solution: Escaped HTML characters (&, <, >) inside highlightCode before applying syntax highlighting spans.

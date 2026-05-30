@@ -1,13 +1,6 @@
 'use client'
 
-import {
-  BadgePercentIcon,
-  ChartNoAxesCombinedIcon,
-  CirclePercentIcon,
-  DollarSignIcon,
-  ShoppingBagIcon,
-  TrendingUpIcon
-} from 'lucide-react'
+import { IconBadgePercentIcon, IconChartNoAxesCombinedIcon, IconCirclePercentIcon, IconDollarSignIcon, IconShoppingBagIcon, IconTrendingUpIcon } from "@tabler/icons-react"
 
 import { Bar, BarChart, Label, Pie, PieChart } from 'recharts'
 

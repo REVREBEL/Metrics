@@ -9,7 +9,7 @@ import { blockDefinitions } from "@/lib/ui-builder/registry/block-definitions";
 import type { ComponentLayer, Variable } from '@/components/ui/ui-builder/types';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Settings, Database, Layout, Home, Code, Eye } from "lucide-react";
+import { IconSettings, IconDatabase, IconLayout, IconHome, IconCode, IconEye } from "@tabler/icons-react";
 import { useLayerStore } from "@/lib/ui-builder/store/layer-store";
 import { useEditorStore } from "@/lib/ui-builder/store/editor-store";
 import LayerRenderer from "@/components/ui/ui-builder/layer-renderer";

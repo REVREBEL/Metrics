@@ -3,7 +3,7 @@
 import * as React from 'react'
 
 import { cva, type VariantProps } from 'class-variance-authority'
-import { StarIcon, type LucideProps } from 'lucide-react'
+import { IconStarIcon, IconTypeLucideProps } from "@tabler/icons-react"
 
 import { cn } from '@/lib/utils'
 

@@ -5,7 +5,7 @@ import {
   InputGroupText,
 } from "@/components/ui/input-group"
 import { Spinner } from "@/components/ui/spinner"
-import { LoaderIcon } from "lucide-react"
+import { IconLoaderIcon } from "@tabler/icons-react"
 
 export default function InputGroupSpinner() {
   return (

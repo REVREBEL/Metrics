@@ -1,4 +1,4 @@
-import { DatabaseZap } from "lucide-react"
+import { IconDatabase as DatabaseZap } from "@tabler/icons-react"
 
 import { Header } from "@/components/layout/header"
 import { Main } from "@/components/layout/main"

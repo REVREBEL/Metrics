@@ -2,19 +2,7 @@
 
 import type { ReactNode } from "react"
 import { useMemo, useRef, useState, useTransition } from "react"
-import {
-  ArrowDownAZ,
-  ArrowUpAZ,
-  Check,
-  ChevronLeft,
-  ChevronRight,
-  CircleAlert,
-  DatabaseZap,
-  Filter,
-  Pencil,
-  Search as SearchIcon,
-  X,
-} from "lucide-react"
+import { IconSortAscendingLetters, IconSortDescendingLetters, IconCheck, IconChevronLeft, IconChevronRight, IconAlertCircle, IconDatabase, IconFilter, IconPencil, IconSearch, IconX } from "@tabler/icons-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -312,9 +300,9 @@ export function MappingTablesManager({
             onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
           >
             {sidebarCollapsed ? (
-              <ChevronRight className="size-3" />
+              <IconChevronRight className="size-3" />
             ) : (
-              <ChevronLeft className="size-3" />
+              <IconChevronLeft className="size-3" />
             )}
           </Button>
 
@@ -348,7 +336,7 @@ export function MappingTablesManager({
                             "bg-primary/10 text-primary"
                         )}
                       >
-                        <DatabaseZap className="size-4" />
+                        <IconDatabase className="size-4" />
                       </button>
                     </TooltipTrigger>
                     <TooltipContent side="right">
@@ -410,7 +398,7 @@ export function MappingTablesManager({
         <section className="min-w-0 rounded-lg border bg-card">
           {!selectedTable ? (
             <EmptyState
-              icon={<DatabaseZap className="size-10 text-muted-foreground/50" aria-hidden="true" />}
+              icon={<IconDatabase className="size-10 text-muted-foreground/50" aria-hidden="true" />}
               title="No mapping table selected"
               description="Select a mapping category from the sidebar to view and edit source-to-standard mappings."
             />
@@ -427,7 +415,7 @@ export function MappingTablesManager({
                       <CoverageBadge status={selectedTable.status} />
                       {reviewCount > 0 ? (
                         <Badge variant="destructive">
-                          <CircleAlert className="size-3" />
+                          <IconAlertCircle className="size-3" />
                           {reviewCount} need review
                         </Badge>
                       ) : (
@@ -467,7 +455,7 @@ export function MappingTablesManager({
                 {/* Filters Row */}
                 <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
                   <div className="relative flex-1">
-                    <SearchIcon
+                    <IconSearch
                       className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
                       aria-hidden="true"
                     />
@@ -486,7 +474,7 @@ export function MappingTablesManager({
                         aria-label="Clear search"
                         title="Clear search"
                       >
-                        <X className="size-3" />
+                        <IconX className="size-3" />
                       </Button>
                     )}
                   </div>
@@ -498,7 +486,7 @@ export function MappingTablesManager({
                       }
                     >
                       <SelectTrigger className="w-full sm:w-44">
-                        <Filter className="size-4" aria-hidden="true" />
+                        <IconFilter className="size-4" aria-hidden="true" />
                         <SelectValue placeholder="Filter rows" />
                       </SelectTrigger>
                       <SelectContent>
@@ -517,7 +505,7 @@ export function MappingTablesManager({
                       onClick={() => handleSort(sortKey)}
                       className="hidden justify-start sm:flex"
                     >
-                      {sortDirection === "asc" ? <ArrowDownAZ /> : <ArrowUpAZ />}
+                      {sortDirection === "asc" ? <IconSortAscendingLetters /> : <IconSortDescendingLetters />}
                       <span className="hidden lg:inline">{sortLabel(sortKey)}</span>
                     </Button>
                   </div>
@@ -537,7 +525,7 @@ export function MappingTablesManager({
                           onClick={() => setQuery("")}
                           aria-label="Remove search filter"
                         >
-                          <X className="size-3" />
+                          <IconX className="size-3" />
                         </button>
                       </Badge>
                     )}
@@ -545,7 +533,7 @@ export function MappingTablesManager({
                       <Badge variant="secondary" className="gap-1">
                         Status: {rowStatusLabels[statusFilter as MappingRowStatus] || statusFilter}
                         <button onClick={() => setStatusFilter("all")}>
-                          <X className="size-3" />
+                          <IconX className="size-3" />
                         </button>
                       </Badge>
                     )}
@@ -556,7 +544,7 @@ export function MappingTablesManager({
               {/* Table Content */}
               {loadError ? (
                 <EmptyState
-                  icon={<CircleAlert className="size-10 text-destructive/50" aria-hidden="true" />}
+                  icon={<IconAlertCircle className="size-10 text-destructive/50" aria-hidden="true" />}
                   title="Mapping rows could not be loaded"
                   description={loadError}
                 />
@@ -564,7 +552,7 @@ export function MappingTablesManager({
                 <RowsLoadingState />
               ) : visibleRows.length === 0 ? (
                 <EmptyState
-                  icon={<SearchIcon className="size-10 text-muted-foreground/50" aria-hidden="true" />}
+                  icon={<IconSearch className="size-10 text-muted-foreground/50" aria-hidden="true" />}
                   title="No mapping rows match the current filters"
                   description="Adjust search or status filters to see more source values."
                 />
@@ -681,7 +669,7 @@ export function MappingTablesManager({
                               }}
                               aria-label="Edit row"
                             >
-                              <Pencil className="size-3.5" />
+                              <IconPencil className="size-3.5" />
                             </Button>
                           </TableCell>
                         </TableRow>
@@ -819,12 +807,12 @@ function SortableHead({
         {children}
         {active ? (
           direction === "asc" ? (
-            <ArrowDownAZ className="size-3" aria-hidden="true" />
+            <IconSortAscendingLetters className="size-3" aria-hidden="true" />
           ) : (
-            <ArrowUpAZ className="size-3" aria-hidden="true" />
+            <IconSortDescendingLetters className="size-3" aria-hidden="true" />
           )
         ) : (
-          <ArrowDownAZ className="size-3 opacity-40" aria-hidden="true" />
+          <IconSortAscendingLetters className="size-3 opacity-40" aria-hidden="true" />
         )}
       </button>
     </TableHead>
@@ -843,7 +831,7 @@ function EmptyState({
   return (
     <div className="flex min-h-80 flex-col items-center justify-center gap-3 p-8 text-center">
       {icon || (
-        <DatabaseZap
+        <IconDatabase
           className="size-10 text-muted-foreground/50"
           aria-hidden="true"
         />

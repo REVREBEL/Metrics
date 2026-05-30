@@ -75,7 +75,4 @@ next-env.d.ts
 /.continue
 /.git
 /.next
-node_modules/
-.next/
-dist/
-coverage/
+.vscode/settings.json

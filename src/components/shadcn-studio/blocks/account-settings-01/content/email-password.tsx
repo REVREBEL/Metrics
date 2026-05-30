@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 
-import { CheckIcon, MailIcon, XIcon, EyeIcon, EyeOffIcon } from 'lucide-react'
+import { IconCheckIcon, IconMailIcon, IconXIcon, IconEyeIcon, IconEyeOffIcon } from "@tabler/icons-react"
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'

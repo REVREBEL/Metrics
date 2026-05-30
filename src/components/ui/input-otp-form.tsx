@@ -14,7 +14,7 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp"
-import { RefreshCwIcon } from "lucide-react"
+import { IconRefreshCwIcon } from "@tabler/icons-react"
 
 export function InputOTPForm() {
   return (

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { CalendarArrowUpIcon } from "lucide-react";
+import { IconCalendarArrowUpIcon } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
 

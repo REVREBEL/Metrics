@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
 
-import { GitCommitVertical, TrendingUp } from 'lucide-react';
+import { IconGitCommitVertical, IconTrendingUp } from "@tabler/icons-react";
 import { CartesianGrid, Line, LineChart, XAxis } from 'recharts';
 
 import {

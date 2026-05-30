@@ -10,7 +10,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { InfoIcon } from "lucide-react"
+import { IconInfoIcon } from "@tabler/icons-react"
 
 export default function InputGroupLabel() {
   return (

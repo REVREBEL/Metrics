@@ -14,7 +14,7 @@ import {
   FilterHorizontalIcon,
 } from "@hugeicons/core-free-icons";
 import { HugeiconsFreeIcons } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { IconHugeiconsIcon } from "@tabler/icons-react";
 
 export type FilterKey = (typeof filterKeys)[number];
 

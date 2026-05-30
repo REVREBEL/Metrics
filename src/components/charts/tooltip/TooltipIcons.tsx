@@ -1,6 +1,6 @@
 'use client';
 
-import { Footprints, Waves } from 'lucide-react';
+import { IconFootprints, IconWaves } from "@tabler/icons-react";
 import { Bar, BarChart, XAxis } from 'recharts';
 
 import {

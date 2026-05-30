@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { CircleFadingArrowUpIcon } from "lucide-react"
+import { IconCircleFadingArrowUpIcon } from "@tabler/icons-react"
 
 export default function ButtonIcon() {
   return (

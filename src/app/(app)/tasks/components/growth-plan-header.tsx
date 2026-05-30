@@ -85,7 +85,7 @@ export function GrowthPlanHeader({
 
           {/* Add Member Button */}
           <Button variant="default" size="sm" className="gap-1.5">
-            <IconPlus size={20} stroke={1.5} />
+            <IconPlus size={20} stroke={1.5} strokeWidth={1.5} />
             Add Member
           </Button>
         </div>
@@ -140,7 +140,7 @@ export function GrowthPlanHeader({
             size="sm" 
             className="h-8 gap-1.5 bg-background"
           >
-            <IconLayoutKanban size={20} stroke={1.5} />
+            <IconLayoutKanban size={20} stroke={1.5} strokeWidth={1.5} />
             Board
           </Button>
           <Button 
@@ -148,7 +148,7 @@ export function GrowthPlanHeader({
             size="sm" 
             className="h-8 gap-1.5"
           >
-            <IconCalendar size={20} stroke={1.5} />
+            <IconCalendar size={20} stroke={1.5} strokeWidth={1.5} />
             Schedule
           </Button>
           <Button 
@@ -156,7 +156,7 @@ export function GrowthPlanHeader({
             size="sm" 
             className="h-8 gap-1.5"
           >
-            <IconTable size={20} stroke={1.5} />
+            <IconTable size={20} stroke={1.5} strokeWidth={1.5} />
             List
           </Button>
         </div>

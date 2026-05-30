@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { ArrowUpRightIcon } from "lucide-react"
+import { IconArrowUpRightIcon } from "@tabler/icons-react"
 
 export default function ButtonSize() {
   return (

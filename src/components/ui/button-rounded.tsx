@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { ArrowUpIcon } from "lucide-react"
+import { IconArrowUpIcon } from "@tabler/icons-react"
 
 export default function ButtonRounded() {
   return (

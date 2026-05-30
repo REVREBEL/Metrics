@@ -4,7 +4,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group"
-import { EyeOffIcon } from "lucide-react"
+import { IconEyeOffIcon } from "@tabler/icons-react"
 
 export function InputGroupInlineEnd() {
   return (

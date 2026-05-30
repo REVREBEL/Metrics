@@ -11,7 +11,7 @@ import { getBreadcrumbsFromUrl } from "@/app/docs/docs-data/data";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { PencilIcon } from "lucide-react";
+import { IconPencil as PencilIcon } from "@tabler/icons-react";
 
 export function DocBreadcrumbs() {
   const pathname = usePathname();

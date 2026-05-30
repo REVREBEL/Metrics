@@ -9,7 +9,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { IconHugeiconsIcon } from "@tabler/icons-react";
 import {
   Copy01Icon,
   Tick02Icon,
@@ -98,16 +98,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import {
-  AudioLinesIcon,
-  ArrowUpIcon,
-  BadgeCheckIcon,
-  ChevronRightIcon,
-  MinusIcon,
-  PlusIcon,
-  Search,
-} from "lucide-react";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { IconAudioLinesIcon, IconArrowUpIcon, IconBadgeCheckIcon, IconChevronRightIcon, IconMinusIcon, IconPlusIcon, IconSearch, Icon } from "@tabler/icons-react";
+import { IconHugeiconsIcon } from "@tabler/icons-react";
 import {
   Tick02Icon as IconCheck,
   InformationCircleIcon as IconInfoCircle,
@@ -498,7 +490,7 @@ function ItemDemo() {
         </ItemActions>
       </Item>
       <Item variant="outline" size="sm" asChild>
-        <Link href="https://ephraimduncan.com" target="_blank">
+        <Link href="https://ephraimduncan.com" target="_blank" rel="noopener noreferrer">
           <ItemMedia>
             <BadgeCheckIcon className="size-5" />
           </ItemMedia>

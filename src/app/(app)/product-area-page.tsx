@@ -2,11 +2,11 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ChevronRight } from "lucide-react"
+import { IconChevronRight } from "@tabler/icons-react"
 
-import { ThemeSwitch } from "@/components/theme-switch"
 import { Header } from "@/components/layout/header"
 import { Main } from "@/components/layout/main"
+import { ThemeSwitch } from "@/components/theme-switch"
 
 type ProductAreaPageProps = {
   title: string
@@ -14,7 +14,6 @@ type ProductAreaPageProps = {
   items?: string[]
 }
 
-// Map display names to actual route slugs
 const routeOverrides: Record<string, string> = {
   "Lookup Tables": "lookups",
   "Mapping Tables": "mappings",
@@ -24,17 +23,14 @@ function toSlug(item: string): string {
   if (routeOverrides[item]) {
     return routeOverrides[item]
   }
+
   return item
     .toLowerCase()
     .replace(/\s+/g, "-")
     .replace(/[^a-z0-9-]/g, "")
 }
 
-export function ProductAreaPage({
-  title,
-  description,
-  items = [],
-}: ProductAreaPageProps) {
+export function ProductAreaPage({ title, description, items = [] }: ProductAreaPageProps) {
   const pathname = usePathname()
 
   return (
@@ -52,11 +48,10 @@ export function ProductAreaPage({
       <Main className="max-w-5xl space-y-6">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
-          <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
-            {description}
-          </p>
+          <p className="mt-2 max-w-3xl text-sm text-muted-foreground">{description}</p>
         </div>
-        {items.length > 0 && (
+
+        {items.length > 0 ? (
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((item) => {
               const slug = toSlug(item)
@@ -69,12 +64,13 @@ export function ProductAreaPage({
                   className="group flex items-center justify-between rounded-lg border bg-card p-4 text-sm font-medium transition-colors hover:border-primary/50 hover:bg-muted"
                 >
                   <span>{item}</span>
-                  <ChevronRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground" />
+                  <IconChevronRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground"
+                    strokeWidth={1.5} size={20} />
                 </Link>
               )
             })}
           </div>
-        )}
+        ) : null}
       </Main>
     </>
   )

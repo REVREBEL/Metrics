@@ -1,14 +1,4 @@
-import {
-  BarChart3,
-  BookOpenCheck,
-  Building2,
-  Database,
-  Headphones,
-  ListChecks,
-  Megaphone,
-  MessageSquareText,
-  Signal,
-} from 'lucide-react'
+import { IconChartBarPopular, IconChecklist, IconBuilding, IconDatabase, IconHeadphones, IconListCheck, IconSpeakerphone, IconMessage, IconSignalE, Icon } from "@tabler/icons-react"
 import { IconInnerShadowTop } from '@tabler/icons-react'
 import type { SidebarData } from '../types'
 
@@ -26,12 +16,12 @@ export const sidebarData: SidebarData = {
     },
     {
       name: 'Property A',
-      logo: Building2,
+      logo: IconBuilding,
       plan: 'Hotel',
     },
     {
       name: 'Property B',
-      logo: Building2,
+      logo: IconBuilding,
       plan: 'Hotel',
     },
   ],
@@ -42,47 +32,47 @@ export const sidebarData: SidebarData = {
         {
           title: 'Metrics',
           url: '/dashboard',
-          icon: BarChart3,
+          icon: IconChartBarPopular,
         },
         {
           title: 'Properties',
           url: '/properties',
-          icon: Building2,
+          icon: IconBuilding,
         },
         {
           title: 'Growth Plan',
           url: '/tasks',
-          icon: ListChecks,
+          icon: IconListCheck,
         },
         {
           title: 'Broadcast',
           url: '/campaigns',
-          icon: Megaphone,
+          icon: IconSpeakerphone,
         },
         {
           title: 'Signals',
           url: '/metric-library',
-          icon: Signal,
+          icon: IconSignalE,
         },
         {
           title: 'Data Library',
           url: '/data-library',
-          icon: Database,
+          icon: IconDatabase,
         },
         {
           title: 'The Playbook',
           url: '/strategies',
-          icon: BookOpenCheck,
+          icon: IconChecklist,
         },
         {
           title: 'Threads',
           url: '/chats',
-          icon: MessageSquareText,
+          icon: IconMessage,
         },
         {
           title: 'Help Desk',
           url: '/help-desk',
-          icon: Headphones,
+          icon: IconHeadphones,
         },
       ],
     },

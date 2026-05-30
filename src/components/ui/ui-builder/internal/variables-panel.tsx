@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Trash2, Edit2 } from "lucide-react";
+import { IconTrash2, IconEdit2 } from "@tabler/icons-react";
 import { useLayerStore } from "@/lib/ui-builder/store/layer-store";
 import type { Variable, FunctionRegistry } from "@/components/ui/ui-builder/types";
 import { cn } from "@/lib/utils";

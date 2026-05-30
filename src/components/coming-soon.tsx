@@ -1,4 +1,4 @@
-import { Telescope } from 'lucide-react'
+import { IconTelescope } from "@tabler/icons-react"
 
 export function ComingSoon() {
   return (

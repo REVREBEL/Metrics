@@ -14,7 +14,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { AudioLinesIcon, PlusIcon } from "lucide-react"
+import { IconAudioLinesIcon, IconPlusIcon } from "@tabler/icons-react"
 
 export default function ButtonGroupInputGroup() {
   const [voiceEnabled, setVoiceEnabled] = React.useState(false)

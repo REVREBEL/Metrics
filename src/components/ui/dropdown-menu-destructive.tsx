@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Delete01Icon, Edit02Icon, Share01Icon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
+import { IconHugeiconsIcon } from "@tabler/icons-react"
 
 export function DropdownMenuDestructive() {
   return (

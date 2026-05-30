@@ -8,14 +8,7 @@ import {
   MenubarShortcut,
   MenubarTrigger,
 } from "@/components/ui/menubar"
-import {
-  FileIcon,
-  FolderIcon,
-  HelpCircleIcon,
-  SaveIcon,
-  SettingsIcon,
-  TrashIcon,
-} from "lucide-react"
+import { IconFileIcon, IconFolderIcon, IconHelpCircleIcon, IconSaveIcon, IconSettingsIcon, IconTrashIcon, Icon } from "@tabler/icons-react"
 
 export function MenubarIcons() {
   return (

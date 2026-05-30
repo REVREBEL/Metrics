@@ -1,4 +1,4 @@
-import { ChevronLeftIcon } from 'lucide-react'
+import { IconChevronLeftIcon } from "@tabler/icons-react"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
