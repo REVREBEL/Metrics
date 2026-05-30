@@ -1,16 +1,20 @@
-import { sql } from "drizzle-orm"
-import { drizzle } from "drizzle-orm/postgres-js"
+import nextEnv from "@next/env"
 
-import * as schema from "@/db/schema"
-import {
+nextEnv.loadEnvConfig(process.cwd())
+
+const { sql } = await import("drizzle-orm")
+const { drizzle } = await import("drizzle-orm/postgres-js")
+
+const schema = await import("@/db/schema")
+const {
   campaigns,
   dataLibraryTables,
   hotelProfiles,
   hotelTaskStatuses,
   strategyTemplates,
-} from "@/db/schema"
+} = schema
 
-import { createPostgresClient } from "./postgres"
+const { createPostgresClient } = await import("./postgres")
 
 const queryClient = createPostgresClient({ max: 1 })
 const db = drizzle(queryClient, { schema })
