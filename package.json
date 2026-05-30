@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "scripts": {
+"scripts": {
+    "predev": "tsx scripts/build-icons.ts",
     "dev": "node scripts/setup-env.mjs && tsx scripts/generate-registry.mjs && bash scripts/start-dev.sh",
+    "prebuild": "tsx scripts/build-icons.ts",
     "build": "tsx scripts/generate-registry.mjs && next build",
     "create:registry": "tsx scripts/generate-registry.mjs",
     "start": "next start",
@@ -26,7 +28,7 @@
     "sync-custom-registry": "npx tsx scripts/sync-registry.ts",
     "icons:build": "node ./scripts/build-icons.mjs",
     "icons:build:index": "node ./scripts/generate-icons-index.mjs",
-    "icons:build:all": "pnpm run icons:build && pnpm run icons:build:index",
+    "icons:build:all": "tsx scripts/build-icons.ts && pnpm run icons:build && pnpm run icons:build:index",
     "typecheck": "tsc --noEmit",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
