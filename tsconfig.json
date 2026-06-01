@@ -33,5 +33,5 @@
     "next.config.mjs",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "src/app/(app)/tasks/components/growth-plan-sidebar.tsx", "src/app/(app)/tasks/components/growth-plan-states.tsx", "src/app/(app)/tasks/components/kanban-view.tsx"]
+  "exclude": ["node_modules"]
 }
