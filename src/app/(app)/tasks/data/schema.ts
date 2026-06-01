@@ -71,6 +71,27 @@ export const taskSchema = z.object({
 
 export type Task = z.infer<typeof taskSchema>
 
+// External assignee schema for vendors/agencies tied to a property
+export const externalAssigneeSchema = z.object({
+  id: z.string(),
+  propertyId: z.string().optional(),
+  hotelId: z.string().optional(),
+  name: z.string(),
+  entityType: z.enum([
+    'third_party_agency',
+    'ownership',
+    'vendor',
+    'brand_corporate',
+    'management_company',
+    'hotel_team',
+    'other',
+  ]),
+  contactEmail: z.string().optional(),
+  createdAt: z.string(),
+})
+
+export type ExternalAssignee = z.infer<typeof externalAssigneeSchema>
+
 // Workstream schema from spec
 export const workstreamSchema = z.object({
   id: z.string(),

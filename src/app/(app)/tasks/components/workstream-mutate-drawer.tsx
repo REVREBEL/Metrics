@@ -30,6 +30,7 @@ import { useTasks } from './tasks-provider'
 type WorkstreamMutateDrawerProps = {
   open: boolean
   onOpenChange: (open: boolean) => void
+  initiativeId?: string | null
 }
 
 const formSchema = z.object({
@@ -65,7 +66,11 @@ const statusOptions = [
   { label: 'Complete', value: 'complete' },
 ]
 
-export function WorkstreamMutateDrawer({ open, onOpenChange }: WorkstreamMutateDrawerProps) {
+export function WorkstreamMutateDrawer({
+  open,
+  onOpenChange,
+  initiativeId,
+}: WorkstreamMutateDrawerProps) {
   const { externalAssignees, addWorkstream } = useTasks()
 
   const form = useForm<WorkstreamForm>({
@@ -91,8 +96,10 @@ export function WorkstreamMutateDrawer({ open, onOpenChange }: WorkstreamMutateD
   }))
 
   const onSubmit = (data: WorkstreamForm) => {
+    if (!initiativeId) return
+
     addWorkstream({
-      initiativeId: 'init-001',
+      initiativeId,
       responsibleEntityType: data.responsibleEntityType as Workstream['responsibleEntityType'],
       responsibleEntityName: data.responsibleEntityName,
       responsibilitySummary: data.responsibilitySummary,
@@ -305,7 +312,7 @@ export function WorkstreamMutateDrawer({ open, onOpenChange }: WorkstreamMutateD
           <SheetClose asChild>
             <Button variant='outline'>Cancel</Button>
           </SheetClose>
-          <Button form='workstream-form' type='submit'>
+          <Button form='workstream-form' type='submit' disabled={!initiativeId}>
             Save Workstream
           </Button>
         </SheetFooter>
