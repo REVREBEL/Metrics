@@ -52,6 +52,49 @@ export const taskStatuses = [
   },
 ]
 
+export const initiativeStatuses = [
+  {
+    value: "discussed",
+    label: "Discussed",
+    icon: IconHelpCircleFilled,
+  },
+  {
+    value: "planning",
+    label: "Planning",
+    icon: IconClockHour1Filled,
+  },
+  {
+    value: "active",
+    label: "Active",
+    icon: IconArrowRight,
+  },
+  {
+    value: "blocked",
+    label: "Blocked",
+    icon: IconCircleX,
+  },
+  {
+    value: "at_risk",
+    label: "At Risk",
+    icon: IconArrowDown,
+  },
+  {
+    value: "completed",
+    label: "Completed",
+    icon: IconCircleCheck,
+  },
+  {
+    value: "canceled",
+    label: "Canceled",
+    icon: IconCircleX,
+  },
+  {
+    value: "archived",
+    label: "Archived",
+    icon: IconCircle,
+  },
+]
+
 export const priorities = [
   {
     value: "low",

@@ -11,13 +11,13 @@ export function TasksDialogs() {
       <TasksMutateDrawer
         key='task-create'
         open={open === 'create'}
-        onOpenChange={() => setOpen('create')}
+        onOpenChange={(nextOpen) => setOpen(nextOpen ? 'create' : null)}
       />
 
       <TasksImportDialog
         key='tasks-import'
         open={open === 'import'}
-        onOpenChange={() => setOpen('import')}
+        onOpenChange={(nextOpen) => setOpen(nextOpen ? 'import' : null)}
       />
 
       {currentRow && (
@@ -25,11 +25,11 @@ export function TasksDialogs() {
           <TasksMutateDrawer
             key={`task-update-${currentRow.id}`}
             open={open === 'update'}
-            onOpenChange={() => {
-              setOpen('update')
-              setTimeout(() => {
+            onOpenChange={(nextOpen) => {
+              setOpen(nextOpen ? 'update' : null)
+              if (!nextOpen) {
                 setCurrentRow(null)
-              }, 500)
+              }
             }}
             currentRow={currentRow}
           />
@@ -38,17 +38,15 @@ export function TasksDialogs() {
             key='task-delete'
             destructive
             open={open === 'delete'}
-            onOpenChange={() => {
-              setOpen('delete')
-              setTimeout(() => {
+            onOpenChange={(nextOpen) => {
+              setOpen(nextOpen ? 'delete' : null)
+              if (!nextOpen) {
                 setCurrentRow(null)
-              }, 500)
+              }
             }}
             handleConfirm={() => {
               setOpen(null)
-              setTimeout(() => {
-                setCurrentRow(null)
-              }, 500)
+              setCurrentRow(null)
               showSubmittedData(
                 currentRow,
                 'The following task has been deleted:'

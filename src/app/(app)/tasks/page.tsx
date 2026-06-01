@@ -36,6 +36,7 @@ import { CalendarView } from "./components/calendar-view"
 import { OwnerRollupView } from "./components/owner-rollup-view"
 import { MeetingRecapView } from "./components/meeting-recap-view"
 import { EmptyState } from "./components/growth-plan-states"
+import { WorkstreamsSection } from "./components/workstreams-section"
 import { tasks, initiatives } from "./data/tasks"
 import type { Initiative, Task } from "./data/schema"
 
@@ -254,6 +255,13 @@ export default function GrowthPlanPage() {
             onTabChange={handleTabChange}
             activeViewMode={headerViewMode}
             onViewModeChange={handleViewModeChange}
+          />
+
+          {/* Workstreams */}
+          <WorkstreamsSection
+            initiativeId={selectedInitiative?.id}
+            className='px-1'
+
           />
 
           {/* View Switcher */}

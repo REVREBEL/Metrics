@@ -1,4 +1,40 @@
-import type { Initiative, Task } from './schema'
+import type { ExternalAssignee, Initiative, Task, Workstream } from './schema'
+
+// Sample external assignees data (scoped to a demo hotel)
+export const externalAssignees: ExternalAssignee[] = [
+  {
+    id: 'ext-001',
+    hotelId: 'hotel-001',
+    name: 'Digital Agency Co.',
+    entityType: 'third_party_agency',
+    contactEmail: 'account@digitalagencyco.com',
+    createdAt: '2026-01-15T10:00:00Z',
+  },
+  {
+    id: 'ext-002',
+    hotelId: 'hotel-001',
+    name: 'Ownership Group LLC',
+    entityType: 'ownership',
+    contactEmail: 'gm@ownershipgroup.com',
+    createdAt: '2026-02-01T09:00:00Z',
+  },
+  {
+    id: 'ext-003',
+    hotelId: 'hotel-001',
+    name: 'Brand Corporate',
+    entityType: 'brand_corporate',
+    contactEmail: 'support@brandcorp.com',
+    createdAt: '2026-02-10T08:00:00Z',
+  },
+  {
+    id: 'ext-004',
+    hotelId: 'hotel-001',
+    name: 'Revenue Management Vendor',
+    entityType: 'vendor',
+    contactEmail: 'help@rmvendor.com',
+    createdAt: '2026-03-01T11:00:00Z',
+  },
+]
 
 // Sample initiatives data
 export const initiatives: Initiative[] = [
@@ -81,6 +117,70 @@ export const initiatives: Initiative[] = [
   },
 ]
 
+// Sample workstreams data
+export const workstreams: Workstream[] = [
+  {
+    id: 'ws-001',
+    initiativeId: 'init-001',
+    responsibleEntityType: 'third_party_agency',
+    responsibleEntityName: 'Digital Agency Co.',
+    ownerExternalAssigneeId: 'ext-001',
+    responsibilitySummary: 'Creative production and paid social campaign execution for the summer promotion.',
+    status: 'in_progress',
+    dueDate: '2026-05-27',
+    createdAt: '2026-05-10T10:00:00Z',
+    updatedAt: '2026-05-20T14:00:00Z',
+  },
+  {
+    id: 'ws-002',
+    initiativeId: 'init-001',
+    responsibleEntityType: 'hotel_team',
+    responsibleEntityName: 'Front Office',
+    ownerName: 'Rachel Torres',
+    responsibilitySummary: 'Coordinate amenity delivery and guest experience for extended-stay guests.',
+    status: 'not_started',
+    dueDate: '2026-05-28',
+    createdAt: '2026-05-10T10:05:00Z',
+    updatedAt: '2026-05-10T10:05:00Z',
+  },
+  {
+    id: 'ws-003',
+    initiativeId: 'init-002',
+    responsibleEntityType: 'vendor',
+    responsibleEntityName: 'Revenue Management Vendor',
+    ownerExternalAssigneeId: 'ext-004',
+    responsibilitySummary: 'Rate analysis and yield strategy recommendations for July weekday need period.',
+    status: 'in_progress',
+    dueDate: '2026-06-10',
+    createdAt: '2026-05-12T09:00:00Z',
+    updatedAt: '2026-05-22T11:00:00Z',
+  },
+  {
+    id: 'ws-004',
+    initiativeId: 'init-003',
+    responsibleEntityType: 'ownership',
+    responsibleEntityName: 'Ownership Group LLC',
+    ownerExternalAssigneeId: 'ext-002',
+    responsibilitySummary: 'Review and approve updated OTA listings before they go live.',
+    status: 'waiting',
+    dueDate: '2026-05-30',
+    notes: 'Awaiting sign-off on revised property description and new photo set.',
+    createdAt: '2026-05-05T08:00:00Z',
+    updatedAt: '2026-05-18T16:00:00Z',
+  },
+  {
+    id: 'ws-005',
+    initiativeId: 'init-003',
+    responsibleEntityType: 'internal_department',
+    responsibleEntityName: 'Marketing Department',
+    responsibilitySummary: 'Coordinate photo shoot and update brand-approved imagery across all OTA profiles.',
+    status: 'not_started',
+    dueDate: '2026-05-28',
+    createdAt: '2026-05-05T08:05:00Z',
+    updatedAt: '2026-05-05T08:05:00Z',
+  },
+]
+
 // Sample tasks data
 export const tasks: Task[] = [
   // Summer Stay Longer Promotion tasks
@@ -101,6 +201,10 @@ export const tasks: Task[] = [
     createdAt: '2026-05-10T10:30:00Z',
     updatedAt: '2026-05-14T16:00:00Z',
     label: 'feature',
+    checklist: [
+      { id: 't001-c1', text: 'Create room code mapping', completed: true },
+      { id: 't001-c2', text: 'Set blackout dates', completed: true },
+    ],
   },
   {
     id: 'task-002',
@@ -136,6 +240,11 @@ export const tasks: Task[] = [
     createdAt: '2026-05-10T10:40:00Z',
     updatedAt: '2026-05-22T09:00:00Z',
     label: 'feature',
+    checklist: [
+      { id: 't003-c1', text: 'Draft website copy', completed: true },
+      { id: 't003-c2', text: 'Upload landing hero image', completed: false },
+      { id: 't003-c3', text: 'QA booking flow', completed: false },
+    ],
   },
   {
     id: 'task-004',
@@ -154,6 +263,10 @@ export const tasks: Task[] = [
     createdAt: '2026-05-10T10:45:00Z',
     updatedAt: '2026-05-20T11:00:00Z',
     label: 'feature',
+    checklist: [
+      { id: 't004-c1', text: 'Request final creative assets', completed: true },
+      { id: 't004-c2', text: 'Configure campaign audiences', completed: false },
+    ],
   },
   {
     id: 'task-005',

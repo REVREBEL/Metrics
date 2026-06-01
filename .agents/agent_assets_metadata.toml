@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "nLXdtaxBQWgJwQa601Rq2"
+uri = "file://docs/ia-and-spec.md"
+type = "text"
+title = "Metrics — IA & Implementation Spec"
