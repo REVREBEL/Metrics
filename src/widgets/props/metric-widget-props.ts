@@ -1,5 +1,6 @@
 import type * as React from "react";
 import type { MetricTheme } from "@/widgets/_shared/metric-theme";
+import type { MetricSource, MetricSourceType } from "@/widgets/_shared/metric-source";
 
 export type StandardMetricWidgetProps = {
   /** Main card headline. Renders through .metric-card__title. */
@@ -11,8 +12,14 @@ export type StandardMetricWidgetProps = {
   /** Supporting copy below the title. Renders through .metric-card__description. */
   description?: React.ReactNode;
 
-  /** Applies a predefined metric color scope to the card. */
+  /** Legacy/simple metric color scope. Prefer sourceType/source for new source-aware widgets. */
   metric?: MetricTheme;
+
+  /** Explicit source category used by lookup/source-aware widgets. */
+  sourceType?: MetricSourceType;
+
+  /** Explicit source value within the selected sourceType. */
+  source?: MetricSource;
 
   /** Optional class on the outer MetricCard shell. */
   className?: string;
@@ -81,59 +88,123 @@ export const metricThemeGroups: MetricThemeGroup[] = [
     title: "Metric Indicators",
     description: "Universal performance indicators used for trend states, totals, and variance accents.",
     items: [
-      { label: "Positive", value: "positive", cssVar: "--color-positive", inverseVar: "--color-positive-inverse" },
-      { label: "Negative", value: "negative", cssVar: "--color-negative", inverseVar: "--color-negative-inverse" },
-      { label: "Total", value: "total", cssVar: "--color-total", inverseVar: "--color-total-inverse", varianceVar: "--color-total-var" },
+      { label: "Positive", value: "indicator-positive", cssVar: "--color-indicator-positive-normal", inverseVar: "--color-indicator-positive-inverse", varianceVar: "--color-indicator-positive-var" },
+      { label: "Negative", value: "indicator-negative", cssVar: "--color-indicator-negative-normal", inverseVar: "--color-indicator-negative-inverse", varianceVar: "--color-indicator-negative-var" },
+      { label: "Total", value: "indicator-total", cssVar: "--color-indicator-total-normal", inverseVar: "--color-indicator-total-inverse", varianceVar: "--color-indicator-total-var" },
     ],
   },
   {
     title: "Segments",
     description: "Hotel production segment tokens used by room night, ADR, revenue, pickup, and mix widgets.",
     items: [
-      { label: "Transient", value: "transient", cssVar: "--color-transient", inverseVar: "--color-transient-inverse", varianceVar: "--color-transient-var" },
-      { label: "Group", value: "group", cssVar: "--color-group", inverseVar: "--color-group-inverse", varianceVar: "--color-group-var" },
-      { label: "Crew", value: "crew", cssVar: "--color-crew", inverseVar: "--color-crew-inverse", varianceVar: "--color-crew-var" },
-      { label: "Complimentary", value: "complimentary", cssVar: "--color-complimentary", inverseVar: "--color-complimentary-inverse", varianceVar: "--color-complimentary-var" },
-      { label: "Other", value: "other", cssVar: "--color-other", inverseVar: "--color-other-inverse", varianceVar: "--color-other-var", notes: "Catch-all production segment outside transient, group, crew, and comp." },
+      { label: "Transient", value: "segment-transient", cssVar: "--color-segment-transient-normal", inverseVar: "--color-segment-transient-inverse", varianceVar: "--color-segment-transient-var" },
+      { label: "Group", value: "segment-group", cssVar: "--color-segment-group-normal", inverseVar: "--color-segment-group-inverse", varianceVar: "--color-segment-group-var" },
+      { label: "Crew", value: "segment-crew", cssVar: "--color-segment-crew-normal", inverseVar: "--color-segment-crew-inverse", varianceVar: "--color-segment-crew-var" },
+      { label: "Complimentary", value: "segment-complimentary", cssVar: "--color-segment-complimentary-normal", inverseVar: "--color-segment-complimentary-inverse", varianceVar: "--color-segment-complimentary-var" },
+      { label: "Other", value: "segment-other", cssVar: "--color-segment-other-normal", inverseVar: "--color-segment-other-inverse", varianceVar: "--color-segment-other-var", notes: "Catch-all production segment outside transient, group, crew, and comp." },
     ],
   },
   {
     title: "Channels",
     description: "OTA and booking channel tokens used for channel bars, icons, rankings, and source breakdowns.",
     items: [
-      { label: "Expedia", value: "expedia", cssVar: "--color-expedia", inverseVar: "--color-expedia-inverse" },
-      { label: "Booking", value: "booking", cssVar: "--color-booking", inverseVar: "--color-booking-inverse" },
-      { label: "Agoda", value: "agoda", cssVar: "--color-agoda", inverseVar: "--color-agoda-inverse" },
-      { label: "Priceline", value: "priceline", cssVar: "--color-priceline", inverseVar: "--color-priceline-inverse" },
-      { label: "Hotelbeds", value: "hotelbeds", cssVar: "--color-hotelbeds", inverseVar: "--color-hotelbeds-inverse" },
-      { label: "Hopper", value: "hopper", cssVar: "--color-hopper", inverseVar: "--color-hopper-inverse" },
+      { label: "Expedia", value: "channel-expedia", cssVar: "--color-channel-expedia-normal", inverseVar: "--color-channel-expedia-inverse", varianceVar: "--color-channel-expedia-var" },
+      { label: "Booking", value: "channel-booking", cssVar: "--color-channel-booking-normal", inverseVar: "--color-channel-booking-inverse", varianceVar: "--color-channel-booking-var" },
+      { label: "Agoda", value: "channel-agoda", cssVar: "--color-channel-agoda-normal", inverseVar: "--color-channel-agoda-inverse", varianceVar: "--color-channel-agoda-var" },
+      { label: "Priceline", value: "channel-priceline", cssVar: "--color-channel-priceline-normal", inverseVar: "--color-channel-priceline-inverse", varianceVar: "--color-channel-priceline-var" },
+      { label: "Hotelbeds", value: "channel-hotelbeds", cssVar: "--color-channel-hotelbeds-normal", inverseVar: "--color-channel-hotelbeds-inverse", varianceVar: "--color-channel-hotelbeds-var" },
+      { label: "Hopper", value: "channel-hopper", cssVar: "--color-channel-hopper-normal", inverseVar: "--color-channel-hopper-inverse", varianceVar: "--color-channel-hopper-var" },
+      { label: "Hotwire", value: "channel-hotwire", cssVar: "--color-channel-hotwire-normal", inverseVar: "--color-channel-hotwire-inverse", varianceVar: "--color-channel-hotwire-var" },
+      { label: "Airbnb", value: "channel-airbnb", cssVar: "--color-channel-airbnb-normal", inverseVar: "--color-channel-airbnb-inverse", varianceVar: "--color-channel-airbnb-var" },
     ],
   },
   {
     title: "Socials",
     description: "Social network tokens used by dashboard, content, campaign, and audience widgets.",
     items: [
-      { label: "Facebook", value: "facebook", cssVar: "--color-facebook", inverseVar: "--color-facebook-inverse" },
-      { label: "Instagram", value: "instagram", cssVar: "--color-instagram", inverseVar: "--color-instagram-inverse" },
-      { label: "X", value: "x", cssVar: "--color-x", inverseVar: "--color-x-inverse" },
-      { label: "LinkedIn", value: "linkedin", cssVar: "--color-linkedin", inverseVar: "--color-linkedin-inverse", notes: "Fallbacks can support the legacy --color-liinkedin token." },
-      { label: "TikTok", value: "tiktok", cssVar: "--color-tiktok", inverseVar: "--color-tiktok-inverse" },
-      { label: "Blog", value: "blog", cssVar: "--color-blog", inverseVar: "--color-blog-inverse" },
-      { label: "Telegram", value: "telegram", cssVar: "--color-telegram", inverseVar: "--color-telegram-inverse" },
-      { label: "Slack", value: "slack", cssVar: "--color-slack", inverseVar: "--color-slack-inverse" },
-      { label: "YouTube", value: "youtube", cssVar: "--color-youtube", inverseVar: "--color-youtube-inverse" },
-      { label: "Pinterest", value: "pinterest", cssVar: "--color-pinterest", inverseVar: "--color-pinterest-inverse" },
-      { label: "GitHub", value: "github", cssVar: "--color-github", inverseVar: "--color-github-inverse" },
+      { label: "Facebook", value: "social-facebook", cssVar: "--color-social-facebook-normal", inverseVar: "--color-social-facebook-inverse", varianceVar: "--color-social-facebook-var" },
+      { label: "Instagram", value: "social-instagram", cssVar: "--color-social-instagram-normal", inverseVar: "--color-social-instagram-inverse", varianceVar: "--color-social-instagram-var" },
+      { label: "X", value: "social-x", cssVar: "--color-social-x-normal", inverseVar: "--color-social-x-inverse", varianceVar: "--color-social-x-var" },
+      { label: "LinkedIn", value: "social-linkedin", cssVar: "--color-social-linkedin-normal", inverseVar: "--color-social-linkedin-inverse", varianceVar: "--color-social-linkedin-var" },
+      { label: "TikTok", value: "social-tiktok", cssVar: "--color-social-tiktok-normal", inverseVar: "--color-social-tiktok-inverse", varianceVar: "--color-social-tiktok-var" },
+      { label: "Blog", value: "social-blog", cssVar: "--color-social-blog-normal", inverseVar: "--color-social-blog-inverse", varianceVar: "--color-social-blog-var" },
+      { label: "Telegram", value: "social-telegram", cssVar: "--color-social-telegram-normal", inverseVar: "--color-social-telegram-inverse", varianceVar: "--color-social-telegram-var" },
+      { label: "Slack", value: "social-slack", cssVar: "--color-social-slack-normal", inverseVar: "--color-social-slack-inverse", varianceVar: "--color-social-slack-var" },
+      { label: "YouTube", value: "social-youtube", cssVar: "--color-social-youtube-normal", inverseVar: "--color-social-youtube-inverse", varianceVar: "--color-social-youtube-var" },
+      { label: "Pinterest", value: "social-pinterest", cssVar: "--color-social-pinterest-normal", inverseVar: "--color-social-pinterest-inverse", varianceVar: "--color-social-pinterest-var" },
+      { label: "GitHub", value: "social-github", cssVar: "--color-social-github-normal", inverseVar: "--color-social-github-inverse", varianceVar: "--color-social-github-var" },
     ],
   },
   {
     title: "Review Sites",
     description: "Review and reputation source tokens used for ratings, sentiment, response, and review-mix widgets.",
     items: [
-      { label: "Yelp", value: "yelp", cssVar: "--color-yelp", inverseVar: "--color-yelp-inverse" },
-      { label: "Tripadvisor", value: "tripadvisor", cssVar: "--color-tripadvisor", inverseVar: "--color-tripadvisor-inverse" },
-      { label: "Expedia", value: "expedia-review", cssVar: "--color-expedia", inverseVar: "--color-expedia-inverse" },
-      { label: "Booking", value: "booking-review", cssVar: "--color-booking", inverseVar: "--color-booking-inverse" },
+      { label: "Yelp", value: "review-yelp", cssVar: "--color-review-yelp-normal", inverseVar: "--color-review-yelp-inverse", varianceVar: "--color-review-yelp-var" },
+      { label: "Tripadvisor", value: "review-tripadvisor", cssVar: "--color-review-tripadvisor-normal", inverseVar: "--color-review-tripadvisor-inverse", varianceVar: "--color-review-tripadvisor-var" },
+      { label: "Expedia", value: "review-expedia", cssVar: "--color-review-expedia-normal", inverseVar: "--color-review-expedia-inverse", varianceVar: "--color-review-expedia-var" },
+      { label: "Booking", value: "review-booking", cssVar: "--color-review-booking-normal", inverseVar: "--color-review-booking-inverse", varianceVar: "--color-review-booking-var" },
+    ],
+  },
+  {
+    title: "Room Types",
+    description: "Property-specific room type names/codes should map into four generic visual buckets through lookup logic.",
+    items: [
+      { label: "Room Type 1", value: "room-type-room-type-1", cssVar: "--color-room-type-room-type-1-normal", inverseVar: "--color-room-type-room-type-1-inverse", varianceVar: "--color-room-type-room-type-1-var", notes: "Highest ranked room type in the selected lookup scope." },
+      { label: "Room Type 2", value: "room-type-room-type-2", cssVar: "--color-room-type-room-type-2-normal", inverseVar: "--color-room-type-room-type-2-inverse", varianceVar: "--color-room-type-room-type-2-var" },
+      { label: "Room Type 3", value: "room-type-room-type-3", cssVar: "--color-room-type-room-type-3-normal", inverseVar: "--color-room-type-room-type-3-inverse", varianceVar: "--color-room-type-room-type-3-var" },
+      { label: "Room Type 4", value: "room-type-room-type-4", cssVar: "--color-room-type-room-type-4-normal", inverseVar: "--color-room-type-room-type-4-inverse", varianceVar: "--color-room-type-room-type-4-var", notes: "Fourth bucket and overflow bucket for lower-ranked room types." },
+    ],
+  },
+  {
+    title: "Room Categories",
+    description: "Standardized category tokens once lookup tables normalize room, suite, studio, villa, residence, accessible, and other categories.",
+    items: [
+      { label: "Room", value: "room-category-room", cssVar: "--color-room-category-room-normal", inverseVar: "--color-room-category-room-inverse", varianceVar: "--color-room-category-room-var" },
+      { label: "Suite", value: "room-category-suite", cssVar: "--color-room-category-suite-normal", inverseVar: "--color-room-category-suite-inverse", varianceVar: "--color-room-category-suite-var" },
+      { label: "Studio", value: "room-category-studio", cssVar: "--color-room-category-studio-normal", inverseVar: "--color-room-category-studio-inverse", varianceVar: "--color-room-category-studio-var" },
+      { label: "Villa", value: "room-category-villa", cssVar: "--color-room-category-villa-normal", inverseVar: "--color-room-category-villa-inverse", varianceVar: "--color-room-category-villa-var" },
+      { label: "Residence", value: "room-category-residence", cssVar: "--color-room-category-residence-normal", inverseVar: "--color-room-category-residence-inverse", varianceVar: "--color-room-category-residence-var" },
+      { label: "Accessible", value: "room-category-accessible", cssVar: "--color-room-category-accessible-normal", inverseVar: "--color-room-category-accessible-inverse", varianceVar: "--color-room-category-accessible-var" },
+      { label: "Other", value: "room-category-other", cssVar: "--color-room-category-other-normal", inverseVar: "--color-room-category-other-inverse", varianceVar: "--color-room-category-other-var" },
+    ],
+  },
+  {
+    title: "Room Classes",
+    description: "Standardized class/rank tokens derived from lookup-table logic.",
+    items: [
+      { label: "Standard", value: "room-class-standard", cssVar: "--color-room-class-standard-normal", inverseVar: "--color-room-class-standard-inverse", varianceVar: "--color-room-class-standard-var" },
+      { label: "Deluxe", value: "room-class-deluxe", cssVar: "--color-room-class-deluxe-normal", inverseVar: "--color-room-class-deluxe-inverse", varianceVar: "--color-room-class-deluxe-var" },
+      { label: "Premium", value: "room-class-premium", cssVar: "--color-room-class-premium-normal", inverseVar: "--color-room-class-premium-inverse", varianceVar: "--color-room-class-premium-var" },
+      { label: "Executive", value: "room-class-executive", cssVar: "--color-room-class-executive-normal", inverseVar: "--color-room-class-executive-inverse", varianceVar: "--color-room-class-executive-var" },
+      { label: "Best", value: "room-class-best", cssVar: "--color-room-class-best-normal", inverseVar: "--color-room-class-best-inverse", varianceVar: "--color-room-class-best-var" },
+      { label: "Upgrade", value: "room-class-upgrade", cssVar: "--color-room-class-upgrade-normal", inverseVar: "--color-room-class-upgrade-inverse", varianceVar: "--color-room-class-upgrade-var" },
+      { label: "Other", value: "room-class-other", cssVar: "--color-room-class-other-normal", inverseVar: "--color-room-class-other-inverse", varianceVar: "--color-room-class-other-var" },
+    ],
+  },
+  {
+    title: "Room Features",
+    description: "Standardized room feature tokens for mapped feature attributes.",
+    items: [
+      { label: "None", value: "room-feature-none", cssVar: "--color-room-feature-none-normal", inverseVar: "--color-room-feature-none-inverse", varianceVar: "--color-room-feature-none-var" },
+      { label: "View", value: "room-feature-view", cssVar: "--color-room-feature-view-normal", inverseVar: "--color-room-feature-view-inverse", varianceVar: "--color-room-feature-view-var" },
+      { label: "Balcony", value: "room-feature-balcony", cssVar: "--color-room-feature-balcony-normal", inverseVar: "--color-room-feature-balcony-inverse", varianceVar: "--color-room-feature-balcony-var" },
+      { label: "Corner", value: "room-feature-corner", cssVar: "--color-room-feature-corner-normal", inverseVar: "--color-room-feature-corner-inverse", varianceVar: "--color-room-feature-corner-var" },
+      { label: "High Floor", value: "room-feature-high-floor", cssVar: "--color-room-feature-high-floor-normal", inverseVar: "--color-room-feature-high-floor-inverse", varianceVar: "--color-room-feature-high-floor-var" },
+      { label: "Low Floor", value: "room-feature-low-floor", cssVar: "--color-room-feature-low-floor-normal", inverseVar: "--color-room-feature-low-floor-inverse", varianceVar: "--color-room-feature-low-floor-var" },
+      { label: "Accessible", value: "room-feature-accessible", cssVar: "--color-room-feature-accessible-normal", inverseVar: "--color-room-feature-accessible-inverse", varianceVar: "--color-room-feature-accessible-var" },
+      { label: "Other", value: "room-feature-other", cssVar: "--color-room-feature-other-normal", inverseVar: "--color-room-feature-other-inverse", varianceVar: "--color-room-feature-other-var" },
+    ],
+  },
+  {
+    title: "Bed Types",
+    description: "Standardized bed type tokens after lookup-table normalization.",
+    items: [
+      { label: "King", value: "bed-type-king", cssVar: "--color-bed-type-king-normal", inverseVar: "--color-bed-type-king-inverse", varianceVar: "--color-bed-type-king-var" },
+      { label: "Queen", value: "bed-type-queen", cssVar: "--color-bed-type-queen-normal", inverseVar: "--color-bed-type-queen-inverse", varianceVar: "--color-bed-type-queen-var" },
+      { label: "Double", value: "bed-type-double", cssVar: "--color-bed-type-double-normal", inverseVar: "--color-bed-type-double-inverse", varianceVar: "--color-bed-type-double-var" },
+      { label: "Twin", value: "bed-type-twin", cssVar: "--color-bed-type-twin-normal", inverseVar: "--color-bed-type-twin-inverse", varianceVar: "--color-bed-type-twin-var" },
+      { label: "Multiple", value: "bed-type-multiple", cssVar: "--color-bed-type-multiple-normal", inverseVar: "--color-bed-type-multiple-inverse", varianceVar: "--color-bed-type-multiple-var" },
+      { label: "Other", value: "bed-type-other", cssVar: "--color-bed-type-other-normal", inverseVar: "--color-bed-type-other-inverse", varianceVar: "--color-bed-type-other-var" },
     ],
   },
 ];
@@ -146,13 +217,18 @@ export const widgetUsageGroups: WidgetUsageGroup[] = [
   },
   {
     title: "Cards",
-    description: "Self-contained widget cards with a standard header, description, metric theme, and content region.",
+    description: "Self-contained widget cards with a standard header, description, source theme, and content region.",
     examples: ["MetricCard", "BudgetSnapshotCard", "PageTrafficCard", "ModelComparisonCard", "PerformanceCard"],
   },
   {
     title: "Layouts",
     description: "Section-level patterns for grids, tables, dashboards, and grouped card systems.",
     examples: ["MetricLayoutGroup", "DashboardSection", "OverviewSection", "DailyPickupTable", "CalendarHeatmap"],
+  },
+  {
+    title: "Lookup Sources",
+    description: "Mapped lookup-table concepts that can drive source-aware visuals without hardcoding individual property labels.",
+    examples: ["Room type buckets", "Room category badges", "Room class charts", "Bed type mix"],
   },
 ];
 
@@ -179,8 +255,20 @@ export const standardMetricWidgetPropDefinitions: MetricWidgetPropDefinition[] =
     name: "metric",
     type: "MetricTheme",
     defaultValue: "total",
-    description: "Controls the metric color scope for icons, accents, charts, progress bars, and related values.",
+    description: "Legacy/simple color scope for existing widgets. Prefer sourceType/source for new source-aware widgets.",
     example: "group",
+  },
+  {
+    name: "sourceType",
+    type: "MetricSourceType",
+    description: "Explicit token category for source-aware widgets, such as channel, segment, room-type, room-category, room-class, room-feature, or bed-type.",
+    example: "room-category",
+  },
+  {
+    name: "source",
+    type: "MetricSource",
+    description: "Source value within sourceType. Example: sourceType='channel' source='expedia', or sourceType='room-type' source='room-type-1'.",
+    example: "suite",
   },
   {
     name: "className",
@@ -243,7 +331,7 @@ export const metricLayoutPropDefinitions: MetricWidgetPropDefinition[] = [
     name: "trend",
     type: "auto | up | down | neutral",
     defaultValue: "auto",
-    description: "Controls positive, negative, or neutral trend styling. Auto resolves from change first, then value. Up uses --color-positive / --color-positive-inverse. Down uses --color-negative / --color-negative-inverse.",
+    description: "Controls positive, negative, or neutral trend styling. Auto resolves from change first, then value. Up uses --color-indicator-positive-normal / inverse. Down uses --color-indicator-negative-normal / inverse.",
     example: "auto",
   },
   {
@@ -264,8 +352,14 @@ export const metricLayoutPropDefinitions: MetricWidgetPropDefinition[] = [
     name: "metric",
     type: "MetricTheme",
     defaultValue: "total",
-    description: "Applies the same metric color scope used by MetricCard.",
+    description: "Legacy/simple metric scope. Prefer sourceType/source for lookup-aware variants.",
     example: "transient",
+  },
+  {
+    name: "sourceType / source",
+    type: "MetricSourceType / MetricSource",
+    description: "Explicit source-aware theme props. Useful for channels, socials, reviews, segments, and lookup-table categories like room-type or bed-type.",
+    example: "sourceType='room-type' source='room-type-1'",
   },
   {
     name: "metricFormat / varianceFormat",
@@ -290,7 +384,7 @@ export const metricLayoutPropDefinitions: MetricWidgetPropDefinition[] = [
     name: "Trend icon CSS variables",
     type: "CSS Custom Properties",
     description: "The default icon exposes --metric-layout-trend-circle-color and --metric-layout-trend-arrow-color. These resolve automatically from data-trend.",
-    example: "--metric-layout-trend-circle-color: var(--color-positive);",
+    example: "--metric-layout-trend-circle-color: var(--color-indicator-positive-normal);",
   },
 ];
 
@@ -304,7 +398,8 @@ export type ExampleWidgetProps = StandardMetricWidgetProps & {
 export function ExampleWidget({
   title = "Revenue Snapshot",
   description = "Revenue performance against selected comparison period.",
-  metric = "total",
+  sourceType = "segment",
+  source = "total",
   value = 42500,
   ...cardProps
 }: ExampleWidgetProps) {
@@ -312,7 +407,8 @@ export function ExampleWidget({
     <MetricCard
       title={title}
       description={description}
-      metric={metric}
+      sourceType={sourceType}
+      source={source}
       {...cardProps}
     >
       <div className="metric-card__value">
@@ -330,7 +426,26 @@ export const metricLayoutImplementationExample = `import { MetricLayout } from "
   change="4.2%"
   changeLabel="STLY"
   trend="auto"
-  metric="transient"
+  sourceType="room-type"
+  source="room-type-1"
   variant="row"
   size="md"
 />`;
+
+export const roomTypeLookupImplementationExample = `import {
+  buildRoomTypeSourceMap,
+  getRoomTypeSource,
+} from "@/widgets/_shared/metric-source";
+
+const sourceMap = buildRoomTypeSourceMap(roomTypes.map((roomType) => ({
+  roomTypeCode: roomType.code,
+  roomTypeName: roomType.name,
+  rooms: roomType.rooms,
+  revenue: roomType.revenue,
+})));
+
+const rows = roomTypes.map((roomType) => ({
+  ...roomType,
+  sourceType: "room-type" as const,
+  source: getRoomTypeSource(roomType, sourceMap),
+}));`;
