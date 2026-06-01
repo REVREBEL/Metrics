@@ -137,6 +137,140 @@
     --color-review-booking-inverse: var(--color-channel-booking-inverse);
     --color-review-booking-var: var(--color-channel-booking-var);
 
+    /* Lookup-source room type tokens.
+       Room type names/codes are property-specific, so lookup logic assigns these generic visual buckets. */
+    --color-room-type-room-type-1-normal: var(--color-dark-blue);
+    --color-room-type-room-type-1-inverse: var(--color-dark-blue-inverse);
+    --color-room-type-room-type-1-var: var(--color-light-blue);
+
+    --color-room-type-room-type-2-normal: var(--color-green);
+    --color-room-type-room-type-2-inverse: var(--color-green-inverse);
+    --color-room-type-room-type-2-var: var(--color-light-green);
+
+    --color-room-type-room-type-3-normal: var(--color-yellow);
+    --color-room-type-room-type-3-inverse: var(--color-yellow-inverse);
+    --color-room-type-room-type-3-var: var(--color-orange);
+
+    --color-room-type-room-type-4-normal: var(--color-purple);
+    --color-room-type-room-type-4-inverse: var(--color-purple-inverse);
+    --color-room-type-room-type-4-var: var(--color-red);
+
+    /* Lookup-source room category tokens. Categories are standardized through lookup tables. */
+    --color-room-category-room-normal: var(--color-light-blue);
+    --color-room-category-room-inverse: var(--color-light-blue-inverse);
+    --color-room-category-room-var: var(--color-dark-blue);
+
+    --color-room-category-suite-normal: var(--color-orange);
+    --color-room-category-suite-inverse: var(--color-orange-inverse);
+    --color-room-category-suite-var: var(--color-yellow);
+
+    --color-room-category-studio-normal: var(--color-light-green);
+    --color-room-category-studio-inverse: var(--color-light-green-inverse);
+    --color-room-category-studio-var: var(--color-green);
+
+    --color-room-category-villa-normal: var(--color-purple);
+    --color-room-category-villa-inverse: var(--color-purple-inverse);
+    --color-room-category-villa-var: var(--color-red);
+
+    --color-room-category-residence-normal: var(--color-dark-green);
+    --color-room-category-residence-inverse: var(--color-dark-green-inverse);
+    --color-room-category-residence-var: var(--color-light-green);
+
+    --color-room-category-accessible-normal: var(--color-cyan-500);
+    --color-room-category-accessible-inverse: var(--color-cyan-500-inverse, var(--background));
+    --color-room-category-accessible-var: var(--color-cyan-700);
+
+    --color-room-category-other-normal: var(--color-grey-550);
+    --color-room-category-other-inverse: var(--color-grey-250);
+    --color-room-category-other-var: var(--color-grey-350);
+
+    /* Lookup-source room class tokens. Classes are standardized after lookup-table mapping. */
+    --color-room-class-standard-normal: var(--color-light-blue);
+    --color-room-class-standard-inverse: var(--color-light-blue-inverse);
+    --color-room-class-standard-var: var(--color-dark-blue);
+
+    --color-room-class-deluxe-normal: var(--color-green);
+    --color-room-class-deluxe-inverse: var(--color-green-inverse);
+    --color-room-class-deluxe-var: var(--color-light-green);
+
+    --color-room-class-premium-normal: var(--color-yellow);
+    --color-room-class-premium-inverse: var(--color-yellow-inverse);
+    --color-room-class-premium-var: var(--color-orange);
+
+    --color-room-class-executive-normal: var(--color-purple);
+    --color-room-class-executive-inverse: var(--color-purple-inverse);
+    --color-room-class-executive-var: var(--color-red);
+
+    --color-room-class-best-normal: var(--color-dark-blue);
+    --color-room-class-best-inverse: var(--color-dark-blue-inverse);
+    --color-room-class-best-var: var(--color-light-blue);
+
+    --color-room-class-upgrade-normal: var(--color-orange);
+    --color-room-class-upgrade-inverse: var(--color-orange-inverse);
+    --color-room-class-upgrade-var: var(--color-yellow);
+
+    --color-room-class-other-normal: var(--color-grey-550);
+    --color-room-class-other-inverse: var(--color-grey-250);
+    --color-room-class-other-var: var(--color-grey-350);
+
+    /* Lookup-source room feature tokens. */
+    --color-room-feature-none-normal: var(--color-grey-350);
+    --color-room-feature-none-inverse: var(--color-grey-750);
+    --color-room-feature-none-var: var(--color-grey-250);
+
+    --color-room-feature-view-normal: var(--color-light-blue);
+    --color-room-feature-view-inverse: var(--color-light-blue-inverse);
+    --color-room-feature-view-var: var(--color-dark-blue);
+
+    --color-room-feature-balcony-normal: var(--color-light-green);
+    --color-room-feature-balcony-inverse: var(--color-light-green-inverse);
+    --color-room-feature-balcony-var: var(--color-green);
+
+    --color-room-feature-corner-normal: var(--color-orange);
+    --color-room-feature-corner-inverse: var(--color-orange-inverse);
+    --color-room-feature-corner-var: var(--color-yellow);
+
+    --color-room-feature-high-floor-normal: var(--color-purple);
+    --color-room-feature-high-floor-inverse: var(--color-purple-inverse);
+    --color-room-feature-high-floor-var: var(--color-red);
+
+    --color-room-feature-low-floor-normal: var(--color-dark-green);
+    --color-room-feature-low-floor-inverse: var(--color-dark-green-inverse);
+    --color-room-feature-low-floor-var: var(--color-light-green);
+
+    --color-room-feature-accessible-normal: var(--color-cyan-500);
+    --color-room-feature-accessible-inverse: var(--color-cyan-500-inverse, var(--background));
+    --color-room-feature-accessible-var: var(--color-cyan-700);
+
+    --color-room-feature-other-normal: var(--color-grey-550);
+    --color-room-feature-other-inverse: var(--color-grey-250);
+    --color-room-feature-other-var: var(--color-grey-350);
+
+    /* Lookup-source bed type tokens. */
+    --color-bed-type-king-normal: var(--color-dark-blue);
+    --color-bed-type-king-inverse: var(--color-dark-blue-inverse);
+    --color-bed-type-king-var: var(--color-light-blue);
+
+    --color-bed-type-queen-normal: var(--color-green);
+    --color-bed-type-queen-inverse: var(--color-green-inverse);
+    --color-bed-type-queen-var: var(--color-light-green);
+
+    --color-bed-type-double-normal: var(--color-yellow);
+    --color-bed-type-double-inverse: var(--color-yellow-inverse);
+    --color-bed-type-double-var: var(--color-orange);
+
+    --color-bed-type-twin-normal: var(--color-purple);
+    --color-bed-type-twin-inverse: var(--color-purple-inverse);
+    --color-bed-type-twin-var: var(--color-red);
+
+    --color-bed-type-multiple-normal: var(--color-orange);
+    --color-bed-type-multiple-inverse: var(--color-orange-inverse);
+    --color-bed-type-multiple-var: var(--color-yellow);
+
+    --color-bed-type-other-normal: var(--color-grey-550);
+    --color-bed-type-other-inverse: var(--color-grey-250);
+    --color-bed-type-other-var: var(--color-grey-350);
+
     /* Current public aliases until the old names are removed from all docs and widgets */
     --color-positive: var(--color-indicator-positive-normal);
     --color-positive-inverse: var(--color-indicator-positive-inverse);
