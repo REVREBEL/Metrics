@@ -1,6 +1,8 @@
+
 import { describe, expect, it, vi, beforeEach, afterEach } from "vitest"
 
 import { cn, sleep } from "./utils"
+
 
 describe("cn utility", () => {
   it("merges simple string class names correctly", () => {
@@ -44,6 +46,7 @@ describe("cn utility", () => {
   })
 })
 
+
 describe('sleep', () => {
   beforeEach(() => {
     vi.useFakeTimers()
@@ -84,3 +87,4 @@ describe('sleep', () => {
     expect(isResolved).toBe(true)
   })
 })
+

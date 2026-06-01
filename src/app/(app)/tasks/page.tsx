@@ -261,6 +261,7 @@ export default function GrowthPlanPage() {
           <WorkstreamsSection
             initiativeId={selectedInitiative?.id}
             className='px-1'
+
           />
 
           {/* View Switcher */}

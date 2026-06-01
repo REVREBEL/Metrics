@@ -1,7 +1,7 @@
 
 "use client"
 
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState } from 'react'
 import useDialogState from '@/hooks/use-dialog-state'
 import { useProperty } from '@/context/property-context'
 import { type Task, type ExternalAssignee, type Workstream } from '../data/schema'
@@ -14,13 +14,15 @@ import {
   type ExternalAssigneeRow,
 } from '../actions'
 
-type TasksDialogType = 'create' | 'update' | 'delete' | 'import' | 'manage-vendors' | 'add-workstream'
+
+type TasksDialogType = 'create' | 'update' | 'delete' | 'import'
 
 type TasksContextType = {
   open: TasksDialogType | null
   setOpen: (str: TasksDialogType | null) => void
   currentRow: Task | null
   setCurrentRow: React.Dispatch<React.SetStateAction<Task | null>>
+
   hotelId: string | null
   externalAssignees: ExternalAssignee[]
   isLoadingAssignees: boolean
@@ -29,24 +31,14 @@ type TasksContextType = {
   deleteExternalAssignee: (id: string) => Promise<void>
   workstreams: Workstream[]
   addWorkstream: (workstream: Omit<Workstream, 'id' | 'createdAt' | 'updatedAt'>) => void
-}
+
 
 const TasksContext = React.createContext<TasksContextType | null>(null)
-
-function rowToAssignee(row: ExternalAssigneeRow): ExternalAssignee {
-  return {
-    id: row.id,
-    hotelId: row.hotelId,
-    name: row.name,
-    entityType: row.entityType as ExternalAssignee['entityType'],
-    contactEmail: row.contactEmail ?? undefined,
-    createdAt: row.createdAt,
-  }
-}
 
 export function TasksProvider({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useDialogState<TasksDialogType>(null)
   const [currentRow, setCurrentRow] = useState<Task | null>(null)
+
 
   // Use the app-wide property context for hotel scoping
   const { activeProperty, isResolvingProperty } = useProperty()
@@ -193,8 +185,12 @@ export function TasksProvider({ children }: { children: React.ReactNode }) {
       workstreams,
       addWorkstream,
     }}>
+
+  return (
+    <TasksContext.Provider value={{ open, setOpen, currentRow, setCurrentRow }}>
+      
       {children}
-    </TasksContext>
+    </TasksContext.Provider>
   )
 }
 

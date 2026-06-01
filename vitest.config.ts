@@ -8,11 +8,13 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./src/test/setup.ts"],
     globals: true,
+
     include: ['src/**/*.test.ts', 'src/**/*.spec.ts'],
     coverage: {
       provider: 'v8',
       include: ['src/utils/color-converter.ts'],
     },
+
   },
   resolve: {
     alias: {
