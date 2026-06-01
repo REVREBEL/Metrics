@@ -36,12 +36,19 @@ type GrowthPlanSidebarProps = {
   initiatives: Initiative[]
   selectedInitiative?: Initiative | null
   onInitiativeSelect: (initiative: Initiative) => void
-  teamMembers?: { name: string; role: string; online: boolean }[]
+  teamMembers?: TeamMember[]
   onAddInitiative?: () => void
 }
 
+type TeamMember = {
+  name: string
+  role: string
+  online: boolean
+  lastActive: string
+}
+
 // Mock team members with static last active times
-const defaultTeamMembers = [
+const defaultTeamMembers: TeamMember[] = [
   { name: 'Sarah Chen', role: 'Product Lead', online: true, lastActive: '08:23:26' },
   { name: 'Marcus Johnson', role: 'Engineering', online: true, lastActive: '08:23:26' },
   { name: 'Emily Rodriguez', role: 'Marketing', online: false, lastActive: '2h ago' },
