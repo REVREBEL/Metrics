@@ -74,7 +74,7 @@ export function GrowthPlanSidebar({
   // Calculate overall progress
   const totalTasks = initiatives.reduce((acc, i) => acc + (i.tasks?.length || 0), 0)
   const completedTasks = initiatives.reduce((acc, i) => 
-    acc + (i.tasks?.filter(t => t.status === 'completed' || t.status === 'complete').length || 0), 0
+    acc + (i.tasks?.filter(t => t.status === 'done').length || 0), 0
   )
   const overallProgress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
   
