@@ -37,6 +37,7 @@ type GrowthPlanSidebarProps = {
   selectedInitiative?: Initiative | null
   onInitiativeSelect: (initiative: Initiative) => void
   teamMembers?: { name: string; role: string; online: boolean }[]
+  onAddInitiative?: () => void
 }
 
 // Mock team members with static last active times
@@ -60,7 +61,8 @@ export function GrowthPlanSidebar({
   initiatives, 
   selectedInitiative,
   onInitiativeSelect,
-  teamMembers = defaultTeamMembers
+  teamMembers = defaultTeamMembers,
+  onAddInitiative,
 }: GrowthPlanSidebarProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [teamExpanded, setTeamExpanded] = useState(true)
@@ -158,6 +160,7 @@ export function GrowthPlanSidebar({
             <Button 
               variant="outline" 
               className="w-full mt-3 border-dashed justify-start"
+              onClick={onAddInitiative}
             >
               <IconPlus size={20} stroke={1.5} className="mr-2" />
               Add Initiative
