@@ -1,6 +1,8 @@
-import { describe, expect, it } from "vitest"
 
-import { cn } from "./utils"
+import { describe, expect, it, vi, beforeEach, afterEach } from "vitest"
+
+import { cn, sleep } from "./utils"
+
 
 describe("cn utility", () => {
   it("merges simple string class names correctly", () => {
@@ -43,3 +45,46 @@ describe("cn utility", () => {
     expect(cn("p-4", null, undefined, "m-2")).toBe("p-4 m-2")
   })
 })
+
+
+describe('sleep', () => {
+  beforeEach(() => {
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    vi.restoreAllMocks()
+    vi.useRealTimers()
+  })
+
+  it('resolves after the specified amount of time', async () => {
+    const sleepPromise = sleep(1000)
+
+    let isResolved = false
+    sleepPromise.then(() => {
+      isResolved = true
+    })
+
+    vi.advanceTimersByTime(500)
+    await Promise.resolve()
+    expect(isResolved).toBe(false)
+
+    vi.advanceTimersByTime(500)
+    await Promise.resolve()
+    expect(isResolved).toBe(true)
+  })
+
+  it('works with 0 ms', async () => {
+    const sleepPromise = sleep(0)
+
+    let isResolved = false
+    sleepPromise.then(() => {
+      isResolved = true
+    })
+
+    vi.advanceTimersByTime(0)
+    await Promise.resolve()
+    expect(isResolved).toBe(true)
+  })
+})
+

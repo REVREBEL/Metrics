@@ -211,17 +211,9 @@ function InitiativeCard({ initiative, onClick }: { initiative: Initiative; onCli
         {strategyType?.label || colors.label}
       </Badge>
 
-      {/* Title */}
-      <h4 className="font-semibold text-foreground mb-2 line-clamp-2 leading-snug">
-        {initiative.title || initiative.name}
-      </h4>
-
-      {/* Description */}
-      {initiative.objective && (
-        <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
-          {initiative.objective}
-        </p>
-      )}
+      {initiative.objective ? (
+        <p className="mb-3 line-clamp-2 text-sm text-muted-foreground">{initiative.objective}</p>
+     ) : null}
 
       {/* Task Progress */}
       {totalTasks > 0 && (
