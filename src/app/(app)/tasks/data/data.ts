@@ -4,9 +4,9 @@ import {
   IconArrowUp,
   IconCircle,
   IconCircleCheck,
-  IconCircleHelp,
+  IconHelpCircleFilled,
   IconCircleX,
-  IconTimer,
+  IconClockHour1Filled,
 } from "@tabler/icons-react"
 
 export const labels = [
@@ -24,11 +24,11 @@ export const labels = [
   },
 ]
 
-export const statuses = [
+export const taskStatuses = [
   {
     value: "backlog",
     label: "Backlog",
-    icon: IconCircleHelp,
+    icon: IconHelpCircleFilled,
   },
   {
     value: "todo",
@@ -38,7 +38,7 @@ export const statuses = [
   {
     value: "in progress",
     label: "In Progress",
-    icon: IconTimer,
+    icon: IconClockHour1Filled,
   },
   {
     value: "done",

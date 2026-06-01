@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as SheetPrimitive from '@radix-ui/react-dialog'
-import { IconXIcon } from "@tabler/icons-react"
+import { IconXboxXFilled } from "@tabler/icons-react"
 import { cn } from '@/lib/utils'
 
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
@@ -72,7 +72,7 @@ function SheetContent({
       >
         {children}
         <SheetPrimitive.Close className='absolute end-4 top-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-secondary'>
-          <XIcon className='size-4' />
+          <IconXboxXFilled className='size-4' />
           <span className='sr-only'>Close</span>
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>

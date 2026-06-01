@@ -15,7 +15,7 @@ import {
   IconFileText,
 } from '@tabler/icons-react'
 import type { Initiative, Task } from '../data/schema'
-import { initiativeStatuses, taskStatuses } from '../data/data'
+import { taskStatuses as initiativeStatuses, taskStatuses } from '../data/data'
 
 type MeetingRecapViewProps = {
   initiatives: Initiative[]
@@ -34,33 +34,34 @@ function RecapSectionCard({ section }: { section: RecapSection }) {
   const Icon = section.icon
   
   return (
-    < Card strokeWidth={1.5} size={20}>
-      < CardHeader className="pb-3" strokeWidth={1.5} size={20}>
-        < CardTitle className="flex items-center gap-2 text-base" strokeWidth={1.5} size={20}>
-          < Icon className="size-4 text-muted-foreground" strokeWidth={1.5} size={20} />
-          < span className="font-display uppercase tracking-tight" strokeWidth={1.5} size={20}>{section.title}</span>
-          < Badge variant="secondary" className="ml-auto" strokeWidth={1.5} size={20}>
+    <Card>
+      <CardHeader className="pb-3">
+        <CardTitle className="flex items-center gap-2 text-base">
+          <Icon className="size-4 text-muted-foreground" />
+          <span className="font-display uppercase tracking-tight">{section.title}</span>
+          <Badge variant="secondary" className="ml-auto">
             {section.items.length}
           </Badge>
         </CardTitle>
       </CardHeader>
-      < CardContent strokeWidth={1.5} size={20}>
+      <CardContent>
         {section.items.length > 0 ? (
-          < ul className="space-y-2" strokeWidth={1.5} size={20}>
+          <ul className="space-y-2">
             {section.items.map(item => {
               const statusInfo = item.type === 'initiative' 
                 ? initiativeStatuses.find(s => s.value === item.status)
                 : taskStatuses.find(s => s.value === item.status)
               
               return (
-                < li 
+                <li 
                   key={item.id} 
-                  className="flex items-start gap-2 rounded-md border bg-card p-2.5 text-sm" strokeWidth={1.5} size={20}>
+                  className="flex items-start gap-2 rounded-md border bg-card p-2.5 text-sm"
+                >
                   {statusInfo?.icon && (
-                    < statusInfo.icon className="mt-0.5 size-4 shrink-0 text-muted-foreground" strokeWidth={1.5} size={20} />
+                    <statusInfo.icon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
                   )}
-                  < span className="flex-1" strokeWidth={1.5} size={20}>{item.title}</span>
-                  < Badge variant="outline" className="text-xs shrink-0" strokeWidth={1.5} size={20}>
+                  <span className="flex-1">{item.title}</span>
+                  <Badge variant="outline" className="text-xs shrink-0">
                     {statusInfo?.label || item.status}
                   </Badge>
                 </li>
@@ -68,7 +69,7 @@ function RecapSectionCard({ section }: { section: RecapSection }) {
             })}
           </ul>
         ) : (
-          < p className="text-sm text-muted-foreground py-4 text-center" strokeWidth={1.5} size={20}>
+          <p className="text-sm text-muted-foreground py-4 text-center">
             {section.emptyMessage}
           </p>
         )}
@@ -79,6 +80,7 @@ function RecapSectionCard({ section }: { section: RecapSection }) {
 
 export function MeetingRecapView({ initiatives, tasks, meetingDate }: MeetingRecapViewProps) {
   const recapDate = meetingDate ? new Date(meetingDate) : new Date()
+  const recapDateStr = recapDate.toISOString().split('T')[0]
   const formattedDate = recapDate.toLocaleDateString('en-US', { 
     weekday: 'long',
     month: 'long', 
@@ -204,48 +206,48 @@ export function MeetingRecapView({ initiatives, tasks, meetingDate }: MeetingRec
   }, [initiatives, tasks])
 
   return (
-    < div className="flex flex-col gap-6" strokeWidth={1.5} size={20}>
+    <div className="flex flex-col gap-6">
       {/* Header */}
-      < Card strokeWidth={1.5} size={20}>
-        < CardHeader strokeWidth={1.5} size={20}>
-          < div className="flex items-center gap-3" strokeWidth={1.5} size={20}>
-            < IconCalendar size={20} stroke={1.5} className="text-primary" strokeWidth={1.5} />
-            < div strokeWidth={1.5} size={20}>
-              < CardTitle className="font-display text-lg uppercase tracking-tight" strokeWidth={1.5} size={20}>
+      <Card>
+        <CardHeader>
+          <div className="flex items-center gap-3">
+            <IconCalendar size={20} stroke={1.5} className="text-primary" />
+            <div>
+              <CardTitle className="font-display text-lg uppercase tracking-tight">
                 Meeting Recap
               </CardTitle>
-              < p className="text-sm text-muted-foreground mt-1" strokeWidth={1.5} size={20}>
+              <p className="text-sm text-muted-foreground mt-1">
                 {formattedDate}
               </p>
             </div>
           </div>
         </CardHeader>
-        < CardContent strokeWidth={1.5} size={20}>
-          < div className="grid grid-cols-2 gap-4 sm:grid-cols-4" strokeWidth={1.5} size={20}>
-            < div className="flex flex-col" strokeWidth={1.5} size={20}>
-              < span className="text-2xl font-bold" strokeWidth={1.5} size={20}>{stats.activeInitiatives}</span>
-              < span className="text-xs text-muted-foreground" strokeWidth={1.5} size={20}>Active Initiatives</span>
+        <CardContent>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold">{stats.activeInitiatives}</span>
+              <span className="text-xs text-muted-foreground">Active Initiatives</span>
             </div>
-            < div className="flex flex-col" strokeWidth={1.5} size={20}>
-              < span className="text-2xl font-bold text-orange-500" strokeWidth={1.5} size={20}>{stats.atRiskInitiatives}</span>
-              < span className="text-xs text-muted-foreground" strokeWidth={1.5} size={20}>At Risk / Blocked</span>
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold text-orange-500">{stats.atRiskInitiatives}</span>
+              <span className="text-xs text-muted-foreground">At Risk / Blocked</span>
             </div>
-            < div className="flex flex-col" strokeWidth={1.5} size={20}>
-              < span className="text-2xl font-bold" strokeWidth={1.5} size={20}>{stats.openTasks}</span>
-              < span className="text-xs text-muted-foreground" strokeWidth={1.5} size={20}>Open Tasks</span>
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold">{stats.openTasks}</span>
+              <span className="text-xs text-muted-foreground">Open Tasks</span>
             </div>
-            < div className="flex flex-col" strokeWidth={1.5} size={20}>
-              < span className="text-2xl font-bold text-red-500" strokeWidth={1.5} size={20}>{stats.blockedTasks}</span>
-              < span className="text-xs text-muted-foreground" strokeWidth={1.5} size={20}>Blocked Tasks</span>
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold text-red-500">{stats.blockedTasks}</span>
+              <span className="text-xs text-muted-foreground">Blocked Tasks</span>
             </div>
           </div>
         </CardContent>
       </Card>
 
       {/* Recap Sections */}
-      < div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3" strokeWidth={1.5} size={20}>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {sections.map(section => (
-          < RecapSectionCard key={section.title} section={section} strokeWidth={1.5} size={20} />
+          <RecapSectionCard key={section.title} section={section} />
         ))}
       </div>
     </div>

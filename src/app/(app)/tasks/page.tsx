@@ -5,7 +5,7 @@ import { Header } from "@/components/layout/header"
 import { Main } from "@/components/layout/main"
 import { ThemeSwitch } from "@/components/theme-switch"
 import { Button } from "@/components/ui/button"
-import { IconPanelLeft } from "@tabler/icons-react"
+import { IconLayoutSidebarLeftExpandFilled } from "@tabler/icons-react"
 import { TasksDialogs } from "./components/tasks-dialogs"
 import { TasksProvider } from "./components/tasks-provider"
 import { TasksTable } from "./components/tasks-table"
@@ -152,7 +152,7 @@ export default function GrowthPlanPage() {
             onClick={() => setSidebarOpen((prev) => !prev)}
             aria-label="Toggle sidebar"
           >
-            <IconPanelLeft className="size-5" strokeWidth={1.5} />
+            <IconLayoutSidebarLeftExpandFilled className="size-5" strokeWidth={1.5} />
           </Button>
           <ThemeSwitch />
         </div>
