@@ -243,4 +243,228 @@
     --source-inverse: var(--color-review-booking-inverse);
     --source-variance: var(--color-review-booking-var);
   }
+
+  .metric-source--room-type-room-type-1,
+  [data-source-type="room-type"][data-source="room-type-1"] {
+    --source-normal: var(--color-room-type-room-type-1-normal);
+    --source-inverse: var(--color-room-type-room-type-1-inverse);
+    --source-variance: var(--color-room-type-room-type-1-var);
+  }
+
+  .metric-source--room-type-room-type-2,
+  [data-source-type="room-type"][data-source="room-type-2"] {
+    --source-normal: var(--color-room-type-room-type-2-normal);
+    --source-inverse: var(--color-room-type-room-type-2-inverse);
+    --source-variance: var(--color-room-type-room-type-2-var);
+  }
+
+  .metric-source--room-type-room-type-3,
+  [data-source-type="room-type"][data-source="room-type-3"] {
+    --source-normal: var(--color-room-type-room-type-3-normal);
+    --source-inverse: var(--color-room-type-room-type-3-inverse);
+    --source-variance: var(--color-room-type-room-type-3-var);
+  }
+
+  .metric-source--room-type-room-type-4,
+  [data-source-type="room-type"][data-source="room-type-4"] {
+    --source-normal: var(--color-room-type-room-type-4-normal);
+    --source-inverse: var(--color-room-type-room-type-4-inverse);
+    --source-variance: var(--color-room-type-room-type-4-var);
+  }
+
+  .metric-source--room-category-room,
+  [data-source-type="room-category"][data-source="room"] {
+    --source-normal: var(--color-room-category-room-normal);
+    --source-inverse: var(--color-room-category-room-inverse);
+    --source-variance: var(--color-room-category-room-var);
+  }
+
+  .metric-source--room-category-suite,
+  [data-source-type="room-category"][data-source="suite"] {
+    --source-normal: var(--color-room-category-suite-normal);
+    --source-inverse: var(--color-room-category-suite-inverse);
+    --source-variance: var(--color-room-category-suite-var);
+  }
+
+  .metric-source--room-category-studio,
+  [data-source-type="room-category"][data-source="studio"] {
+    --source-normal: var(--color-room-category-studio-normal);
+    --source-inverse: var(--color-room-category-studio-inverse);
+    --source-variance: var(--color-room-category-studio-var);
+  }
+
+  .metric-source--room-category-villa,
+  [data-source-type="room-category"][data-source="villa"] {
+    --source-normal: var(--color-room-category-villa-normal);
+    --source-inverse: var(--color-room-category-villa-inverse);
+    --source-variance: var(--color-room-category-villa-var);
+  }
+
+  .metric-source--room-category-residence,
+  [data-source-type="room-category"][data-source="residence"] {
+    --source-normal: var(--color-room-category-residence-normal);
+    --source-inverse: var(--color-room-category-residence-inverse);
+    --source-variance: var(--color-room-category-residence-var);
+  }
+
+  .metric-source--room-category-accessible,
+  [data-source-type="room-category"][data-source="accessible"] {
+    --source-normal: var(--color-room-category-accessible-normal);
+    --source-inverse: var(--color-room-category-accessible-inverse);
+    --source-variance: var(--color-room-category-accessible-var);
+  }
+
+  .metric-source--room-category-other,
+  [data-source-type="room-category"][data-source="other"] {
+    --source-normal: var(--color-room-category-other-normal);
+    --source-inverse: var(--color-room-category-other-inverse);
+    --source-variance: var(--color-room-category-other-var);
+  }
+
+  .metric-source--room-class-standard,
+  [data-source-type="room-class"][data-source="standard"] {
+    --source-normal: var(--color-room-class-standard-normal);
+    --source-inverse: var(--color-room-class-standard-inverse);
+    --source-variance: var(--color-room-class-standard-var);
+  }
+
+  .metric-source--room-class-deluxe,
+  [data-source-type="room-class"][data-source="deluxe"] {
+    --source-normal: var(--color-room-class-deluxe-normal);
+    --source-inverse: var(--color-room-class-deluxe-inverse);
+    --source-variance: var(--color-room-class-deluxe-var);
+  }
+
+  .metric-source--room-class-premium,
+  [data-source-type="room-class"][data-source="premium"] {
+    --source-normal: var(--color-room-class-premium-normal);
+    --source-inverse: var(--color-room-class-premium-inverse);
+    --source-variance: var(--color-room-class-premium-var);
+  }
+
+  .metric-source--room-class-executive,
+  [data-source-type="room-class"][data-source="executive"] {
+    --source-normal: var(--color-room-class-executive-normal);
+    --source-inverse: var(--color-room-class-executive-inverse);
+    --source-variance: var(--color-room-class-executive-var);
+  }
+
+  .metric-source--room-class-best,
+  [data-source-type="room-class"][data-source="best"] {
+    --source-normal: var(--color-room-class-best-normal);
+    --source-inverse: var(--color-room-class-best-inverse);
+    --source-variance: var(--color-room-class-best-var);
+  }
+
+  .metric-source--room-class-upgrade,
+  [data-source-type="room-class"][data-source="upgrade"] {
+    --source-normal: var(--color-room-class-upgrade-normal);
+    --source-inverse: var(--color-room-class-upgrade-inverse);
+    --source-variance: var(--color-room-class-upgrade-var);
+  }
+
+  .metric-source--room-class-other,
+  [data-source-type="room-class"][data-source="other"] {
+    --source-normal: var(--color-room-class-other-normal);
+    --source-inverse: var(--color-room-class-other-inverse);
+    --source-variance: var(--color-room-class-other-var);
+  }
+
+  .metric-source--room-feature-none,
+  [data-source-type="room-feature"][data-source="none"] {
+    --source-normal: var(--color-room-feature-none-normal);
+    --source-inverse: var(--color-room-feature-none-inverse);
+    --source-variance: var(--color-room-feature-none-var);
+  }
+
+  .metric-source--room-feature-view,
+  [data-source-type="room-feature"][data-source="view"] {
+    --source-normal: var(--color-room-feature-view-normal);
+    --source-inverse: var(--color-room-feature-view-inverse);
+    --source-variance: var(--color-room-feature-view-var);
+  }
+
+  .metric-source--room-feature-balcony,
+  [data-source-type="room-feature"][data-source="balcony"] {
+    --source-normal: var(--color-room-feature-balcony-normal);
+    --source-inverse: var(--color-room-feature-balcony-inverse);
+    --source-variance: var(--color-room-feature-balcony-var);
+  }
+
+  .metric-source--room-feature-corner,
+  [data-source-type="room-feature"][data-source="corner"] {
+    --source-normal: var(--color-room-feature-corner-normal);
+    --source-inverse: var(--color-room-feature-corner-inverse);
+    --source-variance: var(--color-room-feature-corner-var);
+  }
+
+  .metric-source--room-feature-high-floor,
+  [data-source-type="room-feature"][data-source="high-floor"] {
+    --source-normal: var(--color-room-feature-high-floor-normal);
+    --source-inverse: var(--color-room-feature-high-floor-inverse);
+    --source-variance: var(--color-room-feature-high-floor-var);
+  }
+
+  .metric-source--room-feature-low-floor,
+  [data-source-type="room-feature"][data-source="low-floor"] {
+    --source-normal: var(--color-room-feature-low-floor-normal);
+    --source-inverse: var(--color-room-feature-low-floor-inverse);
+    --source-variance: var(--color-room-feature-low-floor-var);
+  }
+
+  .metric-source--room-feature-accessible,
+  [data-source-type="room-feature"][data-source="accessible"] {
+    --source-normal: var(--color-room-feature-accessible-normal);
+    --source-inverse: var(--color-room-feature-accessible-inverse);
+    --source-variance: var(--color-room-feature-accessible-var);
+  }
+
+  .metric-source--room-feature-other,
+  [data-source-type="room-feature"][data-source="other"] {
+    --source-normal: var(--color-room-feature-other-normal);
+    --source-inverse: var(--color-room-feature-other-inverse);
+    --source-variance: var(--color-room-feature-other-var);
+  }
+
+  .metric-source--bed-type-king,
+  [data-source-type="bed-type"][data-source="king"] {
+    --source-normal: var(--color-bed-type-king-normal);
+    --source-inverse: var(--color-bed-type-king-inverse);
+    --source-variance: var(--color-bed-type-king-var);
+  }
+
+  .metric-source--bed-type-queen,
+  [data-source-type="bed-type"][data-source="queen"] {
+    --source-normal: var(--color-bed-type-queen-normal);
+    --source-inverse: var(--color-bed-type-queen-inverse);
+    --source-variance: var(--color-bed-type-queen-var);
+  }
+
+  .metric-source--bed-type-double,
+  [data-source-type="bed-type"][data-source="double"] {
+    --source-normal: var(--color-bed-type-double-normal);
+    --source-inverse: var(--color-bed-type-double-inverse);
+    --source-variance: var(--color-bed-type-double-var);
+  }
+
+  .metric-source--bed-type-twin,
+  [data-source-type="bed-type"][data-source="twin"] {
+    --source-normal: var(--color-bed-type-twin-normal);
+    --source-inverse: var(--color-bed-type-twin-inverse);
+    --source-variance: var(--color-bed-type-twin-var);
+  }
+
+  .metric-source--bed-type-multiple,
+  [data-source-type="bed-type"][data-source="multiple"] {
+    --source-normal: var(--color-bed-type-multiple-normal);
+    --source-inverse: var(--color-bed-type-multiple-inverse);
+    --source-variance: var(--color-bed-type-multiple-var);
+  }
+
+  .metric-source--bed-type-other,
+  [data-source-type="bed-type"][data-source="other"] {
+    --source-normal: var(--color-bed-type-other-normal);
+    --source-inverse: var(--color-bed-type-other-inverse);
+    --source-variance: var(--color-bed-type-other-var);
+  }
 }
