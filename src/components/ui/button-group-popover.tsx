@@ -10,7 +10,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { Textarea } from "@/components/ui/textarea"
-import { BotIcon, ChevronDownIcon } from "lucide-react"
+import { IconBotIcon, IconChevronDownIcon } from "@tabler/icons-react"
 
 export default function ButtonGroupPopover() {
   return (

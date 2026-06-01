@@ -6,7 +6,7 @@ import React, {
   useRef,
   useEffect,
 } from "react";
-import { Crosshair, ZoomIn, ZoomOut, MousePointer } from "lucide-react";
+import { IconCrosshair, IconZoomIn, IconZoomOut, IconMousePointer } from "@tabler/icons-react";
 import { countLayers, useLayerStore } from "@/lib/ui-builder/store/layer-store";
 import type { ComponentLayer } from "@/components/ui/ui-builder/types";
 import {

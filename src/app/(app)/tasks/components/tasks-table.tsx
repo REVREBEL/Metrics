@@ -1,7 +1,7 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import { Download, MoreHorizontal, Trash2 } from "lucide-react"
+import { IconDownload, IconMoreHorizontal, IconTrash2 } from "@tabler/icons-react"
 import { toast } from "sonner"
 
 import { Badge } from "@/components/ui/badge"

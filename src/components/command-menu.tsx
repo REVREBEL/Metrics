@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useRouter } from 'next/navigation';
-import { ArrowRight, ChevronRight, Laptop, Moon, Sun } from 'lucide-react'
+import { IconArrowRight, IconChevronRight, IconDeviceDesktopAnalytics, IconMoon, IconSun } from "@tabler/icons-react"
 import { useSearch } from '@/context/search-provider'
 import { useTheme } from '@/context/theme-provider'
 import {
@@ -49,7 +49,7 @@ export function CommandMenu() {
                       }}
                     >
                       <div className='flex size-4 items-center justify-center'>
-                        <ArrowRight className='size-2 text-muted-foreground/80' />
+                        <IconArrowRight className='size-2 text-muted-foreground/80' />
                       </div>
                       {navItem.title}
                     </CommandItem>
@@ -64,9 +64,9 @@ export function CommandMenu() {
                     }}
                   >
                     <div className='flex size-4 items-center justify-center'>
-                      <ArrowRight className='size-2 text-muted-foreground/80' />
+                      <IconArrowRight className='size-2 text-muted-foreground/80' />
                     </div>
-                    {navItem.title} <ChevronRight /> {subItem.title}
+                    {navItem.title} <IconChevronRight /> {subItem.title}
                   </CommandItem>
                 ))
               })}
@@ -75,14 +75,14 @@ export function CommandMenu() {
           <CommandSeparator />
           <CommandGroup heading='Theme'>
             <CommandItem onSelect={() => runCommand(() => setTheme('light'))}>
-              <Sun /> <span>Light</span>
+              <IconSun /> <span>Light</span>
             </CommandItem>
             <CommandItem onSelect={() => runCommand(() => setTheme('dark'))}>
-              <Moon className='scale-90' />
+              <IconMoon className='scale-90' />
               <span>Dark</span>
             </CommandItem>
             <CommandItem onSelect={() => runCommand(() => setTheme('system'))}>
-              <Laptop />
+              <IconDeviceDesktopAnalytics />
               <span>System</span>
             </CommandItem>
           </CommandGroup>

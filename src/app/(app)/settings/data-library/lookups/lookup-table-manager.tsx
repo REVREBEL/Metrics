@@ -1,7 +1,7 @@
 "use client"
 
 import { useMemo, useRef, useState, useTransition } from "react"
-import { ArrowDownAZ, ArrowUpAZ, Check, CircleAlert, RefreshCcw, Save, Search as SearchIcon } from "lucide-react"
+import { IconSortAscendingLetters as ArrowUpAZ, IconSortDescendingLetters as ArrowDownAZ, IconCheck as Check, IconAlertCircle as CircleAlert, IconRefresh as RefreshCcw, IconDeviceFloppy as Save, IconSearch as SearchIcon } from "@tabler/icons-react"
 import { toast } from "sonner"
 
 import { Badge } from "@/components/ui/badge"

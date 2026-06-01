@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ChevronRight } from "lucide-react"
+import { IconChevronRight } from "@tabler/icons-react"
 
 import { ThemeSwitch } from "@/components/theme-switch"
 import { Header } from "@/components/layout/header"
@@ -69,7 +69,7 @@ export function ProductAreaPage({
                   className="group flex items-center justify-between rounded-lg border bg-card p-4 text-sm font-medium transition-colors hover:border-primary/50 hover:bg-muted"
                 >
                   <span>{item}</span>
-                  <ChevronRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground" />
+                  <IconChevronRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground" />
                 </Link>
               )
             })}

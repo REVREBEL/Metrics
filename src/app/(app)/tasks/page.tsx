@@ -5,12 +5,30 @@ import { Header } from "@/components/layout/header"
 import { Main } from "@/components/layout/main"
 import { ThemeSwitch } from "@/components/theme-switch"
 import { Button } from "@/components/ui/button"
-import { PanelLeft } from "lucide-react"
+import { IconLayoutSidebarLeftExpandFilled } from "@tabler/icons-react"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { TasksDialogs } from "./components/tasks-dialogs"
 import { TasksProvider } from "./components/tasks-provider"
 import { TasksTable } from "./components/tasks-table"
 import { GrowthPlanViewSwitcher, type GrowthPlanView } from "./components/growth-plan-view-switcher"
-import { GrowthPlanHeader, type GrowthPlanMode } from "./components/growth-plan-header"
+import { GrowthPlanHeader, type GrowthPlanMode, type HeaderTab, type HeaderViewMode } from "./components/growth-plan-header"
 import { GrowthPlanSidebar } from "./components/growth-plan-sidebar"
 import { KanbanView } from "./components/kanban-view"
 import { ByPersonView, ByDepartmentView } from "./components/group-views"
@@ -18,6 +36,7 @@ import { CalendarView } from "./components/calendar-view"
 import { OwnerRollupView } from "./components/owner-rollup-view"
 import { MeetingRecapView } from "./components/meeting-recap-view"
 import { EmptyState } from "./components/growth-plan-states"
+import { WorkstreamsSection } from "./components/workstreams-section"
 import { tasks, initiatives } from "./data/tasks"
 import type { Initiative, Task } from "./data/schema"
 
@@ -26,9 +45,18 @@ export default function GrowthPlanPage() {
   const [mode, setMode] = useState<GrowthPlanMode>('tasks')
   const [selectedInitiative, setSelectedInitiative] = useState<Initiative | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [activeTab, setActiveTab] = useState<HeaderTab>('overview')
+  const [headerViewMode, setHeaderViewMode] = useState<HeaderViewMode>('board')
+  const [addInitiativeOpen, setAddInitiativeOpen] = useState(false)
+  const [newInitiative, setNewInitiative] = useState({
+    title: '',
+    objective: '',
+    priority: 'medium',
+    strategyType: 'demand_generation',
+  })
 
   const handleCreateInitiative = () => {
-    console.log('[v0] Create initiative clicked')
+    setAddInitiativeOpen(true)
   }
 
   const handleCreateTask = () => {
@@ -41,6 +69,48 @@ export default function GrowthPlanPage() {
 
   const handleTaskClick = (task: Task) => {
     console.log('[v0] Task clicked:', task.id)
+  }
+
+  const handleTabChange = (tab: HeaderTab) => {
+    setActiveTab(tab)
+    // Map tabs to appropriate views
+    if (tab === 'overview') {
+      setMode('initiatives')
+      setActiveView('kanban')
+    } else if (tab === 'tasks') {
+      setMode('tasks')
+      setActiveView('kanban')
+    } else if (tab === 'notes') {
+      // Notes view - could show meeting recap for now
+      setActiveView('meeting-recap')
+    } else if (tab === 'questions') {
+      // Questions view - show meeting recap for now
+      setActiveView('meeting-recap')
+    }
+  }
+
+  const handleViewModeChange = (viewMode: HeaderViewMode) => {
+    setHeaderViewMode(viewMode)
+    // Map header view modes to GrowthPlanView
+    if (viewMode === 'board') {
+      setActiveView('kanban')
+    } else if (viewMode === 'schedule') {
+      setActiveView('calendar')
+    } else if (viewMode === 'list') {
+      setActiveView('list')
+    }
+  }
+
+  const handleInitiativeSubmit = () => {
+    // In a real app, this would create the initiative
+    console.log('[v0] Creating new initiative:', newInitiative)
+    setNewInitiative({
+      title: '',
+      objective: '',
+      priority: 'medium',
+      strategyType: 'demand_generation',
+    })
+    setAddInitiativeOpen(false)
   }
 
   const renderView = () => {
@@ -152,7 +222,7 @@ export default function GrowthPlanPage() {
             onClick={() => setSidebarOpen((prev) => !prev)}
             aria-label="Toggle sidebar"
           >
-            <PanelLeft className="size-5" />
+            <IconLayoutSidebarLeftExpandFilled className="size-5" strokeWidth={1.5} />
           </Button>
           <ThemeSwitch />
         </div>
@@ -166,6 +236,7 @@ export default function GrowthPlanPage() {
               initiatives={initiatives}
               selectedInitiative={selectedInitiative}
               onInitiativeSelect={setSelectedInitiative}
+              onAddInitiative={handleCreateInitiative}
             />
           </aside>
         )}
@@ -180,6 +251,16 @@ export default function GrowthPlanPage() {
             onCreateTask={handleCreateTask}
             initiatives={initiatives}
             selectedInitiative={selectedInitiative}
+            activeTab={activeTab}
+            onTabChange={handleTabChange}
+            activeViewMode={headerViewMode}
+            onViewModeChange={handleViewModeChange}
+          />
+
+          {/* Workstreams */}
+          <WorkstreamsSection
+            initiativeId={selectedInitiative?.id}
+            className='px-1'
           />
 
           {/* View Switcher */}
@@ -196,6 +277,82 @@ export default function GrowthPlanPage() {
       </div>
 
       <TasksDialogs />
+
+      {/* Add Initiative Dialog */}
+      <Dialog open={addInitiativeOpen} onOpenChange={setAddInitiativeOpen}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Create New Initiative</DialogTitle>
+            <DialogDescription>
+              Add a new initiative to your growth plan. Fill in the details below.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 py-4">
+            <div className="space-y-2">
+              <Label htmlFor="init-title">Title</Label>
+              <Input 
+                id="init-title" 
+                placeholder="Enter initiative title"
+                value={newInitiative.title}
+                onChange={(e) => setNewInitiative(prev => ({ ...prev, title: e.target.value }))}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="init-objective">Objective</Label>
+              <Textarea 
+                id="init-objective" 
+                placeholder="Describe the objective of this initiative"
+                value={newInitiative.objective}
+                onChange={(e) => setNewInitiative(prev => ({ ...prev, objective: e.target.value }))}
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label>Priority</Label>
+                <Select
+                  value={newInitiative.priority}
+                  onValueChange={(value) => setNewInitiative(prev => ({ ...prev, priority: value }))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select priority" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="low">Low</SelectItem>
+                    <SelectItem value="medium">Medium</SelectItem>
+                    <SelectItem value="high">High</SelectItem>
+                    <SelectItem value="critical">Critical</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label>Strategy Type</Label>
+                <Select
+                  value={newInitiative.strategyType}
+                  onValueChange={(value) => setNewInitiative(prev => ({ ...prev, strategyType: value }))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="demand_generation">Demand Generation</SelectItem>
+                    <SelectItem value="product_revenue">Product Revenue</SelectItem>
+                    <SelectItem value="retention_expansion">Retention &amp; Expansion</SelectItem>
+                    <SelectItem value="operational_efficiency">Operational Efficiency</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setAddInitiativeOpen(false)}>
+              Cancel
+            </Button>
+            <Button onClick={handleInitiativeSubmit} disabled={!newInitiative.title}>
+              Create Initiative
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </TasksProvider>
   )
 }

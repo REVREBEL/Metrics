@@ -4,7 +4,7 @@ import { useCallback } from "react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { Button } from "@/components/ui/button"
-import { SunIcon, MoonIcon } from "lucide-react"
+import { IconSun as SunIcon, IconMoon as MoonIcon } from "@tabler/icons-react"
 
 export function ThemeToggle() {
   const { setTheme } = useTheme();

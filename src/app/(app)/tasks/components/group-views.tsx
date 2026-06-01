@@ -80,7 +80,7 @@ function TaskMiniCard({ task, onClick }: { task: Task; onClick?: () => void }) {
         <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
           {task.dueDate && (
             <span className="flex items-center gap-1">
-              <IconClock size={20} stroke={1.5} />
+              <IconClock size={20} stroke={1.5} strokeWidth={1.5} />
               {formatDate(task.dueDate)}
             </span>
           )}
@@ -137,21 +137,21 @@ function PersonCard({ person, onTaskClick }: { person: PersonGroup; onTaskClick?
               <div className="flex items-center gap-4 shrink-0">
                 <div className="flex items-center gap-3 text-sm">
                   <span className="flex items-center gap-1">
-                    <IconCircleCheck size={20} stroke={1.5} className="text-green-500" />
+                    <IconCircleCheck size={20} stroke={1.5} className="text-green-500" strokeWidth={1.5} />
                     <span className="font-medium">{completedTasks.length}</span>
                   </span>
                   <span className="flex items-center gap-1 text-muted-foreground">
-                    <IconClock size={20} stroke={1.5} />
+                    <IconClock size={20} stroke={1.5} strokeWidth={1.5} />
                     <span>{openTasks.length}</span>
                   </span>
                   {overdueTasks.length > 0 && (
                     <span className="flex items-center gap-1 text-red-500">
-                      <IconAlertCircle size={20} stroke={1.5} />
+                      <IconAlertCircle size={20} stroke={1.5} strokeWidth={1.5} />
                       <span className="font-medium">{overdueTasks.length}</span>
                     </span>
                   )}
                 </div>
-                <IconChevronDown size={20} stroke={1.5} className="text-muted-foreground transition-transform [[data-state=closed]_&]:-rotate-90" />
+                <IconChevronDown size={20} stroke={1.5} className="text-muted-foreground transition-transform [[data-state=closed]_&]:-rotate-90" strokeWidth={1.5} />
               </div>
             </div>
             <Progress value={completionRate} className="h-1.5 mt-3" />
@@ -194,7 +194,7 @@ function DepartmentCard({ department, onTaskClick }: { department: DepartmentGro
           <CardHeader className="cursor-pointer hover:bg-muted/50 transition-colors">
             <div className="flex items-center gap-3">
               <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10">
-                <IconBuilding size={20} stroke={1.5} className="text-primary" />
+                <IconBuilding size={20} stroke={1.5} className="text-primary" strokeWidth={1.5} />
               </div>
               <div className="flex-1 min-w-0">
                 <CardTitle className="text-base font-semibold">
@@ -207,21 +207,21 @@ function DepartmentCard({ department, onTaskClick }: { department: DepartmentGro
               <div className="flex items-center gap-4 shrink-0">
                 <div className="flex items-center gap-3 text-sm">
                   <span className="flex items-center gap-1">
-                    <IconCircleCheck size={20} stroke={1.5} className="text-green-500" />
+                    <IconCircleCheck size={20} stroke={1.5} className="text-green-500" strokeWidth={1.5} />
                     <span className="font-medium">{completedTasks.length}</span>
                   </span>
                   <span className="flex items-center gap-1 text-muted-foreground">
-                    <IconClock size={20} stroke={1.5} />
+                    <IconClock size={20} stroke={1.5} strokeWidth={1.5} />
                     <span>{openTasks.length}</span>
                   </span>
                   {blockedTasks.length > 0 && (
                     <span className="flex items-center gap-1 text-red-500">
-                      <IconAlertCircle size={20} stroke={1.5} />
+                      <IconAlertCircle size={20} stroke={1.5} strokeWidth={1.5} />
                       <span className="font-medium">{blockedTasks.length}</span>
                     </span>
                   )}
                 </div>
-                <IconChevronDown size={20} stroke={1.5} className="text-muted-foreground transition-transform [[data-state=closed]_&]:-rotate-90" />
+                <IconChevronDown size={20} stroke={1.5} className="text-muted-foreground transition-transform [[data-state=closed]_&]:-rotate-90" strokeWidth={1.5} />
               </div>
             </div>
             <Progress value={completionRate} className="h-1.5 mt-3" />
@@ -273,7 +273,7 @@ export function ByPersonView({ tasks, onTaskClick }: ByPersonViewProps) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-2 text-sm text-muted-foreground">
-        <IconUser size={20} stroke={1.5} />
+        <IconUser size={20} stroke={1.5} strokeWidth={1.5} />
         <span>{personGroups.length} assignees</span>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
@@ -317,7 +317,7 @@ export function ByDepartmentView({ tasks, onTaskClick }: ByDepartmentViewProps) 
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-2 text-sm text-muted-foreground">
-        <IconBuilding size={20} stroke={1.5} />
+        <IconBuilding size={20} stroke={1.5} strokeWidth={1.5} />
         <span>{departmentGroups.length} departments</span>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">

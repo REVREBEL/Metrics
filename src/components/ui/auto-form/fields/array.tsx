@@ -5,7 +5,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Trash } from "lucide-react";
+import { IconTrash } from "@tabler/icons-react";
 import { useFieldArray, type useForm } from "react-hook-form";
 import type * as z from "zod";
 import { beautifyObjectName } from "../helpers";

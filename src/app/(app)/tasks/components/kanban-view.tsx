@@ -180,9 +180,7 @@ function InitiativeCard({ initiative, onClick }: { initiative: Initiative; onCli
   const colors = categoryColors[initiative.strategyType] || { bg: 'bg-slate-100 dark:bg-slate-800', text: 'text-slate-700 dark:text-slate-300', label: 'Uncategorized' }
   
   // Calculate progress
-  const totalTasks = initiative.tasks?.length || 0
-  const completedTasks = initiative.tasks?.filter(t => t.status === 'completed' || t.status === 'complete').length || 0
-  const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
+  const completedTasks = initiative.tasks?.filter(t => t.status === 'done').length || 0
   
   return (
     <div 
@@ -213,17 +211,9 @@ function InitiativeCard({ initiative, onClick }: { initiative: Initiative; onCli
         {strategyType?.label || colors.label}
       </Badge>
 
-      {/* Title */}
-      <h4 className="font-semibold text-foreground mb-2 line-clamp-2 leading-snug">
-        {initiative.title || initiative.name}
-      </h4>
-
-      {/* Description */}
-      {initiative.objective && (
-        <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
-          {initiative.objective}
-        </p>
-      )}
+      {initiative.objective ? (
+        <p className="mb-3 line-clamp-2 text-sm text-muted-foreground">{initiative.objective}</p>
+     ) : null}
 
       {/* Task Progress */}
       {totalTasks > 0 && (
@@ -310,8 +300,8 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
   
   // Mock subtask progress
   const total = (task.id.charCodeAt(task.id.length - 1) % 5) + 3
-  const completed = task.status === 'completed' || task.status === 'complete' ? total : (task.id.charCodeAt(task.id.length - 1) % total)
-  const isComplete = task.status === 'completed' || task.status === 'complete'
+  const completed = task.status === 'done' ? total : (task.id.charCodeAt(task.id.length - 1) % total)
+  const isComplete = task.status === 'done'
   
   return (
     <div 

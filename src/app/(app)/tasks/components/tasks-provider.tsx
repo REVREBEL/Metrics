@@ -4,8 +4,8 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import useDialogState from '@/hooks/use-dialog-state'
 import { useProperty } from '@/context/property-context'
-import { type Task, type ExternalAssignee } from '../data/schema'
-import { externalAssignees as mockExternalAssignees } from '../data/tasks'
+import { type Task, type ExternalAssignee, type Workstream } from '../data/schema'
+import { externalAssignees as mockExternalAssignees, workstreams as mockWorkstreams } from '../data/tasks'
 import {
   listExternalAssigneesAction,
   createExternalAssigneeAction,
@@ -27,6 +27,8 @@ type TasksContextType = {
   addExternalAssignee: (assignee: Omit<ExternalAssignee, 'id' | 'createdAt'>) => Promise<{ ok: boolean; message: string }>
   updateExternalAssignee: (id: string, assignee: Partial<ExternalAssignee>) => Promise<{ ok: boolean; message: string }>
   deleteExternalAssignee: (id: string) => Promise<void>
+  workstreams: Workstream[]
+  addWorkstream: (workstream: Omit<Workstream, 'id' | 'createdAt' | 'updatedAt'>) => void
 }
 
 const TasksContext = React.createContext<TasksContextType | null>(null)
@@ -49,6 +51,20 @@ export function TasksProvider({ children }: { children: React.ReactNode }) {
   // Use the app-wide property context for hotel scoping
   const { activeProperty, isResolvingProperty } = useProperty()
   const hotelId = activeProperty?.id ?? null
+
+  // Workstreams — initialise with mock data; new workstreams are added optimistically
+  const [workstreams, setWorkstreams] = useState<Workstream[]>(mockWorkstreams)
+
+  const addWorkstream = useCallback((workstream: Omit<Workstream, 'id' | 'createdAt' | 'updatedAt'>) => {
+    const now = new Date().toISOString()
+    const newWorkstream: Workstream = {
+      ...workstream,
+      id: `ws-${Date.now()}`,
+      createdAt: now,
+      updatedAt: now,
+    }
+    setWorkstreams((prev) => [...prev, newWorkstream])
+  }, [])
 
   // Start with empty list — we always authoritative-load from the DB.
   // Mock data is only shown while the property is still resolving.
@@ -174,6 +190,8 @@ export function TasksProvider({ children }: { children: React.ReactNode }) {
       addExternalAssignee,
       updateExternalAssignee,
       deleteExternalAssignee,
+      workstreams,
+      addWorkstream,
     }}>
       {children}
     </TasksContext>

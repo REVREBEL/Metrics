@@ -20,7 +20,7 @@ import {
   UserRemove01Icon,
   VolumeMute02Icon,
 } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
+import { IconHugeiconsIcon } from "@tabler/icons-react"
 
 export default function ButtonGroupDropdown() {
   return (

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { PlusIcon } from 'lucide-react'
+import { IconPlusIcon } from "@tabler/icons-react"
 
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'

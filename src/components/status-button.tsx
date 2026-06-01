@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "motion/react";
 import { Tick02Icon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { IconHugeiconsIcon } from "@tabler/icons-react";
 import { useMemo, useState } from "react";
 
 export function SaveButton() {

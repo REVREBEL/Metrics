@@ -4,7 +4,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group"
-import { SearchIcon } from "lucide-react"
+import { IconSearchIcon } from "@tabler/icons-react"
 
 export function InputGroupInlineStart() {
   return (

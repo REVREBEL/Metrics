@@ -1,18 +1,17 @@
 import {
-  ArrowDown,
-  ArrowRight,
-  ArrowUp,
-  CheckCircle,
-  Circle,
-  CircleOff,
-  CircleAlert,
-  AlertTriangle,
-  Archive,
-  MessageCircle,
-  Timer,
-  Clock,
-  Ban,
-} from 'lucide-react'
+  IconAlertTriangle,
+  IconArchive,
+  IconArrowDown,
+  IconArrowRight,
+  IconArrowUp,
+  IconBan,
+  IconCircleCheck,
+  IconCircle,
+  IconAlertCircle,
+  IconCircleOff,
+  IconClock,
+  IconMessageCircle,
+} from "@tabler/icons-react"
 
 export const labels = [
   { value: 'bug', label: 'Bug' },
@@ -22,34 +21,34 @@ export const labels = [
 
 // Initiative statuses from spec
 export const initiativeStatuses = [
-  { value: 'discussed', label: 'Discussed', icon: MessageCircle },
-  { value: 'planning', label: 'Planning', icon: Clock },
-  { value: 'active', label: 'Active', icon: Timer },
-  { value: 'blocked', label: 'Blocked', icon: Ban },
-  { value: 'at_risk', label: 'At Risk', icon: AlertTriangle },
-  { value: 'completed', label: 'Complete', icon: CheckCircle },
-  { value: 'canceled', label: 'Canceled', icon: CircleOff },
-  { value: 'archived', label: 'Archived', icon: Archive },
+  { value: 'discussed', label: 'Discussed', icon: IconMessageCircle },
+  { value: 'planning', label: 'Planning', icon: IconClock },
+  { value: 'active', label: 'Active', icon: IconClock },
+  { value: 'blocked', label: 'Blocked', icon: IconBan },
+  { value: 'at_risk', label: 'At Risk', icon: IconAlertTriangle },
+  { value: 'completed', label: 'Complete', icon: IconCircleCheck },
+  { value: 'canceled', label: 'Canceled', icon: IconCircleOff },
+  { value: 'archived', label: 'Archived', icon: IconArchive },
 ]
 
 // Task statuses from spec
 export const taskStatuses = [
-  { value: 'not_started', label: 'Not Started', icon: Circle },
-  { value: 'in_progress', label: 'In Progress', icon: Timer },
-  { value: 'waiting', label: 'Waiting', icon: Clock },
-  { value: 'blocked', label: 'Blocked', icon: CircleAlert },
-  { value: 'complete', label: 'Complete', icon: CheckCircle },
-  { value: 'canceled', label: 'Canceled', icon: CircleOff },
+  { value: 'not_started', label: 'Not Started', icon: IconCircle },
+  { value: 'in_progress', label: 'In Progress', icon: IconClock },
+  { value: 'waiting', label: 'Waiting', icon: IconClock },
+  { value: 'blocked', label: 'Blocked', icon: IconAlertCircle },
+  { value: 'complete', label: 'Complete', icon: IconCircleCheck },
+  { value: 'canceled', label: 'Canceled', icon: IconCircleOff },
 ]
 
 // Legacy statuses for backward compatibility
 export const statuses = taskStatuses
 
 export const priorities = [
-  { value: 'low', label: 'Low', icon: ArrowDown },
-  { value: 'medium', label: 'Medium', icon: ArrowRight },
-  { value: 'high', label: 'High', icon: ArrowUp },
-  { value: 'critical', label: 'Critical', icon: AlertTriangle },
+  { value: 'low', label: 'Low', icon: IconArrowDown },
+  { value: 'medium', label: 'Medium', icon: IconArrowRight },
+  { value: 'high', label: 'High', icon: IconArrowUp },
+  { value: 'critical', label: 'Critical', icon: IconAlertTriangle },
 ]
 
 // Strategy types from spec

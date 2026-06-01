@@ -19,7 +19,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { HugeiconsIcon } from "@hugeicons/react"
+import { IconHugeiconsIcon } from "@tabler/icons-react"
 import { ArrowDown02Icon, ArrowUp02Icon, UnfoldMoreIcon, Tick02Icon, ArrowLeft03Icon, ArrowRight03Icon, ArrowLeft02Icon, ArrowRight02Icon, SlidersHorizontalIcon, PinOffIcon } from "@hugeicons/core-free-icons"
 
 interface DataGridColumnHeaderProps<

@@ -7,7 +7,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { IconHugeiconsIcon } from "@tabler/icons-react";
 import { Delete02Icon } from "@hugeicons/core-free-icons";
 import { IconTrash } from "@tabler/icons-react";
 import type { ConsoleEntry } from "./preview-iframe";

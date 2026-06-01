@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { Trash, Scissors, ClipboardPaste, CopyPlus } from "lucide-react";
+import { IconTrash, IconScissors, IconClipboardPaste, IconCopyPlus } from "@tabler/icons-react";
 import { useEditorStore } from "@/lib/ui-builder/store/editor-store";
 import { useLayerStore } from "@/lib/ui-builder/store/layer-store";
 import { canComponentAcceptChildren } from "@/lib/ui-builder/store/schema-utils";

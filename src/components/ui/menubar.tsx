@@ -4,7 +4,7 @@ import * as React from "react"
 import { Menubar as MenubarPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { HugeiconsIcon } from "@hugeicons/react"
+import { IconHugeiconsIcon } from "@tabler/icons-react"
 import { Tick02Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons"
 
 function Menubar({

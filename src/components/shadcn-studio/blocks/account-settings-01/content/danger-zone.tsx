@@ -1,4 +1,4 @@
-import { Trash2Icon } from 'lucide-react'
+import { IconTrash2Icon } from "@tabler/icons-react"
 
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'

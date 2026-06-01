@@ -13,15 +13,7 @@ import {
   InputGroupInput,
   InputGroupText,
 } from "@/components/ui/input-group"
-import {
-  CopyIcon,
-  EyeOffIcon,
-  InfoIcon,
-  MicIcon,
-  RadioIcon,
-  SearchIcon,
-  StarIcon,
-} from "lucide-react"
+import { IconCopyIcon, IconEyeOffIcon, IconInfoIcon, IconMicIcon, IconRadioIcon, IconSearchIcon, IconStarIcon, Icon } from "@tabler/icons-react"
 import { toast } from "sonner"
 
 export function InputGroupWithAddons() {

@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { TrendingUp } from 'lucide-react';
+import { IconTrendingUp } from "@tabler/icons-react";
 import { Label, Pie, PieChart } from 'recharts';
 
 import {

@@ -4,7 +4,7 @@ import {
   InputGroupInput,
 } from "@/components/ui/input-group"
 import { Kbd } from "@/components/ui/kbd"
-import { SearchIcon } from "lucide-react"
+import { IconSearchIcon } from "@tabler/icons-react"
 
 export function InputGroupKbd() {
   return (

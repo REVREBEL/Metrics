@@ -3,7 +3,6 @@
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { showSubmittedData } from '@/lib/show-submitted-data'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -25,6 +24,7 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet'
 import { SelectDropdown } from '@/components/select-dropdown'
+import { type Workstream } from '../data/schema'
 import { useTasks } from './tasks-provider'
 
 type WorkstreamMutateDrawerProps = {
@@ -66,7 +66,7 @@ const statusOptions = [
 ]
 
 export function WorkstreamMutateDrawer({ open, onOpenChange }: WorkstreamMutateDrawerProps) {
-  const { externalAssignees } = useTasks()
+  const { externalAssignees, addWorkstream } = useTasks()
 
   const form = useForm<WorkstreamForm>({
     resolver: zodResolver(formSchema),
@@ -91,9 +91,20 @@ export function WorkstreamMutateDrawer({ open, onOpenChange }: WorkstreamMutateD
   }))
 
   const onSubmit = (data: WorkstreamForm) => {
+    addWorkstream({
+      initiativeId: 'init-001',
+      responsibleEntityType: data.responsibleEntityType as Workstream['responsibleEntityType'],
+      responsibleEntityName: data.responsibleEntityName,
+      responsibilitySummary: data.responsibilitySummary,
+      status: data.status as Workstream['status'],
+      dueDate: data.dueDate || undefined,
+      ownerExternalAssigneeId: data.ownerType === 'external_assignee' ? (data.ownerExternalAssigneeId || undefined) : undefined,
+      ownerUserId: data.ownerType === 'app_user' ? (data.ownerName || undefined) : undefined,
+      ownerName: data.ownerType === 'app_user' ? (data.ownerName || undefined) : undefined,
+      notes: data.notes || undefined,
+    })
     onOpenChange(false)
     form.reset()
-    showSubmittedData(data)
   }
 
   return (

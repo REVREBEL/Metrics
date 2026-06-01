@@ -1,11 +1,5 @@
 import type { ReactNode } from "react";
-import {
-  Heading,
-  Palette,
-  Percent,
-  Type,
-  UnfoldHorizontal,
-} from "lucide-react";
+import { IconHeading, IconPalette, IconPercent, IconType, IconUnfoldHorizontal, Icon } from "@tabler/icons-react";
 import {
   TAILWIND_AUTO_HEIGHT_CLASSES,
   TAILWIND_AUTO_WIDTH_CLASSES,

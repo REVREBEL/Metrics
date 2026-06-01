@@ -11,7 +11,7 @@ export default function ButtonGroupSplit() {
       <Button variant="secondary">Button</Button>
       <ButtonGroupSeparator />
       <Button size="icon" variant="secondary">
-        <IconPlus />
+        <IconPlus strokeWidth={1.5} size={20} />
       </Button>
     </ButtonGroup>
   )

@@ -5,7 +5,7 @@ import {
   InputGroupInput,
   InputGroupText,
 } from "@/components/ui/input-group"
-import { InfoIcon } from "lucide-react"
+import { IconInfoIcon } from "@tabler/icons-react"
 
 export function InputInputGroup() {
   return (

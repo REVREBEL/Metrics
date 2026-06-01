@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDraggable } from '@dnd-kit/core';
-import { GripVertical } from 'lucide-react';
+import { IconGripVertical } from "@tabler/icons-react";
 import { cn } from '@/lib/utils';
 
 interface DraggableNewComponentProps {

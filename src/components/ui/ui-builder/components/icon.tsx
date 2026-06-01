@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { IconHugeiconsIcon } from "@tabler/icons-react";
 import * as HugeIcons from "@hugeicons/core-free-icons";
 import { cn } from "@/lib/utils";
 

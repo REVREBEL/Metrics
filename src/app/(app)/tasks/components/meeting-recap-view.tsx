@@ -15,7 +15,7 @@ import {
   IconFileText,
 } from '@tabler/icons-react'
 import type { Initiative, Task } from '../data/schema'
-import { initiativeStatuses, taskStatuses } from '../data/data'
+import { taskStatuses as initiativeStatuses, taskStatuses } from '../data/data'
 
 type MeetingRecapViewProps = {
   initiatives: Initiative[]
@@ -80,6 +80,7 @@ function RecapSectionCard({ section }: { section: RecapSection }) {
 
 export function MeetingRecapView({ initiatives, tasks, meetingDate }: MeetingRecapViewProps) {
   const recapDate = meetingDate ? new Date(meetingDate) : new Date()
+  const recapDateStr = recapDate.toISOString().split('T')[0]
   const formattedDate = recapDate.toLocaleDateString('en-US', { 
     weekday: 'long',
     month: 'long', 

@@ -1,6 +1,6 @@
 "use client";
 
-import { DownloadIcon, XIcon } from "lucide-react";
+import { IconDownloadIcon, IconXIcon } from "@tabler/icons-react";
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";

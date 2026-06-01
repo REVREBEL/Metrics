@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { Copy, Check } from 'lucide-react'
+import { IconCopy, IconCheck } from "@tabler/icons-react"
 
 type CopyCodeProps = {
   code: string
@@ -43,7 +43,15 @@ function CopyCode({ code = 'javascript' }: CopyCodeProps) {
 
   // Simple syntax highlighting for JavaScript/TypeScript
   const highlightCode = (code: string) => {
-    let result = code
+    // Escape HTML characters to prevent XSS
+    // It's important to only escape characters that aren't already part of
+    // a valid entity to avoid double-encoding (if desired), but typical simple replace works here.
+    let result = escapeHtml(code)
+
+    // Escape HTML characters to prevent XSS
+    result = result.replace(/&/g, '&amp;')
+    result = result.replace(/</g, '&lt;')
+    result = result.replace(/>/g, '&gt;')
 
     // 1. Strings (blue) - process first to protect content
     result = result.replace(/"([^"]*)"/g, '<span class="text-blue-600 dark:text-blue-400">"$1"</span>')

@@ -12,7 +12,7 @@ import {
   SelectTrigger,
 } from "@/components/ui/select"
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
+import { IconHugeiconsIcon } from "@tabler/icons-react"
 
 const CURRENCIES = [
   { label: "US Dollar", value: "$" },

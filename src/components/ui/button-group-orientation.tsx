@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
-import { MinusIcon, PlusIcon } from "lucide-react"
+import { IconMinusIcon, IconPlusIcon } from "@tabler/icons-react"
 
 export default function ButtonGroupOrientation() {
   return (

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-import { UploadCloudIcon, TrashIcon, ImageIcon } from 'lucide-react'
+import { IconUploadCloudIcon, IconTrashIcon, IconImageIcon } from "@tabler/icons-react"
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'

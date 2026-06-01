@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/ui-builder/internal/utils/base-colors";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { CheckIcon, InfoIcon, MoonIcon, SunIcon } from "lucide-react";
+import { IconCheck as CheckIcon, IconInfoCircle as InfoIcon, IconMoon as MoonIcon, IconSun as SunIcon } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import {
   useLayerStore,

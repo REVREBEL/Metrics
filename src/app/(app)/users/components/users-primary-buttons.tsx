@@ -1,6 +1,6 @@
 "use client"
 
-import { MailPlus, UserPlus } from 'lucide-react'
+import { IconMailPlus, IconUserPlus } from "@tabler/icons-react"
 import { Button } from '@/components/ui/button'
 import { useUsers } from './users-provider'
 

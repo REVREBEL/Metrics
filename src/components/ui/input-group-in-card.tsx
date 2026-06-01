@@ -16,7 +16,7 @@ import {
   InputGroupText,
   InputGroupTextarea,
 } from "@/components/ui/input-group"
-import { ExternalLinkIcon, MailIcon } from "lucide-react"
+import { IconExternalLinkIcon, IconMailIcon } from "@tabler/icons-react"
 
 export function InputGroupInCard() {
   return (

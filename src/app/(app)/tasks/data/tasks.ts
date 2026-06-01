@@ -1,4 +1,4 @@
-import type { ExternalAssignee, Initiative, Task } from './schema'
+import type { ExternalAssignee, Initiative, Task, Workstream } from './schema'
 
 // Sample external assignees data (scoped to a demo hotel)
 export const externalAssignees: ExternalAssignee[] = [
@@ -114,6 +114,70 @@ export const initiatives: Initiative[] = [
     createdByUserId: 'user-002',
     createdAt: '2026-05-08T14:00:00Z',
     updatedAt: '2026-05-19T09:00:00Z',
+  },
+]
+
+// Sample workstreams data
+export const workstreams: Workstream[] = [
+  {
+    id: 'ws-001',
+    initiativeId: 'init-001',
+    responsibleEntityType: 'third_party_agency',
+    responsibleEntityName: 'Digital Agency Co.',
+    ownerExternalAssigneeId: 'ext-001',
+    responsibilitySummary: 'Creative production and paid social campaign execution for the summer promotion.',
+    status: 'in_progress',
+    dueDate: '2026-05-27',
+    createdAt: '2026-05-10T10:00:00Z',
+    updatedAt: '2026-05-20T14:00:00Z',
+  },
+  {
+    id: 'ws-002',
+    initiativeId: 'init-001',
+    responsibleEntityType: 'hotel_team',
+    responsibleEntityName: 'Front Office',
+    ownerName: 'Rachel Torres',
+    responsibilitySummary: 'Coordinate amenity delivery and guest experience for extended-stay guests.',
+    status: 'not_started',
+    dueDate: '2026-05-28',
+    createdAt: '2026-05-10T10:05:00Z',
+    updatedAt: '2026-05-10T10:05:00Z',
+  },
+  {
+    id: 'ws-003',
+    initiativeId: 'init-002',
+    responsibleEntityType: 'vendor',
+    responsibleEntityName: 'Revenue Management Vendor',
+    ownerExternalAssigneeId: 'ext-004',
+    responsibilitySummary: 'Rate analysis and yield strategy recommendations for July weekday need period.',
+    status: 'in_progress',
+    dueDate: '2026-06-10',
+    createdAt: '2026-05-12T09:00:00Z',
+    updatedAt: '2026-05-22T11:00:00Z',
+  },
+  {
+    id: 'ws-004',
+    initiativeId: 'init-003',
+    responsibleEntityType: 'ownership',
+    responsibleEntityName: 'Ownership Group LLC',
+    ownerExternalAssigneeId: 'ext-002',
+    responsibilitySummary: 'Review and approve updated OTA listings before they go live.',
+    status: 'waiting',
+    dueDate: '2026-05-30',
+    notes: 'Awaiting sign-off on revised property description and new photo set.',
+    createdAt: '2026-05-05T08:00:00Z',
+    updatedAt: '2026-05-18T16:00:00Z',
+  },
+  {
+    id: 'ws-005',
+    initiativeId: 'init-003',
+    responsibleEntityType: 'internal_department',
+    responsibleEntityName: 'Marketing Department',
+    responsibilitySummary: 'Coordinate photo shoot and update brand-approved imagery across all OTA profiles.',
+    status: 'not_started',
+    dueDate: '2026-05-28',
+    createdAt: '2026-05-05T08:05:00Z',
+    updatedAt: '2026-05-05T08:05:00Z',
   },
 ]
 

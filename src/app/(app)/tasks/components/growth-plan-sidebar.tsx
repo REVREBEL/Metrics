@@ -37,6 +37,7 @@ type GrowthPlanSidebarProps = {
   selectedInitiative?: Initiative | null
   onInitiativeSelect: (initiative: Initiative) => void
   teamMembers?: { name: string; role: string; online: boolean }[]
+  onAddInitiative?: () => void
 }
 
 // Mock team members with static last active times
@@ -60,7 +61,8 @@ export function GrowthPlanSidebar({
   initiatives, 
   selectedInitiative,
   onInitiativeSelect,
-  teamMembers = defaultTeamMembers
+  teamMembers = defaultTeamMembers,
+  onAddInitiative,
 }: GrowthPlanSidebarProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [teamExpanded, setTeamExpanded] = useState(true)
@@ -72,7 +74,7 @@ export function GrowthPlanSidebar({
   // Calculate overall progress
   const totalTasks = initiatives.reduce((acc, i) => acc + (i.tasks?.length || 0), 0)
   const completedTasks = initiatives.reduce((acc, i) => 
-    acc + (i.tasks?.filter(t => t.status === 'completed' || t.status === 'complete').length || 0), 0
+    acc + (i.tasks?.filter(t => t.status === 'done').length || 0), 0
   )
   const overallProgress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
   
@@ -99,7 +101,7 @@ export function GrowthPlanSidebar({
             <div className="space-y-1">
               {filteredInitiatives.map((initiative) => {
                 const isSelected = selectedInitiative?.id === initiative.id
-                const icon = strategyIcons[initiative.strategyType] || <IconStack2 size={20} stroke={1.5} />
+                const icon = strategyIcons[initiative.strategyType] || <IconStack2 size={16} stroke={1.5} />
                 
                 return (
                   <div
@@ -158,6 +160,7 @@ export function GrowthPlanSidebar({
             <Button 
               variant="outline" 
               className="w-full mt-3 border-dashed justify-start"
+              onClick={onAddInitiative}
             >
               <IconPlus size={20} stroke={1.5} className="mr-2" />
               Add Initiative

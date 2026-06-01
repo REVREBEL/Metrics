@@ -3,14 +3,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group"
-import {
-  CheckIcon,
-  CreditCardIcon,
-  InfoIcon,
-  MailIcon,
-  SearchIcon,
-  StarIcon,
-} from "lucide-react"
+import { IconCheckIcon, IconCreditCardIcon, IconInfoIcon, IconMailIcon, IconSearchIcon, IconStarIcon, Icon } from "@tabler/icons-react"
 
 export default function InputGroupIcon() {
   return (

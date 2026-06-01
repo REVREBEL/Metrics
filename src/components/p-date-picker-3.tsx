@@ -1,7 +1,7 @@
 "use client";
 
 import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
+import { IconCalendarIcon } from "@tabler/icons-react";
 import * as React from "react";
 import type { DropdownProps } from "react-day-picker";
 

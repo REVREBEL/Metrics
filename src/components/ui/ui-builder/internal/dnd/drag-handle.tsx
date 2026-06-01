@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { GripVertical } from 'lucide-react';
+import { IconGripVertical } from "@tabler/icons-react";
 import { useDraggable } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
 import { cn } from '@/lib/utils';

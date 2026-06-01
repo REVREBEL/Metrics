@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { type Table } from '@tanstack/react-table'
-import { X } from 'lucide-react'
+import { IconX } from "@tabler/icons-react"
 import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'

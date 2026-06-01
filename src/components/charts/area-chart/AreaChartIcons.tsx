@@ -1,6 +1,6 @@
 'use client';
 
-import { TrendingDown, TrendingUp } from 'lucide-react';
+import { IconTrendingDown, IconTrendingUp } from "@tabler/icons-react";
 import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts';
 
 import {

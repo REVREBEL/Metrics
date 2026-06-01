@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/sidebar"
 import { MENU_DATA } from "@/app/docs/docs-data/data"
 import Image from "next/image";
-import { GithubIcon } from "lucide-react";
+import { IconBrandGithub as GithubIcon } from "@tabler/icons-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/app/platform/theme-toggle"
 
@@ -62,7 +62,7 @@ function AppSidebarContent({ currentPath, ...props }: AppSidebarProps) {
         ))}
       </SidebarContent>
       <SidebarFooter className="flex flex-row justify-between items-center border-t border-border shadow-sm">
-        <Link href="https://github.com/olliethedev/ui-builder" target="_blank">
+        <Link href="https://github.com/olliethedev/ui-builder" target="_blank" rel="noopener noreferrer">
           <Button size="icon" className="p-1 aspect-square">
             <GithubIcon />
           </Button>

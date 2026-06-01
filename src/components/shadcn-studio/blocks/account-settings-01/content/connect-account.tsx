@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { XIcon, PlusIcon } from 'lucide-react'
+import { IconXIcon, IconPlusIcon } from "@tabler/icons-react"
 
 import {
   Dialog,
