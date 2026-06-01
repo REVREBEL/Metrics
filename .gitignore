@@ -69,10 +69,14 @@ next-env.d.ts
 /mcp-data/
 
 /.vibe
-/.agents
+
 /.claude
 /.clerk
 /.continue
 /.git
 /.next
-/.agent
+node_modules/
+.next/
+dist/
+coverage/
+.vscode/settings.json
