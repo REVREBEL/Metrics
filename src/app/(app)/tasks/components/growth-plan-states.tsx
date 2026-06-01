@@ -79,38 +79,38 @@ export function EmptyState({ view, mode, onCreateInitiative, onCreateTask }: Emp
   return (
     <div className="flex flex-col items-center justify-center py-16 text-center">
       <div className="flex size-16 items-center justify-center rounded-full bg-muted">
-        <Icon className="size-8 text-muted-foreground" strokeWidth={1.5} size={20} />
+        <Icon className="size-8 text-muted-foreground" />
       </div>
       <h3 className="mt-4 font-display text-lg font-semibold uppercase tracking-tight">{config.title}</h3>
       <p className="mt-2 max-w-sm text-sm text-muted-foreground">{config.description}</p>
       <div className="mt-6 flex gap-3">
         <Button variant="outline" onClick={onCreateInitiative}>
-          <IconPlus size={20} strokeWidth={1.5} className="mr-1.5" />
+          <IconPlus className="mr-1.5" />
           New Initiative
         </Button>
         <Button onClick={onCreateTask}>
-          <IconPlus size={20} strokeWidth={1.5} className="mr-1.5" />
+          <IconPlus className="mr-1.5" />
           {createLabel}
         </Button>
       </div>
     </div>
-  )
+ )
 }
 
 export function LoadingState({ message = "Loading..." }: LoadingStateProps) {
   return (
     <div className="flex flex-col items-center justify-center py-16 text-center">
-      <IconLoader2 size={32} strokeWidth={1.5} className="animate-spin text-muted-foreground" />
+      <IconLoader2 size={32} className="animate-spin text-muted-foreground" />
       <p className="mt-4 text-sm text-muted-foreground">{message}</p>
     </div>
-  )
+ )
 }
 
 export function ErrorState({ message = "Something went wrong", onRetry }: ErrorStateProps) {
   return (
     <div className="flex flex-col items-center justify-center py-16 text-center">
       <div className="flex size-16 items-center justify-center rounded-full bg-destructive/10">
-        <IconAlertCircle size={32} strokeWidth={1.5} className="text-destructive" />
+        <IconAlertCircle size={32} className="text-destructive" />
       </div>
       <h3 className="mt-4 font-display text-lg font-semibold uppercase tracking-tight">Error</h3>
       <p className="mt-2 max-w-sm text-sm text-muted-foreground">{message}</p>
@@ -118,7 +118,7 @@ export function ErrorState({ message = "Something went wrong", onRetry }: ErrorS
         <Button variant="outline" className="mt-6" onClick={onRetry}>
           Try Again
         </Button>
-      ) : null}
+     ) : null}
     </div>
-  )
+ )
 }

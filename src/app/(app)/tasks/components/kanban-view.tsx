@@ -151,7 +151,7 @@ export function KanbanView({
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" className="size-7">
-                      <IconDotsVertical strokeWidth={1.5} size={16} />
+                      <IconDotsVertical size={16} />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
@@ -164,8 +164,8 @@ export function KanbanView({
               <Button
                 variant="outline"
                 className="mb-3 w-full border-dashed border-border/60 text-muted-foreground hover:border-border hover:bg-muted/50 hover:text-foreground"
-              >
-                <IconPlus strokeWidth={1.5} className="mr-2" size={16} />
+             >
+                <IconPlus className="mr-2" size={16} />
                 Add New {mode === "initiatives" ? "Initiative" : "Task"}
               </Button>
 
@@ -177,18 +177,18 @@ export function KanbanView({
                         initiative={item}
                         onClick={() => onInitiativeClick?.(item)}
                       />
-                    ))
+                   ))
                   : (items as Task[]).map((item) => (
                       <TaskCard key={item.id} task={item} onClick={() => onTaskClick?.(item)} />
-                    ))}
+                   ))}
               </div>
             </div>
-          )
+         )
         })}
       </div>
       <ScrollBar orientation="horizontal" />
     </ScrollArea>
-  )
+ )
 }
 
 function InitiativeCard({
@@ -206,15 +206,15 @@ function InitiativeCard({
     <div
       className="group cursor-pointer rounded-xl border border-border/60 bg-card p-4 transition-all hover:border-border"
       onClick={onClick}
-    >
+   >
       <div className="mb-3 flex items-start justify-between">
         <div className="flex items-center gap-1.5 opacity-0 transition-opacity group-hover:opacity-100">
-          <IconGripVertical strokeWidth={1.5} className="cursor-grab text-muted-foreground" size={16} />
+          <IconGripVertical className="cursor-grab text-muted-foreground" size={16} />
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="-mr-1 -mt-1 size-6" onClick={(event) => event.stopPropagation()}>
-              <IconDotsVertical strokeWidth={1.5} size={16} />
+              <IconDotsVertical size={16} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -232,23 +232,23 @@ function InitiativeCard({
 
       {initiative.objective ? (
         <p className="mb-3 line-clamp-2 text-sm text-muted-foreground">{initiative.objective}</p>
-      ) : null}
+     ) : null}
 
-      {totalTasks > 0 ? (
+      {totalTasks> 0 ? (
         <div className="mb-3 flex items-center gap-2">
-          <IconListCheck strokeWidth={1.5} className="text-muted-foreground" size={16} />
+          <IconListCheck className="text-muted-foreground" size={16} />
           <span className="rounded bg-slate-100 px-2 py-0.5 text-sm font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
             {completedTasks}/{totalTasks}
           </span>
         </div>
-      ) : null}
+     ) : null}
 
       {initiative.risksBlockers ? (
         <div className="mb-3 flex items-center gap-1.5 text-orange-600 dark:text-orange-400">
-          <IconAlertTriangle strokeWidth={1.5} size={16} />
+          <IconAlertTriangle size={16} />
           <span className="line-clamp-1 text-xs font-medium">{initiative.risksBlockers}</span>
         </div>
-      ) : null}
+     ) : null}
 
       <div className="flex items-center justify-between border-t border-border/50 pt-3">
         <div className="flex items-center">
@@ -260,17 +260,17 @@ function InitiativeCard({
                   {initiative.leadDepartment.slice(0, 2).toUpperCase()}
                 </AvatarFallback>
               </Avatar>
-            ) : null}
+           ) : null}
           </div>
         </div>
 
         <span className="flex items-center gap-1 text-xs text-muted-foreground">
-          <IconMessage strokeWidth={1.5} size={16} />
+          <IconMessage size={16} />
           {initiative.id.charCodeAt(initiative.id.length - 1) % 5}
         </span>
       </div>
     </div>
-  )
+ )
 }
 
 function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
@@ -289,15 +289,15 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
     <div
       className="group cursor-pointer rounded-xl border border-border/60 bg-card p-4 transition-all hover:border-border"
       onClick={onClick}
-    >
+   >
       <div className="mb-3 flex items-start justify-between">
         <div className="flex items-center gap-1.5 opacity-0 transition-opacity group-hover:opacity-100">
-          <IconGripVertical strokeWidth={1.5} className="cursor-grab text-muted-foreground" size={16} />
+          <IconGripVertical className="cursor-grab text-muted-foreground" size={16} />
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="-mr-1 -mt-1 size-6" onClick={(event) => event.stopPropagation()}>
-              <IconDotsVertical strokeWidth={1.5} size={16} />
+              <IconDotsVertical size={16} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -326,13 +326,13 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
                   .slice(0, 2)}
               </AvatarFallback>
             </Avatar>
-          ) : null}
+         ) : null}
         </div>
         <span className="flex items-center gap-1 text-xs text-muted-foreground">
-          <IconLink strokeWidth={1.5} size={16} />
+          <IconLink size={16} />
           {task.id.charCodeAt(task.id.length - 1) % 3}
         </span>
       </div>
     </div>
-  )
+ )
 }

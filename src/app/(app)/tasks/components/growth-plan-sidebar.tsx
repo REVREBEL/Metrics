@@ -55,10 +55,10 @@ const defaultTeamMembers: TeamMember[] = [
 ]
 
 const strategyIcons: Record<string, ReactNode> = {
-  demand_generation: <IconWorld strokeWidth={1.5} size={20} />,
-  product_revenue: <IconStack2 strokeWidth={1.5} size={20} />,
-  retention_expansion: <IconTrendingUp strokeWidth={1.5} size={20} />,
-  operational_efficiency: <IconDeviceDesktop strokeWidth={1.5} size={20} />,
+  demand_generation: <IconWorld />,
+  product_revenue: <IconStack2 />,
+  retention_expansion: <IconTrendingUp />,
+  operational_efficiency: <IconDeviceDesktop />,
 }
 
 export function GrowthPlanSidebar({
@@ -72,15 +72,15 @@ export function GrowthPlanSidebar({
 
   const filteredInitiatives = initiatives.filter((initiative) =>
     initiative.title?.toLowerCase().includes(searchQuery.toLowerCase()),
-  )
+ )
 
   return (
     <div className="flex h-full flex-col border-r border-border bg-card/50">
       <div className="border-b border-border p-4">
         <div className="relative">
           <IconSearch
-            size={20}
-            strokeWidth={1.5}
+           
+           
             className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
           />
           <Input
@@ -100,8 +100,8 @@ export function GrowthPlanSidebar({
               {filteredInitiatives.map((initiative) => {
                 const isSelected = selectedInitiative?.id === initiative.id
                 const icon = strategyIcons[initiative.strategyType] ?? (
-                  <IconStack2 size={20} strokeWidth={1.5} />
-                )
+                  <IconStack2 />
+               )
 
                 return (
                   <div
@@ -118,14 +118,14 @@ export function GrowthPlanSidebar({
                     className={cn(
                       "group flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors",
                       isSelected ? "bg-primary text-primary-foreground" : "hover:bg-muted",
-                    )}
-                  >
+                   )}
+                 >
                     <div
                       className={cn(
                         "flex size-8 items-center justify-center rounded-lg",
                         isSelected ? "bg-primary-foreground/20" : "bg-muted",
-                      )}
-                    >
+                     )}
+                   >
                       {icon}
                     </div>
                     <span className="flex-1 truncate text-sm font-medium">{initiative.title}</span>
@@ -137,10 +137,10 @@ export function GrowthPlanSidebar({
                           className={cn(
                             "size-6 opacity-0 group-hover:opacity-100",
                             isSelected ? "hover:bg-primary-foreground/20" : "",
-                          )}
+                         )}
                           onClick={(event) => event.stopPropagation()}
-                        >
-                          <IconDotsVertical size={16} strokeWidth={1.5} />
+                       >
+                          <IconDotsVertical size={16} />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
@@ -150,12 +150,12 @@ export function GrowthPlanSidebar({
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </div>
-                )
+               )
               })}
             </div>
 
             <Button variant="outline" className="mt-3 w-full justify-start border-dashed">
-              <IconPlus size={16} strokeWidth={1.5} className="mr-2" />
+              <IconPlus size={16} className="mr-2" />
               Add Initiative
             </Button>
           </div>
@@ -165,11 +165,11 @@ export function GrowthPlanSidebar({
               <h3 className="text-sm font-semibold text-foreground">Team members</h3>
               <IconChevronDown
                 size={16}
-                strokeWidth={1.5}
+               
                 className={cn(
                   "text-muted-foreground transition-transform",
                   teamExpanded ? "" : "-rotate-90",
-                )}
+               )}
               />
             </CollapsibleTrigger>
             <CollapsibleContent>
@@ -178,7 +178,7 @@ export function GrowthPlanSidebar({
                   <div
                     key={member.name}
                     className="flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2 transition-colors hover:bg-muted"
-                  >
+                 >
                     <div className="relative">
                       <Avatar className="size-8">
                         <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${member.name}`} />
@@ -191,25 +191,26 @@ export function GrowthPlanSidebar({
                       </Avatar>
                       {member.online ? (
                         <span className="absolute bottom-0 right-0 size-2.5 rounded-full border-2 border-card bg-emerald-500" />
-                      ) : null}
+                     ) : null}
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-sm font-medium">{member.name}</p>
                       <p className="flex items-center gap-1 text-xs text-muted-foreground">
                         {member.online ? (
                           <>
+                            <>
                             <span className="text-emerald-500">Online</span>
                             <span>-</span>
                             <span>{member.lastActive}</span>
                           </>
-                        ) : (
+                       ) : (
                           <span>{member.lastActive}</span>
-                        )}
+                       )}
                       </p>
                     </div>
-                    <IconChevronDown size={14} strokeWidth={1.5} className="text-muted-foreground" />
+                    <IconChevronDown size={14} className="text-muted-foreground" />
                   </div>
-                ))}
+               ))}
               </div>
             </CollapsibleContent>
           </Collapsible>
@@ -222,11 +223,11 @@ export function GrowthPlanSidebar({
           <p className="mb-1 text-xs uppercase tracking-wide text-muted-foreground">Total Hours</p>
           <p className="text-2xl font-bold text-foreground">23.7 hours</p>
           <p className="mt-1 flex items-center gap-1 text-xs text-emerald-600 dark:text-emerald-400">
-            <IconTrendingUp size={14} strokeWidth={1.5} />
+            <IconTrendingUp size={14} />
             2.5% from last week
           </p>
         </div>
       </div>
     </div>
-  )
+ )
 }
