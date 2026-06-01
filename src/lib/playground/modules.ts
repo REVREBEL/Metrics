@@ -119,11 +119,8 @@ export const importMap = {
   imports: {
     react: "/playground/modules/react.js",
     "react/jsx-runtime": "/playground/modules/react-jsx-runtime.js",
-    "react/jsx-dev-runtime": "/playground/modules/react-jsx-runtime.js",
-    "react-dom": "/playground/modules/react-dom.js",
     "react-dom/client": "/playground/modules/react-dom-client.js",
     "radix-ui": "/playground/modules/radix-ui.js",
-    "lucide-react": `${CDN}/lucide-react@0.469.0${reactExternal}`,
     "@tabler/icons-react": `${CDN}/@tabler/icons-react@3.30.0${reactExternal}`,
     "class-variance-authority": "/playground/modules/cva.js",
     clsx: "/playground/modules/clsx.js",

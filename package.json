@@ -12,6 +12,7 @@
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
+    "fix-errors": "node scripts/fix-bad-tags.mjs && node scripts/fix-json-files.mjs && node scripts/fix-tsconfig.mjs && node scripts/fix-tsconfig2.mjs",
     "lint:fullreport": "node scripts/eslint-report.mjs --mode fullreport",
     "report:errorreport": "node scripts/eslint-report.mjs --mode errorreport",
     "report:fixqueue": "node scripts/eslint-report.mjs --mode fixqueue",

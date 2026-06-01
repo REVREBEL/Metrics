@@ -16,14 +16,13 @@ import {
 import { Input } from '@/components/ui/input'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-} from '@/components/ui/sheet'
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
 import { SelectDropdown } from '@/components/select-dropdown'
 import { type Task } from '../data/schema'
 
@@ -66,28 +65,28 @@ export function TasksMutateDrawer({
   }
 
   return (
-    <Sheet
+    <Dialog
       open={open}
       onOpenChange={(v) => {
         onOpenChange(v)
         form.reset()
       }}
     >
-      <SheetContent className='flex flex-col w-full sm:max-w-lg'>
-        <SheetHeader className='text-start'>
-          <SheetTitle>{isUpdate ? 'Update' : 'Create'} Task</SheetTitle>
-          <SheetDescription>
+      <DialogContent className='flex flex-col w-full max-w-lg max-h-[90vh]'>
+        <DialogHeader className='text-start'>
+          <DialogTitle>{isUpdate ? 'Update' : 'Create'} Task</DialogTitle>
+          <DialogDescription>
             {isUpdate
               ? 'Update the task by providing necessary info.'
               : 'Add a new task by providing necessary info.'}
             Click save when you&apos;re done.
-          </SheetDescription>
-        </SheetHeader>
+          </DialogDescription>
+        </DialogHeader>
         <Form {...form}>
           <form
             id='tasks-form'
             onSubmit={form.handleSubmit(onSubmit)}
-            className='flex-1 space-y-6 overflow-y-auto px-4'
+            className='flex-1 space-y-6 overflow-y-auto px-1'
           >
             <FormField
               control={form.control}
@@ -200,15 +199,15 @@ export function TasksMutateDrawer({
             />
           </form>
         </Form>
-        <SheetFooter className='gap-2'>
-          <SheetClose asChild>
-            <Button variant='outline'>Close</Button>
-          </SheetClose>
+        <DialogFooter className='gap-2'>
+          <Button variant='outline' onClick={() => onOpenChange(false)}>
+            Close
+          </Button>
           <Button form='tasks-form' type='submit'>
             Save changes
           </Button>
-        </SheetFooter>
-      </SheetContent>
-    </Sheet>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   )
 }
