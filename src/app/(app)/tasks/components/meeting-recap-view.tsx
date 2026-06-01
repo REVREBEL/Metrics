@@ -15,7 +15,7 @@ import {
   IconFileText,
 } from '@tabler/icons-react'
 import type { Initiative, Task } from '../data/schema'
-import { taskStatuses as initiativeStatuses, taskStatuses } from '../data/data'
+import { initiativeStatuses, taskStatuses } from '../data/data'
 
 type MeetingRecapViewProps = {
   initiatives: Initiative[]

@@ -201,6 +201,10 @@ export const tasks: Task[] = [
     createdAt: '2026-05-10T10:30:00Z',
     updatedAt: '2026-05-14T16:00:00Z',
     label: 'feature',
+    checklist: [
+      { id: 't001-c1', text: 'Create room code mapping', completed: true },
+      { id: 't001-c2', text: 'Set blackout dates', completed: true },
+    ],
   },
   {
     id: 'task-002',
@@ -236,6 +240,11 @@ export const tasks: Task[] = [
     createdAt: '2026-05-10T10:40:00Z',
     updatedAt: '2026-05-22T09:00:00Z',
     label: 'feature',
+    checklist: [
+      { id: 't003-c1', text: 'Draft website copy', completed: true },
+      { id: 't003-c2', text: 'Upload landing hero image', completed: false },
+      { id: 't003-c3', text: 'QA booking flow', completed: false },
+    ],
   },
   {
     id: 'task-004',
@@ -254,6 +263,10 @@ export const tasks: Task[] = [
     createdAt: '2026-05-10T10:45:00Z',
     updatedAt: '2026-05-20T11:00:00Z',
     label: 'feature',
+    checklist: [
+      { id: 't004-c1', text: 'Request final creative assets', completed: true },
+      { id: 't004-c2', text: 'Configure campaign audiences', completed: false },
+    ],
   },
   {
     id: 'task-005',

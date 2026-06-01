@@ -60,6 +60,13 @@ export const taskSchema = z.object({
   updatedAt: z.string(),
   // Additional display properties
   label: z.string().optional(),
+  checklist: z.array(
+    z.object({
+      id: z.string(),
+      text: z.string(),
+      completed: z.boolean(),
+    })
+  ).optional(),
 })
 
 export type Task = z.infer<typeof taskSchema>

@@ -298,10 +298,11 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
   const categoryKey = task.assignedDepartment || 'operations'
   const colors = categoryColors[categoryKey] || { bg: 'bg-slate-100 dark:bg-slate-800', text: 'text-slate-700 dark:text-slate-300', label: 'General' }
   
-  // Mock subtask progress
-  const total = (task.id.charCodeAt(task.id.length - 1) % 5) + 3
-  const completed = task.status === 'done' ? total : (task.id.charCodeAt(task.id.length - 1) % total)
-  const isComplete = task.status === 'done'
+  const checklistItems = task.checklist ?? []
+  const checklistTotal = checklistItems.length
+  const checklistCompleted = checklistItems.filter((item) => item.completed).length
+  const isChecklistComplete =
+    checklistTotal > 0 && checklistCompleted === checklistTotal
   
   return (
     <div 
@@ -344,18 +345,21 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
         </p>
       )}
 
-      {/* Subtask Progress */}
-      <div className="flex items-center gap-2 mb-3">
-        <IconListCheck size={20} stroke={1.5} className="text-muted-foreground" />
-        <span className={cn(
-          "text-sm font-medium px-2 py-0.5 rounded",
-          isComplete 
-            ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300" 
-            : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300"
-        )}>
-          {isComplete ? `${total}/${total}` : `${completed}/${total}`}
-        </span>
-      </div>
+      {checklistTotal > 0 && (
+        <div className="flex items-center gap-2 mb-3">
+          <IconListCheck size={20} stroke={1.5} className="text-muted-foreground" />
+          <span
+            className={cn(
+              "text-sm font-medium px-2 py-0.5 rounded",
+              isChecklistComplete
+                ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300"
+                : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300"
+            )}
+          >
+            {checklistCompleted}/{checklistTotal}
+          </span>
+        </div>
+      )}
 
       {/* Blocker Note */}
       {task.blockerNotes && (
