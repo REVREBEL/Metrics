@@ -180,9 +180,7 @@ function InitiativeCard({ initiative, onClick }: { initiative: Initiative; onCli
   const colors = categoryColors[initiative.strategyType] || { bg: 'bg-slate-100 dark:bg-slate-800', text: 'text-slate-700 dark:text-slate-300', label: 'Uncategorized' }
   
   // Calculate progress
-  const totalTasks = initiative.tasks?.length || 0
-  const completedTasks = initiative.tasks?.filter(t => t.status === 'completed' || t.status === 'complete').length || 0
-  const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
+  const completedTasks = initiative.tasks?.filter(t => t.status === 'done').length || 0
   
   return (
     <div 
