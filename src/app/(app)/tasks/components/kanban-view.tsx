@@ -310,8 +310,8 @@ function TaskCard({ task, onClick }: { task: Task; onClick?: () => void }) {
   
   // Mock subtask progress
   const total = (task.id.charCodeAt(task.id.length - 1) % 5) + 3
-  const completed = task.status === 'completed' || task.status === 'complete' ? total : (task.id.charCodeAt(task.id.length - 1) % total)
-  const isComplete = task.status === 'completed' || task.status === 'complete'
+  const completed = task.status === 'done' ? total : (task.id.charCodeAt(task.id.length - 1) % total)
+  const isComplete = task.status === 'done'
   
   return (
     <div 
