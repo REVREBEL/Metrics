@@ -310,9 +310,9 @@ export async function saveMappingDraftAction(
           String(payload.previousValues[key] ?? "")
       )
 
-      for (const fieldName of changedFields) {
-        await tx.insert(schema.appAuditLog).values({
-          entityType: "mapping_table_draft",
+      if (changedFields.length > 0) {
+        const auditLogs = changedFields.map((fieldName) => ({
+          entityType: "mapping_table_draft" as const,
           entityId: draft.id,
           action: "mapping_draft_field_changed",
           beforeState: {
@@ -333,7 +333,8 @@ export async function saveMappingDraftAction(
             updated_by: payload.updatedBy,
             updated_at: savedAt,
           },
-        })
+        }))
+        await tx.insert(schema.appAuditLog).values(auditLogs)
       }
 
       await tx.insert(schema.appAuditLog).values({
@@ -461,9 +462,9 @@ export async function publishMappingChangeAction(
           String(newValues[key]) !== String(previousValues[key] ?? "")
       )
 
-      for (const fieldName of changedFields) {
-        await tx.insert(schema.appAuditLog).values({
-          entityType: "mapping_table_publish",
+      if (changedFields.length > 0) {
+        const auditLogs = changedFields.map((fieldName) => ({
+          entityType: "mapping_table_publish" as const,
           entityId: payload.draftId,
           action: "mapping_change_published_field",
           beforeState: {
@@ -484,7 +485,8 @@ export async function publishMappingChangeAction(
             published_by: payload.publishedBy,
             published_at: publishedAt,
           },
-        })
+        }))
+        await tx.insert(schema.appAuditLog).values(auditLogs)
       }
 
       await tx.insert(schema.appAuditLog).values({
