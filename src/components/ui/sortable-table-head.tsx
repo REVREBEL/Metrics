@@ -1,4 +1,4 @@
-import { IconArrowDownAZ, IconArrowUpAZ } from "@tabler/icons-react"
+import { IconArrowDown, IconArrowUp } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"
 
@@ -30,9 +30,9 @@ export function SortableTableHead({
       >
         {children}
         {direction === "asc" ? (
-          <ArrowDownAZ className="size-3" aria-hidden="true" />
+          <IconArrowDown className="size-3" aria-hidden="true" />
         ) : (
-          <ArrowUpAZ className="size-3" aria-hidden="true" />
+          <IconArrowUp className="size-3" aria-hidden="true" />
         )}
       </button>
     </TableHead>

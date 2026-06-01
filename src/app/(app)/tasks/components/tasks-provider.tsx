@@ -1,19 +1,19 @@
-
 "use client"
 
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import useDialogState from '@/hooks/use-dialog-state'
-import { useProperty } from '@/context/property-context'
 import { type Task, type ExternalAssignee, type Workstream } from '../data/schema'
-import { externalAssignees as mockExternalAssignees, workstreams as mockWorkstreams } from '../data/tasks'
+import {
+  externalAssignees as mockExternalAssignees,
+  workstreams as mockWorkstreams,
+} from '../data/tasks'
 import {
   listExternalAssigneesAction,
   createExternalAssigneeAction,
   updateExternalAssigneeAction,
   deleteExternalAssigneeAction,
-  type ExternalAssigneeRow,
+  rowToAssignee,
 } from '../actions'
-
 
 type TasksDialogType = 'create' | 'update' | 'delete' | 'import'
 
@@ -22,49 +22,51 @@ type TasksContextType = {
   setOpen: (str: TasksDialogType | null) => void
   currentRow: Task | null
   setCurrentRow: React.Dispatch<React.SetStateAction<Task | null>>
-
   hotelId: string | null
   externalAssignees: ExternalAssignee[]
   isLoadingAssignees: boolean
-  addExternalAssignee: (assignee: Omit<ExternalAssignee, 'id' | 'createdAt'>) => Promise<{ ok: boolean; message: string }>
-  updateExternalAssignee: (id: string, assignee: Partial<ExternalAssignee>) => Promise<{ ok: boolean; message: string }>
+  addExternalAssignee: (
+    assignee: Omit<ExternalAssignee, 'id' | 'createdAt'>
+  ) => Promise<{ ok: boolean; message: string }>
+  updateExternalAssignee: (
+    id: string,
+    assignee: Partial<ExternalAssignee>
+  ) => Promise<{ ok: boolean; message: string }>
   deleteExternalAssignee: (id: string) => Promise<void>
   workstreams: Workstream[]
-  addWorkstream: (workstream: Omit<Workstream, 'id' | 'createdAt' | 'updatedAt'>) => void
-
+  addWorkstream: (
+    workstream: Omit<Workstream, 'id' | 'createdAt' | 'updatedAt'>
+  ) => void
+}
 
 const TasksContext = React.createContext<TasksContextType | null>(null)
 
 export function TasksProvider({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useDialogState<TasksDialogType>(null)
   const [currentRow, setCurrentRow] = useState<Task | null>(null)
+  const hotelId = null
+  const isResolvingProperty = false
 
-
-  // Use the app-wide property context for hotel scoping
-  const { activeProperty, isResolvingProperty } = useProperty()
-  const hotelId = activeProperty?.id ?? null
-
-  // Workstreams — initialise with mock data; new workstreams are added optimistically
   const [workstreams, setWorkstreams] = useState<Workstream[]>(mockWorkstreams)
-
-  const addWorkstream = useCallback((workstream: Omit<Workstream, 'id' | 'createdAt' | 'updatedAt'>) => {
-    const now = new Date().toISOString()
-    const newWorkstream: Workstream = {
-      ...workstream,
-      id: `ws-${Date.now()}`,
-      createdAt: now,
-      updatedAt: now,
-    }
-    setWorkstreams((prev) => [...prev, newWorkstream])
-  }, [])
-
-  // Start with empty list — we always authoritative-load from the DB.
-  // Mock data is only shown while the property is still resolving.
-  const [externalAssignees, setExternalAssignees] = useState<ExternalAssignee[]>([])
+  const [externalAssignees, setExternalAssignees] = useState<ExternalAssignee[]>(
+    []
+  )
   const [isLoadingAssignees, setIsLoadingAssignees] = useState(true)
 
-  // When the active property resolves, fetch its external assignees from the DB.
-  // If the DB is unavailable (hotelId stays null after resolution), fall back to mocks.
+  const addWorkstream = useCallback(
+    (workstream: Omit<Workstream, 'id' | 'createdAt' | 'updatedAt'>) => {
+      const now = new Date().toISOString()
+      const newWorkstream: Workstream = {
+        ...workstream,
+        id: `ws-${Date.now()}`,
+        createdAt: now,
+        updatedAt: now,
+      }
+      setWorkstreams((prev) => [...prev, newWorkstream])
+    },
+    []
+  )
+
   useEffect(() => {
     let cancelled = false
 
@@ -75,35 +77,38 @@ export function TasksProvider({ children }: { children: React.ReactNode }) {
         try {
           const rows = await listExternalAssigneesAction(hotelId)
           if (!cancelled) {
-            // Always replace with DB result — even if the array is empty.
-            // This ensures we never show assignees from another hotel.
             setExternalAssignees(rows.map(rowToAssignee))
           }
         } catch {
           if (!cancelled) {
-            // DB error: clear list to avoid showing stale/mock data
             setExternalAssignees([])
           }
         }
       } else if (!isResolvingProperty) {
-        // Property resolution finished but no hotel found → fixture mode, show mocks
-        if (!cancelled) setExternalAssignees(mockExternalAssignees)
+        if (!cancelled) {
+          setExternalAssignees(mockExternalAssignees)
+        }
       }
 
-      if (!cancelled) setIsLoadingAssignees(false)
+      if (!cancelled) {
+        setIsLoadingAssignees(false)
+      }
     }
 
     if (!isResolvingProperty) {
       void loadAssignees()
     }
 
-    return () => { cancelled = true }
+    return () => {
+      cancelled = true
+    }
   }, [hotelId, isResolvingProperty])
 
   const addExternalAssignee = useCallback(
-    async (assignee: Omit<ExternalAssignee, 'id' | 'createdAt'>): Promise<{ ok: boolean; message: string }> => {
+    async (
+      assignee: Omit<ExternalAssignee, 'id' | 'createdAt'>
+    ): Promise<{ ok: boolean; message: string }> => {
       if (hotelId) {
-        // Connected mode: write to DB, do NOT fall back to local update on failure
         const result = await createExternalAssigneeAction({
           hotelId,
           name: assignee.name,
@@ -116,7 +121,6 @@ export function TasksProvider({ children }: { children: React.ReactNode }) {
         return { ok: result.ok, message: result.message }
       }
 
-      // Fixture / offline mode only: optimistic local update
       const newAssignee: ExternalAssignee = {
         ...assignee,
         id: `ext-${Date.now()}`,
@@ -129,9 +133,11 @@ export function TasksProvider({ children }: { children: React.ReactNode }) {
   )
 
   const updateExternalAssignee = useCallback(
-    async (id: string, updates: Partial<ExternalAssignee>): Promise<{ ok: boolean; message: string }> => {
+    async (
+      id: string,
+      updates: Partial<ExternalAssignee>
+    ): Promise<{ ok: boolean; message: string }> => {
       if (hotelId) {
-        // Connected mode: write to DB, do NOT fall back to local update on failure
         const current = externalAssignees.find((a) => a.id === id)
         if (!current) return { ok: false, message: 'Record not found.' }
 
@@ -150,13 +156,12 @@ export function TasksProvider({ children }: { children: React.ReactNode }) {
         return { ok: result.ok, message: result.message }
       }
 
-      // Fixture / offline mode only
       setExternalAssignees((prev) =>
         prev.map((a) => (a.id === id ? { ...a, ...updates } : a))
       )
       return { ok: true, message: 'Updated (offline mode).' }
     },
-    [hotelId, externalAssignees]
+    [externalAssignees, hotelId]
   )
 
   const deleteExternalAssignee = useCallback(
@@ -164,31 +169,28 @@ export function TasksProvider({ children }: { children: React.ReactNode }) {
       if (hotelId) {
         await deleteExternalAssigneeAction(id, hotelId)
       }
-      // Remove from local state regardless (optimistic for delete)
       setExternalAssignees((prev) => prev.filter((a) => a.id !== id))
     },
     [hotelId]
   )
 
   return (
-    <TasksContext value={{
-      open,
-      setOpen,
-      currentRow,
-      setCurrentRow,
-      hotelId,
-      externalAssignees,
-      isLoadingAssignees,
-      addExternalAssignee,
-      updateExternalAssignee,
-      deleteExternalAssignee,
-      workstreams,
-      addWorkstream,
-    }}>
-
-  return (
-    <TasksContext.Provider value={{ open, setOpen, currentRow, setCurrentRow }}>
-      
+    <TasksContext.Provider
+      value={{
+        open,
+        setOpen,
+        currentRow,
+        setCurrentRow,
+        hotelId,
+        externalAssignees,
+        isLoadingAssignees,
+        addExternalAssignee,
+        updateExternalAssignee,
+        deleteExternalAssignee,
+        workstreams,
+        addWorkstream,
+      }}
+    >
       {children}
     </TasksContext.Provider>
   )

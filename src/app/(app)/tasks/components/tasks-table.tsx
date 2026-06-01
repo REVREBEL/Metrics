@@ -1,7 +1,7 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import { IconDownload, IconMoreHorizontal, IconTrash2 } from "@tabler/icons-react"
+import { IconDotsVertical, IconDownload, IconTrash } from "@tabler/icons-react"
 import { toast } from "sonner"
 
 import { Badge } from "@/components/ui/badge"
@@ -154,8 +154,63 @@ export function TasksTable({ data }: TasksTableProps) {
   }
 
   function exportSelected() {
+    const selectedTasks = data.filter((task) => selectedIds.has(task.id))
+
+    if (selectedTasks.length === 0) {
+      toast.error("No tasks selected to export.")
+      return
+    }
+
+    const columns = [
+      "id",
+      "title",
+      "status",
+      "label",
+      "priority",
+      "assignedTo",
+      "assignedDepartment",
+      "dueDate",
+    ] as const
+
+    const escapeCsv = (value: string) => `"${value.replace(/"/g, '""')}"`
+
+    const rows = selectedTasks.map((task) => {
+      const statusLabel =
+        statuses.find((status) => status.value === task.status)?.label ?? task.status
+      const labelText =
+        labels.find((label) => label.value === task.label)?.label ?? (task.label ?? "")
+      const priorityLabel =
+        priorities.find((priority) => priority.value === task.priority)?.label ?? task.priority
+
+      const record = {
+        id: task.id,
+        title: task.title,
+        status: statusLabel,
+        label: labelText,
+        priority: priorityLabel,
+        assignedTo: task.assignedTo ?? "",
+        assignedDepartment: task.assignedDepartment ?? "",
+        dueDate: task.dueDate ?? "",
+      }
+
+      return columns.map((column) => escapeCsv(String(record[column] ?? ""))).join(",")
+    })
+
+    const csv = [columns.join(","), ...rows].join("\n")
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement("a")
+    const stamp = new Date().toISOString().slice(0, 10)
+
+    link.href = url
+    link.download = `growth-plan-tasks-${stamp}.csv`
+    document.body.appendChild(link)
+    link.click()
+    link.remove()
+    URL.revokeObjectURL(url)
+
     toast.success(
-      `Exported ${selectedCount} selected ${selectedCount === 1 ? "task" : "tasks"} to CSV.`
+      `Exported ${selectedTasks.length} ${selectedTasks.length === 1 ? "task" : "tasks"} to CSV.`
     )
     clearSelection()
   }
@@ -243,11 +298,11 @@ export function TasksTable({ data }: TasksTableProps) {
               {selectedCount} {selectedCount === 1 ? "task" : "tasks"} selected
             </Badge>
             <Button variant="outline" size="sm" onClick={exportSelected}>
-              <Download />
+              <IconDownload />
               Export
             </Button>
             <Button variant="destructive" size="sm" onClick={bulkDelete}>
-              <Trash2 />
+              <IconTrash />
               Delete
             </Button>
             <Button variant="ghost" size="sm" onClick={clearSelection}>
@@ -339,7 +394,7 @@ export function TasksTable({ data }: TasksTableProps) {
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button variant="ghost" size="icon" className="size-8">
-                          <MoreHorizontal />
+                          <IconDotsVertical />
                           <span className="sr-only">Open task actions</span>
                         </Button>
                       </DropdownMenuTrigger>
