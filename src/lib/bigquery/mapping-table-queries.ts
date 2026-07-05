@@ -9,7 +9,7 @@ import {
 } from "./config"
 
 export interface MappingTableQueryOptions {
-  sourceSystem?: string
+  sourceApplicationCode?: string
   status?: MappingRowStatus
   search?: string
   limit?: number
@@ -43,10 +43,11 @@ export async function queryMappingTable(
 
   const conditions: string[] = []
   const params: Record<string, unknown> = {}
+  const usesSourceApplication = tableKey !== "metrics_core.map_hotel"
 
-  if (options.sourceSystem) {
-    conditions.push("source_system = @sourceSystem")
-    params.sourceSystem = options.sourceSystem
+  if (options.sourceApplicationCode && usesSourceApplication) {
+    conditions.push("source_application_code = @sourceApplicationCode")
+    params.sourceApplicationCode = options.sourceApplicationCode
   }
 
   if (options.status) {
@@ -65,11 +66,17 @@ export async function queryMappingTable(
     conditions.length > 0 ? `WHERE ${conditions.join(" AND ")}` : ""
   const limitClause = `LIMIT ${options.limit ?? 500}`
   const offsetClause = options.offset ? `OFFSET ${options.offset}` : ""
+  const sourceApplicationSelect = usesSourceApplication
+    ? "COALESCE(source_application_code, '') AS source_application_code,"
+    : "CAST(NULL AS STRING) AS source_application_code,"
+  const orderClause = usesSourceApplication
+    ? "ORDER BY source_application_code, source_code"
+    : "ORDER BY source_code"
 
   const query = `
     SELECT
       COALESCE(CAST(id AS STRING), GENERATE_UUID()) AS id,
-      COALESCE(source_system, '') AS source_system,
+      ${sourceApplicationSelect}
       COALESCE(source_code, '') AS source_code,
       COALESCE(source_value, '') AS source_value,
       COALESCE(standard_code, '') AS standard_code,
@@ -82,7 +89,7 @@ export async function queryMappingTable(
       COALESCE(updated_by, '') AS updated_by
     FROM ${ref.fullyQualified}
     ${whereClause}
-    ORDER BY source_system, source_code
+    ${orderClause}
     ${limitClause}
     ${offsetClause}
   `
@@ -169,7 +176,6 @@ export async function getMappingTableSchema(
   const dataset = bq.dataset(ref.datasetId, { projectId: ref.projectId })
   const table = dataset.table(ref.tableId)
   const [metadata] = await table.getMetadata()
-
   const fields: Array<{
     name: string
     type: string
@@ -190,7 +196,7 @@ function mapBigQueryRowToMappingTableRow(
 ): MappingTableRow {
   return {
     id: String(row.id ?? ""),
-    sourceSystem: String(row.source_system ?? ""),
+    sourceSystem: String(row.source_application_code ?? ""),
     sourceCode: String(row.source_code ?? ""),
     sourceValue: String(row.source_value ?? ""),
     standardCode: String(row.standard_code ?? ""),
